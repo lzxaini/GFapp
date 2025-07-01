@@ -1,0 +1,37 @@
+.detail-container {
+	width: 100vw;
+	height: 100vh;
+	background-color: #eee;
+	.beasun {
+		display: flex;
+		width: 100%;
+		align-items: flex-end;
+
+		.title {
+			display: block;
+			width: 234rpx;
+			height: 22px;
+			margin-left: 48rpx;
+		}
+	}
+	.card-box {
+		margin-top: 30rpx;
+	}
+	.open-door {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+    margin-top: 20rpx;
+		.btn {
+			--td-button-primary-bg-color: #ff6601;
+			--td-button-primary-border-color: #ff6601;
+			--td-button-primary-active-bg-color: #fcc39c;
+			--td-button-primary-active-border-color: #fcc39c;
+		}
+	}
+  .audit{
+    width: 100rpx;
+    height: 100rpx;
+  }
+}

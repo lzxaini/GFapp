@@ -1,0 +1,18 @@
+<view class="history-container">
+  <view class="beasun" style="top: {{statusBarHeight - 22}}px;">
+    <image class="title" src="../../static/icon/beasun.png"></image>
+  </view>
+  <scroll-view class="scroll-box" scroll-y lower-threshold="100" bindscrolltolower="onReachBottom" style="margin-top: {{statusBarHeight + 10}}px;height: calc(100% - {{statusBarHeight + 10}}px)" refresher-enabled="{{true}}"  	refresher-triggered="{{refresher}}"  bindrefresherrefresh="pullDownToRefresh">
+    <t-cell-group class="card-box" theme="card">
+      <t-cell t-class="card-item" hover arrow t-class-left="audit_box" wx:for="{{visitorList}}" wx:key="index" bindtap="goDetail" data-info="{{item}}">
+        <view slot="image">
+          <image class="audit" src="../../static/icon/{{item.status}}.svg"></image>
+        </view>
+        <view class="title" slot="title">{{item.validStartTime}} ~ {{item.validEndTime}}</view>
+        <view class="description" slot="description">{{item.content}}</view>
+      </t-cell>
+    </t-cell-group>
+    <view class="loading-text" wx:if="{{loading}}">正在加载中...</view>
+    <view class="loading-text" wx:elif="{{!hasMore}}">没有更多了</view>
+  </scroll-view>
+</view>

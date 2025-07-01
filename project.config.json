@@ -1,6 +1,6 @@
 {
   "compileType": "miniprogram",
-  "libVersion": "trial",
+  "libVersion": "3.8.5",
   "packOptions": {
     "ignore": [],
     "include": []
@@ -29,7 +29,10 @@
     "swc": false,
     "disableSWC": true,
     "disableUseStrict": false,
-    "useCompilerPlugins": false
+    "useCompilerPlugins": [
+      "sass"
+    ],
+    "ignoreUploadUnusedFiles": true
   },
   "condition": {},
   "editorSetting": {

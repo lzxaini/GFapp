@@ -1,0 +1,9 @@
+<!-- pages/user/clipHeadImg/index.wxml -->
+<import src="../../utils/we-cropper/we-cropper" />
+<view class="cropper-wrapper">
+  <template is="we-cropper" data="{{...cropperOpt}}" />
+  <cover-view class="cropper-buttons" style="color: {{cropperOpt.boundStyle.color}}">
+    <cover-view class="upload btn" bindtap="cancel">取消</cover-view>
+    <cover-view class="upload btn" bindtap="uploadImage">上传</cover-view>
+  </cover-view>
+</view>

@@ -1,14 +1,58 @@
 {
   "pages": [
+    "pages/login/login",
+    "pages/history/history",
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/cropping/cropping",
+    "pages/privacy-agreement/privacy-agreement",
+    "pages/detail/detail"
   ],
-  "window": {
-    "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "Weixin",
-    "navigationBarBackgroundColor": "#ffffff"
+  "usingComponents": {
+    "verify-puzzle": "/components/verify-puzzle/verify-puzzle",
+    "t-button": "tdesign-miniprogram/button/button",
+    "t-date-time-picker": "tdesign-miniprogram/date-time-picker/date-time-picker",
+    "t-upload": "tdesign-miniprogram/upload/upload",
+    "t-input": "tdesign-miniprogram/input/input",
+    "t-cell-group": "tdesign-miniprogram/cell-group/cell-group",
+    "t-textarea": "tdesign-miniprogram/textarea/textarea",
+    "t-cell": "tdesign-miniprogram/cell/cell",
+    "t-icon": "tdesign-miniprogram/icon/icon",
+    "t-avatar": "tdesign-miniprogram/avatar/avatar",
+    "t-checkbox": "tdesign-miniprogram/checkbox/checkbox",
+    "t-checkbox-group": "tdesign-miniprogram/checkbox-group/checkbox-group",
+    "t-navbar": "tdesign-miniprogram/navbar/navbar",
+    "t-dialog": "tdesign-miniprogram/dialog/dialog",
+    "t-image-viewer": "tdesign-miniprogram/image-viewer/image-viewer",
+    "t-message": "tdesign-miniprogram/message/message",
+    "t-avatar-group": "tdesign-miniprogram/avatar-group/avatar-group",
+    "t-loading": "tdesign-miniprogram/loading/loading",
+    "t-toast": "tdesign-miniprogram/toast/toast"
   },
-  "style": "v2",
+  "tabBar": {
+    "custom": true,
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "拜访"
+      },
+      {
+        "pagePath": "pages/history/history",
+        "text": "记录"
+      }
+    ]
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#7D3CF1",
+    "navigationBarTitleText": "百士电子",
+    "navigationStyle": "custom",
+    "navigationBarTextStyle": "white"
+  },
   "componentFramework": "glass-easel",
   "sitemapLocation": "sitemap.json",
   "lazyCodeLoading": "requiredComponents"
