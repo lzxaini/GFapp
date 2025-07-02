@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/recharge-history/recharge-history",
     "pages/index/index",
     "pages/work-team/work-team",
     "pages/team-members/team-members",
@@ -33,7 +34,9 @@
     "t-tag": "tdesign-miniprogram/tag/tag",
     "t-grid": "tdesign-miniprogram/grid/grid",
     "t-grid-item": "tdesign-miniprogram/grid-item/grid-item",
-    "t-image": "tdesign-miniprogram/image/image"
+    "t-image": "tdesign-miniprogram/image/image",
+    "t-tabs": "tdesign-miniprogram/tabs/tabs",
+    "t-tab-panel": "tdesign-miniprogram/tab-panel/tab-panel"
   },
   "window": {
     "backgroundTextStyle": "light",

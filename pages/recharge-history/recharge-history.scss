@@ -1,0 +1,94 @@
+.recharge-history_container {
+	position: relative;
+	width: 100vw;
+	height: 100vh;
+	background: linear-gradient(180deg, #888bf4 29%, #f5f7fb 40%, #f5f7fb 100%);
+
+	.nav_bg {
+		width: 100%;
+		height: 418rpx;
+	}
+	.history_title {
+		position: absolute;
+		font-size: 50rpx;
+		color: #ffffff;
+		margin-left: 46rpx;
+	}
+	.history_box {
+		position: relative;
+		z-index: 2;
+		width: calc(100% - 50rpx - 60rpx);
+		margin: 0 25rpx;
+		padding: 42rpx 30rpx;
+		background-color: rgba(255, 255, 255, 0.4);
+		margin: -200rpx 25rpx 0 25rpx;
+		border-radius: 20px;
+		.history_tabs {
+			--td-tab-nav-bg-color: rgba(255, 255, 255, 0.4);
+			--td-tab-item-tag-bg: transparent;
+			--td-tab-item-tag-active-bg: #888bf4;
+			--td-tab-item-color: #1c2023;
+			--td-tab-item-active-color: #ffffff;
+			border-radius: 40px !important;
+			.t-tabs__wrapper {
+				border-radius: 40px !important;
+			}
+		}
+		.title {
+			margin-top: 40rpx;
+			margin-bottom: 30rpx;
+			font-size: 30rpx;
+			font-weight: 300;
+			color: #1c2023;
+		}
+
+		.table {
+			display: flex;
+			flex-direction: column;
+			width: 100%;
+			border-radius: 16rpx;
+			background-color: #ffffff;
+			.table-header {
+				font-weight: bold;
+				padding: 20rpx 0;
+				font-size: 26rpx;
+				font-weight: normal;
+				color: #606972;
+			}
+			.table-row {
+				position: relative;
+				display: flex;
+				flex-direction: row;
+				padding: 20rpx 0;
+				font-size: 24rpx;
+				font-weight: 500;
+				color: #1c2023;
+			}
+
+			// 使用缩放来实现0.5px的边框效果
+			.table-row::before {
+				position: absolute;
+				bottom: 0;
+				content: '';
+				width: calc(100% - 40rpx);
+				left: 20rpx;
+				right: 20rpx;
+				height: 1px;
+				background-color: rgba(227, 228, 229, 1);
+				transform: scaleY(0.5);
+				transform-origin: bottom;
+				flex-shrink: 0;
+			}
+
+			.table-cell {
+				flex: 1;
+				padding: 20rpx;
+				text-align: center;
+			}
+			// 最后一个单元格不需要边框
+			.table-row:last-child::before {
+				display: none;
+			}
+		}
+	}
+}
