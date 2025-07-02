@@ -13,7 +13,7 @@
         <image class="team_grid_icon" src="../../static/icon/team_1.png" />
         <view class="text">团队成员</view>
       </t-grid-item>
-      <t-grid-item class="item">
+      <t-grid-item class="item" bindclick="inviteJoin">
         <image class="team_grid_icon" src="../../static/icon/team_2.png" />
         <view class="text">邀请加入</view>
       </t-grid-item>
@@ -26,4 +26,21 @@
   <view class="gf_logo">
     <image class="gf_logo_bg" src="../../static/icon/gf_logo.png" />
   </view>
+  <!-- <canvas class="qr_image" canvas-id="myQrcode"></canvas> -->
+  <t-dialog visible="{{qrCodeBox}}" bind:close="closeDialog" close-on-overlay-click="{{true}}">
+    <!-- 适配skyline，增加type="list" -->
+    <view slot="content">
+      <t-cell t-class="qr_userInfo" title="美之颜美学定制中心" bordered="{{false}}">
+        <t-avatar slot="left-icon" size="medium" image="../../static/icon/bg-top.png"></t-avatar>
+        <image slot="description" class="tag_icon" src="../../static/icon/admin.png" />
+      </t-cell>
+      <view class="institution_box">
+        <text class="institution">所属机构：美之颜美学定制中心</text>
+      </view>
+      <view class="qr_image_box">
+        <canvas class="qr_image" canvas-id="myQrcode"></canvas>
+      </view>
+      <view class="qr_code_text">扫一扫，快速加入我们的团队</view>
+    </view>
+  </t-dialog>
 </view>

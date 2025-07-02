@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/work-team/work-team",
+    "pages/team-members/team-members",
     "pages/index/index",
     "pages/login/login",
     "pages/history/history",
