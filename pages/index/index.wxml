@@ -45,7 +45,7 @@
     </view>
   </view>
   <t-cell-group class="card-box" theme="card">
-    <t-cell t-class="from-item" t-class-left="left_center" title="团队管理" arrow>
+    <t-cell t-class="from-item" t-class-left="left_center" title="团队管理" arrow bind:click="goWorkTeam">
       <image slot="left-icon" class="left_icon" src="../../static/icon/my_1.png" />
     </t-cell>
     <t-cell t-class="from-item" t-class-left="left_center" title="设备管理" arrow>

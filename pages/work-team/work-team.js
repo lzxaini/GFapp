@@ -27,6 +27,7 @@ Page({
       }
     })
   },
+  // 邀请加入
   inviteJoin() {
     this.setData({
       qrCodeBox: true
@@ -34,6 +35,11 @@ Page({
     if (this.data.qrCodeBox) {
       this.drawUserQrcode()
     }
+  },
+  goMember() {
+    wx.navigateTo({
+      url: '/pages/team-members/team-members'
+    })
   },
   closeDialog() {
     this.setData({

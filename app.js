@@ -88,10 +88,5 @@ App({
     this.globalData.token = null;
     this.globalData.mqttClient?.disconnect?.();
     this.globalData.mqttClient = null
-    // app.js
-    // if (this.globalData.mqttClient) {
-    //   this.globalData.mqttClient.disconnect(); // ✅ 清理旧的 MQTT
-    //   this.globalData.mqttClient = null;
-    // }
   }
 })

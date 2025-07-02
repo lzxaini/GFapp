@@ -9,7 +9,7 @@
   </t-cell-group>
   <t-cell-group t-class="team_menu" theme="card">
     <t-grid t-class="team_grid" column="3" direction="row">
-      <t-grid-item class="item">
+      <t-grid-item class="item" bindclick="goMember">
         <image class="team_grid_icon" src="../../static/icon/team_1.png" />
         <view class="text">团队成员</view>
       </t-grid-item>
