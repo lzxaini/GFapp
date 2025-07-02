@@ -18,7 +18,7 @@
     </t-cell>
     <!-- 功能菜单 -->
     <view column="4" class="menu_grid">
-      <view class="item">
+      <view class="item" bindtap="scanCodeActivation">
         <image class="menu_grid_icon" src="../../static/icon/my_menu_1.png" />
         <view class="text">扫码激活</view>
       </view>

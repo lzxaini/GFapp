@@ -34,6 +34,29 @@ Page({
   handleMsg({ topic, message }) {
     console.log('📩 收到 MQTT 消息', topic, message);
   },
+  scanCodeActivation() {
+    wx.scanCode({
+      onlyFromCamera: false,
+      success: (res) => {
+        console.log("🥵 ~ scanCode ~ res: ", res)
+        const { result } = res;
+        if (result) {
+          // 扫码成功
+        } else {
+          wx.showToast({
+            title: '扫描失败，请重试',
+            icon: 'error'
+          });
+        }
+      },
+      fail: () => {
+        wx.showToast({
+          title: '扫描失败，请重试',
+          icon: 'error'
+        });
+      }
+    });
+  },
   goWorkTeam() {
     wx.navigateTo({
       url: '/pages/work-team/work-team'
