@@ -1,7 +1,8 @@
 import drawQrcode from '../../utils/weapp.qrcode.min'
 Page({
   data: {
-    qrCodeBox: false
+    qrCodeBox: false,
+    qrFlag: false,
   },
   onShow() {
     // this.drawUserQrcode()
@@ -12,6 +13,7 @@ Page({
     });
   },
   drawUserQrcode() {
+    let _this = this;
     drawQrcode({
       width: 240,
       height: 240,
@@ -26,6 +28,11 @@ Page({
         dHeight: 37
       }
     })
+    setTimeout(() => {
+      _this.setData({
+        qrFlag: true
+      })
+    }, 500);
   },
   // 邀请加入
   inviteJoin() {
@@ -43,7 +50,8 @@ Page({
   },
   closeDialog() {
     this.setData({
-      qrCodeBox: false
+      qrCodeBox: false,
+      qrFlag: false
     })
   }
 })
