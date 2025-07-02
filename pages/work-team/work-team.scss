@@ -1,0 +1,59 @@
+.work-team_container {
+	width: 100vw;
+	height: 100vh;
+	background-color: #f5f7fb;
+	.navBar {
+		--td-navbar-bg-color: #888bf4;
+		--td-navbar-color: #fff;
+		--td-navbar-capsule-border-color: #e3e6ea !important;
+	}
+	.nav_bg {
+		width: 100%;
+		height: 122rpx;
+		margin-top: -2rpx;
+		background-color: #888bf4;
+	}
+	.team_nav {
+		margin-top: -90rpx;
+		.right_box {
+			position: absolute;
+			right: 0;
+			width: 140rpx;
+			height: 50rpx;
+			border-radius: 25rpx 0 0 25rpx;
+			background-color: #e7e8fd;
+			font-size: 24rpx;
+			font-weight: 300;
+			line-height: 50rpx;
+			text-align: center;
+			letter-spacing: 0px;
+			color: #888bf4;
+		}
+	}
+	.team_menu {
+		margin-top: 30rpx;
+		.team_grid_icon {
+			width: 80rpx;
+			height: 80rpx;
+		}
+		.text {
+			font-size: 24rpx;
+			font-weight: normal;
+			text-align: center;
+			letter-spacing: 0px;
+			color: #1c2023;
+			margin-top: 10rpx;
+		}
+	}
+	.gf_logo {
+		display: flex;
+		justify-content: center;
+		margin-top: 128rpx;
+		mix-blend-mode: color-burn;
+		opacity: 1;
+		.gf_logo_bg {
+			width: 560rpx;
+			height: 560rpx;
+		}
+	}
+}
