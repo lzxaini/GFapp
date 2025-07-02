@@ -9,21 +9,13 @@
   </view>
   <view class="user_container">
     <!-- 顶部区域 -->
-    <view class="header">
-      <view class="user-info">
-        <t-avatar size="large" image="../../static/icon/bg-top.png"></t-avatar>
-        <view class="info">
-          <view class="name">阳兰广</view>
-          <!-- <t-tag theme="primary" variant="light">
-            管理员
-          </t-tag> -->
-          <image class="admin_icon" src="../../static/icon/admin.png" />
-        </view>
-      </view>
-      <view class="qr">
+    <t-cell t-class="user_info" title="阳兰广" bordered="{{false}}">
+      <t-avatar slot="left-icon" size="large" image="../../static/icon/bg-top.png"></t-avatar>
+      <image slot="description" class="tag_icon" src="../../static/icon/admin.png" />
+      <view slot="right-icon" class="qr">
         <t-icon name="qrcode" size="32"></t-icon>
       </view>
-    </view>
+    </t-cell>
     <!-- 功能菜单 -->
     <view column="4" class="menu_grid">
       <view class="item">
@@ -45,19 +37,19 @@
     </view>
   </view>
   <t-cell-group class="card-box" theme="card">
-    <t-cell t-class="from-item" t-class-left="left_center" title="团队管理" arrow bind:click="goWorkTeam">
+    <t-cell t-class="from-item" t-class-left="left_center" title="团队管理" arrow hover url="/pages/work-team/work-team">
       <image slot="left-icon" class="left_icon" src="../../static/icon/my_1.png" />
     </t-cell>
-    <t-cell t-class="from-item" t-class-left="left_center" title="设备管理" arrow>
+    <t-cell t-class="from-item" t-class-left="left_center" title="设备管理" arrow hover>
       <image slot="left-icon" class="left_icon" src="../../static/icon/my_2.png" />
     </t-cell>
-    <t-cell t-class="from-item" t-class-left="left_center" title="运营管理" arrow>
+    <t-cell t-class="from-item" t-class-left="left_center" title="运营管理" arrow hover>
       <image slot="left-icon" class="left_icon" src="../../static/icon/my_3.png" />
     </t-cell>
-    <t-cell t-class="from-item" t-class-left="left_center" title="使用指南" arrow>
+    <t-cell t-class="from-item" t-class-left="left_center" title="使用指南" arrow hover>
       <image slot="left-icon" class="left_icon" src="../../static/icon/my_4.png" />
     </t-cell>
-    <t-cell t-class="from-item" t-class-left="left_center" title="设置" arrow>
+    <t-cell t-class="from-item" t-class-left="left_center" title="设置" arrow hover>
       <image slot="left-icon" class="left_icon" src="../../static/icon/my_5.png" />
     </t-cell>
   </t-cell-group>
