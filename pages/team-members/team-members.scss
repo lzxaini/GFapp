@@ -1,0 +1,22 @@
+.team-members_container {
+	width: 100vw;
+	height: 100vh;
+	background-color: #f5f7fb;
+	.list_item {
+		.title_box {
+			display: flex;
+			align-items: center;
+			.title_text {
+				font-size: 32rpx;
+				font-weight: 300;
+				letter-spacing: 0rpx;
+				color: #1c2023;
+			}
+			.tag_icon {
+				width: 140rpx;
+				height: 42rpx;
+        margin-left: 15rpx;
+			}
+		}
+	}
+}
