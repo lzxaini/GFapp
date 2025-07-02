@@ -6,7 +6,7 @@ App({
     this.eventCenter = eventCenter;
     wx.eventCenter = eventCenter; // 挂载到 wx 上
     this.getSystemInfo()
-    this.getUserInfo()
+    // this.getUserInfo()
   },
   globalData: {
     mqttClient: null,

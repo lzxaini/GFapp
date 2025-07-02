@@ -6,7 +6,7 @@ import {
 import { onMqttReady } from '../../utils/mqttReady';
 Page({
   data: {
-    statusBarHeight: app.globalData.capsuleHeight,
+    capsuleHeight: app.globalData.capsuleHeight,
     isVerification: false,
     phoneError: false, // 手机号格式错误
     nameError: false, // 姓名不能为空
@@ -53,6 +53,10 @@ Page({
   },
   onLoad() {
     this.setTabBar()
+    // 重新获取胶囊高度，防止热启动时数据不对
+    this.setData({
+      capsuleHeight: app.globalData.capsuleHeight
+    });
     const now = dayjs();
     const formattedNow = now.format('YYYY-MM-DD HH:mm');
     // 设置初始时间为当前时间

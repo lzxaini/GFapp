@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/login/login",
     "pages/history/history",
-    "pages/index/index",
     "pages/logs/logs",
     "pages/cropping/cropping",
     "pages/privacy-agreement/privacy-agreement",
@@ -27,24 +27,11 @@
     "t-message": "tdesign-miniprogram/message/message",
     "t-avatar-group": "tdesign-miniprogram/avatar-group/avatar-group",
     "t-loading": "tdesign-miniprogram/loading/loading",
-    "t-toast": "tdesign-miniprogram/toast/toast"
-  },
-  "tabBar": {
-    "custom": true,
-    "color": "#7A7E83",
-    "selectedColor": "#3cc51f",
-    "borderStyle": "black",
-    "backgroundColor": "#ffffff",
-    "list": [
-      {
-        "pagePath": "pages/index/index",
-        "text": "拜访"
-      },
-      {
-        "pagePath": "pages/history/history",
-        "text": "记录"
-      }
-    ]
+    "t-toast": "tdesign-miniprogram/toast/toast",
+    "t-tag": "tdesign-miniprogram/tag/tag",
+    "t-grid": "tdesign-miniprogram/grid/grid",
+    "t-grid-item": "tdesign-miniprogram/grid-item/grid-item",
+    "t-image": "tdesign-miniprogram/image/image"
   },
   "window": {
     "backgroundTextStyle": "light",

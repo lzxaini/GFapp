@@ -1,31 +1,65 @@
 <view class="container">
-  <verify-puzzle is-show="{{isVerification}}" enable-close="{{true}}" bind:onsuccess="verifySuccess" bind:onerror="verifyError"></verify-puzzle>
-  <view class="beasun" style="height: {{statusBarHeight}}px;">
-    <image class="title" src="../../static/icon/beasun.png"></image>
+  <view class="bg_box">
+    <image class="bg_top" src="../../static/icon/bg-top.png"></image>
+    <view class="logo_text" style="height: {{capsuleHeight}}px;">光馥科美</view>
+    <view class="logo_slogan">
+      <image class="gf_logo" src="../../static/icon/logo.png"></image>
+      <text class="slogan">光塑年轻力，馥养无龄美</text>
+    </view>
+  </view>
+  <view class="user_container">
+    <!-- 顶部区域 -->
+    <view class="header">
+      <view class="user-info">
+        <t-avatar size="large" image="../../static/icon/bg-top.png"></t-avatar>
+        <view class="info">
+          <view class="name">阳兰广</view>
+          <!-- <t-tag theme="primary" variant="light">
+            管理员
+          </t-tag> -->
+          <image class="admin_icon" src="../../static/icon/admin.png" />
+        </view>
+      </view>
+      <view class="qr">
+        <t-icon name="qrcode" size="32"></t-icon>
+      </view>
+    </view>
+    <!-- 功能菜单 -->
+    <view column="4" class="menu_grid">
+      <view class="item">
+        <image class="menu_grid_icon" src="../../static/icon/my_menu_1.png" />
+        <view class="text">扫码激活</view>
+      </view>
+      <view class="item">
+        <image class="menu_grid_icon" src="../../static/icon/my_menu_2.png" />
+        <view class="text">充值记录</view>
+      </view>
+      <view class="item">
+        <image class="menu_grid_icon" src="../../static/icon/my_menu_3.png" />
+        <view class="text">服务记录</view>
+      </view>
+      <view class="item">
+        <image class="menu_grid_icon" src="../../static/icon/my_menu_4.png" />
+        <view class="text">白名单</view>
+      </view>
+    </view>
   </view>
   <t-cell-group class="card-box" theme="card">
-    <t-cell t-class="from-item" title="姓名" required arrow>
-      <t-input t-class="item-input" t-class-tips="errMsg" slot="note" placeholder="请输入您的姓名" value="{{from.visitorName}}" type="text" tips="{{nameError ? '请检查姓名输入' : ''}}" bindblur="onNameInput" confirm-type="next" borderless></t-input>
+    <t-cell t-class="from-item" t-class-left="left_center" title="团队管理" arrow>
+      <image slot="left-icon" class="left_icon" src="../../static/icon/my_1.png" />
     </t-cell>
-    <t-cell t-class="from-item" title="手机号" required arrow>
-      <t-input t-class="item-input" t-class-tips="errMsg" slot="note" placeholder="请输入您的手机号" value="{{from.mobile}}" type="text" tips="{{phoneError ? '请检查手机号输入' : ''}}" bindblur="onPhoneInput" confirm-type="next" borderless></t-input>
+    <t-cell t-class="from-item" t-class-left="left_center" title="设备管理" arrow>
+      <image slot="left-icon" class="left_icon" src="../../static/icon/my_2.png" />
     </t-cell>
-    <t-cell title="拜访日期" t-class-tips="errMsg" note="{{datetimeText || '请选择拜访时间段'}}" data-mode="start" tips="{{dateError ? '请检查日期' : ''}}" bindtap="showPicker" t-class="panel-item" required arrow />
-    <t-cell t-class="upload" title="门禁人脸" description="您可以选择上传人脸进行快速刷脸进入厂区，我们承诺，不会在非门禁系统以外使用您的人脸数据！">
-      <t-upload slot="note" mediaType="{{['video','image']}}" max="{{1}}" files="{{fileList}}" bind:add="handleAdd" bind:remove="handleRemove"></t-upload>
+    <t-cell t-class="from-item" t-class-left="left_center" title="运营管理" arrow>
+      <image slot="left-icon" class="left_icon" src="../../static/icon/my_3.png" />
     </t-cell>
-    <t-cell t-class="from-item" title="拜访事由" t-class-tips="errMsg" tips="{{ contentError ? '请检查拜访事由' : ''}}" required>
-      <t-textarea slot="description" t-class="external-class" placeholder="请输入您的拜访事由" maxlength="200" disableDefaultPadding="{{true}}" indicator bindchange="onContentInput" value="{{from.content}}" />
+    <t-cell t-class="from-item" t-class-left="left_center" title="使用指南" arrow>
+      <image slot="left-icon" class="left_icon" src="../../static/icon/my_4.png" />
     </t-cell>
-    <!-- 页面 WXML -->
-    <we-cropper />
+    <t-cell t-class="from-item" t-class-left="left_center" title="设置" arrow>
+      <image slot="left-icon" class="left_icon" src="../../static/icon/my_5.png" />
+    </t-cell>
   </t-cell-group>
-  <view class="footer">
-    说明：您可以在登记记录中查询您提交的登记，如登记在有效期内，您也可以通过查看登记详情，在登记详情页面上，直接点击开门即可！我们承诺，不会在非门禁系统以外使用您的登记的所有数据！
-  </view>
-  <button class="submit" bindtap="verify">提交登记</button>
-  <view class="clear" bindtap="clearInfo">清除信息</view>
-  <!-- 年月日 -->
-  <t-date-time-picker title="开始拜访" visible="{{start.domVisible}}" mode="hour" value="{{start.datetime}}" formatter="{{  startFormatter }}" bindchange="onConfirm" bindcancel="hidePicker" data-mode="start" show-week="true" start="{{ start.startTime }}" />
-  <t-date-time-picker title="结束拜访" visible="{{end.domVisible}}" mode="hour" value="{{end.datetime}}" formatter="{{ endFormatter }}" bindchange="onConfirm" bindcancel="hidePicker" data-mode="end" show-week="true" start="{{ end.startTime }}" />
+  <image class="device_bg" src="../../static/icon/device.png" />
 </view>
