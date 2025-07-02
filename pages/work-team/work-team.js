@@ -24,8 +24,8 @@ Page({
         imageResource: '../../static/icon/gf_logo_w.png', // 不支持网络图片，如果非得网络图片，需要使用wx.getImageInfo 去获取图片信息，我这边往中间加的一个白图然后采用覆盖的方式
         dx: 100,
         dy: 100,
-        dWidth: 37,
-        dHeight: 37
+        dWidth: 50,
+        dHeight: 50
       }
     })
     setTimeout(() => {
