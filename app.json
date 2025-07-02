@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/white-list/white-list",
     "pages/index/index",
     "pages/recharge-history/recharge-history",
     "pages/work-team/work-team",
@@ -36,6 +37,7 @@
     "t-grid-item": "tdesign-miniprogram/grid-item/grid-item",
     "t-image": "tdesign-miniprogram/image/image",
     "t-tabs": "tdesign-miniprogram/tabs/tabs",
+    "t-empty": "tdesign-miniprogram/empty/empty",
     "t-tab-panel": "tdesign-miniprogram/tab-panel/tab-panel"
   },
   "window": {

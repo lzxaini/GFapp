@@ -1,0 +1,110 @@
+.white-list_container {
+	width: 100vw;
+	height: 100vh;
+	background-color: #f1f3f4;
+	.scroll-view {
+		background-color: #f1f3f4;
+		.list_item {
+			display: flex;
+			align-items: center;
+			width: calc(100% - 60rpx);
+			height: 176rpx;
+			margin: 32rpx;
+			border-radius: 24rpx;
+			overflow: hidden;
+			background-color: #ffffff;
+			.left_box {
+				position: relative;
+				width: 196rpx;
+				height: 100%;
+				background: rgba(136, 139, 244, 0.55);
+				display: flex;
+				align-content: center;
+				flex-wrap: wrap;
+				&::after {
+					position: absolute;
+					top: 50%;
+					transform: translate(0, -50%);
+					left: -15rpx;
+					content: '';
+					width: 30rpx;
+					height: 30rpx;
+					border-radius: 50%;
+					background-color: #f1f3f4;
+				}
+				.title {
+					width: 100%;
+					font-size: 36rpx;
+					font-weight: bold;
+					text-align: center;
+					color: #ffffff;
+				}
+				.number {
+					width: 100%;
+					text-align: center;
+					font-size: 24rpx;
+					font-weight: 500;
+					text-align: center;
+					color: #ffffff;
+					margin-top: 10rpx;
+				}
+			}
+			.right_box {
+				width: calc(100% - 196rpx);
+				// height: 100%;
+				padding: 24rpx;
+				// background-color: red;
+				.user_info {
+					display: flex;
+					align-items: center;
+					.avatar {
+						width: 48rpx;
+						height: 48rpx;
+					}
+					.text {
+						font-size: 32rpx;
+						font-weight: 900;
+						color: #333333;
+						margin-left: 16rpx;
+					}
+				}
+				.location,
+				.identity {
+					font-weight: 500;
+					font-size: 24rpx;
+					color: #999999;
+				}
+				.location {
+					margin-top: 20rpx;
+				}
+				.identity {
+					margin-top: 10rpx;
+				}
+			}
+		}
+	}
+  .empty{
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -45%);
+		--td-empty-description-margin-top: 0;
+  }
+	.empty_image {
+		width: 220rpx;
+		height: 220rpx;
+	}
+	.authorization {
+		position: fixed;
+		bottom: env(safe-area-inset-bottom);
+		width: calc(100% - 64rpx);
+		margin: 0 32rpx;
+		height: 112rpx;
+		border-radius: 80rpx;
+		background: linear-gradient(279deg, #888bf4 -1%, #5151c6 100%);
+		font-size: 32rpx;
+		font-weight: bold;
+		line-height: 112rpx;
+		color: #ffffff;
+	}
+}

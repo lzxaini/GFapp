@@ -1,0 +1,22 @@
+<view class="white-list_container">
+  <t-navbar left-arrow title="白名单" />
+  <!-- 滚动列表 -->
+  <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" style="padding-bottom: env(safe-area-inset-bottom)px;" wx:if="{{whiteList.length}}">
+    <view class="list_item" wx:for="{{whiteList}}" wx:key="index">
+      <view class="left_box">
+        <view class="title">测试</view>
+        <view class="number">9次/每天</view>
+      </view>
+      <view class="right_box">
+        <view class="user_info">
+          <image class="avatar" src="../../static/icon/gf_logo.png" />
+          <text class="text">1333333333333</text>
+        </view>
+        <view class="location">地点：9次/每天9次/每天9次/每天</view>
+        <view class="identity">身份：测试水水水水每天</view>
+      </view>
+    </view>
+  </scroll-view>
+  <t-empty t-class="empty" t-class-image="empty_image" wx:else image="/static/icon/null.png" description="暂无任何白名单" />
+  <button class="authorization" bindtap="scanCode">扫码授权</button>
+</view>
