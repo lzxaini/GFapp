@@ -43,5 +43,10 @@ Page({
     wx.navigateTo({
       url: '/pages/recharge-history/recharge-history'
     });
+  },
+  goWhiteList() {
+    wx.navigateTo({
+      url: '/pages/white-list/white-list'
+    });
   }
 })

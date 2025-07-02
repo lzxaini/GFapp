@@ -30,7 +30,7 @@
         <image class="menu_grid_icon" src="../../static/icon/my_menu_3.png" />
         <view class="text">服务记录</view>
       </view>
-      <view class="item">
+      <view class="item" bindtap="goWhiteList">
         <image class="menu_grid_icon" src="../../static/icon/my_menu_4.png" />
         <view class="text">白名单</view>
       </view>

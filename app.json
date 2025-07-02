@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/white-list/white-list",
     "pages/index/index",
+    "pages/white-list/white-list",
     "pages/recharge-history/recharge-history",
     "pages/work-team/work-team",
     "pages/team-members/team-members",
