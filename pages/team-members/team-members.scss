@@ -15,8 +15,22 @@
 			.tag_icon {
 				width: 140rpx;
 				height: 42rpx;
-        margin-left: 15rpx;
+				margin-left: 15rpx;
 			}
 		}
+	}
+	.empty {
+		// position: absolute;
+		// top: 45%;
+		// left: 50%;
+		// transform: translate(-50%, -45%);
+		--td-empty-description-margin-top: 0;
+		--td-empty-description-font-size: 24rpx;
+		padding-top: 40rpx;
+		padding-bottom: env(safe-area-inset-bottom);
+	}
+	.empty_image {
+		width: 40rpx;
+		height: 48rpx;
 	}
 }

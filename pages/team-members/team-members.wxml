@@ -1,7 +1,7 @@
 <view class="team-members_container">
   <t-navbar t-class="navBar" left-arrow title="团队成员" />
   <!-- 滚动列表 -->
-  <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" style="padding-bottom: env(safe-area-inset-bottom)px;">
+  <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true">
     <t-cell t-class="list_item" wx:for="{{20}}" description="133333333333" arrow>
       <t-avatar slot="left-icon" shape="round" size="large" image="../../static/icon/bg-top.png"></t-avatar>
       <view slot="title" class="title_box">
@@ -9,5 +9,6 @@
         <image class="tag_icon" src="../../static/icon/admin.png" />
       </view>
     </t-cell>
+    <t-empty t-class="empty" t-class-image="empty_image" image="/static/icon/footer.png" description="糟糕，到底了" />
   </scroll-view>
 </view>
