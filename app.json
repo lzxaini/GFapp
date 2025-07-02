@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/recharge-history/recharge-history",
     "pages/index/index",
+    "pages/recharge-history/recharge-history",
     "pages/work-team/work-team",
     "pages/team-members/team-members",
     "pages/login/login",

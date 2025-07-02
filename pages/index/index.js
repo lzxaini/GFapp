@@ -38,5 +38,10 @@ Page({
     wx.navigateTo({
       url: '/pages/work-team/work-team'
     });
+  },
+  goRechargeHistory() {
+    wx.navigateTo({
+      url: '/pages/recharge-history/recharge-history'
+    });
   }
 })

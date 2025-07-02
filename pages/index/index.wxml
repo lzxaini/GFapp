@@ -30,7 +30,7 @@
         <image class="menu_grid_icon" src="../../static/icon/my_menu_1.png" />
         <view class="text">扫码激活</view>
       </view>
-      <view class="item">
+      <view class="item" bindtap="goRechargeHistory">
         <image class="menu_grid_icon" src="../../static/icon/my_menu_2.png" />
         <view class="text">充值记录</view>
       </view>
