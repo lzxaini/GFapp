@@ -121,4 +121,58 @@
 		height: 1024rpx;
 		opacity: 0.5;
 	}
+	.qr_userInfo {
+		--td-cell-horizontal-padding: 0;
+		--td-cell-vertical-padding: 0;
+
+		.tag_icon {
+			width: 140rpx;
+			height: 42rpx;
+		}
+	}
+	.dialog_content {
+		position: relative;
+	}
+	.institution_box {
+		border-radius: 10rpx;
+		background: #f8f8fe;
+		padding: 7rpx 20rpx;
+		margin-top: 26rpx;
+		.institution {
+			font-size: 24rpx;
+			font-weight: 400;
+			color: #888bf4;
+		}
+	}
+	.qr_image_box {
+		display: flex;
+		justify-content: center;
+		width: 100%;
+		margin: 80rpx 0 30rpx 0;
+		.qr_image {
+			width: 240px;
+			height: 240px;
+		}
+	}
+
+	.qr_code_text {
+		font-size: 24rpx;
+		font-weight: normal;
+		text-align: center;
+		color: #1c2023;
+		text-align: center;
+	}
+	.save_invite {
+		position: absolute;
+		bottom: -112rpx + -32rpx;
+		width: 100%;
+		height: 112rpx;
+		border-radius: 80rpx;
+		font-size: 32rpx;
+		font-weight: bold;
+		line-height: 112rpx;
+		text-align: center;
+		color: #ffffff;
+		background: linear-gradient(279deg, #888bf4 -1%, #5151c6 100%);
+	}
 }
