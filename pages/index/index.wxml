@@ -49,7 +49,7 @@
     <t-cell t-class="from-item" t-class-left="left_center" title="使用指南" arrow hover>
       <image slot="left-icon" class="left_icon" src="../../static/icon/my_4.png" />
     </t-cell>
-    <t-cell t-class="from-item" t-class-left="left_center" title="设置" arrow hover>
+    <t-cell t-class="from-item" t-class-left="left_center" title="设置" arrow hover url="/pages/my-edit/my-edit">
       <image slot="left-icon" class="left_icon" src="../../static/icon/my_5.png" />
     </t-cell>
   </t-cell-group>
