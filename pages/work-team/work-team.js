@@ -44,6 +44,7 @@ Page({
       this.drawUserQrcode()
     }
   },
+  // 保存邀请码
   saveInviteCode: tool.debounce(function () {
     let _this = this;
     wx.canvasToTempFilePath({
@@ -68,7 +69,6 @@ Page({
       }
     })
   }, 800),
-  // 保存邀请码
   goMember() {
     wx.navigateTo({
       url: '/pages/team-members/team-members'
