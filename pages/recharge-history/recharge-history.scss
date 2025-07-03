@@ -25,10 +25,11 @@
 		margin: 0 25rpx;
 		padding: 42rpx 30rpx;
 		background-color: rgba(255, 255, 255, 0.4);
+		backdrop-filter: blur(38rpx);
 		margin: -200rpx 25rpx 0 25rpx;
 		border-radius: 20px;
 		.history_tabs {
-			--td-tab-nav-bg-color: rgba(255, 255, 255, 0.4);
+			--td-tab-nav-bg-color: rgba(255, 255, 255, 0.3);
 			--td-tab-item-tag-bg: transparent;
 			--td-tab-item-tag-active-bg: #888bf4;
 			--td-tab-item-color: #1c2023;
@@ -37,6 +38,18 @@
 			.t-tabs__wrapper {
 				border-radius: 40px !important;
 			}
+		}
+		.item_style {
+			font-size: 28rpx;
+			font-weight: bold;
+			color: #1c2023;
+		}
+		.active_style {
+			background-color: #888bf4;
+			border-radius: 60rpx;
+			font-size: 32rpx;
+			font-weight: 300;
+			color: #ffffff;
 		}
 		.title {
 			margin-top: 40rpx;
@@ -83,11 +96,37 @@
 				transform-origin: bottom;
 				flex-shrink: 0;
 			}
-
+			.cell-header {
+				font-size: 26rpx;
+				font-weight: normal;
+				color: #606972;
+			}
+			.cell-content {
+				font-size: 24rpx;
+				font-weight: 500;
+				color: #1c2023;
+			}
 			.table-cell {
+				display: flex;
+				align-items: center;
+				justify-content: center;
 				flex: 1;
 				padding: 20rpx;
+			}
+			.number-cell {
+				display: block !important;
 				text-align: center;
+				.text {
+					font-size: 24rpx;
+					font-weight: 500;
+					color: #888bf4;
+				}
+				.date {
+					font-size: 18rpx;
+					font-weight: normal;
+					color: #1c2023;
+					margin-top: 10rpx;
+				}
 			}
 			// 最后一个单元格不需要边框
 			.table-row:last-child::before {
