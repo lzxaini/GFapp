@@ -1,12 +1,12 @@
 {
   "pages": [
+    "pages/work-team/work-team",
     "pages/my-edit/my-edit",
     "pages/change-password/change-password",
     "pages/team-info/team-info",
     "pages/index/index",
     "pages/recharge-history/recharge-history",
     "pages/white-list/white-list",
-    "pages/work-team/work-team",
     "pages/team-members/team-members",
     "pages/login/login",
     "pages/history/history",

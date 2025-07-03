@@ -79,5 +79,11 @@ Page({
       qrCodeBox: false,
       qrFlag: false
     })
+  },
+  // 编辑团队
+  editTeam() {
+    wx.navigateTo({
+      url: '/pages/team-info/team-info'
+    })
   }
 })
