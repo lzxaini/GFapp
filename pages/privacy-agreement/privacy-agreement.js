@@ -4,7 +4,7 @@ Page({
   data: {
     content: `
 <p style="text-indent: 20px;">
-    <span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;">请您在使用本产品之前，请务必仔细阅读并理解<span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; color: rgb(0, 112, 192);">《<span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;"><strong style="text-align: center; white-space: normal;">数字UV镇流器用户许可使用协议</strong></span>》</span>（以下简称“本协议”）中规定的权利和限制。</span>
+    <span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;">请您在使用本产品之前，请务必仔细阅读并理解<span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; color: rgb(0, 112, 192);">《<span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;"><strong style="text-align: center; white-space: normal;">光馥科美用户许可使用协议</strong></span>》</span>（以下简称“本协议”）中规定的权利和限制。</span>
 </p>
 <p style="text-indent: 20px;">
     <span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;">我们⼀向尊重并会严格保护⽤户在使⽤本产品时的合法权益（包括⽤户隐私、⽤户数据等）不受到任何侵犯。</span>
