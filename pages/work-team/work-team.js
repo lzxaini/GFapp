@@ -1,4 +1,5 @@
 import drawQrcode from '../../utils/weapp.qrcode.min'
+import tool from '../../utils/tools'
 Page({
   data: {
     qrCodeBox: false,
@@ -43,6 +44,31 @@ Page({
       this.drawUserQrcode()
     }
   },
+  saveInviteCode: tool.debounce(function () {
+    let _this = this;
+    wx.canvasToTempFilePath({
+      canvasId: 'myQrcode',
+      success(res) {
+        wx.saveImageToPhotosAlbum({
+          filePath: res.tempFilePath,
+          success() {
+            wx.showToast({
+              title: '保存成功',
+              icon: 'success'
+            })
+            _this.closeDialog()
+          },
+          fail(err) {
+            console.error('保存失败', err)
+          }
+        })
+      },
+      fail(err) {
+        console.error('生成二维码失败', err)
+      }
+    })
+  }, 800),
+  // 保存邀请码
   goMember() {
     wx.navigateTo({
       url: '/pages/team-members/team-members'

@@ -44,14 +44,14 @@ Page({
           // 扫码成功
         } else {
           wx.showToast({
-            title: '扫描失败，请重试',
+            title: '扫描失败！',
             icon: 'error'
           });
         }
       },
       fail: () => {
         wx.showToast({
-          title: '扫描失败，请重试',
+          title: '扫描失败！',
           icon: 'error'
         });
       }
