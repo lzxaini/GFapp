@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/change-password/change-password",
     "pages/my-edit/my-edit",
+    "pages/change-password/change-password",
     "pages/team-info/team-info",
     "pages/index/index",
     "pages/recharge-history/recharge-history",

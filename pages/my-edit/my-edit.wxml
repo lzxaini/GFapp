@@ -49,14 +49,13 @@
       <t-icon name="chevron-right" size="48rpx" color="#C5C8CB" />
     </view>
     <view class="bd05" />
-    <view class="from_item">
+    <view class="from_item" bindtap="goChangePassword">
       <view class="item_label">修改密码</view>
       <view class="item_value">
         *********
       </view>
       <t-icon name="chevron-right" size="48rpx" color="#C5C8CB" />
     </view>
-    <view class="bd05" />
   </view>
   <button class="save_btn" bindtap="onSubmit">保存</button>
 </view>
