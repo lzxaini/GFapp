@@ -1,0 +1,52 @@
+<view class="team-info_container">
+  <t-navbar t-class="navBar" left-arrow title="设置团队信息" />
+  <view class="info_from">
+    <view class="from_item">
+      <view class="item_label">团队封面</view>
+      <view class="item_value">
+        <t-avatar class="avatar" size="small" image="/static/icon/gf_logo_w.png" />
+      </view>
+      <t-icon name="chevron-right" size="48rpx" color="#C5C8CB" />
+    </view>
+    <view class="bd05" />
+    <view class="from_item">
+      <view class="item_label">团队名称</view>
+      <view class="item_value">
+        <t-input t-class="item-input" t-class-tips="errMsg" slot="note" placeholder="请输入您的姓名" value="{{from.visitorName}}" type="text" tips="{{nameError ? '请检查姓名输入' : ''}}" bindblur="onNameInput" confirm-type="next" borderless></t-input>
+      </view>
+      <t-icon name="chevron-right" size="48rpx" color="#C5C8CB" />
+    </view>
+    <view class="bd05" />
+    <view class="from_item">
+      <view class="item_label">所属分公司</view>
+      <view class="item_value">
+        <t-input t-class="item-input" t-class-tips="errMsg" slot="note" placeholder="请输入您的姓名" value="{{from.visitorName}}" type="text" tips="{{nameError ? '请检查姓名输入' : ''}}" bindblur="onNameInput" confirm-type="next" borderless></t-input>
+      </view>
+      <t-icon name="chevron-right" size="48rpx" color="#C5C8CB" />
+    </view>
+    <view class="bd05" />
+    <view class="from_item">
+      <view class="item_label">机构地址</view>
+      <view class="item_value">
+        <t-input t-class="item-input" t-class-tips="errMsg" slot="note" placeholder="请输入您的姓名" value="{{from.visitorName}}" type="text" tips="{{nameError ? '请检查姓名输入' : ''}}" bindblur="onNameInput" confirm-type="next" borderless></t-input>
+      </view>
+      <t-icon name="chevron-right" size="48rpx" color="#C5C8CB" />
+    </view>
+    <view class="bd05" />
+    <view class="from_item">
+      <view class="item_label">团队管理员</view>
+      <view class="item_value">
+        <t-input t-class="item-input" t-class-tips="errMsg" slot="note" placeholder="请输入您的姓名" value="{{from.visitorName}}" type="text" tips="{{nameError ? '请检查姓名输入' : ''}}" bindblur="onNameInput" confirm-type="next" borderless></t-input>
+      </view>
+      <t-icon name="chevron-right" size="48rpx" color="#C5C8CB" />
+    </view>
+    <view class="bd05" />
+    <view class="from_item">
+      <view class="item_label">成员标签</view>
+      <view class="item_value"></view>
+      <t-icon name="chevron-right" size="48rpx" color="#C5C8CB" />
+    </view>
+    <view class="label_box">123123</view>
+  </view>
+  <button class="save_btn" bindtap="onSubmit">保存</button>
+</view>
