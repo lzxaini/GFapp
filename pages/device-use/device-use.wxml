@@ -1,0 +1,16 @@
+<view class="device-use_container">
+  <t-navbar t-class="navBar" left-arrow>
+    <view slot="title" class="navBar_title">
+      <view class="green"></view>
+      <view>设备已连接</view>
+    </view>
+  </t-navbar>
+  <view class="device_info">
+    <image class="device_heart" src="../../static/icon/heart.png" />
+    <view class="text">设备使用中…</view>
+  </view>
+  <view class="device_image">
+    <image class="device_use" src="../../static/icon/device_use.png" />
+  </view>
+  <button class="save_btn" bindtap="onSubmit">结束本次服务</button>
+</view>

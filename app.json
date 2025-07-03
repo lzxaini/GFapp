@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/device-use/device-use",
     "pages/work-team/work-team",
     "pages/my-edit/my-edit",
     "pages/change-password/change-password",
