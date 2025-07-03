@@ -1,0 +1,64 @@
+.device-use_container {
+	position: relative;
+	width: 100vw;
+	height: 100vh;
+	background-color: #ffffff;
+	.navBar {
+		--td-navbar-bg-color: transparent;
+	}
+	.nav_left {
+		position: absolute;
+		top: -88rpx;
+		left: -100rpx;
+		width: 467rpx;
+		height: 467rpx;
+		border-radius: 50%;
+		background: rgba(0, 203, 255, 0.5);
+		filter: blur(210rpx);
+	}
+	.nav_right {
+		position: absolute;
+		top: -150rpx;
+		right: -150rpx;
+		width: 467rpx;
+		height: 467rpx;
+		border-radius: 50%;
+		background: rgba(100, 46, 255, 0.5);
+		filter: blur(245rpx);
+	}
+	.content {
+		text-align: center;
+		.img {
+			width: 300rpx;
+			height: 266rpx;
+			margin-top: 114rpx;
+		}
+		.text-1 {
+			font-size: 32rpx;
+			font-weight: 300;
+			color: #1c2023;
+			margin-top: 82rpx;
+		}
+		.text-2 {
+			font-size: 24rpx;
+			font-weight: normal;
+			color: #606972;
+			margin-top: 20rpx;
+		}
+	}
+	.save_btn {
+		position: fixed;
+		bottom: env(safe-area-inset-bottom);
+		width: calc(100% - 64rpx);
+		margin: 0 32rpx;
+		margin-bottom: 142rpx;
+		height: 112rpx;
+		border: 2rpx solid #888bf4;
+		border-radius: 80rpx;
+		box-sizing: border-box;
+		font-size: 32rpx;
+		line-height: 112rpx;
+		font-weight: bold;
+		color: #888bf4;
+	}
+}
