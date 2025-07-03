@@ -1,0 +1,38 @@
+<view class="device-use_container">
+  <t-navbar t-class="navBar" left-arrow>
+    <view slot="title" class="navBar_title">
+      <view class="green"></view>
+      <view>设备未绑定</view>
+    </view>
+  </t-navbar>
+  <view class="content">
+    <view class="title">选择要绑定的机构</view>
+    <view class="search_box">
+      <t-input t-class="item-input" prefixIcon="search" placeholder="请输入文字" borderless></t-input>
+      <view class="extra">取消</view>
+    </view>
+    <view class="scroll_title">我的团队</view>
+    <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true">
+      <t-radio-group default-value="0" borderless t-class="box">
+        <t-cell wx:for="{{20}}" t-class="list_item" bordered="{{false}}">
+          <t-avatar slot="left-icon" size="large" image="/static/icon/gf_logo.png"></t-avatar>
+          <view slot="title" class="title_box">
+            <text class="title_text">美之颜美学定制中心</text>
+          </view>
+          <view slot="description">
+            <view class="description_text">团队编号：0152415</view>
+            <view class="description_text">广东省,广州市,增城区豪进广场</view>
+          </view>
+          <view slot="right-icon" class="right-icon">
+            <t-radio block="{{false}}" value="{{index}}" />
+          </view>
+        </t-cell>
+      </t-radio-group>
+      <!-- <t-empty t-class="empty" t-class-image="empty_image" image="/static/icon/footer.png" description="糟糕，到底了" /> -->
+    </scroll-view>
+  </view>
+  <view class="footer">
+    <view class="no_bind">暂不绑定</view>
+    <button class="save_btn" bindtap="onSubmit">绑定设备</button>
+  </view>
+</view>
