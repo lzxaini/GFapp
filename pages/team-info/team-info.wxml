@@ -3,7 +3,7 @@
   <view class="info_from">
     <view class="from_item">
       <view class="item_label">团队封面</view>
-      <view class="item_value">
+      <view class="item_value" bindtap="updateTeamCover">
         <t-avatar class="avatar" size="small" image="/static/icon/gf_logo_w.png" />
       </view>
       <t-icon name="chevron-right" size="48rpx" color="#C5C8CB" />
