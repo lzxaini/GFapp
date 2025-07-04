@@ -34,18 +34,36 @@
 			}
 		}
 		.label_box {
+			display: grid;
+			grid-template-columns: repeat(5, 1fr);
+			gap: 20rpx;
+			row-gap: 20rpx;
+			align-content: flex-start;
 			min-height: 240rpx;
 			font-size: 26rpx;
 			font-weight: normal;
 			color: #1c2023;
+			.tag-item {
+				padding: 5rpx 20rpx;
+				height: 50rpx;
+				line-height: 50rpx;
+				border-radius: 20px;
+				font-size: 24rpx;
+				text-align: center;
+			}
+			.tag-bg {
+				color: #49b9ad;
+				border: 1px solid #49b9ad;
+				background-color: #eafefa;
+			}
 		}
 	}
 	.save_btn {
 		position: fixed;
 		bottom: env(safe-area-inset-bottom);
-    width: calc(100% - 64rpx);
+		width: calc(100% - 64rpx);
 		margin: 0 32rpx;
-    margin-bottom: 142rpx;
+		margin-bottom: 142rpx;
 		height: 112rpx;
 		border: 2rpx solid #888bf4;
 		border-radius: 80rpx;

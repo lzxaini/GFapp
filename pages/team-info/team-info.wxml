@@ -46,7 +46,9 @@
       <view class="item_value"></view>
       <t-icon name="chevron-right" size="48rpx" color="#C5C8CB" />
     </view>
-    <view class="label_box">123123</view>
+    <view class="label_box">
+      <view class="tag-item tag-bg" wx:for="{{10}}">123456</view>
+    </view>
   </view>
   <button class="save_btn" bindtap="onSubmit">保存</button>
 </view>
