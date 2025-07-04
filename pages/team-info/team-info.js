@@ -1,3 +1,4 @@
+const app = getApp()
 Page({
   data: {},
   // 上传团队封面
@@ -10,7 +11,7 @@ Page({
         const tempFilePath = res.tempFilePaths[0];
         // 这里假设有上传接口 /api/upload
         wx.uploadFile({
-          url: 'https://your-api-domain.com/api/upload', // 替换为你的上传接口
+          url: app.globalData.ossUrl, // 替换为你的上传接口
           filePath: tempFilePath,
           name: 'file',
           success: (uploadRes) => {
