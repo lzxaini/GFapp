@@ -2,10 +2,11 @@
  * @Author: lzx
  * @Date: 2023-02-10 13:41:08
  * @LastEditors: lzxaini 1245634367@qq.com
- * @LastEditTime: 2025-07-06 13:03:25
+ * @LastEditTime: 2025-07-06 13:46:06
  * @Description: Fuck Bug
  * @FilePath: \GFapp\api\request.js
  */
+import Message from 'tdesign-miniprogram/message/index';
 //导入请求的域名
 import { baseURL } from './config.js'
 let ignoreUrl = ['getWechatUserInfo','sendMessageCode', 'messageCodeCheckLogin', '/mobileLogin', 'messageCodeModifyPassword'] // 需要忽略的url地址
@@ -40,10 +41,16 @@ export default function request(options) {
             })
           }, 1500)
         } else {
-          wx.showToast({
-            title: res.data.msg || `接口异常${res.data.code}!`,
-            icon: 'error'
-          })
+          // wx.showToast({
+          //   title: res.data.msg || `接口异常${res.data.code}!`,
+          //   icon: 'error'
+          // })
+          Message.error({
+            context: this,
+            offset: [90, 32],
+            duration: 3000,
+            content: res.data.msg || `接口异常${res.data.code}!`,
+          });
         }
       },
       fail(err) {
