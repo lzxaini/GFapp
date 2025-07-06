@@ -2,7 +2,7 @@
  * @Author: lzx
  * @Date: 2024-01-01 13:42:13
  * @LastEditors: lzxaini 1245634367@qq.com
- * @LastEditTime: 2025-07-06 13:08:05
+ * @LastEditTime: 2025-07-06 13:33:53
  * @Description: Fuck Bug
  * @FilePath: \GFapp\api\api.js
  */
@@ -71,6 +71,16 @@ export function getUserInfoApi() {
   return request({
     url: "/getInfo",
     method: 'get',
+  })
+}
+/**
+ * 修改密码
+ * @param {*} params 
+ */
+export function resetPasswordApi(oldPwd, newPwd) {
+  return request({
+    url: `/system/user/profile/updatePwd?oldPassword=${oldPwd}&newPassword=${newPwd}`,
+    method: 'put',
   })
 }
 /**

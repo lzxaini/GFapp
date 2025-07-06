@@ -1,3 +1,5 @@
+import Message from 'tdesign-miniprogram/message/index';
+import { resetPasswordApi } from '../../api/api'
 Page({
   data: {
     from: {
@@ -38,7 +40,26 @@ Page({
   onSubmit() {
     if (!this.verify()) return;
     let { from } = this.data
-    console.log("🥵 ~ onSubmit ~ from: ", from)
+    resetPasswordApi(from.old, from.new2).then(res => {
+      if (res.code === 200) {
+        Message.success({
+          context: this,
+          offset: [90, 32],
+          duration: 1500,
+          content: '修改密码成功！',
+        });
+        setTimeout(() => {
+          this.goBack()
+        }, 1000);
+      } else {
+        Message.error({
+          context: this,
+          offset: [90, 32],
+          duration: 5000,
+          content: res.msg,
+        });
+      }
+    })
   },
   // 校验方法
   verify() {
@@ -91,5 +112,10 @@ Page({
       default:
         break
     }
+  },
+  goBack() {
+    wx.navigateBack({
+      delta: 1
+    });
   }
 })
