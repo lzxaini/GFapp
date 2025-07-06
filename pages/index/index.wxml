@@ -9,7 +9,7 @@
   </view>
   <view class="user_container">
     <!-- 顶部区域 -->
-    <t-cell t-class="user_info" title="阳兰广" bordered="{{false}}">
+    <t-cell t-class="user_info" title="{{userInfo.nickName}}" bordered="{{false}}">
       <t-avatar slot="left-icon" size="large" image="../../static/icon/bg-top.png"></t-avatar>
       <view class="tag_box" slot="description">
         <image class="tag_icon" src="../../static/icon/admin.png" />

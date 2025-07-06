@@ -11,6 +11,7 @@ Page({
     capsuleHeight: app.globalData.capsuleHeight,
     qrCodeBox: false,
     qrFlag: false,
+    userInfo: app.globalData.userInfo,
   },
   onLoad() {
     onMqttReady(() => {
@@ -68,7 +69,7 @@ Page({
       width: 240,
       height: 240,
       canvasId: 'myQrcode',
-      text: '123',
+      text: this.data.userInfo.userId,
       // v1.0.0+版本支持在二维码上绘制图片
       image: {
         imageResource: '../../static/icon/gf_logo_w.png', // 不支持网络图片，如果非得网络图片，需要使用wx.getImageInfo 去获取图片信息，我这边往中间加的一个白图然后采用覆盖的方式
