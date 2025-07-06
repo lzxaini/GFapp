@@ -1,10 +1,10 @@
 /*
  * @Author: lzx
  * @Date: 2024-01-01 13:42:13
- * @LastEditors: 17630921248 1245634367@qq.com
- * @LastEditTime: 2025-06-19 14:23:57
+ * @LastEditors: lzxaini 1245634367@qq.com
+ * @LastEditTime: 2025-07-06 13:08:05
  * @Description: Fuck Bug
- * @FilePath: \medical\api\api.js
+ * @FilePath: \GFapp\api\api.js
  */
 import request from "./request.js"
 
@@ -56,49 +56,29 @@ export function resetPasswordFun(params) {
  * 用户账号密码登录
  * @param {*} params 
  */
-export function userLoginFun(params) {
+export function userLoginApi(params) {
   return request({
-    url: "/mobileLogin",
+    url: "/login",
     method: 'post',
     data: params,
   })
 }
 /**
- * 访客列表
- */
-export function getVisitorListApi(query) {
-  return request({
-    url: "/oa/visitor/list",
-    method: 'get',
-    data: query
-  })
-}
-/**
- * 新增访客
+ * 获取用户信息
  * @param {*} params 
  */
-export function addVisitorApi(params) {
+export function getUserInfoApi() {
   return request({
-    url: "/oa/visitor",
-    method: 'post',
-    data: params,
-  })
-}
-/**
- * 开门接口
- */
-export function openDoorApi(id) {
-  return request({
-    url: `/oa/visitor/openDoor/${id}`,
+    url: "/getInfo",
     method: 'get',
   })
 }
 /**
- * 关闭门接口
+ * 获取验证码
  */
-export function closeDoorApi(id) {
+export function getCaptchaImageApi() {
   return request({
-    url: `/oa/visitor/closeDoor/${id}`,
+    url: "/captchaImage",
     method: 'get',
   })
 }
