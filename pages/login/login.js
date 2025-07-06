@@ -203,7 +203,8 @@ Page({
     userLoginApi(params).then(res => {
       console.log("🥵 ~ userLoginApi ~ res: ", res)
       // 缓存Token
-      wx.setStorageSync('token', res.token);
+      app.globalData.token = 'Bearer ' + res.token;
+      wx.setStorageSync('token', 'Bearer ' + res.token);
       app.getUserInfo(getUserInfoApi)
       wx.reLaunch({
         url: '/pages/index/index'

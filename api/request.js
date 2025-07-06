@@ -2,7 +2,7 @@
  * @Author: lzx
  * @Date: 2023-02-10 13:41:08
  * @LastEditors: lzxaini 1245634367@qq.com
- * @LastEditTime: 2025-07-06 13:46:06
+ * @LastEditTime: 2025-07-06 13:57:11
  * @Description: Fuck Bug
  * @FilePath: \GFapp\api\request.js
  */
@@ -23,7 +23,7 @@ export default function request(options) {
       data: options.data || null,
       header: {
         'content-type': 'application/json', // 默认值
-        'Authorization': !ignoreUrl.includes(srtUrl) ? 'Bearer ' + wx.getStorageSync('token') || '' : '' // 指定接口无需携带token
+        'Authorization': !ignoreUrl.includes(srtUrl) ? wx.getStorageSync('token') || '' : '' // 指定接口无需携带token
       },
       success(res) {
         wx.hideLoading()
