@@ -1,6 +1,9 @@
 import Message from 'tdesign-miniprogram/message/index';
 import {
-  getWechatUserInfoFun
+  getWechatUserInfoFun,
+  userLoginApi,
+  getUserInfoApi,
+  getCaptchaImageApi
 } from '../../api/api.js'
 const imageCdn = 'https://cdn.fxnws.com/beasun/banner';
 const swiperList = [
@@ -20,29 +23,19 @@ Page({
     interval: 5000,
     swiperList,
     phoneError: false,
-    mobile: '', // 手机号
     checkFlag: false,
     showConfirm: false,
-  },
-
-  onPhoneInput(e) {
-    const { value } = e?.detail;
-    // 手机号格式校验
-    const phoneRegex = /^(?:(?:\+|00)86)?1[3-9]\d{9}$/;
-    if (!phoneRegex.test(value)) {
-      wx.showToast({
-        icon: 'none',
-        title: '请输入正确的手机号码',
-      });
-      this.setData({
-        phoneError: true,
-      });
-      return;
+    // 新
+    mobile: '15888888888', // 手机号
+    password: 'admin123456',
+    code: '',
+    verify: {
+      uuid: '',
+      img: ''
     }
-    this.setData({
-      mobile: value,
-      phoneError: false,
-    });
+  },
+  onLoad() {
+    this.getCaptchaImage()
   },
   onChange(e) {
     const {
@@ -157,5 +150,64 @@ Page({
   },
   closeDialog() {
     this.setData({ showConfirm: false });
+  },
+  /*** 新 */
+  onPhoneInput(e) {
+    const { value } = e?.detail;
+    // 手机号格式校验
+    const phoneRegex = /^(?:(?:\+|00)86)?1[3-9]\d{9}$/;
+    if (!phoneRegex.test(value)) {
+      wx.showToast({
+        icon: 'none',
+        title: '请输入正确的手机号码',
+      });
+      this.setData({
+        phoneError: true,
+      });
+      return;
+    }
+    this.setData({
+      mobile: value,
+      phoneError: false,
+    });
+  },
+  onPassword(e) {
+    const { value } = e?.detail;
+    this.setData({
+      password: value,
+    });
+  },
+  onCode(e) {
+    const { value } = e?.detail;
+    this.setData({
+      code: value,
+    });
+  },
+  getCaptchaImage() {
+    getCaptchaImageApi().then(res => {
+      console.log("🥵 ~ getCaptchaImageApi ~ res: ", res)
+      this.setData({
+        'verify.uuid': res.uuid,
+        'verify.img': 'data:image/gif;base64,' + res.img
+      })
+    })
+  },
+  submitLogin() {
+    console.log('测试', this.data.mobile, this.data.password)
+    let params = {
+      username: this.data.mobile,
+      password: this.data.password,
+      code: this.data.code,
+      uuid: this.data.verify.uuid,
+    }
+    userLoginApi(params).then(res => {
+      console.log("🥵 ~ userLoginApi ~ res: ", res)
+      // 缓存Token
+      wx.setStorageSync('token', res.token);
+      app.getUserInfo(getUserInfoApi)
+      wx.reLaunch({
+        url: '/pages/index/index'
+      });
+    })
   }
 });
