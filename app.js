@@ -6,14 +6,14 @@ App({
     this.eventCenter = eventCenter;
     wx.eventCenter = eventCenter; // 挂载到 wx 上
     this.getSystemInfo()
-    // this.getUserInfo()
+    this.verifyUserLogin()
   },
   globalData: {
     mqttClient: null,
     statusBarHeight: 0,
     capsuleHeight: 0,
     // baseUrl: 'https://oa.beasun.com:2443/prod-api',
-    baseUrl: 'http://192.168.26.5:8888',
+    baseUrl: 'http://127.0.0.1:8080',
     ossUrl: 'https://oa.beasun.com:3443',
     mqttUrl: 'wxs://mqtt.fxnws.com:8084/mqtt',
     userInfo: null,
@@ -28,7 +28,7 @@ App({
     console.log('状态栏和胶囊高度：', menu, this.globalData.statusBarHeight, this.globalData.capsuleHeight);
   },
   // 如果有手机号缓存去往首页
-  getUserInfo() {
+  verifyUserLogin() {
     // 读取缓存的登录信息
     const userInfo = wx.getStorageSync('userInfo');
     const token = wx.getStorageSync('token');
@@ -73,11 +73,37 @@ App({
       // 绑定到 App 全局
       this.globalData.mqttClient = mqttClient;
     }
-    // 缓存手机号
-    wx.setStorageSync('userInfo', '11111111');
-    wx.setStorageSync('token', '222222');
     wx.reLaunch({
       url: '/pages/index/index'
+    })
+  },
+  /**
+   * 获取用户信息
+   * @param {*} getUserInfoApi 接口请求
+   */
+  getUserInfo(getUserInfoApi) {
+    getUserInfoApi().then(res => {
+      if (res.code == 200) {
+        // 缓存用户信息
+        wx.setStorageSync('userInfo', res.user);
+        this.globalData.userInfo = res.user
+      } else {
+        console.log('错误：', res)
+        wx.showToast({
+          title: '系统错误',
+          icon: 'error',
+          duration: 1500,
+          mask: true,
+        });
+      }
+    }).catch(err => {
+      console.log('错误：', err)
+      wx.showToast({
+        title: '系统错误',
+        icon: 'error',
+        duration: 1500,
+        mask: true,
+      });
     })
   },
   logout() {
