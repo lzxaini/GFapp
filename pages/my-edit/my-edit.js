@@ -1,6 +1,8 @@
 const app = getApp()
 Page({
-  data: {},
+  data: {
+    userInfo: app.globalData.userInfo
+  },
   goChangePassword() {
     wx.navigateTo({
       url: '/pages/change-password/change-password',
