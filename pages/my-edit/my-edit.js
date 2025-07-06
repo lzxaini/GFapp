@@ -10,33 +10,49 @@ Page({
   },
   // 上传头像
   updateAvatar() {
+    let _this = this
     wx.chooseImage({
       count: 1,
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
       success: (res) => {
         const tempFilePath = res.tempFilePaths[0];
-        // 这里假设有上传接口 /api/upload
         wx.uploadFile({
-          url: app.globalData.ossUrl, // 替换为你的上传接口
+          url: app.globalData.baseUrl + '/system/user/profile/avatar',
           filePath: tempFilePath,
-          name: 'file',
-          success: (uploadRes) => {
-            // 上传成功后的处理，比如保存图片地址到data
-            const data = JSON.parse(uploadRes.data);
-            this.setData({
-              teamCover: data.url // 假设返回的图片地址字段为url
-            });
-            wx.showToast({ title: '上传成功', icon: 'success' });
+          header: {
+            'Authorization': app.globalData.token
           },
-          fail: () => {
-            wx.showToast({ title: '上传失败', icon: 'none' });
+          name: 'avatarfile',
+          success: (res) => {
+            if (res.statusCode === 200) {
+              try {
+                let data = JSON.parse(res.data)
+                console.log("🥵 ~ updateAvatar ~ data: ", data)
+                this.setData({
+                  'userInfo.avatar': data.img
+                })
+                _this.message('success', '用户头像上传成功')
+              } catch (error) {
+                _this.message('error', `系统错误：${error}`, 3000)
+              }
+            }
+          },
+          fail: (err) => {
           }
         });
       },
       fail: () => {
-        wx.showToast({ title: '未选择图片', icon: 'none' });
+        _this.message('error', '未选择图片', 1500)
       }
+    });
+  },
+  message(type, text, duration = 1500) {
+    Message[type]({
+      context: this,
+      offset: [90, 32],
+      duration: duration,
+      content: text,
     });
   }
 })
