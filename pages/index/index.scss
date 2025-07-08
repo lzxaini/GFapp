@@ -130,11 +130,12 @@
 	}
 	.device_bg {
 		position: fixed;
-		bottom: 0;
+		bottom: -82rpx;
 		left: 210rpx;
 		width: 792rpx;
 		height: 1024rpx;
-		opacity: 0.5;
+		// opacity: 0.5;
+		opacity: 1;
 	}
 	.qr_userInfo {
 		--td-cell-horizontal-padding: 0;
