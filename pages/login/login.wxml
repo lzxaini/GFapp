@@ -1,40 +1,27 @@
-<view class="container">
-  <view class="beasun" style="height: {{statusBarHeight}}px;">
-    <image class="title" src="../../static/icon/beasun.png"></image>
+<view class="login_container">
+  <view class="login_bg">
+    <image class="login_bg_img" src="../../static/icon/login_bg.png" />
   </view>
-  <!-- <t-swiper class="scale-card-theme" current="{{current}}" autoplay="{{autoplay}}" duration="{{duration}}" interval="{{interval}}" bindchange="onChange" navigation="{{ { type: 'dots' } }}" list="{{swiperList}}" image-props="{{ { shape: 'round' } }}" previousMargin="70px" nextMargin="70px" t-class-nav="card-theme" t-class-prev-image="scale-candidate" t-class-next-image="scale-candidate" height="420" /> -->
-  <view class="index_info">
-    <image src="{{verify.img}}" style="width: 200rpx;height: 100rpx" />
-    <t-input t-class="item-input" t-class-tips="errMsg" slot="note" placeholder="请输入您的手机号" value="{{mobile}}" type="text" tips="{{phoneError ? '请检查手机号输入' : ''}}" bindblur="onPhoneInput" confirm-type="next"></t-input>
-    <t-input t-class="item-input" t-class-tips="errMsg" slot="note" placeholder="请输入您的密码" value="{{password}}" type="text" bindblur="onPassword" confirm-type="next"></t-input>
-    <t-input t-class="item-input" t-class-tips="errMsg" slot="note" placeholder="请输入您的验证码" value="{{code}}" type="text" bindblur="onCode" confirm-type="next"></t-input>
-    <t-button class="go_add" icon="logo-wechat-stroke" bindtap="submitLogin">登录</t-button>
-    <!-- <view class="go_page">
-      <t-button wx:if="{{!checkFlag}}" class="go_add" icon="logo-wechat-stroke" bindtap="login">
-        一键登录
-      </t-button>
-      <t-button wx:else class="go_add" icon="logo-wechat-stroke" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
-        一键登录
-      </t-button>
-    </view>
+  <view class="go_page">
+    <t-button wx:if="{{!checkFlag}}" class="login_btn" bindtap="login">手机号一键登录</t-button>
+    <t-button wx:else class="login_btn" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+      手机号一键登录
+    </t-button>
     <view class="agreement">
       <t-checkbox value="{{checkFlag}}" t-class="check" bindchange="agreementChange" />
       <view class="agreement_info">
-        我已阅读并同意《
-        <text class="info" bindtap="goPrivacyAgreement">用户协议</text>
-        》和《
-        <text class="info" bindtap="goPrivacyAgreement">隐私政策</text>
-        》
+        我已阅读并同意
+        <text class="info" bindtap="goPrivacyAgreement">《用户协议》</text>
+        和
+        <text class="info" bindtap="goPrivacyAgreement">《隐私政策》</text>
       </view>
-    </view> -->
+    </view>
   </view>
-  <t-dialog visible="{{showConfirm}}" title="温馨提示" content="请您仔细阅读并充分理解相关条款，点击同意即代表您已阅读并同意">
-    <t-button slot="confirm-btn" class="action-btn" theme="primary" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
-      同意协议
-    </t-button>
-    <t-button slot="cancel-btn" class="cancel-btn" theme="primary" bindtap="closeDialog">
-      取消
-    </t-button>
-  </t-dialog>
 </view>
+<t-dialog visible="{{showConfirm}}" title="温馨提示" content="请您仔细阅读并充分理解相关条款，点击同意即代表您已阅读并同意">
+  <t-button slot="confirm-btn" class="action-btn" theme="primary" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+    同意协议
+  </t-button>
+  <t-button slot="cancel-btn" class="cancel-btn" theme="primary" bindtap="closeDialog">取消</t-button>
+</t-dialog>
 <t-message id="t-message" />

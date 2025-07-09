@@ -5,66 +5,14 @@ import {
   getUserInfoApi,
   getCaptchaImageApi
 } from '../../api/api.js'
-const imageCdn = 'https://cdn.fxnws.com/beasun/banner';
-const swiperList = [
-  `${imageCdn}/index1.png`,
-  `${imageCdn}/index2.png`,
-  `${imageCdn}/index3.png`,
-  `${imageCdn}/index4.png`,
-  `${imageCdn}/index5.png`,
-];
 const app = getApp()
 Page({
   data: {
     statusBarHeight: app.globalData.capsuleHeight,
-    current: 0,
-    autoplay: false,
-    duration: 500,
-    interval: 5000,
-    swiperList,
-    phoneError: false,
     checkFlag: false,
     showConfirm: false,
-    // 新
-    mobile: '15888888888', // 手机号
-    password: 'admin123456',
-    code: '',
-    verify: {
-      uuid: '',
-      img: ''
-    }
   },
   onLoad() {
-    this.getCaptchaImage()
-  },
-  onChange(e) {
-    const {
-      detail: {
-        current,
-        source
-      },
-    } = e;
-    console.log(current, source);
-  },
-  goBeasun() {
-    if (this.data.phoneError || !this.data.mobile) {
-      wx.showToast({
-        icon: 'none',
-        title: '请填写正确的手机号码',
-      });
-      return;
-    }
-    if (!this.data.checkFlag) {
-      this.setData({
-        showConfirm: true
-      });
-      return;
-    }
-    // 缓存手机号
-    wx.setStorageSync('mobile', this.data.mobile);
-    wx.reLaunch({
-      url: '/pages/index/index'
-    })
   },
   login() {
     // app.initMqtt() // 测试
@@ -141,74 +89,7 @@ Page({
       checkFlag: checked
     })
   },
-  submitDialog() {
-    this.setData({
-      checkFlag: true,
-      showConfirm: false
-    });
-    this.goBeasun()
-  },
   closeDialog() {
     this.setData({ showConfirm: false });
-  },
-  /*** 新 */
-  onPhoneInput(e) {
-    const { value } = e?.detail;
-    // 手机号格式校验
-    const phoneRegex = /^(?:(?:\+|00)86)?1[3-9]\d{9}$/;
-    if (!phoneRegex.test(value)) {
-      wx.showToast({
-        icon: 'none',
-        title: '请输入正确的手机号码',
-      });
-      this.setData({
-        phoneError: true,
-      });
-      return;
-    }
-    this.setData({
-      mobile: value,
-      phoneError: false,
-    });
-  },
-  onPassword(e) {
-    const { value } = e?.detail;
-    this.setData({
-      password: value,
-    });
-  },
-  onCode(e) {
-    const { value } = e?.detail;
-    this.setData({
-      code: value,
-    });
-  },
-  getCaptchaImage() {
-    getCaptchaImageApi().then(res => {
-      console.log("🥵 ~ getCaptchaImageApi ~ res: ", res)
-      this.setData({
-        'verify.uuid': res.uuid,
-        'verify.img': 'data:image/gif;base64,' + res.img
-      })
-    })
-  },
-  submitLogin() {
-    console.log('测试', this.data.mobile, this.data.password)
-    let params = {
-      username: this.data.mobile,
-      password: this.data.password,
-      code: this.data.code,
-      uuid: this.data.verify.uuid,
-    }
-    userLoginApi(params).then(res => {
-      console.log("🥵 ~ userLoginApi ~ res: ", res)
-      // 缓存Token
-      app.globalData.token = 'Bearer ' + res.token;
-      wx.setStorageSync('token', 'Bearer ' + res.token);
-      app.getUserInfo(getUserInfoApi)
-      wx.reLaunch({
-        url: '/pages/index/index'
-      });
-    })
   }
 });
