@@ -43,6 +43,7 @@ Page({
     this.goListItem = withLogin(this, this._goListItem);
     this.goRechargeHistory = withLogin(this, this._goRechargeHistory);
     this.goWhiteList = withLogin(this, this._goWhiteList);
+    this.goServiceHistory = withLogin(this, this._goServiceHistory);
     // this. = withLogin(this, this._);
 
 
@@ -167,6 +168,12 @@ Page({
   _goRechargeHistory() {
     wx.navigateTo({
       url: '/pages/recharge-history/recharge-history'
+    });
+  },
+  // 服务记录
+  _goServiceHistory() {
+    wx.navigateTo({
+      url: '/pages/service-history/service-history'
     });
   },
   // 白名单

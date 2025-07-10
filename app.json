@@ -1,11 +1,14 @@
 {
   "pages": [
+    "pages/index/index",
+    "pages/service-history/service-history",
+    "pages/recharge-history/recharge-history",
     "pages/team-search/team-search",
     "pages/team-list/team-list",
-    "pages/index/index",
     "pages/register/register",
     "pages/white-list/white-list",
     "pages/device-use/device-use",
+    "pages/device-active/device-active",
     "pages/device-list/device-list",
     "pages/change-password/change-password",
     "pages/login/login",
@@ -14,7 +17,6 @@
     "pages/work-team/work-team",
     "pages/my-edit/my-edit",
     "pages/team-info/team-info",
-    "pages/recharge-history/recharge-history",
     "pages/team-members/team-members",
     "pages/logs/logs",
     "pages/privacy-agreement/privacy-agreement"
