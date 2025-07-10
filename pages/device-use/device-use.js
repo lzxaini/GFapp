@@ -1,3 +1,4 @@
+import Message from 'tdesign-miniprogram/message/index';
 const app = getApp()
 Page({
   data: {
@@ -8,7 +9,6 @@ Page({
   onLoad(option) {
     let { deviceId } = option
     this.setData({ deviceId })
-    this.connectDevice(deviceId)
     wx.eventCenter.on('mqtt-message', this.handleMsg);
   },
   onUnload() {
@@ -18,15 +18,22 @@ Page({
   // 收到消息
   handleMsg({ topic, message }) {
     console.log('设备列表收到消息：', topic, message);
-    if (topic === `req/${this.data.deviceId}` && message === '101000FF') {
-      this.setData({ deviceFlag: true })
+    if (topic === `req/${this.data.deviceId}` && message === '1000000FF') {
+      Message.success({
+        context: this,
+        offset: [90, 32],
+        duration: 2000,
+        content: '您已结束本次服务，感谢您的使用！',
+      });
+      setTimeout(() => {
+        wx.reLaunch({
+          url: '/pages/device-list/device-list',
+        })
+      }, 1500);
     }
   },
-  connectDevice(deviceId) {
-    const mqttQrotocol = app.globalData.mqttQrotocol;
-    mqttQrotocol.controlDevice(`resp/${deviceId}`, true, 255);
-  },
   exitDevice() {
-    
+    const mqttQrotocol = app.globalData.mqttQrotocol;
+    mqttQrotocol.controlDevice(`resp/${this.data.deviceId}`, false, 255);
   }
 })

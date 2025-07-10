@@ -14,6 +14,7 @@
   </view>
   <view class="footer" style="margin-bottom: {{marginBottom}}">
     <view class="device_id">设备ID：{{deviceId}}</view>
-    <button class="save_btn" bindtap="onSubmit">结束本次服务</button>
+    <button class="save_btn" bindtap="exitDevice">结束本次服务</button>
   </view>
 </view>
+<t-message id="t-message" />

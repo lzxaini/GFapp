@@ -17,8 +17,9 @@
             查看使用记录
             <t-icon name="chevron-right-double" size="12" />
           </view>
-          <t-cell t-class="device_card" bordered="{{false}}">
-            <view slot="left-icon" class="sacn_icon" bindtap="scanCodeActivation">
+          <t-cell t-class="device_card" bordered="{{false}}" bindtap="scanCodeActivation" data-item="use">
+            <!-- $TODO 待接入数据后修改data-item="use"-->
+            <view slot="left-icon" class="sacn_icon">
               <t-icon name="scan" size="15" color="#FFFFFF"></t-icon>
             </view>
             <view slot="title" class="card_title">设备ID</view>

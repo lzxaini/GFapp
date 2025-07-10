@@ -20,5 +20,17 @@
     "ignoreDevUnusedFiles": true
   },
   "libVersion": "3.8.7",
-  "condition": {}
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "pages/recharge-history/recharge-history",
+          "pathName": "pages/recharge-history/recharge-history",
+          "query": "",
+          "scene": null,
+          "launchMode": "default"
+        }
+      ]
+    }
+  }
 }
