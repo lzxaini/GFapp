@@ -4,9 +4,11 @@ Page({
   data: {
     qrCodeBox: false,
     qrFlag: false,
+    editFlag: false
   },
-  onShow() {
-    // this.drawUserQrcode()
+  onLoad(options) {
+    let { editFlag } = options
+    this.setData({ editFlag: editFlag === 'self' ? true : false })
   },
   backClick() {
     wx.navigateBack({

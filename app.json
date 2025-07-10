@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/team-list/team-list",
     "pages/register/register",
-    "pages/index/index",
     "pages/white-list/white-list",
     "pages/device-use/device-use",
     "pages/device-list/device-list",

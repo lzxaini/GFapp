@@ -16,7 +16,7 @@ Page({
     cardList: [{
       title: '团队管理',
       icon: 'my_1.png',
-      url: '/pages/work-team/work-team'
+      url: '/pages/team-list/team-list'
     }, {
       title: '设备管理',
       icon: 'my_2.png',

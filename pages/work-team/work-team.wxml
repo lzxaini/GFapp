@@ -4,7 +4,7 @@
   <t-cell-group t-class="team_nav" theme="card">
     <t-cell title="美之颜美学定制中心" description="团队编号：0152415">
       <t-avatar slot="left-icon" size="large" image="../../static/icon/bg-top.png"></t-avatar>
-      <view slot="right-icon" class="right_box" bindtap="editTeam">编辑团队</view>
+      <view slot="right-icon" class="right_box" bindtap="editTeam" wx:if="{{editFlag}}">编辑团队</view>
     </t-cell>
   </t-cell-group>
   <t-cell-group t-class="team_menu" theme="card">
