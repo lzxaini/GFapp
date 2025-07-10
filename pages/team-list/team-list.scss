@@ -1,0 +1,33 @@
+.team-list_container {
+	width: 100vw;
+	height: 100vh;
+	background-color: #f5f7fb;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	.title {
+		font-size: 32rpx;
+		font-weight: 300;
+		color: #1c2023;
+    background-color: #FFFFFF;
+    padding: 20rpx 24rpx;
+	}
+	.scroll-view {
+		flex: 1;
+		min-height: 0;
+		.item_img {
+			width: 180rpx;
+			height: 180rpx;
+		}
+		.cell_title {
+			font-size: 32rpx;
+			font-weight: 300;
+			color: #1c2023;
+		}
+		.description {
+			font-size: 24rpx;
+			font-weight: normal;
+			color: #606972;
+		}
+	}
+}
