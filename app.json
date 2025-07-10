@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/register/register",
     "pages/white-list/white-list",
     "pages/device-use/device-use",
     "pages/device-list/device-list",

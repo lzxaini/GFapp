@@ -1,0 +1,55 @@
+.register_container {
+	width: 100vw;
+	height: 100vh;
+	background-color: #f5f7fb;
+	.item {
+		padding: 38rpx 24rpx;
+		margin: 35rpx 56rpx;
+		border-radius: 16rpx;
+		background-color: #ffffff;
+		.errMsg {
+			color: red;
+		}
+	}
+	.df {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		.lable {
+			font-size: 32rpx;
+			font-weight: 350;
+			color: #000000;
+		}
+		.avatar {
+			width: 50rpx;
+			height: 50rpx;
+			border-radius: 50%;
+		}
+	}
+
+	.footer {
+		position: fixed;
+		bottom: env(safe-area-inset-bottom);
+		width: calc(100% - 64rpx);
+		margin: 0 32rpx;
+		.no_submit {
+			font-family: Alibaba PuHuiTi 3;
+			font-size: 28rpx;
+			font-weight: normal;
+			color: #606972;
+			text-align: center;
+			margin-bottom: 48rpx;
+		}
+		.save_btn {
+			width: 100%;
+			height: 112rpx;
+      border-radius: 80rpx;
+      box-sizing: border-box;
+      font-size: 32rpx;
+      line-height: 112rpx;
+      font-weight: bold;
+      color: #ffffff;
+      background: linear-gradient(279deg, #888bf4 -1%, #5151c6 100%);
+		}
+	}
+}
