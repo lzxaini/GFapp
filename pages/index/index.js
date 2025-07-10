@@ -20,7 +20,7 @@ Page({
     }, {
       title: '设备管理',
       icon: 'my_2.png',
-      url: '/pages/work-team/work-team'
+      url: '/pages/device-list/device-list'
     }, {
       title: '运营管理',
       icon: 'my_3.png',
