@@ -51,6 +51,7 @@
 				overflow: hidden;
 				background-color: #ffffff;
 				.card_bg {
+					pointer-events: none;
 					position: absolute;
 					right: -81rpx;
 					top: -10rpx;

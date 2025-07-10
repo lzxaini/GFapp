@@ -33,7 +33,9 @@ Page({
     });
   },
   // 去往使用记录
-  goInfo() {
-
+  goHistoryInfo() {
+    wx.navigateTo({
+      url: '/pages/use-history/use-history',
+    });
   }
 })

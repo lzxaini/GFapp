@@ -13,7 +13,7 @@
       <block wx:for="{{2}}">
         <view class="device_item">
           <image class="card_bg" src="../../static/icon/card_bg.png" />
-          <view class="go_info" bindtap="goInfo">
+          <view class="go_info" bindtap="goHistoryInfo">
             查看使用记录
             <t-icon name="chevron-right-double" size="12" />
           </view>

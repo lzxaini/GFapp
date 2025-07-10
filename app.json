@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/use-history/use-history",
     "pages/service-history/service-history",
     "pages/recharge-history/recharge-history",
     "pages/team-search/team-search",
