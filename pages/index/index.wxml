@@ -9,7 +9,7 @@
   </view>
   <view class="user_container">
     <!-- 顶部区域 -->
-    <t-cell t-class="user_info" title="{{userInfo.nickName}}" bordered="{{false}}">
+    <t-cell t-class="user_info" title="{{userInfo.nickName || '未登录'}}" bordered="{{false}}">
       <t-avatar slot="left-icon" size="large" image="../../static/icon/bg-top.png"></t-avatar>
       <view class="tag_box" slot="description">
         <image class="tag_icon" src="../../static/icon/admin.png" />
@@ -40,21 +40,23 @@
     </view>
   </view>
   <t-cell-group class="card-box" theme="card">
-    <t-cell t-class="from-item" t-class-left="left_center" title="团队管理" arrow hover url="/pages/work-team/work-team">
-      <image slot="left-icon" class="left_icon" src="../../static/icon/my_1.png" />
-    </t-cell>
-    <t-cell t-class="from-item" t-class-left="left_center" title="设备管理" arrow hover>
+    <block wx:for="{{cardList}}" :key="index">
+      <t-cell t-class="from-item" t-class-left="left_center" title="{{item.title}}" arrow hover bindtap="goListItem" data-url="{{item.url}}">
+        <image slot="left-icon" class="left_icon" src="../../static/icon/{{item.icon}}" />
+      </t-cell>
+    </block>
+    <!-- <t-cell t-class="from-item" t-class-left="left_center" title="" arrow hover>
       <image slot="left-icon" class="left_icon" src="../../static/icon/my_2.png" />
     </t-cell>
-    <t-cell t-class="from-item" t-class-left="left_center" title="运营管理" arrow hover>
+    <t-cell t-class="from-item" t-class-left="left_center" title="" arrow hover>
       <image slot="left-icon" class="left_icon" src="../../static/icon/my_3.png" />
     </t-cell>
-    <t-cell t-class="from-item" t-class-left="left_center" title="使用指南" arrow hover>
+    <t-cell t-class="from-item" t-class-left="left_center" title="" arrow hover>
       <image slot="left-icon" class="left_icon" src="../../static/icon/my_4.png" />
     </t-cell>
-    <t-cell t-class="from-item" t-class-left="left_center" title="设置" arrow hover url="/pages/my-edit/my-edit">
+    <t-cell t-class="from-item" t-class-left="left_center" title="" arrow hover bindtap="goListItem('/pages/my-edit/my-edit')">
       <image slot="left-icon" class="left_icon" src="../../static/icon/my_5.png" />
-    </t-cell>
+    </t-cell> -->
   </t-cell-group>
   <image class="device_bg" src="../../static/icon/device_bg.png" />
   <t-dialog visible="{{qrCodeBox}}" bind:close="closeDialog" close-on-overlay-click="{{true}}">
@@ -80,3 +82,9 @@
     </button>
   </t-dialog>
 </view>
+<t-dialog visible="{{isLogin}}" title="温馨提示" content="您尚未登录，请先登录！">
+  <t-button slot="confirm-btn" class="action-btn" theme="primary" bindtap="goLogin">去登录</t-button>
+  <t-button slot="cancel-btn" class="cancel-btn" theme="primary" bindtap="closeIsLoginDialog">
+    取消
+  </t-button>
+</t-dialog>

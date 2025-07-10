@@ -1,12 +1,12 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/register/register",
     "pages/white-list/white-list",
     "pages/device-use/device-use",
     "pages/device-list/device-list",
     "pages/change-password/change-password",
     "pages/login/login",
-    "pages/index/index",
     "pages/device-bind/device-bind",
     "pages/submit-success/submit-success",
     "pages/work-team/work-team",

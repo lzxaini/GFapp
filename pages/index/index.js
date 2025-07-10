@@ -6,14 +6,46 @@ import {
 import { onMqttReady } from '../../utils/mqttReady';
 import drawQrcode from '../../utils/weapp.qrcode.min'
 import tool from '../../utils/tools'
+import { withLogin } from '../../utils/auth';
 Page({
   data: {
     capsuleHeight: app.globalData.capsuleHeight,
     qrCodeBox: false,
     qrFlag: false,
     userInfo: app.globalData.userInfo,
+    cardList: [{
+      title: '团队管理',
+      icon: 'my_1.png',
+      url: '/pages/work-team/work-team'
+    }, {
+      title: '设备管理',
+      icon: 'my_2.png',
+      url: '/pages/work-team/work-team'
+    }, {
+      title: '运营管理',
+      icon: 'my_3.png',
+      url: '/pages/work-team/work-team'
+    }, {
+      title: '使用指南',
+      icon: 'my_4.png',
+      url: '/pages/work-team/work-team'
+    }, {
+      title: '设置',
+      icon: 'my_5.png',
+      url: '/pages/my-edit/my-edit'
+    }],
+    isLogin: false
   },
   onLoad() {
+    // 游客模式
+    this.openQrCode = withLogin(this, this._openQrCode);
+    this.scanCodeActivation = withLogin(this, this._scanCodeActivation);
+    this.goListItem = withLogin(this, this._goListItem);
+    this.goRechargeHistory = withLogin(this, this._goRechargeHistory);
+    this.goWhiteList = withLogin(this, this._goWhiteList);
+    // this. = withLogin(this, this._);
+
+
     onMqttReady(() => {
       this.subscribeTopic();
     });
@@ -39,7 +71,7 @@ Page({
   handleMsg({ topic, message }) {
     console.log('📩 收到 MQTT 消息', topic, message);
   },
-  scanCodeActivation() {
+  _scanCodeActivation() {
     wx.scanCode({
       onlyFromCamera: true,
       success: (res) => {
@@ -62,7 +94,6 @@ Page({
       }
     });
   },
-
   drawUserQrcode() {
     let _this = this;
     drawQrcode({
@@ -86,7 +117,7 @@ Page({
     }, 500);
   },
   // 邀请加入
-  openQrCode() {
+  _openQrCode() {
     this.setData({
       qrCodeBox: true
     })
@@ -125,19 +156,31 @@ Page({
       qrFlag: false
     })
   },
-  goWorkTeam() {
+  // 团队管理
+  _goListItem(e) {
+    let {url} = e?.currentTarget?.dataset
     wx.navigateTo({
-      url: '/pages/work-team/work-team'
+      url
     });
   },
-  goRechargeHistory() {
+  // 充值记录
+  _goRechargeHistory() {
     wx.navigateTo({
       url: '/pages/recharge-history/recharge-history'
     });
   },
-  goWhiteList() {
+  // 白名单
+  _goWhiteList() {
     wx.navigateTo({
       url: '/pages/white-list/white-list'
     });
+  },
+  goLogin() {
+    wx.reLaunch({
+      url: '/pages/login/login',
+    });
+  },
+  closeIsLoginDialog() {
+    this.setData({ isLogin: false });
   }
 })
