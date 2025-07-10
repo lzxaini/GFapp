@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/index/index",
+    "pages/team-search/team-search",
     "pages/team-list/team-list",
+    "pages/index/index",
     "pages/register/register",
     "pages/white-list/white-list",
     "pages/device-use/device-use",

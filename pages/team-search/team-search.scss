@@ -1,0 +1,46 @@
+.work-team_container {
+	width: 100vw;
+	height: 100vh;
+	background-color: #f5f7fb;
+	.navBar {
+		--td-navbar-bg-color: #888bf4;
+		--td-navbar-color: #fff;
+		--td-navbar-capsule-border-color: #e3e6ea !important;
+	}
+	.group_box {
+		margin-top: 32rpx;
+		.item_icon {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 88rpx;
+			height: 88rpx;
+			border-radius: 30rpx;
+			background-color: #49b9ad;
+		}
+		.title {
+			font-size: 30rpx;
+			font-weight: 300;
+			color: #1c2023;
+		}
+		.description {
+			font-size: 24rpx;
+			font-weight: normal;
+			color: #c5c8cb;
+		}
+		.bg {
+			background-color: #5595ff !important;
+		}
+	}
+	.gf_logo {
+		display: flex;
+		justify-content: center;
+		margin-top: 128rpx;
+		mix-blend-mode: color-burn;
+		opacity: 1;
+		.gf_logo_bg {
+			width: 560rpx;
+			height: 560rpx;
+		}
+	}
+}

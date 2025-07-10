@@ -1,0 +1,24 @@
+<view class="work-team_container">
+  <t-navbar t-class="navBar" left-arrow title="团队管理" />
+  <t-cell-group t-class="group_box" theme="card">
+    <t-cell hover arrow bindtap="searchTeam">
+      <view slot="left-icon" class="item_icon">
+        <t-icon name="search" size="25" color="#FFFFFF"></t-icon>
+      </view>
+      <view slot="title" class="title">搜索团队</view>
+      <view slot="description" class="description">搜索团队名称和编号申请加入</view>
+    </t-cell>
+  </t-cell-group>
+  <t-cell-group t-class="group_box" theme="card">
+    <t-cell hover arrow bindtap="scanTeam">
+      <view slot="left-icon" class="item_icon bg">
+        <t-icon name="scan" size="25" color="#FFFFFF"></t-icon>
+      </view>
+      <view slot="title" class="title">扫一扫</view>
+      <view slot="description" class="description">扫描团队二维码快速申请加入</view>
+    </t-cell>
+  </t-cell-group>
+  <view class="gf_logo">
+    <image class="gf_logo_bg" src="../../static/icon/gf_logo.png" />
+  </view>
+</view>

@@ -17,7 +17,7 @@
         <image class="team_grid_icon" src="../../static/icon/team_2.png" />
         <view class="text">邀请加入</view>
       </t-grid-item>
-      <t-grid-item class="item">
+      <t-grid-item class="item" bindclick="joinApplication">
         <image class="team_grid_icon" src="../../static/icon/team_3.png" />
         <view class="text">加入申请</view>
       </t-grid-item>
