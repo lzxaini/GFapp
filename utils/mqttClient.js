@@ -52,7 +52,7 @@ class MqttClient {
       if (err) {
         this._showErr('订阅失败');
       } else {
-        this._showToast('订阅成功');
+        // this._showToast('订阅成功');
       }
     });
   }
@@ -80,7 +80,7 @@ class MqttClient {
   publish(topic, message) {
     if (!this.isConnected()) return this._showErr('请先连接服务器');
     this.client.publish(topic, JSON.stringify(message));
-    this._showToast('发布成功');
+    // this._showToast('发布成功');
   }
 
   disconnect() {
