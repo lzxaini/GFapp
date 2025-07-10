@@ -41,7 +41,7 @@ Page({
   },
   scanCodeActivation() {
     wx.scanCode({
-      onlyFromCamera: false,
+      onlyFromCamera: true,
       success: (res) => {
         console.log("🥵 ~ scanCode ~ res: ", res)
         const { result } = res;
