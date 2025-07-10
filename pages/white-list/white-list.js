@@ -1,5 +1,7 @@
+const app = getApp()
 Page({
   data: {
+    marginBottom: app.globalData.marginBottom,
     whiteList: [{
       name: '测试'
     }]

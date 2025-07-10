@@ -18,5 +18,7 @@
     </view>
   </scroll-view>
   <t-empty t-class="empty" t-class-image="empty_image" wx:else image="/static/icon/null.png" description="暂无任何白名单" />
-  <button class="authorization" bindtap="scanCode">扫码授权</button>
+  <button style="margin: 0 32rpx;margin-bottom: {{marginBottom}}" class="authorization" bindtap="scanCode">
+    扫码授权
+  </button>
 </view>
