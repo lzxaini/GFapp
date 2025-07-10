@@ -6,12 +6,13 @@ App({
     this.eventCenter = eventCenter;
     wx.eventCenter = eventCenter; // 挂载到 wx 上
     this.getSystemInfo()
-    this.verifyUserLogin()
+    // this.verifyUserLogin()
   },
   globalData: {
     mqttClient: null,
     statusBarHeight: 0,
     capsuleHeight: 0,
+    marginBottom: '60rpx',
     // baseUrl: 'https://oa.beasun.com:2443/prod-api',
     baseUrl: 'http://127.0.0.1:8080',
     ossUrl: 'https://oa.beasun.com:3443',
@@ -21,10 +22,19 @@ App({
   },
   // 获取状态栏
   getSystemInfo() {
+    const res = wx.getSystemInfoSync();
+    const screenHeight = res.screenHeight;
+    const safeBottom = screenHeight - res.safeArea.bottom;
     const menu = wx.getMenuButtonBoundingClientRect();
     const windowInfo = wx.getWindowInfo()
     this.globalData.statusBarHeight = windowInfo.statusBarHeight
     this.globalData.capsuleHeight = menu.top + menu.height
+    if (safeBottom) {
+      this.globalData.marginBottom = '60rpx'
+    } else {
+      this.globalData.marginBottom = '120rpx'
+
+    }
     console.log('状态栏和胶囊高度：', menu, this.globalData.statusBarHeight, this.globalData.capsuleHeight);
   },
   // 如果有手机号缓存去往首页
