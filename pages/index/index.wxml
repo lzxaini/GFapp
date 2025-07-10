@@ -11,9 +11,9 @@
     <!-- 顶部区域 -->
     <t-cell t-class="user_info" title="{{userInfo.nickName || '未登录'}}" bordered="{{false}}">
       <t-avatar slot="left-icon" size="large" image="../../static/icon/bg-top.png"></t-avatar>
-      <view class="tag_box" slot="description">
+      <view class="tag_box" slot="description" bindtap="testSetKey">
         <image class="tag_icon" src="../../static/icon/admin.png" />
-        <text class="tag_text">管理员</text>
+        <text class="tag_text">测试</text>
       </view>
       <view slot="right-icon" class="qr" bindtap="openQrCode">
         <t-icon name="qrcode" size="32"></t-icon>

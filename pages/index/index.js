@@ -188,7 +188,11 @@ Page({
     console.log("🥵 ~ testMq ~ mqttQrotocol: ", mqttQrotocol)
 
     // 控制设备开始运行 60分钟
-    mqttQrotocol.sendControlDevice('resp/861556077047305', true, 255);
+    mqttQrotocol.controlDevice('resp/861556077047305', true, 255);
     mqttQrotocol.sendScanQrCode('resp/861556077047305');
+  },
+  testSetKey() {
+    wx.setStorageSync('token', 'token1232132312')
+    wx.setStorageSync('userInfo', 'userInfo123123123')
   }
 })
