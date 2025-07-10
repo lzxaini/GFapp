@@ -12,5 +12,8 @@
   <view class="device_image">
     <image class="device_use" src="../../static/icon/device_use.png" />
   </view>
-  <button class="save_btn" bindtap="onSubmit">结束本次服务</button>
+  <view class="footer" style="margin-bottom: {{marginBottom}}">
+    <view class="device_id">设备ID：{{deviceId}}</view>
+    <button class="save_btn" bindtap="onSubmit">结束本次服务</button>
+  </view>
 </view>

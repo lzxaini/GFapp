@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/device-use/device-use",
     "pages/device-list/device-list",
     "pages/white-list/white-list",
     "pages/change-password/change-password",
@@ -7,7 +8,6 @@
     "pages/index/index",
     "pages/device-bind/device-bind",
     "pages/submit-success/submit-success",
-    "pages/device-use/device-use",
     "pages/work-team/work-team",
     "pages/my-edit/my-edit",
     "pages/team-info/team-info",

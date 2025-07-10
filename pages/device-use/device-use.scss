@@ -11,7 +11,7 @@
 				height: 10rpx;
 				border-radius: 50%;
 				background-color: #42e126;
-        margin-right: 10rpx;
+				margin-right: 10rpx;
 			}
 		}
 	}
@@ -40,19 +40,30 @@
 			height: 100%;
 		}
 	}
-	.save_btn {
+	.footer {
 		position: fixed;
 		bottom: env(safe-area-inset-bottom);
 		width: calc(100% - 64rpx);
 		margin: 0 32rpx;
-		margin-bottom: 142rpx;
-		height: 112rpx;
-		border: 2rpx solid #888bf4;
-		border-radius: 80rpx;
-		box-sizing: border-box;
-		font-size: 32rpx;
-		line-height: 112rpx;
-		font-weight: bold;
-		color: #888bf4;
+		.device_id {
+			font-family: Alibaba PuHuiTi 3;
+			font-size: 24rpx;
+			font-weight: normal;
+			color: #606972;
+			text-align: center;
+			margin-bottom: 64rpx;
+		}
+		.save_btn {
+			width: 100%;
+			height: 112rpx;
+			border: 2rpx solid #888bf4;
+			border-radius: 80rpx;
+			box-sizing: border-box;
+			font-size: 32rpx;
+			line-height: 112rpx;
+			font-weight: bold;
+			color: #888bf4;
+			background-color: transparent;
+		}
 	}
 }
