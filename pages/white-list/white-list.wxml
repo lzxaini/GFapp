@@ -14,11 +14,31 @@
         </view>
         <view class="location">地点：9次/每天9次/每天9次/每天</view>
         <view class="identity">身份：测试水水水水每天</view>
+        <view class="icon_box">
+          <image class="icon" src="../../static/icon/use_no.png" />
+        </view>
+      </view>
+    </view>
+    <view class="list_item" wx:key="index">
+      <view class="left_box  left_box_expire">
+        <view class="title">测试</view>
+        <view class="number">9次/每天</view>
+      </view>
+      <view class="right_box">
+        <view class="user_info">
+          <image class="avatar" src="../../static/icon/gf_logo.png" />
+          <text class="text">1333333333333</text>
+        </view>
+        <view class="location">地点：9次/每天9次/每天9次/每天</view>
+        <view class="identity">身份：测试水水水水每天</view>
+        <view class="icon_box">
+          <image class="icon" src="../../static/icon/expire.png" />
+        </view>
       </view>
     </view>
   </scroll-view>
   <t-empty t-class="empty" t-class-image="empty_image" wx:else image="/static/icon/null.png" description="暂无任何白名单" />
-  <button style="margin: 0 32rpx;margin-bottom: {{marginBottom}}" class="authorization" bindtap="scanCode">
+  <button style="margin-bottom: {{marginBottom}}" class="authorization" bindtap="scanCode">
     扫码授权
   </button>
 </view>

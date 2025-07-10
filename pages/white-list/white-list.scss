@@ -5,6 +5,7 @@
 	.scroll-view {
 		background-color: #f1f3f4;
 		.list_item {
+			position: relative;
 			display: flex;
 			align-items: center;
 			width: calc(100% - 60rpx);
@@ -13,11 +14,14 @@
 			border-radius: 24rpx;
 			overflow: hidden;
 			background-color: #ffffff;
+			.left_box_expire {
+				background-color: rgba(197, 200, 203, 0.55) !important;
+			}
 			.left_box {
 				position: relative;
 				width: 196rpx;
 				height: 100%;
-				background: rgba(136, 139, 244, 0.55);
+				background-color: rgba(136, 139, 244, 0.55);
 				display: flex;
 				align-content: center;
 				flex-wrap: wrap;
@@ -80,16 +84,27 @@
 				.identity {
 					margin-top: 10rpx;
 				}
+				.icon_box {
+					position: absolute;
+					top: 0;
+					right: 0;
+					width: 112rpx;
+					height: 112rpx;
+					.icon {
+						width: 100%;
+						height: 100%;
+					}
+				}
 			}
 		}
 	}
-  .empty{
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -45%);
+	.empty {
+		position: absolute;
+		top: 45%;
+		left: 50%;
+		transform: translate(-50%, -45%);
 		--td-empty-description-margin-top: 0;
-  }
+	}
 	.empty_image {
 		width: 220rpx;
 		height: 220rpx;
@@ -99,6 +114,7 @@
 		bottom: env(safe-area-inset-bottom);
 		width: calc(100% - 64rpx);
 		height: 112rpx;
+		margin: 0 32rpx;
 		border-radius: 80rpx;
 		background: linear-gradient(279deg, #888bf4 -1%, #5151c6 100%);
 		font-size: 32rpx;
