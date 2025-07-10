@@ -9,7 +9,10 @@
       <t-tab-panel wx:key="index" label="本周" value="2" />
       <t-tab-panel wx:key="index" label="本月" value="3" />
     </t-tabs>
-    <view class="title">充值记录</view>
+    <view class="title_box">
+      <view class="title">充值记录</view>
+      <view class="cumulative">累计次数：20</view>
+    </view>
     <view class="table">
       <!-- 表头 -->
       <view class="table-row table-header">

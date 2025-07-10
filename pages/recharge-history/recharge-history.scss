@@ -51,12 +51,19 @@
 			font-weight: 300;
 			color: #ffffff;
 		}
-		.title {
-			margin-top: 40rpx;
-			margin-bottom: 30rpx;
-			font-size: 30rpx;
-			font-weight: 300;
-			color: #1c2023;
+		.title_box {
+			display: flex;
+			justify-content: space-between;
+			.title,.cumulative {
+				margin-top: 40rpx;
+				margin-bottom: 30rpx;
+				font-size: 30rpx;
+				font-weight: 300;
+				color: #1c2023;
+			}
+			.cumulative {
+				color: #888bf4 !important;
+			}
 		}
 
 		.table {
