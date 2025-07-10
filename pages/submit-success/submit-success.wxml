@@ -5,7 +5,7 @@
   <view class="content">
     <image class="img" src="../../static/icon/success.png" />
     <view class="text-1">提交成功，等待管理员同意</view>
-    <view class="text-2">签约信息已提交，管理员同意后可完成加入</view>
+    <view class="text-2">加入申请已提交，管理员同意后可完成加入</view>
   </view>
   <button style="margin-bottom: {{marginBottom}}" class="save_btn" bindtap="goIndexx">返回首页</button>
 </view>
