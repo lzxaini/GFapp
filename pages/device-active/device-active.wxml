@@ -1,0 +1,27 @@
+<view class="device-use_container">
+  <t-navbar t-class="navBar" left-arrow>
+    <view slot="title" class="navBar_title">
+      <view class="{{deviceFlag ? 'green': 'green red'}}"></view>
+      <view class="text" wx:if="{{deviceFlag}}">设备已激活…</view>
+      <t-loading wx:else theme="circular" size="40rpx" text="正在激活..." class="wrapper" />
+    </view>
+  </t-navbar>
+  <view class="device_info">
+    <image class="device_heart" src="../../static/icon/heart.png" />
+    <view class="text">
+      <!-- {{deviceFlag ? '设备已激活…' : '正在激活...'}} -->
+      <view class="text" wx:if="{{deviceFlag}}">设备已激活…</view>
+      <t-loading wx:else theme="circular" size="40rpx" class="wrapper">
+        <text slot="text" class="text">正在激活...</text>
+      </t-loading>
+    </view>
+  </view>
+  <view class="device_image">
+    <image class="device_use" src="../../static/icon/device_use.png" />
+  </view>
+  <view class="footer" style="margin-bottom: {{marginBottom}}">
+    <view class="device_id">设备ID：{{deviceId}}</view>
+    <!-- <button class="save_btn" bindtap="exitDevice" disabled="{{!deviceFlag}}">结束本次服务</button> -->
+    <view class="info" wx:if="{{deviceFlag}}">请在设备端选择服务项目</view>
+  </view>
+</view>

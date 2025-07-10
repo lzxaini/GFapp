@@ -9,12 +9,8 @@ Page({
       success: (res) => {
         const { result } = res;
         if (result) {
-          // const mqttQrotocol = app.globalData.mqttQrotocol;
-          console.log("🥵 ~ scanCodeActivation ~ result: ", result)
-          // 扫码成功
-          // mqttQrotocol.controlDevice(`resp/${result}`, true, 255);
           wx.navigateTo({
-            url: `/pages/device-use/device-use?deviceId=${result}`,
+            url: `/pages/device-active/device-active?deviceId=${result}`,
           });
         } else {
           wx.showToast({
