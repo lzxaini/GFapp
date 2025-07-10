@@ -1,7 +1,9 @@
 import Message from 'tdesign-miniprogram/message/index';
 import { resetPasswordApi } from '../../api/api'
+const app = getApp()
 Page({
   data: {
+    marginBottom: app.globalData.marginBottom,
     from: {
       old: '',
       new1: '',
