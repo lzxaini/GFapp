@@ -52,7 +52,7 @@ Page({
               _this.messageBox('success', '登录成功，正在加载...', 1500)
               setTimeout(() => {
                 wx.reLaunch({
-                  url: '/pages/index/index',
+                  url: '/pages/register/register',
                 })
               }, 1500);
             } else {
