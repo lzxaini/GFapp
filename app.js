@@ -18,7 +18,8 @@ App({
     // baseUrl: 'https://oa.beasun.com:2443/prod-api',
     baseUrl: 'http://127.0.0.1:8080',
     ossUrl: 'https://oa.beasun.com:3443',
-    mqttUrl: 'wxs://mqtt.fxnws.com:8084/mqtt',
+    mqttUrl: 'wxs://mqtt.fxnws.com/mqtt',
+    // mqttUrl: 'wxs://mqtt.beasun.com/mqtt',
     userInfo: null,
     token: null
   },
@@ -78,9 +79,9 @@ App({
             eventCenter.emit('mqtt-ready')
           },
           onMessage: (topic, message) => {
-            // const payload = msg.toString();
-            // const result = getApp().globalData.protocol.parse(payload);
-            // console.log('解析结果:', result);
+            const payload = message.toString();
+            const result = this.globalData.mqttQrotocol.parse(payload);
+            console.log('解析结果:', result);
 
             // wx.eventCenter.emit('mqtt-message', result);
             console.log('消息：', topic, message);
