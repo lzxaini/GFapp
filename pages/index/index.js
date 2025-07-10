@@ -61,7 +61,7 @@ Page({
     console.log("🥵 ~ onShow ~ mqttClient: ", mqttClient)
 
     if (mqttClient?.isConnected()) {
-      mqttClient.publish(`resp/861556077047305`, '小程序发');
+      // mqttClient.publish(`resp/861556077047305`, '小程序发');
       mqttClient.subscribe(`req/861556077047305`);
     } else {
       console.warn('MQTT 未连接或还未初始化');
@@ -158,7 +158,7 @@ Page({
   },
   // 团队管理
   _goListItem(e) {
-    let {url} = e?.currentTarget?.dataset
+    let { url } = e?.currentTarget?.dataset
     wx.navigateTo({
       url
     });
@@ -182,5 +182,13 @@ Page({
   },
   closeIsLoginDialog() {
     this.setData({ isLogin: false });
+  },
+  testMq() {
+    const mqttQrotocol = app.globalData.mqttQrotocol;
+    console.log("🥵 ~ testMq ~ mqttQrotocol: ", mqttQrotocol)
+
+    // 控制设备开始运行 60分钟
+    mqttQrotocol.sendControlDevice('resp/861556077047305', true, 255);
+    mqttQrotocol.sendScanQrCode('resp/861556077047305');
   }
 })

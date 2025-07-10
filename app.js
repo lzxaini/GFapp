@@ -1,15 +1,17 @@
 // app.js
 import { mqttClient } from './utils/mqttClient'
 import eventCenter from './utils/eventCenter';
+import { ProtocolHelper } from './utils/mqttProtocol';
 App({
   onLaunch() {
     this.eventCenter = eventCenter;
     wx.eventCenter = eventCenter; // 挂载到 wx 上
     this.getSystemInfo()
-    // this.verifyUserLogin()
+    this.verifyUserLogin()
   },
   globalData: {
     mqttClient: null,
+    mqttQrotocol: null,
     statusBarHeight: 0,
     capsuleHeight: 0,
     marginBottom: '60rpx',
@@ -50,12 +52,13 @@ App({
       wx.reLaunch({
         url: '/pages/index/index'
       });
-    } else {
-      console.log('未登录，需引导用户登录');
-      wx.reLaunch({
-        url: '/pages/login/login'
-      });
     }
+    // else {
+    //   console.log('未登录，需引导用户登录');
+    //   wx.reLaunch({
+    //     url: '/pages/login/login'
+    //   });
+    // }
   },
   initMqtt() {
     console.log('初始化MQTT')
@@ -70,10 +73,16 @@ App({
         },
         {
           onConnect: () => {
+            this.globalData.mqttQrotocol = new ProtocolHelper(this.globalData.mqttClient);
             console.log('MQTT 连接成功');
             eventCenter.emit('mqtt-ready')
           },
           onMessage: (topic, message) => {
+            // const payload = msg.toString();
+            // const result = getApp().globalData.protocol.parse(payload);
+            // console.log('解析结果:', result);
+
+            // wx.eventCenter.emit('mqtt-message', result);
             console.log('消息：', topic, message);
             eventCenter.emit('mqtt-message', { topic, message: message });
           },

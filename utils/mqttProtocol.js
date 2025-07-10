@@ -1,75 +1,112 @@
+/*
+ * @Author: 17630921248 1245634367@qq.com
+ * @Date: 2025-06-18 13:25:55
+ * @LastEditors: 17630921248 1245634367@qq.com
+ * @LastEditTime: 2025-07-10 12:55:30
+ * @FilePath: \medical\utils\mqttProtocol.js
+ * @Description: Fuck Bug
+ * 微信：lizx2066
+ */
+
 const FunctionCode = {
-  StatusQuery: 0x01,     // 运行状态查询
-  TimeQuery: 0x02,       // 运行时间查询
-  ServiceQuery: 0x03,    // 服务内容查询
-  ControlDevice: 0x10    // 控制设备运行
+  StatusQuery: 0x01,
+  TimeQuery: 0x02,
+  ServiceQuery: 0x03,
+  HeartBeat: 0x05,
+  ScanQrCode: 0x06,
+  ControlDevice: 0x10
 };
 
-function padHex(str, length) {
-  return str.toString().padStart(length, '0');
-}
-
-// 构建发送指令
-function buildMessage(code, data = '000000') {
-  const codeHex = padHex(code.toString(16), 2);
-  const dataHex = padHex(data, 6);
-  return codeHex + dataHex;
-}
-
-// 解析设备返回的指令
-function parseMessage(hexStr) {
-  const codeHex = hexStr.slice(0, 2);
-  const dataHex = hexStr.slice(2, 8);
-  const code = parseInt(codeHex, 16);
-
-  let description = '';
-  switch (code) {
-    case FunctionCode.StatusQuery:
-      if (dataHex === '000001') {
-        description = '正在运行';
-      } else if (dataHex === '000002') {
-        description = '停止运行';
-      } else {
-        description = '未知状态';
-      }
-      break;
-
-    case FunctionCode.TimeQuery:
-      const minutes = parseInt(dataHex, 16);
-      description = `${minutes} 分钟后结束`;
-      break;
-
-    case FunctionCode.ServiceQuery:
-      if (dataHex === '000001') {
-        description = '脸部护理';
-      } else if (dataHex === '000002') {
-        description = '身体护理';
-      } else {
-        description = '未知服务';
-      }
-      break;
-
-    case FunctionCode.ControlDevice:
-      const state = dataHex[0] === '1' ? '开始运行' : '停止运行';
-      const runTime = parseInt(dataHex.slice(3), 16);
-      description = `${state} ${runTime} 分钟`;
-      break;
-
-    default:
-      description = '未知功能码';
+class ProtocolHelper {
+  constructor(mqttClient) {
+    this.mqttClient = mqttClient;
   }
 
-  return {
-    code,
-    rawData: dataHex,
-    description
-  };
+  /**
+   * 发送指令
+   * @param {number} funcCode 功能码，如 0x01
+   * @param {string} dataHex 数据域，必须是十六进制字符串，如 '000001'
+   * @param {string} topic 主题
+   */
+  send(funcCode, dataHex, topic) {
+    if (!this.mqttClient?.isConnected()) {
+      console.warn('MQTT 未连接');
+      return;
+    }
+
+    const payload = funcCode.toString(16).padStart(2, '0') + dataHex.padStart(6, '0');
+    console.log('发送 payload:', payload);
+    this.mqttClient.publish(topic, payload);
+  }
+
+  /**
+   * 解析接收到的消息
+   * @param {string} hexPayload 十六进制字符串，如 '01000001'
+   * @returns {object} 解析结果
+   */
+  parse(hexPayload) {
+    const funcCode = parseInt(hexPayload.slice(0, 2), 16);
+    const dataHex = hexPayload.slice(2);
+
+    let result = { funcCode, dataHex };
+
+    switch (funcCode) {
+      case FunctionCode.StatusQuery:
+        result.status = parseInt(dataHex, 16) === 1 ? '运行中' : '已停止';
+        break;
+      case FunctionCode.TimeQuery:
+        result.minutes = parseInt(dataHex, 16);
+        break;
+      case FunctionCode.ServiceQuery:
+        result.service = parseInt(dataHex, 16) === 1 ? '脸部护理' : '身体护理';
+        break;
+      case FunctionCode.HeartBeat:
+        result.service = parseInt(dataHex.slice(0, 2), 16);
+        result.remaining = parseInt(dataHex.slice(2, 4), 16);
+        result.runState = parseInt(dataHex.slice(4, 6), 16);
+        break;
+      case FunctionCode.ScanQrCode:
+        result.qrStatus = parseInt(dataHex, 16) === 1 ? '扫码成功' : '扫码失败';
+        break;
+      case FunctionCode.ControlDevice:
+        const action = parseInt(dataHex.slice(0, 2), 16) === 1 ? '开始' : '结束';
+        const time = parseInt(dataHex.slice(4, 6), 16);
+        result.action = action;
+        result.minutes = time;
+        break;
+      default:
+        result.info = '未知功能码';
+    }
+
+    return result;
+  }
+
+  /**
+   * 具体指令封装
+   */
+  sendStatusQuery(topic) {
+    this.send(FunctionCode.StatusQuery, '', topic);
+  }
+
+  sendTimeQuery(topic) {
+    this.send(FunctionCode.TimeQuery, '', topic);
+  }
+
+  sendServiceQuery(topic) {
+    this.send(FunctionCode.ServiceQuery, '', topic);
+  }
+
+  sendScanQrCode(topic) {
+    this.send(FunctionCode.ScanQrCode, '000001', topic);
+  }
+
+  sendControlDevice(topic, start, minutes) {
+    // start: true = 开始，false = 结束
+    const startHex = start ? '10' : '00';
+    const timeHex = minutes.toString(16).padStart(2, '0');
+    const dataHex = startHex + '000' + timeHex; // 例如: 10003C
+    this.send(FunctionCode.ControlDevice, dataHex, topic);
+  }
 }
-module.exports = { FunctionCode, buildMessage, parseMessage };
-// // 模块导出
-// if (typeof module !== 'undefined' && module.exports) {
-//   module.exports = { FunctionCode, buildMessage, parseMessage };
-// } else {
-//   // 适配小程序
-//   window.MQTTProtocol = { FunctionCode, buildMessage, parseMessage };
-// }
+
+export { FunctionCode, ProtocolHelper };
