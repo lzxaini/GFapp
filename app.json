@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/login/login",
     "pages/use-history/use-history",
     "pages/service-history/service-history",
     "pages/recharge-history/recharge-history",
@@ -12,7 +13,6 @@
     "pages/device-active/device-active",
     "pages/device-list/device-list",
     "pages/change-password/change-password",
-    "pages/login/login",
     "pages/device-bind/device-bind",
     "pages/submit-success/submit-success",
     "pages/work-team/work-team",
@@ -25,11 +25,8 @@
   "usingComponents": {
     "verify-puzzle": "/components/verify-puzzle/verify-puzzle",
     "t-button": "tdesign-miniprogram/button/button",
-    "t-date-time-picker": "tdesign-miniprogram/date-time-picker/date-time-picker",
-    "t-upload": "tdesign-miniprogram/upload/upload",
     "t-input": "tdesign-miniprogram/input/input",
     "t-cell-group": "tdesign-miniprogram/cell-group/cell-group",
-    "t-textarea": "tdesign-miniprogram/textarea/textarea",
     "t-cell": "tdesign-miniprogram/cell/cell",
     "t-icon": "tdesign-miniprogram/icon/icon",
     "t-avatar": "tdesign-miniprogram/avatar/avatar",
