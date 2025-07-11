@@ -6,6 +6,7 @@ App({
   onLaunch() {
     this.eventCenter = eventCenter;
     wx.eventCenter = eventCenter; // 挂载到 wx 上
+    this.getAliPHFont()
     this.getSystemInfo()
     this.verifyUserLogin()
   },
@@ -25,11 +26,10 @@ App({
   },
   // 获取状态栏
   getSystemInfo() {
-    const res = wx.getSystemInfoSync();
-    const screenHeight = res.screenHeight;
-    const safeBottom = screenHeight - res.safeArea.bottom;
     const menu = wx.getMenuButtonBoundingClientRect();
     const windowInfo = wx.getWindowInfo()
+    const screenHeight = windowInfo.screenHeight;
+    const safeBottom = screenHeight - windowInfo.safeArea.bottom;
     this.globalData.statusBarHeight = windowInfo.statusBarHeight
     this.globalData.capsuleHeight = menu.top + menu.height
     if (safeBottom) {
@@ -124,6 +124,16 @@ App({
         duration: 1500,
         mask: true,
       });
+    })
+  },
+  // 获取字体
+  getAliPHFont() {
+    wx.loadFontFace({
+      global: true,
+      family: 'AlibabaPuHuiTi3',
+      source: 'url("https://cdn.fxnws.com/fonts/AlibabaPuHuiTi-3-45-Light.ttf")',
+      scopes: ["webview", "native"],
+      success: console.log('字体加载完成')
     })
   },
   logout() {
