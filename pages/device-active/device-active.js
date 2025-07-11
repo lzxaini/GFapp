@@ -18,13 +18,13 @@ Page({
   // 收到消息
   handleMsg({ topic, message }) {
     console.log('设备列表收到消息：', topic, message);
-    if (topic === `req/${this.data.deviceId}` && message === '101000FF') {
+    if (topic === `/resp/${this.data.deviceId}` && message === '06000001') {
       this.setData({ deviceFlag: true })
     }
   },
   connectDevice(deviceId) {
     const mqttQrotocol = app.globalData.mqttQrotocol;
-    mqttQrotocol.controlDevice(`resp/${deviceId}`, true, 255);
+    mqttQrotocol.sendScanQrCode(`/req/${deviceId}`)
   },
   exitDevice() {
     
