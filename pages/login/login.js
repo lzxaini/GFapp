@@ -11,6 +11,7 @@ Page({
     statusBarHeight: app.globalData.capsuleHeight,
     checkFlag: false,
     showConfirm: false,
+    bgFlag: false, // 背景图
   },
   onLoad() {
   },
@@ -91,5 +92,8 @@ Page({
   },
   closeDialog() {
     this.setData({ showConfirm: false });
+  },
+  loginBg(e) {
+    // this.setData({ bgFlag: true })
   }
 });

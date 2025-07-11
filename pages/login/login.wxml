@@ -1,6 +1,6 @@
 <view class="login_container">
   <view class="login_bg">
-    <image class="login_bg_img" src="../../static/icon/login_bg.png" />
+    <t-image class="login_bg_img" src="https://cdn.fxnws.com/image/gf_login_bg.png" bind:load="loginBg" />
   </view>
   <view class="go_page">
     <t-button wx:if="{{!checkFlag}}" class="login_btn" bindtap="login">手机号一键登录</t-button>
