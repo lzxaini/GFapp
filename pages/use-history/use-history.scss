@@ -4,7 +4,7 @@
 	flex-direction: column;
 	width: 100vw;
 	height: 100vh;
-	background-color: #F5F7FB;
+	background-color: #f5f7fb;
 	// .navBar {
 	// 	--td-navbar-bg-color: #888bf4;
 	// 	--td-navbar-color: #fff;
@@ -32,6 +32,7 @@
 						height: 36rpx;
 					}
 					.text {
+						font-family: AlibabaPuHuiTi3;
 						font-size: 30rpx;
 						font-weight: normal;
 						color: #1c2023;
@@ -39,12 +40,14 @@
 					}
 				}
 				.number {
+					font-family: AlibabaPuHuiTi3;
 					font-size: 20rpx;
 					font-weight: 300;
 					color: #c5c8cb;
 				}
 			}
 			.card_list {
+				font-family: AlibabaPuHuiTi3;
 				font-size: 24rpx;
 				font-weight: 300;
 				color: #1c2023;

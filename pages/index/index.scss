@@ -20,6 +20,7 @@
 			display: flex;
 			align-items: flex-end;
 			justify-content: center;
+			font-family: AlibabaPuHuiTi3;
 			font-size: 50rpx;
 			color: #ffffff;
 		}
@@ -33,6 +34,7 @@
 				height: 30rpx;
 			}
 			.slogan {
+				font-family: AlibabaPuHuiTi3;
 				font-size: 28rpx;
 				color: #ffffff;
 				margin-left: 11rpx;
@@ -76,6 +78,7 @@
 					top: 50%;
 					right: 20%;
 					transform: translate(0%, -50%);
+					font-family: AlibabaPuHuiTi3;
 					font-size: 20rpx;
 					font-weight: normal;
 					color: #ffffff;
@@ -89,6 +92,7 @@
 
 		.text {
 			margin-top: 12rpx;
+			font-family: AlibabaPuHuiTi3;
 			font-size: 28rpx;
 			text-align: center;
 		}
@@ -99,6 +103,7 @@
 			display: flex;
 			justify-content: space-between;
 			.text {
+				font-family: AlibabaPuHuiTi3;
 				font-size: 24rpx;
 				color: #1c2023;
 			}
@@ -157,6 +162,7 @@
 		padding: 7rpx 20rpx;
 		margin-top: 26rpx;
 		.institution {
+			font-family: AlibabaPuHuiTi3;
 			font-size: 24rpx;
 			font-weight: 400;
 			color: #888bf4;
@@ -174,6 +180,7 @@
 	}
 
 	.qr_code_text {
+		font-family: AlibabaPuHuiTi3;
 		font-size: 24rpx;
 		font-weight: normal;
 		text-align: center;
@@ -186,6 +193,7 @@
 		width: 100%;
 		height: 112rpx;
 		border-radius: 80rpx;
+		font-family: AlibabaPuHuiTi3;
 		font-size: 32rpx;
 		font-weight: bold;
 		line-height: 112rpx;

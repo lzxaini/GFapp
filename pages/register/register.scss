@@ -16,6 +16,7 @@
 		justify-content: space-between;
 		align-items: center;
 		.lable {
+			font-family: AlibabaPuHuiTi3;
 			font-size: 32rpx;
 			font-weight: 350;
 			color: #000000;
@@ -33,6 +34,7 @@
 		width: calc(100% - 64rpx);
 		margin: 0 32rpx;
 		.no_submit {
+			font-family: AlibabaPuHuiTi3;
 			font-size: 28rpx;
 			font-weight: normal;
 			color: #606972;
@@ -42,13 +44,14 @@
 		.save_btn {
 			width: 100%;
 			height: 112rpx;
-      border-radius: 80rpx;
-      box-sizing: border-box;
-      font-size: 32rpx;
-      line-height: 112rpx;
-      font-weight: bold;
-      color: #ffffff;
-      background: linear-gradient(279deg, #888bf4 -1%, #5151c6 100%);
+			border-radius: 80rpx;
+			box-sizing: border-box;
+			font-family: AlibabaPuHuiTi3;
+			font-size: 32rpx;
+			line-height: 112rpx;
+			font-weight: bold;
+			color: #ffffff;
+			background: linear-gradient(279deg, #888bf4 -1%, #5151c6 100%);
 		}
 	}
 }

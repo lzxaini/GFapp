@@ -14,6 +14,7 @@
 	}
 	.history_title {
 		position: absolute;
+		font-family: AlibabaPuHuiTi3;
 		font-size: 50rpx;
 		color: #ffffff;
 		margin-left: 46rpx;
@@ -40,6 +41,7 @@
 			}
 		}
 		.item_style {
+			font-family: AlibabaPuHuiTi3;
 			font-size: 28rpx;
 			font-weight: bold;
 			color: #1c2023;
@@ -47,6 +49,7 @@
 		.active_style {
 			background-color: #888bf4;
 			border-radius: 60rpx;
+			font-family: AlibabaPuHuiTi3;
 			font-size: 32rpx;
 			font-weight: 300;
 			color: #ffffff;
@@ -54,9 +57,11 @@
 		.title_box {
 			display: flex;
 			justify-content: space-between;
-			.title,.cumulative {
+			.title,
+			.cumulative {
 				margin-top: 40rpx;
 				margin-bottom: 30rpx;
+				font-family: AlibabaPuHuiTi3;
 				font-size: 30rpx;
 				font-weight: 300;
 				color: #1c2023;
@@ -75,6 +80,7 @@
 			.table-header {
 				font-weight: bold;
 				padding: 20rpx 0;
+				font-family: AlibabaPuHuiTi3;
 				font-size: 26rpx;
 				font-weight: normal;
 				color: #606972;
@@ -84,6 +90,7 @@
 				display: flex;
 				flex-direction: row;
 				padding: 20rpx 0;
+				font-family: AlibabaPuHuiTi3;
 				font-size: 24rpx;
 				font-weight: 500;
 				color: #1c2023;
@@ -104,11 +111,13 @@
 				flex-shrink: 0;
 			}
 			.cell-header {
+				font-family: AlibabaPuHuiTi3;
 				font-size: 26rpx;
 				font-weight: normal;
 				color: #606972;
 			}
 			.cell-content {
+				font-family: AlibabaPuHuiTi3;
 				font-size: 24rpx;
 				font-weight: 500;
 				color: #1c2023;
@@ -124,11 +133,13 @@
 				display: block !important;
 				text-align: center;
 				.text {
+					font-family: AlibabaPuHuiTi3;
 					font-size: 24rpx;
 					font-weight: 500;
 					color: #888bf4;
 				}
 				.date {
+					font-family: AlibabaPuHuiTi3;
 					font-size: 18rpx;
 					font-weight: normal;
 					color: #1c2023;

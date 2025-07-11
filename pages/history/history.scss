@@ -27,6 +27,7 @@
 		text-align: center;
 		color: #999;
 		padding: 24rpx 0;
+		font-family: AlibabaPuHuiTi3;
 		font-size: 24rpx;
 	}
 	.card-box {
@@ -44,6 +45,7 @@
 				height: 100rpx;
 			}
 			.title {
+				font-family: AlibabaPuHuiTi3;
 				font-size: 26rpx;
 			}
 			.description {
@@ -52,6 +54,7 @@
 				-webkit-line-clamp: 2;
 				overflow: hidden;
 				text-overflow: ellipsis;
+				font-family: AlibabaPuHuiTi3;
 				font-size: 24rpx;
 			}
 		}
