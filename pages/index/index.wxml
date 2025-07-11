@@ -1,7 +1,7 @@
 <view class="container">
   <view class="bg_box">
     <image class="bg_top" src="../../static/icon/bg-top.png"></image>
-    <view class="logo_text" style="height: {{capsuleHeight}}px;">光馥科美</view>
+    <view class="logo_text" style="height: {{capsuleHeight}}px;" bindtap="testMq">光馥科美</view>
     <view class="logo_slogan">
       <image class="gf_logo" src="../../static/icon/logo.png"></image>
       <text class="slogan">光塑年轻力，馥养无龄美</text>

@@ -59,11 +59,8 @@ Page({
   // 订阅
   subscribeTopic() {
     const mqttClient = app.globalData.mqttClient;
-    console.log("🥵 ~ onShow ~ mqttClient: ", mqttClient)
-
     if (mqttClient?.isConnected()) {
-      // mqttClient.publish(`resp/861556077047305`, '小程序发');
-      mqttClient.subscribe(`req/861556077047305`);
+      mqttClient.subscribe(`/resp/123`);
     } else {
       console.warn('MQTT 未连接或还未初始化');
     }
@@ -192,11 +189,10 @@ Page({
   },
   testMq() {
     const mqttQrotocol = app.globalData.mqttQrotocol;
-    console.log("🥵 ~ testMq ~ mqttQrotocol: ", mqttQrotocol)
-
-    // 控制设备开始运行 60分钟
-    mqttQrotocol.controlDevice('resp/861556077047305', true, 255);
-    mqttQrotocol.sendScanQrCode('resp/861556077047305');
+    mqttQrotocol.sendScanQrCode(`/req/123`)
+    // // 控制设备开始运行 60分钟
+    // mqttQrotocol.controlDevice('/resp/861556077047305', true, 255);
+    // mqttQrotocol.sendScanQrCode('/resp/861556077047305');
   },
   testSetKey() {
     wx.setStorageSync('token', 'token1232132312')
