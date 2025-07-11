@@ -2,6 +2,7 @@
 import { mqttClient } from './utils/mqttClient'
 import eventCenter from './utils/eventCenter';
 import { ProtocolHelper } from './utils/mqttProtocol';
+import { Buffer } from 'buffer';
 App({
   onLaunch() {
     this.eventCenter = eventCenter;
@@ -79,12 +80,9 @@ App({
             eventCenter.emit('mqtt-ready')
           },
           onMessage: (topic, message) => {
-            const payload = message.toString();
-            const result = this.globalData.mqttQrotocol.parse(payload);
+            const result = this.globalData.mqttQrotocol.parse(message);
             console.log('解析结果:', result);
-
             // wx.eventCenter.emit('mqtt-message', result);
-            console.log('消息：', topic, message);
             eventCenter.emit('mqtt-message', { topic, message: message });
           },
         }
