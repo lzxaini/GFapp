@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/device-list/device-list",
     "pages/index/index",
     "pages/login/login",
     "pages/use-history/use-history",
@@ -11,7 +12,6 @@
     "pages/white-list/white-list",
     "pages/device-use/device-use",
     "pages/device-active/device-active",
-    "pages/device-list/device-list",
     "pages/change-password/change-password",
     "pages/device-bind/device-bind",
     "pages/submit-success/submit-success",

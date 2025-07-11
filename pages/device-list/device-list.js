@@ -6,7 +6,7 @@ Page({
   scanCodeActivation(e) {
     console.log("🥵 ~ scanCodeActivation ~ e: ", e)
     let { item } = e?.currentTarget.dataset
-    if (item === '') { // $TODO 待完善，点击列表，判断设备是否在使用中，是的话，带上deviceId去使用页面
+    if (item === 'use') { // $TODO 待完善，点击列表，判断设备是否在使用中，是的话，带上deviceId去使用页面
       wx.navigateTo({
         url: `/pages/device-use/device-use?deviceId=${deviceId}`,
       });

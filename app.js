@@ -52,7 +52,7 @@ App({
       this.globalData.token = token;
       this.initMqtt(userInfo); // 登录状态下自动连接 MQTT
       wx.reLaunch({
-        url: '/pages/index/index'
+        url: '/pages/device-list/device-list'
       });
     }
     // else {
@@ -91,9 +91,9 @@ App({
       // 绑定到 App 全局
       this.globalData.mqttClient = mqttClient;
     }
-    wx.reLaunch({
-      url: '/pages/index/index'
-    })
+    // wx.reLaunch({
+    //   url: '/pages/index/index'
+    // })
   },
   /**
    * 获取用户信息

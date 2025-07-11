@@ -10,15 +10,15 @@
   </t-cell-group>
   <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true">
     <view class="device_grid">
-      <block wx:for="{{2}}">
+      <block wx:for="{{1}}">
         <view class="device_item">
           <image class="card_bg" src="../../static/icon/card_bg.png" />
           <view class="go_info" bindtap="goHistoryInfo">
             查看使用记录
             <t-icon name="chevron-right-double" size="12" />
           </view>
-          <t-cell t-class="device_card" bordered="{{false}}" bindtap="scanCodeActivation" data-item="use">
-            <!-- $TODO 待接入数据后修改data-item="use"-->
+          <t-cell t-class="device_card" bordered="{{false}}" bindtap="scanCodeActivation">
+            <!-- $TODO 待接入数据后修改data-item="use" -->
             <view slot="left-icon" class="sacn_icon">
               <t-icon name="scan" size="15" color="#FFFFFF"></t-icon>
             </view>
@@ -34,7 +34,7 @@
             查看使用记录
             <t-icon name="chevron-right-double" size="13" />
           </view>
-          <t-cell t-class="device_card" bordered="{{false}}">
+          <t-cell t-class="device_card" bordered="{{false}}" bindtap="scanCodeActivation" data-item="use">
             <view slot="left-icon" class="use_ing">使用中</view>
             <view slot="title" class="card_title">设备ID</view>
             <view slot="description" class="card_title">8999999999999999</view>
