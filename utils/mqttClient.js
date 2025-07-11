@@ -1,5 +1,5 @@
 // utils/mqttClient.js
-import mqtt from './mqtt.min.js';
+import mqtt from './mqtt.min.4.2.1.js'
 
 class MqttClient {
   constructor() {
@@ -37,8 +37,9 @@ class MqttClient {
     });
 
     this.client.on('message', (topic, payload) => {
-      console.log(`[MQTT] 📩 Message: ${topic} => ${payload.toString()}`);
-      this.onMessageCallback?.(topic, payload.toString());
+      const hexPayload = payload.toString('hex').toUpperCase();
+      console.log(`[MQTT] 📩 Message: ${topic} => ${hexPayload}`);
+      this.onMessageCallback?.(topic, hexPayload);
     });
   }
 

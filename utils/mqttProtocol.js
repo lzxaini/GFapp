@@ -2,11 +2,12 @@
  * @Author: 17630921248 1245634367@qq.com
  * @Date: 2025-06-18 13:25:55
  * @LastEditors: 17630921248 1245634367@qq.com
- * @LastEditTime: 2025-07-10 14:24:06
+ * @LastEditTime: 2025-07-11 15:52:13
  * @FilePath: \medical\utils\mqttProtocol.js
  * @Description: Fuck Bug
  * 微信：lizx2066
  */
+import { Buffer } from 'buffer';
 /**
  * 协议功能码
  */
@@ -36,12 +37,11 @@ class ProtocolHelper {
       return;
     }
 
-    const hexCode = funcCode.toString(16).padStart(2, '0').toUpperCase();
-    const hexData = dataHex.padStart(6, '0').toUpperCase();
-    const payload = hexCode + hexData;
-
-    console.log('🚀 发送 HEX:', payload);
-    this.mqttClient.publish(topic, payload);
+    const hexCode = funcCode.toString(16).padStart(2, '0').toUpperCase();  // 保持 funcCode 为十六进制
+    const hexData = dataHex.replace(/\s+/g, ''); // 去除dataHex中的空格，确保它是有效的十六进制数
+    const payload = Buffer.from(hexCode + hexData, 'hex');
+    console.log("🥵 ~ ProtocolHelper ~ send ~ payload: ", payload)
+    this.mqttClient.client.publish(topic, payload);
   }
 
   /**
@@ -50,6 +50,7 @@ class ProtocolHelper {
    * @returns {object}
    */
   parse(hexPayload) {
+    console.log("🥵 ~ ProtocolHelper ~ parse ~ hexPayload: ", hexPayload)
     const funcCode = parseInt(hexPayload.slice(0, 2), 16);
     const dataHex = hexPayload.slice(2).toUpperCase();
     const result = { funcCode, dataHex };
