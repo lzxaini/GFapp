@@ -1,10 +1,10 @@
 /*
  * @Author: lzx
  * @Date: 2024-01-01 13:42:13
- * @LastEditors: lzxaini 1245634367@qq.com
- * @LastEditTime: 2025-07-06 13:33:53
+ * @LastEditors: 17630921248 1245634367@qq.com
+ * @LastEditTime: 2025-07-12 12:39:20
  * @Description: Fuck Bug
- * @FilePath: \GFapp\api\api.js
+ * @FilePath: \medical\api\api.js
  */
 import request from "./request.js"
 
@@ -89,6 +89,33 @@ export function resetPasswordApi(oldPwd, newPwd) {
 export function getCaptchaImageApi() {
   return request({
     url: "/captchaImage",
+    method: 'get',
+  })
+}
+/**
+ * 团队管理
+ */
+export function getTeamsListApi() {
+  return request({
+    url: "/gf/teams/map",
+    method: 'get',
+  })
+}
+/**
+ * 我的团队
+ */
+export function getMyTeamsApi(id) {
+  return request({
+    url: `/gf/teams/${id}`,
+    method: 'get',
+  })
+}
+/**
+ * 团队成员
+ */
+export function getTeamsMemberListApi() {
+  return request({
+    url: "/gf/teamMembers/list",
     method: 'get',
   })
 }
