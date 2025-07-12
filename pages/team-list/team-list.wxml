@@ -1,6 +1,7 @@
 <view class="team-list_container">
   <t-navbar t-class="navBar" left-arrow title="团队管理" />
   <view class="title">我管理的团队</view>
+    <!-- $TODO 团队列表页面对接 -->
   <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true">
     <block wx:for="{{admin}}">
       <t-cell hover arrow bindtap="goTeamInfo" data-flag="admin" data-id="{{item.id}}">

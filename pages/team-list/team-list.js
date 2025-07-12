@@ -13,6 +13,7 @@ Page({
   },
   getTeamsList() {
     getTeamsListApi().then(res => {
+      // $TODO 团队列表接口对接
       this.setData({
         admin: res.data.admin,
         user: res.data.user
