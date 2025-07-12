@@ -1,6 +1,7 @@
 <view class="work-team_container">
   <t-navbar t-class="navBar" left-arrow title="团队管理" />
   <view class="nav_bg"></view>
+  <!--  $TODO 我的团队页面对接 -->
   <t-cell-group t-class="team_nav" theme="card">
     <t-cell title="美之颜美学定制中心" description="团队编号：0152415">
       <t-avatar slot="left-icon" size="large" image="../../static/icon/bg-top.png"></t-avatar>
@@ -44,6 +45,8 @@
         <view class="qr_code_text">扫一扫，快速加入我们的团队</view>
       </view>
     </view>
-    <button style="display: {{qrFlag ? '' : 'none'}};" slot="confirm-btn" class="save_invite" bindtap="saveInviteCode">保存邀请码</button>
+    <button style="display: {{qrFlag ? '' : 'none'}};" slot="confirm-btn" class="save_invite" bindtap="saveInviteCode">
+      保存邀请码
+    </button>
   </t-dialog>
 </view>

@@ -1,14 +1,17 @@
 import drawQrcode from '../../utils/weapp.qrcode.min'
 import tool from '../../utils/tools'
+import { getMyTeamsApi } from '../../api/api'
 Page({
   data: {
     qrCodeBox: false,
     qrFlag: false,
-    editFlag: false
+    editFlag: false,
+    id: '',
+    teamInfo: null, // 团队详情
   },
   onLoad(options) {
-    let { editFlag } = options
-    this.setData({ editFlag: editFlag === 'self' ? true : false })
+    let { editFlag, id } = options
+    this.setData({ editFlag: editFlag === 'admin' ? true : false, id })
   },
   backClick() {
     wx.navigateBack({
@@ -71,6 +74,12 @@ Page({
       }
     })
   }, 800),
+  getMyTeams() {
+    getMyTeamsApi(this.data.id).then(res => {
+      // $TODO 我的团队接口对接
+      this.setData({ teamInfo: res })
+    })
+  },
   goMember() {
     wx.navigateTo({
       url: '/pages/team-members/team-members'
