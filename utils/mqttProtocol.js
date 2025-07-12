@@ -2,7 +2,7 @@
  * @Author: 17630921248 1245634367@qq.com
  * @Date: 2025-06-18 13:25:55
  * @LastEditors: 17630921248 1245634367@qq.com
- * @LastEditTime: 2025-07-11 15:52:13
+ * @LastEditTime: 2025-07-12 09:42:02
  * @FilePath: \medical\utils\mqttProtocol.js
  * @Description: Fuck Bug
  * 微信：lizx2066
@@ -112,7 +112,7 @@ class ProtocolHelper {
   controlDevice(topic, start, minutes) {
     const startHex = start ? '10' : '00';
     const timeHex = minutes.toString(16).padStart(2, '0').toUpperCase();
-    const dataHex = startHex + '000' + timeHex; // 10003C
+    const dataHex = startHex + '00' + timeHex; // 10003C
     this.send(FunctionCode.ControlDevice, dataHex, topic);
   }
 }

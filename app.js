@@ -7,6 +7,7 @@ App({
   onLaunch() {
     this.eventCenter = eventCenter;
     wx.eventCenter = eventCenter; // 挂载到 wx 上
+    this.testSetKey()
     this.getAliPHFont()
     this.getSystemInfo()
     this.verifyUserLogin()
@@ -83,7 +84,7 @@ App({
             const result = this.globalData.mqttQrotocol.parse(message);
             console.log('解析结果:', result);
             // wx.eventCenter.emit('mqtt-message', result);
-            eventCenter.emit('mqtt-message', { topic, message: message });
+            eventCenter.emit('mqtt-message', { topic, message: { result, msg: message } });
           },
         }
       );
@@ -142,5 +143,9 @@ App({
     this.globalData.token = null;
     this.globalData.mqttClient?.disconnect?.();
     this.globalData.mqttClient = null
+  },
+  testSetKey() {
+    wx.setStorageSync('token', 'token1232132312')
+    wx.setStorageSync('userInfo', 'userInfo123123123')
   }
 })

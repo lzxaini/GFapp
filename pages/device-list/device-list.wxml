@@ -28,7 +28,7 @@
           <view class="bd05"></view>
           <view class="date">注册时间：2022/03/05 10:05</view>
         </view>
-        <view class="device_item">
+        <!-- <view class="device_item">
           <image class="card_bg" src="../../static/icon/card_bg.png" />
           <view class="go_info">
             查看使用记录
@@ -41,7 +41,7 @@
           </t-cell>
           <view class="bd05"></view>
           <view class="date">注册时间：2022/03/05 10:05</view>
-        </view>
+        </view> -->
       </block>
     </view>
   </scroll-view>

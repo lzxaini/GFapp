@@ -18,7 +18,8 @@ Page({
   // 收到消息
   handleMsg({ topic, message }) {
     console.log('设备列表收到消息：', topic, message);
-    if (topic === `req/${this.data.deviceId}` && message === '1000000FF') {
+    let { msg, result } = message
+    if (topic === `/resp/${this.data.deviceId}` && (result.funcCode === 5 && result.state === 2 || msg === '100000FF')) {
       Message.success({
         context: this,
         offset: [90, 32],
@@ -34,6 +35,6 @@ Page({
   },
   exitDevice() {
     const mqttQrotocol = app.globalData.mqttQrotocol;
-    mqttQrotocol.controlDevice(`resp/${this.data.deviceId}`, false, 255);
+    mqttQrotocol.controlDevice(`/req/${this.data.deviceId}`, false, 255);
   }
 })
