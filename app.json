@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/device-list/device-list",
+    "pages/search-page/search-page",
     "pages/index/index",
     "pages/login/login",
     "pages/use-history/use-history",

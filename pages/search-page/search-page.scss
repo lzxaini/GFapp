@@ -1,0 +1,77 @@
+.work-team_container {
+	width: 100vw;
+	height: 100vh;
+	background-color: #f5f7fb;
+	.navBar {
+		--td-navbar-bg-color: #888bf4;
+		--td-navbar-color: #fff;
+		--td-navbar-capsule-border-color: #e3e6ea !important;
+	}
+	.search_box {
+		display: flex;
+		align-items: center;
+		padding: 32rpx 24rpx;
+		background-color: #ffffff;
+		.item-input {
+			padding: 20rpx 30rpx;
+			border-radius: 19rpx;
+			background: #f5f7fb;
+			margin-right: 28rpx;
+			--td-input-placeholder-text-font-size: 26rpx;
+		}
+		.extra {
+			font-family: AlibabaPuHuiTi3;
+			font-size: 28rpx;
+			font-weight: normal;
+			color: #1c2023;
+		}
+	}
+	.search_history {
+		width: 100%;
+		.search_title {
+			width: calc(100% - 48rpx);
+			margin: 32rpx 24rpx 14rpx 24rpx;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			.title {
+				font-family: AlibabaPuHuiTi3;
+				font-size: 30rpx;
+				font-weight: 300;
+				color: #1c2023;
+			}
+		}
+		.history_tag {
+			display: flex;
+			flex-wrap: wrap;
+			// justify-content: space-between;
+			align-items: center;
+			.tag_item {
+				margin: 10rpx 12rpx;
+				padding: 12rpx 30rpx;
+				border-radius: 20rpx;
+				font-size: 24rpx;
+				font-weight: normal;
+				text-align: center;
+				font-family: AlibabaPuHuiTi3;
+				color: #c5c8cb;
+				background-color: #ffffff;
+			}
+			// .tag_item:not(:first-child) {
+			// 	margin: 10rpx 12rpx;
+			// }
+		}
+	}
+	.gf_logo {
+		position: fixed;
+		bottom: calc(248rpx + env(safe-area-inset-bottom));
+		left: 50%;
+		transform: translate(-50%, 0%);
+		mix-blend-mode: color-burn;
+		opacity: 1;
+		.gf_logo_bg {
+			width: 560rpx;
+			height: 560rpx;
+		}
+	}
+}
