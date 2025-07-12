@@ -1,7 +1,16 @@
 
+import { getDeviceListApi } from '../../api/api'
 const app = getApp()
 Page({
   data: {
+    deviceList: []
+  },
+  // 设备列表
+  getDeviceList() {
+    // $TODO 设备列表接口对接
+    getDeviceListApi().then(res => {
+      this.setData({ deviceList: res.data })
+    })
   },
   scanCodeActivation(e) {
     console.log("🥵 ~ scanCodeActivation ~ e: ", e)
