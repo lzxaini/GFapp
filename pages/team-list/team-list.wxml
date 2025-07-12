@@ -3,7 +3,7 @@
   <view class="title">我管理的团队</view>
   <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true">
     <block wx:for="{{admin}}">
-      <t-cell hover arrow bindtap="goTeamInfo" data-flag="self">
+      <t-cell hover arrow bindtap="goTeamInfo" data-flag="admin" data-id="{{item.id}}">
         <image slot="left-icon" class="item_img" src="{{item.avatar}}" />
         <view slot="title" class="cell_title">{{item.name}}</view>
         <view slot="description" class="description">
@@ -16,7 +16,7 @@
   <view class="title">我加入的团队</view>
   <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true">
     <block wx:for="{{user}}">
-      <t-cell hover arrow bindtap="goTeamInfo" data-flag="other">
+      <t-cell hover arrow bindtap="goTeamInfo" data-flag="user" data-flag="user" data-id="{{item.id}}">
         <image slot="left-icon" class="item_img" src="{{item.avatar}}" />
         <view slot="title" class="cell_title">{{item.name}}</view>
         <view slot="description" class="description">
