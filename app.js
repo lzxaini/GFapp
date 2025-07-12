@@ -52,7 +52,7 @@ App({
       this.globalData.userInfo = userInfo;
       this.globalData.token = token;
       this.initMqtt(userInfo); // 登录状态下自动连接 MQTT
-      wx.reLaunch({
+      wx.reLaunch({ // $TODO 需要修改回index去
         url: '/pages/device-list/device-list'
       });
     }
@@ -92,9 +92,6 @@ App({
       // 绑定到 App 全局
       this.globalData.mqttClient = mqttClient;
     }
-    // wx.reLaunch({
-    //   url: '/pages/index/index'
-    // })
   },
   /**
    * 获取用户信息
@@ -144,7 +141,7 @@ App({
     this.globalData.mqttClient?.disconnect?.();
     this.globalData.mqttClient = null
   },
-  testSetKey() {
+  testSetKey() { // $DEL 待去除
     wx.setStorageSync('token', 'token1232132312')
     wx.setStorageSync('userInfo', 'userInfo123123123')
   }
