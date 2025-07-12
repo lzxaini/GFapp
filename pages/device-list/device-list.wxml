@@ -1,5 +1,5 @@
 <view class="device-list_container">
-  <t-navbar t-class="navBar" left-arrow title="团队管理" />
+  <t-navbar t-class="navBar" left-arrow title="我的设备" />
   <view class="nav_bg"></view>
   <t-cell-group t-class="device_nav" theme="card">
     <t-cell title="美之颜美学定制中心">
@@ -14,6 +14,7 @@
       <block wx:for="{{1}}">
         <view class="device_item">
           <image class="card_bg" src="../../static/icon/card_bg.png" />
+          <!-- $TODO  goHistoryInfo页面对接 data-serialNumber="{{item.serialNumber}}" -->
           <view class="go_info" bindtap="goHistoryInfo">
             查看使用记录
             <t-icon name="chevron-right-double" size="12" />

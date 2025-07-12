@@ -1,19 +1,25 @@
+import { getDeviceInfoApi } from '../../api/api'
 const app = getApp()
 Page({
   data: {
-    statusBarHeight: app.globalData.statusBarHeight,
-    capsuleHeight: app.globalData.capsuleHeight,
-    tableData: [
-      { name: '张三', age: 23 },
-      { name: '李四', age: 28 },
-      { name: '王五', age: 21 }
-    ],
-    activeValue: '0',
+    serialNumber: '',
+    historyList: []
+  },
+  onLoad(options) {
+    let { serialNumber } = options
+    this.setData({ serialNumber })
   },
   tabClick(e) {
     const value = e.detail.value;
     this.setData({
       activeValue: value
     });
+  },
+  // 设备使用记录
+  getDeviceInfo() {
+    // $TODO 设备使用记录接口对接
+    getDeviceInfoApi(this.data.serialNumber).then(res => {
+      this.setData({ historyList: res.data })
+    })
   }
 })

@@ -2,7 +2,8 @@
   <t-navbar t-class="navBar" left-arrow title="使用记录" />
   <!-- 滚动列表 -->
   <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true">
-    <block wx:for="{{10}}" wx:key="index" wx:if="{{activeValue === '0'}}">
+    <!-- $TODO 设备使用记录页面对接historyList -->
+    <block wx:for="{{10}}" wx:key="index">
       <view class="card_item">
         <view class="nav_top">
           <view class="title_box">

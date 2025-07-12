@@ -2,7 +2,7 @@
  * @Author: lzx
  * @Date: 2024-01-01 13:42:13
  * @LastEditors: 17630921248 1245634367@qq.com
- * @LastEditTime: 2025-07-12 13:06:00
+ * @LastEditTime: 2025-07-12 13:18:40
  * @Description: Fuck Bug
  * @FilePath: \medical\api\api.js
  */
@@ -125,6 +125,24 @@ export function getTeamsMemberListApi() {
 export function getDeviceListApi() {
   return request({
     url: "/gf/device/list",
+    method: 'get',
+  })
+}
+/**
+ * 设备详情
+ */
+export function getDeviceInfoApi(serialNumber) {
+  return request({
+    url: `/gf/device/uid/${serialNumber}`,
+    method: 'get',
+  })
+}
+/**
+ * 设备激活数量
+ */
+export function getDeviceActivatedApi(teamId) {
+  return request({
+    url: `/gf/device/activated/${teamId}`,
     method: 'get',
   })
 }

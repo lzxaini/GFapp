@@ -1,5 +1,4 @@
-
-import { getDeviceListApi } from '../../api/api'
+import { getDeviceListApi, getDeviceActivatedApi } from '../../api/api'
 const app = getApp()
 Page({
   data: {
@@ -42,9 +41,17 @@ Page({
     });
   },
   // 去往使用记录
-  goHistoryInfo() {
+  goHistoryInfo(e) {
+    let { serialNumber } = e?.currentTarget.dataset
     wx.navigateTo({
-      url: '/pages/use-history/use-history',
+      url: `/pages/use-history/use-history?serialNumber=${serialNumber}`,
     });
+  },
+  // 设备激活
+  getDeviceActivated() {
+    // $TODO 设备激活数量记录接口对接
+    getDeviceActivatedApi(this.data.teamId).then(res => {
+      this.setData({ historyList: res.data })
+    })
   }
 })
