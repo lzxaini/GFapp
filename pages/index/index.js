@@ -1,7 +1,7 @@
 const app = getApp()
 const dayjs = require('dayjs')
 import {
-  addVisitorApi
+  activetionDeviceApi
 } from '../../api/api.js'
 import { onMqttReady } from '../../utils/mqttReady';
 import drawQrcode from '../../utils/weapp.qrcode.min'
@@ -76,6 +76,7 @@ Page({
         const { result } = res;
         if (result) {
           // 扫码成功
+          this.activetionDevice(result)
         } else {
           wx.showToast({
             title: '扫描失败！',
@@ -84,12 +85,28 @@ Page({
         }
       },
       fail: () => {
+      }
+    });
+  },
+  // 激活设备
+  activetionDevice(serialNumber) {
+    activetionDeviceApi(serialNumber).then(res => {
+      if (res.data.length < 1) {
+        wx.navigateTo({
+          url: `/pages/device-active/device-active?deviceId=${serialNumber}`,
+        });
+      }
+      if (res.data.length > 0) {
+        wx.navigateTo({
+          url: `/pages/device-bind/device-bind?deviceId=${serialNumber}`,
+        });
+      } else {
         wx.showToast({
-          title: '扫描失败！',
+          title: '系统错误！',
           icon: 'error'
         });
       }
-    });
+    })
   },
   drawUserQrcode() {
     let _this = this;

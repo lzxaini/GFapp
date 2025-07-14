@@ -2,7 +2,7 @@
  * @Author: lzx
  * @Date: 2024-01-01 13:42:13
  * @LastEditors: 17630921248 1245634367@qq.com
- * @LastEditTime: 2025-07-12 13:18:40
+ * @LastEditTime: 2025-07-14 13:55:17
  * @Description: Fuck Bug
  * @FilePath: \medical\api\api.js
  */
@@ -134,6 +134,24 @@ export function getDeviceListApi() {
 export function getDeviceInfoApi(serialNumber) {
   return request({
     url: `/gf/device/uid/${serialNumber}`,
+    method: 'get',
+  })
+}
+/**
+ * 激活设备
+ */
+export function activetionDeviceApi(serialNumber) {
+  return request({
+    url: `/gf/teams/check/${serialNumber}`,
+    method: 'get',
+  })
+}
+/**
+ * 绑定设备
+ */
+export function deviceBindApi(teamId, serialNumber) {
+  return request({
+    url: `/gf/teams/bind/${teamId}/${serialNumber}`,
     method: 'get',
   })
 }

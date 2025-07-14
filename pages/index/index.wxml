@@ -88,3 +88,4 @@
     取消
   </t-button>
 </t-dialog>
+<t-message id="t-message" />
