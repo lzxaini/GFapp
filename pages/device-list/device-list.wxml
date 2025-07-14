@@ -2,25 +2,24 @@
   <t-navbar t-class="navBar" left-arrow title="我的设备" />
   <view class="nav_bg"></view>
   <t-cell-group t-class="device_nav" theme="card">
-    <t-cell title="美之颜美学定制中心">
+    <t-cell title="{{userInfo.dept.deptName}}">
       <t-avatar slot="left-icon" size="large" image="../../static/icon/bg-top.png"></t-avatar>
-      <view slot="description" class="device_info">已激活：1/5</view>
+      <view slot="description" class="device_info">
+        已激活：{{historyList.activated}}/{{historyList.total}}
+      </view>
       <!-- <view slot="right-icon" class="right_box" bindtap="editTeam">编辑团队</view> -->
     </t-cell>
   </t-cell-group>
   <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true">
     <view class="device_grid">
-      <!-- $TODO 设备列表页面对接 -->
       <block wx:for="{{deviceList}}">
         <view class="device_item">
           <image class="card_bg" src="../../static/icon/card_bg.png" />
-          <!-- $TODO  goHistoryInfo页面对接 data-serialNumber="{{item.serialNumber}}" -->
-          <view class="go_info" bindtap="goHistoryInfo">
+          <view class="go_info" bindtap="goHistoryInfo" data-serialNumber="{{item.serialNumber}}">
             查看使用记录
             <t-icon name="chevron-right-double" size="12" />
           </view>
           <t-cell t-class="device_card" bordered="{{false}}" bindtap="scanCodeActivation" data-runningState="{{item.runningState}}">
-            <!-- $TODO 待接入数据后修改data-item="use" -->
             <view slot="left-icon" class="sacn_icon">
               <t-icon name="scan" size="15" color="#FFFFFF"></t-icon>
             </view>

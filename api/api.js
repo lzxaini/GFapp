@@ -159,9 +159,9 @@ export function deviceBindApi(teamId, serialNumber) {
 /**
  * 设备激活数量
  */
-export function getDeviceActivatedApi(teamId) {
+export function getDeviceActivatedApi(deptId) {
   return request({
-    url: `/gf/device/activated/${teamId}`,
+    url: `/gf/device/activated/${deptId}`,
     method: 'get',
   })
 }

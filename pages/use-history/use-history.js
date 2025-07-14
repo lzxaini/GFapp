@@ -7,7 +7,11 @@ Page({
   },
   onLoad(options) {
     let { serialNumber } = options
+    console.log("🥵 ~ onLoad ~ serialNumber: ", options)
     this.setData({ serialNumber })
+  },
+  onShow() {
+    this.getDeviceInfo()
   },
   tabClick(e) {
     const value = e.detail.value;
@@ -16,10 +20,10 @@ Page({
     });
   },
   // 设备使用记录
-  getDeviceInfo() {
+  getDeviceUseList() {
     // $TODO 设备使用记录接口对接
-    getDeviceInfoApi(this.data.serialNumber).then(res => {
-      this.setData({ historyList: res.data })
-    })
+    // getDeviceInfoApi(this.data.serialNumber).then(res => {
+    //   this.setData({ historyList: res.data })
+    // })
   }
 })

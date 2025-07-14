@@ -2,7 +2,7 @@
  * @Author: lzx
  * @Date: 2023-02-10 13:41:08
  * @LastEditors: 17630921248 1245634367@qq.com
- * @LastEditTime: 2025-07-14 16:35:05
+ * @LastEditTime: 2025-07-14 17:11:39
  * @Description: Fuck Bug
  * @FilePath: \medical\api\request.js
  */
@@ -51,6 +51,7 @@ export default function request(options) {
             duration: 3000,
             content: res.data.msg || `接口异常${res.data.code}!`,
           });
+          wx.hideLoading();
         }
       },
       fail(err) {
@@ -65,6 +66,7 @@ export default function request(options) {
           duration: 3000,
           content: msg,
         });
+        wx.hideLoading();
         reject(msg)
       }
     })
