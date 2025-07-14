@@ -16,11 +16,14 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom() {
-    let pageNum = ++this.data.pageObj.pageNum
-    this.setData({
-      'pageObj.pageNum': pageNum
-    })
-    this.getTeamsMemberList('bottom')
+    let { memberList, total } = this.data
+    if (memberList.length < total) {
+      let pageNum = ++this.data.pageObj.pageNum
+      this.setData({
+        'pageObj.pageNum': pageNum
+      })
+      this.getTeamsMemberList('bottom')
+    }
   },
   pullDownToRefresh() {
     this.setData({
