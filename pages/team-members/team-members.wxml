@@ -1,17 +1,17 @@
 <view class="team-members_container">
   <t-navbar t-class="navBar" left-arrow title="团队成员" />
   <!-- 滚动列表 -->
-  <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true">
+  <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="pullDownToRefresh">
     <t-cell t-class="list_item" wx:for="{{memberList}}" description="{{item.user.phonenumber}}" arrow>
       <t-avatar slot="left-icon" shape="round" size="large" image="{{item.user.avatar}}"></t-avatar>
       <view slot="title" class="title_box">
         <text class="title_text">{{item.user.nickName}}</text>
-        <view class="tag_box" slot="description" bindtap="testSetKey">
+        <view class="tag_box" slot="description">
           <image class="tag_icon" src="../../static/icon/admin.png" />
           <text class="tag_text">{{item.tagName}}</text>
         </view>
       </view>
     </t-cell>
-    <t-empty t-class="empty" t-class-image="empty_image" image="/static/icon/footer.png" description="糟糕，到底了" />
+    <t-empty t-class="empty" t-class-image="empty_image" image="/static/icon/footer.png" description="糟糕，到底了" bindtap="onReachBottom"/>
   </scroll-view>
 </view>

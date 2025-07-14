@@ -34,7 +34,7 @@
       <view style="display: {{qrFlag ? '' : 'none'}};">
         <t-cell t-class="qr_userInfo" title="{{teamInfo.deptName}}" bordered="{{false}}">
           <t-avatar slot="left-icon" size="medium" image="{{teamInfo.avatar}}"></t-avatar>
-          <view class="tag_box" slot="description" bindtap="testSetKey">
+          <view class="tag_box" slot="description">
             <image class="tag_icon" src="../../static/icon/admin.png" />
             <text class="tag_text">{{teamInfo.leaderName === 'admin' ? '管理员' : '用户'}}</text>
           </view>

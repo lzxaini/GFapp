@@ -1,15 +1,15 @@
 /*
  * @Author: lzx
  * @Date: 2023-02-10 13:41:08
- * @LastEditors: lzxaini 1245634367@qq.com
- * @LastEditTime: 2025-07-06 13:57:11
+ * @LastEditors: 17630921248 1245634367@qq.com
+ * @LastEditTime: 2025-07-14 16:35:05
  * @Description: Fuck Bug
- * @FilePath: \GFapp\api\request.js
+ * @FilePath: \medical\api\request.js
  */
 import Message from 'tdesign-miniprogram/message/index';
 //导入请求的域名
 import { baseURL } from './config.js'
-let ignoreUrl = ['getWechatUserInfo','sendMessageCode', 'messageCodeCheckLogin', '/mobileLogin', 'messageCodeModifyPassword'] // 需要忽略的url地址
+let ignoreUrl = ['getWechatUserInfo', 'sendMessageCode', 'messageCodeCheckLogin', '/mobileLogin', 'messageCodeModifyPassword'] // 需要忽略的url地址
 export default function request(options) {
   const srtUrl = options.url.replace(/\u200B/g, '')
   wx.showLoading({
@@ -18,7 +18,7 @@ export default function request(options) {
   });
   return new Promise((resolve, reject) => {
     wx.request({
-      url: baseURL+ srtUrl,
+      url: baseURL + srtUrl,
       method: options.method || 'post',
       data: options.data || null,
       header: {
@@ -59,10 +59,12 @@ export default function request(options) {
         if (err.errno === 5 || err.errMsg.indexOf('time out') != -1) {
           msg = "网络超时,请重试"
         }
-        wx.showToast({
-          title: msg,
-          icon: 'none'
-        })
+        Message.error({
+          context: this,
+          offset: [90, 32],
+          duration: 3000,
+          content: msg,
+        });
         reject(msg)
       }
     })
