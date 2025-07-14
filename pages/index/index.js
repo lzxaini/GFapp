@@ -46,7 +46,6 @@ Page({
     this.goServiceHistory = withLogin(this, this._goServiceHistory);
     // this. = withLogin(this, this._);
 
-
     onMqttReady(() => {
       this.subscribeTopic();
     });

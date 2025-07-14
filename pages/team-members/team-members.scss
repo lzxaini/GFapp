@@ -13,10 +13,26 @@
 				letter-spacing: 0rpx;
 				color: #1c2023;
 			}
-			.tag_icon {
+			.tag_box {
+				position: relative;
 				width: 140rpx;
 				height: 42rpx;
-				margin-left: 15rpx;
+				margin-top: 8rpx;
+				.tag_icon {
+					width: 100%;
+					height: 100%;
+				}
+				.tag_text {
+					position: absolute;
+					top: 50%;
+					left: 33%;
+					transform: translate(0%, -50%);
+					font-family: AlibabaPuHuiTi3;
+					font-size: 16rpx;
+					font-weight: normal;
+					color: #ffffff;
+					// background-color: #5151c6;
+				}
 			}
 		}
 	}

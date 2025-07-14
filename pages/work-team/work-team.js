@@ -13,6 +13,9 @@ Page({
     let { editFlag, id } = options
     this.setData({ editFlag: editFlag === 'admin' ? true : false, id })
   },
+  onShow() {
+    this.getMyTeams()
+  },
   backClick() {
     wx.navigateBack({
       delta: 1
@@ -24,7 +27,7 @@ Page({
       width: 240,
       height: 240,
       canvasId: 'myQrcode',
-      text: '123',
+      text: _this.data.teamInfo.teamCode,
       // v1.0.0+版本支持在二维码上绘制图片
       image: {
         imageResource: '../../static/icon/gf_logo_w.png', // 不支持网络图片，如果非得网络图片，需要使用wx.getImageInfo 去获取图片信息，我这边往中间加的一个白图然后采用覆盖的方式
@@ -76,8 +79,9 @@ Page({
   }, 800),
   getMyTeams() {
     getMyTeamsApi(this.data.id).then(res => {
+      console.log("🥵 ~ getMyTeamsApi ~ res: ", res)
       // $TODO 我的团队接口对接
-      this.setData({ teamInfo: res })
+      this.setData({ teamInfo: res.data })
     })
   },
   goMember() {

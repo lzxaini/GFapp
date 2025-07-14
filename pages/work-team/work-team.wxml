@@ -1,10 +1,10 @@
 <view class="work-team_container">
   <t-navbar t-class="navBar" left-arrow title="团队管理" />
   <view class="nav_bg"></view>
-  <!--  $TODO 我的团队页面对接 -->
+  <!-- $TODO 我的团队页面对接 -->
   <t-cell-group t-class="team_nav" theme="card">
-    <t-cell title="美之颜美学定制中心" description="团队编号：0152415">
-      <t-avatar slot="left-icon" size="large" image="../../static/icon/bg-top.png"></t-avatar>
+    <t-cell title="{{teamInfo.deptName}}" description="团队编号：{{teamInfo.teamCode}}">
+      <t-avatar slot="left-icon" size="large" image="{{teamInfo.avatar}}"></t-avatar>
       <view slot="right-icon" class="right_box" bindtap="editTeam" wx:if="{{editFlag}}">编辑团队</view>
     </t-cell>
   </t-cell-group>
@@ -32,12 +32,15 @@
     <view slot="content" class="dialog_content">
       <t-loading wx:if="{{!qrFlag}}" theme="circular" size="40rpx" text="正在加载中..." class="wrapper" />
       <view style="display: {{qrFlag ? '' : 'none'}};">
-        <t-cell t-class="qr_userInfo" title="美之颜美学定制中心" bordered="{{false}}">
-          <t-avatar slot="left-icon" size="medium" image="../../static/icon/bg-top.png"></t-avatar>
-          <image slot="description" class="tag_icon" src="../../static/icon/admin.png" />
+        <t-cell t-class="qr_userInfo" title="{{teamInfo.deptName}}" bordered="{{false}}">
+          <t-avatar slot="left-icon" size="medium" image="{{teamInfo.avatar}}"></t-avatar>
+          <view class="tag_box" slot="description" bindtap="testSetKey">
+            <image class="tag_icon" src="../../static/icon/admin.png" />
+            <text class="tag_text">{{teamInfo.leaderName === 'admin' ? '管理员' : '用户'}}</text>
+          </view>
         </t-cell>
         <view class="institution_box">
-          <text class="institution">所属机构：美之颜美学定制中心</text>
+          <text class="institution">所属机构：{{teamInfo.deptName}}</text>
         </view>
         <view class="qr_image_box">
           <canvas class="qr_image" canvas-id="myQrcode"></canvas>

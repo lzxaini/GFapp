@@ -62,9 +62,26 @@
 		--td-cell-horizontal-padding: 0;
 		--td-cell-vertical-padding: 0;
 
-		.tag_icon {
+		.tag_box {
+			position: relative;
 			width: 140rpx;
 			height: 42rpx;
+			margin-top: 8rpx;
+			.tag_icon {
+				width: 100%;
+				height: 100%;
+			}
+			.tag_text {
+				position: absolute;
+				top: 50%;
+				left: 40%;
+				transform: translate(0%, -50%);
+				font-family: AlibabaPuHuiTi3;
+				font-size: 18rpx;
+				font-weight: normal;
+				color: #ffffff;
+				// background-color: #5151c6;
+			}
 		}
 	}
 	.dialog_content {
