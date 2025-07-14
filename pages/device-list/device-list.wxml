@@ -11,7 +11,7 @@
   <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true">
     <view class="device_grid">
       <!-- $TODO 设备列表页面对接 -->
-      <block wx:for="{{1}}">
+      <block wx:for="{{deviceList}}">
         <view class="device_item">
           <image class="card_bg" src="../../static/icon/card_bg.png" />
           <!-- $TODO  goHistoryInfo页面对接 data-serialNumber="{{item.serialNumber}}" -->
@@ -19,16 +19,16 @@
             查看使用记录
             <t-icon name="chevron-right-double" size="12" />
           </view>
-          <t-cell t-class="device_card" bordered="{{false}}" bindtap="scanCodeActivation">
+          <t-cell t-class="device_card" bordered="{{false}}" bindtap="scanCodeActivation" data-runningState="{{item.runningState}}">
             <!-- $TODO 待接入数据后修改data-item="use" -->
             <view slot="left-icon" class="sacn_icon">
               <t-icon name="scan" size="15" color="#FFFFFF"></t-icon>
             </view>
             <view slot="title" class="card_title">设备ID</view>
-            <view slot="description" class="card_title">8999999999999999</view>
+            <view slot="description" class="card_title">{{item.serialNumber}}</view>
           </t-cell>
           <view class="bd05"></view>
-          <view class="date">注册时间：2022/03/05 10:05</view>
+          <view class="date">注册时间：{{item.createTime}}</view>
         </view>
         <!-- <view class="device_item">
           <image class="card_bg" src="../../static/icon/card_bg.png" />
