@@ -1,7 +1,7 @@
 <view class="team-list_container">
   <t-navbar t-class="navBar" left-arrow title="团队管理" />
   <view class="title">我管理的团队</view>
-    <!-- $TODO 团队列表页面对接 -->
+  <!-- $TODO 团队列表页面对接 -->
   <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true">
     <block wx:for="{{admin}}">
       <t-cell hover arrow bindtap="goTeamInfo" data-flag="admin" data-id="{{item.id}}">
@@ -13,6 +13,9 @@
         </view>
       </t-cell>
     </block>
+    <view style="margin-top: 40rpx" wx:if="{{admin.length < 1}}">
+      <t-empty icon="{{empty}}" description="暂无管理团队" />
+    </view>
   </scroll-view>
   <view class="title">我加入的团队</view>
   <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true">
@@ -26,5 +29,8 @@
         </view>
       </t-cell>
     </block>
+    <view style="margin-top: 40rpx; font-size: 20rpx" wx:if="{{user.length < 1}}">
+      <t-empty icon="{{empty}}" description="暂无加入团队" />
+    </view>
   </scroll-view>
 </view>
