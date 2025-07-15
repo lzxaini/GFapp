@@ -23,7 +23,7 @@
       <!-- 表体 -->
       <!-- 滚动列表 -->
       <view class="scroll-view">
-        <block wx:for="{{tableData}}" wx:key="index" wx:if="{{pageObj.range === 1}}">
+        <block wx:for="{{tableData}}" wx:key="index">
           <view class="table-row">
             <view class="table-cell number-cell">
               <view class="text">+{{item.rechargeAmount}}</view>
@@ -33,7 +33,7 @@
             <view class="table-cell">{{item.currentBalance}}</view>
           </view>
         </block>
-        <block wx:for="{{tableData}}" wx:key="index" wx:if="{{pageObj.range === 2}}">
+        <!-- <block wx:for="{{tableData}}" wx:key="index" wx:if="{{pageObj.range === 2}}">
           <view class="table-row">
             <view class="table-cell number-cell">
               <view class="text">+{{item.rechargeAmount}}</view>
@@ -62,7 +62,7 @@
             <view class="table-cell">{{item.previousBalance}}</view>
             <view class="table-cell">{{item.currentBalance}}</view>
           </view>
-        </block>
+        </block> -->
       </view>
     </view>
   </scroll-view>

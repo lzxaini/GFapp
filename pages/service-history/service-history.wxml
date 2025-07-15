@@ -3,43 +3,43 @@
   <image src="../../static/icon/recharge_nav_bg.png" class="nav_bg" />
   <view class="history_title" style="top: {{capsuleHeight + 20}}px">服务记录</view>
   <scroll-view class="history_box" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="pullDownToRefresh">
-    <t-tabs t-class="history_tabs" t-class-active="active_style" t-class-item="item_style" defaultValue="{{activeValue}}" theme="tag" bind:click="tabClick">
-      <t-tab-panel wx:key="index" label="今日" value="0" />
-      <t-tab-panel wx:key="index" label="昨日" value="1" />
-      <t-tab-panel wx:key="index" label="本周" value="2" />
-      <t-tab-panel wx:key="index" label="本月" value="3" />
+    <t-tabs t-class="history_tabs" t-class-active="active_style" t-class-item="item_style" defaultValue="{{pageObj.range}}" theme="tag" bind:click="tabClick">
+      <t-tab-panel wx:key="index" label="今日" value="1" />
+      <t-tab-panel wx:key="index" label="昨日" value="2" />
+      <t-tab-panel wx:key="index" label="本周" value="3" />
+      <t-tab-panel wx:key="index" label="本月" value="4" />
     </t-tabs>
     <view class="title_box">
       <view class="title">服务记录</view>
-      <view class="cumulative">累计次数：20</view>
+      <view class="cumulative">累计次数：{{total}}</view>
     </view>
     <!-- 滚动列表 -->
     <view class="scroll-view">
-      <block wx:for="{{10}}" wx:key="index" wx:if="{{activeValue === '0'}}">
+      <block wx:for="{{tableData}}" wx:key="index">
         <view class="card_item">
           <view class="nav_top">
             <view class="title_box">
-              <image class="icon" src="../../static/icon/body_icon.png" />
-              <text class="text">脸部护理</text>
+              <image class="icon" src="../../static/icon/{{item.service == 1 ? 'face_icon.png' : 'body_icon.png'}}" />
+              <text class="text">{{item.serviceName}}</text>
             </view>
-            <view class="number">编号：2025052220523624782</view>
+            <view class="number">编号：{{item.code}}</view>
           </view>
           <view class="card_list">
             <view class="list_item">
               <text class="lable">设备ID</text>
-              <text class="info">86155607704730599</text>
+              <text class="info">{{item.serialNumber}}</text>
             </view>
             <view class="list_item">
               <text class="lable">美容师</text>
-              <text class="info">张三</text>
+              <text class="info">{{item.serviceUserName}}</text>
             </view>
             <view class="list_item">
               <text class="lable">服务时间</text>
-              <text class="info">2025-05-22 20:52:36</text>
+              <text class="info">{{item.startTime}}</text>
             </view>
           </view>
           <view class="card_icon">
-            <image class="icon" src="../../static/icon/use_ing.png" />
+            <image class="icon" src="../../static/icon/{{item.status == 1 ? 'use_ing.png' : 'use_success.png'}}" />
           </view>
         </view>
       </block>

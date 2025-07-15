@@ -2,7 +2,7 @@
  * @Author: lzx
  * @Date: 2024-01-01 13:42:13
  * @LastEditors: 17630921248 1245634367@qq.com
- * @LastEditTime: 2025-07-15 17:12:04
+ * @LastEditTime: 2025-07-15 17:25:39
  * @Description: Fuck Bug
  * @FilePath: \medical\api\api.js
  */
@@ -171,6 +171,16 @@ export function getDeviceActivatedApi(deptId) {
 export function getRechargeRecordsApi(data) {
   return request({
     url: `/gf/rechargeRecords/list`,
+    method: 'get',
+    data
+  })
+}
+/**
+ * 查询服务记录
+ */
+export function getServiceRecordsApi(data) {
+  return request({
+    url: `/gf/serviceRecords/list`,
     method: 'get',
     data
   })

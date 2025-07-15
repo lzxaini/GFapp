@@ -38,7 +38,6 @@ Page({
   },
   tabClick(e) {
     const value = e.detail.value;
-    console.log("🥵 ~ tabClick ~ value: ", value)
     this.setData({
       'pageObj.range': value
     });
