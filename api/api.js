@@ -185,3 +185,13 @@ export function getServiceRecordsApi(data) {
     data
   })
 }
+/**
+ * 查询白名单
+ */
+export function getWhitelistApi(data) {
+  return request({
+    url: `/gf/whitelist/list`,
+    method: 'get',
+    data
+  })
+}

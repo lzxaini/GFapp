@@ -1,38 +1,21 @@
 <view class="white-list_container">
   <t-navbar left-arrow title="白名单" />
   <!-- 滚动列表 -->
-  <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" style="padding-bottom: env(safe-area-inset-bottom)px;" wx:if="{{whiteList.length}}">
+  <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="pullDownToRefresh" wx:if="{{whiteList.length}}">
     <view class="list_item" wx:for="{{whiteList}}" wx:key="index">
       <view class="left_box">
-        <view class="title">测试</view>
-        <view class="number">9次/每天</view>
+        <view class="title">免费</view>
+        <view class="number">{{item.freeTimes}}次/{{item.frequencyName}}</view>
       </view>
       <view class="right_box">
         <view class="user_info">
           <image class="avatar" src="../../static/icon/gf_logo.png" />
-          <text class="text">1333333333333</text>
+          <text class="text">{{item.userName}}</text>
         </view>
-        <view class="location">地点：9次/每天9次/每天9次/每天</view>
-        <view class="identity">身份：测试水水水水每天</view>
+        <view class="location">地点：{{item.teamName}}</view>
+        <view class="identity">身份：{{item.tagName}}</view>
         <view class="icon_box">
           <image class="icon" src="../../static/icon/use_no.png" />
-        </view>
-      </view>
-    </view>
-    <view class="list_item" wx:key="index">
-      <view class="left_box  left_box_expire">
-        <view class="title">测试</view>
-        <view class="number">9次/每天</view>
-      </view>
-      <view class="right_box">
-        <view class="user_info">
-          <image class="avatar" src="../../static/icon/gf_logo.png" />
-          <text class="text">1333333333333</text>
-        </view>
-        <view class="location">地点：9次/每天9次/每天9次/每天</view>
-        <view class="identity">身份：测试水水水水每天</view>
-        <view class="icon_box">
-          <image class="icon" src="../../static/icon/expire.png" />
         </view>
       </view>
     </view>

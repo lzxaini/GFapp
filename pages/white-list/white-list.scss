@@ -1,8 +1,14 @@
 .white-list_container {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
 	width: 100vw;
 	height: 100vh;
 	background-color: #f1f3f4;
 	.scroll-view {
+		flex: 1;
+		min-height: 0;
+		padding-bottom: env(safe-area-inset-bottom);
 		background-color: #f1f3f4;
 		.list_item {
 			position: relative;
