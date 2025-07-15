@@ -1,4 +1,7 @@
 .service-history_container {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
 	position: relative;
 	width: 100vw;
 	height: 100vh;
@@ -21,7 +24,7 @@
 	}
 	.history_box {
 		flex: 1;
-		display: flex;
+		min-height: 0;
 		flex-direction: column;
 		position: relative;
 		z-index: 2;

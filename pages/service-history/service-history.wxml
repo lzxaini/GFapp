@@ -2,7 +2,7 @@
   <t-navbar t-class="navBar" left-arrow title="" />
   <image src="../../static/icon/recharge_nav_bg.png" class="nav_bg" />
   <view class="history_title" style="top: {{capsuleHeight + 20}}px">服务记录</view>
-  <view class="history_box">
+  <scroll-view class="history_box" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="pullDownToRefresh">
     <t-tabs t-class="history_tabs" t-class-active="active_style" t-class-item="item_style" defaultValue="{{activeValue}}" theme="tag" bind:click="tabClick">
       <t-tab-panel wx:key="index" label="今日" value="0" />
       <t-tab-panel wx:key="index" label="昨日" value="1" />
@@ -14,7 +14,7 @@
       <view class="cumulative">累计次数：20</view>
     </view>
     <!-- 滚动列表 -->
-    <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" style="padding-bottom: env(safe-area-inset-bottom)px;">
+    <view class="scroll-view">
       <block wx:for="{{10}}" wx:key="index" wx:if="{{activeValue === '0'}}">
         <view class="card_item">
           <view class="nav_top">
@@ -43,27 +43,6 @@
           </view>
         </view>
       </block>
-      <!-- <block wx:for="{{3}}" wx:key="index" wx:if="{{activeValue === '1'}}">
-          <view class="table-row">
-            <view class="table-cell">{{index + 1}}</view>
-            <view class="table-cell">2222</view>
-            <view class="table-cell">33333</view>
-          </view>
-        </block>
-        <block wx:for="{{20}}" wx:key="index" wx:if="{{activeValue === '2'}}">
-          <view class="table-row">
-            <view class="table-cell cell-content">{{index + 1}}</view>
-            <view class="table-cell cell-content">2222</view>
-            <view class="table-cell cell-content">33333</view>
-          </view>
-        </block>
-        <block wx:for="{{1}}" wx:key="index" wx:if="{{activeValue === '3'}}">
-          <view class="table-row">
-            <view class="table-cell cell-content">{{index + 1}}</view>
-            <view class="table-cell cell-content">2222</view>
-            <view class="table-cell cell-content">33333</view>
-          </view>
-        </block> -->
-    </scroll-view>
-  </view>
+    </view>
+  </scroll-view>
 </view>
