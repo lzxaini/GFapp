@@ -3,7 +3,7 @@
     <image class="bg_top" src="../../static/icon/bg-top.png"></image>
     <view class="logo_text" style="height: {{capsuleHeight}}px;" bindtap="testMq">光馥科美</view>
     <view class="logo_slogan">
-      <image class="gf_logo" src="../../static/icon/logo.png"></image>
+      <image class="gf_logo" src="{{ossUrl + userInfo.avatar}}"></image>
       <text class="slogan">光塑年轻力，馥养无龄美</text>
     </view>
   </view>
@@ -11,9 +11,9 @@
     <!-- 顶部区域 -->
     <t-cell t-class="user_info" title="{{userInfo.userName || '未登录'}}" bordered="{{false}}">
       <t-avatar slot="left-icon" size="large" image="../../static/icon/bg-top.png"></t-avatar>
-      <view class="tag_box" slot="description" bindtap="testSetKey">
+      <view class="tag_box" slot="description">
         <image class="tag_icon" src="../../static/icon/admin.png" />
-        <text class="tag_text">测试</text>
+        <text class="tag_text">{{userInfo.roles[0].roleName}}</text>
       </view>
       <view slot="right-icon" class="qr" bindtap="openQrCode">
         <t-icon name="qrcode" size="32"></t-icon>
@@ -45,18 +45,6 @@
         <image slot="left-icon" class="left_icon" src="../../static/icon/{{item.icon}}" />
       </t-cell>
     </block>
-    <!-- <t-cell t-class="from-item" t-class-left="left_center" title="" arrow hover>
-      <image slot="left-icon" class="left_icon" src="../../static/icon/my_2.png" />
-    </t-cell>
-    <t-cell t-class="from-item" t-class-left="left_center" title="" arrow hover>
-      <image slot="left-icon" class="left_icon" src="../../static/icon/my_3.png" />
-    </t-cell>
-    <t-cell t-class="from-item" t-class-left="left_center" title="" arrow hover>
-      <image slot="left-icon" class="left_icon" src="../../static/icon/my_4.png" />
-    </t-cell>
-    <t-cell t-class="from-item" t-class-left="left_center" title="" arrow hover bindtap="goListItem('/pages/my-edit/my-edit')">
-      <image slot="left-icon" class="left_icon" src="../../static/icon/my_5.png" />
-    </t-cell> -->
   </t-cell-group>
   <image class="device_bg" src="../../static/icon/device_bg.png" />
   <t-dialog visible="{{qrCodeBox}}" bind:close="closeDialog" close-on-overlay-click="{{true}}">
@@ -64,12 +52,16 @@
     <view slot="content" class="dialog_content">
       <t-loading wx:if="{{!qrFlag}}" theme="circular" size="40rpx" text="正在加载中..." class="wrapper" />
       <view style="display: {{qrFlag ? '' : 'none'}};">
-        <t-cell t-class="qr_userInfo" title="美之颜美学定制中心" bordered="{{false}}">
-          <t-avatar slot="left-icon" size="medium" image="../../static/icon/bg-top.png"></t-avatar>
-          <image slot="description" class="tag_icon" src="../../static/icon/admin.png" />
+        <t-cell t-class="qr_userInfo" title="{{userInfo.userName}}" bordered="{{false}}">
+          <t-avatar slot="left-icon" size="medium" image="{{ossUrl + userInfo.avatar}}"></t-avatar>
+          <!-- <image slot="description" class="tag_icon" src="../../static/icon/admin.png" /> -->
+          <view class="tag_box" slot="description">
+            <image class="tag_icon" src="../../static/icon/admin.png" />
+            <text class="tag_text">{{userInfo.roles[0].roleName}}</text>
+          </view>
         </t-cell>
         <view class="institution_box">
-          <text class="institution">所属机构：美之颜美学定制中心</text>
+          <text class="institution">所属机构：{{userInfo.dept.deptName}}</text>
         </view>
         <view class="qr_image_box">
           <canvas class="qr_image" canvas-id="myQrcode"></canvas>
