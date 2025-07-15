@@ -1,4 +1,7 @@
 .recharge-history_container {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
 	position: relative;
 	width: 100vw;
 	height: 100vh;
@@ -20,6 +23,8 @@
 		margin-left: 46rpx;
 	}
 	.history_box {
+		flex: 1;
+		min-height: 0;
 		position: relative;
 		z-index: 2;
 		width: calc(100% - 50rpx - 60rpx);
@@ -72,9 +77,8 @@
 		}
 
 		.table {
-			display: flex;
-			flex-direction: column;
 			width: 100%;
+			overflow: hidden;
 			border-radius: 16rpx;
 			background-color: #ffffff;
 			.table-header {
@@ -150,6 +154,10 @@
 			.table-row:last-child::before {
 				display: none;
 			}
+			// .scroll-view {
+			// 	flex: 1;
+			// 	min-height: 0;
+			// }
 		}
 	}
 }

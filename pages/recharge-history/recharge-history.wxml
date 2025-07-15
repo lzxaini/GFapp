@@ -2,16 +2,16 @@
   <t-navbar t-class="navBar" left-arrow title="" />
   <image src="../../static/icon/recharge_nav_bg.png" class="nav_bg" />
   <view class="history_title" style="top: {{capsuleHeight + 20}}px">充值记录</view>
-  <view class="history_box">
-    <t-tabs t-class="history_tabs" t-class-active="active_style" t-class-item="item_style" defaultValue="{{activeValue}}" theme="tag" bind:click="tabClick">
-      <t-tab-panel wx:key="index" label="今日" value="0" />
-      <t-tab-panel wx:key="index" label="昨日" value="1" />
-      <t-tab-panel wx:key="index" label="本周" value="2" />
-      <t-tab-panel wx:key="index" label="本月" value="3" />
+  <scroll-view class="history_box" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="pullDownToRefresh">
+    <t-tabs t-class="history_tabs" t-class-active="active_style" t-class-item="item_style" defaultValue="{{pageObj.range}}" theme="tag" bind:click="tabClick">
+      <t-tab-panel wx:key="index" label="今日" value="{{1}}" />
+      <t-tab-panel wx:key="index" label="昨日" value="{{2}}" />
+      <t-tab-panel wx:key="index" label="本周" value="{{3}}" />
+      <t-tab-panel wx:key="index" label="本月" value="{{4}}" />
     </t-tabs>
     <view class="title_box">
       <view class="title">充值记录</view>
-      <view class="cumulative">累计次数：20</view>
+      <view class="cumulative">累计次数：{{total}}</view>
     </view>
     <view class="table">
       <!-- 表头 -->
@@ -22,39 +22,48 @@
       </view>
       <!-- 表体 -->
       <!-- 滚动列表 -->
-      <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" style="padding-bottom: env(safe-area-inset-bottom)px;">
-        <block wx:for="{{5}}" wx:key="index" wx:if="{{activeValue === '0'}}">
+      <view class="scroll-view">
+        <block wx:for="{{tableData}}" wx:key="index" wx:if="{{pageObj.range === 1}}">
           <view class="table-row">
             <view class="table-cell number-cell">
-              <view class="text">+10</view>
-              <view class="date">2022/05/05 10:05</view>
+              <view class="text">+{{item.rechargeAmount}}</view>
+              <view class="date">{{item.rechargeTime}}</view>
             </view>
-            <view class="table-cell">2222</view>
-            <view class="table-cell">33333</view>
+            <view class="table-cell">{{item.previousBalance}}</view>
+            <view class="table-cell">{{item.currentBalance}}</view>
           </view>
         </block>
-        <block wx:for="{{3}}" wx:key="index" wx:if="{{activeValue === '1'}}">
+        <block wx:for="{{tableData}}" wx:key="index" wx:if="{{pageObj.range === 2}}">
           <view class="table-row">
-            <view class="table-cell">{{index + 1}}</view>
-            <view class="table-cell">2222</view>
-            <view class="table-cell">33333</view>
+            <view class="table-cell number-cell">
+              <view class="text">+{{item.rechargeAmount}}</view>
+              <view class="date">{{item.rechargeTime}}</view>
+            </view>
+            <view class="table-cell">{{item.previousBalance}}</view>
+            <view class="table-cell">{{item.currentBalance}}</view>
           </view>
         </block>
-        <block wx:for="{{20}}" wx:key="index" wx:if="{{activeValue === '2'}}">
+        <block wx:for="{{tableData}}" wx:key="index" wx:if="{{pageObj.range === 3}}">
           <view class="table-row">
-            <view class="table-cell cell-content">{{index + 1}}</view>
-            <view class="table-cell cell-content">2222</view>
-            <view class="table-cell cell-content">33333</view>
+            <view class="table-cell number-cell">
+              <view class="text">+{{item.rechargeAmount}}</view>
+              <view class="date">{{item.rechargeTime}}</view>
+            </view>
+            <view class="table-cell">{{item.previousBalance}}</view>
+            <view class="table-cell">{{item.currentBalance}}</view>
           </view>
         </block>
-        <block wx:for="{{1}}" wx:key="index" wx:if="{{activeValue === '3'}}">
+        <block wx:for="{{tableData}}" wx:key="index" wx:if="{{pageObj.range === 4}}">
           <view class="table-row">
-            <view class="table-cell cell-content">{{index + 1}}</view>
-            <view class="table-cell cell-content">2222</view>
-            <view class="table-cell cell-content">33333</view>
+            <view class="table-cell number-cell">
+              <view class="text">+{{item.rechargeAmount}}</view>
+              <view class="date">{{item.rechargeTime}}</view>
+            </view>
+            <view class="table-cell">{{item.previousBalance}}</view>
+            <view class="table-cell">{{item.currentBalance}}</view>
           </view>
         </block>
-      </scroll-view>
+      </view>
     </view>
-  </view>
+  </scroll-view>
 </view>
