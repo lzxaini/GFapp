@@ -17,7 +17,7 @@ Page({
    */
   onReachBottom() {
     let { memberList, total } = this.data
-    if (memberList.length <= total) {
+    if (memberList.length < total) {
       let pageNum = ++this.data.pageObj.pageNum
       this.setData({
         'pageObj.pageNum': pageNum

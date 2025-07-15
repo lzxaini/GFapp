@@ -22,7 +22,7 @@ Page({
   onReachBottom() {
     console.log('触底', )
     let { tableData, total } = this.data
-    if (tableData.length <= total) {
+    if (tableData.length < total) {
       let pageNum = ++this.data.pageObj.pageNum
       this.setData({
         'pageObj.pageNum': pageNum
