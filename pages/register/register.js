@@ -6,7 +6,7 @@ Page({
     marginBottom: app.globalData.marginBottom,
     userInfo: app.globalData.userInfo,
     ossUrl: app.globalData.ossUrl,
-    from: {
+    form: {
       avatar: '',
       userName: '',
       password: ''
@@ -22,7 +22,7 @@ Page({
   onLoad() {
     let { userName, phonenumber } = app.globalData.userInfo
     this.setData({
-      'from.userName': userName,
+      'form.userName': userName,
       'phonenumber': phonenumber
     })
   },
@@ -48,7 +48,7 @@ Page({
                 let data = JSON.parse(res.data)
                 console.log("🥵 ~ updateAvatar ~ data: ", data)
                 this.setData({
-                  'from.avatar': data.imgUrl
+                  'form.avatar': data.imgUrl
                 })
                 _this.message('success', '用户头像上传成功')
               } catch (error) {
@@ -68,13 +68,13 @@ Page({
   onInput(e) {
     let { value } = e?.detail
     this.setData({
-      'from.userName': value
+      'form.userName': value
     })
   },
   verifyOnInput() {
-    let { from } = this.data
+    let { form } = this.data
     // 新密码长度校验
-    if (!from.userName) {
+    if (!form.userName) {
       userNameError = '请输入用户名称！';
     }
   },
@@ -89,7 +89,7 @@ Page({
         break
       case 'password':
         this.setData({
-          'from.password': value
+          'form.password': value
         })
         break
       default:
@@ -104,8 +104,8 @@ Page({
   onSubmit() {
     let _this = this
     if (!this.verify()) return;
-    let { from } = this.data
-    registerUserInfoApi(from).then(res => {
+    let { form } = this.data
+    registerUserInfoApi(form).then(res => {
       wx.showLoading({
         title: '正在加载...',
         mask: true,
@@ -125,7 +125,7 @@ Page({
   },
   // 校验方法
   verify() {
-    const { from, new1 } = this.data;
+    const { form, new1 } = this.data;
     let new1Error = '';
     let passwordError = '';
     // 新密码长度校验
@@ -136,7 +136,7 @@ Page({
       new1Error = '新密码需包含字母和数字';
     }
     // 两次新密码一致性校验
-    if (new1 !== from.password) {
+    if (new1 !== form.password) {
       passwordError = '两次输入的新密码不一致';
     }
     this.setData({
