@@ -1,3 +1,4 @@
+import Message from 'tdesign-miniprogram/message/index';
 const app = getApp()
 Page({
   data: {

@@ -98,28 +98,33 @@ App({
    * @param {*} getUserInfoApi 接口请求
    */
   getUserInfo(getUserInfoApi) {
-    getUserInfoApi().then(res => {
-      if (res.code == 200) {
-        // 缓存用户信息
-        wx.setStorageSync('userInfo', res.user);
-        this.globalData.userInfo = res.user
-      } else {
-        console.log('错误：', res)
+    return new Promise((resolve, reject) => {
+      getUserInfoApi().then(res => {
+        if (res.code == 200) {
+          // 缓存用户信息
+          wx.setStorageSync('userInfo', JSON.stringify(res.user));
+          this.globalData.userInfo = res.user
+          resolve(true)
+        } else {
+          console.log('错误：', res)
+          wx.showToast({
+            title: '系统错误',
+            icon: 'error',
+            duration: 1500,
+            mask: true,
+          });
+          reject(false)
+        }
+      }).catch(err => {
+        console.log('错误：', err)
         wx.showToast({
           title: '系统错误',
           icon: 'error',
           duration: 1500,
           mask: true,
         });
-      }
-    }).catch(err => {
-      console.log('错误：', err)
-      wx.showToast({
-        title: '系统错误',
-        icon: 'error',
-        duration: 1500,
-        mask: true,
-      });
+        reject(false)
+      })
     })
   },
   // 获取字体

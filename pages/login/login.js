@@ -1,6 +1,6 @@
 import Message from 'tdesign-miniprogram/message/index';
 import {
-  getWechatUserInfoFun,
+  getWechatUserInfoApi,
   userLoginApi,
   getUserInfoApi,
   getCaptchaImageApi
@@ -26,6 +26,7 @@ Page({
   },
   // 获取手机号
   getPhoneNumber(e) {
+    console.log("🥵 ~ getPhoneNumber ~ e: ", e)
     this.setData({ showConfirm: false });
     if (e.detail.code) {
       console.log(e.detail.code) // 动态令牌
@@ -47,15 +48,32 @@ Page({
             tokenCode: res.code,
             phoneCode,
           }
-          getWechatUserInfoFun(params).then(res => {
+          getWechatUserInfoApi(params).then(async (res) => {
+            wx.showLoading({
+              title: '正在加载...',
+              mask: true,
+            });
             if (res.code === 200) {
-              wx.setStorageSync('userInfo', JSON.stringify(res.data))
+              let { adminFlag, token, mobile, openId, nickname } = res.data
+              app.globalData.token = `Bearer ${token}`
+              wx.setStorageSync('token', `Bearer ${token}`)
+              wx.setStorageSync('wechat', JSON.stringify({ mobile, openId, nickname }))
               _this.messageBox('success', '登录成功，正在加载...', 1500)
-              setTimeout(() => {
-                wx.reLaunch({
-                  url: '/pages/register/register',
-                })
-              }, 1500);
+              let infoFlag = await app.getUserInfo(getUserInfoApi);
+              if (infoFlag) {
+                setTimeout(() => {
+                  if (adminFlag) {
+                    wx.reLaunch({
+                      url: '/pages/index/index',
+                    })
+                  } else {
+                    wx.reLaunch({
+                      url: '/pages/register/register',
+                    })
+                  }
+                  wx.hideLoading();
+                }, 1000);
+              }
             } else {
               _this.messageBox('error', res.msg, 3000)
             }

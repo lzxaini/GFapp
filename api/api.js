@@ -2,31 +2,31 @@
  * @Author: lzx
  * @Date: 2024-01-01 13:42:13
  * @LastEditors: 17630921248 1245634367@qq.com
- * @LastEditTime: 2025-07-15 17:25:39
+ * @LastEditTime: 2025-07-17 13:28:58
  * @Description: Fuck Bug
  * @FilePath: \medical\api\api.js
  */
 import request from "./request.js"
 
 /**
- * code获取微信accessToken
+ * 微信登录
  * @param {*} params 
  */
-export function getWechatUserInfoFun(params) {
+export function getWechatUserInfoApi(params) {
   return request({
-    url: "/oa/wechat/getWechatUserInfo",
+    url: "/wechat/getWechatUserInfo",
     method: 'post',
     data: params,
   })
 }
 /**
- * 手机号获取验证码
+ * 注册用户
  * @param {*} params 
  */
-export function getPhoneMessageCodeFun(params) {
+export function registerUserInfoApi(params) {
   return request({
-    url: "/sendMessageCode",
-    method: 'post',
+    url: "/system/user/profile",
+    method: 'PUT',
     data: params,
   })
 }

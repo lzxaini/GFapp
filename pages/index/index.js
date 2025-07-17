@@ -38,6 +38,9 @@ Page({
     isLogin: false
   },
   onLoad() {
+    this.setData({
+      userInfo: app.globalData.userInfo
+    });
     // 游客模式
     this.openQrCode = withLogin(this, this._openQrCode);
     this.scanCodeActivation = withLogin(this, this._scanCodeActivation);
