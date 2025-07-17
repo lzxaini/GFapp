@@ -33,3 +33,4 @@
     </block>
   </scroll-view>
 </view>
+<t-message id="t-message" />

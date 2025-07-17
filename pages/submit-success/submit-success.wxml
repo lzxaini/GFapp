@@ -9,3 +9,4 @@
   </view>
   <button style="margin-bottom: {{marginBottom}}" class="save_btn" bindtap="goIndexx">返回首页</button>
 </view>
+<t-message id="t-message" />

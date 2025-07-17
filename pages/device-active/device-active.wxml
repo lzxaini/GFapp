@@ -25,3 +25,4 @@
     <view class="info" wx:if="{{deviceFlag}}">请在设备端选择服务项目</view>
   </view>
 </view>
+<t-message id="t-message" />

@@ -22,3 +22,4 @@
     <image class="gf_logo_bg" src="../../static/icon/gf_logo.png" />
   </view>
 </view>
+<t-message id="t-message" />

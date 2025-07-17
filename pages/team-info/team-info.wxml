@@ -52,3 +52,4 @@
   </view>
   <button class="save_btn" bindtap="onSubmit">保存</button>
 </view>
+<t-message id="t-message" />

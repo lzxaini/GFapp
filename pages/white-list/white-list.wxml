@@ -25,3 +25,4 @@
     扫码授权
   </button>
 </view>
+<t-message id="t-message" />
