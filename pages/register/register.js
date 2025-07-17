@@ -71,15 +71,6 @@ Page({
       'form.userName': value
     })
   },
-  verifyOnInput() {
-    let { form } = this.data
-    // 新密码长度校验
-    if (!form.userName) {
-      this.setData({
-        userNameError: '请输入用户名称！'
-      })
-    }
-  },
   onPasswordInput(e) {
     let { type } = e?.currentTarget?.dataset
     let { value } = e?.detail
@@ -113,7 +104,7 @@ Page({
         mask: true,
       });
       if (res.code === 200) {
-        _this.message('error', '注册成功！', 1500)
+        _this.message('success', '注册成功！', 1500)
         setTimeout(() => {
           wx.reLaunch({
             url: '/pages/index/index'
@@ -128,8 +119,13 @@ Page({
   // 校验方法
   verify() {
     const { form, new1 } = this.data;
+    let userNameError = '';
     let new1Error = '';
     let passwordError = '';
+    // 用户名称不能为空
+    if (!form.userName) {
+      userNameError = '请输入用户名称！';
+    }
     // 新密码长度校验
     if (!new1 || new1.length < 8) {
       new1Error = '新密码不能少于8位';
@@ -142,11 +138,12 @@ Page({
       passwordError = '两次输入的新密码不一致';
     }
     this.setData({
+      userNameError,
       new1Error,
       passwordError
     });
     // 返回校验是否通过
-    return !new1Error && !passwordError;
+    return !userNameError && !new1Error && !passwordError;
   },
   passwordFlag(e) {
     let { type, flag } = e?.currentTarget?.dataset

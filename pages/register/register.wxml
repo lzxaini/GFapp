@@ -4,7 +4,7 @@
     <view class="lable">个人头像</view>
     <image class="avatar" src="{{ ossUrl + form.avatar  || '../../static/icon/gf_logo.png'}}" />
   </view>
-  <t-input t-class="item" placeholder="请输入您的用户姓名" t-class-tips="errMsg" value="{{form.userName}}" type="text" tips="{{userNameError}}" bindchange="onInput" bindblur="verifyOnInput" confirm-type="next" borderless></t-input>
+  <t-input t-class="item" placeholder="请输入您的用户姓名" t-class-tips="errMsg" value="{{form.userName}}" type="text" tips="{{userNameError}}" bindchange="onInput" bindblur="verify" confirm-type="next" borderless></t-input>
   <t-input t-class="item" value="{{phonenumber}}" placeholder="请输入您的手机号码" disabled></t-input>
   <t-input t-class="item" t-class-tips="errMsg" slot="note" placeholder="请输入您的新密码" value="{{new1}}" type="{{new1Flag ? 'text' : 'password'}}" tips="{{new1Error}}" bindchange="onPasswordInput" bindblur="verify" data-type="new1" confirm-type="next" borderless>
     <t-icon slot="suffix" name="{{new1Flag ? 'browse' : 'browse-off'}}" size="40rpx" data-type="new1" data-flag="{{new1Flag}}" bind:click="passwordFlag" />
