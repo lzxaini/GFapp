@@ -82,6 +82,7 @@ Page({
     return !userNameError
   },
   onSubmit() {
+    // $BUG 这里貌似有问题，提交修改个人信息的上海，如果不带上手机号，手机号等会被更新为null
     let _this = this
     if (!this.verify()) return;
     let { form } = this.data
