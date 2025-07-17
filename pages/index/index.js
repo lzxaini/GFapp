@@ -26,11 +26,11 @@ Page({
     }, {
       title: '运营管理',
       icon: 'my_3.png',
-      url: '/pages/work-team/work-team'
+      url: ''
     }, {
       title: '使用指南',
       icon: 'my_4.png',
-      url: '/pages/work-team/work-team'
+      url: ''
     }, {
       title: '设置',
       icon: 'my_5.png',
