@@ -2,7 +2,7 @@
   <t-navbar t-class="navBar" left-arrow title="我的设备" />
   <view class="nav_bg"></view>
   <t-cell-group t-class="device_nav" theme="card">
-    <t-cell title="{{userInfo.dept.deptName}}">
+    <t-cell title="{{userInfo.dept.deptName || '暂无信息'}}">
       <t-avatar slot="left-icon" size="large" image="../../static/icon/bg-top.png"></t-avatar>
       <view slot="description" class="device_info">
         已激活：{{historyList.activated}}/{{historyList.total}}

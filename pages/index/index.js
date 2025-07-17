@@ -1,7 +1,8 @@
 const app = getApp()
 const dayjs = require('dayjs')
 import {
-  activetionDeviceApi
+  activetionDeviceApi,
+  getUserInfoApi
 } from '../../api/api.js'
 import { onMqttReady } from '../../utils/mqttReady';
 import drawQrcode from '../../utils/weapp.qrcode.min'
@@ -38,9 +39,9 @@ Page({
     isLogin: false
   },
   onLoad() {
-    this.setData({
-      userInfo: app.globalData.userInfo
-    });
+    // this.setData({
+    //   userInfo: app.globalData.userInfo
+    // });
     // 游客模式
     this.openQrCode = withLogin(this, this._openQrCode);
     this.scanCodeActivation = withLogin(this, this._scanCodeActivation);
@@ -54,6 +55,15 @@ Page({
       this.subscribeTopic();
     });
     wx.eventCenter.on('mqtt-message', this.handleMsg);
+  },
+  onShow() {
+    app.getUserInfo(getUserInfoApi).then(res => {
+      if (res) {
+        this.setData({
+          userInfo: res
+        });
+      }
+    })
   },
   onUnload() {
     wx.eventCenter.off('mqtt-ready', this.subscribeTopic);
@@ -95,7 +105,7 @@ Page({
   // 激活设备
   activetionDevice(serialNumber) {
     activetionDeviceApi(serialNumber).then(res => {
-      if (res.data.length < 1) {
+      if (res.data.length < 1 || res.code === 24003) {
         wx.navigateTo({
           url: `/pages/device-active/device-active?deviceId=${serialNumber}`,
         });

@@ -104,7 +104,7 @@ App({
           // 缓存用户信息
           wx.setStorageSync('userInfo', JSON.stringify(res.user));
           this.globalData.userInfo = res.user
-          resolve(true)
+          resolve(res.user)
         } else {
           console.log('错误：', res)
           wx.showToast({

@@ -2,7 +2,7 @@
  * @Author: lzx
  * @Date: 2023-02-10 13:41:08
  * @LastEditors: 17630921248 1245634367@qq.com
- * @LastEditTime: 2025-07-14 17:11:39
+ * @LastEditTime: 2025-07-17 14:10:28
  * @Description: Fuck Bug
  * @FilePath: \medical\api\request.js
  */
@@ -40,6 +40,8 @@ export default function request(options) {
               url: '/pages/login/login',
             })
           }, 1500)
+        } else if (res.data.code === 24003) { // 设备已激活
+          resolve(res.data)
         } else {
           // wx.showToast({
           //   title: res.data.msg || `接口异常${res.data.code}!`,
