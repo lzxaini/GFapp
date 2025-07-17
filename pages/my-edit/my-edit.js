@@ -1,9 +1,22 @@
 import Message from 'tdesign-miniprogram/message/index';
+import { registerUserInfoApi } from '../../api/api'
 const app = getApp()
 Page({
   data: {
     userInfo: app.globalData.userInfo,
-    ossUrl: app.globalData.ossUrl
+    ossUrl: app.globalData.ossUrl,
+    form: {
+      avatar: '',
+      userName: '',
+    },
+    userNameError: '',
+  },
+  onLoad() {
+    let { userName, avatar } = app.globalData.userInfo
+    this.setData({
+      'form.avatar': avatar,
+      'form.userName': userName,
+    })
   },
   goChangePassword() {
     wx.navigateTo({
@@ -31,7 +44,7 @@ Page({
               try {
                 let data = JSON.parse(res.data)
                 this.setData({
-                  'userInfo.avatar': data.imgUrl
+                  'form.avatar': data.imgUrl
                 })
                 _this.message('success', '用户头像上传成功')
               } catch (error) {
@@ -47,6 +60,48 @@ Page({
         _this.message('error', '未选择图片', 1500)
       }
     });
+  },
+  onNameInput(e) {
+    let { value } = e?.detail
+    this.setData({
+      'form.userName': value
+    })
+  },
+  verify() {
+    let { form } = this.data
+    let userNameError = ''
+    // 新密码长度校验
+    if (!form.userName) {
+      userNameError = '请输入用户名称！'
+    } else {
+      userNameError = ''
+    }
+    this.setData({
+      userNameError: userNameError
+    })
+    return !userNameError
+  },
+  onSubmit() {
+    let _this = this
+    if (!this.verify()) return;
+    let { form } = this.data
+    registerUserInfoApi(form).then(res => {
+      wx.showLoading({
+        title: '正在加载...',
+        mask: true,
+      });
+      if (res.code === 200) {
+        _this.message('success', '修改成功！', 1500)
+        setTimeout(() => {
+          wx.reLaunch({
+            url: '/pages/index/index'
+          });
+          wx.hideLoading();
+        }, 1000);
+      } else {
+        _this.message('error', res.msg, 3000)
+      }
+    })
   },
   message(type, text, duration = 1500) {
     Message[type]({
