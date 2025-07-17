@@ -75,7 +75,9 @@ Page({
     let { form } = this.data
     // 新密码长度校验
     if (!form.userName) {
-      userNameError = '请输入用户名称！';
+      this.setData({
+        userNameError: '请输入用户名称！'
+      })
     }
   },
   onPasswordInput(e) {
