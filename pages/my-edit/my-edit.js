@@ -2,7 +2,8 @@ import Message from 'tdesign-miniprogram/message/index';
 const app = getApp()
 Page({
   data: {
-    userInfo: app.globalData.userInfo
+    userInfo: app.globalData.userInfo,
+    ossUrl: app.globalData.ossUrl
   },
   goChangePassword() {
     wx.navigateTo({
@@ -29,9 +30,8 @@ Page({
             if (res.statusCode === 200) {
               try {
                 let data = JSON.parse(res.data)
-                console.log("🥵 ~ updateAvatar ~ data: ", data)
                 this.setData({
-                  'userInfo.avatar': data.img
+                  'userInfo.avatar': data.imgUrl
                 })
                 _this.message('success', '用户头像上传成功')
               } catch (error) {

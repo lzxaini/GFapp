@@ -105,7 +105,12 @@ Page({
   // 激活设备
   activetionDevice(serialNumber) {
     activetionDeviceApi(serialNumber).then(res => {
-      if (res.data.length < 1 || res.code === 24003) {
+      if (res.code === 24003) {
+        wx.navigateTo({
+          url: `/pages/device-active/device-active?deviceId=${serialNumber}`,
+        });
+      }
+      if (res.data.length < 1) {
         wx.navigateTo({
           url: `/pages/device-active/device-active?deviceId=${serialNumber}`,
         });
@@ -113,11 +118,6 @@ Page({
       if (res.data.length > 0) {
         wx.navigateTo({
           url: `/pages/device-bind/device-bind?deviceId=${serialNumber}`,
-        });
-      } else {
-        wx.showToast({
-          title: '系统错误！',
-          icon: 'error'
         });
       }
     })
