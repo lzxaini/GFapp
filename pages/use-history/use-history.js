@@ -1,29 +1,77 @@
-import { getDeviceInfoApi } from '../../api/api'
+import { getServiceRecordsApi } from '../../api/api'
+import { getServiceNameByCode, getDeviceStatusIconByCode } from '../../utils/config'
 const app = getApp()
 Page({
   data: {
     serialNumber: '',
-    historyList: []
+    historyList: [],
+    total: 0,
+    refresher: false,
+    pageObj: {
+      pageNum: 1,
+      pageSize: 10,
+      serialNumber: ''
+    }
+
   },
   onLoad(options) {
     let { serialNumber } = options
-    console.log("🥵 ~ onLoad ~ serialNumber: ", options)
-    this.setData({ serialNumber })
-  },
-  onShow() {
-    this.getDeviceInfo()
-  },
-  tabClick(e) {
-    const value = e.detail.value;
     this.setData({
-      activeValue: value
-    });
+      'pageObj.serialNumber': serialNumber
+    })
+    this.getDeviceUseList()
   },
-  // 设备使用记录
-  getDeviceUseList() {
-    // $TODO 设备使用记录接口对接
-    // getDeviceInfoApi(this.data.serialNumber).then(res => {
-    //   this.setData({ historyList: res.data })
-    // })
+  /**
+  * 页面上拉触底事件的处理函数
+ */
+  onReachBottom() {
+    let { historyList, total } = this.data
+    if (historyList.length < total) {
+      let pageNum = ++this.data.pageObj.pageNum
+      this.setData({
+        'pageObj.pageNum': pageNum
+      })
+      this.getDeviceUseList('bottom')
+    }
+  },
+  pullDownToRefresh() {
+    this.setData({
+      'pageObj.pageNum': 1
+    })
+    this.getDeviceUseList()
+  },
+
+  /**
+   * 分页查询根据不同时间节点：status 0：未开始，1：进行中，2：已完成
+   * 增加在分页条件里面
+   * @param {*} type 
+   */
+  getDeviceUseList(type = 'init') {
+    getServiceRecordsApi(this.data.pageObj).then(res => {
+      // 拿到原始 rows
+
+      const rows = res.data.rows.map(item => ({
+        ...item,
+        serviceObj: getServiceNameByCode(item.service),
+        statusIcon: getDeviceStatusIconByCode(item.status)
+      }))
+      if (type === 'bottom') {
+        if (rows.length > 0) {
+          let list = this.data.historyList
+          list.push(...rows)
+          this.setData({
+            historyList: list
+          })
+        }
+      } else {
+        this.setData({
+          historyList: rows,
+          total: res.data.total
+        })
+      }
+      this.setData({
+        refresher: false
+      })
+    })
   }
 })

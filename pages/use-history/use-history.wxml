@@ -1,33 +1,33 @@
 <view class="service-history_container">
   <t-navbar t-class="navBar" left-arrow title="使用记录" />
   <!-- 滚动列表 -->
-  <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true">
+  <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="pullDownToRefresh">
     <!-- $TODO 设备使用记录页面对接historyList -->
-    <block wx:for="{{10}}" wx:key="index">
+    <block wx:for="{{historyList}}" wx:key="index">
       <view class="card_item">
         <view class="nav_top">
           <view class="title_box">
-            <image class="icon" src="../../static/icon/body_icon.png" />
-            <text class="text">脸部护理</text>
+            <image class="icon" src="../../static/icon/{{item.serviceObj.code == 1 ? 'face_icon' : 'body_icon'}}.png" />
+            <text class="text">{{item.serviceObj.name}}</text>
           </view>
-          <view class="number">编号：2025052220523624782</view>
+          <view class="number">编号：{{item.code}}</view>
         </view>
         <view class="card_list">
           <view class="list_item">
             <text class="lable">设备ID</text>
-            <text class="info">86155607704730599</text>
+            <text class="info">{{item.serialNumber}}</text>
           </view>
           <view class="list_item">
             <text class="lable">美容师</text>
-            <text class="info">张三</text>
+            <text class="info">{{item.serviceUserName}}</text>
           </view>
           <view class="list_item">
             <text class="lable">服务时间</text>
-            <text class="info">2025-05-22 20:52:36</text>
+            <text class="info">{{item.endTime}}</text>
           </view>
         </view>
         <view class="card_icon">
-          <image class="icon" src="../../static/icon/use_ing.png" />
+          <image class="icon" src="../../static/icon/{{item.statusIcon}}" />
         </view>
       </view>
     </block>
