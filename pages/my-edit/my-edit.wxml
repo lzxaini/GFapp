@@ -20,7 +20,7 @@
     <view class="from_item">
       <view class="item_label">编号</view>
       <view class="item_value">
-        <t-input t-class="item-input" t-class-tips="errMsg" slot="note" placeholder="请输入您的姓名" value="{{userInfo.userId}}" type="text" tips="{{nameError ? '请检查姓名输入' : ''}}" bindblur="onNameInput" confirm-type="next" borderless></t-input>
+        <t-input disabled="{{true}}" t-class="item-input" value="{{userInfo.userId}}" type="text" borderless></t-input>
       </view>
       <t-icon name="chevron-right" size="48rpx" color="#C5C8CB" />
     </view>
@@ -28,15 +28,15 @@
     <view class="from_item">
       <view class="item_label">联系电话</view>
       <view class="item_value">
-        <t-input t-class="item-input" t-class-tips="errMsg" slot="note" placeholder="请输入您的姓名" value="{{userInfo.phonenumber}}" type="text" tips="{{nameError ? '请检查姓名输入' : ''}}" bindblur="onNameInput" confirm-type="next" borderless></t-input>
+        <t-input disabled="{{true}}" t-class="item-input" value="{{userInfo.phonenumber}}" type="text" borderless></t-input>
       </view>
       <t-icon name="chevron-right" size="48rpx" color="#C5C8CB" />
     </view>
     <view class="bd05" />
     <view class="from_item">
-      <view class="item_label">团队职位</view>
+      <view class="item_label">职位角色</view>
       <view class="item_value">
-        <t-input t-class="item-input" t-class-tips="errMsg" slot="note" placeholder="请输入您的姓名" value="{{userInfo.visitorName}}" type="text" tips="{{nameError ? '请检查姓名输入' : ''}}" bindblur="onNameInput" confirm-type="next" borderless></t-input>
+        <t-input disabled="{{true}}" t-class="item-input" value="{{userInfo.roles[0].roleName}}" type="text" borderless></t-input>
       </view>
       <t-icon name="chevron-right" size="48rpx" color="#C5C8CB" />
     </view>
@@ -44,7 +44,7 @@
     <view class="from_item">
       <view class="item_label">所属机构</view>
       <view class="item_value">
-        <t-input t-class="item-input" t-class-tips="errMsg" slot="note" placeholder="请输入您的姓名" value="{{userInfo.visitorName}}" type="text" tips="{{nameError ? '请检查姓名输入' : ''}}" bindblur="onNameInput" confirm-type="next" borderless></t-input>
+        <t-input disabled="{{true}}" t-class="item-input" value="{{userInfo.dept.deptName}}" type="text" confirm-type="next" borderless></t-input>
       </view>
       <t-icon name="chevron-right" size="48rpx" color="#C5C8CB" />
     </view>

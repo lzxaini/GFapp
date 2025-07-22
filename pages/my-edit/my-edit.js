@@ -8,14 +8,18 @@ Page({
     form: {
       avatar: '',
       userName: '',
+      phonenumber: ''
     },
     userNameError: '',
   },
   onLoad() {
-    let { userName, avatar } = app.globalData.userInfo
+    let { userName, avatar, phonenumber, nickName, email } = app.globalData.userInfo
     this.setData({
       'form.avatar': avatar,
+      'form.email': email,
+      'form.nickName': nickName,
       'form.userName': userName,
+      'form.phonenumber': phonenumber,
     })
   },
   goChangePassword() {
