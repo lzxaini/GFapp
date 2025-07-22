@@ -186,7 +186,18 @@ Page({
   },
   // 团队管理
   _goListItem(e) {
-    let { url } = e?.currentTarget?.dataset
+    let { url, title } = e?.currentTarget?.dataset
+    let { dept } = this.data.userInfo
+    if (title === '团队管理' && dept.deptType == 1) {
+      return wx.navigateTo({
+        url: '/pages/admin-team/admin-team'
+      });
+    }
+    if (title === '设备管理' && dept.deptType == 1) {
+      return wx.navigateTo({
+        url: '/pages/admin-device-list/admin-device-list'
+      });
+    }
     wx.navigateTo({
       url
     });
