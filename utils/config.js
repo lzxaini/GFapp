@@ -2,7 +2,7 @@
  * @Author: 17630921248 1245634367@qq.com
  * @Date: 2025-07-15 17:27:59
  * @LastEditors: 17630921248 1245634367@qq.com
- * @LastEditTime: 2025-07-22 18:20:37
+ * @LastEditTime: 2025-07-22 18:26:27
  * @FilePath: \medical\utils\config.js
  * @Description: Fuck Bug
  * 微信：lizx2066
@@ -13,7 +13,7 @@ const getServiceNameByCode = (code) => {
     { code: '1', name: '脸部护理' },
     { code: '2', name: '身体护理' },
   ]
-  const found = map.find(item => item.code === code)
+  const found = map.find(item => item.code == code)
   return found ? { name: found.name, code: found.code } : ''
 }
 // 获取白名单使用频率
@@ -25,7 +25,7 @@ const getFrequencyNameByCode = (code) => {
     { code: '4', name: '每月' },
     { code: '5', name: '每年' },
   ]
-  const found = map.find(item => item.code === code)
+  const found = map.find(item => item.code == code)
   return found ? found.name : ''
 }
 // 获取白名单使用状态
@@ -35,7 +35,7 @@ const getWhiteStatusIconByCode = (code) => {
     { code: '1', icon: 'use_ok.png' },
     { code: '2', icon: 'expire.png' },
   ]
-  const found = map.find(item => item.code === code)
+  const found = map.find(item => item.code == code)
   return found ? found.icon : ''
 }
 // 获取设备服务记录使用状态
@@ -45,7 +45,7 @@ const getDeviceStatusIconByCode = (code) => {
     { code: '1', icon: 'use_ing.png' },
     { code: '2', icon: 'use_success.png' },
   ]
-  const found = map.find(item => item.code === code)
+  const found = map.find(item => item.code == code)
   return found ? found.icon : ''
 }
 
