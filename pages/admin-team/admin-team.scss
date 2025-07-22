@@ -1,0 +1,67 @@
+.admin-team_container {
+	width: 100vw;
+	height: 100vh;
+	background-color: #f5f7fb;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	.admin-team_title {
+		background-color: #ffffff;
+	}
+	.admin-team_tabs {
+		width: calc(100% - 54rpx);
+		height: 80rpx;
+    margin: 32rpx 27rpx 20rpx 27rpx;
+		border-radius: 40rpx;
+		box-sizing: border-box;
+		border: 1px solid #ecedfd;
+		background-color: #ffffff;
+		.item_style {
+			font-family: AlibabaPuHuiTi3;
+			font-size: 28rpx;
+			font-weight: bold;
+			color: #1c2023;
+		}
+		.active_style {
+			background-color: #888bf4;
+			border-radius: 60rpx;
+			font-family: AlibabaPuHuiTi3;
+			font-size: 32rpx;
+			font-weight: 300;
+			color: #ffffff;
+		}
+		.tabs_box {
+			--td-tab-nav-bg-color: rgba(255, 255, 255, 0.3);
+			--td-tab-item-tag-bg: transparent;
+      --td-tab-border-color: transparent;
+			--td-tab-item-tag-active-bg: #888bf4;
+			--td-tab-item-color: #1c2023;
+			--td-tab-item-active-color: #ffffff;
+      --td-tab-item-height: 80rpx;
+			border-radius: 40px !important;
+			.t-tabs__wrapper {
+				border-radius: 40px !important;
+			}
+		}
+	}
+	.scroll-view {
+		flex: 1;
+		min-height: 0;
+		.item_img {
+			width: 180rpx;
+			height: 180rpx;
+		}
+		.cell_title {
+			font-family: AlibabaPuHuiTi3;
+			font-size: 32rpx;
+			font-weight: 300;
+			color: #1c2023;
+		}
+		.description {
+			font-family: AlibabaPuHuiTi3;
+			font-size: 24rpx;
+			font-weight: normal;
+			color: #606972;
+		}
+	}
+}
