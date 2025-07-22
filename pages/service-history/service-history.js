@@ -56,7 +56,7 @@ Page({
       // 拿到原始 rows
       const rows = res.data.rows.map(item => ({
         ...item,
-        serviceName: getServiceNameByCode(item.service)
+        serviceObj: getServiceNameByCode(item.service)
       }))
       if (type === 'bottom') {
         if (rows.length > 0) {

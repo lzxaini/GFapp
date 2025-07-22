@@ -2,7 +2,7 @@
  * @Author: 17630921248 1245634367@qq.com
  * @Date: 2025-07-15 17:27:59
  * @LastEditors: 17630921248 1245634367@qq.com
- * @LastEditTime: 2025-07-15 17:58:38
+ * @LastEditTime: 2025-07-22 18:24:07
  * @FilePath: \medical\utils\config.js
  * @Description: Fuck Bug
  * 微信：lizx2066
@@ -14,7 +14,7 @@ const getServiceNameByCode = (code) => {
     { code: '2', name: '身体护理' },
   ]
   const found = map.find(item => item.code === code)
-  return found ? found.name : ''
+  return found ? { name: found.name, code: found.code } : ''
 }
 // 获取白名单使用频率
 const getFrequencyNameByCode = (code) => {
