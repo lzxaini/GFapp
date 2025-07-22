@@ -2,7 +2,7 @@
  * @Author: lzx
  * @Date: 2024-01-01 13:42:13
  * @LastEditors: 17630921248 1245634367@qq.com
- * @LastEditTime: 2025-07-17 13:28:58
+ * @LastEditTime: 2025-07-22 18:32:38
  * @Description: Fuck Bug
  * @FilePath: \medical\api\api.js
  */
@@ -123,10 +123,11 @@ export function getTeamsMemberListApi(query) {
 /**
  * 设备列表
  */
-export function getDeviceListApi() {
+export function getDeviceListApi(data) {
   return request({
     url: "/gf/device/list",
     method: 'get',
+    data
   })
 }
 /**

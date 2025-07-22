@@ -8,16 +8,62 @@ Page({
       activated: 0,
       total: 0
     },
+    total: 0,
+    refresher: false,
+    pageObj: {
+      pageNum: 1,
+      pageSize: 10,
+      range: 1
+    }
   },
   onShow() {
     this.getDeviceList()
     this.getDeviceActivated()
   },
-  // 设备列表
-  getDeviceList() {
-    // $TODO 设备列表接口对接
-    getDeviceListApi().then(res => {
-      this.setData({ deviceList: res.data.rows })
+  /**
+ * 页面上拉触底事件的处理函数
+ */
+  onReachBottom() {
+    console.log('触底',)
+    let { deviceList, total } = this.data
+    if (deviceList.length < total) {
+      let pageNum = ++this.data.pageObj.pageNum
+      this.setData({
+        'pageObj.pageNum': pageNum
+      })
+      this.getDeviceList('bottom')
+    }
+  },
+  pullDownToRefresh() {
+    this.setData({
+      'pageObj.pageNum': 1
+    })
+    this.getDeviceList()
+  },
+  /**
+   * 设备分页查询
+   * 增加在分页条件里面
+   * @param {*} type 
+   */
+  getDeviceList(type = 'init') {
+    getDeviceListApi(this.data.pageObj).then(res => {
+      if (type === 'bottom') {
+        if (res.data.rows.length > 0) {
+          let list = this.data.deviceList
+          list.push(...res.data.rows)
+          this.setData({
+            deviceList: list
+          })
+        }
+      } else {
+        this.setData({
+          deviceList: res.data.rows,
+          total: res.data.total
+        })
+      }
+      this.setData({
+        refresher: false
+      })
     })
   },
   scanCodeActivation(e) {

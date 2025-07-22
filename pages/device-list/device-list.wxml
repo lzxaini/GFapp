@@ -7,10 +7,9 @@
       <view slot="description" class="device_info">
         已激活：{{historyList.activated}}/{{historyList.total}}
       </view>
-      <!-- <view slot="right-icon" class="right_box" bindtap="editTeam">编辑团队</view> -->
     </t-cell>
   </t-cell-group>
-  <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true">
+  <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="pullDownToRefresh">
     <view class="device_grid">
       <block wx:for="{{deviceList}}">
         <view class="device_item">
@@ -29,20 +28,6 @@
           <view class="bd05"></view>
           <view class="date">注册时间：{{item.createTime}}</view>
         </view>
-        <!-- <view class="device_item">
-          <image class="card_bg" src="../../static/icon/card_bg.png" />
-          <view class="go_info">
-            查看使用记录
-            <t-icon name="chevron-right-double" size="13" />
-          </view>
-          <t-cell t-class="device_card" bordered="{{false}}" bindtap="scanCodeActivation" data-item="use">
-            <view slot="left-icon" class="use_ing">使用中</view>
-            <view slot="title" class="card_title">设备ID</view>
-            <view slot="description" class="card_title">8999999999999999</view>
-          </t-cell>
-          <view class="bd05"></view>
-          <view class="date">注册时间：2022/03/05 10:05</view>
-        </view> -->
       </block>
     </view>
   </scroll-view>
