@@ -15,7 +15,7 @@
         <view class="location">地点：{{item.teamName}}</view>
         <view class="identity">身份：{{item.tagName}}</view>
         <view class="icon_box">
-          <image class="icon" src="../../static/icon/{{item.statusIcon}}.png" />
+          <image class="icon" src="../../static/icon/{{item.statusIcon}}" />
         </view>
       </view>
     </view>
