@@ -2,7 +2,7 @@
  * @Author: 17630921248 1245634367@qq.com
  * @Date: 2025-07-15 17:27:59
  * @LastEditors: 17630921248 1245634367@qq.com
- * @LastEditTime: 2025-07-22 18:24:07
+ * @LastEditTime: 2025-07-22 18:20:37
  * @FilePath: \medical\utils\config.js
  * @Description: Fuck Bug
  * 微信：lizx2066
@@ -38,9 +38,20 @@ const getWhiteStatusIconByCode = (code) => {
   const found = map.find(item => item.code === code)
   return found ? found.icon : ''
 }
+// 获取设备服务记录使用状态
+const getDeviceStatusIconByCode = (code) => {
+  const map = [
+    { code: '0', icon: 'use_no.png' },
+    { code: '1', icon: 'use_ing.png' },
+    { code: '2', icon: 'use_success.png' },
+  ]
+  const found = map.find(item => item.code === code)
+  return found ? found.icon : ''
+}
 
 module.exports = {
   getServiceNameByCode,
   getFrequencyNameByCode,
-  getWhiteStatusIconByCode
+  getWhiteStatusIconByCode,
+  getDeviceStatusIconByCode
 }
