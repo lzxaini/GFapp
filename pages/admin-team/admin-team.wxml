@@ -3,21 +3,22 @@
   <view class="admin-team_title" hover-class="none" hover-stop-propagation="false">
     <view class="admin-team_tabs" hover-class="none" hover-stop-propagation="false">
       <t-tabs t-class="tabs_box" t-class-active="active_style" t-class-item="item_style" defaultValue="{{teamTab}}" theme="tag" bind:click="tabClick">
-        <t-tab-panel wx:key="index" label="分公司" value="{{1}}" />
-        <t-tab-panel wx:key="index" label="代理商" value="{{2}}" />
-        <t-tab-panel wx:key="index" label="门店" value="{{3}}" />
+        <t-tab-panel wx:key="index" label="分公司({{teamObj[2].length}})" value="{{2}}" />
+        <t-tab-panel wx:key="index" label="代理商({{teamObj[3].length}})" value="{{3}}" />
+        <t-tab-panel wx:key="index" label="门店({{teamObj[4].length}})" value="{{4}}" />
       </t-tabs>
     </view>
   </view>
   <!-- $TODO 创始人团队列表页面对接 -->
   <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true">
-    <block wx:for="{{20}}">
-      <t-cell hover arrow bindtap="goTeamInfo" data-flag="admin" data-id="{{item.id}}">
-        <image slot="left-icon" class="item_img" src="{{item.avatar}}" />
-        <view slot="title" class="cell_title">{{item.name}}</view>
+    <block wx:for="{{teamList}}">
+      <!-- <t-cell hover arrow bindtap="goTeamInfo" data-flag="admin" data-id="{{item.parentId}}"> -->
+      <t-cell hover arrow>
+        <image slot="left-icon" class="item_img" src="{{ossUrl + item.deptAvatar}}" />
+        <view slot="title" class="cell_title">{{item.parentName}}</view>
         <view slot="description" class="description">
           <view class="local">所属机构:{{item.deptName}}</view>
-          <view class="number">团队编号:{{item.teamCode}}</view>
+          <view class="number">团队编号:{{item.deptCode}}</view>
         </view>
       </t-cell>
     </block>
@@ -26,3 +27,4 @@
     </view>
   </scroll-view>
 </view>
+<t-message id="t-message" />
