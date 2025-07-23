@@ -49,7 +49,7 @@ Page({
     let { bindId, serialNumber } = this.data
     deviceBindApi(bindId, serialNumber).then(res => {
       console.log("🥵 ~ deviceBindApi ~ res: ", res)
-      Message.warning({
+      Message.success({
         context: this,
         offset: [90, 32],
         duration: 2000,
