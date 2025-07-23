@@ -2,7 +2,7 @@
  * @Author: 17630921248 1245634367@qq.com
  * @Date: 2025-06-17 11:18:48
  * @LastEditors: 17630921248 1245634367@qq.com
- * @LastEditTime: 2025-06-17 11:23:16
+ * @LastEditTime: 2025-07-23 15:58:54
  * @FilePath: \medical\utils\tools.js
  * @Description: Fuck Bug
  * 微信：lizx2066
@@ -53,6 +53,25 @@ const verifyPassword = (password) => {
   }
 }
 
+// 工具函数：将 hex 转 rgba（例如 #ff0000 -> rgba(255, 0, 0, 0.1)）
+const hexToRgba = (hex, alpha = 0.1) => {
+  let r = 0, g = 0, b = 0;
+  // 去掉 #
+  hex = hex.replace('#', '');
+
+  if (hex.length === 3) {
+    r = parseInt(hex[0] + hex[0], 16);
+    g = parseInt(hex[1] + hex[1], 16);
+    b = parseInt(hex[2] + hex[2], 16);
+  } else if (hex.length === 6) {
+    r = parseInt(hex.substring(0, 2), 16);
+    g = parseInt(hex.substring(2, 4), 16);
+    b = parseInt(hex.substring(4, 6), 16);
+  }
+
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
+
 /*函数节流*/
 const throttle = (fn, interval) => {
   let enterTime = 0; // 触发的时间
@@ -93,5 +112,6 @@ module.exports = {
   verifyPassword,
   deepClone,
   throttle,
-  debounce
+  debounce,
+  hexToRgba
 }

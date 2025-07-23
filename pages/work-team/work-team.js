@@ -79,7 +79,6 @@ Page({
   }, 800),
   getMyTeams() {
     getMyTeamsApi(this.data.id).then(res => {
-      console.log("🥵 ~ getMyTeamsApi ~ res: ", res)
       // $TODO 我的团队接口对接
       this.setData({ teamInfo: res.data })
     })
@@ -98,7 +97,7 @@ Page({
   // 编辑团队
   editTeam() {
     wx.navigateTo({
-      url: '/pages/team-info/team-info'
+      url: `/pages/team-info/team-info?id=${this.data.id}`
     })
   },
   // 加入申请

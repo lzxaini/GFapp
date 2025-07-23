@@ -8,10 +8,10 @@
 		background-color: #e3e4e5;
 		transform: scaleY(0.5);
 	}
-	.info_from {
+	.info_form {
 		padding: 20px;
 		background-color: #ffffff;
-		.from_item {
+		.form_item {
 			display: grid;
 			grid-template-columns: 30% 60% 10%;
 			align-items: center;
@@ -38,7 +38,7 @@
 		}
 		.label_box {
 			display: grid;
-			grid-template-columns: repeat(5, 1fr);
+			grid-template-columns: repeat(5, auto);
 			gap: 20rpx;
 			row-gap: 20rpx;
 			align-content: flex-start;
@@ -48,18 +48,13 @@
 			font-weight: normal;
 			color: #1c2023;
 			.tag-item {
-				padding: 5rpx 20rpx;
+				padding: 5rpx 10rpx;
 				height: 50rpx;
 				line-height: 50rpx;
 				border-radius: 20px;
 				font-family: AlibabaPuHuiTi3;
 				font-size: 24rpx;
 				text-align: center;
-			}
-			.tag-bg {
-				color: #49b9ad;
-				border: 1px solid #49b9ad;
-				background-color: #eafefa;
 			}
 		}
 	}
