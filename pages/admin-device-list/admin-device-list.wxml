@@ -3,24 +3,24 @@
   <view class="nav_bg"></view>
   <view class="device_nav">
     <view class="nav_item">
-      <view class="number">2500</view>
+      <view class="number">{{deviceInfo.bindCount}}</view>
       <view class="label">已绑定设备数</view>
     </view>
     <view class="nav_item">
-      <view class="number">2500</view>
-      <view class="label">已绑定设备数</view>
+      <view class="number">{{deviceInfo.unbindCount}}</view>
+      <view class="label">未绑定设备数</view>
     </view>
     <view class="nav_item">
-      <view class="number">2500</view>
-      <view class="label">已绑定设备数</view>
+      <view class="number">{{deviceInfo.onlineCount}}</view>
+      <view class="label">总联网设备数</view>
     </view>
   </view>
   <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="pullDownToRefresh">
-    <block wx:for="{{20}}">
-      <t-cell-group t-class="list_item" theme="card">
-        <t-cell title="美之颜美学定制中心" arrow>
-          <t-avatar slot="left-icon" size="large" image="../../static/icon/bg-top.png"></t-avatar>
-          <view slot="description" class="list_item_info">已绑定设备数：5</view>
+    <block wx:for="{{deviceList}}">
+      <t-cell-group t-class="list_item" theme="card" bindtap="goDeviceList" data-id="{{item.deptId}}">
+        <t-cell title="{{item.deptName}}" arrow>
+          <t-avatar slot="left-icon" size="large" image="{{ossUrl + item.deptAvatar}}"></t-avatar>
+          <view slot="description" class="list_item_info">已绑定设备数：{{item.bindCount}}</view>
         </t-cell>
       </t-cell-group>
     </block>

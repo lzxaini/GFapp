@@ -51,10 +51,10 @@ Page({
     this.goServiceHistory = withLogin(this, this._goServiceHistory);
     // this. = withLogin(this, this._);
 
-    onMqttReady(() => {
-      this.subscribeTopic();
-    });
-    wx.eventCenter.on('mqtt-message', this.handleMsg);
+    // onMqttReady(() => {
+    //   this.subscribeTopic();
+    // });
+    // wx.eventCenter.on('mqtt-message', this.handleMsg);
   },
   onShow() {
     app.getUserInfo(getUserInfoApi).then(res => {
@@ -65,23 +65,23 @@ Page({
       }
     })
   },
-  onUnload() {
-    wx.eventCenter.off('mqtt-ready', this.subscribeTopic);
-    wx.eventCenter.off('mqtt-message', this.handleMsg);
-  },
-  // 订阅
-  subscribeTopic() {
-    const mqttClient = app.globalData.mqttClient;
-    if (mqttClient?.isConnected()) {
-      mqttClient.subscribe(`/resp/123`);
-    } else {
-      console.warn('MQTT 未连接或还未初始化');
-    }
-  },
-  // 收到消息
-  handleMsg({ topic, message }) {
-    console.log('📩 收到 MQTT 消息', topic, message);
-  },
+  // onUnload() {
+  //   wx.eventCenter.off('mqtt-ready', this.subscribeTopic);
+  //   wx.eventCenter.off('mqtt-message', this.handleMsg);
+  // },
+  // // 订阅
+  // subscribeTopic() {
+  //   const mqttClient = app.globalData.mqttClient;
+  //   if (mqttClient?.isConnected()) {
+  //     mqttClient.subscribe(`/resp/123`);
+  //   } else {
+  //     console.warn('MQTT 未连接或还未初始化');
+  //   }
+  // },
+  // // 收到消息
+  // handleMsg({ topic, message }) {
+  //   console.log('📩 收到 MQTT 消息', topic, message);
+  // },
   _scanCodeActivation() {
     wx.scanCode({
       onlyFromCamera: true,
@@ -228,15 +228,15 @@ Page({
   closeIsLoginDialog() {
     this.setData({ isLogin: false });
   },
-  testMq() {
-    const mqttQrotocol = app.globalData.mqttQrotocol;
-    mqttQrotocol.sendScanQrCode(`/req/123`)
-    // // 控制设备开始运行 60分钟
-    // mqttQrotocol.controlDevice('/resp/861556077047305', true, 255);
-    // mqttQrotocol.sendScanQrCode('/resp/861556077047305');
-  },
-  testSetKey() {
-    wx.setStorageSync('token', 'token1232132312')
-    wx.setStorageSync('userInfo', 'userInfo123123123')
-  }
+  // testMq() {
+  //   const mqttQrotocol = app.globalData.mqttQrotocol;
+  //   mqttQrotocol.sendScanQrCode(`/req/123`)
+  //   // // 控制设备开始运行 60分钟
+  //   // mqttQrotocol.controlDevice('/resp/861556077047305', true, 255);
+  //   // mqttQrotocol.sendScanQrCode('/resp/861556077047305');
+  // },
+  // testSetKey() {
+  //   wx.setStorageSync('token', 'token1232132312')
+  //   wx.setStorageSync('userInfo', 'userInfo123123123')
+  // }
 })

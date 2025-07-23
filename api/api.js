@@ -2,7 +2,7 @@
  * @Author: lzx
  * @Date: 2024-01-01 13:42:13
  * @LastEditors: 17630921248 1245634367@qq.com
- * @LastEditTime: 2025-07-23 13:20:00
+ * @LastEditTime: 2025-07-23 15:07:41
  * @Description: Fuck Bug
  * @FilePath: \medical\api\api.js
  */
@@ -203,5 +203,15 @@ export function getAdminTeamListApi() {
   return request({
     url: `/system/dept/map`,
     method: 'get'
+  })
+}
+/**
+ * 管理员设备列表
+ */
+export function getAdminDeviceListApi(data) {
+  return request({
+    url: `/gf/device/dept`,
+    method: 'get',
+    data
   })
 }

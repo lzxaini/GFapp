@@ -13,10 +13,14 @@ Page({
     pageObj: {
       pageNum: 1,
       pageSize: 10,
-      range: 1
+      deptId: ''
     }
   },
-  onShow() {
+  onLoad(options) {
+    let { deptId } = options
+    this.setData({
+      'pageObj.deptId': deptId || this.data.userInfo.dept.deptId
+    })
     this.getDeviceList()
     this.getDeviceActivated()
   },

@@ -51,7 +51,7 @@ App({
     if (userInfo && token) {
       this.globalData.userInfo = JSON.parse(userInfo);
       this.globalData.token = token;
-      this.initMqtt(userInfo); // 登录状态下自动连接 MQTT
+      this.initMqtt(); // 登录状态下自动连接 MQTT
       wx.reLaunch({
         url: '/pages/index/index'
       });
