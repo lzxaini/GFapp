@@ -14,6 +14,12 @@ Page({
     }
   },
   onShow() {
+    let { dept } = app.globalData.userInfo
+    if (dept.deptType != 1) {
+      this.setData({
+        'pageObj.deptId': dept.deptId
+      })
+    }
     this.getRechargeRecords()
   },
   /**
