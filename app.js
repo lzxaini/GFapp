@@ -19,7 +19,7 @@ App({
     capsuleHeight: 0,
     marginBottom: '60rpx',
     // baseUrl: 'https://oa.beasun.com:2443/prod-api',
-    baseUrl: 'http://127.0.0.1:8080',
+    baseUrl: 'http://192.168.18.150:8080',
     ossUrl: 'https://oa.beasun.com:3443',
     mqttUrl: 'wxs://mqtt.fxnws.com/mqtt',
     // mqttUrl: 'wxs://mqtt.beasun.com/mqtt',
@@ -53,7 +53,7 @@ App({
       this.globalData.token = token;
       this.initMqtt(userInfo); // 登录状态下自动连接 MQTT
       wx.reLaunch({
-        url: '/pages/index/index'
+        url: '/pages/my-edit/my-edit'
       });
     }
     // else {
@@ -145,6 +145,11 @@ App({
     this.globalData.token = null;
     this.globalData.mqttClient?.disconnect?.();
     this.globalData.mqttClient = null
+    setTimeout(() => {
+      wx.reLaunch({
+        url: '/pages/login/login',
+      });
+    }, 800);
   },
   testSetKey() { // $DEL 待去除
     wx.setStorageSync('token', 'token1232132312')

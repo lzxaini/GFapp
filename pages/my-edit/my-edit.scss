@@ -53,14 +53,22 @@
 		width: calc(100% - 64rpx);
 		margin: 0 32rpx;
 		margin-bottom: 142rpx;
-		height: 112rpx;
-		border: 2rpx solid #888bf4;
-		border-radius: 80rpx;
-		box-sizing: border-box;
-		font-family: AlibabaPuHuiTi3;
-		font-size: 32rpx;
-		line-height: 112rpx;
-		font-weight: bold;
-		color: #888bf4;
+		.btn {
+			height: 112rpx;
+			border: 2rpx solid #888bf4;
+			border-radius: 80rpx;
+			box-sizing: border-box;
+			font-family: AlibabaPuHuiTi3;
+			font-size: 32rpx;
+			line-height: 112rpx;
+			font-weight: bold;
+			color: #888bf4;
+		}
+		.logout{
+			text-align: center;
+			margin-top: 20rpx;
+			font-size: 26rpx;
+			color: #ff6161;
+		}
 	}
 }

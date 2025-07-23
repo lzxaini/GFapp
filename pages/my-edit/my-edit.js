@@ -5,6 +5,8 @@ Page({
   data: {
     userInfo: app.globalData.userInfo,
     ossUrl: app.globalData.ossUrl,
+    logoutVisible: false,
+    confirmBtn: { content: '确定', variant: 'base' },
     form: {
       avatar: '',
       userName: '',
@@ -107,6 +109,12 @@ Page({
         _this.message('error', res.msg, 3000)
       }
     })
+  },
+  LogoutDialog() {
+    this.setData({ logoutVisible: !this.data.logoutVisible })
+  },
+  logout() {
+    app.logout()
   },
   message(type, text, duration = 1500) {
     Message[type]({

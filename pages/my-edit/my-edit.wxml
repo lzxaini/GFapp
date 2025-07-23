@@ -55,6 +55,10 @@
       <t-icon name="chevron-right" size="48rpx" color="#C5C8CB" />
     </view>
   </view>
-  <button class="save_btn" bindtap="onSubmit">保存</button>
+  <view class="save_btn">
+    <button class="btn" bindtap="onSubmit">保存</button>
+    <view class="logout" bindtap="LogoutDialog">退出登录</view>
+  </view>
 </view>
 <t-message id="t-message" />
+<t-dialog visible="{{logoutVisible}}" title="退出登录" content="是否确定退出登录当前账号！点击确定将回到登录页面！" bind:confirm="logout" bind:cancel="LogoutDialog" confirm-btn="{{ confirmBtn }}" cancel-btn="取消" />
