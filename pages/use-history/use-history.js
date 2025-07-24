@@ -11,8 +11,11 @@ Page({
       pageNum: 1,
       pageSize: 10,
       serialNumber: ''
+    },
+    empty: {
+      name: 'gesture-press',
+      size: 40
     }
-
   },
   onLoad(options) {
     let { serialNumber } = options
