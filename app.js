@@ -7,7 +7,6 @@ App({
   onLaunch() {
     this.eventCenter = eventCenter;
     wx.eventCenter = eventCenter; // 挂载到 wx 上
-    // this.testSetKey()
     this.getAliPHFont()
     this.getSystemInfo()
     this.verifyUserLogin()
@@ -151,9 +150,5 @@ App({
         url: '/pages/login/login',
       });
     }, 800);
-  },
-  testSetKey() { // $DEL 待去除
-    wx.setStorageSync('token', 'token1232132312')
-    wx.setStorageSync('userInfo', 'userInfo123123123')
   }
 })

@@ -49,9 +49,6 @@ Page({
     isLogin: false
   },
   onLoad() {
-    // this.setData({
-    //   userInfo: app.globalData.userInfo
-    // });
     // 游客模式
     this.openQrCode = withLogin(this, this._openQrCode);
     this.scanCodeActivation = withLogin(this, this._scanCodeActivation);
@@ -59,12 +56,6 @@ Page({
     this.goRechargeHistory = withLogin(this, this._goRechargeHistory);
     this.goWhiteList = withLogin(this, this._goWhiteList);
     this.goServiceHistory = withLogin(this, this._goServiceHistory);
-    // this. = withLogin(this, this._);
-
-    // onMqttReady(() => {
-    //   this.subscribeTopic();
-    // });
-    // wx.eventCenter.on('mqtt-message', this.handleMsg);
   },
   onShow() {
     if (app.globalData.token) {
@@ -77,23 +68,6 @@ Page({
       })
     }
   },
-  // onUnload() {
-  //   wx.eventCenter.off('mqtt-ready', this.subscribeTopic);
-  //   wx.eventCenter.off('mqtt-message', this.handleMsg);
-  // },
-  // // 订阅
-  // subscribeTopic() {
-  //   const mqttClient = app.globalData.mqttClient;
-  //   if (mqttClient?.isConnected()) {
-  //     mqttClient.subscribe(`/resp/123`);
-  //   } else {
-  //     console.warn('MQTT 未连接或还未初始化');
-  //   }
-  // },
-  // // 收到消息
-  // handleMsg({ topic, message }) {
-  //   console.log('📩 收到 MQTT 消息', topic, message);
-  // },
   _scanCodeActivation() {
     if (this.verifyDept()) {
       return
@@ -101,7 +75,6 @@ Page({
     wx.scanCode({
       onlyFromCamera: true,
       success: (res) => {
-        console.log("🥵 ~ scanCode ~ res: ", res)
         const { result } = res;
         if (result) {
           // 扫码成功
@@ -265,15 +238,4 @@ Page({
       content: text,
     });
   }
-  // testMq() {
-  //   const mqttQrotocol = app.globalData.mqttQrotocol;
-  //   mqttQrotocol.sendScanQrCode(`/req/123`)
-  //   // // 控制设备开始运行 60分钟
-  //   // mqttQrotocol.controlDevice('/resp/861556077047305', true, 255);
-  //   // mqttQrotocol.sendScanQrCode('/resp/861556077047305');
-  // },
-  // testSetKey() {
-  //   wx.setStorageSync('token', 'token1232132312')
-  //   wx.setStorageSync('userInfo', 'userInfo123123123')
-  // }
 })
