@@ -4,8 +4,8 @@
     <view class="form_item">
       <view class="item_label">团队封面</view>
       <!-- $TODO 待完善上传头像接口 -->
-      <!-- <view class="item_value" bindtap="updateTeamCover"> -->
-      <view class="item_value">
+      <view class="item_value" bindtap="updateTeamCover">
+        <!-- <view class="item_value"> -->
         <t-avatar class="avatar" size="small" image="{{ossUrl + form.avatar}}" />
       </view>
       <t-icon name="chevron-right" size="48rpx" color="#C5C8CB" />

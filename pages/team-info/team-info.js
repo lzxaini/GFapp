@@ -35,6 +35,7 @@ Page({
   },
   // 上传团队封面
   updateTeamCover() {
+    let { deptId } = this.data.teamInfo
     wx.chooseImage({
       count: 1,
       sizeType: ['original', 'compressed'],
@@ -43,19 +44,22 @@ Page({
         const tempFilePath = res.tempFilePaths[0];
         // 这里假设有上传接口 /api/upload
         wx.uploadFile({
-          url: app.globalData.ossUrl, // 替换为你的上传接口
+          url: app.globalData.baseUrl + `/system/user/profile/avatar/${deptId}`, // 替换为你的上传接口
           filePath: tempFilePath,
-          name: 'file',
+          header: {
+            'Authorization': app.globalData.token
+          },
+          name: 'avatarfile',
           success: (uploadRes) => {
             // 上传成功后的处理，比如保存图片地址到data
             const data = JSON.parse(uploadRes.data);
             this.setData({
               'form.avatar': data.imgUrl // 假设返回的图片地址字段为url
             });
-            wx.showToast({ title: '上传成功', icon: 'success' });
+            _this.message('success', '团队头像上传成功')
           },
           fail: () => {
-            wx.showToast({ title: '上传失败', icon: 'none' });
+            _this.message('error', `系统错误：${error}`, 3000)
           }
         });
       },
