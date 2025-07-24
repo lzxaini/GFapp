@@ -1,3 +1,4 @@
+import Message from 'tdesign-miniprogram/message/index';
 const app = getApp()
 const dayjs = require('dayjs')
 import {
@@ -85,6 +86,9 @@ Page({
   //   console.log('📩 收到 MQTT 消息', topic, message);
   // },
   _scanCodeActivation() {
+    if (this.verifyDept()){
+      return
+    }
     wx.scanCode({
       onlyFromCamera: true,
       success: (res) => {
@@ -188,8 +192,16 @@ Page({
   },
   // 团队管理
   _goListItem(e) {
-    let { url, title } = e?.currentTarget?.dataset
     let { dept } = this.data.userInfo
+    let { url, title } = e?.currentTarget?.dataset
+    if (title === '设置') {
+      return wx.navigateTo({
+        url
+      });
+    }
+    if (this.verifyDept()){
+      return
+    }
     if (title === '团队管理' && dept.deptType == 1) {
       return wx.navigateTo({
         url: '/pages/admin-team/admin-team'
@@ -206,18 +218,27 @@ Page({
   },
   // 充值记录
   _goRechargeHistory() {
+    if (this.verifyDept()){
+      return
+    }
     wx.navigateTo({
       url: '/pages/recharge-history/recharge-history'
     });
   },
   // 服务记录
   _goServiceHistory() {
+    if (this.verifyDept()){
+      return
+    }
     wx.navigateTo({
       url: '/pages/service-history/service-history'
     });
   },
   // 白名单
   _goWhiteList() {
+    if (this.verifyDept()){
+      return
+    }
     wx.navigateTo({
       url: '/pages/white-list/white-list'
     });
@@ -230,6 +251,23 @@ Page({
   closeIsLoginDialog() {
     this.setData({ isLogin: false });
   },
+  verifyDept(){
+    let { dept } = this.data.userInfo
+    if (!dept){
+       this.message('warning', '游客账号暂时无法使用，请联系管理员！')
+       return true
+    } else {
+      return false
+    }
+  },
+  message(type, text, duration = 1500) {
+    Message[type]({
+      context: this,
+      offset: [90, 32],
+      duration: duration,
+      content: text,
+    });
+  }
   // testMq() {
   //   const mqttQrotocol = app.globalData.mqttQrotocol;
   //   mqttQrotocol.sendScanQrCode(`/req/123`)

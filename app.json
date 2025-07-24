@@ -26,7 +26,6 @@
     "pages/privacy-agreement/privacy-agreement"
   ],
   "usingComponents": {
-    "verify-puzzle": "/components/verify-puzzle/verify-puzzle",
     "t-button": "tdesign-miniprogram/button/button",
     "t-input": "tdesign-miniprogram/input/input",
     "t-cell-group": "tdesign-miniprogram/cell-group/cell-group",
