@@ -53,7 +53,7 @@ App({
       this.globalData.token = token;
       this.initMqtt(); // 登录状态下自动连接 MQTT
       wx.reLaunch({
-        url: '/pages/login/login'
+        url: '/pages/index/index'
       });
     }
     // else {

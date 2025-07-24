@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/login/login",
     "pages/index/index",
+    "pages/login/login",
     "pages/admin-device-list/admin-device-list",
     "pages/admin-team/admin-team",
     "pages/device-list/device-list",
