@@ -110,7 +110,4 @@ Page({
   closeDialog() {
     this.setData({ showConfirm: false });
   },
-  loginBg(e) {
-    // this.setData({ bgFlag: true })
-  }
 });

@@ -57,13 +57,15 @@ Page({
     // wx.eventCenter.on('mqtt-message', this.handleMsg);
   },
   onShow() {
-    app.getUserInfo(getUserInfoApi).then(res => {
-      if (res) {
-        this.setData({
-          userInfo: res
-        });
-      }
-    })
+    if (app.globalData.token) {
+      app.getUserInfo(getUserInfoApi).then(res => {
+        if (res) {
+          this.setData({
+            userInfo: res
+          });
+        }
+      })
+    }
   },
   // onUnload() {
   //   wx.eventCenter.off('mqtt-ready', this.subscribeTopic);

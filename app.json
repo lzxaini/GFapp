@@ -1,11 +1,11 @@
 {
   "pages": [
+    "pages/login/login",
+    "pages/index/index",
     "pages/admin-device-list/admin-device-list",
     "pages/admin-team/admin-team",
-    "pages/index/index",
     "pages/device-list/device-list",
     "pages/search-page/search-page",
-    "pages/login/login",
     "pages/use-history/use-history",
     "pages/service-history/service-history",
     "pages/recharge-history/recharge-history",
