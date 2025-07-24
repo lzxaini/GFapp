@@ -5,7 +5,11 @@ Page({
     ossUrl: app.globalData.ossUrl,
     teamTab: 2,
     teamObj: {},
-    teamList: []
+    teamList: [],
+    empty: {
+      name: 'data-error',
+      size: 40
+    }
   },
   onShow() {
     this.getAdminTeamList()
