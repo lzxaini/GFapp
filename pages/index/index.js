@@ -37,6 +37,15 @@ Page({
       icon: 'my_5.png',
       url: '/pages/my-edit/my-edit'
     }],
+    // title + deptType 映射更高权限的页面
+    adminRouteMap: {
+      '团队管理': {
+        1: '/pages/admin-team/admin-team'
+      },
+      '设备管理': {
+        1: '/pages/admin-device-list/admin-device-list'
+      }
+    },
     isLogin: false
   },
   onLoad() {
@@ -86,7 +95,7 @@ Page({
   //   console.log('📩 收到 MQTT 消息', topic, message);
   // },
   _scanCodeActivation() {
-    if (this.verifyDept()){
+    if (this.verifyDept()) {
       return
     }
     wx.scanCode({
@@ -192,54 +201,24 @@ Page({
   },
   // 团队管理
   _goListItem(e) {
-    let { dept } = this.data.userInfo
-    let { url, title } = e?.currentTarget?.dataset
-    if (title === '设置') {
-      return wx.navigateTo({
-        url
-      });
-    }
-    if (this.verifyDept()){
-      return
-    }
-    if (title === '团队管理' && dept.deptType == 1) {
-      return wx.navigateTo({
-        url: '/pages/admin-team/admin-team'
-      });
-    }
-    if (title === '设备管理' && dept.deptType == 1) {
-      return wx.navigateTo({
-        url: '/pages/admin-device-list/admin-device-list'
-      });
-    }
-    wx.navigateTo({
-      url
-    });
+    const { title, url } = e.currentTarget.dataset;
+    this.navigateByTitle({ title, url });
   },
-  // 充值记录
   _goRechargeHistory() {
-    if (this.verifyDept()){
-      return
-    }
-    wx.navigateTo({
+    this.navigateByTitle({
+      title: '充值记录',
       url: '/pages/recharge-history/recharge-history'
     });
   },
-  // 服务记录
   _goServiceHistory() {
-    if (this.verifyDept()){
-      return
-    }
-    wx.navigateTo({
+    this.navigateByTitle({
+      title: '服务记录',
       url: '/pages/service-history/service-history'
     });
   },
-  // 白名单
   _goWhiteList() {
-    if (this.verifyDept()){
-      return
-    }
-    wx.navigateTo({
+    this.navigateByTitle({
+      title: '白名单',
       url: '/pages/white-list/white-list'
     });
   },
@@ -251,14 +230,32 @@ Page({
   closeIsLoginDialog() {
     this.setData({ isLogin: false });
   },
-  verifyDept(){
-    let { dept } = this.data.userInfo
-    if (!dept){
-       this.message('warning', '游客账号暂时无法使用，请联系管理员！')
-       return true
-    } else {
-      return false
+  // 公共跳转方法
+  navigateByTitle({ title, url }) {
+    const { dept } = this.data.userInfo || {};
+    if (title === '设置') {
+      return wx.navigateTo({ url });
     }
+
+    if (this.verifyDept()) return;
+
+    const deptType = dept?.deptType;
+    const adminMap = this.data.adminRouteMap[title];
+    const finalUrl = adminMap?.[deptType] || url;
+
+    if (finalUrl) {
+      wx.navigateTo({ url: finalUrl });
+    } else {
+      this.message('info', '该功能暂未开放');
+    }
+  },
+  verifyDept() {
+    const { dept } = this.data.userInfo || {};
+    if (!dept) {
+      this.message('warning', '游客账号暂时无法使用，请联系管理员！');
+      return true;
+    }
+    return false;
   },
   message(type, text, duration = 1500) {
     Message[type]({
