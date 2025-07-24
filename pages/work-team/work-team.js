@@ -1,8 +1,10 @@
 import drawQrcode from '../../utils/weapp.qrcode.min'
 import tool from '../../utils/tools'
 import { getMyTeamsApi } from '../../api/api'
+const app = getApp()
 Page({
   data: {
+    ossUrl: app.globalData.ossUrl,
     qrCodeBox: false,
     qrFlag: false,
     editFlag: false,

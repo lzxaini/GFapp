@@ -1,6 +1,8 @@
 import { getTeamsListApi } from '../../api/api'
+const app = getApp()
 Page({
   data: {
+    ossUrl: app.globalData.ossUrl,
     admin: [],
     user: [],
     empty: {

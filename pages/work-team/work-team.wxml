@@ -4,7 +4,7 @@
   <!-- $TODO 我的团队页面对接 -->
   <t-cell-group t-class="team_nav" theme="card">
     <t-cell title="{{teamInfo.deptName}}" description="团队编号：{{teamInfo.teamCode}}">
-      <t-avatar slot="left-icon" size="large" image="{{teamInfo.avatar}}"></t-avatar>
+      <t-avatar slot="left-icon" size="large" image="{{ossUrl + teamInfo.avatar}}"></t-avatar>
       <view slot="right-icon" class="right_box" bindtap="editTeam" wx:if="{{editFlag}}">编辑团队</view>
     </t-cell>
   </t-cell-group>
