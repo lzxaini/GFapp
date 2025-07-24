@@ -6,7 +6,7 @@ import {
 const app = getApp()
 Page({
   data: {
-    statusBarHeight: app.globalData.capsuleHeight,
+    statusBarHeight: app.globalData.statusBarHeight,
     checkFlag: false,
     showConfirm: false,
     bgFlag: false, // 背景图

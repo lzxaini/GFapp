@@ -9,6 +9,15 @@
 		width: 100%;
 		height: 100%;
 		background-color: #000000;
+		.logo_gf {
+			position: absolute;
+			left: 50%;
+			transform: translate(-50%, 0%);
+			.logo_gf_img {
+				width: 278rpx;
+				height: 256rpx;
+			}
+		}
 		.bg_img_box {
 			width: 100%;
 			height: calc(100% - 360rpx);

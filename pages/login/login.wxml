@@ -1,5 +1,8 @@
 <view class="login_container">
   <view class="login_bg">
+    <view class="logo_gf" style="top: {{statusBarHeight}}px">
+      <t-image class="logo_gf_img" src="/static/icon/logo_gf.png" />
+    </view>
     <view class="bg_img_box">
       <t-image class="login_bg_img" src="/static/icon/login.png" />
     </view>
