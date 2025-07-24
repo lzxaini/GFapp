@@ -36,6 +36,7 @@ Page({
   // 上传团队封面
   updateTeamCover() {
     let { deptId } = this.data.teamInfo
+    let _this = this
     wx.chooseImage({
       count: 1,
       sizeType: ['original', 'compressed'],
