@@ -158,11 +158,11 @@ E:\code\GF
 |   |     ├─admin-team.json
 |   |     ├─admin-team.scss
 |   |     └admin-team.wxml
-|   ├─admin-device-list
-|   |         ├─admin-device-list.js
-|   |         ├─admin-device-list.json
-|   |         ├─admin-device-list.scss
-|   |         └admin-device-list.wxml
+|   ├─agent-device-list
+|   |         ├─agent-device-list.js
+|   |         ├─agent-device-list.json
+|   |         ├─agent-device-list.scss
+|   |         └agent-device-list.wxml
 ├─components
 ├─api
 |  ├─api.js

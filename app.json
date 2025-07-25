@@ -2,7 +2,7 @@
   "pages": [
     "pages/index/index",
     "pages/login/login",
-    "pages/admin-device-list/admin-device-list",
+    "pages/agent-device-list/agent-device-list",
     "pages/admin-team/admin-team",
     "pages/device-list/device-list",
     "pages/search-page/search-page",

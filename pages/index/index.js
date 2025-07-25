@@ -43,7 +43,7 @@ Page({
         1: '/pages/admin-team/admin-team'
       },
       '设备管理': {
-        1: '/pages/admin-device-list/admin-device-list'
+        1: '/pages/agent-device-list/agent-device-list'
       }
     },
     isLogin: false
