@@ -9,9 +9,15 @@ App({
     wx.eventCenter = eventCenter; // 挂载到 wx 上
     this.getAliPHFont()
     this.getSystemInfo()
-    this.verifyUserLogin()
+    if (!this.globalData.devFlag) {
+      this.verifyUserLogin()
+    } else {
+      this.globalData.baseUrl = 'https://api.fxnws.com'
+      this.globalData.ossUrl = 'https://api.fxnws.com'
+    }
   },
   globalData: {
+    devFlag: true, // 是否开发模式
     mqttClient: null,
     mqttQrotocol: null,
     statusBarHeight: 0,
