@@ -2,8 +2,10 @@ import { getAdminDeviceListApi } from '../../api/api'
 const app = getApp()
 Page({
   data: {
+    capsuleHeight: app.globalData.capsuleHeight,
     userInfo: app.globalData.userInfo,
     ossUrl: app.globalData.ossUrl,
+    tabsValue: 1,
     deviceInfo: {},
     deviceList: [],
     total: 0,
@@ -35,6 +37,12 @@ Page({
       'pageObj.pageNum': 1
     })
     this.getAdminDeviceList()
+  },
+  tabClick(e) {
+    let { value } = e?.detail
+    this.setData({
+      tabsValue: value
+    })
   },
   /**
    * 设备分页查询

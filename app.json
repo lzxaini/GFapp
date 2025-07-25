@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/admin-operation/admin-operation",
+    "pages/operation/operation",
     "pages/index/index",
     "pages/login/login",
     "pages/agent-device-list/agent-device-list",

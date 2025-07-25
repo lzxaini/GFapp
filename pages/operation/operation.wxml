@@ -1,0 +1,125 @@
+<view class="operation_container">
+  <!-- 顶部导航栏固定 -->
+  <t-navbar t-class="navBar" left-arrow title="运营管理" />
+  <!-- 滚动内容区域 -->
+  <scroll-view class="scroll-content" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="pullDownToRefresh">
+    <view class="nav_bg"></view>
+    <!-- 六宫格统计 -->
+    <view class="operation_nav admin_operation_nav">
+      <image class="operation_nav_bg" src="../../static/icon/bg-top.png" />
+      <view class="nav_item">
+        <view class="number">{{deviceInfo.bindCount}}</view>
+        <view class="label">分公司数</view>
+      </view>
+      <view class="nav_item">
+        <view class="number">{{deviceInfo.unbindCount}}</view>
+        <view class="label">代理商数</view>
+      </view>
+      <view class="nav_item">
+        <view class="number">{{deviceInfo.onlineCount}}</view>
+        <view class="label">门店总数</view>
+      </view>
+      <view class="nav_item">
+        <view class="number">{{deviceInfo.bindCount}}</view>
+        <view class="label">美容师数</view>
+      </view>
+      <view class="nav_item">
+        <view class="number">{{deviceInfo.unbindCount}}</view>
+        <view class="label">累计消耗</view>
+      </view>
+      <view class="nav_item">
+        <view class="number">{{deviceInfo.onlineCount}}</view>
+        <view class="label">剩余次数</view>
+      </view>
+    </view>
+    <!-- 搜索模块 -->
+    <view class="data_search">
+      <view class="data_title">数据查询</view>
+      <view class="date_interval">
+        <view class="interval_item">
+          <t-icon name="calendar" size="16" color="#888BF4" />
+          <view class="interval_info">全部</view>
+        </view>
+        <view class="in">至</view>
+        <view class="interval_item">
+          <t-icon name="calendar" size="16" color="#888BF4" />
+          <view class="interval_info">全部</view>
+        </view>
+      </view>
+      <view class="data_all">
+        <view class="all_item all">
+          <view class="all_text">全部</view>
+          <t-icon name="calendar" size="16" color="#888BF4" />
+        </view>
+        <view class="all_item">
+          <t-input t-class="item-input" t-class-input="input_ftsize" placeholder="搜索门店名称/团队编号" borderless>
+            <t-icon slot="prefix-icon" name="search" size="18" color="#888BF4" />
+          </t-input>
+        </view>
+      </view>
+    </view>
+    <!-- 列表模块 -->
+    <view class="operation_info">
+      <t-tabs t-class="tabs_box" t-class-active="active_style" t-class-item="item_style" defaultValue="{{tabsValue}}" theme="tag" bind:change="tabClick">
+        <t-tab-panel wx:key="index" label="充值记录" value="{{1}}" />
+        <t-tab-panel wx:key="index" label="服务记录" value="{{2}}" />
+      </t-tabs>
+      <view class="table" wx:if="{{tabsValue === 1}}">
+        <!-- 表头 -->
+        <view class="table-row table-header">
+          <view class="table-cell cell-header">充值次数</view>
+          <view class="table-cell cell-header">上期结余</view>
+          <view class="table-cell cell-header">当前结余</view>
+        </view>
+        <!-- 表体 -->
+        <!-- 滚动列表 -->
+        <view class="scroll-view">
+          <block wx:for="{{20}}" wx:key="index">
+            <view class="table-row">
+              <view class="table-cell number-cell">
+                <view class="text">+{{item.rechargeAmount}}</view>
+                <view class="date">{{item.rechargeTime}}</view>
+              </view>
+              <view class="table-cell">{{item.previousBalance}}</view>
+              <view class="table-cell">{{item.currentBalance}}</view>
+            </view>
+          </block>
+        </view>
+      </view>
+      <!-- 滚动列表 -->
+      <view class="scroll-view" wx:else>
+        <block wx:for="{{20}}" wx:key="index">
+          <view class="card_item">
+            <view class="nav_top">
+              <view class="title_box">
+                <image class="icon" src="../../static/icon/{{item.service == 1 ? 'face_icon.png' : 'body_icon.png'}}" />
+                <text class="text">{{item.serviceObj.name}}</text>
+              </view>
+              <view class="number">编号：{{item.code}}</view>
+            </view>
+            <view class="card_list">
+              <view class="list_item">
+                <text class="lable">设备ID</text>
+                <text class="info">{{item.serialNumber}}</text>
+              </view>
+              <view class="list_item">
+                <text class="lable">美容师</text>
+                <text class="info">{{item.serviceUserName}}</text>
+              </view>
+              <view class="list_item">
+                <text class="lable">服务时间</text>
+                <text class="info">{{item.startTime}}</text>
+              </view>
+            </view>
+            <view class="card_icon">
+              <image class="icon" src="../../static/icon/{{item.status == 1 ? 'use_ing.png' : 'use_success.png'}}" />
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+<t-message id="t-message" />
+<!-- 年月 -->
+<t-date-time-picker title="选择日期" visible="{{monthVisible}}" mode="date" value="{{month}}" format="YYYY-MM" bindchange="onConfirm" bindpick="onColumnChange" bindcancel="hidePicker" start="{{start}}" end="{{end}}" />
