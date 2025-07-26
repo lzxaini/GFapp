@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/agent-device/agent-device",
     "pages/founder-device/founder-device",
     "pages/operation/operation",
     "pages/index/index",
