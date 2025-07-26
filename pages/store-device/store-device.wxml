@@ -1,0 +1,24 @@
+<view class="store-device_container">
+  <t-navbar t-class="navBar" left-arrow title="设备管理" />
+  <view class="nav_bg"></view>
+  <t-cell-group t-class="device_nav" theme="card">
+    <t-cell title="测试水水水水" description="团队编号：123">
+      <t-avatar slot="left-icon" size="large" image="{{ossUrl + teamInfo.avatar}}"></t-avatar>
+      <view slot="right-icon" class="right_box">5台</view>
+    </t-cell>
+  </t-cell-group>
+  <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="pullDownToRefresh">
+    <block wx:for="{{20}}">
+      <t-cell-group t-class="list_item" theme="card" bindtap="goDeviceList" data-id="{{item.deptId}}">
+        <t-cell title="{{item.deptName}}" arrow>
+          <t-avatar slot="left-icon" size="large" image="{{ossUrl + item.deptAvatar}}"></t-avatar>
+          <view slot="description" class="list_item_info">已绑定设备数：{{item.bindCount}}</view>
+        </t-cell>
+      </t-cell-group>
+    </block>
+    <view style="margin-top: 40rpx">
+      <t-empty t-class="empty" t-class-image="empty_image" image="/static/icon/footer.png" description="糟糕，到底了" bindtap="onReachBottom" />
+    </view>
+  </scroll-view>
+</view>
+<t-message id="t-message" />
