@@ -1,0 +1,39 @@
+<view class="founder-device_container">
+  <t-navbar t-class="navBar" left-arrow title="我的设备" />
+  <view class="nav_bg"></view>
+  <view class="device_nav">
+    <view class="nav_item">
+      <view class="number">{{deviceInfo.bindCount}}</view>
+      <view class="label">已绑定设备数</view>
+    </view>
+    <view class="nav_item">
+      <view class="number">{{deviceInfo.unbindCount}}</view>
+      <view class="label">未绑定设备数</view>
+    </view>
+    <view class="nav_item">
+      <view class="number">{{deviceInfo.onlineCount}}</view>
+      <view class="label">总联网设备数</view>
+    </view>
+  </view>
+  <view class="admin-team_tabs" hover-class="none" hover-stop-propagation="false">
+    <t-tabs t-class="tabs_box" t-class-active="active_style" t-class-item="item_style" defaultValue="{{teamTab}}" theme="tag" bind:click="tabClick">
+      <t-tab-panel wx:key="index" label="分公司({{teamObj[2].length}})" value="{{2}}" />
+      <t-tab-panel wx:key="index" label="代理商({{teamObj[3].length}})" value="{{3}}" />
+      <t-tab-panel wx:key="index" label="门店({{teamObj[4].length}})" value="{{4}}" />
+    </t-tabs>
+  </view>
+  <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="pullDownToRefresh">
+    <block wx:for="{{20}}">
+      <t-cell-group t-class="list_item" theme="card" bindtap="goDeviceList" data-id="{{item.deptId}}">
+        <t-cell title="{{item.deptName}}" arrow>
+          <t-avatar slot="left-icon" size="large" image="{{ossUrl + item.deptAvatar}}"></t-avatar>
+          <view slot="description" class="list_item_info">已绑定设备数：{{item.bindCount}}</view>
+        </t-cell>
+      </t-cell-group>
+    </block>
+    <view style="margin-top: 40rpx">
+      <t-empty t-class="empty" t-class-image="empty_image" image="/static/icon/footer.png" description="糟糕，到底了" bindtap="onReachBottom" />
+    </view>
+  </scroll-view>
+</view>
+<t-message id="t-message" />

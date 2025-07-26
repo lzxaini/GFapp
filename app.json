@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/founder-device/founder-device",
     "pages/operation/operation",
     "pages/index/index",
     "pages/login/login",

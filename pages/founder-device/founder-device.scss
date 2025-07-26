@@ -1,0 +1,127 @@
+.founder-device_container {
+	width: 100vw;
+	height: 100vh;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	background-color: #f5f7fb;
+	.navBar {
+		--td-navbar-bg-color: #888bf4;
+		--td-navbar-color: #fff;
+		--td-navbar-capsule-border-color: #e3e6ea !important;
+	}
+	.nav_bg {
+		width: 100%;
+		height: 122rpx;
+		margin-top: -2rpx;
+		background-color: #888bf4;
+	}
+	.device_nav {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		width: calc(100% - 48rpx);
+		height: 180rpx;
+		margin: 0 24rpx;
+		margin-top: -90rpx;
+		border-radius: 20rpx;
+		background-color: #ffffff;
+		.nav_item {
+			display: flex;
+			flex-wrap: wrap;
+			align-content: center;
+			justify-content: center;
+			.number {
+				width: 100%;
+				font-family: AlibabaPuHuiTi3;
+				font-size: 50rpx;
+				font-weight: 300;
+				text-align: center;
+				background: linear-gradient(302deg, #888bf4 0%, #5151c6 100%);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				background-clip: text;
+			}
+			.label {
+				font-family: AlibabaPuHuiTi3;
+				font-size: 20rpx;
+				font-weight: normal;
+				text-align: center;
+				background: linear-gradient(283deg, #888bf4 -1%, #5151c6 100%);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				background-clip: text;
+			}
+		}
+	}
+
+	.admin-team_tabs {
+		width: calc(100% - 54rpx);
+		height: 80rpx;
+		margin: 32rpx 27rpx 20rpx 27rpx;
+		border-radius: 40rpx;
+		box-sizing: border-box;
+		border: 1px solid #ecedfd;
+		background-color: #ffffff;
+		.item_style {
+			font-family: AlibabaPuHuiTi3;
+			font-size: 28rpx;
+			font-weight: bold;
+			color: #1c2023;
+		}
+		.active_style {
+			background-color: #888bf4;
+			border-radius: 60rpx;
+			font-family: AlibabaPuHuiTi3;
+			font-size: 32rpx;
+			font-weight: 300;
+			color: #ffffff;
+		}
+		.tabs_box {
+			--td-tab-nav-bg-color: rgba(255, 255, 255, 0.3);
+			--td-tab-item-tag-bg: transparent;
+			--td-tab-border-color: transparent;
+			--td-tab-item-tag-active-bg: #888bf4;
+			--td-tab-item-color: #1c2023;
+			--td-tab-item-active-color: #ffffff;
+			--td-tab-item-height: 80rpx;
+			border-radius: 40px !important;
+			.t-tabs__wrapper {
+				border-radius: 40px !important;
+			}
+		}
+	}
+	.bd05 {
+		width: calc(100% - 30rpx);
+		margin: 0 15rpx;
+		height: 1rpx;
+		background-color: #e7e8fd;
+		transform: scaleY(0.5);
+	}
+	.scroll-view {
+		flex: 1;
+		min-height: 0;
+		padding-bottom: env(safe-area-inset-bottom);
+		.list_item {
+			margin-top: 30rpx;
+			.list_item_info {
+				font-family: AlibabaPuHuiTi3;
+				font-size: 24rpx;
+				font-weight: normal;
+				background: linear-gradient(281deg, #888bf4 0%, #5151c6 100%);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				background-clip: text;
+			}
+		}
+	}
+}
+
+.empty {
+	--td-empty-description-margin-top: 0;
+	--td-empty-description-font-size: 24rpx;
+	padding-top: 40rpx;
+}
+.empty_image {
+	width: 40rpx;
+	height: 48rpx;
+}
