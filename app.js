@@ -9,7 +9,7 @@ App({
     wx.eventCenter = eventCenter; // 挂载到 wx 上
     this.getAliPHFont()
     this.getSystemInfo()
-    // this.verifyUserLogin()
+    this.verifyUserLogin()
   },
   globalData: {
     mqttClient: null,
