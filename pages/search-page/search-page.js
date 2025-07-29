@@ -14,6 +14,7 @@ Page({
     // $TODO 待完善搜索团队功能
     console.log('测试', this.data.searchName)
     this.saveHistory(this.data.searchName);
+    this.joinDept()
   },
   searchInput(e) {
     let { value } = e?.detail
@@ -44,6 +45,8 @@ Page({
   },
   // 加入团队
   joinDept() {
-    
+    wx.navigateTo({
+      url: `/pages/team-join/team-join?searchValue=${this.data.searchName}`,
+    });
   }
 })

@@ -1,0 +1,21 @@
+<view class="team-join_container">
+  <t-navbar t-class="navBar" left-arrow title="加入团队" />
+  <!-- 滚动列表 -->
+  <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="pullDownToRefresh">
+    <t-cell t-class="list_item" wx:for="{{teamList}}">
+      <t-avatar slot="left-icon" shape="round" size="large" image="{{ossUrl + item.avatar}}"></t-avatar>
+      <view slot="title" class="cell_title">{{item.name}}</view>
+      <view slot="description" class="description">
+        <view class="local">所属机构: {{item.deptName}}</view>
+        <view class="number">团队编号: {{item.teamCode}}</view>
+      </view>
+      <view class="note_box" slot="note">
+        <t-button disabled="{{btnFlag}}" theme="primary" shape="circle" block size="large" t-class="join_btn" bindtap="joinTeam" data-id="{{item.id}}">
+          加入
+        </t-button>
+      </view>
+    </t-cell>
+    <t-empty t-class="empty" t-class-image="empty_image" image="/static/icon/footer.png" description="糟糕，到底了" bindtap="onReachBottom" />
+  </scroll-view>
+</view>
+<t-message id="t-message" />

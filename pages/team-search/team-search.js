@@ -1,33 +1,32 @@
 Page({
+  data: {
+    confirmBtn: { content: '确定', variant: 'base' },
+    showConfirm: false
+  },
   searchTeam() {
     wx.navigateTo({
       url: '/pages/search-page/search-page'
     })
   },
   scanTeam() {
+    let _this = this
     wx.scanCode({
       onlyFromCamera: false,
       success: (res) => {
-        console.log("🥵 ~ scanCode ~ res: ", res)
         const { result } = res;
         if (result) {
-          // 扫码成功
-          wx.reLaunch({
-            url: '/pages/submit-success/submit-success'
-          });
-        } else {
-          wx.showToast({
-            title: '扫描失败！',
-            icon: 'error'
-          });
+          _this.joinDept(result)
         }
       },
-      fail: () => {
-        wx.showToast({
-          title: '扫描失败！',
-          icon: 'error'
-        });
+      fail: (err) => {
+        console.log('扫码', err)
       }
+    });
+  },
+  // 加入团队
+  joinDept(searchValue) {
+    wx.navigateTo({
+      url: `/pages/team-join/team-join?searchValue=${searchValue}`,
     });
   }
 })

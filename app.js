@@ -13,8 +13,8 @@ App({
       this.verifyUserLogin()
     } else {
       this.verifyUserLogin()
-      this.globalData.baseUrl = 'https://api.fxnws.com'
-      this.globalData.ossUrl = 'https://api.fxnws.com'
+      this.globalData.baseUrl = 'http://192.168.18.150:8080'
+      this.globalData.ossUrl = 'http://192.168.18.150:8080'
     }
   },
   globalData: {
@@ -59,9 +59,9 @@ App({
       this.globalData.userInfo = JSON.parse(userInfo);
       this.globalData.token = token;
       this.initMqtt(); // 登录状态下自动连接 MQTT
-      wx.reLaunch({
-        url: '/pages/index/index'
-      });
+      // wx.reLaunch({
+      //   url: '/pages/index/index'
+      // });
     }
     // else {
     //   console.log('未登录，需引导用户登录');

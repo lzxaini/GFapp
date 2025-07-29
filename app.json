@@ -1,5 +1,8 @@
 {
   "pages": [
+    "pages/team-search/team-search",
+    "pages/search-page/search-page",
+    "pages/team-join/team-join",
     "pages/index/index",
     "pages/login/login",
     "pages/store-device/store-device",
@@ -9,11 +12,9 @@
     "pages/agent-device-list/agent-device-list",
     "pages/admin-team/admin-team",
     "pages/device-list/device-list",
-    "pages/search-page/search-page",
     "pages/use-history/use-history",
     "pages/service-history/service-history",
     "pages/recharge-history/recharge-history",
-    "pages/team-search/team-search",
     "pages/team-list/team-list",
     "pages/register/register",
     "pages/white-list/white-list",
@@ -54,6 +55,7 @@
     "t-radio": "tdesign-miniprogram/radio/radio",
     "t-radio-group": "tdesign-miniprogram/radio-group/radio-group",
     "t-tab-panel": "tdesign-miniprogram/tab-panel/tab-panel",
+    "t-popup": "tdesign-miniprogram/popup/popup",
     "empty": "components/empty/empty"
   },
   "window": {

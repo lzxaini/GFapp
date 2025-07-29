@@ -1,0 +1,37 @@
+.team-join_container {
+	width: 100vw;
+	height: 100vh;
+	background-color: #f5f7fb;
+	.list_item {
+		.cell_title {
+			font-family: AlibabaPuHuiTi3;
+			font-size: 24rpx;
+			font-weight: 300;
+			color: #1c2023;
+		}
+		.description {
+			font-family: AlibabaPuHuiTi3;
+			font-size: 20rpx;
+			font-weight: normal;
+			color: #606972;
+		}
+		.join_btn {
+			font-size: 20rpx;
+			color: #ffffff;
+			--td-button-primary-bg-color: #888bf4;
+			--td-button-primary-border-color: #888bf4;
+			--td-button-primary-active-bg-color: #888cf4a2;
+			--td-button-primary-active-border-color: #888cf4a2;
+		}
+	}
+	.empty {
+		--td-empty-description-margin-top: 0;
+		--td-empty-description-font-size: 24rpx;
+		padding-top: 40rpx;
+		padding-bottom: env(safe-area-inset-bottom);
+	}
+	.empty_image {
+		width: 40rpx;
+		height: 48rpx;
+	}
+}
