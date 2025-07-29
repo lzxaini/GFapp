@@ -71,11 +71,11 @@ Page({
     })
   },
   scanCodeActivation(e) {
-    let { runningstate } = e?.currentTarget.dataset
+    let { runningstate, serialnumber } = e?.currentTarget.dataset
     // "runningState": "1",（0未激活 1已停止 2运行中）
     if (runningstate === '2') { // $TODO 待完善，点击列表，判断设备是否在使用中，是的话，带上deviceId去使用页面
       wx.navigateTo({
-        url: `/pages/device-use/device-use?deviceId=${deviceId}`,
+        url: `/pages/device-use/device-use?deviceId=${serialnumber}`,
       });
       return
     }

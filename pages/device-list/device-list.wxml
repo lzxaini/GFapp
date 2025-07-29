@@ -18,10 +18,11 @@
             查看使用记录
             <t-icon name="chevron-right-double" size="12" />
           </view>
-          <t-cell t-class="device_card" bordered="{{false}}" bindtap="scanCodeActivation" data-runningState="{{item.runningState}}">
-            <view slot="left-icon" class="sacn_icon">
+          <t-cell t-class="device_card" bordered="{{false}}" bindtap="scanCodeActivation" data-runningState="{{item.runningState}}" data-serialNumber="{{item.serialNumber}}">
+            <view slot="left-icon" class="sacn_icon" wx:if="{{item.runningState == '1'}}">
               <t-icon name="scan" size="15" color="#FFFFFF"></t-icon>
             </view>
+            <view slot="left-icon" class="use_ing" wx:else>使用中</view>
             <view slot="title" class="card_title">设备ID</view>
             <view slot="description" class="card_title">{{item.serialNumber}}</view>
           </t-cell>
