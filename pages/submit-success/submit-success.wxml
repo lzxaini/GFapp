@@ -1,5 +1,5 @@
 <view class="device-use_container">
-  <t-navbar t-class="navBar" left-arrow title="提交成功" />
+  <t-navbar bind:go-back="goIndex" t-class="navBar" left-arrow title="提交成功" />
   <view class="nav_left"></view>
   <view class="nav_right"></view>
   <view class="content">

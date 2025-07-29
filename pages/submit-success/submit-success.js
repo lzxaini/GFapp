@@ -3,7 +3,7 @@ Page({
   data: {
     marginBottom: app.globalData.marginBottom
   },
-  goIndexx() {
+  goIndex() {
     wx.reLaunch({
       url: '/pages/index/index',
     })
