@@ -32,8 +32,8 @@
       </view>
     </block>
   </scroll-view>
-  <view style="margin-top: 40rpx" wx:else>
-    <t-empty icon="{{empty}}" description="暂无使用记录"/>
+  <view class="empty" wx:else>
+    <empty image="../../static/icon/empty2.png" description="暂无相关内容"></empty>
   </view>
 </view>
 <t-message id="t-message" />
