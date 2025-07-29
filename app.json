@@ -53,7 +53,8 @@
     "t-empty": "tdesign-miniprogram/empty/empty",
     "t-radio": "tdesign-miniprogram/radio/radio",
     "t-radio-group": "tdesign-miniprogram/radio-group/radio-group",
-    "t-tab-panel": "tdesign-miniprogram/tab-panel/tab-panel"
+    "t-tab-panel": "tdesign-miniprogram/tab-panel/tab-panel",
+    "empty": "components/empty/empty"
   },
   "window": {
     "backgroundTextStyle": "light",

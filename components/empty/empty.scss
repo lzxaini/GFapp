@@ -1,0 +1,19 @@
+.empty {
+	position: relative;
+	background-color: #ffffff;
+	.image {
+		width: 560rpx;
+		height: 412rpx;
+	}
+	.description {
+		position: absolute;
+		top: 280rpx;
+		left: 50%;
+		transform: translateX(-50%);
+		font-family: AlibabaPuHuiTi3;
+		font-size: 28rpx;
+		font-weight: normal;
+		text-align: center;
+		color: #737b80;
+	}
+}
