@@ -11,6 +11,14 @@ Page({
     this.setData({ historyTag: history });
   },
   searchTeam() {
+    // 输入的不能为空
+    if (!this.data.searchName || !this.data.searchName.trim()) {
+      wx.showToast({
+        title: '请输入搜索内容',
+        icon: 'none'
+      });
+      return;
+    }
     // $TODO 待完善搜索团队功能
     console.log('测试', this.data.searchName)
     this.saveHistory(this.data.searchName);
