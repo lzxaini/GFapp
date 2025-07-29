@@ -2,19 +2,17 @@
   <t-navbar t-class="navBar" left-arrow title="搜索团队" />
   <view class="search_box">
     <t-input t-class="item-input" value="{{searchName}}" prefixIcon="search" placeholder="搜索团队名称/编号" borderless confirm-type="search" bind:enter="searchTeam" bind:change="searchInput"></t-input>
-    <view class="extra">取消</view>
+    <view class="extra" bindtap="searchTeam">搜索</view>
   </view>
   <view class="search_history">
     <view class="search_title">
       <text class="title">历史搜索</text>
-      <t-icon name="delete" size="16"></t-icon>
+      <t-icon name="delete" size="16" bindtap="clickDel"></t-icon>
     </view>
     <view class="history_tag">
-      <block wx:for="{{5}}">
+      <block wx:for="{{historyTag}}">
         <!-- $TODO 待完善搜索团队页面 -->
-        <view class="tag_item" bindtap="clickTagname" data-tag="张三">张三</view>
-        <view class="tag_item">王麻子</view>
-        <view class="tag_item">测试萨</view>
+        <view class="tag_item" bindtap="clickTagname" data-tag="{{item}}">{{item}}</view>
       </block>
     </view>
   </view>
