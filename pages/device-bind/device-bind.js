@@ -3,8 +3,10 @@ import {
   deviceBindApi
 } from '../../api/api.js'
 import Message from 'tdesign-miniprogram/message/index';
+const app = getApp()
 Page({
   data: {
+    ossUrl: app.globalData.ossUrl,
     bindList: [],
     bindId: '',
     serialNumber: ''
