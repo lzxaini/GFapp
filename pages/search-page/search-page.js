@@ -2,6 +2,8 @@ Page({
   data: {
     searchName: '',
     historyTag: [],
+    joinBox: true,
+    deptInfo: {}
   },
   onLoad() {
     // 页面加载时读取本地历史
@@ -39,5 +41,9 @@ Page({
     if (history.length > 10) history = history.slice(0, 10);
     wx.setStorageSync('searchHistory', history);
     this.setData({ historyTag: history });
+  },
+  // 加入团队
+  joinDept() {
+    
   }
 })

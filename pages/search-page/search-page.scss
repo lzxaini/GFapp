@@ -75,3 +75,54 @@
 		}
 	}
 }
+
+.dialog_content {
+	position: relative;
+	.institution_box {
+		border-radius: 10rpx;
+		background: #f8f8fe;
+		padding: 7rpx 20rpx;
+		margin-top: 26rpx;
+		.institution {
+			font-family: AlibabaPuHuiTi3;
+			font-size: 24rpx;
+			font-weight: 400;
+			color: #888bf4;
+		}
+	}
+
+	.tag_box {
+		position: relative;
+		width: 140rpx;
+		height: 42rpx;
+		margin-top: 8rpx;
+		.tag_icon {
+			width: 100%;
+			height: 100%;
+		}
+		.tag_text {
+			position: absolute;
+			top: 50%;
+			left: 33%;
+			transform: translate(0%, -51%);
+			font-family: AlibabaPuHuiTi3;
+			font-size: 18rpx;
+			font-weight: normal;
+			color: #ffffff;
+		}
+	}
+}
+.save_invite {
+	position: absolute;
+	bottom: -112rpx + -32rpx;
+	width: 100%;
+	height: 112rpx;
+	border-radius: 80rpx;
+	font-family: AlibabaPuHuiTi3;
+	font-size: 32rpx;
+	font-weight: bold;
+	line-height: 112rpx;
+	text-align: center;
+	color: #ffffff;
+	background: linear-gradient(279deg, #888bf4 -1%, #5151c6 100%);
+}
