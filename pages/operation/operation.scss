@@ -230,9 +230,8 @@
 		position: absolute;
 		bottom: 0;
 		content: '';
-		width: calc(100% - 40rpx);
-		left: 20rpx;
-		right: 20rpx;
+		width: 133%; // 跟随内容宽度
+		left: 0;
 		height: 1px;
 		background-color: rgba(227, 228, 229, 1);
 		transform: scaleY(0.5);
@@ -257,6 +256,10 @@
 		justify-content: center;
 		flex: 1;
 		padding: 20rpx;
+		min-width: 150rpx;
+	}
+	.cell-big{
+		min-width: 250rpx;
 	}
 	.number-cell {
 		display: block !important;

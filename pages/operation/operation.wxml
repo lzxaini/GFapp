@@ -65,26 +65,30 @@
         <t-tab-panel wx:key="index" label="服务记录" value="{{2}}" />
       </t-tabs>
       <view class="table" wx:if="{{tabsValue === 1}}">
-        <!-- 表头 -->
-        <view class="table-row table-header">
-          <view class="table-cell cell-header">充值次数</view>
-          <view class="table-cell cell-header">上期结余</view>
-          <view class="table-cell cell-header">当前结余</view>
-        </view>
-        <!-- 表体 -->
-        <!-- 滚动列表 -->
-        <view class="scroll-view">
-          <block wx:for="{{20}}" wx:key="index">
-            <view class="table-row">
-              <view class="table-cell number-cell">
-                <view class="text">+{{item.rechargeAmount}}</view>
-                <view class="date">{{item.rechargeTime}}</view>
+        <scroll-view scroll-x="true">
+          <!-- 表头 -->
+          <view class="table-row table-header">
+            <view class="table-cell cell-header cell-big">机构</view>
+            <view class="table-cell cell-header">充值次数</view>
+            <view class="table-cell cell-header">上期结余</view>
+            <view class="table-cell cell-header">当前结余</view>
+          </view>
+          <!-- 表体 -->
+          <!-- 滚动列表 -->
+          <view class="scroll-view">
+            <block wx:for="{{20}}" wx:key="index">
+              <view class="table-row">
+                <view class="table-cell cell-big">美之颜美学定中心...</view>
+                <view class="table-cell number-cell">
+                  <view class="text">+{{item.rechargeAmount}}</view>
+                  <view class="date">{{item.rechargeTime}}</view>
+                </view>
+                <view class="table-cell">{{item.previousBalance}}</view>
+                <view class="table-cell">{{item.currentBalance}}</view>
               </view>
-              <view class="table-cell">{{item.previousBalance}}</view>
-              <view class="table-cell">{{item.currentBalance}}</view>
-            </view>
-          </block>
-        </view>
+            </block>
+          </view>
+        </scroll-view>
       </view>
       <!-- 滚动列表 -->
       <view class="scroll-view" wx:else>

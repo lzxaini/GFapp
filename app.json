@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/operation/operation",
     "pages/agent-team-list/agent-team-list",
     "pages/store-team-members/store-team-members",
     "pages/agent-team-members/agent-team-members",
@@ -9,7 +10,6 @@
     "pages/login/login",
     "pages/store-device/store-device",
     "pages/founder-device/founder-device",
-    "pages/operation/operation",
     "pages/agent-device-list/agent-device-list",
     "pages/device-list/device-list",
     "pages/use-history/use-history",
