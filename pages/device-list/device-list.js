@@ -3,6 +3,7 @@ import { getDeviceListApi, getDeviceActivatedApi } from '../../api/api'
 const app = getApp()
 Page({
   data: {
+    ossUrl: app.globalData.ossUrl,
     userInfo: app.globalData.userInfo,
     deviceList: [],
     historyList: {
