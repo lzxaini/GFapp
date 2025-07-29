@@ -1,7 +1,7 @@
 <view class="white-list_container">
   <t-navbar left-arrow title="白名单" />
   <!-- 滚动列表 -->
-  <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="pullDownToRefresh" wx:if="{{whiteList.length}}">
+  <scroll-view wx:if="{{!whiteBox}}" class="scroll-view" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="pullDownToRefresh" wx:if="{{whiteList.length}}">
     <view class="list_item" wx:for="{{whiteList}}" wx:key="index">
       <view class="left_box">
         <view class="title">免费</view>
@@ -21,8 +21,53 @@
     </view>
   </scroll-view>
   <t-empty t-class="empty" t-class-image="empty_image" wx:else image="/static/icon/null.png" description="暂无任何白名单" />
-  <button style="margin-bottom: {{marginBottom}}" class="authorization" bindtap="scanCode">
+  <button wx:if="{{!whiteBox}}" style="margin-bottom: {{marginBottom}}" class="authorization" bindtap="scanCode">
     扫码授权
   </button>
 </view>
 <t-message id="t-message" />
+<t-dialog visible="{{whiteBox}}" bind:close="closeDialog" close-on-overlay-click="{{true}}">
+  <!-- 适配skyline，增加type="list" -->
+  <view slot="content" class="dialog_content">
+    <view>
+      <t-cell t-class="qr_userInfo" title="{{qrCodeUserInfo.userName}}" bordered="{{false}}">
+        <t-avatar slot="left-icon" size="medium" image="{{ossUrl +  qrCodeUserInfo.avatar}}"></t-avatar>
+        <view class="tag_box" slot="description">
+          <image class="tag_icon" src="../../static/icon/admin.png" />
+          <text class="tag_text">{{qrCodeUserInfo.roles[0].roleName}}</text>
+        </view>
+      </t-cell>
+      <view class="institution_box">
+        <text class="institution">所属机构：{{qrCodeUserInfo.deptName}}</text>
+      </view>
+      <view class="qr_image_box">
+        <!-- <canvas class="qr_image" canvas-id="myQrcode"></canvas> -->
+        <view class="title">请选择白名单授权次数</view>
+        <view class="select_box">
+          <view class="item {{ whiteForm.frequency == 0 ? 'item_active' : '' }}" bindtap="clickData" data-frequency="0">
+            今日
+          </view>
+          <view class="item {{ whiteForm.frequency == 1 ? 'item_active' : '' }}" bindtap="clickData" data-frequency="1">
+            每天
+          </view>
+          <view class="item {{ whiteForm.frequency == 9 ? 'item_active' : '' }}" bindtap="clickData" data-frequency="9">
+            累计
+          </view>
+        </view>
+        <view class="freeTimes">
+          <t-input t-class="freeTimes_input" t-class-input="input" placeholder="数量" value="{{whiteForm.freeTimes}}" type="number" bindchange="onNumberInput" borderless>
+            <view slot="prefix-icon" class="icon" bindtap="clickFreeTimes" data-type="minus">
+              <t-icon name="minus"></t-icon>
+            </view>
+            <view slot="suffix-icon" class="icon" bindtap="clickFreeTimes" data-type="plus">
+              <t-icon name="plus"></t-icon>
+            </view>
+          </t-input>
+          <view class="unit">次</view>
+        </view>
+      </view>
+      <view class="qr_code_text">说明：白名单次数不统计在运营数据（包括订单和服务次数）中，仅适用于团队员工测试。</view>
+    </view>
+  </view>
+  <button slot="confirm-btn" class="save_invite" bindtap="addWhite">确认添加</button>
+</t-dialog>

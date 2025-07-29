@@ -12,6 +12,7 @@ App({
     if (!this.globalData.devFlag) {
       this.verifyUserLogin()
     } else {
+      this.verifyUserLogin()
       this.globalData.baseUrl = 'https://api.fxnws.com'
       this.globalData.ossUrl = 'https://api.fxnws.com'
     }

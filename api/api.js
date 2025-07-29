@@ -2,7 +2,7 @@
  * @Author: lzx
  * @Date: 2024-01-01 13:42:13
  * @LastEditors: 17630921248 1245634367@qq.com
- * @LastEditTime: 2025-07-23 15:37:29
+ * @LastEditTime: 2025-07-29 13:06:26
  * @Description: Fuck Bug
  * @FilePath: \medical\api\api.js
  */
@@ -222,6 +222,26 @@ export function changeTeamInfoApi(data) {
   return request({
     url: `/gf/teams`,
     method: 'put',
+    data
+  })
+}
+/**
+ * 扫码查询用户信息
+ */
+export function getUserInfoQrCodeApi(userId) {
+  return request({
+    url: `/system/user/info/${userId}`,
+    method: 'get',
+  })
+}
+
+/**
+ * 白名单设置
+ */
+export function addwhiteListApi(data) {
+  return request({
+    url: `/gf/whitelist`,
+    method: 'post',
     data
   })
 }
