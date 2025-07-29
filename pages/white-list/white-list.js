@@ -102,8 +102,6 @@ Page({
         if (result) {
           // 扫码成功
           _this.getUserInfoQrCode(result)
-        } else {
-          this.messageBox('error', '扫描二维码失败，请稍后再试！');
         }
       },
       fail: () => {
