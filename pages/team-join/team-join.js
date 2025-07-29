@@ -10,7 +10,6 @@ Page({
     btnFlag: false,
     pageObj: {
       searchValue: '',
-      status: 0,
       pageNum: 1,
       pageSize: 10,
     }
