@@ -33,36 +33,9 @@
             <view class="table-cell">{{item.currentBalance}}</view>
           </view>
         </block>
-        <!-- <block wx:for="{{tableData}}" wx:key="index" wx:if="{{pageObj.range === 2}}">
-          <view class="table-row">
-            <view class="table-cell number-cell">
-              <view class="text">+{{item.rechargeAmount}}</view>
-              <view class="date">{{item.rechargeTime}}</view>
-            </view>
-            <view class="table-cell">{{item.previousBalance}}</view>
-            <view class="table-cell">{{item.currentBalance}}</view>
-          </view>
-        </block>
-        <block wx:for="{{tableData}}" wx:key="index" wx:if="{{pageObj.range === 3}}">
-          <view class="table-row">
-            <view class="table-cell number-cell">
-              <view class="text">+{{item.rechargeAmount}}</view>
-              <view class="date">{{item.rechargeTime}}</view>
-            </view>
-            <view class="table-cell">{{item.previousBalance}}</view>
-            <view class="table-cell">{{item.currentBalance}}</view>
-          </view>
-        </block>
-        <block wx:for="{{tableData}}" wx:key="index" wx:if="{{pageObj.range === 4}}">
-          <view class="table-row">
-            <view class="table-cell number-cell">
-              <view class="text">+{{item.rechargeAmount}}</view>
-              <view class="date">{{item.rechargeTime}}</view>
-            </view>
-            <view class="table-cell">{{item.previousBalance}}</view>
-            <view class="table-cell">{{item.currentBalance}}</view>
-          </view>
-        </block> -->
+        <view class="empty" wx:if="{{tableData.length < 1}}">
+          <empty image="../../static/icon/empty1.png" description="暂时没有收入，快去接单吧"></empty>
+        </view>
       </view>
     </view>
   </scroll-view>

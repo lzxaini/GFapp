@@ -1,6 +1,6 @@
 <view class="empty">
   <t-empty>
-    <image slot="image" class="image" src="{{image}}"></image>
-    <view slot="description" class="description">{{description}}</view>
+    <image slot="image" class="image {{imageClass}}" src="{{image}}"></image>
+    <view slot="description" class="description {{descClass}}">{{description}}</view>
   </t-empty>
 </view>

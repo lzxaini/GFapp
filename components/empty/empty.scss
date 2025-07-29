@@ -4,11 +4,13 @@
 	.image {
 		width: 560rpx;
 		height: 412rpx;
+		margin-top: 30rpx;
 	}
 	.description {
 		position: absolute;
-		top: 280rpx;
+		top: 300rpx;
 		left: 50%;
+		width: 100%;
 		transform: translateX(-50%);
 		font-family: AlibabaPuHuiTi3;
 		font-size: 28rpx;

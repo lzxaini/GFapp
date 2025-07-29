@@ -7,6 +7,14 @@ Component({
     description: {
       type: String,
       value: '暂无相关内容'
+    },
+    imageClass: {
+      type: String,
+      value: ''
+    },
+    descClass: {
+      type: String,
+      value: ''
     }
   },
   data: {},
