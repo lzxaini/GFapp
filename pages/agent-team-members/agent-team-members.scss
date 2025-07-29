@@ -1,0 +1,144 @@
+.agent-team-members_container {
+	width: 100vw;
+	height: 100vh;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	background-color: #f5f7fb;
+	.navBar {
+		--td-navbar-bg-color: #888bf4;
+		--td-navbar-color: #fff;
+		--td-navbar-capsule-border-color: #e3e6ea !important;
+	}
+	.nav_bg {
+		width: 100%;
+		height: 122rpx;
+		margin-top: -2rpx;
+		background-color: #888bf4;
+	}
+	.device_nav {
+		margin-top: -90rpx;
+		.right_box {
+			position: absolute;
+			right: 0;
+			width: 140rpx;
+			height: 50rpx;
+			border-radius: 25rpx 0 0 25rpx;
+			background-color: #e7e8fd;
+			font-family: AlibabaPuHuiTi3;
+			font-size: 24rpx;
+			font-weight: 300;
+			line-height: 50rpx;
+			text-align: center;
+			letter-spacing: 0px;
+			color: #888bf4;
+		}
+	}
+	.team_tabs_box {
+		margin-top: 32rpx;
+		background-color: #ffffff;
+	}
+	.admin-team_tabs {
+		width: calc(100% - 54rpx);
+		height: 80rpx;
+		margin: 32rpx 27rpx 20rpx 27rpx;
+		box-sizing: border-box;
+		border: 1px solid #ecedfd;
+		background-color: #ffffff;
+
+		.tabs_box {
+			--td-tab-nav-bg-color: rgba(255, 255, 255, 0.3);
+			--td-tab-item-tag-bg: transparent;
+			--td-tab-item-tag-active-bg: #888bf4;
+			--td-tab-item-color: #1c2023;
+			--td-tab-item-active-color: #ffffff;
+			--td-tab-item-height: 80rpx;
+			// border: 1rpx solid #ecedfd;
+			margin-bottom: 30rpx;
+		}
+		.item_style {
+			font-family: AlibabaPuHuiTi3;
+			font-size: 28rpx;
+			font-weight: bold;
+			color: #1c2023;
+		}
+		.active_style {
+			background-color: #888bf4;
+			font-family: AlibabaPuHuiTi3;
+			font-size: 32rpx;
+			font-weight: 300;
+			color: #ffffff;
+		}
+	}
+	.bd05 {
+		width: calc(100% - 30rpx);
+		margin: 0 15rpx;
+		height: 1rpx;
+		background-color: #e7e8fd;
+		transform: scaleY(0.5);
+	}
+	.scroll-view {
+		flex: 1;
+		min-height: 0;
+		padding-bottom: env(safe-area-inset-bottom);
+
+		.list_item {
+			padding-top: 30rpx;
+			.title_box {
+				display: flex;
+				align-items: center;
+				.title_text {
+					font-family: AlibabaPuHuiTi3;
+					font-size: 32rpx;
+					font-weight: 300;
+					letter-spacing: 0rpx;
+					color: #1c2023;
+				}
+				.tag_box {
+					position: relative;
+					width: 140rpx;
+					height: 42rpx;
+					margin-top: 8rpx;
+					.tag_icon {
+						width: 100%;
+						height: 100%;
+					}
+					.tag_text {
+						position: absolute;
+						top: 50%;
+						left: 33%;
+						transform: translate(0%, -50%);
+						font-family: AlibabaPuHuiTi3;
+						font-size: 16rpx;
+						font-weight: normal;
+						color: #ffffff;
+					}
+				}
+			}
+		}
+	}
+}
+
+.invite_btn {
+	position: fixed;
+	bottom: env(safe-area-inset-bottom);
+	width: calc(100% - 64rpx);
+	height: 112rpx;
+	margin: 0 32rpx;
+	border-radius: 80rpx;
+	background: linear-gradient(279deg, #888bf4 -1%, #5151c6 100%);
+	font-family: AlibabaPuHuiTi3;
+	font-size: 32rpx;
+	font-weight: bold;
+	line-height: 112rpx;
+	color: #ffffff;
+}
+.empty {
+	--td-empty-description-margin-top: 0;
+	--td-empty-description-font-size: 24rpx;
+	padding-top: 40rpx;
+}
+.empty_image {
+	width: 40rpx;
+	height: 48rpx;
+}
