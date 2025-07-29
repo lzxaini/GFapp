@@ -1,3 +1,4 @@
+import Message from 'tdesign-miniprogram/message/index';
 import { getDeviceListApi, getDeviceActivatedApi } from '../../api/api'
 const app = getApp()
 Page({
@@ -73,7 +74,7 @@ Page({
   scanCodeActivation(e) {
     let { runningstate, serialnumber } = e?.currentTarget.dataset
     // "runningState": "1",（0未激活 1已停止 2运行中）
-    if (runningstate === '2') { // $TODO 待完善，点击列表，判断设备是否在使用中，是的话，带上deviceId去使用页面
+    if (runningstate === '2') {
       wx.navigateTo({
         url: `/pages/device-use/device-use?deviceId=${serialnumber}`,
       });
@@ -84,9 +85,19 @@ Page({
       success: (res) => {
         const { result } = res;
         if (result) {
-          wx.navigateTo({
-            url: `/pages/device-active/device-active?deviceId=${result}`,
-          });
+          if (serialnumber === result) {
+            // 扫码成功
+            wx.navigateTo({
+              url: `/pages/device-active/device-active?deviceId=${result}`,
+            });
+          } else {
+            Message.error({
+              context: this,
+              offset: [90, 32],
+              duration: 1500,
+              content: '请扫码对应的设备二维码！',
+            });
+          }
         } else {
           wx.showToast({
             title: '扫描失败！',
