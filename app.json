@@ -1,8 +1,5 @@
 {
   "pages": [
-    "pages/team-search/team-search",
-    "pages/search-page/search-page",
-    "pages/team-join/team-join",
     "pages/index/index",
     "pages/login/login",
     "pages/store-device/store-device",
@@ -18,6 +15,9 @@
     "pages/team-list/team-list",
     "pages/register/register",
     "pages/white-list/white-list",
+    "pages/team-search/team-search",
+    "pages/search-page/search-page",
+    "pages/team-join/team-join",
     "pages/device-use/device-use",
     "pages/device-active/device-active",
     "pages/change-password/change-password",
