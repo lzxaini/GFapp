@@ -5,15 +5,17 @@
     <view class="list_item" wx:for="{{whiteList}}" wx:key="index">
       <view class="left_box">
         <view class="title">免费</view>
-        <view class="number">{{item.freeTimes}}次/{{item.frequencyName}}</view>
+        <view class="number">
+          {{item.freeTimes}}次/{{item.frequency == 0 ? '今日' :  item.frequency == 1 ? '每天' :  item.frequency == 9 ? '累计' : '-'}}
+        </view>
       </view>
       <view class="right_box">
         <view class="user_info">
           <image class="avatar" src="../../static/icon/gf_logo.png" />
           <text class="text">{{item.userName}}</text>
         </view>
-        <view class="location">地点：{{item.teamName}}</view>
-        <view class="identity">身份：{{item.tagName}}</view>
+        <view class="location">地点：{{item.deptName}}</view>
+        <view class="identity">身份：{{item.roleName}}</view>
         <view class="icon_box">
           <image class="icon" src="../../static/icon/{{item.statusIcon}}" />
         </view>
@@ -38,7 +40,7 @@
         </view>
       </t-cell>
       <view class="institution_box">
-        <text class="institution">所属机构：{{qrCodeUserInfo.deptName}}</text>
+        <text class="institution">所属机构：{{qrCodeUserInfo.dept.deptName}}</text>
       </view>
       <view class="qr_image_box">
         <!-- <canvas class="qr_image" canvas-id="myQrcode"></canvas> -->

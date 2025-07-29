@@ -15,6 +15,12 @@ Page({
       pageSize: 10,
     },
     whiteForm: {
+      userId: '',
+      userName: '',
+      deptId: '',
+      deptName: '',
+      roleId: '',
+      roleName: '',
       frequency: 0, // （0今天 1每天 9累计）、
       freeTimes: 1, // 次数
     }
@@ -110,6 +116,12 @@ Page({
     getUserInfoQrCodeApi(result).then(res => {
       if (res.code === 200) {
         this.setData({
+          'whiteForm.userId': res.data.userId,
+          'whiteForm.userName': res.data.userName,
+          'whiteForm.deptId': res.data.dept.deptId,
+          'whiteForm.deptName': res.data.dept.deptName,
+          'whiteForm.roleId': res.data.roles[0].roleId,
+          'whiteForm.roleName': res.data.roles[0].roleName,
           qrCodeUserInfo: res.data,
           whiteBox: true,
         })
