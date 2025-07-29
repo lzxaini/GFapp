@@ -1,6 +1,8 @@
 Page({
   searchTeam() {
-    
+    wx.navigateTo({
+      url: '/pages/search-page/search-page'
+    })
   },
   scanTeam() {
     wx.scanCode({
