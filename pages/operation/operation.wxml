@@ -1,3 +1,4 @@
+<wxs src="./calendar.wxs" module="_this" />
 <view class="operation_container">
   <!-- 顶部导航栏固定 -->
   <t-navbar t-class="navBar" left-arrow title="运营管理" />
@@ -35,24 +36,24 @@
     <!-- 搜索模块 -->
     <view class="data_search">
       <view class="data_title">数据查询</view>
-      <view class="date_interval">
+      <view class="date_interval" bindtap="handleCalendar">
         <view class="interval_item">
           <t-icon name="calendar" size="16" color="#888BF4" />
-          <view class="interval_info">全部</view>
+          <view class="interval_info">{{calendarValue[0] || '开始日期'}}</view>
         </view>
         <view class="in">至</view>
         <view class="interval_item">
           <t-icon name="calendar" size="16" color="#888BF4" />
-          <view class="interval_info">全部</view>
+          <view class="interval_info">{{calendarValue[1] || '结束日期'}}</view>
         </view>
       </view>
       <view class="data_all">
-        <view class="all_item all">
+        <view class="all_item all" bindtap="searchAll">
           <view class="all_text">全部</view>
           <t-icon name="calendar" size="16" color="#888BF4" />
         </view>
         <view class="all_item">
-          <t-input t-class="item-input" t-class-input="input_ftsize" placeholder="搜索门店名称/团队编号" borderless>
+          <t-input value="{{searchValue}}" bindchange="searchInput" bindblur="statrtSearch" t-class="item-input" t-class-input="input_ftsize" placeholder="搜索门店名称/团队编号" borderless>
             <t-icon slot="prefix-icon" name="search" size="18" color="#888BF4" />
           </t-input>
         </view>
@@ -125,5 +126,5 @@
   </scroll-view>
 </view>
 <t-message id="t-message" />
-<!-- 年月 -->
-<t-date-time-picker title="选择日期" visible="{{monthVisible}}" mode="date" value="{{month}}" format="YYYY-MM" bindchange="onConfirm" bindpick="onColumnChange" bindcancel="hidePicker" start="{{start}}" end="{{end}}" />
+<!-- 日期选择区间 -->
+<t-calendar visible="{{calendarVisible}}" value="{{calendarValue}}" type="range" minDate="{{minDate}}" defaultValue="{{defaultValue}}" bind:confirm="handleConfirm" />

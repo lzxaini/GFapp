@@ -28,7 +28,7 @@ Page({
     }, {
       title: '运营管理',
       icon: 'my_3.png',
-      url: ''
+      url: '/pages/operation/operation'
     }, {
       title: '使用指南',
       icon: 'my_4.png',
