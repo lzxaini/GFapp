@@ -65,3 +65,13 @@
 		}
 	}
 }
+
+.empty {
+	--td-empty-description-margin-top: 0;
+	--td-empty-description-font-size: 24rpx;
+	padding-top: 40rpx;
+}
+.empty_image {
+	width: 40rpx;
+	height: 48rpx;
+}

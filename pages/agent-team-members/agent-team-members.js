@@ -1,81 +1,66 @@
-import { getAdminDeviceListApi } from '../../api/api'
+import { getAdminTeamListDrillDownApi } from '../../api/api'
 const app = getApp()
 Page({
   data: {
     marginBottom: app.globalData.marginBottom,
     userInfo: app.globalData.userInfo,
     ossUrl: app.globalData.ossUrl,
-    deviceInfo: {},
-    deviceList: [],
-    tabsValue: 1, // 1: 团队成员, 2: 团队设备
-    total: 0,
     refresher: false,
-    pageObj: {
-      pageNum: 1,
-      pageSize: 10
-    }
+    teamTab: 3, // 默认团队tab
+    teamObj: {},
+    teamList: [],
+    deptData: {},
+    tabsValue: 1, // 1: 团队成员, 2: 团队设备
   },
-  onShow() {
-    this.getAdminDeviceList()
+  onLoad(options) {
+    let { deptInfo } = options
+    let deptData = JSON.parse(deptInfo)
+    console.log("🥵 ~ onLoad ~ dept: ", deptData)
+    this.setData({ deptData })
+    this.getAdminTeamListDrillDown()
   },
-  /**
-  * 页面上拉触底事件的处理函数
- */
-  onReachBottom() {
-    console.log('触底',)
-    let { deviceList, total } = this.data
-    if (deviceList.length < total) {
-      let pageNum = ++this.data.pageObj.pageNum
-      this.setData({
-        'pageObj.pageNum': pageNum
-      })
-      this.getAdminDeviceList('bottom')
-    }
-  },
-  pullDownToRefresh() {
-    this.setData({
-      'pageObj.pageNum': 1
-    })
-    this.getAdminDeviceList()
-  },
-  /**
-   * 设备分页查询
-   * 增加在分页条件里面
-   * @param {*} type 
-   */
-  getAdminDeviceList(type = 'init') {
-    getAdminDeviceListApi(this.data.pageObj).then(res => {
-      if (type === 'bottom') {
-        if (res.data.depts.rows.length > 0) {
-          let list = this.data.deviceList
-          list.push(...res.data.depts.rows)
-          this.setData({
-            deviceInfo: res.data,
-            deviceList: list
-          })
-        }
+  getAdminTeamListDrillDown() {
+    let { deptData, teamTab } = this.data
+      getAdminTeamListDrillDownApi(deptData.deptId).then(res => {
+      if (res.code === 200) {
+        this.setData({
+          refresher: false,
+          teamObj: res.data,
+          teamList: res.data[teamTab]
+        })
       } else {
         this.setData({
-          deviceInfo: res.data,
-          deviceList: res.data.depts.rows,
-          total: res.data.depts.total
+          refresher: false,
+        })
+        wx.showToast({
+          title: '获取团队列表失败',
+          icon: 'error'
         })
       }
-      this.setData({
-        refresher: false
-      })
     })
-  },
-  goDeviceList(e) {
-    let { id } = e?.currentTarget?.dataset
-    wx.navigateTo({
-      url: `/pages/device-list/device-list?deptId=${id}`,
-    });
   },
   tabClick(e) {
     let { value } = e?.detail
+    let { teamObj } = this.data
     this.setData({
-      tabsValue: value
+      teamTab: value,
+      teamList: teamObj[value]
     })
   },
+  goNext(e) {
+    let { item } = e?.currentTarget?.dataset
+    let { teamTab } = this.data
+    switch (teamTab) {
+      case 3:
+        wx.navigateTo({
+          url: `/pages/agent-team-list/agent-team-list?deptInfo=${JSON.stringify(item)}`,
+        });
+        break
+      case 4:
+        wx.navigateTo({
+          url: `/pages/store-team-members/store-team-members?deptInfo=${JSON.stringify(item)}`,
+        });
+        break
+    }
+  }
 })

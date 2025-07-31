@@ -2,21 +2,21 @@
   <t-navbar t-class="navBar" left-arrow title="团队成员" />
   <view class="nav_bg"></view>
   <t-cell-group t-class="device_nav" theme="card">
-    <t-cell title="测试水水水水" description="团队编号：123">
-      <t-avatar slot="left-icon" size="large" image="{{ossUrl + teamInfo.avatar}}"></t-avatar>
-      <view slot="right-icon" class="right_box">编辑团队</view>
+    <t-cell title="{{deptData.deptName}}" description="团队编号：{{deptData.deptCode}}">
+      <t-avatar slot="left-icon" size="large" image="{{ossUrl + deptData.deptAvatar}}"></t-avatar>
+      <!-- <view slot="right-icon" class="right_box" bindtap="editTeam" data-id="{{deptData.id}}">编辑团队</view> -->
     </t-cell>
   </t-cell-group>
   <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="pullDownToRefresh">
-    <block wx:for="{{20}}">
-      <t-cell t-class="list_item" description="1333333333333" arrow>
-        <t-avatar slot="left-icon" shape="round" size="large" image="{{ossUrl + item.user.avatar}}"></t-avatar>
+    <block wx:for="{{membersList}}">
+      <t-cell t-class="list_item" arrow>
+        <t-avatar slot="left-icon" shape="round" size="large" image="{{ossUrl + item.avatar}}"></t-avatar>
         <view slot="title" class="title_box">
-          <text class="title_text">码字测试实施</text>
-          <view class="tag_box" slot="description">
-            <image class="tag_icon" src="../../static/icon/admin.png" />
-            <text class="tag_text">美容师</text>
-          </view>
+          <text class="title_text">{{item.name}}</text>
+        </view>
+        <view slot="description">
+          <view class="description_text">团队编号：{{item.teamCode}}</view>
+          <view class="description_text">{{item.address}}</view>
         </view>
       </t-cell>
     </block>

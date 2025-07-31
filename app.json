@@ -1,13 +1,13 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/login/login",
-    "pages/operation/operation",
-    "pages/agent-team-list/agent-team-list",
+    "pages/admin-team/admin-team",
     "pages/store-team-members/store-team-members",
     "pages/agent-team-members/agent-team-members",
     "pages/agent-device/agent-device",
-    "pages/admin-team/admin-team",
+    "pages/agent-team-list/agent-team-list",
+    "pages/login/login",
+    "pages/operation/operation",
     "pages/store-device/store-device",
     "pages/founder-device/founder-device",
     "pages/agent-device-list/agent-device-list",

@@ -2,20 +2,20 @@
   <t-navbar t-class="navBar" left-arrow title="团队成员" />
   <view class="nav_bg"></view>
   <t-cell-group t-class="device_nav" theme="card">
-    <t-cell title="测试水水水水" description="团队编号：123">
-      <t-avatar slot="left-icon" size="large" image="{{ossUrl + teamInfo.avatar}}"></t-avatar>
-      <view slot="right-icon" class="right_box">编辑团队</view>
+    <t-cell title="{{deptData.deptName}}" description="团队编号：{{deptData.deptCode}}">
+      <t-avatar slot="left-icon" size="large" image="{{ossUrl + deptData.deptAvatar}}"></t-avatar>
+      <!-- <view slot="right-icon" class="right_box">编辑团队</view> -->
     </t-cell>
   </t-cell-group>
   <view class="team_tabs_box">
     <view class="admin-team_tabs">
-      <t-tabs t-class="tabs_box" t-class-active="active_style" t-class-item="item_style" defaultValue="{{tabsValue}}" theme="tag" bind:change="tabClick" show-bottom-line="{{false}}">
-        <t-tab-panel wx:key="index" label="代理商" value="{{1}}" />
-        <t-tab-panel wx:key="index" label="门店" value="{{2}}" />
+      <t-tabs t-class="tabs_box" t-class-active="active_style" t-class-item="item_style" defaultValue="{{teamTab}}" theme="tag" bind:change="tabClick" show-bottom-line="{{false}}">
+        <t-tab-panel wx:key="index" label="代理商（{{teamObj[3].length || 0}}）" value="{{3}}" />
+        <t-tab-panel wx:key="index" label="门店（{{teamObj[4].length || 0}}）" value="{{4}}" />
       </t-tabs>
     </view>
   </view>
-  <scroll-view wx:if="{{tabsValue === 1}}" class="scroll-view" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="pullDownToRefresh">
+  <!-- <scroll-view wx:if="{{teamTab === 3}}" class="scroll-view" scroll-y="true" scroll-with-animation="true" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="getAdminTeamListDrillDown">
     <block wx:for="{{20}}">
       <t-cell t-class="list_item" description="1333333333333" arrow>
         <t-avatar slot="left-icon" shape="round" size="large" image="{{ossUrl + item.user.avatar}}"></t-avatar>
@@ -31,17 +31,17 @@
     <view style="margin-top: 40rpx">
       <t-empty t-class="empty" t-class-image="empty_image" image="/static/icon/footer.png" description="糟糕，到底了" />
     </view>
-  </scroll-view>
-  <scroll-view wx:if="{{tabsValue === 2}}" class="scroll-view" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="pullDownToRefresh">
-    <block wx:for="{{20}}">
-      <t-cell t-class="list_item" arrow>
-        <t-avatar slot="left-icon" shape="round" size="large" image="{{item.avatar}}"></t-avatar>
+  </scroll-view> -->
+  <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="getAdminTeamListDrillDown">
+    <block wx:for="{{teamList}}">
+      <t-cell t-class="list_item" arrow bindtap="goNext" data-item="{{item}}">
+        <t-avatar slot="left-icon" shape="round" size="large" image="{{ossUrl + item.avatar}}"></t-avatar>
         <view slot="title" class="title_box">
-          <text class="title_text">美之颜美学定制中心</text>
+          <text class="title_text">{{item.deptName}}</text>
         </view>
         <view slot="description">
-          <view class="description_text">团队编号：{{item.teamCode}}</view>
-          <view class="description_text">广东省，苏州市，吴江区，测水</view>
+          <view class="description_text">团队编号：{{item.deptCode}}</view>
+          <view class="description_text">{{item.address}}</view>
         </view>
       </t-cell>
     </block>

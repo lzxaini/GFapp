@@ -12,6 +12,7 @@ App({
     this.verifyUserLogin()
   },
   globalData: {
+    devFlag: true, // 开发环境标志
     appName: {
       // name: '光馥科美',
       // introduce: '光塑年轻力，馥养无龄美',
@@ -24,8 +25,8 @@ App({
     capsuleHeight: 0,
     marginBottom: '60rpx',
     // baseUrl: 'https://oa.beasun.com:2443/prod-api',
-    // baseUrl: 'http://192.168.18.150:8080',
-    baseUrl: 'https://api.fxnws.com',
+    baseUrl: 'http://192.168.18.150:8080',
+    // baseUrl: 'https://api.fxnws.com',
     ossUrl: 'https://api.fxnws.com',
     mqttUrl: 'wxs://mqtt.fxnws.com/mqtt',
     // mqttUrl: 'wxs://mqtt.beasun.com/mqtt',
@@ -58,9 +59,11 @@ App({
       this.globalData.userInfo = JSON.parse(userInfo);
       this.globalData.token = token;
       this.initMqtt(); // 登录状态下自动连接 MQTT
-      wx.reLaunch({
-        url: '/pages/index/index'
-      });
+      if (!this.globalData.devFlag) {
+        wx.reLaunch({
+          url: '/pages/index/index'
+        });
+      }
     }
     // else {
     //   console.log('未登录，需引导用户登录');

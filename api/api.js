@@ -2,7 +2,7 @@
  * @Author: lzx
  * @Date: 2024-01-01 13:42:13
  * @LastEditors: 17630921248 1245634367@qq.com
- * @LastEditTime: 2025-07-29 18:13:58
+ * @LastEditTime: 2025-07-31 16:44:33
  * @Description: Fuck Bug
  * @FilePath: \medical\api\api.js
  */
@@ -206,6 +206,15 @@ export function getAdminTeamListApi() {
   })
 }
 /**
+ * 管理员团队下钻
+ */
+export function getAdminTeamListDrillDownApi(deptId) {
+  return request({
+    url: `/system/dept/map/${deptId}`,
+    method: 'get'
+  })
+}
+/**
  * 管理员设备列表
  */
 export function getAdminDeviceListApi(data) {
@@ -261,8 +270,19 @@ export function getTeamsInfoListApi(data) {
  */
 export function joinTeamApi(data) {
   return request({
-    url: `/gf/teamJoinRequests `,
+    url: `/gf/teamJoinRequests`,
     method: 'post',
     data
+  })
+}
+
+/**
+ * 查询门店下团队
+ * 参数deptId
+ */
+export function getStoresTeamListApi(deptId) {
+  return request({
+    url: `/gf/teams/list/${deptId}`,
+    method: 'get',
   })
 }
