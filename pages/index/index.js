@@ -12,6 +12,7 @@ import { withLogin } from '../../utils/auth';
 Page({
   data: {
     capsuleHeight: app.globalData.capsuleHeight,
+    appName: app.globalData.appName,
     ossUrl: app.globalData.ossUrl,
     qrCodeBox: false,
     qrFlag: false,

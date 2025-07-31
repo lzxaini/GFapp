@@ -12,6 +12,12 @@ App({
     this.verifyUserLogin()
   },
   globalData: {
+    appName: {
+      // name: '光馥科美',
+      // introduce: '光塑年轻力，馥养无龄美',
+      name: '百士电子',
+      slogan: '让中国制造，成为中国创造！',
+    },
     mqttClient: null,
     mqttQrotocol: null,
     statusBarHeight: 0,
