@@ -20,7 +20,7 @@
     <view class="from_item">
       <view class="item_label">编号</view>
       <view class="item_value">
-        <t-input disabled="{{true}}" t-class="item-input" value="{{userInfo.userId}}" type="text" borderless></t-input>
+        <t-input disabled="{{true}}" t-class="item-input" value="{{userId}}" type="text" borderless></t-input>
       </view>
       <t-icon name="chevron-right" size="48rpx" color="#C5C8CB" />
     </view>
@@ -43,7 +43,7 @@
     <view class="bd05" />
     <view class="from_item">
       <view class="item_label">所属机构</view>
-      <view class="item_value">
+      <view class="item_value" bindtap="goSearchTeam">
         <t-input disabled="{{true}}" t-class="item-input" value="{{userInfo.dept.deptName}}" type="text" confirm-type="next" borderless></t-input>
       </view>
       <t-icon name="chevron-right" size="48rpx" color="#C5C8CB" />

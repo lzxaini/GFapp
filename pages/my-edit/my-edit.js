@@ -13,10 +13,17 @@ Page({
       phonenumber: ''
     },
     userNameError: '',
+    userId: ''
+  },
+  // userId 不足8位前面补0
+  padUserId(userId) {
+    userId = String(userId || '');
+    return userId.padStart(8, '0');
   },
   onLoad() {
-    let { userName, avatar, phonenumber, nickName, email } = app.globalData.userInfo
+    let { userName, avatar, phonenumber, nickName, email, userId } = app.globalData.userInfo
     this.setData({
+      userId: this.padUserId(userId),
       'form.avatar': avatar,
       'form.email': email,
       'form.nickName': nickName,
@@ -122,6 +129,11 @@ Page({
       offset: [90, 32],
       duration: duration,
       content: text,
+    });
+  },
+  goSearchTeam() {
+    wx.navigateTo({
+      url: '/pages/search-page/search-page'
     });
   }
 })
