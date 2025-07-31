@@ -17,7 +17,7 @@
         </view>
       </t-cell>
     </block>
-    <t-empty t-class="empty" t-class-image="empty_image" image="/static/icon/footer.png" description="糟糕，到底了" bindtap="onReachBottom" />
+    <t-empty t-class="empty" t-class-image="empty_image" image="/static/icon/footer.png" description="糟糕，到底了" />
   </scroll-view>
 </view>
 <t-message id="t-message" />

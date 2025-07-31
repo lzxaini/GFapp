@@ -22,7 +22,7 @@
       </t-cell>
     </block>
     <view style="margin-top: 40rpx">
-      <t-empty t-class="empty" t-class-image="empty_image" image="/static/icon/footer.png" description="糟糕，到底了" bindtap="onReachBottom" />
+      <t-empty t-class="empty" t-class-image="empty_image" image="/static/icon/footer.png" description="糟糕，到底了" />
     </view>
   </scroll-view>
   <button class="invite_btn" style="margin-bottom: {{marginBottom}}" bindtap="onSubmit">
