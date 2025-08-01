@@ -35,7 +35,7 @@ Page({
   },
   // 上传团队封面
   updateTeamCover() {
-    let { deptId } = this.data.teamInfo
+    let { id } = this.data.teamInfo
     let _this = this
     wx.chooseImage({
       count: 1,
@@ -45,7 +45,7 @@ Page({
         const tempFilePath = res.tempFilePaths[0];
         // 这里假设有上传接口 /api/upload
         wx.uploadFile({
-          url: app.globalData.baseUrl + `/system/user/profile/avatar/${deptId}`, // 替换为你的上传接口
+          url: app.globalData.baseUrl + `/system/user/profile/teamAvatar/${id}`, // 替换为你的上传接口
           filePath: tempFilePath,
           header: {
             'Authorization': app.globalData.token
