@@ -12,7 +12,7 @@ App({
     this.verifyUserLogin()
   },
   globalData: {
-    devFlag: true, // 开发环境标志
+    devFlag: false, // 开发环境标志
     appName: {
       name: '光馥科美',
       slogan: '光塑年轻力，馥养无龄美',
