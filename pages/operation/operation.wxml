@@ -77,7 +77,7 @@
           <!-- 表体 -->
           <!-- 滚动列表 -->
           <view class="scroll-view">
-            <block wx:for="{{20}}" wx:key="index">
+            <block wx:for="{{rechargeList}}" wx:key="index">
               <view class="table-row">
                 <view class="table-cell cell-big">美之颜美学定中心...</view>
                 <view class="table-cell number-cell">
@@ -93,7 +93,7 @@
       </view>
       <!-- 滚动列表 -->
       <view class="scroll-view" wx:else>
-        <block wx:for="{{20}}" wx:key="index">
+        <block wx:for="{{serviceList}}" wx:key="index">
           <view class="card_item">
             <view class="nav_top">
               <view class="title_box">
@@ -109,7 +109,7 @@
               </view>
               <view class="list_item">
                 <text class="lable">美容师</text>
-                <text class="info">{{item.serviceUserName}}</text>
+                <text class="info">{{item.userName}}</text>
               </view>
               <view class="list_item">
                 <text class="lable">服务时间</text>

@@ -1,7 +1,10 @@
 import Message from 'tdesign-miniprogram/message/index';
 import {
-  getAdminDeviceListApi
+  getOperationApi,
+  getServiceRecordsApi,
+  getRechargeRecordsApi
 } from '../../api/api'
+import { getServiceNameByCode } from '../../utils/config'
 const dayjs = require('dayjs')
 const app = getApp()
 Page({
@@ -38,7 +41,8 @@ Page({
     }
   },
   onShow() {
-    this.getAdminDeviceList()
+    this.getOperation()
+    this.getRechargeRecords()
   },
   /**
    * 页面上拉触底事件的处理函数
@@ -47,22 +51,44 @@ Page({
     let {
       tabsValue,
       serviceList,
-      total
+      rechargeList,
+      rechargeTotal,
+      serviceTotal
     } = this.data
     console.log('触底', tabsValue) // 确定是哪个触底的就加载哪个列表
-    if (serviceList.length < total) {
-      let pageNum = ++this.data.pageObj.pageNum
-      this.setData({
-        'pageObj.pageNum': pageNum
-      })
-      this.getAdminDeviceList('bottom')
+    if (tabsValue === 1) {
+      if (rechargeList.length < total) {
+        let pageNum = ++this.data.rechargePageObj.pageNum
+        this.setData({
+          'rechargePageObj.pageNum': pageNum
+        })
+        this.getRechargeRecords('bottom')
+      }
+    } else {
+      if (serviceList.length < total) {
+        let pageNum = ++this.data.servicePageObj.pageNum
+        this.setData({
+          'servicePageObj.pageNum': pageNum
+        })
+        this.getServiceRecords('bottom')
+      }
     }
   },
   pullDownToRefresh() {
-    this.setData({
-      'pageObj.pageNum': 1
-    })
-    this.getAdminDeviceList()
+    let {
+      tabsValue,
+    } = this.data
+    if (tabsValue === 1) {
+      this.setData({
+        'rechargePageObj.pageNum': 1
+      })
+      this.getRechargeRecords()
+    } else {
+      this.setData({
+        'servicePageObj.pageNum': 1
+      })
+      this.getServiceRecords()
+    }
   },
   tabClick(e) {
     let {
@@ -71,33 +97,77 @@ Page({
     this.setData({
       tabsValue: value
     })
+    this.searchAll()
+    if(value === 1){
+      this.getRechargeRecords()
+    } else {
+      this.getServiceRecords()
+    }
   },
+  
   /**
-   * 设备分页查询
+   * 充值记录分页查询
    * 增加在分页条件里面
    * @param {*} type 
    */
-  getAdminDeviceList(type = 'init') {
-    getAdminDeviceListApi(this.data.pageObj).then(res => {
+  getRechargeRecords(type = 'init') {
+    let { rechargePageObj, rechargeList } = this.data
+    getRechargeRecordsApi(rechargePageObj).then(res => {
       if (type === 'bottom') {
-        if (res.data.depts.rows.length > 0) {
-          let list = this.data.deviceList
-          list.push(...res.data.depts.rows)
+        if (res.data.rows.length > 0) {
+          let list = rechargeList
+          list.push(...res.data.rows)
           this.setData({
-            deviceInfo: res.data,
-            deviceList: list
+            rechargeList: list
           })
         }
       } else {
         this.setData({
-          deviceInfo: res.data,
-          deviceList: res.data.depts.rows,
-          total: res.data.depts.total
+          rechargeList: res.data.rows,
+          rechargeTotal: res.data.total
         })
       }
       this.setData({
         refresher: false
       })
+    })
+  },
+  /**
+   * 充值记录分页查询
+   * 增加在分页条件里面
+   * @param {*} type 
+   */
+  getServiceRecords(type = 'init') {
+    let { servicePageObj, serviceList } = this.data
+    getServiceRecordsApi(servicePageObj).then(res => {
+      // 拿到原始 rows
+      const rows = res.data.rows.map(item => ({
+        ...item,
+        serviceObj: getServiceNameByCode(item.service)
+      }))
+      if (type === 'bottom') {
+        if (rows.length > 0) {
+          let list = serviceList
+          list.push(...rows)
+          this.setData({
+            serviceList: list
+          })
+        }
+      } else {
+        this.setData({
+          serviceList: rows,
+          serviceTotal: res.data.total
+        })
+      }
+      this.setData({
+        refresher: false
+      })
+    })
+  },
+  // 获取顶部运营数据
+  getOperation(){
+    getOperationApi().then(res => {
+      console.log('测试实施', res)
     })
   },
   searchInput(e) {
@@ -107,6 +177,7 @@ Page({
     this.setData({
       searchValue: value
     })
+    // this.statrtSearch()
   },
   searchAll() {
     this.setData({
@@ -115,6 +186,7 @@ Page({
       'serviceForm.maxServiceTime': '',
       'rechargeForm.minRechargeTime': '',
       'rechargeForm.maxRechargeTime': '',
+      searchValue: '',
     });
   },
   statrtSearch() {
@@ -122,21 +194,37 @@ Page({
       serviceForm,
       rechargeForm,
       searchValue,
-      tabsValue
+      tabsValue,
+      servicePageObj,
+      rechargePageObj
     } = this.data
+    let pageObj = { // 默认分页
+      pageNum: 1,
+      pageSize: 10,
+    }
     console.log('搜索', serviceForm, rechargeForm, searchValue, tabsValue)
     if (tabsValue === 1) {
       let params = {
+        ...pageObj,
+        searchValue,
         ...rechargeForm,
-        searchValue
       }
+      this.setData({
+        rechargePageObj: params
+      })
       console.log('搜索1', params)
+      this.getRechargeRecords()
     } else {
       let params = {
+        ...pageObj,
+        searchValue,
         ...serviceForm,
-        searchValue
       }
+      this.setData({
+        servicePageObj: params
+      })
       console.log('搜索2', params)
+      this.getServiceRecords()
     }
   },
   handleCalendar() {
