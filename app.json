@@ -59,6 +59,7 @@
     "t-radio-group": "tdesign-miniprogram/radio-group/radio-group",
     "t-tab-panel": "tdesign-miniprogram/tab-panel/tab-panel",
     "t-popup": "tdesign-miniprogram/popup/popup",
+    "t-calendar": "tdesign-miniprogram/calendar/calendar",
     "empty": "components/empty/empty"
   },
   "window": {
