@@ -109,7 +109,7 @@ Page({
     sanStartDeviceApi(serialNumber).then(res => {
       if (res.code === 200) {
         if (res.data) {
-          this.activetionDevice(result)
+          this.activetionDevice(serialNumber)
         } else {
           this.message('warning', '您暂无使用次数，请联系管理员！', 3000);
         }
