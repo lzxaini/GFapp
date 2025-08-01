@@ -1,5 +1,9 @@
 import Message from 'tdesign-miniprogram/message/index';
-import { getDeviceListApi, getDeviceActivatedApi } from '../../api/api'
+import {
+  getDeviceListApi,
+  getDeviceActivatedApi,
+  sanStartDeviceApi
+} from '../../api/api'
 const app = getApp()
 Page({
   data: {
@@ -19,7 +23,9 @@ Page({
     }
   },
   onLoad(options) {
-    let { deptId } = options
+    let {
+      deptId
+    } = options
     this.setData({
       'pageObj.deptId': deptId || this.data.userInfo.dept.deptId
     })
@@ -27,11 +33,14 @@ Page({
     this.getDeviceActivated()
   },
   /**
- * 页面上拉触底事件的处理函数
- */
+   * 页面上拉触底事件的处理函数
+   */
   onReachBottom() {
-    console.log('触底',)
-    let { deviceList, total } = this.data
+    console.log('触底', )
+    let {
+      deviceList,
+      total
+    } = this.data
     if (deviceList.length < total) {
       let pageNum = ++this.data.pageObj.pageNum
       this.setData({
@@ -73,7 +82,11 @@ Page({
     })
   },
   scanCodeActivation(e) {
-    let { runningstate, serialnumber } = e?.currentTarget.dataset
+    let _this = this
+    let {
+      runningstate,
+      serialnumber
+    } = e?.currentTarget.dataset
     // "runningState": "1",（0未激活 1已停止 2运行中）
     if (runningstate === '2') {
       wx.navigateTo({
@@ -84,13 +97,13 @@ Page({
     wx.scanCode({
       onlyFromCamera: true,
       success: (res) => {
-        const { result } = res;
+        const {
+          result
+        } = res;
         if (result) {
           if (serialnumber === result) {
             // 扫码成功
-            wx.navigateTo({
-              url: `/pages/device-active/device-active?deviceId=${result}`,
-            });
+            _this.sanStartDevice(result)
           } else {
             Message.error({
               context: this,
@@ -111,9 +124,30 @@ Page({
       }
     });
   },
+  // 扫码先掉接口确定
+  sanStartDevice(serialNumber) {
+    sanStartDeviceApi(serialNumber).then(res => {
+      if (res.code === 200) {
+        if (res.data) {
+          wx.navigateTo({
+            url: `/pages/device-active/device-active?deviceId=${result}`,
+          });
+        } else {
+          Message.warning({
+            context: this,
+            offset: [90, 32],
+            duration: 3000,
+            content: '您暂无使用次数，请联系管理员！',
+          });
+        }
+      }
+    })
+  },
   // 去往使用记录
   goHistoryInfo(e) {
-    let { serialnumber } = e?.currentTarget?.dataset
+    let {
+      serialnumber
+    } = e?.currentTarget?.dataset
     wx.navigateTo({
       url: `/pages/use-history/use-history?serialNumber=${serialnumber}`,
     });
@@ -122,7 +156,9 @@ Page({
   getDeviceActivated() {
     // $TODO 设备激活数量记录接口对接
     getDeviceActivatedApi(this.data.userInfo.dept.deptId).then(res => {
-      this.setData({ historyList: res.data })
+      this.setData({
+        historyList: res.data
+      })
     })
   }
 })

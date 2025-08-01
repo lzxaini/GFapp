@@ -3,12 +3,17 @@ const app = getApp()
 const dayjs = require('dayjs')
 import {
   activetionDeviceApi,
-  getUserInfoApi
+  getUserInfoApi,
+  sanStartDeviceApi
 } from '../../api/api.js'
-import { onMqttReady } from '../../utils/mqttReady';
+import {
+  onMqttReady
+} from '../../utils/mqttReady';
 import drawQrcode from '../../utils/weapp.qrcode.min'
 import tool from '../../utils/tools'
-import { withLogin } from '../../utils/auth';
+import {
+  withLogin
+} from '../../utils/auth';
 Page({
   data: {
     capsuleHeight: app.globalData.capsuleHeight,
@@ -82,10 +87,12 @@ Page({
     wx.scanCode({
       onlyFromCamera: true,
       success: (res) => {
-        const { result } = res;
+        const {
+          result
+        } = res;
         if (result) {
           // 扫码成功
-          this.activetionDevice(result)
+          this.sanStartDevice(result)
         } else {
           wx.showToast({
             title: '扫描失败！',
@@ -93,9 +100,20 @@ Page({
           });
         }
       },
-      fail: () => {
-      }
+      fail: () => {}
     });
+  },
+  // 扫码先掉接口确定
+  sanStartDevice(serialNumber) {
+    sanStartDeviceApi(serialNumber).then(res => {
+      if (res.code === 200) {
+        if (res.data) {
+          this.activetionDevice(result)
+        } else {
+          this.message('warning', '您暂无使用次数，请联系管理员！', 3000);
+        }
+      }
+    })
   },
   // 激活设备
   activetionDevice(serialNumber) {
@@ -181,8 +199,14 @@ Page({
   },
   // 团队管理
   _goListItem(e) {
-    const { title, url } = e.currentTarget.dataset;
-    this.navigateByTitle({ title, url });
+    const {
+      title,
+      url
+    } = e.currentTarget.dataset;
+    this.navigateByTitle({
+      title,
+      url
+    });
   },
   _goRechargeHistory() {
     this.navigateByTitle({
@@ -208,13 +232,22 @@ Page({
     });
   },
   closeIsLoginDialog() {
-    this.setData({ isLogin: false });
+    this.setData({
+      isLogin: false
+    });
   },
   // 公共跳转方法
-  navigateByTitle({ title, url }) {
-    const { dept } = this.data.userInfo || {};
+  navigateByTitle({
+    title,
+    url
+  }) {
+    const {
+      dept
+    } = this.data.userInfo || {};
     if (title === '设置') {
-      return wx.navigateTo({ url });
+      return wx.navigateTo({
+        url
+      });
     }
 
     if (this.verifyDept()) return;
@@ -224,13 +257,17 @@ Page({
     const finalUrl = adminMap?.[deptType] || url;
 
     if (finalUrl) {
-      wx.navigateTo({ url: finalUrl });
+      wx.navigateTo({
+        url: finalUrl
+      });
     } else {
       this.message('info', '该功能暂未开放');
     }
   },
   verifyDept() {
-    const { dept } = this.data.userInfo || {};
+    const {
+      dept
+    } = this.data.userInfo || {};
     if (!dept) {
       this.message('warning', '游客账号暂时无法使用，请联系管理员！');
       return true;

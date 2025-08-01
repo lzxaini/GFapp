@@ -286,3 +286,13 @@ export function getStoresTeamListApi(deptId) {
     method: 'get',
   })
 }
+/**
+ * 扫码开始服务
+ * 参数serialNumber
+ */
+export function sanStartDeviceApi(serialNumber) {
+  return request({
+    url: `/gf/device/service/${serialNumber}`,
+    method: 'get',
+  })
+}
