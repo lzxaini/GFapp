@@ -296,3 +296,13 @@ export function sanStartDeviceApi(serialNumber) {
     method: 'get',
   })
 }
+/**
+ * 获取运营数据 GET 
+ * 参数serialNumber
+ */
+export function getOperationApi() {
+  return request({
+    url: `/gf/operation`,
+    method: 'get',
+  })
+}
