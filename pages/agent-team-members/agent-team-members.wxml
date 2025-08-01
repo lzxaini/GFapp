@@ -49,8 +49,8 @@
       <t-empty t-class="empty" t-class-image="empty_image" image="/static/icon/footer.png" description="糟糕，到底了" />
     </view>
   </scroll-view>
-  <button class="invite_btn" style="margin-bottom: {{marginBottom}}" bindtap="onSubmit">
+  <!-- <button class="invite_btn" style="margin-bottom: {{marginBottom}}" bindtap="onSubmit">
     邀请加入
-  </button>
+  </button> -->
 </view>
 <t-message id="t-message" />
