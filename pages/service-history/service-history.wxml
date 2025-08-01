@@ -31,7 +31,7 @@
             </view>
             <view class="list_item">
               <text class="lable">美容师</text>
-              <text class="info">{{item.serviceUserName}}</text>
+              <text class="info">{{item.userName}}</text>
             </view>
             <view class="list_item">
               <text class="lable">服务时间</text>
