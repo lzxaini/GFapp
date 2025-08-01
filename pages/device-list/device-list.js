@@ -130,7 +130,7 @@ Page({
       if (res.code === 200) {
         if (res.data) {
           wx.navigateTo({
-            url: `/pages/device-active/device-active?deviceId=${result}`,
+            url: `/pages/device-active/device-active?deviceId=${serialNumber}`,
           });
         } else {
           Message.warning({
