@@ -120,17 +120,17 @@ Page({
   activetionDevice(serialNumber) {
     activetionDeviceApi(serialNumber).then(res => {
       if (res.code === 24003) {
-        wx.navigateTo({
+        return wx.navigateTo({
           url: `/pages/device-active/device-active?deviceId=${serialNumber}`,
         });
       }
       if (res.data.length < 1) {
-        wx.navigateTo({
+        return wx.navigateTo({
           url: `/pages/device-active/device-active?deviceId=${serialNumber}`,
         });
       }
       if (res.data.length > 0) {
-        wx.navigateTo({
+        return wx.navigateTo({
           url: `/pages/device-bind/device-bind?deviceId=${serialNumber}`,
         });
       }
