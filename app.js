@@ -14,10 +14,10 @@ App({
   globalData: {
     devFlag: true, // 开发环境标志
     appName: {
-      // name: '光馥科美',
-      // introduce: '光塑年轻力，馥养无龄美',
-      name: '百士电子',
-      slogan: '让中国制造，成为中国创造！',
+      name: '光馥科美',
+      slogan: '光塑年轻力，馥养无龄美',
+      // name: '百士电子',
+      // slogan: '让中国制造，成为中国创造！',
     },
     mqttClient: null,
     mqttQrotocol: null,
