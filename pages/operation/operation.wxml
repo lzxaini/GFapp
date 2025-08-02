@@ -69,7 +69,8 @@
         <scroll-view scroll-x="true">
           <!-- 表头 -->
           <view class="table-row table-header">
-            <view class="table-cell cell-header cell-big">机构</view>
+            <!-- 只有联合创始和代理商有机构显示 -->
+            <view class="table-cell cell-header cell-big" wx:if="{{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2}}">机构</view>
             <view class="table-cell cell-header">充值次数</view>
             <view class="table-cell cell-header">上期结余</view>
             <view class="table-cell cell-header">当前结余</view>
@@ -78,8 +79,9 @@
           <!-- 滚动列表 -->
           <view class="scroll-view">
             <block wx:for="{{rechargeList}}" wx:key="index">
+            <!-- 只有联合创始和代理商有机构显示 -->
               <view class="table-row">
-                <view class="table-cell cell-big">美之颜美学定中心...</view>
+                <view class="table-cell cell-big" wx:if="{{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2}}">{{item.deptName}}</view>
                 <view class="table-cell number-cell">
                   <view class="text">+{{item.rechargeAmount}}</view>
                   <view class="date">{{item.rechargeTime}}</view>
