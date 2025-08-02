@@ -42,15 +42,17 @@ App({
     token: null
   },
   onShow() {
-    console.log('重新创建MQTT')
-    // 后台唤醒时强制重连
+    // setTimeout(() => {
+    //   this.initMqtt();
+    // }, 800);
+    this.initMqtt();
+  },
+  onHide() {
+    // 清理 MQTT 连接
     if (this.globalData.mqttClient) {
       this.globalData.mqttClient?.disconnect?.();
       this.globalData.mqttClient = null
     }
-    setTimeout(() => {
-      this.initMqtt();
-    }, 800);
   },
   // 获取状态栏
   getSystemInfo() {
@@ -96,29 +98,29 @@ App({
     if (!this.globalData.mqttClient) {
       mqttClient.init(
         this.globalData.mqttUrl, {
-          // clientId: `wx_${userInfo.id}_${Date.now()}`,
-          clientId: `wx_${Date.now()}`,
-          username: 'test',
-          password: 'test'
-        }, {
-          onConnect: () => {
-            this.globalData.mqttQrotocol = new ProtocolHelper(this.globalData.mqttClient);
-            console.log('MQTT 连接成功');
-            eventCenter.emit('mqtt-ready')
-          },
-          onMessage: (topic, message) => {
-            const result = this.globalData.mqttQrotocol.parse(message);
-            console.log('解析结果:', result);
-            // wx.eventCenter.emit('mqtt-message', result);
-            eventCenter.emit('mqtt-message', {
-              topic,
-              message: {
-                result,
-                msg: message
-              }
-            });
-          },
-        }
+        // clientId: `wx_${userInfo.id}_${Date.now()}`,
+        clientId: `wx_${Date.now()}`,
+        username: 'test',
+        password: 'test'
+      }, {
+        onConnect: () => {
+          this.globalData.mqttQrotocol = new ProtocolHelper(this.globalData.mqttClient);
+          console.log('MQTT 连接成功');
+          eventCenter.emit('mqtt-ready')
+        },
+        onMessage: (topic, message) => {
+          const result = this.globalData.mqttQrotocol.parse(message);
+          console.log('解析结果:', result);
+          // wx.eventCenter.emit('mqtt-message', result);
+          eventCenter.emit('mqtt-message', {
+            topic,
+            message: {
+              result,
+              msg: message
+            }
+          });
+        },
+      }
       );
       // 绑定到 App 全局
       this.globalData.mqttClient = mqttClient;
