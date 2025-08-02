@@ -23,16 +23,13 @@ Page({
       // 立即执行一次扫码连接
       const mqttQrotocol = app.globalData.mqttQrotocol;
       mqttQrotocol.sendScanQrCode(`/req/${deviceId}`);
-      // 再启动定时重连
-      setTimeout(() => {
-        this.connectDevice();
-      }, 1000);
+      this.connectDevice(); // 启动定时重连
     });
   },
   onUnload() {
     wx.eventCenter.off('mqtt-ready', this.subscribeTopic);
     wx.eventCenter.off('mqtt-message', this.handleMsg);
-    this.clearReconnect();
+    this.clearReconnect(); // 清除重连定时器
   },
   subscribeTopic() {
     const mqttClient = app.globalData.mqttClient;
