@@ -65,6 +65,7 @@ Page({
     this.goServiceHistory = withLogin(this, this._goServiceHistory);
   },
   onShow() {
+    console.log('小程序版本', this.data.appName.appVersion)
     if (app.globalData.token) {
       app.getUserInfo(getUserInfoApi).then(res => {
         if (res) {
