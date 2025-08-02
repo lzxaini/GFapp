@@ -75,11 +75,9 @@ App({
     // 读取缓存的登录信息
     const userInfo = wx.getStorageSync('userInfo');
     const token = wx.getStorageSync('token');
-
     if (userInfo && token) {
       this.globalData.userInfo = JSON.parse(userInfo);
       this.globalData.token = token;
-      this.initMqtt(); // 登录状态下自动连接 MQTT
       if (!this.globalData.devFlag) {
         wx.reLaunch({
           url: '/pages/index/index'
