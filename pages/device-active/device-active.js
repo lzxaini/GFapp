@@ -1,6 +1,7 @@
 import {
   onMqttReady
 } from '../../utils/mqttReady';
+import Message from 'tdesign-miniprogram/message/index';
 const app = getApp();
 
 Page({
@@ -40,6 +41,12 @@ Page({
       mqttClient.subscribe(`/resp/${this.data.deviceId}`);
     } else {
       console.warn('MQTT 未连接或还未初始化');
+      Message.error({
+        context: this,
+        offset: [90, 32],
+        duration: 1500,
+        content: '等待设备连接中......',
+      });
     }
   },
   // === 接收消息 ===

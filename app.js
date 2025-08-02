@@ -1,8 +1,14 @@
 // app.js
-import { mqttClient } from './utils/mqttClient'
+import {
+  mqttClient
+} from './utils/mqttClient'
 import eventCenter from './utils/eventCenter';
-import { ProtocolHelper } from './utils/mqttProtocol';
-import { Buffer } from 'buffer';
+import {
+  ProtocolHelper
+} from './utils/mqttProtocol';
+import {
+  Buffer
+} from 'buffer';
 App({
   onLaunch() {
     this.eventCenter = eventCenter;
@@ -26,14 +32,25 @@ App({
     capsuleHeight: 0,
     marginBottom: '60rpx',
     // baseUrl: 'https://oa.beasun.com:2443/prod-api',
-    baseUrl: 'https://api.fxnws.com',
-    ossUrl: 'https://api.fxnws.com',
-    // baseUrl: 'http://192.168.18.150:8080',
-    // ossUrl: 'http://192.168.18.150:8080',
+    // baseUrl: 'https://api.fxnws.com',
+    // ossUrl: 'https://api.fxnws.com',
+    baseUrl: 'http://192.168.18.150:8080',
+    ossUrl: 'http://192.168.18.150:8080',
     mqttUrl: 'wxs://mqtt.fxnws.com/mqtt',
     // mqttUrl: 'wxs://mqtt.beasun.com/mqtt',
     userInfo: null,
     token: null
+  },
+  onShow() {
+    console.log('重新创建MQTT')
+    // 后台唤醒时强制重连
+    if (this.globalData.mqttClient) {
+      this.globalData.mqttClient?.disconnect?.();
+      this.globalData.mqttClient = null
+    }
+    setTimeout(() => {
+      this.initMqtt();
+    }, 800);
   },
   // 获取状态栏
   getSystemInfo() {
@@ -78,14 +95,12 @@ App({
     console.log('初始化MQTT')
     if (!this.globalData.mqttClient) {
       mqttClient.init(
-        this.globalData.mqttUrl,
-        {
+        this.globalData.mqttUrl, {
           // clientId: `wx_${userInfo.id}_${Date.now()}`,
           clientId: `wx_${Date.now()}`,
           username: 'test',
           password: 'test'
-        },
-        {
+        }, {
           onConnect: () => {
             this.globalData.mqttQrotocol = new ProtocolHelper(this.globalData.mqttClient);
             console.log('MQTT 连接成功');
@@ -95,11 +110,16 @@ App({
             const result = this.globalData.mqttQrotocol.parse(message);
             console.log('解析结果:', result);
             // wx.eventCenter.emit('mqtt-message', result);
-            eventCenter.emit('mqtt-message', { topic, message: { result, msg: message } });
+            eventCenter.emit('mqtt-message', {
+              topic,
+              message: {
+                result,
+                msg: message
+              }
+            });
           },
         }
       );
-
       // 绑定到 App 全局
       this.globalData.mqttClient = mqttClient;
     }
