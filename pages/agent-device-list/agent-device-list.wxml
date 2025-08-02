@@ -24,6 +24,9 @@
         </t-cell>
       </t-cell-group>
     </block>
+    <view style="margin-top: 40rpx">
+      <t-empty t-class="empty" t-class-image="empty_image" image="/static/icon/footer.png" description="糟糕，到底了" />
+    </view>
   </scroll-view>
 </view>
 <t-message id="t-message" />
