@@ -4,7 +4,9 @@ import {
   getServiceRecordsApi,
   getRechargeRecordsApi
 } from '../../api/api'
-import { getServiceNameByCode } from '../../utils/config'
+import {
+  getServiceNameByCode
+} from '../../utils/config'
 const dayjs = require('dayjs')
 const app = getApp()
 Page({
@@ -38,7 +40,8 @@ Page({
     rechargeForm: { // 充值日期区间
       minRechargeTime: '',
       maxRechargeTime: ''
-    }
+    },
+    operationInfo: {}
   },
   onShow() {
     this.getOperation()
@@ -98,20 +101,23 @@ Page({
       tabsValue: value
     })
     this.searchAll()
-    if(value === 1){
+    if (value === 1) {
       this.getRechargeRecords()
     } else {
       this.getServiceRecords()
     }
   },
-  
+
   /**
    * 充值记录分页查询
    * 增加在分页条件里面
    * @param {*} type 
    */
   getRechargeRecords(type = 'init') {
-    let { rechargePageObj, rechargeList } = this.data
+    let {
+      rechargePageObj,
+      rechargeList
+    } = this.data
     getRechargeRecordsApi(rechargePageObj).then(res => {
       if (type === 'bottom') {
         if (res.data.rows.length > 0) {
@@ -138,7 +144,10 @@ Page({
    * @param {*} type 
    */
   getServiceRecords(type = 'init') {
-    let { servicePageObj, serviceList } = this.data
+    let {
+      servicePageObj,
+      serviceList
+    } = this.data
     getServiceRecordsApi(servicePageObj).then(res => {
       // 拿到原始 rows
       const rows = res.data.rows.map(item => ({
@@ -165,9 +174,14 @@ Page({
     })
   },
   // 获取顶部运营数据
-  getOperation(){
+  getOperation() {
     getOperationApi().then(res => {
       console.log('测试实施', res)
+      if (res.code === 200) {
+        this.setData({
+          operationInfo: res.data
+        })
+      }
     })
   },
   searchInput(e) {

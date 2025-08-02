@@ -6,30 +6,30 @@
   <scroll-view class="scroll-content" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="pullDownToRefresh">
     <view class="nav_bg"></view>
     <!-- 六宫格统计 -->
-    <view class="operation_nav admin_operation_nav">
+    <view class="operation_nav {{ userInfo.dept.deptType == 1 ? 'admin_operation_nav' : '' }}">
       <image class="operation_nav_bg" src="../../static/icon/bg-top.png" />
-      <view class="nav_item">
-        <view class="number">{{deviceInfo.bindCount}}</view>
+      <view class="nav_item" wx:if="{{userInfo.dept.deptType == 1}}">
+        <view class="number">{{operationInfo.company}}</view>
         <view class="label">分公司数</view>
       </view>
-      <view class="nav_item">
-        <view class="number">{{deviceInfo.unbindCount}}</view>
+      <view class="nav_item" wx:if="{{userInfo.dept.deptType == 1}}">
+        <view class="number">{{operationInfo.agent}}</view>
         <view class="label">代理商数</view>
       </view>
-      <view class="nav_item">
-        <view class="number">{{deviceInfo.onlineCount}}</view>
+      <view class="nav_item" wx:if="{{userInfo.dept.deptType == 1}}">
+        <view class="number">{{operationInfo.store}}</view>
         <view class="label">门店总数</view>
       </view>
       <view class="nav_item">
-        <view class="number">{{deviceInfo.bindCount}}</view>
+        <view class="number">{{operationInfo.user}}</view>
         <view class="label">美容师数</view>
       </view>
       <view class="nav_item">
-        <view class="number">{{deviceInfo.unbindCount}}</view>
+        <view class="number">{{operationInfo.service}}</view>
         <view class="label">累计消耗</view>
       </view>
       <view class="nav_item">
-        <view class="number">{{deviceInfo.onlineCount}}</view>
+        <view class="number">{{operationInfo.remain}}</view>
         <view class="label">剩余次数</view>
       </view>
     </view>
@@ -79,10 +79,10 @@
           <!-- 滚动列表 -->
           <view class="scroll-view">
             <block wx:for="{{rechargeList}}" wx:key="index">
-            <!-- 只有联合创始和代理商有机构显示 -->
+              <!-- 只有联合创始和代理商有机构显示 -->
               <view class="table-row">
                 <view class="table-cell cell-big" wx:if="{{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2}}">{{item.deptName}}</view>
-                <view class="table-cell number-cell">
+                <view class="table-cell number-cell cell-big2">
                   <view class="text">+{{item.rechargeAmount}}</view>
                   <view class="date">{{item.createTime}}</view>
                 </view>
