@@ -9,25 +9,25 @@ Page({
     marginBottom: app.globalData.marginBottom,
     deviceFlag: false,
     deviceId: '',
-    reconnectInterval: 3000, // 重试间隔（单位：ms）
+    reconnectInterval: 2000, // 重试间隔（单位：ms）
     reconnectMaxCount: 20, // 最多重试次数
     reconnectCount: 0, // 当前重试次数
     reconnectTimer: null, // 定时器引用
   },
   onLoad(option) {
-    const {
-      deviceId
-    } = option;
-    this.setData({
-      deviceId
-    })
+    const { deviceId } = option;
+    this.setData({ deviceId });
     wx.eventCenter.on('mqtt-message', this.handleMsg);
     onMqttReady(() => {
       this.subscribeTopic();
+      // 立即执行一次扫码连接
+      const mqttQrotocol = app.globalData.mqttQrotocol;
+      mqttQrotocol.sendScanQrCode(`/req/${deviceId}`);
+      // 再启动定时重连
+      setTimeout(() => {
+        this.connectDevice();
+      }, 1000);
     });
-    setTimeout(() => {
-      this.connectDevice();
-    }, 1000)
   },
   onUnload() {
     wx.eventCenter.off('mqtt-ready', this.subscribeTopic);
