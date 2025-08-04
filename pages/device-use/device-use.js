@@ -34,7 +34,7 @@ Page({
       });
       setTimeout(() => {
         wx.reLaunch({
-          url: '/pages/device-list/device-list',
+          url: '/pages/index/index',
         })
       }, 1500);
     }
