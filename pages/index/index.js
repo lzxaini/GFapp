@@ -33,8 +33,8 @@ Page({
     }, {
       title: '运营管理',
       icon: 'my_3.png',
-      // url: '/pages/operation/operation'
-      url: ''
+      url: '/pages/operation/operation'
+      // url: ''
     }, {
       title: '使用指南',
       icon: 'my_4.png',
