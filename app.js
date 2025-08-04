@@ -98,8 +98,8 @@ App({
         this.globalData.mqttUrl, {
         // clientId: `wx_${userInfo.id}_${Date.now()}`,
         clientId: `wx_${Date.now()}`,
-        username: 'test',
-        password: 'test'
+        username: 'WeChat',
+        password: 'oP4~hF0]aB7.'
       }, {
         onConnect: () => {
           this.globalData.mqttQrotocol = new ProtocolHelper(this.globalData.mqttClient);
