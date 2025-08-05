@@ -1,9 +1,8 @@
 import {
   onMqttReady
 } from '../../utils/mqttReady';
-import Message from 'tdesign-miniprogram/message/index';
 const app = getApp();
-
+import { showMessage } from '../../utils/tools';
 Page({
   data: {
     marginBottom: app.globalData.marginBottom,
@@ -15,8 +14,12 @@ Page({
     reconnectTimer: null, // 定时器引用
   },
   onLoad(option) {
-    const { deviceId } = option;
-    this.setData({ deviceId });
+    const {
+      deviceId
+    } = option;
+    this.setData({
+      deviceId
+    });
     wx.eventCenter.on('mqtt-message', this.handleMsg);
     onMqttReady(() => {
       this.subscribeTopic();
@@ -38,12 +41,7 @@ Page({
       mqttClient.subscribe(`/resp/${this.data.deviceId}`);
     } else {
       console.warn('MQTT 未连接或还未初始化');
-      Message.error({
-        context: this,
-        offset: [90, 32],
-        duration: 1500,
-        content: '等待设备连接中......',
-      });
+      showMessage('error', '小程序初始化失败，请稍后再试！', 3000, this);
     }
   },
   // === 接收消息 ===
@@ -79,12 +77,14 @@ Page({
       reconnectMaxCount,
       deviceId
     } = this.data;
+    let _this = this;
     const mqttQrotocol = app.globalData.mqttQrotocol;
     this.clearReconnect(); // 防止多次触发
     const timer = setInterval(() => {
       if (this.data.reconnectCount >= reconnectMaxCount) {
         console.warn('连接超时，已超过最大重试次数');
         this.clearReconnect();
+        showMessage('error', '连接超时，设备激活失败，请稍后再试！', 3000, _this);
         return;
       }
       console.log(`第 ${this.data.reconnectCount + 1} 次尝试连接设备...`);
