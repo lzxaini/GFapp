@@ -1,6 +1,6 @@
 import { changeTeamInfoApi, getMyTeamsApi } from '../../api/api'
 import { hexToRgba } from '../../utils/tools'
-import Message from 'tdesign-miniprogram/message/index';
+import { showMessage } from '../../utils/tools';
 const app = getApp()
 Page({
   data: {
@@ -112,11 +112,6 @@ Page({
     })
   },
   message(type, text, duration = 1500) {
-    Message[type]({
-      context: this,
-      offset: [90, 32],
-      duration: duration,
-      content: text,
-    });
+    showMessage(type, text, duration, this);
   }
 })

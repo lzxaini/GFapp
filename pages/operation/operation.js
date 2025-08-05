@@ -1,4 +1,4 @@
-import Message from 'tdesign-miniprogram/message/index';
+import { showMessage } from '../../utils/tools';
 import {
   getOperationApi,
   getServiceRecordsApi,
@@ -276,11 +276,6 @@ Page({
     this.statrtSearch()
   },
   message(type, text, duration = 1500) {
-    Message[type]({
-      context: this,
-      offset: [90, 32],
-      duration: duration,
-      content: text,
-    });
+    showMessage(type, text, duration, this);
   }
 })

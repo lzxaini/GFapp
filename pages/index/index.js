@@ -1,14 +1,10 @@
-import Message from 'tdesign-miniprogram/message/index';
+import { showMessage } from '../../utils/tools';
 const app = getApp()
-const dayjs = require('dayjs')
 import {
   activetionDeviceApi,
   getUserInfoApi,
   sanStartDeviceApi
 } from '../../api/api.js'
-import {
-  onMqttReady
-} from '../../utils/mqttReady';
 import drawQrcode from '../../utils/weapp.qrcode.min'
 import tool from '../../utils/tools'
 import {
@@ -277,11 +273,6 @@ Page({
     return false;
   },
   message(type, text, duration = 1500) {
-    Message[type]({
-      context: this,
-      offset: [90, 32],
-      duration: duration,
-      content: text,
-    });
+    showMessage(type, text, duration, this);
   }
 })
