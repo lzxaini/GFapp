@@ -1,7 +1,7 @@
 <view class="container">
   <view class="bg_box">
     <image class="bg_top" src="../../static/icon/bg-top.png"></image>
-    <view class="logo_text" style="height: {{capsuleHeight}}px;" bindtap="testMq">
+    <view class="logo_text" style="height: {{capsuleHeight}}px;">
       {{appName.name}}
     </view>
     <view class="logo_slogan">
