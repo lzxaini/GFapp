@@ -1,12 +1,30 @@
+
 /*
  * @Author: 17630921248 1245634367@qq.com
  * @Date: 2025-06-17 11:18:48
  * @LastEditors: 17630921248 1245634367@qq.com
- * @LastEditTime: 2025-07-23 15:58:54
+ * @LastEditTime: 2025-08-05 08:11:33
  * @FilePath: \medical\utils\tools.js
  * @Description: Fuck Bug
  * 微信：lizx2066
  */
+import Message from 'tdesign-miniprogram/message/index';
+
+/**
+ * 全局消息提示
+ * @param {string} type 类型 success|error|info|warning
+ * @param {string} text 内容
+ * @param {number} duration 显示时长
+ * @param {object} context 当前页面实例（this）
+ */
+const showMessage = (type, text, duration = 1500, context) =>{
+  Message[type]({
+    context,
+    offset: [90, 32],
+    duration,
+    content: text,
+  });
+}
 
 const Toast = (message, theme = 'loading') => {
   Toast({
@@ -113,5 +131,6 @@ module.exports = {
   deepClone,
   throttle,
   debounce,
-  hexToRgba
+  hexToRgba,
+  showMessage
 }
