@@ -36,7 +36,9 @@ App({
     ossUrl: 'https://api.fxnws.com',
     // baseUrl: 'http://192.168.18.150:8080',
     // ossUrl: 'http://192.168.18.150:8080',
-    mqttUrl: 'wxs://mqtt.fxnws.com/mqtt',
+    // mqttUrl: 'wxs://mqtt.guangfkm.cn/mqtt',
+    mqttUrl: 'wxs://gfmq.fxnws.com/mqtt',
+    // mqttUrl: 'wxs://8.138.32.44/mqtt',
     // mqttUrl: 'wxs://mqtt.beasun.com/mqtt',
     userInfo: null,
     token: null
