@@ -63,9 +63,9 @@ Page({
               wx.setStorageSync('token', `Bearer ${token}`)
               wx.setStorageSync('wechat', JSON.stringify({ mobile, openId, nickname }))
               _this.messageBox('success', '登录成功，正在加载...', 1500)
-              app.initMqtt()
               let infoFlag = await app.getUserInfo(getUserInfoApi);
               if (infoFlag) {
+                app.initMqtt()
                 setTimeout(() => {
                   if (adminFlag) {
                     wx.reLaunch({

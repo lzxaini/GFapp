@@ -78,7 +78,8 @@ App({
     const userInfo = wx.getStorageSync('userInfo');
     const token = wx.getStorageSync('token');
     if (userInfo && token) {
-      this.globalData.userInfo = JSON.parse(userInfo);
+      let userInfoParse = JSON.parse(userInfo);
+      this.globalData.userInfo = userInfoParse
       this.globalData.token = token;
       if (!this.globalData.devFlag) {
         wx.reLaunch({
@@ -94,12 +95,14 @@ App({
     // }
   },
   initMqtt() {
-    console.log('初始化MQTT')
-    if (!this.globalData.mqttClient) {
+    console.log('进入MQTT方法')
+    let { userInfo } = this.globalData
+    if (!this.globalData.mqttClient && userInfo) {
+      console.log('开始初始化MQTT')
       mqttClient.init(
         this.globalData.mqttUrl, {
-        // clientId: `wx_${userInfo.id}_${Date.now()}`,
-        clientId: `wx_${Date.now()}`,
+        clientId: `wx_${userInfo.userId}_${Date.now()}`,
+        // clientId: `wx_${Date.now()}`,
         username: 'WeChat',
         password: 'oP4~hF0]aB7.'
       }, {
@@ -124,6 +127,7 @@ App({
       );
       // 绑定到 App 全局
       this.globalData.mqttClient = mqttClient;
+      console.log('mqttClient', mqttClient)
     }
   },
   /**
