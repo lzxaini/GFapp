@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/usage-guide/usage-guide",
     "pages/admin-team/admin-team",
     "pages/store-team-members/store-team-members",
     "pages/agent-team-members/agent-team-members",
