@@ -34,7 +34,7 @@ Page({
     }, {
       title: '使用指南',
       icon: 'my_4.png',
-      url: ''
+      url: '/pages/usage-guide/usage-guide'
     }, {
       title: '设置',
       icon: 'my_5.png',
