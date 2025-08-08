@@ -59,6 +59,7 @@ Page({
     this.goRechargeHistory = withLogin(this, this._goRechargeHistory);
     this.goWhiteList = withLogin(this, this._goWhiteList);
     this.goServiceHistory = withLogin(this, this._goServiceHistory);
+    this.goLoginFlag = withLogin(this, this._goLoginFlag);
   },
   onShow() {
     console.log('小程序版本', this.data.appName.appVersion)
@@ -228,6 +229,9 @@ Page({
     wx.reLaunch({
       url: '/pages/login/login',
     });
+  },
+  _goLoginFlag(){
+    console.log('点击名字区域')
   },
   closeIsLoginDialog() {
     this.setData({
