@@ -6,12 +6,12 @@
       <view class="left_box">
         <view class="title">免费</view>
         <view class="number">
-          {{item.freeTimes}}次/{{item.frequency == 0 ? '今日' :  item.frequency == 1 ? '每天' :  item.frequency == 9 ? '累计' : '-'}}
+          {{item.freeTimes}}次/{{item.frequency == 0 ? '今日' : item.frequency == 1 ? '每天' : item.frequency == 9 ? '累计' : '-'}}
         </view>
       </view>
       <view class="right_box">
         <view class="user_info">
-          <image class="avatar" src="../../static/icon/gf_logo.png" />
+          <image class="avatar" src="{{ ossUrl + qrCodeUserInfo.avatar }}" />
           <text class="text">{{item.userName}}</text>
         </view>
         <view class="location">地点：{{item.deptName}}</view>
@@ -33,7 +33,7 @@
   <view slot="content" class="dialog_content">
     <view>
       <t-cell t-class="qr_userInfo" title="{{qrCodeUserInfo.userName}}" bordered="{{false}}">
-        <t-avatar slot="left-icon" size="medium" image="{{ossUrl +  qrCodeUserInfo.avatar}}"></t-avatar>
+        <t-avatar slot="left-icon" size="medium" image="{{ ossUrl +  qrCodeUserInfo.avatar}}"></t-avatar>
         <view class="tag_box" slot="description">
           <image class="tag_icon" src="../../static/icon/admin.png" />
           <text class="tag_text">{{qrCodeUserInfo.roles[0].roleName}}</text>

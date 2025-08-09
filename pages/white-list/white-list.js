@@ -1,10 +1,18 @@
 import Message from 'tdesign-miniprogram/message/index';
-import { getWhitelistApi, getUserInfoQrCodeApi, addwhiteListApi } from '../../api/api'
-import { getFrequencyNameByCode, getWhiteStatusIconByCode } from '../../utils/config'
+import {
+  getWhitelistApi,
+  getUserInfoQrCodeApi,
+  addwhiteListApi
+} from '../../api/api'
+import {
+  getFrequencyNameByCode,
+  getWhiteStatusIconByCode
+} from '../../utils/config'
 const app = getApp()
 Page({
   data: {
     marginBottom: app.globalData.marginBottom,
+    ossUrl: app.globalData.ossUrl,
     whiteList: [],
     qrCodeUserInfo: {},
     whiteBox: false,
@@ -26,20 +34,29 @@ Page({
     }
   },
   onShow() {
-    let { dept } = app.globalData.userInfo
-    if (dept.deptType != 1) {
-      this.setData({
-        'pageObj.deptId': dept.deptId
-      })
-    }
+    let {
+      dept,
+      userId
+    } = app.globalData.userInfo
+    // if (dept.deptType != 1) {
+    //   this.setData({
+    //     'pageObj.deptId': dept.deptId
+    //   })
+    // }
+    this.setData({
+      'pageObj.userId': userId
+    })
     this.getWhitelist()
   },
   /**
- * 页面上拉触底事件的处理函数
- */
+   * 页面上拉触底事件的处理函数
+   */
   onReachBottom() {
-    console.log('触底',)
-    let { whiteList, total } = this.data
+    console.log('触底', )
+    let {
+      whiteList,
+      total
+    } = this.data
     if (whiteList.length < total) {
       let pageNum = ++this.data.pageObj.pageNum
       this.setData({
@@ -62,8 +79,8 @@ Page({
     this.getWhitelist()
   },
   /**
-    * 频率，1：当天（今天），2：每天，3：每周，4：每月，5：每年
-    * 运行状态：0：待使用，1：已过期，2：已核销
+   * 频率，1：当天（今天），2：每天，3：每周，4：每月，5：每年
+   * 运行状态：0：待使用，1：已过期，2：已核销
    * @param {*} type 
    */
   getWhitelist(type = 'init') {
@@ -98,7 +115,9 @@ Page({
     wx.scanCode({
       onlyFromCamera: true,
       success: (res) => {
-        const { result } = res;
+        const {
+          result
+        } = res;
         if (result) {
           // 扫码成功
           _this.getUserInfoQrCode(result)
@@ -129,13 +148,17 @@ Page({
     })
   },
   clickData(e) {
-    let { frequency } = e?.currentTarget.dataset
+    let {
+      frequency
+    } = e?.currentTarget.dataset
     this.setData({
       'whiteForm.frequency': frequency,
     })
   },
   onNumberInput(e) {
-    let { value } = e?.detail
+    let {
+      value
+    } = e?.detail
     if (value < 1) {
       value = 1
     }
@@ -144,7 +167,9 @@ Page({
     })
   },
   clickFreeTimes(e) {
-    let { type } = e?.currentTarget.dataset
+    let {
+      type
+    } = e?.currentTarget.dataset
     if (type === 'plus') {
       this.setData({
         'whiteForm.freeTimes': this.data.whiteForm.freeTimes + 1,
