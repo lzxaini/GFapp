@@ -11,7 +11,7 @@
     </t-tabs>
     <view class="title_box">
       <view class="title">充值记录</view>
-      <view class="cumulative">累计次数：{{total}}</view>
+      <view class="cumulative">累计点数：{{total}}</view>
     </view>
     <view class="table">
       <!-- 表头 -->
