@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/recharge/recharge",
     "pages/usage-guide/usage-guide",
     "pages/admin-team/admin-team",
     "pages/store-team-members/store-team-members",
@@ -60,6 +61,8 @@
     "t-tab-panel": "tdesign-miniprogram/tab-panel/tab-panel",
     "t-popup": "tdesign-miniprogram/popup/popup",
     "t-calendar": "tdesign-miniprogram/calendar/calendar",
+    "t-picker": "tdesign-miniprogram/picker/picker",
+    "t-picker-item": "tdesign-miniprogram/picker-item/picker-item",
     "empty": "components/empty/empty"
   },
   "window": {

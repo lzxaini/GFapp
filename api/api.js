@@ -2,7 +2,7 @@
  * @Author: lzx
  * @Date: 2024-01-01 13:42:13
  * @LastEditors: 17630921248 1245634367@qq.com
- * @LastEditTime: 2025-07-31 16:44:33
+ * @LastEditTime: 2025-08-11 13:17:38
  * @Description: Fuck Bug
  * @FilePath: \medical\api\api.js
  */
@@ -304,5 +304,28 @@ export function getOperationApi() {
   return request({
     url: `/gf/operation`,
     method: 'get',
+  })
+}
+/**
+ * 获取所有部门团队
+ * 参数
+ */
+export function getDeptListInfoApi(query) {
+  return request({
+    url: `/system/dept/list`,
+    method: 'get',
+    data: query
+  })
+}
+
+/**
+ * 充值接口
+ * 参数
+ */
+export function rechargeApi(data) {
+  return request({
+    url: `/gf/rechargeRecords`,
+    method: 'post',
+    data
   })
 }
