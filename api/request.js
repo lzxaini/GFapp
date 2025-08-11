@@ -35,11 +35,12 @@ export default function request(options) {
             title: '登录失效！',
             icon: 'error'
           })
-          setTimeout(() => {
-            wx.reLaunch({
-              url: '/pages/login/login',
-            })
-          }, 1500)
+          // setTimeout(() => {
+          //   wx.reLaunch({
+          //     url: '/pages/login/login',
+          //   })
+          // }, 1500)
+          getApp().logout()
         } else if (res.data.code === 24003) { // 设备已激活
           resolve(res.data)
         } else {
