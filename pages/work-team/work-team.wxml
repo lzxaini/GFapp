@@ -33,7 +33,7 @@
       <t-loading wx:if="{{!qrFlag}}" theme="circular" size="40rpx" text="正在加载中..." class="wrapper" />
       <view style="display: {{qrFlag ? '' : 'none'}};">
         <t-cell t-class="qr_userInfo" title="{{teamInfo.leaderName}}的团队" bordered="{{false}}">
-          <t-avatar slot="left-icon" size="medium" image="{{teamInfo.avatar}}"></t-avatar>
+          <t-avatar slot="left-icon" size="medium" image="{{ossUrl + teamInfo.avatar}}"></t-avatar>
           <view class="tag_box" slot="description">
             <image class="tag_icon" src="../../static/icon/admin.png" />
             <text class="tag_text">{{editFlag ? '管理员' : '普通用户'}}</text>
