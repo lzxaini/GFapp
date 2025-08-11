@@ -32,6 +32,11 @@ Page({
       url: '/pages/operation/operation'
       // url: ''
     }, {
+      title: '能量充值',
+      icon: 'my_6.png',
+      url: '/pages/recharge/recharge'
+      // url: ''
+    }, {
       title: '使用指南',
       icon: 'my_4.png',
       url: '/pages/usage-guide/usage-guide'
@@ -99,7 +104,7 @@ Page({
           });
         }
       },
-      fail: () => {}
+      fail: () => { }
     });
   },
   // 扫码先掉接口确定
@@ -230,7 +235,7 @@ Page({
       url: '/pages/login/login',
     });
   },
-  _goLoginFlag(){
+  _goLoginFlag() {
     console.log('点击名字区域')
   },
   closeIsLoginDialog() {
