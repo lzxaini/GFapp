@@ -1,4 +1,6 @@
-import { getAdminTeamListDrillDownApi } from '../../api/api'
+import {
+  getAdminTeamListDrillDownApi
+} from '../../api/api'
 const app = getApp()
 Page({
   data: {
@@ -13,15 +15,24 @@ Page({
     tabsValue: 1, // 1: 团队成员, 2: 团队设备
   },
   onLoad(options) {
-    let { deptInfo } = options
+    let {
+      deptInfo
+    } = options
     let deptData = JSON.parse(deptInfo)
-    console.log("🥵 ~ onLoad ~ dept: ", deptData)
-    this.setData({ deptData })
+    this.setData({
+      deptData
+    })
+    this.getAdminTeamListDrillDown()
+  },
+  onShow() {
     this.getAdminTeamListDrillDown()
   },
   getAdminTeamListDrillDown() {
-    let { deptData, teamTab } = this.data
-      getAdminTeamListDrillDownApi(deptData.deptId).then(res => {
+    let {
+      deptData,
+      teamTab
+    } = this.data
+    getAdminTeamListDrillDownApi(deptData.deptId).then(res => {
       if (res.code === 200) {
         this.setData({
           refresher: false,
@@ -40,16 +51,24 @@ Page({
     })
   },
   tabClick(e) {
-    let { value } = e?.detail
-    let { teamObj } = this.data
+    let {
+      value
+    } = e?.detail
+    let {
+      teamObj
+    } = this.data
     this.setData({
       teamTab: value,
       teamList: teamObj[value]
     })
   },
   goNext(e) {
-    let { item } = e?.currentTarget?.dataset
-    let { teamTab } = this.data
+    let {
+      item
+    } = e?.currentTarget?.dataset
+    let {
+      teamTab
+    } = this.data
     switch (teamTab) {
       case 3:
         wx.navigateTo({
@@ -62,5 +81,13 @@ Page({
         });
         break
     }
+  },
+  goEditDept() {
+    let {
+      deptData
+    } = this.data
+    wx.navigateTo({
+      url: '/pages/change-department/change-department?deptData=' + JSON.stringify(deptData),
+    })
   }
 })

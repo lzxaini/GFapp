@@ -1,4 +1,6 @@
-import { getAdminTeamListDrillDownApi } from '../../api/api'
+import {
+  getAdminTeamListDrillDownApi
+} from '../../api/api'
 const app = getApp()
 Page({
   data: {
@@ -11,13 +13,19 @@ Page({
     tabsValue: 1, // 1: 团队成员, 2: 团队设备
   },
   onLoad(options) {
-    let { deptInfo } = options
+    let {
+      deptInfo
+    } = options
     let deptData = JSON.parse(deptInfo)
-    this.setData({ deptData })
+    this.setData({
+      deptData
+    })
     this.getAdminTeamListDrillDown()
   },
   getAdminTeamListDrillDown() {
-    let { deptData } = this.data
+    let {
+      deptData
+    } = this.data
     getAdminTeamListDrillDownApi(deptData.deptId).then(res => {
       if (res.code === 200) {
         this.setData({
@@ -36,9 +44,19 @@ Page({
     })
   },
   goNext(e) {
-    let { item } = e?.currentTarget?.dataset
+    let {
+      item
+    } = e?.currentTarget?.dataset
     wx.navigateTo({
       url: `/pages/store-team-members/store-team-members?deptInfo=${JSON.stringify(item)}`,
     });
+  },
+  goEditDept() {
+    let {
+      deptData
+    } = this.data
+    wx.navigateTo({
+      url: '/pages/change-department/change-department?deptData=' + JSON.stringify(deptData),
+    })
   }
 })

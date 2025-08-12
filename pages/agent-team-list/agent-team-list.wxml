@@ -4,24 +4,14 @@
   <t-cell-group t-class="device_nav" theme="card">
     <t-cell title="{{deptData.deptName}}" description="团队编号：{{deptData.deptCode}}">
       <t-avatar slot="left-icon" size="large" image="{{ossUrl + deptData.deptAvatar}}"></t-avatar>
-      <!-- <view slot="right-icon" class="right_box">编辑团队</view> -->
+      <view slot="right-icon" class="right_box" bindtap="goEditDept">编辑团队</view>
     </t-cell>
   </t-cell-group>
   <view class="nav_title">管理的门店（{{teamList.length || 0}}）</view>
   <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="getAdminTeamListDrillDown">
     <block wx:for="{{teamList}}">
-      <!-- <t-cell t-class="list_item" arrow>
-        <t-avatar slot="left-icon" shape="round" size="large" image="{{item.avatar}}"></t-avatar>
-        <view slot="title" class="title_box">
-          <text class="title_text">美之颜美学定制中心</text>
-        </view>
-        <view slot="description">
-          <view class="description_text">团队编号：{{item.teamCode}}</view>
-          <view class="description_text">广东省，苏州市，吴江区，测水</view>
-        </view>
-      </t-cell> -->
       <t-cell t-class="list_item" arrow bindtap="goNext" data-item="{{item}}">
-        <t-avatar slot="left-icon" shape="round" size="large" image="{{ossUrl + item.avatar}}"></t-avatar>
+        <t-avatar slot="left-icon" shape="round" size="large" image="{{ossUrl + item.deptAvatar}}"></t-avatar>
         <view slot="title" class="title_box">
           <text class="title_text">{{item.deptName}}</text>
         </view>

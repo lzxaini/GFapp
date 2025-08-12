@@ -2,7 +2,7 @@
  * @Author: lzx
  * @Date: 2024-01-01 13:42:13
  * @LastEditors: 17630921248 1245634367@qq.com
- * @LastEditTime: 2025-08-11 13:17:38
+ * @LastEditTime: 2025-08-12 09:26:27
  * @Description: Fuck Bug
  * @FilePath: \medical\api\api.js
  */
@@ -326,6 +326,29 @@ export function rechargeApi(data) {
   return request({
     url: `/gf/rechargeRecords`,
     method: 'post',
+    data
+  })
+}
+
+/**
+ * 获取省市区
+ * 参数
+ */
+export function getRegionApi() {
+  return request({
+    url: `/common/region`,
+    method: 'get',
+  })
+}
+
+/**
+ * 修改部门信息
+ * 参数
+ */
+export function changeDeptApi(data) {
+  return request({
+    url: `/system/dept`,
+    method: 'put',
     data
   })
 }

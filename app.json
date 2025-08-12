@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/change-department/change-department",
     "pages/recharge/recharge",
     "pages/usage-guide/usage-guide",
     "pages/admin-team/admin-team",
@@ -61,8 +62,10 @@
     "t-tab-panel": "tdesign-miniprogram/tab-panel/tab-panel",
     "t-popup": "tdesign-miniprogram/popup/popup",
     "t-calendar": "tdesign-miniprogram/calendar/calendar",
+    "t-cascader": "tdesign-miniprogram/cascader/cascader",
     "t-picker": "tdesign-miniprogram/picker/picker",
     "t-picker-item": "tdesign-miniprogram/picker-item/picker-item",
+    "t-textarea": "tdesign-miniprogram/textarea/textarea",
     "empty": "components/empty/empty"
   },
   "window": {
