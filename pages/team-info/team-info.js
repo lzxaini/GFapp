@@ -37,12 +37,15 @@ Page({
   updateTeamCover() {
     let { id } = this.data.teamInfo
     let _this = this
-    wx.chooseImage({
+    wx.chooseMedia({
       count: 1,
+      mediaType: ['image'],
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
-      success: (res) => {
-        const tempFilePath = res.tempFilePaths[0];
+      maxDuration: 30,
+      camera: 'back',
+      success(res) {
+        const tempFilePath = res.tempFiles[0].tempFilePath;
         // 这里假设有上传接口 /api/upload
         wx.uploadFile({
           url: app.globalData.baseUrl + `/system/user/profile/teamAvatar/${id}`, // 替换为你的上传接口
@@ -54,7 +57,7 @@ Page({
           success: (uploadRes) => {
             // 上传成功后的处理，比如保存图片地址到data
             const data = JSON.parse(uploadRes.data);
-            this.setData({
+            _this.setData({
               'form.avatar': data.imgUrl // 假设返回的图片地址字段为url
             });
             _this.message('success', '团队头像上传成功')

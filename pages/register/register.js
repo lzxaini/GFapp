@@ -29,12 +29,15 @@ Page({
   // 上传头像
   updateAvatar() {
     let _this = this
-    wx.chooseImage({
+    wx.chooseMedia({
       count: 1,
+      mediaType: ['image'],
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
-      success: (res) => {
-        const tempFilePath = res.tempFilePaths[0];
+      maxDuration: 30,
+      camera: 'back',
+      success(res) {
+        const tempFilePath = res.tempFiles[0].tempFilePath;
         wx.uploadFile({
           url: app.globalData.baseUrl + '/system/user/profile/avatar',
           filePath: tempFilePath,
@@ -46,8 +49,7 @@ Page({
             if (res.statusCode === 200) {
               try {
                 let data = JSON.parse(res.data)
-                console.log("🥵 ~ updateAvatar ~ data: ", data)
-                this.setData({
+                _this.setData({
                   'form.avatar': data.imgUrl
                 })
                 _this.message('success', '用户头像上传成功')
