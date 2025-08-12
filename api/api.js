@@ -2,7 +2,7 @@
  * @Author: lzx
  * @Date: 2024-01-01 13:42:13
  * @LastEditors: 17630921248 1245634367@qq.com
- * @LastEditTime: 2025-08-12 09:26:27
+ * @LastEditTime: 2025-08-12 17:22:55
  * @Description: Fuck Bug
  * @FilePath: \medical\api\api.js
  */
@@ -350,5 +350,27 @@ export function changeDeptApi(data) {
     url: `/system/dept`,
     method: 'put',
     data
+  })
+}
+
+/**
+ * 加入部门
+ * 参数
+ */
+export function joinDeptApi(userId, deptId) {
+  return request({
+    url: `/system/user/${userId}/${deptId}`,
+    method: 'put'
+  })
+}
+
+/**
+ * 充值总点数
+ * 参数
+ */
+export function getDeptPointsApi(deptId) {
+  return request({
+    url: `/gf/userExtend/dept/${deptId}`,
+    method: 'get'
   })
 }

@@ -3,7 +3,7 @@ import {
 } from '../../utils/tools';
 import {
   getDeptListInfoApi,
-  getServiceRecordsApi,
+  getDeptPointsApi,
   getRechargeRecordsApi,
   rechargeApi
 } from '../../api/api'
@@ -27,7 +27,8 @@ Page({
     pageObj: {
       pageNum: 1,
       pageSize: 10,
-    }
+    },
+    points: {}, // 点数相关
   },
   onShow() {
     this.getDeptListInfo()
@@ -82,6 +83,7 @@ Page({
           total: res.data.total
         })
       }
+      this.getDeptPoints()
       this.setData({
         refresher: false
       })
@@ -94,9 +96,10 @@ Page({
     });
   },
   // 清空部门输入框
-  clearInput(){
+  clearInput() {
     this.setData({
-      'pageObj.deptId': ''
+      'pageObj.deptId': '',
+      'form.deptId': ''
     });
     this.getRechargeRecords()
   },
@@ -190,6 +193,22 @@ Page({
             deptName: '',
             rechargeAmount: '',
           }
+        })
+      }
+    })
+  },
+  getDeptPoints() {
+    let {
+      deptId
+    } = this.data.form
+    if (!deptId) {
+      return
+    }
+    getDeptPointsApi(deptId).then(res => {
+      console.log('res', res)
+      if (res.code === 200) {
+        this.setData({
+          points: res.data
         })
       }
     })

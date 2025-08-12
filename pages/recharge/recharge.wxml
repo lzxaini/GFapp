@@ -34,7 +34,7 @@
     </view>
     <view class="title_box">
       <view class="title">充值记录</view>
-      <view class="cumulative">累计点数：{{total}}</view>
+      <view class="cumulative">{{form.deptId ? '累计点数：' : '累计条数：'}}{{ form.deptId ? points.total : total }}</view>
     </view>
     <!-- 列表模块 -->
     <view class="table">
