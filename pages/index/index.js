@@ -13,6 +13,7 @@ import {
 Page({
   data: {
     capsuleHeight: app.globalData.capsuleHeight,
+    marginBottom: app.globalData.marginBottom,
     appName: app.globalData.appName,
     ossUrl: app.globalData.ossUrl,
     qrCodeBox: false,

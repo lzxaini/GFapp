@@ -44,48 +44,13 @@
   </view>
   <t-cell-group class="card-box" theme="card">
     <block wx:for="{{cardList}}" :key="index">
-      <t-cell
-        wx:if="{{item.title !== '能量充值' || userInfo.allowedRecharge}}"
-        t-class="from-item"
-        t-class-left="left_center"
-        title="{{item.title}}"
-        bindtap="goListItem"
-        data-url="{{item.url}}"
-        data-title="{{item.title}}"
-        arrow
-        hover
-      >
+      <t-cell wx:if="{{item.title !== '能量充值' || userInfo.allowedRecharge}}" t-class="from-item" t-class-left="left_center" title="{{item.title}}" bindtap="goListItem" data-url="{{item.url}}" data-title="{{item.title}}" arrow hover>
         <image slot="left-icon" class="left_icon" src="../../static/icon/{{item.icon}}" />
       </t-cell>
     </block>
   </t-cell-group>
   <image class="device_bg" src="../../static/icon/device_bg.png" />
-  <t-dialog visible="{{qrCodeBox}}" bind:close="closeDialog" close-on-overlay-click="{{true}}">
-    <!-- 适配skyline，增加type="list" -->
-    <view slot="content" class="dialog_content">
-      <t-loading wx:if="{{!qrFlag}}" theme="circular" size="40rpx" text="正在加载中..." class="wrapper" />
-      <view style="display: {{qrFlag ? '' : 'none'}};">
-        <t-cell t-class="qr_userInfo" title="{{userInfo.userName}}" bordered="{{false}}">
-          <t-avatar slot="left-icon" size="medium" image="{{ossUrl + userInfo.avatar}}"></t-avatar>
-          <!-- <image slot="description" class="tag_icon" src="../../static/icon/admin.png" /> -->
-          <view class="tag_box" slot="description">
-            <image class="tag_icon" src="../../static/icon/admin.png" />
-            <text class="tag_text">{{userInfo.roles[0].roleName}}</text>
-          </view>
-        </t-cell>
-        <view class="institution_box">
-          <text class="institution">所属机构：{{userInfo.dept.deptName}}</text>
-        </view>
-        <view class="qr_image_box">
-          <canvas class="qr_image" canvas-id="myQrcode"></canvas>
-        </view>
-        <view class="qr_code_text">扫一扫，快速加入我们的团队</view>
-      </view>
-    </view>
-    <button style="display: {{qrFlag ? '' : 'none'}};" slot="confirm-btn" class="save_invite" bindtap="saveQrCode">
-      保存邀请码
-    </button>
-  </t-dialog>
+  <view class="copy" style="margin-bottom: {{marginBottom}}">粤ICP备2025444193号-1X</view>
 </view>
 <t-dialog visible="{{isLogin}}" title="温馨提示" content="您尚未登录，请先登录！">
   <t-button slot="confirm-btn" class="action-btn" theme="primary" bindtap="goLogin">去登录</t-button>
@@ -94,3 +59,30 @@
   </t-button>
 </t-dialog>
 <t-message id="t-message" />
+
+<t-dialog visible="{{qrCodeBox}}" bind:close="closeDialog" close-on-overlay-click="{{true}}">
+  <!-- 适配skyline，增加type="list" -->
+  <view slot="content" class="dialog_content">
+    <t-loading wx:if="{{!qrFlag}}" theme="circular" size="40rpx" text="正在加载中..." class="wrapper" />
+    <view style="display: {{qrFlag ? '' : 'none'}};">
+      <t-cell t-class="qr_userInfo" title="{{userInfo.userName}}" bordered="{{false}}">
+        <t-avatar slot="left-icon" size="medium" image="{{ossUrl + userInfo.avatar}}"></t-avatar>
+        <!-- <image slot="description" class="tag_icon" src="../../static/icon/admin.png" /> -->
+        <view class="tag_box" slot="description">
+          <image class="tag_icon" src="../../static/icon/admin.png" />
+          <text class="tag_text">{{userInfo.roles[0].roleName}}</text>
+        </view>
+      </t-cell>
+      <view class="institution_box">
+        <text class="institution">所属机构：{{userInfo.dept.deptName}}</text>
+      </view>
+      <view class="qr_image_box">
+        <canvas class="qr_image" canvas-id="myQrcode"></canvas>
+      </view>
+      <view class="qr_code_text">扫一扫，快速加入我们的团队</view>
+    </view>
+  </view>
+  <button style="display: {{qrFlag ? '' : 'none'}};" slot="confirm-btn" class="save_invite" bindtap="saveQrCode">
+    保存邀请码
+  </button>
+</t-dialog>

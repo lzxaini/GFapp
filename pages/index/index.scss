@@ -123,7 +123,16 @@
 		height: 1024rpx;
 		// opacity: 0.5;
 		opacity: 1;
-	}
+  }
+  .copy{
+    position: fixed;
+    bottom: env(safe-area-inset-bottom);
+    font-size: 18rpx;
+    color: #808080;
+    left: 50%;
+    transform: translate(-50%, 0);
+    // margin-top: 50rpx;
+  }
 }
 .action-btn {
 	--td-button-primary-bg-color: #888bf4;
