@@ -22,7 +22,7 @@
       </view>
     </view>
   </scroll-view>
-  <t-empty t-class="empty" t-class-image="empty_image" wx:else image="/static/icon/null.png" description="暂无任何白名单" />
+  <empty class="empty" bgColor="transparent" wx:else image="../../static/icon/empty3.png" description="暂无白名单记录"></empty>
   <button wx:if="{{!whiteBox}}" style="margin-bottom: {{marginBottom}}" class="authorization" bindtap="scanCode">
     扫码授权
   </button>
