@@ -35,19 +35,10 @@ export default function request(options) {
             title: '登录失效！',
             icon: 'error'
           })
-          // setTimeout(() => {
-          //   wx.reLaunch({
-          //     url: '/pages/login/login',
-          //   })
-          // }, 1500)
           getApp().logout()
         } else if (res.data.code === 24003) { // 设备已激活
           resolve(res.data)
         } else {
-          // wx.showToast({
-          //   title: res.data.msg || `接口异常${res.data.code}!`,
-          //   icon: 'error'
-          // })
           Message.error({
             context: this,
             offset: [90, 32],
