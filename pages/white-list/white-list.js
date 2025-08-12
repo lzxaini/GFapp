@@ -13,6 +13,7 @@ Page({
   data: {
     marginBottom: app.globalData.marginBottom,
     ossUrl: app.globalData.ossUrl,
+    userInfo: app.globalData.userInfo,
     whiteList: [],
     qrCodeUserInfo: {},
     whiteBox: false,
@@ -112,6 +113,10 @@ Page({
   },
   scanCode() {
     let _this = this
+    if (!this.data.userInfo.allowedWhite) {
+      this.messageBox('error', '您无白名单授权资格，请联系管理员！', 3000);
+      return
+    }
     wx.scanCode({
       onlyFromCamera: true,
       success: (res) => {
