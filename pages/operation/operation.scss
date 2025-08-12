@@ -34,9 +34,6 @@
     overflow: hidden;
     z-index: 9;
 
-    .admin_operation_nav {
-      height: 336rpx !important;
-    }
 
     .operation_nav_bg {
       position: absolute;
@@ -409,4 +406,8 @@
 
 .wrapper__right {
   text-align: right;
+}
+
+.admin_operation_nav {
+  height: 336rpx !important;
 }
