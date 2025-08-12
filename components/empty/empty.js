@@ -15,6 +15,10 @@ Component({
     descClass: {
       type: String,
       value: ''
+    },
+    bgColor: {
+      type: String,
+      value: '#fff'
     }
   },
   data: {},
