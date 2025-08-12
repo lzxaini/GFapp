@@ -1,7 +1,11 @@
-import { getAdminTeamListApi } from '../../api/api'
+import {
+  getAdminTeamListApi
+} from '../../api/api'
 const app = getApp()
 Page({
   data: {
+    marginBottom: app.globalData.marginBottom,
+    userInfo: app.globalData.userInfo,
     ossUrl: app.globalData.ossUrl,
     teamTab: 2, // 默认团队tab,1是最顶级不用加载
     teamObj: {},
@@ -10,27 +14,38 @@ Page({
     empty: {
       name: 'data-error',
       size: 40
-    }
+    },
+    qrCodeBox: false,
+    qrFlag: false,
   },
   onShow() {
     this.getAdminTeamList()
   },
   tabClick(e) {
-    let { value } = e?.detail
-    let { teamObj } = this.data
+    let {
+      value
+    } = e?.detail
+    let {
+      teamObj
+    } = this.data
     this.setData({
       teamTab: value,
       teamList: teamObj[value]
     })
   },
   goTeamInfo(e) {
-    let { flag, id } = e?.currentTarget?.dataset
+    let {
+      flag,
+      id
+    } = e?.currentTarget?.dataset
     wx.navigateTo({
       url: `/pages/work-team/work-team?editFlag=${flag}&id=${id}`,
     });
   },
   getAdminTeamList() {
-    let { teamTab } = this.data
+    let {
+      teamTab
+    } = this.data
     getAdminTeamListApi().then(res => {
       if (res.code === 200) {
         this.setData({
@@ -50,8 +65,12 @@ Page({
     })
   },
   goNext(e) {
-    let { item } = e?.currentTarget?.dataset
-    let { teamTab } = this.data
+    let {
+      item
+    } = e?.currentTarget?.dataset
+    let {
+      teamTab
+    } = this.data
     switch (teamTab) {
       case 2:
         wx.navigateTo({
@@ -69,13 +88,5 @@ Page({
         });
         break
     }
-  },
-  // 编辑团队
-  editTeam() {
-    let { id } = e?.currentTarget?.dataset
-    console.log('测试', deptData)
-    // wx.navigateTo({
-    //   url: `/pages/team-info/team-info?id=${id}`
-    // })
   },
 })

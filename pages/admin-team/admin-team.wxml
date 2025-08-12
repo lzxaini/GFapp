@@ -1,7 +1,7 @@
 <view class="admin-team_container">
   <t-navbar t-class="navBar" left-arrow title="团队管理" />
   <view class="admin-team_title" hover-class="none" hover-stop-propagation="false">
-    <view class="admin-team_tabs" hover-class="none" hover-stop-propagation="false">
+    <view class="admin-team_tabs">
       <t-tabs t-class="tabs_box" t-class-active="active_style" t-class-item="item_style" defaultValue="{{teamTab}}" theme="tag" bind:click="tabClick">
         <t-tab-panel wx:key="index" label="分公司({{teamObj[2].length}})" value="{{2}}" />
         <t-tab-panel wx:key="index" label="代理商({{teamObj[3].length}})" value="{{3}}" />
@@ -26,5 +26,8 @@
       <t-empty t-class="empty" t-class-image="empty_image" image="/static/icon/footer.png" description="糟糕，到底了" />
     </view>
   </scroll-view>
+  <!-- <button class="invite_btn" style="margin-bottom: {{marginBottom}}" bindtap="inviteBtn">
+    邀请加入
+  </button> -->
 </view>
 <t-message id="t-message" />
