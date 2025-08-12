@@ -26,7 +26,7 @@
           <t-cell t-class="team_item" hover arrow bindtap="onSelectTeam" data-id="{{item.deptId}}" data-name="{{item.deptName}}" bordered>
             <t-avatar slot="left-icon" image="{{ossUrl + item.deptAvatar}}" size="small" />
             <view slot="title" class="title">{{item.deptName}}</view>
-            <view slot="description" class="description">地址：{{address}}{{addressDetail}}</view>
+            <view slot="description" class="description">地址：{{item.address}}</view>
           </t-cell>
         </block>
         <t-empty wx:if="{{teamList.length < 1}}" t-class="empty" t-class-image="empty_image" image="/static/icon/footer.png" description="糟糕，到底了" />
