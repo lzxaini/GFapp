@@ -12,7 +12,7 @@ Page({
       size: 40
     }
   },
-  onLoad() {
+  onShow() {
     this.getAdminTeamList()
   },
   tabClick(e) {
