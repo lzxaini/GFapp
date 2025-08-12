@@ -18,11 +18,11 @@ App({
     this.verifyUserLogin()
   },
   globalData: {
-    devFlag: false, // 开发环境标志
+    devFlag: true, // 开发环境标志
     appName: {
       name: '光馥科美',
       slogan: '光塑年轻力，馥养无龄美',
-      appVersion: '0.0.4'
+      appVersion: '0.0.8'
       // name: '百士电子',
       // slogan: '让中国制造，成为中国创造！',
     },
@@ -32,12 +32,12 @@ App({
     capsuleHeight: 0,
     marginBottom: '60rpx',
     // baseUrl: 'https://oa.beasun.com:2443/prod-api',
-    baseUrl: 'https://api.fxnws.com',
-    ossUrl: 'https://api.fxnws.com',
+    baseUrl: 'https://api.guangfkm.cn',
+    ossUrl: 'https://api.guangfkm.cn',
     // baseUrl: 'http://192.168.18.150:8080',
     // ossUrl: 'http://192.168.18.150:8080',
-    // mqttUrl: 'wxs://mqtt.guangfkm.cn/mqtt',
-    mqttUrl: 'wxs://gfmq.fxnws.com/mqtt',
+    mqttUrl: 'wxs://mqtt.guangfkm.cn/mqtt',
+    // mqttUrl: 'wxs://gfmq.fxnws.com/mqtt',
     // mqttUrl: 'wxs://8.138.32.44/mqtt',
     // mqttUrl: 'wxs://mqtt.beasun.com/mqtt',
     userInfo: null,
