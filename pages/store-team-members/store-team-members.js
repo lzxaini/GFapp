@@ -34,5 +34,13 @@ Page({
         })
       }
     })
+  },
+  goEditDept() {
+    let {
+      deptData
+    } = this.data
+    wx.navigateTo({
+      url: '/pages/change-department/change-department?deptData=' + JSON.stringify(deptData),
+    })
   }
 })

@@ -1,5 +1,5 @@
 <view class="founder-device_container">
-  <t-navbar t-class="navBar" left-arrow title="我的设备" />
+  <t-navbar t-class="navBar" left-arrow title="我的设备1" />
   <view class="nav_bg"></view>
   <t-cell-group t-class="device_nav" theme="card">
     <t-cell title="测试水水水水" description="团队编号：123">

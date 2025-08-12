@@ -22,6 +22,9 @@ Page({
     })
     this.getAdminTeamListDrillDown()
   },
+  onShow(){
+    this.getAdminTeamListDrillDown()
+  },
   getAdminTeamListDrillDown() {
     let {
       deptData

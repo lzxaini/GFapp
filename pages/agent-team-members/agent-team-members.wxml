@@ -1,5 +1,5 @@
 <view class="agent-team-members_container">
-  <t-navbar t-class="navBar" left-arrow title="团队成员" />
+  <t-navbar t-class="navBar" left-arrow title="团队管理" />
   <view class="nav_bg"></view>
   <t-cell-group t-class="device_nav" theme="card">
     <t-cell title="{{deptData.deptName}}" description="团队编号：{{deptData.deptCode}}">
