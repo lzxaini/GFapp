@@ -8,7 +8,7 @@
     <view class="recharge_nav">
       <image class="recharge_nav_bg" src="../../static/icon/bg-top.png" />
       <view class="input_box">
-        <t-input t-class="input_item" placeholder="请选择要充值的团队名称" value="{{form.deptName}}" bindchange="onInputDeptName" bindblur="blur">
+        <t-input t-class="input_item" placeholder="请选择要充值的团队名称" value="{{form.deptName}}" bindchange="onInputDeptName" bindblur="blur" clearable bindclear="clearInput">
           <t-icon slot="prefix-icon" name="location" color="#888BF4" size="22"></t-icon>
           <t-icon slot="suffix-icon" name="chevron-down" color="#888BF4" size="22" bindtap="showTeamList"></t-icon>
         </t-input>
@@ -49,16 +49,19 @@
         <!-- 表体 -->
         <!-- 滚动列表 -->
         <view class="scroll-view">
-          <block wx:for="{{20}}" wx:key="index">
+          <block wx:for="{{tableData}}" wx:key="index">
             <!-- 只有联合创始和代理商有机构显示 -->
             <view class="table-row">
-              <view class="table-cell text-overflow">ccs是实打实大苏打实打实大苏打实打实大苏打</view>
+              <view class="table-cell text-overflow">{{item.deptName}}</view>
               <view class="table-cell number-cell">
                 <view class="text">{{item.rechargeAmount}}</view>
               </view>
-              <view class="table-cell">{{item.currentBalance}}</view>
+              <view class="table-cell" style="font-size: 18rpx;">{{item.rechargeTime}}</view>
             </view>
           </block>
+          <view class="empty" wx:if="{{tableData.length < 1}}">
+            <empty image="../../static/icon/empty1.png" description="暂时没有收入，快去接单吧"></empty>
+          </view>
         </view>
       </scroll-view>
     </view>

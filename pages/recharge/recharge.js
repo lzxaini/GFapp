@@ -20,11 +20,14 @@ Page({
       deptId: '',
       deptName: '',
       rechargeAmount: '',
+    },
+    tableData: [],
+    total: 0,
+    refresher: false,
+    pageObj: {
+      pageNum: 1,
+      pageSize: 10,
     }
-  },
-  // 点击空白关闭 team_list
-  onTeamListMask() {
-    this.setData({ teamVisible: false });
   },
   onShow() {
     this.getDeptListInfo()
@@ -36,32 +39,22 @@ Page({
   onReachBottom() {
     let {
       tabsValue,
-      rechargeList,
+      tableData,
     } = this.data
     console.log('触底', tabsValue) // 确定是哪个触底的就加载哪个列表
-    if (rechargeList.length < total) {
-      let pageNum = ++this.data.rechargePageObj.pageNum
+    if (tableData.length < total) {
+      let pageNum = ++this.data.pageObj.pageNum
       this.setData({
-        'rechargePageObj.pageNum': pageNum
+        'pageObj.pageNum': pageNum
       })
       this.getRechargeRecords('bottom')
     }
   },
   pullDownToRefresh() {
-    let {
-      tabsValue,
-    } = this.data
-    if (tabsValue === 1) {
-      this.setData({
-        'rechargePageObj.pageNum': 1
-      })
-      this.getRechargeRecords()
-    } else {
-      this.setData({
-        'servicePageObj.pageNum': 1
-      })
-      this.getServiceRecords()
-    }
+    this.setData({
+      'pageObj.pageNum': 1
+    })
+    this.getRechargeRecords()
   },
 
   /**
@@ -71,28 +64,41 @@ Page({
    */
   getRechargeRecords(type = 'init') {
     let {
-      rechargePageObj,
-      rechargeList
+      pageObj,
+      tableData
     } = this.data
-    getRechargeRecordsApi(rechargePageObj).then(res => {
+    getRechargeRecordsApi(pageObj).then(res => {
       if (type === 'bottom') {
         if (res.data.rows.length > 0) {
-          let list = rechargeList
+          let list = tableData
           list.push(...res.data.rows)
           this.setData({
-            rechargeList: list
+            tableData: list
           })
         }
       } else {
         this.setData({
-          rechargeList: res.data.rows,
-          rechargeTotal: res.data.total
+          tableData: res.data.rows,
+          total: res.data.total
         })
       }
       this.setData({
         refresher: false
       })
     })
+  },
+  // 点击空白关闭 team_list
+  onTeamListMask() {
+    this.setData({
+      teamVisible: false
+    });
+  },
+  // 清空部门输入框
+  clearInput(){
+    this.setData({
+      'pageObj.deptId': ''
+    });
+    this.getRechargeRecords()
   },
   // 获取部门
   getDeptListInfo() {
@@ -110,8 +116,10 @@ Page({
   showTeamList() {
     let flag = !this.data.teamVisible
     this.setData({
+      searchDeptName: '',
       teamVisible: flag
     })
+    this.getDeptListInfo()
   },
   // 选中部门团队（实时搜索列表）
   onSelectTeam(e) {
@@ -121,9 +129,11 @@ Page({
     } = e.currentTarget.dataset;
     this.setData({
       'form.deptId': id,
+      'pageObj.deptId': id,
       'form.deptName': name,
-      teamVisible: false
+      teamVisible: false,
     });
+    this.getRechargeRecords()
   },
   // blur() {
   //   this.setData({
@@ -145,10 +155,12 @@ Page({
       value
     } = e?.detail
     this.setData({
+      'pageObj.deptId': '',
       'searchDeptName': value,
       teamVisible: true
     })
     this.getDeptListInfo()
+    this.getRechargeRecords()
   },
   // 充值
   submit() {
@@ -165,10 +177,21 @@ Page({
       this.message('warning', '请输入正确的充值点数！');
       return;
     }
-    console.log('this.data.form',this.data.form)
-    return
+    console.log('this.data.form', this.data.form)
     rechargeApi(this.data.form).then(res => {
       console.log('res', res)
+      if (res.code === 200) {
+        this.message('success', `充值成功，充值点数 ${this.data.form.rechargeAmount} 点！`, 2000);
+        this.getRechargeRecords()
+        this.setData({
+          'pageObj.deptId': '',
+          form: {
+            deptId: '',
+            deptName: '',
+            rechargeAmount: '',
+          }
+        })
+      }
     })
   },
   message(type, text, duration = 1500) {
