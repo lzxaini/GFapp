@@ -22,6 +22,10 @@
             <text class="info">{{item.userName}}</text>
           </view>
           <view class="list_item">
+            <text class="lable">使用时长</text>
+            <text class="info">{{item.runningTime}}</text>
+          </view>
+          <view class="list_item">
             <text class="lable">服务时间</text>
             <text class="info">{{item.createTime}}</text>
           </view>
