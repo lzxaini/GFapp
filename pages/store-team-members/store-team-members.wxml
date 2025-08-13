@@ -4,19 +4,18 @@
   <t-cell-group t-class="device_nav" theme="card">
     <t-cell title="{{deptData.deptName}}" description="团队编号：{{deptData.deptCode}}">
       <t-avatar slot="left-icon" size="large" image="{{ossUrl + deptData.deptAvatar}}"></t-avatar>
-      <!-- <view slot="right-icon" class="right_box" bindtap="editTeam" data-id="{{deptData.id}}">编辑团队</view> -->
       <view slot="right-icon" class="right_box" bindtap="goEditDept">编辑团队</view>
     </t-cell>
   </t-cell-group>
   <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="pullDownToRefresh">
     <block wx:for="{{membersList}}">
       <t-cell t-class="list_item" arrow>
-        <t-avatar slot="left-icon" shape="round" size="large" image="{{ossUrl + item.avatar}}"></t-avatar>
+        <t-avatar slot="left-icon" shape="round" size="large" image="{{ossUrl + item.deptAvatar}}"></t-avatar>
         <view slot="title" class="title_box">
-          <text class="title_text">{{item.name}}</text>
+          <text class="title_text">{{item.deptName}}</text>
         </view>
         <view slot="description">
-          <view class="description_text">团队编号：{{item.teamCode}}</view>
+          <view class="description_text">团队编号：{{item.deptCode}}</view>
           <view class="description_text">{{item.address}}</view>
         </view>
       </t-cell>

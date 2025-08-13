@@ -20,7 +20,7 @@ Page({
   },
   getStoresTeamList() {
     let { deptData } = this.data
-    getStoresTeamListApi(deptData.deptId).then(res => {
+    getStoresTeamListApi({deptId: deptData.deptId}).then(res => {
       if (res.code === 200) {
         this.setData({
           refresher: false,
