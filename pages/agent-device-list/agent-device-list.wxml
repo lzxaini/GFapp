@@ -3,21 +3,30 @@
   <view class="nav_bg"></view>
   <view class="device_nav">
     <view class="nav_item">
-      <view class="number">{{deviceInfo.bindCount}}</view>
+      <view class="number">{{teamObj.bindCount}}</view>
       <view class="label">已绑定设备数</view>
     </view>
     <view class="nav_item">
-      <view class="number">{{deviceInfo.unbindCount}}</view>
+      <view class="number">{{teamObj.unbindCount}}</view>
       <view class="label">未绑定设备数</view>
     </view>
     <view class="nav_item">
-      <view class="number">{{deviceInfo.onlineCount}}</view>
+      <view class="number">{{teamObj.onlineCount}}</view>
       <view class="label">总联网设备数</view>
     </view>
   </view>
-  <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="pullDownToRefresh">
-    <block wx:for="{{deviceList}}">
-      <t-cell-group t-class="list_item" theme="card" bindtap="goDeviceList" data-id="{{item.deptId}}">
+  <view class="admin-team_title">
+    <view class="admin-team_tabs">
+      <t-tabs t-class="tabs_box" t-class-active="active_style" t-class-item="item_style" defaultValue="{{teamTab}}" theme="tag" bind:click="tabClick">
+        <t-tab-panel wx:key="index" label="分公司({{teamObj.data[2].length}})" value="{{2}}" />
+        <t-tab-panel wx:key="index" label="代理商({{teamObj.data[3].length}})" value="{{3}}" />
+        <t-tab-panel wx:key="index" label="门店({{teamObj.data[4].length}})" value="{{4}}" />
+      </t-tabs>
+    </view>
+  </view>
+  <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="getAdminDeviceList">
+    <block wx:for="{{teamList}}">
+      <t-cell-group t-class="list_item" theme="card" bindtap="goDeviceList" data-id="{{item.deptId}}" data-info="{{item}}">
         <t-cell title="{{item.deptName}}" arrow>
           <t-avatar slot="left-icon" size="large" image="{{ossUrl + item.deptAvatar}}"></t-avatar>
           <view slot="description" class="list_item_info">已绑定设备数：{{item.bindCount}}</view>

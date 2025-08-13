@@ -20,15 +20,26 @@ Page({
       pageNum: 1,
       pageSize: 10,
       deptId: ''
-    }
+    },
+    deptInfo: {}
   },
   onLoad(options) {
     let {
-      deptId
+      deptId,
+      info
     } = options
-    this.setData({
-      'pageObj.deptId': deptId || this.data.userInfo.dept.deptId
-    })
+    try {
+      let deptInfo = JSON.parse(info)
+      this.setData({
+        'pageObj.deptId': deptId || this.data.userInfo.dept.deptId,
+        deptInfo: deptInfo
+      })
+    } catch (error) {
+      this.setData({
+        'pageObj.deptId': deptId || this.data.userInfo.dept.deptId,
+        deptInfo: this.data.userInfo.dept
+      })
+    }
     this.getDeviceList()
     this.getDeviceActivated()
   },
@@ -54,6 +65,7 @@ Page({
       'pageObj.pageNum': 1
     })
     this.getDeviceList()
+    this.getDeviceActivated()
   },
   /**
    * 设备分页查询
@@ -87,8 +99,8 @@ Page({
       runningstate,
       serialnumber
     } = e?.currentTarget.dataset
-    // "runningState": "1",（0未激活 1已停止 2运行中）
-    if (runningstate === '2') {
+    // "runningState": "1",（0未激活 1运行中 2已停止）
+    if (runningstate === '1') {
       wx.navigateTo({
         url: `/pages/device-use/device-use?deviceId=${serialnumber}`,
       });
@@ -154,11 +166,16 @@ Page({
   },
   // 设备激活
   getDeviceActivated() {
+    let {
+      deptId
+    } = this.data.pageObj
     // $TODO 设备激活数量记录接口对接
-    getDeviceActivatedApi(this.data.userInfo.dept.deptId).then(res => {
-      this.setData({
-        historyList: res.data
-      })
+    getDeviceActivatedApi(deptId).then(res => {
+      if (res.code === 200) {
+        this.setData({
+          historyList: res.data
+        })
+      }
     })
   }
 })

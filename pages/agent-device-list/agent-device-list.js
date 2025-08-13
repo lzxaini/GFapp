@@ -4,8 +4,9 @@ Page({
   data: {
     userInfo: app.globalData.userInfo,
     ossUrl: app.globalData.ossUrl,
-    deviceInfo: {},
-    deviceList: [],
+    teamObj: {},
+    teamList: [],
+    teamTab: 2, // 默认团队tab,1是最顶级不用加载
     total: 0,
     refresher: false,
     pageObj: {
@@ -14,25 +15,10 @@ Page({
     }
   },
   onShow() {
-    this.getAdminDeviceList()
-  },
-  /**
-  * 页面上拉触底事件的处理函数
- */
-  onReachBottom() {
-    console.log('触底',)
-    let { deviceList, total } = this.data
-    if (deviceList.length < total) {
-      let pageNum = ++this.data.pageObj.pageNum
-      this.setData({
-        'pageObj.pageNum': pageNum
-      })
-      this.getAdminDeviceList('bottom')
-    }
-  },
-  pullDownToRefresh() {
+    let { dept } = this.data.userInfo
     this.setData({
-      'pageObj.pageNum': 1
+      'pageObj.deptId': dept.deptId,
+      'pageObj.deptType': dept.deptType
     })
     this.getAdminDeviceList()
   },
@@ -41,33 +27,45 @@ Page({
    * 增加在分页条件里面
    * @param {*} type 
    */
-  getAdminDeviceList(type = 'init') {
+  getAdminDeviceList() {
+    let {
+      teamTab
+    } = this.data
     getAdminDeviceListApi(this.data.pageObj).then(res => {
-      if (type === 'bottom') {
-        if (res.data.depts.rows.length > 0) {
-          let list = this.data.deviceList
-          list.push(...res.data.depts.rows)
-          this.setData({
-            deviceInfo: res.data,
-            deviceList: list
-          })
-        }
+      if (res.code === 200) {
+        this.setData({
+          refresher: false,
+          teamObj: res.data,
+          teamList: res.data.data[teamTab]
+        })
       } else {
         this.setData({
-          deviceInfo: res.data,
-          deviceList: res.data.depts.rows,
-          total: res.data.depts.total
+          refresher: false,
+        })
+        wx.showToast({
+          title: '获取团队列表失败',
+          icon: 'error'
         })
       }
-      this.setData({
-        refresher: false
-      })
+    })
+  },
+  tabClick(e) {
+    let {
+      value
+    } = e?.detail
+    let {
+      teamObj
+    } = this.data
+    this.setData({
+      teamTab: value,
+      teamList: teamObj.data[value]
     })
   },
   goDeviceList(e) {
-    let { id } = e?.currentTarget?.dataset
+    let { id, info } = e?.currentTarget?.dataset
+    console.log('id',id)
     wx.navigateTo({
-      url: `/pages/device-list/device-list?deptId=${id}`,
+      url: `/pages/device-list/device-list?deptId=${id}&info=${JSON.stringify(info)}`,
     });
   }
 })
