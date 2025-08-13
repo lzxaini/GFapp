@@ -8,6 +8,7 @@ Page({
   data: {
     ossUrl: app.globalData.ossUrl,
     bindList: [],
+    originalBindList: [], // 缓存原始数据
     bindId: '',
     serialNumber: ''
   },
@@ -16,17 +17,24 @@ Page({
     this.setData({ serialNumber: deviceId })
     this.activetionDevice(deviceId)
   },
-  // searchChange(e) {
-  //   let { value } = e?.detail
-  //   let { bindList } = this.data
-  //   let search = bindList.filter(item => item.name === value)
-  //   this.setData({ bindList: search })
-  // },
+  searchChange(e) {
+    let { value } = e?.detail
+    let { originalBindList, bindList } = this.data
+    // 输入为空还原原始数据
+    if (!value) {
+      this.setData({ bindList: originalBindList })
+      return;
+    }
+    // 支持模糊搜索
+    let search = (originalBindList.length ? originalBindList : bindList).filter(item => item.deptName && item.deptName.indexOf(value) > -1)
+    this.setData({ bindList: search })
+  },
   // 激活设备
   activetionDevice(serialNumber) {
     activetionDeviceApi(serialNumber).then(res => {
       this.setData({
-        bindList: res.data
+        bindList: res.data,
+        originalBindList: res.data // 缓存原始数据
       })
     })
   },

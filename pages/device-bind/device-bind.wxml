@@ -15,16 +15,16 @@
     <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true">
       <t-radio-group borderless t-class="box" bind:change="bindChange">
         <t-cell wx:for="{{bindList}}" t-class="list_item" bordered="{{false}}">
-          <t-avatar slot="left-icon" size="large" image="{{ossUrl + item.avatar}}"></t-avatar>
+          <t-avatar slot="left-icon" size="large" image="{{ossUrl + item.deptAvatar}}"></t-avatar>
           <view slot="title" class="title_box">
-            <text class="title_text">{{item.name}}</text>
+            <text class="title_text">{{item.deptName}}</text>
           </view>
           <view slot="description">
-            <view class="description_text">团队编号：{{item.teamCode}}</view>
-            <view class="description_text">{{item.addressDetail}}</view>
+            <view class="description_text">所属机构：{{item.parentName}}</view>
+            <view class="description_text">{{item.address}}</view>
           </view>
           <view slot="right-icon" class="right-icon">
-            <t-radio block="{{false}}" value="{{item.id}}" />
+            <t-radio block="{{false}}" value="{{item.deptId}}" />
           </view>
         </t-cell>
       </t-radio-group>
