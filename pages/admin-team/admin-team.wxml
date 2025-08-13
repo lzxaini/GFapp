@@ -1,6 +1,6 @@
 <view class="admin-team_container">
   <t-navbar t-class="navBar" left-arrow title="团队管理" />
-  <view class="admin-team_title" hover-class="none" hover-stop-propagation="false">
+  <view class="admin-team_title">
     <view class="admin-team_tabs">
       <t-tabs t-class="tabs_box" t-class-active="active_style" t-class-item="item_style" defaultValue="{{teamTab}}" theme="tag" bind:click="tabClick">
         <t-tab-panel wx:key="index" label="分公司({{teamObj[2].length}})" value="{{2}}" />
@@ -17,8 +17,9 @@
         <image slot="left-icon" class="item_img" src="{{ossUrl + item.deptAvatar}}" />
         <view slot="title" class="cell_title">{{item.deptName}}</view>
         <view slot="description" class="description">
-          <view class="local">所属机构:{{item.parentName}}</view>
-          <view class="number">团队编号:{{item.deptCode}}</view>
+          <view class="local">所属机构：{{item.parentName}}</view>
+          <view class="number">团队编号：{{item.deptCode}}</view>
+          <!-- <view class="number">所在地址：{{item.address}}</view> -->
         </view>
       </t-cell>
     </block>
