@@ -149,6 +149,7 @@ Page({
     // 详细地址非空校验
     if (!form.addressDetail) {
       addressDetailError = '请输入详细地址！'
+      this.message('error', '请输入详细地址！', 1500)
     } else {
       addressDetailError = ''
     }
