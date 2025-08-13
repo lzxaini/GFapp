@@ -58,9 +58,8 @@ Page({
       rechargeTotal,
       serviceTotal
     } = this.data
-    console.log('触底', tabsValue) // 确定是哪个触底的就加载哪个列表
     if (tabsValue === 1) {
-      if (rechargeList.length < total) {
+      if (rechargeList.length < rechargeTotal) {
         let pageNum = ++this.data.rechargePageObj.pageNum
         this.setData({
           'rechargePageObj.pageNum': pageNum
@@ -68,7 +67,7 @@ Page({
         this.getRechargeRecords('bottom')
       }
     } else {
-      if (serviceList.length < total) {
+      if (serviceList.length < serviceTotal) {
         let pageNum = ++this.data.servicePageObj.pageNum
         this.setData({
           'servicePageObj.pageNum': pageNum
