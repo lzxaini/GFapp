@@ -21,7 +21,7 @@
   </view>
   <view class="footer" style="margin-bottom: {{marginBottom}}">
     <view class="device_id">设备ID：{{deviceId}}</view>
-    <!-- <button class="save_btn" bindtap="exitDevice" disabled="{{!deviceFlag}}">结束本次服务</button> -->
+    <!-- <button class="save_btn" bindtap="exitDevice">重试</button> -->
     <view class="info" wx:if="{{deviceFlag}}">请在设备端选择服务项目</view>
   </view>
 </view>

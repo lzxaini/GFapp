@@ -85,6 +85,11 @@ Page({
         console.warn('连接超时，已超过最大重试次数');
         this.clearReconnect();
         showMessage('error', '连接超时，设备激活失败，请稍后再试！', 3000, _this);
+        setTimeout(() => {
+          wx.reLaunch({
+            url: '/pages/index/index',
+          })
+        }, 2500);
         return;
       }
       console.log(`第 ${this.data.reconnectCount + 1} 次尝试连接设备...`);
