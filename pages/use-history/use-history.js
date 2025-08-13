@@ -51,8 +51,6 @@ Page({
    */
   getDeviceUseList(type = 'init') {
     getServiceRecordsApi(this.data.pageObj).then(res => {
-      // 拿到原始 rows
-
       const rows = res.data.rows.map(item => ({
         ...item,
         serviceObj: getServiceNameByCode(item.service),

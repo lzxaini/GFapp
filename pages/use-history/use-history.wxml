@@ -1,7 +1,7 @@
 <view class="service-history_container">
   <t-navbar t-class="navBar" left-arrow title="使用记录" />
   <!-- 滚动列表 -->
-  <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="pullDownToRefresh" wx:if="{{historyList.length > 0}}">
+  <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="pullDownToRefresh">
     <!-- $TODO 设备使用记录页面对接historyList -->
     <block wx:for="{{historyList}}" wx:key="index">
       <view class="card_item">
@@ -35,9 +35,9 @@
         </view>
       </view>
     </block>
+    <view class="empty" wx:if="{{historyList.length < 1}}">
+      <empty image="../../static/icon/empty2.png" description="暂无相关内容" styleInfo="height: 100%"></empty>
+    </view>
   </scroll-view>
-  <view class="empty" wx:else>
-    <empty image="../../static/icon/empty2.png" description="暂无相关内容"></empty>
-  </view>
 </view>
 <t-message id="t-message" />
