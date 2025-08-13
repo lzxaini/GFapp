@@ -5,6 +5,7 @@ Page({
     ossUrl: app.globalData.ossUrl,
     admin: [],
     user: [],
+    refresher: false,
     empty: {
       name: 'data-error',
       size: 40
@@ -16,7 +17,7 @@ Page({
   goTeamInfo(e) {
     let { flag, id } = e?.currentTarget?.dataset
     wx.navigateTo({
-      url: `/pages/work-team/work-team?editFlag=${flag}&id=${id}`,
+      url: `/pages/work-team/work-team?editFlag=${flag}&deptId=${id}`,
     });
   },
   getTeamsList() {
@@ -24,7 +25,8 @@ Page({
       // $TODO 团队列表接口对接
       this.setData({
         admin: res.data.admin,
-        user: res.data.user
+        user: res.data.user,
+        refresher: false
       })
     })
   }

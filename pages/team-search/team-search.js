@@ -33,9 +33,9 @@ Page({
     });
   },
   // 加入团队
-  joinTeam(searchValue) {
+  joinTeam(deptId) {
     wx.navigateTo({
-      url: `/pages/team-join/team-join?searchValue=${searchValue}`,
+      url: `/pages/team-join/team-join?deptId=${deptId}`,
     });
   },
   // 加入部门

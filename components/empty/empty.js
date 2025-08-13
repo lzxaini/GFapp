@@ -19,6 +19,10 @@ Component({
     bgColor: {
       type: String,
       value: '#fff'
+    },
+    styleInfo: {
+      type: String,
+      value: ''
     }
   },
   data: {},

@@ -4,12 +4,12 @@
   <!-- $TODO 团队列表页面对接 -->
   <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true">
     <block wx:for="{{admin}}">
-      <t-cell hover arrow bindtap="goTeamInfo" data-flag="admin" data-id="{{item.id}}">
-        <image slot="left-icon" class="item_img" src="{{ossUrl + item.avatar}}" />
+      <t-cell hover arrow bindtap="goTeamInfo" data-flag="admin" data-id="{{item.deptId}}">
+        <image slot="left-icon" class="item_img" src="{{ossUrl + item.deptAvatar}}" />
         <view slot="title" class="cell_title">{{item.name}}</view>
         <view slot="description" class="description">
           <view class="local">所属机构:{{item.deptName}}</view>
-          <view class="number">团队编号:{{item.teamCode}}</view>
+          <view class="number">团队编号:{{item.address}}</view>
         </view>
       </t-cell>
     </block>
@@ -18,12 +18,13 @@
   <view class="title">我加入的团队</view>
   <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true">
     <block wx:for="{{user}}">
-      <t-cell hover arrow bindtap="goTeamInfo" data-flag="user" data-flag="user" data-id="{{item.id}}">
-        <image slot="left-icon" class="item_img" src="{{ossUrl + item.avatar}}" />
-        <view slot="title" class="cell_title">{{item.name}}</view>
+      <t-cell hover arrow bindtap="goTeamInfo" data-flag="user" data-flag="user" data-id="{{item.deptId}}">
+        <image slot="left-icon" class="item_img" src="{{ossUrl + item.deptAvatar}}" />
+        <view slot="title" class="cell_title">{{item.deptName}}</view>
         <view slot="description" class="description">
-          <view class="local">所属机构:{{item.deptName}}</view>
-          <view class="number">团队编号:{{item.teamCode}}</view>
+          <view class="local">所属机构:{{item.parentName}}</view>
+          <view class="number">地址:{{item.address}}</view>
+          <!-- <view class="number">{{item.addressDetail}}</view> -->
         </view>
       </t-cell>
     </block>

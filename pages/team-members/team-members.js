@@ -1,58 +1,40 @@
-import { getTeamsMemberListApi } from '../../api/api'
+import {
+  getTeamsMemberListApi
+} from '../../api/api'
 const app = getApp()
 Page({
   data: {
     ossUrl: app.globalData.ossUrl,
     memberList: [],
-    total: 0,
     refresher: false,
-    pageObj: {
-      pageNum: 1,
-      pageSize: 10,
-    }
+    defaultVal: false,
   },
-  onShow() {
-    this.getTeamsMemberList()
-  },
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-    let { memberList, total } = this.data
-    if (memberList.length < total) {
-      let pageNum = ++this.data.pageObj.pageNum
-      this.setData({
-        'pageObj.pageNum': pageNum
-      })
-      this.getTeamsMemberList('bottom')
-    }
-  },
-  pullDownToRefresh() {
+  onLoad(options) {
+    let {
+      editFlag,
+      deptId
+    } = options
     this.setData({
-      'pageObj.pageNum': 1
+      editFlag: editFlag === 'admin' ? true : false,
+      deptId
     })
     this.getTeamsMemberList()
   },
-  getTeamsMemberList(type = 'init') {
-    getTeamsMemberListApi(this.data.pageObj).then(res => {
-
-      if (type === 'bottom') {
-        if (res.data.rows.length > 0) {
-          let list = this.data.memberList
-          list.push(...res.data.rows)
-          this.setData({
-            memberList: list
-          })
-        }
-      } else {
+  getTeamsMemberList() {
+    getTeamsMemberListApi(this.data.deptId).then(res => {
+      if (res.code === 200) {
         this.setData({
-          memberList: res.data.rows,
-          total: res.data.total
+          memberList: res.data
+        })
+        this.setData({
+          refresher: false
         })
       }
-      this.setData({
-        refresher: false
-      })
     })
-  }
+  },
+  handleChange(e) {
+    this.setData({
+      defaultVal: e.detail.value,
+    });
+  },
 })

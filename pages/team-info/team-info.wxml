@@ -6,7 +6,7 @@
       <!-- $TODO 待完善上传头像接口 -->
       <view class="item_value" bindtap="updateTeamCover">
         <!-- <view class="item_value"> -->
-        <t-avatar class="avatar" size="small" image="{{ossUrl + form.avatar}}" />
+        <t-avatar class="avatar" size="small" image="{{ossUrl + form.deptAvatar}}" />
       </view>
       <t-icon name="chevron-right" size="48rpx" color="#C5C8CB" />
     </view>
@@ -14,7 +14,7 @@
     <view class="form_item">
       <view class="item_label">团队名称</view>
       <view class="item_value">
-        <t-input t-class="item-input" t-class-tips="errMsg" slot="note" placeholder="请输入您的姓名" value="{{form.name}}" type="text" tips="{{nameError ? '请检查姓名输入' : ''}}" bindblur="onNameInput" confirm-type="next" borderless></t-input>
+        <t-input t-class="item-input" t-class-tips="errMsg" slot="note" placeholder="请输入您的姓名" value="{{form.deptName}}" type="text" tips="{{nameError ? '请检查姓名输入' : ''}}" bindblur="onNameInput" confirm-type="next" borderless></t-input>
       </view>
       <t-icon name="chevron-right" size="48rpx" color="#C5C8CB" />
     </view>
@@ -22,7 +22,7 @@
     <view class="form_item">
       <view class="item_label">所属分公司</view>
       <view class="item_value">
-        <t-input t-class="item-input" disabled="{{true}}" value="{{teamInfo.deptName}}" confirm-type="next" borderless></t-input>
+        <t-input t-class="item-input" disabled="{{true}}" value="{{teamInfo.parentName}}" confirm-type="next" borderless></t-input>
       </view>
       <t-icon name="chevron-right" size="48rpx" color="#C5C8CB" />
     </view>
@@ -30,7 +30,7 @@
     <view class="form_item">
       <view class="item_label">机构地址</view>
       <view class="item_value">
-        <t-input t-class="item-input" disabled="{{true}}" value="{{teamInfo.addressDetail}}" confirm-type="next" borderless></t-input>
+        <t-input t-class="item-input" disabled="{{true}}" value="{{teamInfo.address}}" confirm-type="next" borderless></t-input>
       </view>
       <t-icon name="chevron-right" size="48rpx" color="#C5C8CB" />
     </view>
@@ -38,11 +38,11 @@
     <view class="form_item">
       <view class="item_label">团队管理员</view>
       <view class="item_value">
-        <t-input t-class="item-input" disabled="{{true}}" value="{{teamInfo.leaderName}}" confirm-type="next" borderless></t-input>
+        <t-input t-class="item-input" disabled="{{true}}" value="{{teamInfo.leader}}" confirm-type="next" borderless></t-input>
       </view>
       <t-icon name="chevron-right" size="48rpx" color="#C5C8CB" />
     </view>
-    <view class="bd05" />
+    <!-- <view class="bd05" />
     <view class="form_item">
       <view class="item_label">成员标签</view>
       <view class="item_value"></view>
@@ -52,7 +52,7 @@
       <view class="tag-item" style="color:{{item.color}};border:1px solid {{item.color}}; background-color: {{item.bgColor}}" wx:for="{{teamTags}}">
         {{item.tagName}}
       </view>
-    </view>
+    </view> -->
   </view>
   <button class="save_btn" bindtap="onSubmit">保存</button>
 </view>

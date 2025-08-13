@@ -5,57 +5,26 @@ Page({
   data: {
     ossUrl: app.globalData.ossUrl,
     teamList: [],
-    total: 0,
     refresher: false,
     btnFlag: false,
-    pageObj: {
-      searchValue: '',
-      pageNum: 1,
-      pageSize: 10,
+    query: {
+      deptId: '',
+      deptName: ''
     }
   },
   onLoad(options) {
-    let { searchValue } = options
+    let { deptId, deptName } = options
     this.setData({
-      'pageObj.searchValue': searchValue
+      'query.deptId': deptId || '',
+      'query.deptName': deptName || ''
     })
     this.getTeamsInfoList()
   },
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-    let { teamList, total } = this.data
-    if (teamList.length < total) {
-      let pageNum = ++this.data.pageObj.pageNum
+  getTeamsInfoList() {
+    getTeamsInfoListApi(this.data.query).then(res => {
       this.setData({
-        'pageObj.pageNum': pageNum
+        teamList: res.data
       })
-      this.getTeamsInfoList('bottom')
-    }
-  },
-  pullDownToRefresh() {
-    this.setData({
-      'pageObj.pageNum': 1
-    })
-    this.getTeamsInfoList()
-  },
-  getTeamsInfoList(type = 'init') {
-    getTeamsInfoListApi(this.data.pageObj).then(res => {
-      if (type === 'bottom') {
-        if (res.data.rows.length > 0) {
-          let list = this.data.teamList
-          list.push(...res.data.rows)
-          this.setData({
-            teamList: list
-          })
-        }
-      } else {
-        this.setData({
-          teamList: res.data.rows,
-          total: res.data.total
-        })
-      }
       this.setData({
         refresher: false
       })
@@ -65,7 +34,7 @@ Page({
     let { id } = e?.currentTarget?.dataset
     let userId = app.globalData.userInfo.userId
     let params = {
-      teamId: id,
+      deptId: id,
       userId
     }
     joinTeamApi(params).then(res => {

@@ -1,6 +1,8 @@
 import drawQrcode from '../../utils/weapp.qrcode.min'
 import tool from '../../utils/tools'
-import { getMyTeamsApi } from '../../api/api'
+import {
+  getMyTeamsApi
+} from '../../api/api'
 const app = getApp()
 Page({
   data: {
@@ -8,12 +10,18 @@ Page({
     qrCodeBox: false,
     qrFlag: false,
     editFlag: false,
-    id: '',
+    deptId: '',
     teamInfo: null, // 团队详情
   },
   onLoad(options) {
-    let { editFlag, id } = options
-    this.setData({ editFlag: editFlag === 'admin' ? true : false, id })
+    let {
+      editFlag,
+      deptId
+    } = options
+    this.setData({
+      editFlag: editFlag === 'admin' ? true : false,
+      deptId
+    })
   },
   onShow() {
     this.getMyTeams()
@@ -29,7 +37,7 @@ Page({
       width: 240,
       height: 240,
       canvasId: 'myQrcode',
-      text: _this.data.teamInfo.teamCode,
+      text: `${_this.data.teamInfo.deptId}`,
       // v1.0.0+版本支持在二维码上绘制图片
       image: {
         imageResource: '../../static/icon/gf_logo_w.png', // 不支持网络图片，如果非得网络图片，需要使用wx.getImageInfo 去获取图片信息，我这边往中间加的一个白图然后采用覆盖的方式
@@ -80,14 +88,19 @@ Page({
     })
   }, 800),
   getMyTeams() {
-    getMyTeamsApi(this.data.id).then(res => {
+    getMyTeamsApi(this.data.deptId).then(res => {
       // $TODO 我的团队接口对接
-      this.setData({ teamInfo: res.data })
+      if (res.code === 200) {
+        this.setData({
+          teamInfo: res.data
+        })
+      }
     })
   },
   goMember() {
+    let editFlag = this.data.editFlag ? 'admin' : 'user'
     wx.navigateTo({
-      url: '/pages/team-members/team-members'
+      url: `/pages/team-members/team-members?editFlag=${editFlag}&deptId=${this.data.deptId}`
     })
   },
   closeDialog() {
@@ -99,7 +112,7 @@ Page({
   // 编辑团队
   editTeam() {
     wx.navigateTo({
-      url: `/pages/team-info/team-info?id=${this.data.id}`
+      url: `/pages/team-info/team-info?deptId=${this.data.deptId}`
     })
   },
   // 加入申请

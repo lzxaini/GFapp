@@ -8,34 +8,29 @@ Page({
     teamTags: [],
     teamInfo: {},
     form: {
-      id: '',
-      name: '',
-      avatar: ''
+      deptId: '',
+      deptName: '',
+      deptAvatar: ''
     },
     nameError: '',
   },
   onLoad(options) {
-    let { id } = options
-    this.getMyTeams(id)
+    let { deptId } = options
+    this.getMyTeams(deptId)
   },
-  getMyTeams(id) {
-    getMyTeamsApi(id).then(res => {
-      const tags = res.data.teamTags.map(item => ({
-        ...item,
-        bgColor: hexToRgba(item.color, 0.1) // 背景颜色淡化
-      }))
+  getMyTeams(deptId) {
+    getMyTeamsApi(deptId).then(res => {
       this.setData({
         teamInfo: res.data,
-        'form.id': res.data.id,
-        'form.name': res.data.name,
-        'form.avatar': res.data.avatar,
-        teamTags: tags
+        'form.deptId': res.data.deptId,
+        'form.deptName': res.data.deptName,
+        'form.deptAvatar': res.data.deptAvatar,
       })
     })
   },
   // 上传团队封面
   updateTeamCover() {
-    let { id } = this.data.teamInfo
+    let { deptId } = this.data.teamInfo
     let _this = this
     wx.chooseMedia({
       count: 1,
@@ -48,7 +43,7 @@ Page({
         const tempFilePath = res.tempFiles[0].tempFilePath;
         // 这里假设有上传接口 /api/upload
         wx.uploadFile({
-          url: app.globalData.baseUrl + `/system/user/profile/teamAvatar/${id}`, // 替换为你的上传接口
+          url: app.globalData.baseUrl + `/system/user/profile/deptAvatar/${deptId}`, // 替换为你的上传接口
           filePath: tempFilePath,
           header: {
             'Authorization': app.globalData.token
@@ -58,7 +53,7 @@ Page({
             // 上传成功后的处理，比如保存图片地址到data
             const data = JSON.parse(uploadRes.data);
             _this.setData({
-              'form.avatar': data.imgUrl // 假设返回的图片地址字段为url
+              'form.deptAvatar': data.imgUrl // 假设返回的图片地址字段为url
             });
             _this.message('success', '团队头像上传成功')
           },
@@ -89,7 +84,7 @@ Page({
   onNameInput(e) {
     let { value } = e?.detail
     this.setData({
-      'form.name': value
+      'form.deptName': value
     })
   },
   onSubmit() {

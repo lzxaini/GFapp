@@ -1,18 +1,22 @@
 <view class="team-members_container">
   <t-navbar t-class="navBar" left-arrow title="团队成员" />
   <!-- 滚动列表 -->
-  <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="pullDownToRefresh">
-    <t-cell t-class="list_item" wx:for="{{memberList}}" description="{{item.user.phonenumber}}" arrow>
-      <t-avatar slot="left-icon" shape="round" size="large" image="{{ossUrl + item.user.avatar}}"></t-avatar>
+  <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="getTeamsMemberList">
+    <t-cell t-class="list_item" wx:for="{{memberList}}" description="{{item.phonenumber}}">
+      <t-avatar slot="left-icon" shape="round" size="large" image="{{ossUrl + item.avatar}}"></t-avatar>
       <view slot="title" class="title_box">
-        <text class="title_text">{{item.user.userName}}</text>
-        <view class="tag_box" slot="description">
+        <text class="title_text">{{item.userName}}</text>
+        <!-- <view class="tag_box" slot="description">
           <image class="tag_icon" src="../../static/icon/admin.png" />
           <text class="tag_text">{{item.tagName}}</text>
-        </view>
+        </view> -->
+      </view>
+      <!-- <view slot="note" wx:if="{{editFlag === 'admin'}}"> -->
+      <view slot="note">
+        <t-switch bindchange="handleChange" value="{{defaultVal}}" label="{{['开', '关']}}" />
       </view>
     </t-cell>
-    <t-empty t-class="empty" t-class-image="empty_image" image="/static/icon/footer.png" description="糟糕，到底了" bindtap="onReachBottom"/>
+    <t-empty t-class="empty" t-class-image="empty_image" image="/static/icon/footer.png" description="糟糕，到底了" bindtap="onReachBottom" />
   </scroll-view>
 </view>
 <t-message id="t-message" />

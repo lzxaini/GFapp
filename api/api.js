@@ -97,7 +97,7 @@ export function getCaptchaImageApi() {
  */
 export function getTeamsListApi() {
   return request({
-    url: "/gf/teams/map",
+    url: "/system/dept/store/map",
     method: 'get',
   })
 }
@@ -106,18 +106,17 @@ export function getTeamsListApi() {
  */
 export function getMyTeamsApi(id) {
   return request({
-    url: `/gf/teams/${id}`,
+    url: `/system/dept/${id}`,
     method: 'get',
   })
 }
 /**
  * 团队成员
  */
-export function getTeamsMemberListApi(query) {
+export function getTeamsMemberListApi(deptId) {
   return request({
-    url: "/gf/teamMembers/list",
-    method: 'get',
-    data: query
+    url: `/system/user/dept/${deptId}`,
+    method: 'get'
   })
 }
 /**
@@ -229,7 +228,7 @@ export function getAdminDeviceListApi(data) {
  */
 export function changeTeamInfoApi(data) {
   return request({
-    url: `/gf/teams`,
+    url: `/system/dept`,
     method: 'put',
     data
   })
@@ -259,7 +258,7 @@ export function addwhiteListApi(data) {
  */
 export function getTeamsInfoListApi(data) {
   return request({
-    url: `/gf/teams/list/join`,
+    url: `/system/dept/list/all`,
     method: 'get',
     data
   })

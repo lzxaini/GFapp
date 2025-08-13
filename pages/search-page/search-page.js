@@ -54,7 +54,7 @@ Page({
   // 加入团队
   joinDept() {
     wx.navigateTo({
-      url: `/pages/team-join/team-join?searchValue=${this.data.searchName}`,
+      url: `/pages/team-join/team-join?deptName=${this.data.searchName}`,
     });
   }
 })
