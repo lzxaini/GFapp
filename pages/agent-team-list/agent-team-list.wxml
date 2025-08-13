@@ -17,7 +17,7 @@
         </view>
         <view slot="description">
           <view class="description_text">团队编号：{{item.deptCode}}</view>
-          <view class="description_text">{{item.address}}</view>
+          <view class="description_text">{{item.address || '暂无地址'}}</view>
         </view>
       </t-cell>
     </block>
