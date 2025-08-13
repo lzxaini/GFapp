@@ -143,7 +143,7 @@ export function getDeviceInfoApi(serialNumber) {
  */
 export function activetionDeviceApi(serialNumber) {
   return request({
-    url: `/gf/teams/check/${serialNumber}`,
+    url: `/gf/device/check/${serialNumber}`,
     method: 'get',
   })
 }
@@ -152,7 +152,7 @@ export function activetionDeviceApi(serialNumber) {
  */
 export function deviceBindApi(teamId, serialNumber) {
   return request({
-    url: `/gf/teams/bind/${teamId}/${serialNumber}`,
+    url: `/gf/device/bind/${teamId}/${serialNumber}`,
     method: 'get',
   })
 }
@@ -279,10 +279,11 @@ export function joinTeamApi(data) {
  * 查询门店下团队
  * 参数deptId
  */
-export function getStoresTeamListApi(deptId) {
+export function getStoresTeamListApi(data) {
   return request({
-    url: `/gf/teams/list/${deptId}`,
+    url: `/system/dept/children`,
     method: 'get',
+    data
   })
 }
 /**
@@ -371,5 +372,16 @@ export function getDeptPointsApi(deptId) {
   return request({
     url: `/gf/userExtend/dept/${deptId}`,
     method: 'get'
+  })
+}
+
+/**
+ * 开启共享接口
+ * 参数
+ */
+export function openTimesShareApi(userId, allowedShare) {
+  return request({
+    url: `/system/user/allowedShare/${userId}/${allowedShare}`,
+    method: 'put'
   })
 }
