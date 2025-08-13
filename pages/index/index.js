@@ -123,17 +123,17 @@ Page({
   // 激活设备
   activetionDevice(serialNumber) {
     activetionDeviceApi(serialNumber).then(res => {
-      if (res.code === 24003) {
+      if (res.code === 24003) { // 已绑定，到激活设备页面
         return wx.navigateTo({
           url: `/pages/device-active/device-active?deviceId=${serialNumber}`,
         });
       }
-      if (res.data.length < 1) {
+      if (res.data.length < 1) { // 到激活设备页面
         return wx.navigateTo({
           url: `/pages/device-active/device-active?deviceId=${serialNumber}`,
         });
       }
-      if (res.data.length > 0) {
+      if (res.data.length > 0) { // 到绑定页面
         return wx.navigateTo({
           url: `/pages/device-bind/device-bind?deviceId=${serialNumber}`,
         });
