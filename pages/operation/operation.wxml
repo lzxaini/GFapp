@@ -115,7 +115,7 @@
               </view>
               <view class="list_item">
                 <text class="lable">使用时长</text>
-                <text class="info">{{item.runningTime}}</text>
+                <text class="info">{{item.status == 1 ? '计时中' : item.runningTime}}</text>
               </view>
               <view class="list_item">
                 <text class="lable">服务时间</text>
@@ -123,7 +123,7 @@
               </view>
             </view>
             <view class="card_icon">
-              <image class="icon" src="../../static/icon/{{item.status == 1 ? 'use_ing.png' : 'use_success.png'}}" />
+              <image class="icon" src="../../static/icon/{{item.statusIcon}}" />
             </view>
           </view>
         </block>

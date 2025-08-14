@@ -1,5 +1,5 @@
 import { getServiceRecordsApi } from '../../api/api'
-import { getServiceNameByCode } from '../../utils/config'
+import { getServiceNameByCode, getDeviceStatusIconByCode } from '../../utils/config'
 const app = getApp()
 Page({
   data: {
@@ -62,7 +62,8 @@ Page({
       // 拿到原始 rows
       const rows = res.data.rows.map(item => ({
         ...item,
-        serviceObj: getServiceNameByCode(item.service)
+        serviceObj: getServiceNameByCode(item.service),
+        statusIcon: getDeviceStatusIconByCode(item.status)
       }))
       if (type === 'bottom') {
         if (rows.length > 0) {
