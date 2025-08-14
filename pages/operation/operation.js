@@ -1,4 +1,6 @@
-import { showMessage } from '../../utils/tools';
+import {
+  showMessage
+} from '../../utils/tools';
 import {
   getOperationApi,
   getServiceRecordsApi,
@@ -193,6 +195,10 @@ Page({
     // this.statrtSearch()
   },
   searchAll() {
+    let {
+      tabsValue,
+      rechargeForm
+    } = this.data
     this.setData({
       calendarValue: [],
       'serviceForm.minServiceTime': '',
@@ -200,7 +206,21 @@ Page({
       'rechargeForm.minRechargeTime': '',
       'rechargeForm.maxRechargeTime': '',
       searchValue: '',
+      servicePageObj: { // 服务记录分页参数
+        pageNum: 1,
+        pageSize: 10
+      },
+      rechargePageObj: { // 分页参数
+        pageNum: 1,
+        pageSize: 10
+      },
     });
+    console.log('rechargeForm', rechargeForm)
+    if (tabsValue === 1) {
+      this.getRechargeRecords()
+    } else {
+      this.getServiceRecords()
+    }
   },
   statrtSearch() {
     let {
