@@ -11,8 +11,7 @@ Page({
     showConfirm: false,
     bgFlag: false, // 背景图
   },
-  onLoad() {
-  },
+  onLoad() {},
   /**
    * 用户点击右上角分享
    */
@@ -31,14 +30,29 @@ Page({
   // 获取手机号
   getPhoneNumber(e) {
     console.log("🥵 ~ getPhoneNumber ~ e: ", e)
-    this.setData({ showConfirm: false });
+    this.setData({
+      showConfirm: false
+    });
     if (e.detail.code) {
       console.log(e.detail.code) // 动态令牌
       console.log(e.detail.errMsg) // 回调信息（成功失败都会返回）
       console.log(e.detail.errno) // 错误码（失败时返回）
       this.weixinLogin(e.detail.code)
     } else {
-      this.messageBox('warning', '用户取消授权，登录失败！', 1500)
+      // this.messageBox('warning', '用户取消授权，登录失败！', 1500)
+      Message.warning({
+        context: this,
+        offset: ['180rpx', 32],
+        content: '用户取消授权，登录失败！',
+        duration: -1,
+        link: {
+          content: '去首页',
+          navigatorProps: {
+            url: '/pages/index/index',
+          },
+        },
+        closeBtn: true,
+      });
     }
   },
   weixinLogin(phoneCode) {
@@ -58,10 +72,20 @@ Page({
               mask: true,
             });
             if (res.code === 200) {
-              let { adminFlag, token, mobile, openId, nickname } = res.data
+              let {
+                adminFlag,
+                token,
+                mobile,
+                openId,
+                nickname
+              } = res.data
               app.globalData.token = `Bearer ${token}`
               wx.setStorageSync('token', `Bearer ${token}`)
-              wx.setStorageSync('wechat', JSON.stringify({ mobile, openId, nickname }))
+              wx.setStorageSync('wechat', JSON.stringify({
+                mobile,
+                openId,
+                nickname
+              }))
               _this.messageBox('success', '登录成功，正在加载...', 1500)
               let infoFlag = await app.getUserInfo(getUserInfoApi);
               if (infoFlag) {
@@ -108,12 +132,16 @@ Page({
     });
   },
   agreementChange(e) {
-    let { checked } = e.detail
+    let {
+      checked
+    } = e.detail
     this.setData({
       checkFlag: checked
     })
   },
   closeDialog() {
-    this.setData({ showConfirm: false });
+    this.setData({
+      showConfirm: false
+    });
   },
 });
