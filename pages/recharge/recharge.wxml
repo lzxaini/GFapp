@@ -42,9 +42,9 @@
         <!-- 表头 -->
         <view class="table-row table-header">
           <!-- 只有联合创始和代理商有机构显示 -->
-          <view class="table-cell cell-header">机构</view>
+          <view class="table-cell cell-header" style="flex: 1.5;">机构</view>
           <view class="table-cell cell-header">充值点数</view>
-          <view class="table-cell cell-header">充值时间</view>
+          <view class="table-cell cell-header" style="flex: 1.7;">充值时间</view>
         </view>
         <!-- 表体 -->
         <!-- 滚动列表 -->
@@ -52,11 +52,11 @@
           <block wx:for="{{tableData}}" wx:key="index">
             <!-- 只有联合创始和代理商有机构显示 -->
             <view class="table-row">
-              <view class="table-cell text-overflow">{{item.deptName}}</view>
+              <view class="table-cell text-overflow" style="flex: 1.5;">{{item.deptName}}</view>
               <view class="table-cell number-cell">
                 <view class="text">{{item.rechargeAmount}}</view>
               </view>
-              <view class="table-cell" style="font-size: 18rpx;">{{item.rechargeTime}}</view>
+              <view class="table-cell" style="flex: 1.7;">{{item.rechargeTime}}</view>
             </view>
           </block>
           <view class="empty" wx:if="{{tableData.length < 1}}">

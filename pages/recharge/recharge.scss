@@ -87,7 +87,7 @@
         --td-input-bg-color: transparent;
         --td-input-border-color: #888BF4;
         padding-top: 20rpx;
-        margin-top: 25rpx;
+        margin-top: 30rpx;
         --td-input-border-left-space: 70rpx;
         --td-input-border-right-space: 0;
         --td-input-vertical-padding: 0;
@@ -149,6 +149,7 @@
     display: flex;
     flex-direction: row;
     padding: 20rpx 0;
+    font-weight: 300;
     font-family: AlibabaPuHuiTi3;
     font-size: 24rpx;
     font-weight: 500;
@@ -167,6 +168,7 @@
     transform: scaleY(0.5);
     transform-origin: bottom;
     flex-shrink: 0;
+    font-weight: 300;
   }
 
   .cell-header {
@@ -187,22 +189,24 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    font-weight: 300;
     flex: 1;
     padding: 20rpx;
-    min-width: 150rpx;
+    min-width: 100rpx;
   }
 
   .text-overflow {
-    display: -webkit-box !important;
+    // display: -webkit-box !important;
     overflow: hidden !important;
     white-space: nowrap !important;
     text-overflow: ellipsis !important;
+    text-align: center;
   }
 
   .number-cell {
     display: block !important;
     text-align: center;
-
+    min-width: 100rpx !important;
     .text {
       font-family: AlibabaPuHuiTi3;
       font-size: 24rpx;
