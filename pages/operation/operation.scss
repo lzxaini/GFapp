@@ -243,7 +243,7 @@
     position: absolute;
     bottom: 0;
     content: '';
-    width: 133%; // 跟随内容宽度
+    width: 100%; // 跟随内容宽度
     left: 0;
     height: 1px;
     background-color: rgba(227, 228, 229, 1);
@@ -251,7 +251,9 @@
     transform-origin: bottom;
     flex-shrink: 0;
   }
-
+  .table-row-big::before{
+    width: 133% !important; // 跟随内容宽度
+  }
   .cell-header {
     font-family: AlibabaPuHuiTi3;
     font-size: 26rpx;

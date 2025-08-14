@@ -68,7 +68,7 @@
       <view class="table" wx:if="{{tabsValue === 1}}">
         <scroll-view scroll-x="true">
           <!-- 表头 -->
-          <view class="table-row table-header">
+          <view class="table-row table-header {{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2 ? 'table-row-big' : ''}}">
             <!-- 只有联合创始和代理商有机构显示 -->
             <view class="table-cell cell-header cell-big" wx:if="{{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2}}">机构</view>
             <view class="table-cell cell-header">充值次数</view>
@@ -80,7 +80,7 @@
           <view class="scroll-view">
             <block wx:for="{{rechargeList}}" wx:key="index">
               <!-- 只有联合创始和代理商有机构显示 -->
-              <view class="table-row">
+              <view class="table-row {{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2 ? 'table-row-big' : ''}}">
                 <view class="table-cell cell-big" wx:if="{{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2}}">{{item.deptName}}</view>
                 <view class="table-cell number-cell cell-big2">
                   <view class="text">+{{item.rechargeAmount}}</view>
@@ -90,6 +90,9 @@
                 <view class="table-cell">{{item.currentBalance}}</view>
               </view>
             </block>
+            <view class="empty" wx:if="{{rechargeList.length < 1}}">
+              <empty image="../../static/icon/empty1.png" description="暂时没有收入，快去接单吧"></empty>
+            </view>
           </view>
         </scroll-view>
       </view>
@@ -127,6 +130,9 @@
             </view>
           </view>
         </block>
+        <view class="empty" wx:if="{{serviceList.length < 1}}">
+          <empty image="../../static/icon/empty1.png" description="暂未查询到任何服务记录"></empty>
+        </view>
       </view>
     </view>
   </scroll-view>
