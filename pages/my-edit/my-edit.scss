@@ -72,3 +72,18 @@
 		}
 	}
 }
+
+.action-btn {
+	--td-button-primary-bg-color: #888bf4;
+	--td-button-primary-border-color: #888bf4;
+	--td-button-primary-active-bg-color: #888cf4a2;
+	--td-button-primary-active-border-color: #888cf4a2;
+	margin-bottom: 30rpx;
+}
+.cancel-btn {
+	--td-button-primary-bg-color: #999999;
+	--td-button-primary-border-color: #999999;
+	--td-button-primary-active-bg-color: #f7f7f7;
+	--td-button-primary-active-border-color: #f7f7f7;
+	margin-bottom: 30rpx;
+}
