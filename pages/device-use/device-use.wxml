@@ -1,5 +1,5 @@
 <view class="device-use_container">
-  <t-navbar t-class="navBar" left-arrow>
+  <t-navbar t-class="navBar" left-arrow bind:go-back="goPage">
     <view slot="title" class="navBar_title">
       <view class="green"></view>
       <view>设备已连接</view>
