@@ -40,6 +40,8 @@ Page({
         deptInfo: this.data.userInfo.dept
       })
     }
+  },
+  onShow(){
     this.getDeviceList()
     this.getDeviceActivated()
   },
