@@ -122,7 +122,7 @@
               </view>
               <view class="list_item">
                 <text class="lable">服务时间</text>
-                <text class="info">{{item.createTime}}</text>
+                <text class="info">{{item.startTime}}</text>
               </view>
             </view>
             <view class="card_icon">
