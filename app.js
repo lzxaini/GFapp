@@ -22,7 +22,7 @@ App({
     appName: {
       name: '光馥科美',
       slogan: '光塑年轻力，馥养无龄美',
-      appVersion: '0.0.10'
+      appVersion: '0.0.11'
     },
     mqttClient: null,
     mqttQrotocol: null,
