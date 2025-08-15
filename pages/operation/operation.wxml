@@ -30,7 +30,7 @@
       </view>
       <view class="nav_item">
         <view class="number">{{operationInfo.remain}}</view>
-        <view class="label">剩余次数</view>
+        <view class="label">剩余点数</view>
       </view>
     </view>
     <!-- 搜索模块 -->
@@ -48,9 +48,9 @@
         </view>
       </view>
       <view class="data_all">
-        <view class="all_item all" bindtap="searchAll">
+        <view class="all_item all" bindtap="showCascader">
           <view class="all_text">全部</view>
-          <t-icon name="calendar" size="16" color="#888BF4" />
+          <t-icon name="chevron-down-s" size="16" color="#888BF4" />
         </view>
         <view class="all_item">
           <t-input value="{{searchValue}}" bindchange="searchInput" bindblur="statrtSearch" t-class="item-input" t-class-input="input_ftsize" placeholder="搜索门店名称/团队编号" borderless>
@@ -68,10 +68,10 @@
       <view class="table" wx:if="{{tabsValue === 1}}">
         <scroll-view scroll-x="true">
           <!-- 表头 -->
-          <view class="table-row table-header {{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2 ? 'table-row-big' : ''}}">
+          <view class="table-row table-header {{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2 || userInfo.dept.deptType == 3 ? 'table-row-big' : ''}}">
             <!-- 只有联合创始和代理商有机构显示 -->
-            <view class="table-cell cell-header cell-big" wx:if="{{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2}}">机构</view>
-            <view class="table-cell cell-header">充值次数</view>
+            <view class="table-cell cell-header cell-big" wx:if="{{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2 || userInfo.dept.deptType == 3}}">机构</view>
+            <view class="table-cell cell-header">充值点数</view>
             <view class="table-cell cell-header">上期结余</view>
             <view class="table-cell cell-header">当前结余</view>
           </view>
@@ -80,8 +80,8 @@
           <view class="scroll-view">
             <block wx:for="{{rechargeList}}" wx:key="index">
               <!-- 只有联合创始和代理商有机构显示 -->
-              <view class="table-row {{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2 ? 'table-row-big' : ''}}">
-                <view class="table-cell cell-big" wx:if="{{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2}}">{{item.deptName}}</view>
+              <view class="table-row {{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2 || userInfo.dept.deptType == 3 ? 'table-row-big' : ''}}">
+                <view class="table-cell cell-big" wx:if="{{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2 || userInfo.dept.deptType == 3}}">{{item.deptName}}</view>
                 <view class="table-cell number-cell cell-big2">
                   <view class="text">+{{item.rechargeAmount}}</view>
                   <view class="date">{{item.createTime}}</view>
@@ -124,6 +124,10 @@
                 <text class="lable">服务时间</text>
                 <text class="info">{{item.startTime}}</text>
               </view>
+              <view class="list_item" wx:if="{{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2 || userInfo.dept.deptType == 3}}">
+                <text class="lable">服务机构</text>
+                <text class="info">{{item.deptName}}</text>
+              </view>
             </view>
             <view class="card_icon">
               <image class="icon" src="../../static/icon/{{item.statusIcon}}" />
@@ -140,3 +144,6 @@
 <t-message id="t-message" />
 <!-- 日期选择区间 -->
 <t-calendar visible="{{calendarVisible}}" value="{{calendarValue}}" type="range" minDate="{{minDate}}" defaultValue="{{defaultValue}}" bind:confirm="handleConfirm" />
+<t-cascader visible="{{addressVisible}}" value="{{addressValue}}" options="{{addressOptions}}" title="请选择地址" bind:change="onChange" check-strictly close-btn="{{false}}">
+  <text class="confirm-btn" slot="close-btn">确定</text>
+</t-cascader>

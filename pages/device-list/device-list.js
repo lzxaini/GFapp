@@ -151,7 +151,7 @@ Page({
             context: this,
             offset: [90, 32],
             duration: 3000,
-            content: '您暂无使用次数，请联系管理员！',
+            content: '您暂无使用点数，请联系管理员！',
           });
         }
       }
