@@ -9,28 +9,28 @@
       <t-tab-panel wx:key="index" label="本周" value="{{3}}" />
       <t-tab-panel wx:key="index" label="本月" value="{{4}}" />
     </t-tabs>
-    <view class="title_box">
+    <!-- <view class="title_box">
       <view class="title">充值记录</view>
       <view class="cumulative">累计点数：{{total}}</view>
-    </view>
+    </view> -->
     <view class="table">
       <!-- 表头 -->
       <view class="table-row table-header">
-        <view class="table-cell cell-header">充值次数</view>
-        <view class="table-cell cell-header">上期结余</view>
-        <view class="table-cell cell-header">当前结余</view>
+        <view class="table-cell cell-header" style="flex: 1.2;">充值次数</view>
+        <view class="table-cell cell-header" style="flex: 1;">上期结余</view>
+        <view class="table-cell cell-header" style="flex: 1;">当前结余</view>
       </view>
       <!-- 表体 -->
       <!-- 滚动列表 -->
       <view class="scroll-view">
         <block wx:for="{{tableData}}" wx:key="index">
           <view class="table-row">
-            <view class="table-cell number-cell">
+            <view class="table-cell number-cell" style="flex: 1.2;">
               <view class="text">+{{item.rechargeAmount}}</view>
               <view class="date">{{item.createTime}}</view>
             </view>
-            <view class="table-cell">{{item.previousBalance}}</view>
-            <view class="table-cell">{{item.currentBalance}}</view>
+            <view class="table-cell" style="flex: 1;">{{item.previousBalance}}</view>
+            <view class="table-cell" style="flex: 1;">{{item.currentBalance}}</view>
           </view>
         </block>
         <view class="empty" wx:if="{{tableData.length < 1}}">

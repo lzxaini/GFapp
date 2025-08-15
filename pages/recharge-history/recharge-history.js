@@ -1,4 +1,4 @@
-import { getRechargeRecordsApi } from '../../api/api'
+import { getRechargeRecordsApi, getRechargeRecordsBalanceApi } from '../../api/api'
 const app = getApp()
 Page({
   data: {
@@ -21,6 +21,7 @@ Page({
       })
     }
     this.getRechargeRecords()
+    // this.getRechargeRecordsBalance()
   },
   /**
  * 页面上拉触底事件的处理函数
@@ -73,6 +74,11 @@ Page({
       this.setData({
         refresher: false
       })
+    })
+  },
+  getRechargeRecordsBalance(){
+    getRechargeRecordsBalanceApi(this.data.pageObj).then(res => {
+      console.log('测试时', res)
     })
   }
 })
