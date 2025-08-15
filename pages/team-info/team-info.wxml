@@ -22,15 +22,7 @@
     <view class="form_item">
       <view class="item_label">所属分公司</view>
       <view class="item_value">
-        <t-input t-class="item-input" disabled="{{true}}" value="{{teamInfo.parentName}}" confirm-type="next" borderless></t-input>
-      </view>
-      <t-icon name="chevron-right" size="48rpx" color="#C5C8CB" />
-    </view>
-    <view class="bd05" />
-    <view class="form_item">
-      <view class="item_label">机构地址</view>
-      <view class="item_value">
-        <t-input t-class="item-input" disabled="{{true}}" value="{{teamInfo.address}}" confirm-type="next" borderless></t-input>
+        <t-input t-class="item-input" disabled="{{true}}" value="{{form.parentName}}" confirm-type="next" borderless></t-input>
       </view>
       <t-icon name="chevron-right" size="48rpx" color="#C5C8CB" />
     </view>
@@ -38,9 +30,22 @@
     <view class="form_item">
       <view class="item_label">团队管理员</view>
       <view class="item_value">
-        <t-input t-class="item-input" disabled="{{true}}" value="{{teamInfo.leader}}" confirm-type="next" borderless></t-input>
+        <t-input t-class="item-input" disabled="{{true}}" value="{{form.leader}}" confirm-type="next" borderless></t-input>
       </view>
       <t-icon name="chevron-right" size="48rpx" color="#C5C8CB" />
+    </view>
+    <view class="bd05" />
+    <view class="form_item" bindtap="showCascader">
+      <view class="item_label">机构地址</view>
+      <view class="item_value">
+        <t-input t-class="item-input" disabled="{{true}}" value="{{form.address}}" confirm-type="next" borderless></t-input>
+      </view>
+      <t-icon name="chevron-right" size="48rpx" color="#C5C8CB" />
+    </view>
+    <view class="bd05" />
+    <view class="addressDetail">
+      <text class="item_label">详细地址</text>
+      <t-textarea t-class="external-class" placeholder="请输入详细地址" bordered disableDefaultPadding="{{true}}" value="{{form.addressDetail}}" bindchange="onAddressDetailInput" />
     </view>
     <!-- <view class="bd05" />
     <view class="form_item">
@@ -57,3 +62,4 @@
   <button class="save_btn" bindtap="onSubmit">保存</button>
 </view>
 <t-message id="t-message" />
+<t-cascader visible="{{visible}}" value="{{value}}" options="{{options}}" title="请选择地址" bind:change="onChange" />

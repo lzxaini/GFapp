@@ -60,7 +60,20 @@
 				text-align: center;
 			}
 		}
-	}
+  }
+  
+  .addressDetail {
+    margin-top: 20rpx;
+    font-family: AlibabaPuHuiTi3;
+    font-size: 28rpx;
+    font-weight: 300;
+    color: #1c2023;
+    .external-class {
+      margin-top: 20rpx;
+      padding: 10rpx;
+      height: 150rpx;
+    }
+  }
 	.save_btn {
 		position: fixed;
 		bottom: env(safe-area-inset-bottom);
