@@ -174,7 +174,6 @@
       --td-tab-nav-bg-color: rgba(255, 255, 255, 0.3);
       --td-tab-item-tag-bg: transparent;
       --td-tab-item-tag-active-bg: #888bf4;
-      --td-tab-item-color: #1c2023;
       --td-tab-item-active-color: #ffffff;
       --td-tab-item-height: 80rpx;
       border: 1rpx solid #ecedfd;
@@ -182,10 +181,10 @@
     }
 
     .item_style {
+      --td-tab-item-color: #888bf4;
       font-family: AlibabaPuHuiTi3;
       font-size: 28rpx;
       font-weight: bold;
-      color: #1c2023;
     }
 
     .active_style {
