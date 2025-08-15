@@ -11,7 +11,7 @@
           <text class="tag_text">{{item.tagName}}</text>
         </view> -->
       </view>
-      <view slot="note" wx:if="{{editFlag === 'admin'}}">
+      <view slot="note" wx:if="{{editFlag}}">
       <!-- <view slot="note"> -->
         <t-switch t-class="switch" bindchange="handleChange" value="{{item.allowedShare}}" label="{{['开', '关']}}" data-item="{{item}}"/>
       </view>
