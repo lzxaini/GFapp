@@ -4,7 +4,8 @@ import {
 import {
   getOperationApi,
   getServiceRecordsApi,
-  getRechargeRecordsApi
+  getRechargeRecordsApi,
+  getRegionApi
 } from '../../api/api'
 import {
   getServiceNameByCode,
@@ -44,7 +45,14 @@ Page({
       minRechargeTime: '',
       maxRechargeTime: ''
     },
-    operationInfo: {}
+    operationInfo: {},
+    addressVisible: false, // 省市区组件
+    addressOptions: [], // 省市区列表
+    addressValue: '', // 组件值
+    addressValue: '', // 用于展示
+  },
+  onLoad() {
+    this.getRegion()
   },
   onShow() {
     this.getOperation()
@@ -295,6 +303,41 @@ Page({
       });
     }
     this.statrtSearch()
+  },
+  showCascader() {
+    this.setData({
+      addressVisible: true
+    });
+  },
+  onChange(e) {
+    const {
+      selectedOptions,
+      value
+    } = e.detail;
+    let {
+      tabsValue
+    } = this.data
+    console.log('value', value, selectedOptions)
+    let address = selectedOptions.map((item) => item.label).join('/')
+    console.log('address', address)
+    if (tabsValue === 1) {
+      this.setData({
+        'rechargeForm.address': address,
+      });
+    } else {
+      this.setData({
+        'serviceForm.address': address,
+      });
+    }
+    this.statrtSearch()
+  },
+  getRegion() {
+    getRegionApi().then(res => {
+      const addressOptions = res.data || [];
+      this.setData({
+        addressOptions
+      });
+    })
   },
   message(type, text, duration = 1500) {
     showMessage(type, text, duration, this);
