@@ -16,7 +16,8 @@
         </view>
         <view slot="description">
           <view class="description_text">
-            手机号：{{item.phonenumber}}
+            <t-icon t-class="phoneIcon" name="/static/icon/phone.png" size="18" />
+            {{item.phonenumber}}
           </view>
         </view>
       </t-cell>
