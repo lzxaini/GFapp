@@ -396,3 +396,16 @@ export function getTeamMemberListInfo(deptId) {
     method: 'get',
   })
 }
+
+/**
+ * 充值记录累计点数
+ * 参数
+ */
+export function getRechargeRecordsBalanceApi(data) {
+  return request({
+    url: `/gf/rechargeRecords/balance`,
+    method: 'get',
+    data
+  })
+}
+// /gf/serviceRecords/times服务的接口
