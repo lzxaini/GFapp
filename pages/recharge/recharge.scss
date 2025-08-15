@@ -195,12 +195,13 @@
     min-width: 100rpx;
   }
 
-  .text-overflow {
-    // display: -webkit-box !important;
+  .textOverflow {
     overflow: hidden !important;
     white-space: nowrap !important;
     text-overflow: ellipsis !important;
     text-align: center;
+    display: block !important;
+    max-width: 100%;
   }
 
   .number-cell {

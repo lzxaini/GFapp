@@ -277,10 +277,12 @@
   }
 
   .textOverflow {
-    // min-width: 250rpx;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+    text-overflow: ellipsis !important;
+    text-align: center;
+    display: block !important;
+    max-width: 100%;
   }
 
   // .cell-big2 {
