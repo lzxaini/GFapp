@@ -1,4 +1,4 @@
-import { getStoresTeamListApi } from '../../api/api'
+import { getTeamMemberListInfo } from '../../api/api'
 import drawQrcode from '../../utils/weapp.qrcode.min'
 import tool from '../../utils/tools'
 const app = getApp()
@@ -20,7 +20,7 @@ Page({
   },
   getStoresTeamList() {
     let { deptData } = this.data
-    getStoresTeamListApi({deptId: deptData.deptId}).then(res => {
+    getTeamMemberListInfo(deptData.deptId).then(res => {
       if (res.code === 200) {
         this.setData({
           refresher: false,

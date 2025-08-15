@@ -10,13 +10,14 @@
   <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="pullDownToRefresh">
     <block wx:for="{{membersList}}">
       <t-cell t-class="list_item" arrow>
-        <t-avatar slot="left-icon" shape="round" size="large" image="{{ossUrl + item.deptAvatar}}"></t-avatar>
+        <t-avatar slot="left-icon" shape="round" size="large" image="{{ossUrl + item.avatar}}"></t-avatar>
         <view slot="title" class="title_box">
-          <text class="title_text">{{item.deptName}}</text>
+          <text class="title_text">{{item.userName}}</text>
         </view>
         <view slot="description">
-          <view class="description_text">团队编号：{{item.deptCode}}</view>
-          <view class="description_text">{{item.address}}</view>
+          <view class="description_text">
+            手机号：{{item.phonenumber}}
+          </view>
         </view>
       </t-cell>
     </block>

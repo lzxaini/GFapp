@@ -385,3 +385,14 @@ export function openTimesShareApi(userId, allowedShare) {
     method: 'put'
   })
 }
+
+/**
+ * 查询团队成员
+ * 参数
+ */
+export function getTeamMemberListInfo(deptId) {
+  return request({
+    url: `/system/user/dept/${deptId}`,
+    method: 'get',
+  })
+}
