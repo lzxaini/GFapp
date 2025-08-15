@@ -5,6 +5,7 @@ Page({
   data: {
     statusBarHeight: app.globalData.statusBarHeight,
     capsuleHeight: app.globalData.capsuleHeight,
+    userInfo: app.globalData.userInfo,
     tableData: [],
     total: 0,
     refresher: false,

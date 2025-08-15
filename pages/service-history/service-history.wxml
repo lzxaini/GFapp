@@ -9,10 +9,10 @@
       <t-tab-panel wx:key="index" label="本周" value="3" />
       <t-tab-panel wx:key="index" label="本月" value="4" />
     </t-tabs>
-    <view class="title_box">
+    <!-- <view class="title_box">
       <view class="title">服务记录</view>
       <view class="cumulative">累计次数：{{total}}</view>
-    </view>
+    </view> -->
     <!-- 滚动列表 -->
     <view class="scroll-view">
       <block wx:for="{{tableData}}" wx:key="index">
@@ -35,11 +35,15 @@
             </view>
             <view class="list_item">
               <text class="lable">使用时长</text>
-                <text class="info">{{item.status == 1 ? '计时中' : item.runningTime + '分钟'}}</text>
+              <text class="info">{{item.status == 1 ? '计时中' : item.runningTime + '分钟'}}</text>
             </view>
             <view class="list_item">
               <text class="lable">服务时间</text>
               <text class="info">{{item.startTime}}</text>
+            </view>
+            <view class="list_item" wx:if="{{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2 || userInfo.dept.deptType == 3}}">
+              <text class="lable">服务机构</text>
+              <text class="info">{{item.deptName}}</text>
             </view>
           </view>
           <view class="card_icon">
@@ -48,7 +52,7 @@
         </view>
       </block>
       <view class="empty" wx:if="{{tableData.length < 1}}">
-        <empty image="../../static/icon/empty1.png" description="暂未查询到任何服务记录"></empty>
+        <empty image="../../static/icon/empty1.png" styleInfo="background-color: transparent !important" description="暂未查询到任何服务记录"></empty>
       </view>
     </view>
   </scroll-view>
