@@ -22,7 +22,7 @@ App({
     appName: {
       name: '光馥科美',
       slogan: '光塑年轻力，馥养无龄美',
-      appVersion: '0.0.9'
+      appVersion: '0.0.10'
     },
     mqttClient: null,
     mqttQrotocol: null,
@@ -37,6 +37,7 @@ App({
     mqttUrl: 'wxs://mqtt.guangfkm.cn/mqtt',
     // mqttUrl: 'wxs://gfmq.fxnws.com/mqtt',
     // mqttUrl: 'wxs://8.138.32.44/mqtt',
+    // mqttUrl: 'wx://8.153.92.17:8083/mqtt',
     // mqttUrl: 'wxs://mqtt.beasun.com/mqtt',
     userInfo: null,
     token: null
