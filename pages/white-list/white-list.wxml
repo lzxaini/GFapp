@@ -1,7 +1,7 @@
 <view class="white-list_container">
   <t-navbar left-arrow title="白名单" />
   <!-- 滚动列表 -->
-  <scroll-view wx:if="{{!whiteBox}}" class="scroll-view" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="pullDownToRefresh" wx:if="{{whiteList.length}}">
+  <scroll-view wx:if="{{!whiteBox}}" class="scroll-view" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="pullDownToRefresh">
     <view class="list_item" wx:for="{{whiteList}}" wx:key="index">
       <view class="left_box">
         <view class="title">免费</view>
@@ -22,7 +22,7 @@
       </view>
     </view>
   </scroll-view>
-  <empty class="empty" bgColor="transparent" wx:else image="../../static/icon/empty3.png" description="暂无白名单记录"></empty>
+  <empty class="empty" bgColor="transparent" wx:if="{{whiteList.length < 1 }}" image="../../static/icon/empty3.png" description="暂无白名单记录"></empty>
   <button wx:if="{{!whiteBox}}" style="margin-bottom: {{marginBottom}}" class="authorization" bindtap="scanCode">
     扫码授权
   </button>
