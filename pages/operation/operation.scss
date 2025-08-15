@@ -276,13 +276,16 @@
     min-width: 150rpx;
   }
 
-  .cell-big {
-    min-width: 250rpx;
+  .textOverflow {
+    // min-width: 250rpx;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
 
-  .cell-big2 {
-    min-width: 180rpx;
-  }
+  // .cell-big2 {
+  //   min-width: 180rpx;
+  // }
 
   .number-cell {
     display: block !important;

@@ -70,10 +70,10 @@
           <!-- 表头 -->
           <view class="table-row table-header {{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2 || userInfo.dept.deptType == 3 ? 'table-row-big' : ''}}">
             <!-- 只有联合创始和代理商有机构显示 -->
-            <view class="table-cell cell-header cell-big" wx:if="{{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2 || userInfo.dept.deptType == 3}}">机构</view>
-            <view class="table-cell cell-header">充值点数</view>
-            <view class="table-cell cell-header">上期结余</view>
-            <view class="table-cell cell-header">当前结余</view>
+            <view class="table-cell cell-header cell-big" wx:if="{{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2 || userInfo.dept.deptType == 3}}" style="flex: 2;">机构</view>
+            <view class="table-cell cell-header" style="flex: 3;min-width: 200rpx;">充值点数</view>
+            <view class="table-cell cell-header" style="flex: 2;">上期结余</view>
+            <view class="table-cell cell-header" style="flex: 2;">当前结余</view>
           </view>
           <!-- 表体 -->
           <!-- 滚动列表 -->
@@ -81,13 +81,13 @@
             <block wx:for="{{rechargeList}}" wx:key="index">
               <!-- 只有联合创始和代理商有机构显示 -->
               <view class="table-row {{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2 || userInfo.dept.deptType == 3 ? 'table-row-big' : ''}}">
-                <view class="table-cell cell-big" wx:if="{{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2 || userInfo.dept.deptType == 3}}">{{item.deptName}}</view>
-                <view class="table-cell number-cell cell-big2">
+                <view class="table-cell textOverflow" wx:if="{{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2 || userInfo.dept.deptType == 3}}" style="flex: 2;">{{item.deptName}}</view>
+                <view class="table-cell number-cell" style="flex: 3;min-width: 200rpx;">
                   <view class="text">+{{item.rechargeAmount}}</view>
                   <view class="date">{{item.createTime}}</view>
                 </view>
-                <view class="table-cell">{{item.previousBalance}}</view>
-                <view class="table-cell">{{item.currentBalance}}</view>
+                <view class="table-cell" style="flex: 2;">{{item.previousBalance}}</view>
+                <view class="table-cell" style="flex: 2;">{{item.currentBalance}}</view>
               </view>
             </block>
             <view class="empty" wx:if="{{rechargeList.length < 1}}">
