@@ -58,7 +58,7 @@ Page({
     } = this.data
     this.setData({
       teamTab: value,
-      teamList: teamObj.data[value]
+      teamList: teamObj.data[value] || []
     })
   },
   goDeviceList(e) {

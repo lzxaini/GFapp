@@ -30,7 +30,7 @@ Page({
     } = this.data
     this.setData({
       teamTab: value,
-      teamList: teamObj[value]
+      teamList: teamObj[value] || []
     })
   },
   goTeamInfo(e) {
