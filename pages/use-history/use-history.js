@@ -3,6 +3,7 @@ import { getServiceNameByCode, getDeviceStatusIconByCode } from '../../utils/con
 const app = getApp()
 Page({
   data: {
+    userInfo: app.globalData.userInfo,
     serialNumber: '',
     historyList: [],
     total: 0,

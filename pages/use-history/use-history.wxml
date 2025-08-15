@@ -29,6 +29,10 @@
             <text class="lable">服务时间</text>
             <text class="info">{{item.startTime}}</text>
           </view>
+          <view class="list_item" wx:if="{{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2 || userInfo.dept.deptType == 3}}">
+            <text class="lable">服务机构</text>
+            <text class="info">{{item.deptName}}</text>
+          </view>
         </view>
         <view class="card_icon">
           <image class="icon" src="../../static/icon/{{item.statusIcon}}" />
