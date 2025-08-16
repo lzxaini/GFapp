@@ -1,6 +1,5 @@
 .service-history_container {
   display: flex;
-  flex: 1;
   flex-direction: column;
   position: relative;
   width: 100vw;
@@ -37,8 +36,9 @@
     padding: 42rpx 30rpx;
     background-color: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(38rpx);
-    margin: -200rpx 25rpx 0 25rpx;
+    top: -200rpx;
     border-radius: 20px;
+    padding-bottom: env(safe-area-inset-bottom);
 
     .history_tabs {
       --td-tab-nav-bg-color: rgba(255, 255, 255, 0.3);
@@ -89,9 +89,11 @@
     }
 
     .scroll-view {
-      flex: 1;
-      min-height: 0;
       margin-top: 40rpx;
+      // height: calc(100vh - 418rpx - 42rpx - 30rpx - 40rpx - 200rpx); // 视口高度-顶部背景-内边距-标题-顶部偏移
+      height: calc(100vh - 418rpx - 200rpx); // 视口高度-顶部背景-内边距-标题-顶部偏移
+      overflow-y: auto;
+      min-height: 0;
 
       .card_item {
         position: relative;
