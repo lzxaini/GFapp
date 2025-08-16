@@ -1,21 +1,34 @@
 <view class="team-list_container">
   <t-navbar t-class="navBar" left-arrow title="团队管理" />
-  <view class="title">我管理的团队</view>
+  <view class="title">{{ isAdmin ? '我管理的团队' : '我加入的团队' }}</view>
   <!-- $TODO 团队列表页面对接 -->
-  <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true">
-    <block wx:for="{{admin}}">
-      <t-cell hover arrow bindtap="goTeamInfo" data-flag="admin" data-id="{{item.deptId}}">
+  <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="getTeamsList">
+    <block wx:for="{{admin}}" wx:if="{{isAdmin}}">
+      <t-cell hover arrow bindtap="goTeamInfo" data-flag="{{isAdmin ? 'admin' : 'user'}}" data-id="{{item.deptId}}">
         <image slot="left-icon" class="item_img" src="{{ossUrl + item.deptAvatar}}" />
-        <view slot="title" class="cell_title">{{item.name}}</view>
+        <view slot="title" class="cell_title">{{item.deptName}}</view>
         <view slot="description" class="description">
-          <view class="local">所属机构:{{item.deptName}}</view>
-          <view class="number">团队编号:{{item.address}}</view>
+          <view class="local">所属机构:{{item.parentName}}</view>
+          <view class="number">团队编号:{{item.deptCode}}</view>
         </view>
       </t-cell>
     </block>
-    <empty wx:if="{{admin.length < 1}}" image="../../static/icon/empty2.png" description="暂无相关内容" styleInfo="height: 100%"></empty>
+    <block wx:for="{{user}}" wx:if="{{isUser}}">
+      <t-cell hover arrow bindtap="goTeamInfo" data-flag="user" data-flag="user" data-id="{{item.deptId}}">
+        <image slot="left-icon" class="item_img" src="{{ossUrl + item.deptAvatar}}" />
+        <view slot="title" class="cell_title">{{item.deptName}}</view>
+        <view slot="description" class="description">
+          <view class="local">所属机构:{{item.parentName}}</view>
+          <view class="number">团队编号:{{item.deptCode}}</view>
+        </view>
+      </t-cell>
+    </block>
+    <empty wx:if="{{emptyFlag}}" image="../../static/icon/empty2.png" description="暂无相关内容" styleInfo="height: 100%"></empty>
+    <view style="margin-top: 40rpx">
+      <t-empty t-class="empty-bottom" t-class-image="empty_image" image="/static/icon/footer.png" description="糟糕，到底了" />
+    </view>
   </scroll-view>
-  <view class="title">我加入的团队</view>
+  <!-- <view class="title">我加入的团队</view>
   <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true">
     <block wx:for="{{user}}">
       <t-cell hover arrow bindtap="goTeamInfo" data-flag="user" data-flag="user" data-id="{{item.deptId}}">
@@ -24,11 +37,10 @@
         <view slot="description" class="description">
           <view class="local">所属机构:{{item.parentName}}</view>
           <view class="number">地址:{{item.address}}</view>
-          <!-- <view class="number">{{item.addressDetail}}</view> -->
         </view>
       </t-cell>
     </block>
     <empty wx:if="{{user.length < 1}}" image="../../static/icon/empty2.png" description="暂无相关内容" styleInfo="height: 100%"></empty>
-  </scroll-view>
+  </scroll-view> -->
 </view>
 <t-message id="t-message" />

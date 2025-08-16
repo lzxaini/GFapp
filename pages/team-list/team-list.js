@@ -1,4 +1,6 @@
-import { getTeamsListApi } from '../../api/api'
+import {
+  getTeamsListApi
+} from '../../api/api'
 const app = getApp()
 Page({
   data: {
@@ -6,6 +8,9 @@ Page({
     admin: [],
     user: [],
     refresher: false,
+    isAdmin: true,
+    isUser: false,
+    emptyFlag: false,
     empty: {
       name: 'data-error',
       size: 40
@@ -15,19 +20,38 @@ Page({
     this.getTeamsList()
   },
   goTeamInfo(e) {
-    let { flag, id } = e?.currentTarget?.dataset
+    let {
+      flag,
+      id
+    } = e?.currentTarget?.dataset
     wx.navigateTo({
       url: `/pages/work-team/work-team?editFlag=${flag}&deptId=${id}`,
     });
   },
   getTeamsList() {
     getTeamsListApi().then(res => {
-      // $TODO 团队列表接口对接
-      this.setData({
-        admin: res.data.admin,
-        user: res.data.user,
-        refresher: false
-      })
+      if (res.code === 200) {
+        let data = res.data
+        if (data.admin.length > 0) {
+          this.setData({
+            admin: data.admin,
+            refresher: false,
+            isAdmin: true,
+            isUser: false
+          })
+        } else if (data.user.length > 0) {
+          this.setData({
+            user: data.user,
+            refresher: false,
+            isAdmin: false,
+            isUser: true
+          })
+        } else {
+          this.setData({
+            emptyFlag: true
+          })
+        }
+      }
     })
   }
 })
