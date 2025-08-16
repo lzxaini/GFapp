@@ -7,7 +7,7 @@
       <view slot="right-icon" class="right_box" bindtap="goEditDept">编辑团队</view>
     </t-cell>
   </t-cell-group>
-  <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="pullDownToRefresh">
+  <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="getStoresTeamList">
     <block wx:for="{{membersList}}">
       <t-cell t-class="list_item">
         <t-avatar slot="left-icon" shape="round" size="large" image="{{ossUrl + item.avatar}}"></t-avatar>
@@ -20,6 +20,9 @@
             {{item.phonenumber}}
           </view>
         </view>
+      <view slot="note">
+        <t-switch disabled="true" t-class="switch" value="{{item.allowedShare}}" label="{{['开', '关']}}" />
+      </view>
       </t-cell>
     </block>
     <view style="margin-top: 40rpx">
