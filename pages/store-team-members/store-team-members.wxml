@@ -9,7 +9,7 @@
   </t-cell-group>
   <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="pullDownToRefresh">
     <block wx:for="{{membersList}}">
-      <t-cell t-class="list_item" arrow>
+      <t-cell t-class="list_item">
         <t-avatar slot="left-icon" shape="round" size="large" image="{{ossUrl + item.avatar}}"></t-avatar>
         <view slot="title" class="title_box">
           <text class="title_text">{{item.userName}}</text>
