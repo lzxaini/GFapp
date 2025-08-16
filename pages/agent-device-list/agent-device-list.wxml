@@ -24,7 +24,7 @@
       </t-tabs>
     </view>
   </view>
-  <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="getAdminDeviceList">
+  <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="getAdminDeviceList">
     <block wx:for="{{teamList}}">
       <t-cell-group t-class="list_item" theme="card" bindtap="goDeviceList" data-id="{{item.deptId}}" data-info="{{item}}">
         <t-cell title="{{item.deptName}}" arrow>
