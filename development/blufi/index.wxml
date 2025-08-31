@@ -1,0 +1,49 @@
+<wxs module="m1">
+  function match(arr, arg) {
+    var str1 = arr.toLowerCase();
+    var str2 = arg.toLowerCase();
+    return (str1.indexOf(str2) != -1);
+  }
+  module.exports.match = match;
+</wxs>
+<view class="blufi-page-container">
+  <t-navbar t-class="navBar" left-arrow title="我的设备" />
+  <view class="blufi-step-wrapper">
+    <t-steps current="{{stepActive}}">
+      <t-step title="1.连接设备" />
+      <t-step title="2.填写WiFi" />
+      <t-step title="3.配网成功" />
+    </t-steps>
+  </view>
+  <block wx:if="{{stepActive == 0}}">
+    <view class="blufi-filter-wrapper">
+      <t-search value="{{macFilter}}" placeholder="mac/名称过滤" bind:change="filterChange" />
+    </view>
+    <view class="blufi-list-wrapper">
+      <block wx:for="{{devicesList}}" wx:key="deviceId">
+        <view wx:if="{{(m1.match(item.deviceId, macFilter) || m1.match(item.name, macFilter))&& item.name.length > 0}}" class="blufi-list-item" id="{{item.deviceId}}" bindtap="blufiConnect">
+          <t-cell title="设备名称: {{ item.localName? item.localName: item.name }}" note="设备ID: {{item.deviceId}}">
+            <view slot="description">RSSI: {{item.RSSI}}</view>
+          </t-cell>
+        </view>
+      </block>
+      <view class="blufi-note-content" wx:if="{{devicesList.length == 0}}">扫描前, 请确保蓝牙和位置权限已打开</view>
+    </view>
+  </block>
+  <view class="blufi-wifi-input-wrapper" wx:if="{{stepActive == 1}}">
+    <image class="blufi-wifi-input-cover" src="https://img.alicdn.com/tfs/TB1nzXJXmf2gK0jSZFPXXXsopXa-774-774.png"></image>
+    <view style="width:100%;margin-top:32rpx;">
+      <t-input value="{{ssid}}" label="SSID" placeholder="请输入WiFi名" required clearable border bind:change="ssidChange" />
+      <t-input value="{{password}}" label="密码" placeholder="请输入密码" type="{{showPassword ? 'text' : 'password'}}" required clearable border suffix-icon="{{showPassword ? 'eye' : 'eye-slash'}}" bind:suffix-icon-tap="onClickeye" bind:change="passwordChange" />
+    </view>
+  </view>
+  <view wx:if="{{stepActive == 2}}" class="blufi-success-wrapper">
+    配网成功
+    <t-icon name="check-circle-filled" size="80" color="#07c160" />
+  </view>
+  <view class="blufi-btn-wrapper">
+    <t-button block theme="primary" loading="{{blufiLoadStatus}}" loading-text="{{blufiloadInfo}}" bindtap="blufiBtnHandle">
+      {{blufiloadInfo}}
+    </t-button>
+  </view>
+</view>

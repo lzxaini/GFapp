@@ -31,12 +31,10 @@ Page({
       title: '运营管理',
       icon: 'my_3.png',
       url: '/pages/operation/operation'
-      // url: ''
     }, {
       title: '能量充值',
       icon: 'my_6.png',
       url: '/pages/recharge/recharge'
-      // url: ''
     }, {
       title: '使用指南',
       icon: 'my_4.png',
@@ -45,6 +43,10 @@ Page({
       title: '设置',
       icon: 'my_5.png',
       url: '/pages/my-edit/my-edit'
+    }, {
+      title: '开发模式',
+      icon: 'my_5.png',
+      url: '/development/blufi/index'
     }],
     // title + deptType 映射更高权限的页面
     adminRouteMap: {

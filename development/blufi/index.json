@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+    },
+    "navigationBarTitleText": "Blufi配网",
+    "enablePullDownRefresh": false,
+    "disableScroll": true
+}
