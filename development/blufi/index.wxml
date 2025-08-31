@@ -17,13 +17,13 @@
   </view>
   <block wx:if="{{stepActive == 0}}">
     <view class="blufi-filter-wrapper">
-      <t-search value="{{macFilter}}" placeholder="mac/名称过滤" bind:change="filterChange" />
+      <t-search value="{{macFilter}}" placeholder="MAC/名称过滤" bind:change="filterChange" />
     </view>
     <view class="blufi-list-wrapper">
       <block wx:for="{{devicesList}}" wx:key="deviceId">
         <view wx:if="{{(m1.match(item.deviceId, macFilter) || m1.match(item.name, macFilter))&& item.name.length > 0}}" class="blufi-list-item" id="{{item.deviceId}}" bindtap="blufiConnect">
-          <t-cell title="设备名称: {{ item.localName? item.localName: item.name }}" note="设备ID: {{item.deviceId}}">
-            <view slot="description">RSSI: {{item.RSSI}}</view>
+          <t-cell title="设备名称: {{ item.localName? item.localName: item.name }}" description="MAC: {{item.deviceId}}">
+            <view slot="note">RSSI: {{item.RSSI}}</view>
           </t-cell>
         </view>
       </block>
