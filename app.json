@@ -39,7 +39,10 @@
     {
       "root": "development",
       "pages": [
-        "blufi/index"
+        "blufi/index",
+        "device-active/device-active",
+        "device-use/device-use",
+        "index/index"
       ],
       "independent ": false
     }

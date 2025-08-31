@@ -96,7 +96,7 @@ Page({
           name
         });
         wx.showLoading({
-          title: '连接蓝牙设备中...',
+          title: '连接设备中...',
         })
       }
     }
@@ -140,13 +140,13 @@ Page({
         break;
       case xBlufi.XBLUFI_TYPE.TYPE_GET_DEVICE_LISTS_STOP:
         if (options.result) {
-          //蓝牙停止搜索ok
-          console.log('蓝牙停止搜索ok')
+          //停止搜索ok
+          console.log('停止搜索ok')
           this.setValue("blufiLoadStatus", false)
           this.setValue("blufiScanStatus", false)
         } else {
-          //蓝牙停止搜索失败
-          console.log('蓝牙停止搜索失败')
+          //停止搜索失败
+          console.log('停止搜索失败')
         }
         break;
       case xBlufi.XBLUFI_TYPE.TYPE_STATUS_CONNECTED:

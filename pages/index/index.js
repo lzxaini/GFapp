@@ -46,7 +46,7 @@ Page({
     }, {
       title: '开发模式',
       icon: 'my_5.png',
-      url: '/development/blufi/index'
+      url: '/development/index/index'
     }],
     // title + deptType 映射更高权限的页面
     adminRouteMap: {
