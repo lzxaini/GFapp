@@ -35,6 +35,15 @@
     "pages/team-members/team-members",
     "pages/privacy-agreement/privacy-agreement"
   ],
+  "subpackages": [
+    {
+      "root": "development",
+      "pages": [
+        "blufi/index"
+      ],
+      "independent ": false
+    }
+  ],
   "usingComponents": {
     "t-button": "tdesign-miniprogram/button/button",
     "t-input": "tdesign-miniprogram/input/input",
@@ -67,6 +76,8 @@
     "t-picker-item": "tdesign-miniprogram/picker-item/picker-item",
     "t-textarea": "tdesign-miniprogram/textarea/textarea",
     "t-switch": "tdesign-miniprogram/switch/switch",
+    "t-steps": "tdesign-miniprogram/steps/steps",
+    "t-search": "tdesign-miniprogram/search/search",
     "empty": "components/empty/empty"
   },
   "window": {
