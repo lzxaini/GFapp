@@ -48,6 +48,10 @@
         <image slot="left-icon" class="left_icon" src="../../static/icon/{{item.icon}}" />
       </t-cell>
     </block>
+    <!-- 仅研发部门显示开发模式菜单 -->
+    <t-cell wx:if="{{userInfo.dept.deptName === '研发部门'}}" t-class="from-item" t-class-left="left_center" title="开发模式" bindtap="goListItem" data-url="/development/index/index" data-title="开发模式" arrow hover>
+      <image slot="left-icon" class="left_icon" src="../../static/icon/dev_mode.png" />
+    </t-cell>
   </t-cell-group>
   <image class="device_bg" src="../../static/icon/device_bg.png" />
   <view class="copy" style="margin-bottom: {{marginBottom}}">粤ICP备2025444193号-1X</view>

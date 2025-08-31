@@ -43,10 +43,6 @@ Page({
       title: '设置',
       icon: 'my_5.png',
       url: '/pages/my-edit/my-edit'
-    }, {
-      title: '开发模式',
-      icon: 'my_5.png',
-      url: '/development/index/index'
     }],
     // title + deptType 映射更高权限的页面
     adminRouteMap: {
