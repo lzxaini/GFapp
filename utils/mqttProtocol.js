@@ -2,7 +2,7 @@
  * @Author: 17630921248 1245634367@qq.com
  * @Date: 2025-06-18 13:25:55
  * @LastEditors: 17630921248 1245634367@qq.com
- * @LastEditTime: 2025-07-12 09:42:02
+ * @LastEditTime: 2025-09-01 08:59:21
  * @FilePath: \medical\utils\mqttProtocol.js
  * @Description: Fuck Bug
  * 微信：lizx2066
@@ -114,6 +114,15 @@ class ProtocolHelper {
     const timeHex = minutes.toString(16).padStart(2, '0').toUpperCase();
     const dataHex = startHex + '00' + timeHex; // 10003C
     this.send(FunctionCode.ControlDevice, dataHex, topic);
+  }
+
+  /**
+   * 发送纯字符串消息
+   * @param {string} str 要发送的字符串
+   * @param {string} topic MQTT主题
+   */
+  sendString(str, topic) {
+    this.mqttClient.client.publish(topic, str);
   }
 }
 
