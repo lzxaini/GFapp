@@ -2,6 +2,7 @@
   <t-navbar t-class="navBar" left-arrow title="调试列表" />
   <t-grid border="{{border}}" column="{{2}}" theme="card" align="left">
     <t-grid-item t-class-image="image" text="设备配网" description="扫描设备进行配网" layout="horizontal" image="/static/icon/gf_logo_w.png" url="/development/blufi/index"/>
+    <t-grid-item t-class-image="image" text="设备退网" description="扫描进行退网" layout="horizontal" image="/static/icon/gf_logo_w.png" bindtap="scanClick" data-item="end"/>
     <t-grid-item t-class-image="image" text="扫码开机" description="扫描二维码开机" layout="horizontal" image="/static/icon/gf_logo_w.png" bindtap="scanClick" data-item="active"/>
     <t-grid-item t-class-image="image" text="扫码关机" description="扫描二维码关机" layout="horizontal" image="/static/icon/gf_logo_w.png" bindtap="scanClick" data-item="use"/>
   </t-grid>
