@@ -47,6 +47,7 @@ App({
     //   this.initMqtt();
     // }, 800);
     this.initMqtt();
+    this.authCheck()
   },
   onHide() {
     // 清理 MQTT 连接
@@ -186,5 +187,36 @@ App({
         url: '/pages/login/login',
       });
     }, 800);
-  }
+  },
+  // 授权检测
+  authCheck() {
+    wx.getSetting({
+      success: (res) => {
+        const needBluetooth = !res.authSetting['scope.bluetooth'];
+        const needLocation = !res.authSetting['scope.userLocation'];
+        if (!needBluetooth && !needLocation) {
+          return;
+        }
+        this.openAuthCheck();
+      }
+    })
+  },
+  // 再次获取授权，引导客户手动授权
+  openAuthCheck() {
+    wx.showModal({
+      content: '检测到您没打开此小程序的蓝牙和定位权限，是否去设置打开？',
+      confirmText: "确认",
+      showCancel: false,
+      cancelText: "取消",
+      confirmColor: "#888bf4",
+      success: (res) => {
+        if (res.confirm) {
+          wx.openSetting({
+            success: () => {}
+          })
+        }
+        // 用户点击取消或确认后都不再重复弹窗
+      }
+    })
+  },
 })
