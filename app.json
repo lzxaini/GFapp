@@ -33,6 +33,7 @@
     "pages/my-edit/my-edit",
     "pages/team-info/team-info",
     "pages/team-members/team-members",
+    "pages/blufi-network/blufi-network",
     "pages/privacy-agreement/privacy-agreement"
   ],
   "subpackages": [
@@ -89,6 +90,17 @@
     "navigationBarTitleText": "光塑GF",
     "navigationStyle": "custom",
     "navigationBarTextStyle": "white"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "查询附近WiFi需要授权使用您的位置信息"
+    },
+    "scope.bluetooth": {
+      "desc": "操控设备需要授权使用您的蓝牙功能"
+    },
+    "scope.camera": {
+      "desc": "扫码功能需要授权使用您的摄像头功能"
+    }
   },
   "componentFramework": "glass-easel",
   "sitemapLocation": "sitemap.json",

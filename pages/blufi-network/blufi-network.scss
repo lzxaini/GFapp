@@ -1,0 +1,63 @@
+.container {
+  min-height: 100vh;
+  background-color: #f5f7fb;
+  padding: 0 32rpx;
+}
+
+.steps-wrapper {
+  margin: 40rpx 0;
+  background: white;
+  border-radius: 16rpx;
+  padding: 32rpx;
+}
+
+.config-section {
+  background: white;
+  border-radius: 16rpx;
+  padding: 32rpx;
+  margin-bottom: 32rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 32rpx;
+}
+
+.input-group {
+  margin-bottom: 32rpx;
+}
+
+.input-label {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 16rpx;
+}
+
+.config-btn {
+  margin-top: 48rpx;
+}
+
+.success-section {
+  background: white;
+  border-radius: 16rpx;
+  padding: 64rpx 32rpx;
+  text-align: center;
+}
+
+.success-icon {
+  margin-bottom: 32rpx;
+}
+
+.success-text {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 16rpx;
+}
+
+.success-desc {
+  font-size: 28rpx;
+  color: #666;
+}

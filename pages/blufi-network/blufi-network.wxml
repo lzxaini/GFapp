@@ -1,0 +1,62 @@
+<view class="container">
+  <t-navbar left-arrow title="设备配网" />
+  
+  <!-- 步骤条 -->
+  <view class="steps-wrapper">
+    <t-steps current="{{stepActive}}" layout="vertical">
+      <t-step-item wx:for="{{steps}}" wx:key="index" title="{{item.text}}" />
+    </t-steps>
+  </view>
+
+  <!-- WiFi 配置区域 -->
+  <view class="config-section" wx:if="{{stepActive === 0}}">
+    <view class="section-title">WiFi 配置</view>
+    
+    <view class="input-group">
+      <view class="input-label">网络名称(SSID)</view>
+      <t-input 
+        placeholder="请输入WiFi名称" 
+        value="{{ssid}}" 
+        bindchange="ssidChange"
+        clearable
+      />
+    </view>
+    
+    <view class="input-group">
+      <view class="input-label">密码</view>
+      <t-input 
+        placeholder="请输入WiFi密码" 
+        value="{{password}}" 
+        bindchange="passwordChange"
+        type="{{showPassword ? 'text' : 'password'}}"
+        clearable
+      >
+        <t-icon 
+          slot="suffix-icon" 
+          name="{{showPassword ? 'browse' : 'browse-off'}}" 
+          bindtap="onClickeye"
+        />
+      </t-input>
+    </view>
+    
+    <view class="config-btn">
+      <t-button 
+        theme="primary" 
+        size="large" 
+        loading="{{blufiLoadStatus}}"
+        bindtap="startConfig"
+      >
+        {{blufiloadInfo}}
+      </t-button>
+    </view>
+  </view>
+
+  <!-- 配网成功页面 -->
+  <view class="success-section" wx:if="{{stepActive === 1}}">
+    <view class="success-icon">
+      <t-icon name="check-circle" size="120rpx" color="#52c41a" />
+    </view>
+    <view class="success-text">配网成功！</view>
+    <view class="success-desc">设备已成功连接到WiFi网络</view>
+  </view>
+</view>
