@@ -2,7 +2,7 @@
  * @Author: 17630921248 1245634367@qq.com
  * @Date: 2025-07-15 17:27:59
  * @LastEditors: 17630921248 1245634367@qq.com
- * @LastEditTime: 2025-07-22 18:26:27
+ * @LastEditTime: 2025-09-06 09:42:27
  * @FilePath: \medical\utils\config.js
  * @Description: Fuck Bug
  * 微信：lizx2066
@@ -12,6 +12,9 @@ const getServiceNameByCode = (code) => {
   const map = [
     { code: '1', name: '脸部护理' },
     { code: '2', name: '身体护理' },
+    { code: '3', name: '眼部方案' },
+    { code: '4', name: '激活导入' },
+    { code: '5', name: '水滴渗透' },
   ]
   const found = map.find(item => item.code == code)
   return found ? { name: found.name, code: found.code } : ''
