@@ -47,7 +47,7 @@ App({
     //   this.initMqtt();
     // }, 800);
     this.initMqtt();
-    this.authCheck()
+    // this.authCheck()
   },
   onHide() {
     // 清理 MQTT 连接
