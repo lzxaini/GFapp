@@ -76,7 +76,7 @@ Page({
    */
   getDeviceList(type = 'init') {
     getDeviceListApi(this.data.pageObj).then(res => {
-      res.data.rows.map((item) => {
+      res.data.rows.forEach((item) => {
         item.icon = item.serialNumber && item.serialNumber.includes(':') ? 'wifi_icon.png' : '4G_icon.png'
       })
       if (type === 'bottom') {
