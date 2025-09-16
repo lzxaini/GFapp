@@ -41,7 +41,7 @@ Page({
       })
     }
   },
-  onShow(){
+  onShow() {
     this.getDeviceList()
     this.getDeviceActivated()
   },
@@ -49,7 +49,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom() {
-    console.log('触底', )
+    console.log('触底',)
     let {
       deviceList,
       total
@@ -76,6 +76,9 @@ Page({
    */
   getDeviceList(type = 'init') {
     getDeviceListApi(this.data.pageObj).then(res => {
+      res.data.rows.map((item) => {
+        item.icon = item.serialNumber && item.serialNumber.includes(':') ? 'wifi_icon.png' : '4G_icon.png'
+      })
       if (type === 'bottom') {
         if (res.data.rows.length > 0) {
           let list = this.data.deviceList
@@ -179,5 +182,10 @@ Page({
         })
       }
     })
+  },
+  addDevice() {
+    wx.navigateTo({
+      url: `/pages/blufi-network/blufi-network?deptId=${this.data.pageObj.deptId}`,
+    });
   }
 })

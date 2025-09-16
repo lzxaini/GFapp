@@ -7,6 +7,7 @@
       <view slot="description" class="device_info">
         已激活：{{historyList.activated}}/{{historyList.total}}
       </view>
+      <view slot="right-icon" class="right_box" bindtap="addDevice">添加设备</view>
     </t-cell>
   </t-cell-group>
   <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="pullDownToRefresh">
@@ -27,7 +28,10 @@
             <view slot="description" class="card_title">{{item.serialNumber}}</view>
           </t-cell>
           <view class="bd05"></view>
-          <view class="date">注册时间：{{item.createTime}}</view>
+          <view class="footer">
+            <view class="date">注册时间：{{item.createTime}}</view>
+            <image class="icon_img" src="../../static/icon/{{item.icon}}" />
+          </view>
         </view>
       </block>
     </view>
