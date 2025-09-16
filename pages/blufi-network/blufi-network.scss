@@ -52,6 +52,7 @@
 		.blufi-note-content {
 			margin-left: 80rpx;
 			margin-top: 48rpx;
+			--td-loading-color: #888bf4;
 			.font {
 				font-family: AlibabaPuHuiTi3;
 				font-size: 40rpx;
@@ -257,6 +258,6 @@
 }
 
 .empty {
-  padding: 100rpx 0;
-  background-color: transparent;
+	padding: 100rpx 0;
+	background-color: transparent;
 }
