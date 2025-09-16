@@ -1,62 +1,113 @@
-<view class="container">
-  <t-navbar left-arrow title="设备配网" />
-  
-  <!-- 步骤条 -->
-  <view class="steps-wrapper">
-    <t-steps current="{{stepActive}}" layout="vertical">
-      <t-step-item wx:for="{{steps}}" wx:key="index" title="{{item.text}}" />
+<wxs module="m1">
+  function match(arr, arg) {
+    var str1 = arr.toLowerCase();
+    var str2 = arg.toLowerCase();
+    return (str1.indexOf(str2) != -1);
+  }
+  module.exports.match = match;
+</wxs>
+<view class="blufi-page-container">
+  <t-navbar t-class="navBar" left-arrow title="我的设备" />
+  <view class="blufi-step-wrapper">
+    <t-steps current="{{stepActive}}">
+      <t-step-item title="" wx:for="{{steps}}" />
     </t-steps>
   </view>
-
-  <!-- WiFi 配置区域 -->
-  <view class="config-section" wx:if="{{stepActive === 0}}">
-    <view class="section-title">WiFi 配置</view>
-    
-    <view class="input-group">
-      <view class="input-label">网络名称(SSID)</view>
-      <t-input 
-        placeholder="请输入WiFi名称" 
-        value="{{ssid}}" 
-        bindchange="ssidChange"
-        clearable
-      />
+  <view class="steps0" wx:if="{{stepActive == 0}}">
+    <view class="steps0_title">请按步骤进行操作</view>
+    <view class="info_0">若设备已处于下方状态，直接点击确认下一步</view>
+    <view class="info_1">1：请接通设备电源</view>
+    <view class="info_1">2、打蓝牙和位置权限</view>
+    <view class="info_1">3：请设置设备WiFi配置信息</view>
+    <button style="margin-bottom: {{marginBottom}}" class="save_btn" bindtap="nextBtnHandle">
+      确认完成上述操作
+    </button>
+  </view>
+  <!-- 搜索设备 -->
+  <block wx:if="{{stepActive == 1}}">
+    <!-- <view class="blufi-filter-wrapper">
+      <t-search value="{{macFilter}}" placeholder="MAC/名称过滤" bind:change="filterChange" />
+    </view> -->
+    <view class="blufi-list-wrapper">
+      <view class="blufi-note-content">
+        <text wx:if="{{empty && devicesList.length === 0}}" class="font">暂未找到设备！</text>
+        <t-loading wx:else t-class-text="font" theme="circular" size="64rpx" text="搜索设备中..." class="large" />
+      </view>
+      <view class="scroll-view">
+        <t-radio-group borderless t-class="box" bind:change="bindChange">
+          <block wx:for="{{devicesList}}" wx:key="deviceId">
+            <t-cell wx:if="{{item.name === 'GFKM' && item.name.length > 0}}" t-class="list_item" bordered="{{false}}">
+              <t-avatar slot="left-icon" size="large" image="/static/icon/device.png"></t-avatar>
+              <view slot="title" class="title_box">
+                <view class="title_text">设备ID</view>
+                <view class="title_text">{{item.deviceId}}</view>
+              </view>
+              <view slot="right-icon" class="right-icon">
+                <t-radio block="{{false}}" value="{{item.deviceId}}" />
+              </view>
+            </t-cell>
+          </block>
+          <view class="empty" wx:if="{{empty && devicesList.length === 0}}">
+            <empty image="../../static/icon/empty2.png" description="暂未找到设备！" bgColor="transparent"></empty>
+          </view>
+        </t-radio-group>
+      </view>
+      <button style="margin-bottom: {{marginBottom}}" class="save_btn" bindtap="blufiConnect">
+        连接设备
+      </button>
     </view>
-    
-    <view class="input-group">
-      <view class="input-label">密码</view>
-      <t-input 
-        placeholder="请输入WiFi密码" 
-        value="{{password}}" 
-        bindchange="passwordChange"
-        type="{{showPassword ? 'text' : 'password'}}"
-        clearable
-      >
-        <t-icon 
-          slot="suffix-icon" 
-          name="{{showPassword ? 'browse' : 'browse-off'}}" 
-          bindtap="onClickeye"
-        />
+  </block>
+  <!-- WiFi配置 -->
+  <view class="blufi-wifi-input-wrapper" wx:if="{{stepActive == 2}}">
+    <view class="title">请选择设备工作的Wi-Fi</view>
+    <view class="info">此设备只支持使用2.4GHz Wi-FI连接使用WI-FI名称仅支持英文字符及数字</view>
+    <!-- <t-input class="" value="{{ssid}}" label="SSID" placeholder="请输入WiFi名" required clearable bind:change="ssidChange" /> -->
+    <view style="width: 100%;margin-top: 32rpx;">
+      <t-input t-class="wifi_input" value="{{ssid}}" placeholder="请输入WiFi名称" borderless="{{true}}" prefix-icon="{{ { name: 'wifi', ariaLabel: '名称', color: '#9CA3AF' } }}" clearable bind:change="ssidChange" />
+    </view>
+    <view style="width: 100%;margin-top: 20rpx;margin-bottom: 80rpx;">
+      <t-input t-class="wifi_input" value="{{password}}" placeholder="请输入WiFi密码" borderless="{{true}}" type="{{showPassword ? 'text' : 'password'}}" prefix-icon="{{ { name: 'lock-on', ariaLabel: '密码', color: '#9CA3AF' } }}" bind:change="passwordChange">
+        <t-icon slot="suffix" name="{{showPassword ? 'browse' : 'browse-off'}}" bind:click="onClickeye" color="#9CA3AF" size="22" />
       </t-input>
     </view>
-    
-    <view class="config-btn">
-      <t-button 
-        theme="primary" 
-        size="large" 
-        loading="{{blufiLoadStatus}}"
-        bindtap="startConfig"
-      >
-        {{blufiloadInfo}}
-      </t-button>
+    <view class="wifi24">请确保你手机当前连接的Wi-Fi是2.4Ghz</view>
+    <image class="blufi-wifi-input-cover" src="../../static/icon/wifi.png"></image>
+    <view class="wifi_btn_box">
+      <button class="wifi_btn" style="margin-bottom: {{marginBottom}}" bindtap="startWifiInfo">
+        开始配网
+      </button>
+      <view class="reset" bindtap="blufiReset">重新配网</view>
     </view>
+    <!-- <view style="width:100%;margin-top:32rpx;">
+      <t-input value="{{ssid}}" label="SSID" placeholder="请输入WiFi名" required clearable border bind:change="ssidChange" />
+      <t-input value="{{password}}" label="密码" placeholder="请输入密码" type="{{showPassword ? 'text' : 'password'}}" required clearable border suffix-icon="{{showPassword ? 'eye' : 'eye-slash'}}" bind:suffix-icon-tap="onClickeye" bind:change="passwordChange" />
+    </view> -->
   </view>
-
-  <!-- 配网成功页面 -->
-  <view class="success-section" wx:if="{{stepActive === 1}}">
-    <view class="success-icon">
-      <t-icon name="check-circle" size="120rpx" color="#52c41a" />
+  <view wx:if="{{stepActive == 3}}" class="blufi-success-wrapper">
+    <view class="box">
+      <view class="title">设备联网中...</view>
+      <view class="info">请将设备尽量靠近路由器，连接过程大约1-3分钟，请稍等片刻.</view>
+      <view class="list">
+        <view class="item {{sendSuccess ? 'success' : 'pending'}}">
+          <view>数据发送成功</view>
+          <t-loading wx:if="{{!sendSuccess}}" theme="spinner" size="40rpx" class="wrapper" />
+          <t-icon wx:else name="check-circle" size="26" color="#c5c8cb" />
+        </view>
+        <view class="item {{networkSuccess ? 'success' : 'pending'}}">
+          <view>设备配网完成</view>
+          <t-loading wx:if="{{!networkSuccess}}" theme="spinner" size="40rpx" class="wrapper" />
+          <t-icon wx:else name="check-circle" size="26" color="#c5c8cb" />
+        </view>
+        <view class="item {{addSuccess ? 'success' : 'pending'}}">
+          <view>设备添加成功</view>
+          <t-loading wx:if="{{!addSuccess}}" theme="spinner" size="40rpx" class="wrapper" />
+          <t-icon wx:else name="check-circle" size="26" color="#c5c8cb" />
+        </view>
+      </view>
     </view>
-    <view class="success-text">配网成功！</view>
-    <view class="success-desc">设备已成功连接到WiFi网络</view>
+    <button disabled="{{!sendSuccess || !networkSuccess || !addSuccess}}" style="margin-bottom: {{marginBottom}}" class="save_btn" bindtap="goBack">
+      开始使用
+    </button>
   </view>
 </view>
+<t-message id="t-message" />
