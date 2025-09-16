@@ -82,6 +82,7 @@
     "t-switch": "tdesign-miniprogram/switch/switch",
     "t-steps": "tdesign-miniprogram/steps/steps",
     "t-search": "tdesign-miniprogram/search/search",
+    "t-step-item": "tdesign-miniprogram/step-item/step-item",
     "empty": "components/empty/empty"
   },
   "window": {
