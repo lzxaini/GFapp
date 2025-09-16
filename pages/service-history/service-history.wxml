@@ -19,7 +19,7 @@
         <view class="card_item">
           <view class="nav_top">
             <view class="title_box">
-              <image class="icon" src="../../static/icon/{{item.service == 1 ? 'face_icon.png' : 'body_icon.png'}}" />
+              <image class="icon" src="../../static/icon/{{item.serviceObj.icon}}" />
               <text class="text">{{item.serviceObj.name}}</text>
             </view>
             <view class="number">编号：{{item.code}}</view>
