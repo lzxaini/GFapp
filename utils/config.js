@@ -13,8 +13,8 @@ const getServiceNameByCode = (code) => {
     { code: '1', name: '脸部护理', icon: 'face_icon.png' },
     { code: '2', name: '身体护理', icon: 'body_icon.png' },
     { code: '3', name: '眼部方案', icon: 'eye_icon.png' },
-    { code: '4', name: '激活导入', icon: 'eye_icon.png' },
-    { code: '5', name: '水滴渗透', icon: 'eye_icon.png' },
+    { code: '4', name: '激活导入', icon: 'import_icon.png' },
+    { code: '5', name: '水滴渗透', icon: 'drip_icon.png' },
   ]
   const found = map.find(item => item.code == code)
   return found ? { name: found.name, code: found.code, icon: found.icon } : ''
