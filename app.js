@@ -18,11 +18,11 @@ App({
     this.verifyUserLogin()
   },
   globalData: {
-    devFlag: true, // 开发环境标志
+    devFlag: false, // 开发环境标志
     appName: {
       name: '光馥科美',
       slogan: '光塑年轻力，馥养无龄美',
-      appVersion: '0.0.12'
+      appVersion: '0.0.14_25091908',
     },
     mqttClient: null,
     mqttQrotocol: null,
