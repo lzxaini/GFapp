@@ -334,9 +334,11 @@
       align-items: center;
 
       .title_box {
+        display: flex;
+        align-items: center;
         .icon {
-          width: 46rpx;
-          height: 36rpx;
+          width: 40rpx;
+          height: 40rpx;
         }
 
         .text {
