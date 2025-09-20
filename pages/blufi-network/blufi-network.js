@@ -333,7 +333,12 @@ Page({
       deviceId: _this.data.deviceId,
       name: _this.data.deviceName,
     });
-    xBlufi.listenDeviceMsgEvent(false, this.funListenDeviceMsgEvent);
+    xBlufi.notifyStartDiscoverBle({
+      'isStart': true
+    })
+    xBlufi.listenDeviceMsgEvent(true, this.blufiEventHandler);
+    this.blufiIntercalClear()
+    this.blufiTimeoutClear()
   },
   onShow: function (options) { },
   filterChange(event) {
