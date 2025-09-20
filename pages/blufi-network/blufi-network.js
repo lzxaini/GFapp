@@ -266,7 +266,7 @@ Page({
   },
   blufiUpdateList: function () {
     console.log('data.devicesListTemp', this.data.devicesListTemp)
-    let list = this.data.devicesListTemp.filter(item => item.localName && item.localName.indexOf('GF-') === 0);
+    let list = this.data.devicesListTemp.filter(item => item.localName && item.localName.indexOf('GFKM-') === 0);
     var listLen = list.length;
     for (var i = 0; i < listLen - 1; i++) {
       for (var j = 0; j < listLen - 1 - i; j++) {
