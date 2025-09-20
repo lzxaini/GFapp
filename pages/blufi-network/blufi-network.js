@@ -262,7 +262,7 @@ Page({
     this.setValue("macFilter", '')
   },
   blufiUpdateList: function () {
-    let list = this.data.devicesListTemp
+    let list = this.data.devicesListTemp.filter(item => item.name && item.name.indexOf('GFKM-') === 0);
     var listLen = list.length;
     for (var i = 0; i < listLen - 1; i++) {
       for (var j = 0; j < listLen - 1 - i; j++) {
@@ -273,7 +273,6 @@ Page({
         }
       }
     }
-    // console.log(list)
     _this.setData({
       devicesList: list
     });

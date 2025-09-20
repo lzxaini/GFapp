@@ -36,7 +36,7 @@
       <view class="scroll-view">
         <t-radio-group borderless t-class="box" bind:change="bindChange">
           <block wx:for="{{devicesList}}" wx:key="deviceId">
-            <t-cell wx:if="{{item.name === 'GFKM' && item.name.length > 0}}" t-class="list_item" bordered="{{false}}">
+            <t-cell t-class="list_item" bordered="{{false}}">
               <t-avatar slot="left-icon" size="large" image="/static/icon/device.png"></t-avatar>
               <view slot="title" class="title_box">
                 <view class="title_text">设备ID</view>
