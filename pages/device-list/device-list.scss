@@ -132,6 +132,10 @@
             font-weight: normal;
             color: #130f26;
           }
+
+          .card_center {
+            margin-right: 0 !important;
+          }
         }
 
         .footer {
@@ -139,13 +143,15 @@
           // justify-content: space-a;
           align-items: center;
           padding: 15rpx 18rpx 20rpx 18rpx;
+
           .date {
             font-family: AlibabaPuHuiTi3;
             font-size: 15rpx;
             font-weight: normal;
             color: #c5c8cb;
           }
-          .icon_img{
+
+          .icon_img {
             width: 20rpx;
             height: 20rpx;
             margin-left: 10rpx;
