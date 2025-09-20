@@ -106,8 +106,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 70rpx;
-            height: 70rpx;
+            width: 68rpx;
+            height: 68rpx;
             border-radius: 50%;
             font-family: AlibabaPuHuiTi3;
             font-size: 18rpx;
@@ -119,16 +119,18 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 70rpx;
-            height: 70rpx;
+            width: 68rpx;
+            height: 68rpx;
             border-radius: 50%;
             background-color: #888bf4;
           }
-
+          .card_left{
+            margin-right: 15rpx !important;
+          }
           .card_title {
             font-family: AlibabaPuHuiTi3;
             font-size: 20rpx;
-            line-height: 35rpx;
+            line-height: 33rpx;
             font-weight: normal;
             color: #130f26;
           }
