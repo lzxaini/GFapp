@@ -40,10 +40,10 @@
               <t-avatar slot="left-icon" size="large" image="/static/icon/device.png"></t-avatar>
               <view slot="title" class="title_box">
                 <view class="title_text">设备ID</view>
-                <view class="title_text">{{item.deviceId}}</view>
+                <view class="title_text">{{item.localName}}</view>
               </view>
               <view slot="right-icon" class="right-icon">
-                <t-radio block="{{false}}" value="{{item.deviceId}}" />
+                <t-radio block="{{false}}" value="{{item}}" />
               </view>
             </t-cell>
           </block>

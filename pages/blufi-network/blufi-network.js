@@ -4,6 +4,7 @@ import {
 import {
   deviceBindApi
 } from '../../api/api.js'
+const app = getApp()
 var xBlufi = require("../../utils/blufi/xBlufi.js");
 var _this = null;
 var timeout = null;
@@ -18,6 +19,7 @@ const DONE_STEP = 3;
 
 Page({
   data: {
+    phoneEnv: app.globalData.phoneEnv, // 手机系统
     blufiloadInfo: "扫描设备",
     blufiLoadStatus: false,
     blufiScanStatus: false,
@@ -43,7 +45,7 @@ Page({
     deviceName: '',
     devicesListTemp: [],
     devicesList: [],
-    bindId: '',
+    deviceInfo: {}, // 选择的设备信息
     // 配网状态变量
     sendSuccess: false,
     networkSuccess: false,
@@ -72,6 +74,7 @@ Page({
           })
           console.log("start scan!")
           this.setValue("blufiloadInfo", "扫描中")
+          this.setValue('empty', false)
           this.setValue("blufiLoadStatus", true)
           interval_timer = setInterval(() => {
             this.blufiUpdateList();
@@ -100,10 +103,10 @@ Page({
     }
   },
   blufiConnect(e) {
-    if (!this.data.bindId) {
+    if (!this.data.deviceInfo) {
       return showMessage('error', '请先选择要连接的设备', 2000, this);
     }
-    let deviceId = this.data.bindId
+    let deviceId = this.data.deviceInfo.deviceId
     this.setValue("blufiloadInfo", "连接中")
     if (interval_timer) {
       clearInterval(interval_timer)
@@ -262,7 +265,8 @@ Page({
     this.setValue("macFilter", '')
   },
   blufiUpdateList: function () {
-    let list = this.data.devicesListTemp.filter(item => item.name && item.name.indexOf('GFKM-') === 0);
+    console.log('data.devicesListTemp', this.data.devicesListTemp)
+    let list = this.data.devicesListTemp.filter(item => item.localName && item.localName.indexOf('GF-') === 0);
     var listLen = list.length;
     for (var i = 0; i < listLen - 1; i++) {
       for (var j = 0; j < listLen - 1 - i; j++) {
@@ -445,6 +449,7 @@ Page({
     this.setData({
       stepActive: this.data.stepActive + 1
     })
+
     // 扫描设备
     this.blufiBtnHandle()
   },
@@ -454,13 +459,14 @@ Page({
       value
     } = e?.detail
     this.setData({
-      bindId: value
+      deviceInfo: value
     })
   },
   // 添加设备到团队
   addWifiDevice() {
-    let { deptId, bindId } = this.data
-    deviceBindApi(deptId, bindId).then(res => {
+    let { deptId, deviceInfo } = this.data
+    // 去掉deviceInfo.localName前面的GFKM-
+    deviceBindApi(deptId, deviceInfo.localName).then(res => {
       if (res.code === 200) {
         this.setValue("addFlag", true);
         this.message('success', '设备绑定成功！', 2000)
