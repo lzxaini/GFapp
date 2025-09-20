@@ -45,7 +45,7 @@ Page({
     deviceName: '',
     devicesListTemp: [],
     devicesList: [],
-    deviceInfo: {}, // 选择的设备信息
+    deviceInfo: null, // 选择的设备信息
     // 配网状态变量
     sendSuccess: false,
     networkSuccess: false,
