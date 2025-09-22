@@ -9,7 +9,7 @@ Page({
     deviceFlag: false,
     deviceId: '',
     reconnectInterval: 2000, // 重试间隔（单位：ms）
-    reconnectMaxCount: 3, // 最多重试次数
+    reconnectMaxCount: 10, // 最多重试次数
     reconnectCount: 0, // 当前重试次数
     reconnectTimer: null, // 定时器引用
   },
