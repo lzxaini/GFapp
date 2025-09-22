@@ -1,41 +1,54 @@
-import Message from 'tdesign-miniprogram/message/index';
+import {
+  onMqttReady
+} from '../../utils/mqttReady';
+import { showMessage } from '../../utils/tools';
 const app = getApp()
 Page({
   data: {
     marginBottom: app.globalData.marginBottom,
     deviceFlag: false,
     deviceId: '',
-    duration: 5000, // 3秒无响应则自动返回首页
+    reconnectInterval: 2000, // 重试间隔（单位：ms）
+    reconnectMaxCount: 3, // 最多重试次数
+    reconnectCount: 0, // 当前重试次数
+    reconnectTimer: null, // 定时器引用
   },
   onLoad(option) {
     let { deviceId } = option
     this.setData({ deviceId })
     wx.eventCenter.on('mqtt-message', this.handleMsg);
+    onMqttReady(() => {
+      this.subscribeTopic();
+    });
   },
   onUnload() {
+    const mqttClient = app.globalData.mqttClient;
     wx.eventCenter.off('mqtt-ready', this.subscribeTopic);
     wx.eventCenter.off('mqtt-message', this.handleMsg);
+    this.clearReconnect(); // 清除重连定时器
+    mqttClient.unsubscribe(`/resp/${this.data.deviceId}`);
+  },
+  subscribeTopic() {
+    const mqttClient = app.globalData.mqttClient;
+    if (mqttClient?.isConnected()) {
+      console.log('订阅', `/resp/${this.data.deviceId}`)
+      mqttClient.subscribe(`/resp/${this.data.deviceId}`);
+    } else {
+      console.warn('MQTT 未连接或还未初始化');
+      showMessage('error', '小程序初始化失败，请稍后再试！', 3000, this);
+    }
   },
   // 收到消息
   handleMsg({ topic, message }) {
+    let _this = this
     console.log('设备列表收到消息：', topic, message);
     let { msg, result } = message
     if (topic === `/resp/${this.data.deviceId}` && (result.funcCode === 5 && result.state === 2 || msg === '100000FF')) {
-      if (this.exitTimer) {
-        clearTimeout(this.exitTimer);
-        this.exitTimer = null;
-      }
+      this.clearReconnect(); // 停止重连
       wx.hideLoading();
-      Message.success({
-        context: this,
-        offset: [90, 32],
-        duration: 2000,
-        content: '您已结束本次服务，感谢您的使用！',
-      });
+      showMessage('success', '您已结束本次服务，感谢您的使用！', 3000, this);
       setTimeout(() => {
-        wx.reLaunch({
-          url: '/pages/index/index',
-        })
+        _this.goPage()
       }, 1500);
     }
   },
@@ -44,26 +57,44 @@ Page({
       title: '正在结束服务...',
       mask: true,
     });
+    const {
+      reconnectInterval,
+      reconnectMaxCount,
+      deviceId
+    } = this.data;
+    let _this = this;
     const mqttQrotocol = app.globalData.mqttQrotocol;
-    mqttQrotocol.controlDevice(`/req/${this.data.deviceId}`, false, 255);
-    // 3秒无响应则自动返回首页
-    if (this.exitTimer) {
-      clearTimeout(this.exitTimer);
-    }
-    this.exitTimer = setTimeout(() => {
-      wx.hideLoading();
-      Message.error({
-        context: this,
-        offset: [90, 32],
-        duration: 2000,
-        content: '设备无响应，将自动返回首页！',
+    this.clearReconnect(); // 防止多次触发
+    const timer = setInterval(() => {
+      if (this.data.reconnectCount >= reconnectMaxCount) {
+        console.warn('连接超时，已超过最大重试次数');
+        this.clearReconnect();
+        showMessage('error', '连接超时，停止失败，请稍后再试！', 3000, _this);
+        setTimeout(() => {
+          _this.goPage()
+        }, 2500);
+        return;
+      }
+      console.log(`第 ${this.data.reconnectCount + 1} 次尝试连接设备...`);
+      mqttQrotocol.controlDevice(`/req/${deviceId}`, false, 255);
+      this.setData({
+        reconnectCount: this.data.reconnectCount + 1
       });
-      setTimeout(() => {
-        wx.reLaunch({
-          url: '/pages/index/index',
-        })
-      }, 1500);
-    }, this.data.duration);
+    }, reconnectInterval);
+    this.setData({
+      reconnectTimer: timer,
+      reconnectCount: 0
+    });
+  },
+  // === 清除定时器 ===
+  clearReconnect() {
+    if (this.data.reconnectTimer) {
+      clearInterval(this.data.reconnectTimer);
+      this.setData({
+        reconnectTimer: null,
+        reconnectCount: 0
+      });
+    }
   },
   goPage() {
     const pages = getCurrentPages();
