@@ -19,8 +19,10 @@ Page({
     });
   },
   onUnload() {
+    const mqttClient = app.globalData.mqttClient;
     wx.eventCenter.off('mqtt-ready', this.subscribeTopic);
     wx.eventCenter.off('mqtt-message', this.handleMsg);
+    mqttClient.unsubscribe(`/resp/${this.data.deviceId}`);
   },
   subscribeTopic() {
     const mqttClient = app.globalData.mqttClient;
