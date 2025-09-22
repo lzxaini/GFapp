@@ -45,7 +45,8 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide() {
-
+    wx.eventCenter.off('mqtt-ready', this.subscribeTopic);
+    wx.eventCenter.off('mqtt-message', this.handleMsg);
   },
 
   /**
@@ -136,6 +137,8 @@ Page({
           });
         } else if (item === 'end') {
           this.endNetwork(deviceId);
+        } else if (item === 'dy') {
+          this.subscribe(deviceId);
         }
       },
       fail: () => {
@@ -145,5 +148,10 @@ Page({
         });
       }
     });
+  },
+  subscribe(deviceId){
+    wx.navigateTo({
+      url: '/development/subscribe/subscribe?deviceId=' + deviceId,
+    })
   }
 })

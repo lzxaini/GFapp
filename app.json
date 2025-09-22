@@ -43,7 +43,8 @@
         "blufi/index",
         "device-active/device-active",
         "device-use/device-use",
-        "index/index"
+        "index/index",
+        "subscribe/subscribe"
       ],
       "independent ": false
     }
