@@ -41,8 +41,10 @@ Page({
     });
   },
   onUnload() {
+    const mqttClient = app.globalData.mqttClient;
     wx.eventCenter.off('mqtt-ready', this.subscribeTopic);
     wx.eventCenter.off('mqtt-message', this.handleMsg);
+    mqttClient.unsubscribe(`/resp/${this.data.deviceId}`);
   },
   subscribeTopic() {
     const mqttClient = app.globalData.mqttClient;
@@ -172,7 +174,9 @@ Page({
     }
   },
   hexToString(e) {
-    const { item } = e.currentTarget.dataset;
+    const {
+      item
+    } = e.currentTarget.dataset;
     const messages = this.data.messages.map(msg => {
       if (msg.id === item.id) {
         let newText = msg.text;
@@ -184,14 +188,22 @@ Page({
           // String转HEX
           newText = newText.split('').map(c => c.charCodeAt(0).toString(16).padStart(2, '0')).join(' ').toUpperCase();
         }
-        return { ...msg, text: newText };
+        return {
+          ...msg,
+          text: newText
+        };
       }
       return msg;
     });
-    this.setData({ messages });
+    this.setData({
+      messages
+    });
   },
-  clearLog(){
-    this.setData({ messages: [], scrollToView: '' });
+  clearLog() {
+    this.setData({
+      messages: [],
+      scrollToView: ''
+    });
   },
   goPage() {
     const pages = getCurrentPages();
