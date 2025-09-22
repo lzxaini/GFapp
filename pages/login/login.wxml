@@ -26,6 +26,10 @@
         <text class="info" bindtap="goPrivacyAgreement">《隐私政策》</text>
       </view>
     </view>
+    <view class="go_index" bindtap="goIndex">
+      <t-icon name="home" size="22" color="#bfbef8"></t-icon>
+      <view class="text">首页</view>
+    </view>
   </view>
 </view>
 <t-dialog visible="{{showConfirm}}" title="温馨提示" content="请您仔细阅读并充分理解相关条款，点击同意即代表您已阅读并同意">

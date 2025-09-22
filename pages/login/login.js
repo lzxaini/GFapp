@@ -144,4 +144,9 @@ Page({
       showConfirm: false
     });
   },
+  goIndex(){
+    wx.navigateTo({
+      url: '/pages/index/index',
+    })
+  }
 });
