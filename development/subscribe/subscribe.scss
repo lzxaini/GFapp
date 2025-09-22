@@ -1,0 +1,188 @@
+.device-use_container {
+  width: 100vw;
+  height: 100vh;
+  background-color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  .message {
+    flex: 1;
+    // padding: 20rpx;
+    overflow-y: auto;
+
+    .msg-container {
+      padding-bottom: 20rpx;
+    }
+
+    .msg-wrapper {
+      margin-bottom: 20rpx;
+      display: flex;
+
+      &.msg-send {
+        justify-content: flex-end;
+        width: calc(100% - 40rpx);
+        margin: 20rpx;
+
+        .msg-bubble {
+          background-color: #007AFF;
+
+          .msg-text {
+            color: #ffffff;
+          }
+
+          .msg-time {
+            color: rgba(255, 255, 255, 0.7);
+          }
+        }
+      }
+
+      &.msg-receive {
+        justify-content: flex-start;
+        width: calc(100% - 40rpx);
+        margin: 20rpx;
+
+        .msg-bubble {
+          background-color: #ffffff;
+          border: 1rpx solid #e5e5e5;
+
+          .msg-text {
+            color: #333333;
+          }
+
+          .msg-time {
+            color: #999999;
+          }
+        }
+      }
+    }
+
+    .msg-bubble {
+      max-width: 60%;
+      padding: 20rpx 24rpx;
+      border-radius: 16rpx;
+      box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+
+      .msg-text {
+        font-family: AlibabaPuHuiTi3;
+        font-size: 28rpx;
+        line-height: 1.4;
+        word-wrap: break-word;
+      }
+
+      .msg-time {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        font-family: AlibabaPuHuiTi3;
+        font-size: 20rpx;
+        margin-top: 8rpx;
+        text-align: right;
+        .hexBtn{
+          margin-left: 15rpx;
+        }
+      }
+    }
+  }
+
+  .send_msg {
+    background-color: #ffffff;
+    border-top: 1rpx solid #e5e5e5;
+    padding: 20rpx;
+    // margin-bottom: 60rpx;
+    flex-shrink: 0;
+
+    .input-area {
+      display: flex;
+      align-items: center;
+      gap: 20rpx;
+
+      .msg-input {
+        flex: 1;
+        height: 80rpx;
+        padding: 0 24rpx;
+        background-color: #f8f8f8;
+        border-radius: 40rpx;
+        font-family: AlibabaPuHuiTi3;
+        font-size: 28rpx;
+        border: none;
+      }
+
+      .send-btn {
+        width: 120rpx;
+        height: 80rpx;
+        background-color: #007AFF;
+        color: #ffffff;
+        border-radius: 40rpx;
+        font-family: AlibabaPuHuiTi3;
+        font-size: 28rpx;
+        font-weight: bold;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:active {
+          background-color: #0056CC;
+        }
+      }
+    }
+
+    .menu {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 20rpx;
+    }
+
+    .device_info {
+      display: flex;
+      justify-content: center;
+      font-size: 20rpx;
+      margin: 20rpx;
+      align-items: center;
+      .btn_clear{
+        margin: 0;
+        padding: 0 10rpx;
+        width: 100rpx;
+        height: 30rpx;
+        font-size: 15rpx;
+        line-height: 30rpx;
+        margin-left: 10rpx;
+        background-color: red;
+        color: #FFF;
+      }
+    }
+  }
+
+  .footer {
+    position: fixed;
+    bottom: env(safe-area-inset-bottom);
+    width: calc(100% - 64rpx);
+    margin: 0 32rpx;
+
+    .device_id {
+      font-family: AlibabaPuHuiTi3;
+      font-size: 24rpx;
+      font-weight: normal;
+      color: #606972;
+      text-align: center;
+      margin-bottom: 64rpx;
+    }
+
+    .save_btn {
+      width: 100%;
+      height: 112rpx;
+      border: 2rpx solid #888bf4;
+      border-radius: 80rpx;
+      box-sizing: border-box;
+      font-family: AlibabaPuHuiTi3;
+      font-size: 32rpx;
+      line-height: 112rpx;
+      font-weight: bold;
+      color: #888bf4;
+      background-color: transparent;
+    }
+  }
+}

@@ -1,0 +1,40 @@
+<view class="device-use_container">
+  <t-navbar t-class="navBar" left-arrow bind:go-back="goPage" title="设备订阅"></t-navbar>
+  <scroll-view class="message" scroll-y="true" scroll-into-view="{{scrollToView}}" scroll-with-animation="true">
+    <view class="msg-container">
+      <block wx:for="{{messages}}" wx:key="id">
+        <view id="{{item.id}}" class="msg-wrapper {{item.type === 'send' ? 'msg-send' : 'msg-receive'}}">
+          <view class="msg-bubble">
+            <view class="msg-text">{{item.text}}</view>
+            <view class="msg-time" wx:if="{{item.type === 'receive'}}">
+              <text>{{item.time}} 收</text>
+              <t-icon class="hexBtn" name="arrow-left-right-circle" bindtap="hexToString" data-item="{{item}}" size="18" color="#67C23A" />
+            </view>
+            <view class="msg-time" wx:else>
+              <text>{{item.time}} 发</text>
+              <t-icon class="hexBtn" name="arrow-left-right-circle" bindtap="hexToString" data-item="{{item}}" size="18" color="#67C23A"/>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </scroll-view>
+  <view class="send_msg" style="padding-bottom: {{marginBottom}}">
+    <view class="menu">
+      <!-- <t-button size="small" theme="danger">重置配网</t-button> -->
+      <t-button size="small" theme="light" bindtap="send" data-type="scan">发送扫码</t-button>
+      <t-button size="small" bindtap="send" data-type="end">发送结束</t-button>
+      <t-button size="small" theme="primary" bindtap="toggleSendType" wx:if="{{sendType === 'HEX'}}" data-type="String">{{btnText}}</t-button>
+      <t-button size="small" theme="primary" bindtap="toggleSendType" wx:else data-type="HEX">{{btnText}}</t-button>
+    </view>
+    <view class="input-area">
+      <input class="msg-input" placeholder="输入消息..." value="{{inputText}}" bindinput="onInputChange" confirm-type="send" bindconfirm="sendMessage" />
+      <button class="send-btn" bindtap="sendMessage">发送</button>
+    </view>
+    <view class="device_info">
+      <text>设备ID：{{deviceId}}</text>
+      <button class="btn_clear" bindtap="clearLog">清空日志</button>
+    </view>
+  </view>
+</view>
+<t-message id="t-message" />
