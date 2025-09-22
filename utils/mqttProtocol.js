@@ -45,6 +45,20 @@ class ProtocolHelper {
   }
 
   /**
+   * 直接发送原始HEX数据，不拼接功能码
+   * @param {string} dataHex HEX字符串（不带0x）
+   * @param {string} topic MQTT主题
+   */
+  sendRawHex(dataHex, topic) {
+    if (!this.mqttClient?.isConnected()) {
+      console.warn('MQTT 未连接');
+      return;
+    }
+    const hexData = dataHex.replace(/\s+/g, '');
+    const payload = Buffer.from(hexData, 'hex');
+    this.mqttClient.client.publish(topic, payload);
+  }
+  /**
    * 解析 HEX 返回值
    * @param {string} hexPayload 例如 01000001
    * @returns {object}
