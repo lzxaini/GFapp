@@ -3,7 +3,7 @@ import { showMessage } from '../../utils/tools';
 const app = getApp()
 Page({
   data: {
-    imageUrl: 'https://cdn.fxnws.com/gfkm/Usage-Guide.jpg'
+    imageUrl: 'https://cdn.guangfkm.cn/images/Usage-Guide.jpg'
   },
   onLoad() {
     wx.showLoading({
