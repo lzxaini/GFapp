@@ -131,7 +131,7 @@ Page({
     }
     timeout = setTimeout(() => {
       this.blufiTimeoutHandle()
-    }, 10000)
+    }, 30 * 1000)
   },
   blufiEventHandler: function (options) {
     switch (options.type) {
@@ -438,7 +438,7 @@ Page({
 
     timeout = setTimeout(() => {
       this.blufiTimeoutHandle()
-    }, 20000)
+    }, 60 * 1000)
   },
   get startConfig() {
     return this._startConfig;
