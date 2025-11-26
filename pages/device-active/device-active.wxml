@@ -2,27 +2,52 @@
   <t-navbar t-class="navBar" left-arrow>
     <view slot="title" class="navBar_title">
       <view class="{{deviceFlag ? 'green': 'green red'}}"></view>
-      <view class="text" wx:if="{{deviceFlag}}">设备已激活…</view>
+      <view class="text" wx:if="{{deviceFlag}}">设备已连接…</view>
       <t-loading wx:else theme="circular" size="40rpx" text="正在激活..." class="wrapper" />
     </view>
   </t-navbar>
-  <view class="device_info">
-    <image class="device_heart" src="../../static/icon/heart.png" />
-    <view class="text">
-      <!-- {{deviceFlag ? '设备已激活…' : '正在激活...'}} -->
-      <view class="text" wx:if="{{deviceFlag}}">设备已激活…</view>
-      <t-loading wx:else theme="circular" size="40rpx" class="wrapper">
-        <text slot="text" class="text">正在激活...</text>
-      </t-loading>
+  <view wx:if="{{!showGuide}}">
+    <view class="device_info">
+      <image class="device_heart" src="../../static/icon/heart.png" />
+      <view class="text">
+        <!-- {{deviceFlag ? '设备已激活…' : '正在激活...'}} -->
+        <view class="text" wx:if="{{deviceFlag}}">设备已激活…</view>
+        <t-loading wx:else theme="circular" size="40rpx" class="wrapper">
+          <text slot="text" class="text">正在激活...</text>
+        </t-loading>
+      </view>
+    </view>
+    <view class="device_image">
+      <t-button class="device_move" size="extra-small" variant="outline" wx:if="{{deviceFlag}}" bindtap="showDeviceMoveGuide">设备移机</t-button>
+      <image class="device_use" src="../../static/icon/device_use.png" />
+    </view>
+    <view class="footer" style="margin-bottom: {{marginBottom}}">
+      <view class="device_id">设备ID：{{deviceId}}</view>
+      <!-- <button class="save_btn" bindtap="exitDevice">重试</button> -->
+      <view class="info" wx:if="{{deviceFlag}}">请在设备端选择服务项目</view>
     </view>
   </view>
-  <view class="device_image">
-    <image class="device_use" src="../../static/icon/device_use.png" />
-  </view>
-  <view class="footer" style="margin-bottom: {{marginBottom}}">
-    <view class="device_id">设备ID：{{deviceId}}</view>
-    <!-- <button class="save_btn" bindtap="exitDevice">重试</button> -->
-    <view class="info" wx:if="{{deviceFlag}}">请在设备端选择服务项目</view>
+  <view class="guide_box" wx:else>
+    <view class="item1">
+      <text>重要提醒</text>
+      <text>您将对该设备进行重新配网操作，该操作不可逆，请谨慎确认！</text>
+    </view>
+    <view class="item2">
+      <text>确认设备在线</text>
+      <text>请确定设备为通电状态，并且保持设备的WIFI网络在线！</text>
+    </view>
+    <view class="item3">
+      <text>保持设备通电</text>
+      <text>设备重置网络的过程中，请勿将设备断电，耐心等待页面提示！</text>
+    </view>
+    <view class="item4">
+      <text>开始重置配网</text>
+      <text>操作不可撤销，点击重置按钮后，设备将重新进入网络配置模式！</text>
+    </view>
+    <view class="item5">
+      <t-button class="reset-btn" size="large" theme="danger" bindtap="resetDeviceNetwork">立即重置配网</t-button>
+    </view>
   </view>
 </view>
+<t-guide t-class-back="skip-btn" t-class="action-btn" current="{{current}}" steps="{{steps}}" skip-button-props="{{btnObj}}" bind:skip="handleGuideSkip" bind:finish="handleGuideFinish" />
 <t-message id="t-message" />
