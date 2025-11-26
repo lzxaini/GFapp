@@ -65,6 +65,8 @@ class ProtocolHelper {
    */
   parse(hexPayload) {
     console.log("🥵 ~ ProtocolHelper ~ parse ~ hexPayload: ", hexPayload)
+    
+    // 按协议解析
     const funcCode = parseInt(hexPayload.slice(0, 2), 16);
     const dataHex = hexPayload.slice(2).toUpperCase();
     const result = { funcCode, dataHex };
@@ -92,6 +94,30 @@ class ProtocolHelper {
         result.minutes = parseInt(dataHex.slice(4, 6), 16);
         break;
       default:
+        // 未知功能码，尝试转换为字符串
+        try {
+          const hexStr = hexPayload.replace(/\s+/g, '');
+          if (hexStr.length % 2 === 0) {
+            const bytes = hexStr.match(/.{2}/g);
+            const str = bytes.map(h => String.fromCharCode(parseInt(h, 16))).join('');
+            // 检测是否为可打印字符串（ASCII 32-126，加上常见的换行符等）
+            const isPrintable = str.split('').every(c => {
+              const code = c.charCodeAt(0);
+              return (code >= 32 && code <= 126) || code === 10 || code === 13 || code === 9;
+            });
+            
+            if (isPrintable && str.length > 2) {
+              // 如果是可读字符串，返回字符串格式
+              return {
+                type: 'string',
+                string: str.trim(),
+                hex: hexPayload
+              };
+            }
+          }
+        } catch (e) {
+          console.log('转换字符串失败，保持原格式');
+        }
         result.info = '未知功能码';
     }
     return result;
