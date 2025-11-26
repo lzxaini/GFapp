@@ -20,6 +20,7 @@ App({
   },
   globalData: {
     devFlag: false, // 开发环境标志
+    devUrl: '',
     appName: {
       name: '光馥科美',
       slogan: '光塑年轻力，馥养无龄美',
@@ -86,6 +87,10 @@ App({
       if (!this.globalData.devFlag) {
         wx.reLaunch({
           url: '/pages/index/index'
+        });
+      } else {
+        wx.reLaunch({
+          url: this.globalData.devUrl || '/pages/index/index'
         });
       }
     }
