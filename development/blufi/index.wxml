@@ -17,8 +17,9 @@
     <view class="steps0_title">请按步骤进行操作</view>
     <view class="info_0">若设备已处于下方状态，直接点击确认下一步</view>
     <view class="info_1">1：请接通设备电源</view>
-    <view class="info_1">2、打蓝牙和位置权限</view>
-    <view class="info_1">3：请设置设备WiFi配置信息</view>
+    <view class="info_1">2、打开手机<text class="red_text">蓝牙</text>、<text class="red_text">WIFI</text>和<text class="red_text">位置</text>权限</view>
+    <view class="info_1">3：手机连接<text class="red_text">2.4G</text>（非5G）<text class="red_text">WIFI</text></view>
+    <view class="info_1">4：请设置设备WiFi配置信息</view>
     <button style="margin-bottom: {{marginBottom}}" class="save_btn" bindtap="nextBtnHandle">
       确认完成上述操作
     </button>
