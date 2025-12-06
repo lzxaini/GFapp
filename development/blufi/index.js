@@ -4,6 +4,9 @@ import {
 import {
   deviceBindApi
 } from '../../api/api.js'
+import {
+  onMqttReady
+} from '../../utils/mqttReady';
 const app = getApp()
 var xBlufi = require("../../utils/blufi/xBlufi.js");
 var _this = null;
@@ -49,7 +52,7 @@ Page({
     // 配网状态变量
     sendSuccess: false,
     networkSuccess: false,
-    // addSuccess: false,
+    addSuccess: false,
     addFlag: false,
     deptId: '',
     empty: false,
@@ -131,7 +134,7 @@ Page({
     }
     timeout = setTimeout(() => {
       this.blufiTimeoutHandle()
-    }, 10000)
+    }, 30 * 1000)
   },
   blufiEventHandler: function (options) {
     switch (options.type) {
@@ -145,6 +148,10 @@ Page({
       case xBlufi.XBLUFI_TYPE.TYPE_CONNECTED:
         console.log("连接回调：" + JSON.stringify(options))
         if (options.result) {
+          wx.eventCenter.on('mqtt-message', this.handleMsg);
+          onMqttReady(() => {
+            this.subscribeTopic();
+          });
           wx.hideLoading()
           wx.showToast({
             title: '连接成功',
@@ -256,7 +263,7 @@ Page({
       // 重置配网状态
       this.setValue("sendSuccess", false)
       this.setValue("networkSuccess", false)
-      // this.setValue("addSuccess", false)
+      this.setValue("addSuccess", false)
     }
     this.setValue("blufiloadInfo", "扫描设备")
     this.setValue("blufiLoadStatus", false)
@@ -339,6 +346,10 @@ Page({
     xBlufi.listenDeviceMsgEvent(true, this.blufiEventHandler);
     this.blufiIntercalClear()
     this.blufiTimeoutClear()
+    const mqttClient = app.globalData.mqttClient;
+    wx.eventCenter.off('mqtt-ready', this.subscribeTopic);
+    wx.eventCenter.off('mqtt-message', this.handleMsg);
+    mqttClient.unsubscribe(`/resp/${this.data.deviceInfo.localName}`); // 取消MQTT订阅
   },
   onShow: function (options) { },
   filterChange(event) {
@@ -438,7 +449,7 @@ Page({
 
     timeout = setTimeout(() => {
       this.blufiTimeoutHandle()
-    }, 20000)
+    }, 60 * 1000)
   },
   get startConfig() {
     return this._startConfig;
@@ -467,24 +478,42 @@ Page({
       deviceInfo: value
     })
   },
-  // // 添加设备到团队
+  // 添加设备到团队
   // addWifiDevice() {
-  //   let { deptId, deviceInfo } = this.data
+  //   // 先检查是否已经在添加中，防止重复调用
+  //   if (this.data.addFlag) {
+  //     console.log('设备已在添加中，跳过重复调用');
+  //     return;
+  //   }
+
+  //   // 立即设置标志，防止重复调用
+  //   this.setValue("addFlag", true);
+
+  //   let {
+  //     deptId,
+  //     deviceInfo
+  //   } = this.data
   //   // 去掉deviceInfo.localName前面的GFKM-
   //   deviceBindApi(deptId, deviceInfo.localName).then(res => {
   //     if (res.code === 200) {
-  //       this.setValue("addFlag", true);
   //       this.message('success', '设备绑定成功！', 2000)
   //       setTimeout(() => {
   //         this.setValue("addSuccess", true)
   //       }, 1500);
   //     } else {
   //       console.log("绑定失败", res)
-  //       this.message('error', res.msg, 3000)
+  //       this.message('warning', res.msg, 3000)
+  //       // 绑定失败时重置标志，允许重试
+  //       this.setValue("addFlag", false);
   //       setTimeout(() => {
   //         this.goBack()
   //       }, 2000);
   //     }
+  //   }).catch(err => {
+  //     console.error("绑定接口异常", err)
+  //     this.message('error', '设备绑定失败，请联系管理员绑定！', 3000)
+  //     // 接口异常时重置标志，允许重试
+  //     this.setValue("addFlag", false);
   //   })
   // },
   startWifiInfo() {
@@ -506,5 +535,39 @@ Page({
   },
   message(type, text, duration = 1500) {
     showMessage(type, text, duration, this);
+  },
+  // 订阅MQTT消息
+  subscribeTopic() {
+    if (!this.data.deviceInfo) {
+      return;
+    }
+    const mqttClient = app.globalData.mqttClient;
+    if (mqttClient?.isConnected()) {
+      const topic = `/resp/${this.data.deviceInfo.localName}`;
+      console.log('订阅MQTT主题:', topic);
+      mqttClient.subscribe(topic);
+    } else {
+      console.warn('MQTT未连接');
+    }
+  },
+  // 处理MQTT消息
+  handleMsg({
+    topic,
+    message
+  }) {
+    if (!this.data.deviceInfo) return;
+    const expectedTopic = `/resp/${this.data.deviceInfo.localName}`;
+    console.log('收到MQTT消息:', topic, message);
+    if (topic === expectedTopic) {
+      console.log('设备已联网，收到消息:', message);
+      this.message('success', '设备联网成功！', 2000);
+      // 更新网络配置成功状态
+      this.setValue('networkSuccess', true);
+      // // 如果还没添加设备，则添加
+      // if (!this.data.addFlag) {
+      //   this.message('success', '设备已联网，正在添加到团队...', 2000);
+      //   this.addWifiDevice();
+      // }
+    }
   }
 });
