@@ -8,7 +8,7 @@ const app = getApp()
 Page({
   data: {
     ossUrl: app.globalData.ossUrl,
-    userInfo: app.globalData.userInfo,
+    userInfo: getApp().globalData.userInfo,
     deviceList: [],
     historyList: {
       activated: 0,
@@ -24,20 +24,24 @@ Page({
     deptInfo: {}
   },
   onLoad(options) {
+    let userInfo = getApp().globalData.userInfo
     let {
       deptId,
       info
     } = options
+    this.setData({
+      userInfo
+    })
     try {
       let deptInfo = JSON.parse(info)
       this.setData({
-        'pageObj.deptId': deptId || this.data.userInfo.dept.deptId,
+        'pageObj.deptId': deptId || userInfo.dept.deptId,
         deptInfo: deptInfo
       })
     } catch (error) {
       this.setData({
-        'pageObj.deptId': deptId || this.data.userInfo.dept.deptId,
-        deptInfo: this.data.userInfo.dept
+        'pageObj.deptId': deptId || userInfo.dept.deptId,
+        deptInfo: userInfo.dept
       })
     }
   },
@@ -49,7 +53,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom() {
-    console.log('触底',)
+    console.log('触底', )
     let {
       deviceList,
       total

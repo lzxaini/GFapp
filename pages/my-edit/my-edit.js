@@ -1,12 +1,19 @@
-import { showMessage } from '../../utils/tools';
-import { registerUserInfoApi } from '../../api/api'
+import {
+  showMessage
+} from '../../utils/tools';
+import {
+  registerUserInfoApi
+} from '../../api/api'
 const app = getApp()
 Page({
   data: {
-    userInfo: app.globalData.userInfo,
+    userInfo: getApp().globalData.userInfo,
     ossUrl: app.globalData.ossUrl,
     logoutVisible: false,
-    confirmBtn: { content: '确定', variant: 'base' },
+    confirmBtn: {
+      content: '确定',
+      variant: 'base'
+    },
     form: {
       avatar: '',
       userName: '',
@@ -20,8 +27,15 @@ Page({
     userId = String(userId || '');
     return userId.padStart(8, '0');
   },
-  onLoad() {
-    let { userName, avatar, phonenumber, nickName, email, userId } = app.globalData.userInfo
+  onLoad(options) {
+    let {
+      userName,
+      avatar,
+      phonenumber,
+      nickName,
+      email,
+      userId
+    } = getApp().globalData.userInfo
     this.setData({
       userId: this.padUserId(userId),
       'form.avatar': avatar,
@@ -29,6 +43,7 @@ Page({
       'form.nickName': nickName,
       'form.userName': userName,
       'form.phonenumber': phonenumber,
+      userInfo: getApp().globalData.userInfo
     })
   },
   goChangePassword() {
@@ -68,8 +83,7 @@ Page({
               }
             }
           },
-          fail: (err) => {
-          }
+          fail: (err) => {}
         });
       },
       fail: () => {
@@ -78,13 +92,17 @@ Page({
     });
   },
   onNameInput(e) {
-    let { value } = e?.detail
+    let {
+      value
+    } = e?.detail
     this.setData({
       'form.userName': value
     })
   },
   verify() {
-    let { form } = this.data
+    let {
+      form
+    } = this.data
     let userNameError = ''
     // 新密码长度校验
     if (!form.userName) {
@@ -101,7 +119,9 @@ Page({
     // $BUG 这里貌似有问题，提交修改个人信息的上海，如果不带上手机号，手机号等会被更新为null
     let _this = this
     if (!this.verify()) return;
-    let { form } = this.data
+    let {
+      form
+    } = this.data
     registerUserInfoApi(form).then(res => {
       wx.showLoading({
         title: '正在加载...',
@@ -121,7 +141,9 @@ Page({
     })
   },
   LogoutDialog() {
-    this.setData({ logoutVisible: !this.data.logoutVisible })
+    this.setData({
+      logoutVisible: !this.data.logoutVisible
+    })
   },
   logout() {
     app.logout()
