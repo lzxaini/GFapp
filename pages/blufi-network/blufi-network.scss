@@ -71,7 +71,13 @@
 				margin-top: 30rpx;
 				border-radius: 24rpx;
 				border: 2rpx solid #bec0f9;
-
+        .left-icon{
+          width: 120rpx;
+          height: 120rpx;
+          object-fit: contain;
+          background-color: #EFEFEF;
+          border-radius: 50%;
+        }
 				.title_box {
 					display: flex;
 					align-items: center;

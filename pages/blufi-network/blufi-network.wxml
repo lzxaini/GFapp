@@ -38,7 +38,7 @@
         <t-radio-group borderless t-class="box" bind:change="bindChange">
           <block wx:for="{{devicesList}}" wx:key="deviceId">
             <t-cell t-class="list_item" bordered="{{false}}">
-              <t-avatar slot="left-icon" size="large" image="/static/icon/device.png"></t-avatar>
+              <t-image t-class="left-icon" slot="left-icon" src="/static/icon/device.png" shape="circle" mode="aspectFit"></t-image>
               <view slot="title" class="title_box">
                 <view class="title_text">设备ID</view>
                 <view class="title_text">{{item.localName}}</view>
