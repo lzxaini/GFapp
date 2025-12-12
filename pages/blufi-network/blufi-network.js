@@ -7,6 +7,7 @@ import {
 import {
   onMqttReady
 } from '../../utils/mqttReady';
+import emojiRegex from 'emoji-regex';
 const app = getApp()
 var xBlufi = require("../../utils/blufi/xBlufi.js");
 var _this = null;
@@ -32,17 +33,17 @@ Page({
     ssid: "",
     password: "",
     steps: [{
-        text: '1.配网事项'
-      },
-      {
-        text: '2.连接设备'
-      },
-      {
-        text: '3.配置WIFI'
-      },
-      {
-        text: '4.配网成功'
-      }
+      text: '1.配网事项'
+    },
+    {
+      text: '2.连接设备'
+    },
+    {
+      text: '3.配置WIFI'
+    },
+    {
+      text: '4.配网成功'
+    }
     ],
     deviceId: '',
     deviceName: '',
@@ -213,7 +214,7 @@ Page({
             timeout = setTimeout(() => {
               wx.closeBLEConnection({
                 deviceId: this.data.deviceId,
-                success: function (res) {},
+                success: function (res) { },
               })
               this.blufiReset('ok')
             }, 1500)
@@ -256,7 +257,7 @@ Page({
   blufiReset: function (type) {
     wx.closeBLEConnection({
       deviceId: this.data.deviceId,
-      success: function (res) {},
+      success: function (res) { },
     })
     if (type !== 'ok') {
       this.setValue("stepActive", 0)
@@ -351,13 +352,24 @@ Page({
     wx.eventCenter.off('mqtt-message', this.handleMsg);
     mqttClient.unsubscribe(`/resp/${this.data.deviceInfo.localName}`); // 取消MQTT订阅
   },
-  onShow: function (options) {},
+  onShow: function (options) { },
   filterChange(event) {
     // tdesign input/search 组件输入事件为 event.detail.value
     this.setValue("macFilter", event.detail.value)
   },
+  // 检查SSID是否包含特殊字符（如emoji）
+  isSSIDValid(ssid) {
+    const regex = emojiRegex();
+    return !regex.test(ssid);
+  },
   ssidChange(event) {
-    this.setValue("ssid", event.detail.value)
+    const value = event.detail.value;
+    if (!this.isSSIDValid(value)) {
+      this.message('error', '该WiFi名称包含特殊字符或表情，暂不支持！', 5000);
+      this.setValue("ssid", "");
+      return;
+    }
+    this.setValue("ssid", value);
   },
   passwordChange(event) {
     this.setValue("password", event.detail.value)
@@ -366,8 +378,15 @@ Page({
     wx.startWifi();
     wx.getConnectedWifi({
       success: function (res) {
+        console.log('_this.isSSIDValid(value)', _this.isSSIDValid(res.wifi.SSID))
+        if (!_this.isSSIDValid(res.wifi.SSID)) {
+          _this.message('error', '该WiFi名称包含特殊字符或表情，暂不支持！', 5000);
+          _this.setValue("ssid", "");
+          return;
+        }
         if (res.wifi.SSID.indexOf("5G") != -1) {
-          this.message('error', '不支持配置5G WiFi网络', 3000)
+          _this.message('error', '不支持配置 5G 频段WiFi网络', 3000)
+          return;
         }
         let password = wx.getStorageSync(res.wifi.SSID)
         console.log("restore password:", password)
@@ -390,8 +409,8 @@ Page({
       serviceId: "0000FFFF-0000-1000-8000-00805F9B34FB",
       characteristicId: "0000FF01-0000-1000-8000-00805F9B34FB",
       value: data,
-      success: function (res) {},
-      fail: function (res) {}
+      success: function (res) { },
+      fail: function (res) { }
     });
   },
   _startConfig: function () {
@@ -485,10 +504,10 @@ Page({
       console.log('设备已在添加中，跳过重复调用');
       return;
     }
-    
+
     // 立即设置标志，防止重复调用
     this.setValue("addFlag", true);
-    
+
     let {
       deptId,
       deviceInfo

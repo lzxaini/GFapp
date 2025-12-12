@@ -7,6 +7,7 @@ import {
 import {
   onMqttReady
 } from '../../utils/mqttReady';
+import emojiRegex from 'emoji-regex';
 const app = getApp()
 var xBlufi = require("../../utils/blufi/xBlufi.js");
 var _this = null;
@@ -356,8 +357,19 @@ Page({
     // tdesign input/search 组件输入事件为 event.detail.value
     this.setValue("macFilter", event.detail.value)
   },
+  // 检查SSID是否包含特殊字符（如emoji）
+  isSSIDValid(ssid) {
+    const regex = emojiRegex();
+    return !regex.test(ssid);
+  },
   ssidChange(event) {
-    this.setValue("ssid", event.detail.value)
+    const value = event.detail.value;
+    if (!this.isSSIDValid(value)) {
+      this.message('error', '该WiFi名称包含特殊字符或表情，暂不支持！', 5000);
+      this.setValue("ssid", "");
+      return;
+    }
+    this.setValue("ssid", value);
   },
   passwordChange(event) {
     this.setValue("password", event.detail.value)
@@ -366,8 +378,15 @@ Page({
     wx.startWifi();
     wx.getConnectedWifi({
       success: function (res) {
+        console.log('_this.isSSIDValid(value)', _this.isSSIDValid(res.wifi.SSID))
+        if (!_this.isSSIDValid(res.wifi.SSID)) {
+          _this.message('error', '该WiFi名称包含特殊字符或表情，暂不支持！', 5000);
+          _this.setValue("ssid", "");
+          return;
+        }
         if (res.wifi.SSID.indexOf("5G") != -1) {
-          this.message('error', '不支持配置5G WiFi网络', 3000)
+          _this.message('error', '不支持配置 5G 频段WiFi网络', 3000)
+          return;
         }
         let password = wx.getStorageSync(res.wifi.SSID)
         console.log("restore password:", password)
