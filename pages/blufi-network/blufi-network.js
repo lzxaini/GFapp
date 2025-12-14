@@ -337,6 +337,7 @@ Page({
     });
   },
   onUnload: function () {
+    console.log('blufi-network页面卸载')
     _this = this
     xBlufi.notifyConnectBle({
       isStart: false,
@@ -344,13 +345,13 @@ Page({
       name: _this.data.deviceName,
     });
     xBlufi.notifyStartDiscoverBle({
-      'isStart': true
+      'isStart': false  // 修改为false，停止扫描
     })
-    xBlufi.listenDeviceMsgEvent(true, this.blufiEventHandler);
+    xBlufi.listenDeviceMsgEvent(false, this.blufiEventHandler);  // 修改为false，取消监听
     this.blufiIntercalClear()
     this.blufiTimeoutClear()
     const mqttClient = app.globalData.mqttClient;
-    if (this.data.subMqtt) { // mqtt订阅了才卸载
+    if (this.data.subMqtt && this.data.deviceInfo) { // mqtt订阅了才卸载
       wx.eventCenter.off('mqtt-ready', this.subscribeTopic);
       wx.eventCenter.off('mqtt-message', this.handleMsg);
       mqttClient.unsubscribe(`/resp/${this.data.deviceInfo.localName}`); // 取消MQTT订阅
@@ -594,15 +595,22 @@ Page({
   },
   // navBar的左侧返回
   handleBack() {
+    console.log('自定义返回触发')
     // 获取当前页面栈实例
     let pages = getCurrentPages();
-    console.log('页面栈', pages)
-    if (pages.length === 1) {
+    console.log('页面栈长度:', pages.length)
+    if (pages.length <= 1) {
+      // 如果只有一个页面，跳转到首页
+      console.log('页面栈只有1个，跳转首页')
       wx.reLaunch({
         url: '/pages/index/index',
       })
     } else {
-      wx.navigateBack(1)
+      // 否则直接返回设备列表页
+      console.log('返回设备列表页')
+      wx.redirectTo({
+        url: '/pages/device-list/device-list',
+      })
     }
   }
 });
