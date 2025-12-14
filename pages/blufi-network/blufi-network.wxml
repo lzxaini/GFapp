@@ -7,7 +7,7 @@
   module.exports.match = match;
 </wxs>
 <view class="blufi-page-container">
-  <t-navbar t-class="navBar" left-arrow title="我的设备" />
+  <t-navbar t-class="navBar" left-arrow title="我的设备" bind:go-back="handleBack" />
   <view class="blufi-step-wrapper">
     <t-steps current="{{stepActive}}">
       <t-step-item title="" wx:for="{{steps}}" />

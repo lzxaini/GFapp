@@ -591,5 +591,18 @@ Page({
         this.addWifiDevice();
       }
     }
+  },
+  // navBar的左侧返回
+  handleBack() {
+    // 获取当前页面栈实例
+    let pages = getCurrentPages();
+    console.log('页面栈', pages)
+    if (pages.length === 1) {
+      wx.reLaunch({
+        url: '/pages/index/index',
+      })
+    } else {
+      wx.navigateBack(1)
+    }
   }
 });
