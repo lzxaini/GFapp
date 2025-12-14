@@ -1,10 +1,10 @@
 /*
  * @Author: lzx
  * @Date: 2024-01-01 13:42:13
- * @LastEditors: 17630921248 1245634367@qq.com
- * @LastEditTime: 2025-08-12 17:22:55
+ * @LastEditors: lzxaini 1245634367@qq.com
+ * @LastEditTime: 2025-12-14 21:56:35
  * @Description: Fuck Bug
- * @FilePath: \medical\api\api.js
+ * @FilePath: \GFapp\api\api.js
  */
 import request from "./request.js"
 
@@ -407,5 +407,52 @@ export function getRechargeRecordsBalanceApi(data) {
     method: 'get',
     data
   })
+}
+
+/**
+ * 审批加入团队列表
+ * 参数
+ */
+export function getJoinTeamApi(data) {
+  return request({
+    url: '/gf/teamJoinRequests/list',
+    method: 'get',
+    data
+  })
+}
+
+/**
+ * 审批加入团队
+ * 参数
+ */
+export function agreeJoinTeamApi(data) {
+  return request({
+    url: `/gf/teamJoinRequests/${data.id}/${data.status}`,
+    method: 'put'
+  })
+}
+
+/**
+ * 获取系统用户信息
+ * 参数
+ */
+export function getUserApi(userId) {
+  return request({
+    url: '/system/user/' + userId,
+    method: 'get'
+  })
+}
+
+/**
+ * 更新系统用户信息
+ * 参数
+ */
+export function updateUserApi(data) {
+  return request({
+    url: '/system/user',
+    method: 'put',
+    data
+  })
+
 }
 // /gf/serviceRecords/times服务的接口
