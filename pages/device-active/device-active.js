@@ -227,6 +227,7 @@ Page({
   },
   // navBar的左侧返回
   handleBack() {
+    this.clearReconnect()
     // 获取当前页面栈实例
     let pages = getCurrentPages();
     console.log('页面栈', pages)
