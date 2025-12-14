@@ -1,0 +1,47 @@
+<view class="container">
+  <!-- 顶部导航栏 -->
+  <t-navbar title="加入审批" left-arrow bind:go-back="onBack" />
+
+  <!-- 消息提示 -->
+  <t-message id="t-message" />
+
+  <!-- 选项卡 -->
+  <view class="tabs-wrapper">
+    <t-tabs value="{{tabValue}}" bind:change="onTabChange" theme="tag">
+      <t-tab-panel wx:for="{{tabList}}" wx:key="value" label="{{item.label}}" value="{{item.value}}" />
+    </t-tabs>
+  </view>
+
+  <!-- 列表内容 -->
+  <scroll-view class="scroll-view" scroll-y refresher-enabled refresher-triggered="{{refreshing}}" bindrefresherrefresh="onPullDownRefresh" bindscrolltolower="onReachBottom" lower-threshold="100">
+    <!-- 审批列表 -->
+    <view class="approval-list">
+      <t-cell-group wx:for="{{approvalList}}" wx:key="id" class="cell-group-item">
+        <t-cell title="申请人：{{item.userName}}" description="申请加入：{{item.deptName}}" hover>
+          <view slot="right-icon" class="cell-right">
+            <t-tag wx:if="{{item.status === '1'}}" theme="success" variant="light" size="small">已通过</t-tag>
+            <t-tag wx:if="{{item.status === '2'}}" theme="danger" variant="light" size="small">已拒绝</t-tag>
+            <view wx:if="{{item.status === '0'}}" class="action-buttons">
+              <t-button icon="close" theme="danger" size="extra-small" variant="outline" catchtap="handleReject" data-id="{{item.id}}" data-username="{{item.userName}}" />
+              <t-button icon="check" theme="primary" size="extra-small" catchtap="handleApprove" data-id="{{item.id}}" data-username="{{item.userName}}" data-userid="{{item.userId}}" />
+            </view>
+          </view>
+        </t-cell>
+      </t-cell-group>
+    </view>
+
+    <!-- 空状态 -->
+    <view class="empty-wrapper" wx:if="{{approvalList.length === 0 && !loading}}">
+      <t-empty description="暂无审批记录" />
+    </view>
+
+    <!-- 加载更多提示 -->
+    <view class="load-more" wx:if="{{loading}}">
+      <t-loading theme="circular" size="40rpx" text="加载中..." />
+    </view>
+
+    <view class="load-tip" wx:if="{{!loading && approvalList.length > 0 && approvalList.length >= total}}">
+      <text>已加载全部</text>
+    </view>
+  </scroll-view>
+</view>
