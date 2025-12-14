@@ -32,18 +32,19 @@ Page({
     stepActive: 0,
     ssid: "",
     password: "",
+    subMqtt: false, // mqtt是否订阅
     steps: [{
-      text: '1.配网事项'
-    },
-    {
-      text: '2.连接设备'
-    },
-    {
-      text: '3.配置WIFI'
-    },
-    {
-      text: '4.配网成功'
-    }
+        text: '1.配网事项'
+      },
+      {
+        text: '2.连接设备'
+      },
+      {
+        text: '3.配置WIFI'
+      },
+      {
+        text: '4.配网成功'
+      }
     ],
     deviceId: '',
     deviceName: '',
@@ -152,6 +153,7 @@ Page({
           wx.eventCenter.on('mqtt-message', this.handleMsg);
           onMqttReady(() => {
             this.subscribeTopic();
+            this.setValue("subMqtt", true)
           });
           wx.hideLoading()
           wx.showToast({
@@ -214,7 +216,7 @@ Page({
             timeout = setTimeout(() => {
               wx.closeBLEConnection({
                 deviceId: this.data.deviceId,
-                success: function (res) { },
+                success: function (res) {},
               })
               this.blufiReset('ok')
             }, 1500)
@@ -257,7 +259,7 @@ Page({
   blufiReset: function (type) {
     wx.closeBLEConnection({
       deviceId: this.data.deviceId,
-      success: function (res) { },
+      success: function (res) {},
     })
     if (type !== 'ok') {
       this.setValue("stepActive", 0)
@@ -348,11 +350,13 @@ Page({
     this.blufiIntercalClear()
     this.blufiTimeoutClear()
     const mqttClient = app.globalData.mqttClient;
-    wx.eventCenter.off('mqtt-ready', this.subscribeTopic);
-    wx.eventCenter.off('mqtt-message', this.handleMsg);
-    mqttClient.unsubscribe(`/resp/${this.data.deviceInfo.localName}`); // 取消MQTT订阅
+    if (this.data.subMqtt) { // mqtt订阅了才卸载
+      wx.eventCenter.off('mqtt-ready', this.subscribeTopic);
+      wx.eventCenter.off('mqtt-message', this.handleMsg);
+      mqttClient.unsubscribe(`/resp/${this.data.deviceInfo.localName}`); // 取消MQTT订阅
+    }
   },
-  onShow: function (options) { },
+  onShow: function (options) {},
   filterChange(event) {
     // tdesign input/search 组件输入事件为 event.detail.value
     this.setValue("macFilter", event.detail.value)
@@ -409,8 +413,8 @@ Page({
       serviceId: "0000FFFF-0000-1000-8000-00805F9B34FB",
       characteristicId: "0000FF01-0000-1000-8000-00805F9B34FB",
       value: data,
-      success: function (res) { },
-      fail: function (res) { }
+      success: function (res) {},
+      fail: function (res) {}
     });
   },
   _startConfig: function () {
