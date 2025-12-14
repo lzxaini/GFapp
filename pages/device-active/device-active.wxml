@@ -1,5 +1,5 @@
 <view class="device-use_container">
-  <t-navbar t-class="navBar" left-arrow>
+  <t-navbar t-class="navBar" left-arrow bind:go-back="handleBack" >
     <view slot="title" class="navBar_title">
       <view class="{{deviceFlag ? 'green': 'green red'}}"></view>
       <view class="text" wx:if="{{deviceFlag}}">设备已连接…</view>

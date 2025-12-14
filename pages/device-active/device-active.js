@@ -225,4 +225,21 @@ Page({
   handleGuideFinish() {
     console.log('完成引导')
   },
+  // navBar的左侧返回
+  handleBack() {
+    // 获取当前页面栈实例
+    let pages = getCurrentPages();
+    console.log('页面栈', pages)
+    if (pages.length === 1) {
+      wx.reLaunch({
+        url: '/pages/index/index',
+      })
+    } else {
+      // 否则直接返回设备列表页
+      console.log('返回设备列表页')
+      wx.redirectTo({
+        url: '/pages/device-list/device-list',
+      })
+    }
+  }
 });
