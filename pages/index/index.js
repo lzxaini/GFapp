@@ -21,6 +21,7 @@ Page({
     qrCodeBox: false,
     qrFlag: false,
     userInfo: app.globalData.userInfo,
+    hasApprovalPermission: false, // 是否有审批权限
     cardList: [{
       title: '团队管理',
       icon: 'my_1.png',
@@ -73,12 +74,24 @@ Page({
       app.getUserInfo(getUserInfoApi).then(res => {
         if (res) {
           this.setData({
-            userInfo: res
+            userInfo: res,
+            hasApprovalPermission: this.checkApprovalPermission(res)
           });
         }
       })
     }
   },
+  
+  // 检查是否有审批权限
+  checkApprovalPermission(userInfo) {
+    if (!userInfo || !userInfo.roles || userInfo.roles.length === 0) {
+      return false;
+    }
+    const roleKey = userInfo.roles[0].roleKey;
+    const approvalRoles = ['develop', 'customerService', 'admin', 'admin01', 'founder'];
+    return approvalRoles.includes(roleKey);
+  },
+  
   /**
    * 用户点击右上角分享
    */
