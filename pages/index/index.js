@@ -1,4 +1,6 @@
-import { showMessage } from '../../utils/tools';
+import {
+  showMessage
+} from '../../utils/tools';
 const app = getApp()
 import {
   activetionDeviceApi,
@@ -132,9 +134,15 @@ Page({
         });
       }
       if (res.data.length > 0) { // 到绑定页面
-        return wx.navigateTo({
-          url: `/pages/device-bind/device-bind?deviceId=${serialNumber}`,
-        });
+        if (serialNumber.indexOf("GFKM-") != -1) { // WiFi模块
+          return wx.navigateTo({
+            url: `/pages/device-status/device-status?deviceId=${serialNumber}`,
+          })
+        } else { // 4G模块
+          return wx.navigateTo({
+            url: `/pages/device-bind/device-bind?deviceId=${serialNumber}`,
+          });
+        }
       }
     })
   },
