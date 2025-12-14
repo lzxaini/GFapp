@@ -1,0 +1,61 @@
+.device-use_container {
+	width: 100vw;
+	height: 100vh;
+	background-color: #ffffff;
+	.navBar {
+		.navBar_title {
+			display: flex;
+			align-items: center;
+			.green {
+				width: 10rpx;
+				height: 10rpx;
+				border-radius: 50%;
+				background-color: #42e126;
+				margin-right: 10rpx;
+			}
+			.red {
+				background-color: red !important;
+			}
+		}
+	}
+	.device_info {
+		text-align: center;
+		.device_heart {
+			width: 64rpx;
+			height: 56rpx;
+			margin: 0 auto;
+			margin-top: 50rpx;
+		}
+		.text {
+			font-family: AlibabaPuHuiTi3;
+			font-size: 48rpx;
+			font-weight: normal;
+			text-align: center;
+			color: #000000;
+			margin-top: 38rpx;
+		}
+	}
+	.device_image {
+		width: 100%;
+		height: 796rpx;
+		margin-top: 100rpx;
+		.device_use {
+			width: 100%;
+			height: 100%;
+    }
+	}
+	.footer {
+		position: fixed;
+		bottom: env(safe-area-inset-bottom);
+		width: calc(100% - 64rpx);
+		margin: 0 32rpx;
+		.device_id {
+			font-family: AlibabaPuHuiTi3;
+			font-size: 24rpx;
+			font-weight: normal;
+			color: #606972;
+			text-align: center;
+			margin-bottom: 64rpx;
+		}
+  }
+}

@@ -26,6 +26,7 @@
     "pages/team-join/team-join",
     "pages/device-use/device-use",
     "pages/device-active/device-active",
+    "pages/device-status/device-status",
     "pages/change-password/change-password",
     "pages/device-bind/device-bind",
     "pages/submit-success/submit-success",
