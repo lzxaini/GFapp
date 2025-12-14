@@ -97,11 +97,22 @@ Page({
     }
   },
   goPage() {
-    const pages = getCurrentPages();
-    if (pages.length > 1) {
-      wx.navigateBack({ delta: 1 });
+    console.log('自定义返回触发')
+    // 获取当前页面栈实例
+    let pages = getCurrentPages();
+    console.log('页面栈长度:', pages.length)
+    if (pages.length <= 1) {
+      // 如果只有一个页面，跳转到首页
+      console.log('页面栈只有1个，跳转首页')
+      wx.reLaunch({
+        url: '/pages/index/index',
+      })
     } else {
-      wx.reLaunch({ url: '/pages/index/index' });
+      // 否则直接返回设备列表页
+      console.log('返回设备列表页')
+      wx.redirectTo({
+        url: '/pages/device-list/device-list',
+      })
     }
   }
 })
