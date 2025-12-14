@@ -77,7 +77,7 @@ Page({
       result?.funcCode === 5 &&
       result?.state === 1
     ) {
-      wx.reLaunch({
+      wx.redirectTo({
         url: `/pages/device-use/device-use?deviceId=${this.data.deviceId}`,
       });
     }
