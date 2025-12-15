@@ -213,6 +213,12 @@ Page({
       }
     })
   },
+  // 去新增部门页面
+  goAddDept(){
+    wx.navigateTo({
+      url: '/pages/add-dept/add-dept',
+    })
+  },
   message(type, text, duration = 1500) {
     showMessage(type, text, duration, this);
   }
