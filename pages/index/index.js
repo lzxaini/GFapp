@@ -43,6 +43,10 @@ Page({
       icon: 'my_4.png',
       url: '/pages/usage-guide/usage-guide'
     }, {
+      title: '加入审批',
+      icon: 'my_7.png',
+      url: '/pages/join-approval/join-approval'
+    }, {
       title: '设置',
       icon: 'my_5.png',
       url: '/pages/my-edit/my-edit'
@@ -75,7 +79,7 @@ Page({
         if (res) {
           this.setData({
             userInfo: res,
-            hasApprovalPermission: this.checkApprovalPermission(res)
+            // hasApprovalPermission: this.checkApprovalPermission(res)
           });
         }
       })

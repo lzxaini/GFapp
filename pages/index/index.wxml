@@ -43,8 +43,8 @@
     </view>
   </view>
   <t-cell-group class="card-box" theme="card">
-    <block wx:for="{{cardList}}" :key="index">
-      <t-cell wx:if="{{item.title !== '能量充值' || userInfo.allowedRecharge}}" t-class="from-item" t-class-left="left_center" title="{{item.title}}" bindtap="goListItem" data-url="{{item.url}}" data-title="{{item.title}}" arrow hover>
+    <block wx:for="{{cardList}}" wx:key="index">
+      <t-cell wx:if="{{(item.title !== '能量充值' && item.title !== '加入审批') || userInfo.allowedRecharge}}" t-class="from-item" t-class-left="left_center" title="{{item.title}}" bindtap="goListItem" data-url="{{item.url}}" data-title="{{item.title}}" arrow hover>
         <image slot="left-icon" class="left_icon" src="../../static/icon/{{item.icon}}" />
       </t-cell>
     </block>
@@ -52,13 +52,9 @@
     <t-cell wx:if="{{userInfo.dept.deptName === '研发部门'}}" t-class="from-item" t-class-left="left_center" title="开发模式" bindtap="goListItem" data-url="/development/index/index" data-title="开发模式" arrow hover>
       <image slot="left-icon" class="left_icon" src="../../static/icon/dev_mode.png" />
     </t-cell>
-    <!-- 特定角色显示加入审批菜单 -->
-    <t-cell wx:if="{{hasApprovalPermission}}" t-class="from-item" t-class-left="left_center" title="加入审批" bindtap="goListItem" data-url="/pages/join-approval/join-approval" data-title="加入审批" arrow hover>
-      <image slot="left-icon" class="left_icon" src="../../static/icon/my_7.png" />
-    </t-cell>
   </t-cell-group>
   <image class="device_bg" src="../../static/icon/device_bg.png" />
-  <view class="copy" style="margin-bottom: {{marginBottom}}">粤ICP备2025444193号-1X</view>
+  <view class="copy" style="margin-bottom: 30rpx">粤ICP备2025444193号-1X</view>
 </view>
 <t-dialog visible="{{isLogin}}" title="温馨提示" content="您尚未登录，请先登录！">
   <t-button slot="confirm-btn" class="action-btn" theme="primary" bindtap="goLogin">去登录</t-button>
