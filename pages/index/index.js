@@ -42,11 +42,13 @@ Page({
       title: '使用指南',
       icon: 'my_4.png',
       url: '/pages/usage-guide/usage-guide'
-    }, {
-      title: '加入审批',
-      icon: 'my_7.png',
-      url: '/pages/join-approval/join-approval'
-    }, {
+    },
+    // {
+    //   title: '加入审批',
+    //   icon: 'my_7.png',
+    //   url: '/pages/join-approval/join-approval'
+    // }, 
+    {
       title: '设置',
       icon: 'my_5.png',
       url: '/pages/my-edit/my-edit'
