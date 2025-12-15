@@ -1,0 +1,249 @@
+<view class="dept-manage-container">
+  <t-navbar t-class="navBar" left-arrow title="部门管理" />
+
+  <!-- 部门列表 -->
+  <view class="dept-list">
+    <view wx:if="{{loading}}" class="loading">加载中...</view>
+    <view wx:else>
+      <block wx:for="{{deptList}}" wx:key="deptId">
+        <view class="dept-tree-node">
+          <view class="node-content level-0">
+            <view class="node-left">
+              <t-icon wx:if="{{item.children && item.children.length > 0}}" 
+                name="{{item.expanded ? 'chevron-down' : 'chevron-right'}}" 
+                size="40rpx" 
+                color="#999" 
+                bindtap="toggleExpand"
+                data-deptid="{{item.deptId}}" />
+              <view wx:else class="placeholder-icon"></view>
+              <text class="dept-name">{{item.deptName}}</text>
+              <text class="dept-type">{{item.deptType == '1' ? '联合创始人' : item.deptType == '2' ? '分公司' : item.deptType == '3' ? '代理商' : '门店'}}</text>
+            </view>
+            <view class="node-actions">
+              <view class="action-btn" bindtap="handleEdit" data-deptid="{{item.deptId}}">
+                <t-icon name="edit" size="32rpx" color="#888bf4" />
+              </view>
+              <view class="action-btn" wx:if="{{item.deptType != '4'}}" bindtap="handleAdd" data-deptid="{{item.deptId}}">
+                <t-icon name="add-circle" size="32rpx" color="#888bf4" />
+              </view>
+            </view>
+          </view>
+          
+          <!-- 子节点 (2层嵌套) -->
+          <view wx:if="{{item.expanded && item.children && item.children.length > 0}}">
+            <block wx:for="{{item.children}}" wx:for-item="child" wx:key="deptId">
+              <view class="node-content level-1">
+                <view class="node-left">
+                  <t-icon wx:if="{{child.children && child.children.length > 0}}" 
+                    name="{{child.expanded ? 'chevron-down' : 'chevron-right'}}" 
+                    size="40rpx" 
+                    color="#999" 
+                    bindtap="toggleExpand"
+                    data-deptid="{{child.deptId}}" />
+                  <view wx:else class="placeholder-icon"></view>
+                  <text class="dept-name">{{child.deptName}}</text>
+                  <text class="dept-type">{{child.deptType == '1' ? '联合创始人' : child.deptType == '2' ? '分公司' : child.deptType == '3' ? '代理商' : '门店'}}</text>
+                </view>
+                <view class="node-actions">
+                  <view class="action-btn" bindtap="handleEdit" data-deptid="{{child.deptId}}">
+                    <t-icon name="edit" size="32rpx" color="#888bf4" />
+                  </view>
+                  <view class="action-btn" wx:if="{{child.deptType != '4'}}" bindtap="handleAdd" data-deptid="{{child.deptId}}">
+                    <t-icon name="add-circle" size="32rpx" color="#888bf4" />
+                  </view>
+                </view>
+              </view>
+              
+              <!-- 第三层 -->
+              <view wx:if="{{child.expanded && child.children && child.children.length > 0}}">
+                <block wx:for="{{child.children}}" wx:for-item="grandson" wx:key="deptId">
+                  <view class="node-content level-2">
+                    <view class="node-left">
+                      <t-icon wx:if="{{grandson.children && grandson.children.length > 0}}" 
+                        name="{{grandson.expanded ? 'chevron-down' : 'chevron-right'}}" 
+                        size="40rpx" 
+                        color="#999" 
+                        bindtap="toggleExpand"
+                        data-deptid="{{grandson.deptId}}" />
+                      <view wx:else class="placeholder-icon"></view>
+                      <text class="dept-name">{{grandson.deptName}}</text>
+                      <text class="dept-type">{{grandson.deptType == '1' ? '联合创始人' : grandson.deptType == '2' ? '分公司' : grandson.deptType == '3' ? '代理商' : '门店'}}</text>
+                    </view>
+                    <view class="node-actions">
+                      <view class="action-btn" bindtap="handleEdit" data-deptid="{{grandson.deptId}}">
+                        <t-icon name="edit" size="32rpx" color="#888bf4" />
+                      </view>
+                      <view class="action-btn" wx:if="{{grandson.deptType != '4'}}" bindtap="handleAdd" data-deptid="{{grandson.deptId}}">
+                        <t-icon name="add-circle" size="32rpx" color="#888bf4" />
+                      </view>
+                    </view>
+                  </view>
+                  
+                  <!-- 第四层 -->
+                  <view wx:if="{{grandson.expanded && grandson.children && grandson.children.length > 0}}">
+                    <block wx:for="{{grandson.children}}" wx:for-item="ggrandson" wx:key="deptId">
+                      <view class="node-content level-3">
+                        <view class="node-left">
+                          <view class="placeholder-icon"></view>
+                          <text class="dept-name">{{ggrandson.deptName}}</text>
+                          <text class="dept-type">门店</text>
+                        </view>
+                        <view class="node-actions">
+                          <view class="action-btn" bindtap="handleEdit" data-deptid="{{ggrandson.deptId}}">
+                            <t-icon name="edit" size="32rpx" color="#888bf4" />
+                          </view>
+                        </view>
+                      </view>
+                    </block>
+                  </view>
+                </block>
+              </view>
+            </block>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>
+
+<!-- 新增/修改对话框 -->
+<t-popup visible="{{dialogVisible}}" placement="bottom" close-on-overlay-click="{{false}}">
+  <view class="dialog-container">
+    <view class="dialog-header">
+      <text class="dialog-title">{{dialogTitle}}</text>
+      <t-icon name="close" size="44rpx" color="#999" bindtap="closeDialog" />
+    </view>
+    
+    <view class="dialog-content">
+      <view class="info_form">
+        <!-- 上级部门 -->
+        <view class="form_item" wx:if="{{!isEdit && form.parentId}}">
+          <view class="item_label required">上级部门</view>
+          <view class="item_value">
+            <t-input t-class="item-input" value="{{parentDeptName}}" disabled borderless />
+          </view>
+        </view>
+        <view class="bd05" wx:if="{{!isEdit && form.parentId}}" />
+
+        <!-- 部门名称 -->
+        <view class="form_item">
+          <view class="item_label required">部门名称</view>
+          <view class="item_value">
+            <t-input 
+              t-class="item-input" 
+              t-class-tips="errMsg"
+              placeholder="请输入部门名称" 
+              value="{{form.deptName}}" 
+              maxlength="30"
+              tips="{{errors.deptName}}"
+              bindchange="onDeptNameInput" 
+              borderless 
+            />
+          </view>
+        </view>
+        <view class="bd05" />
+
+        <!-- 部门分类 -->
+        <view class="form_item" wx:if="{{!isEdit}}" bindtap="onPickerOpen" data-type="deptType">
+          <view class="item_label required">部门分类</view>
+          <view class="item_value">
+            <view class="{{form.deptType ? '' : 'placeholder-text'}}">
+              {{deptTypeText || '请选择部门分类'}}
+            </view>
+          </view>
+          <t-icon name="chevron-right" size="48rpx" color="#C5C8CB" />
+        </view>
+        <view class="bd05" wx:if="{{!isEdit}}" />
+
+        <!-- 联系电话 -->
+        <view class="form_item">
+          <view class="item_label">联系电话</view>
+          <view class="item_value">
+            <t-input 
+              t-class="item-input" 
+              t-class-tips="errMsg"
+              placeholder="请输入联系电话" 
+              value="{{form.phone}}" 
+              type="number" 
+              maxlength="11" 
+              tips="{{errors.phone}}"
+              bindchange="onPhoneInput" 
+              borderless 
+            />
+          </view>
+        </view>
+        <view class="bd05" />
+
+        <!-- 邮箱 -->
+        <view class="form_item">
+          <view class="item_label">邮箱</view>
+          <view class="item_value">
+            <t-input 
+              t-class="item-input" 
+              t-class-tips="errMsg"
+              placeholder="请输入邮箱" 
+              value="{{form.email}}" 
+              maxlength="50" 
+              tips="{{errors.email}}"
+              bindchange="onEmailInput" 
+              borderless 
+            />
+          </view>
+        </view>
+        <view class="bd05" />
+
+        <!-- 地址 -->
+        <view class="form_item" bindtap="showCascader">
+          <view class="item_label required">地址</view>
+          <view class="item_value">
+            <view class="{{form.address ? '' : 'placeholder-text'}}">
+              {{addressValue || '请选择地址'}}
+            </view>
+          </view>
+          <t-icon name="chevron-right" size="48rpx" color="#C5C8CB" />
+        </view>
+        <view class="bd05" />
+
+        <!-- 详细地址 -->
+        <view class="addressDetail">
+          <text class="item_label">详细地址</text>
+          <t-textarea 
+            t-class="external-class" 
+            placeholder="请输入详细地址" 
+            bordered 
+            disableDefaultPadding="{{true}}" 
+            value="{{form.addressDetail}}" 
+            bindchange="onAddressDetailInput" 
+          />
+        </view>
+      </view>
+    </view>
+    
+    <view class="dialog-footer">
+      <button class="btn" bindtap="onSubmit">保存</button>
+    </view>
+  </view>
+</t-popup>
+
+<!-- Picker -->
+<t-picker 
+  visible="{{deptTypeVisible}}" 
+  value="{{form.deptType}}" 
+  title="请选择部门分类" 
+  cancelBtn="取消" 
+  confirmBtn="确认" 
+  bindchange="onDeptTypeChange" 
+  bindcancel="onPickerCancel">
+  <t-picker-item options="{{deptTypeOptions}}" />
+</t-picker>
+
+<!-- 省市区级联选择器 -->
+<t-cascader 
+  visible="{{cascaderVisible}}" 
+  value="{{cascaderValue}}" 
+  options="{{options}}" 
+  title="请选择地址" 
+  bind:change="onCascaderChange" 
+/>
+
+<t-message id="t-message" />

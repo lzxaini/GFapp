@@ -36,7 +36,8 @@
     "pages/team-members/team-members",
     "pages/blufi-network/blufi-network",
     "pages/join-approval/join-approval",
-    "pages/privacy-agreement/privacy-agreement"
+    "pages/privacy-agreement/privacy-agreement",
+    "pages/add-dept/add-dept"
   ],
   "subpackages": [
     {

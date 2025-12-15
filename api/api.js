@@ -233,6 +233,18 @@ export function changeTeamInfoApi(data) {
     data
   })
 }
+
+/**
+ * 新增部门信息
+ * 参数
+ */
+export function addDeptApi(data) {
+  return request({
+    url: `/system/dept`,
+    method: 'post',
+    data
+  })
+}
 /**
  * 扫码查询用户信息
  */
