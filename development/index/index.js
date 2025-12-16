@@ -153,5 +153,12 @@ Page({
     wx.navigateTo({
       url: '/development/subscribe/subscribe?deviceId=' + deviceId,
     })
+  },
+  
+  // navBar的左侧返回
+  handleBack() {
+    wx.redirectTo({
+      url: '/pages/index/index',
+    })
   }
 })

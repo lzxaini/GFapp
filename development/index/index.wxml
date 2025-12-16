@@ -1,5 +1,5 @@
 <view class="block">
-  <t-navbar t-class="navBar" left-arrow title="调试列表" />
+  <t-navbar t-class="navBar" left-arrow title="调试列表" bind:go-back="handleBack"/>
   <t-grid border="{{border}}" column="{{2}}" theme="card" align="left">
     <t-grid-item t-class-image="image" text="设备配网" description="扫描设备进行配网" layout="horizontal" image="/static/icon/gf_logo_w.png" url="/development/blufi/index"/>
     <t-grid-item t-class-image="image" text="实时监听" description="扫码实时监听发送" layout="horizontal" image="/static/icon/gf_logo_w.png" bindtap="scanClick" data-item="dy"/>
