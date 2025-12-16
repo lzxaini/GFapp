@@ -32,6 +32,7 @@ Page({
     stepActive: 0,
     ssid: "",
     password: "",
+    subMqtt: false, // mqtt是否订阅
     steps: [{
       text: '1.配网事项'
     },
@@ -152,6 +153,7 @@ Page({
           wx.eventCenter.on('mqtt-message', this.handleMsg);
           onMqttReady(() => {
             this.subscribeTopic();
+            this.setValue("subMqtt", true)
           });
           wx.hideLoading()
           wx.showToast({
@@ -335,6 +337,7 @@ Page({
     });
   },
   onUnload: function () {
+    console.log('blufi-network页面卸载')
     _this = this
     xBlufi.notifyConnectBle({
       isStart: false,
@@ -342,15 +345,17 @@ Page({
       name: _this.data.deviceName,
     });
     xBlufi.notifyStartDiscoverBle({
-      'isStart': true
+      'isStart': false  // 修改为false，停止扫描
     })
-    xBlufi.listenDeviceMsgEvent(true, this.blufiEventHandler);
+    xBlufi.listenDeviceMsgEvent(false, this.blufiEventHandler);  // 修改为false，取消监听
     this.blufiIntercalClear()
     this.blufiTimeoutClear()
     const mqttClient = app.globalData.mqttClient;
-    wx.eventCenter.off('mqtt-ready', this.subscribeTopic);
-    wx.eventCenter.off('mqtt-message', this.handleMsg);
-    mqttClient.unsubscribe(`/resp/${this.data.deviceInfo.localName}`); // 取消MQTT订阅
+    if (this.data.subMqtt && this.data.deviceInfo) { // mqtt订阅了才卸载
+      wx.eventCenter.off('mqtt-ready', this.subscribeTopic);
+      wx.eventCenter.off('mqtt-message', this.handleMsg);
+      mqttClient.unsubscribe(`/resp/${this.data.deviceInfo.localName}`); // 取消MQTT订阅
+    }
   },
   onShow: function (options) { },
   filterChange(event) {
@@ -587,6 +592,20 @@ Page({
       //   this.message('success', '设备已联网，正在添加到团队...', 2000);
       //   this.addWifiDevice();
       // }
+    }
+  },
+  // navBar的左侧返回
+  handleBack() {
+    console.log('自定义返回触发')
+    // 获取当前页面栈实例
+    let pages = getCurrentPages();
+    console.log('页面栈长度:', pages, pages.length)
+    if (pages.length <= 1) {
+      // 如果只有一个页面，跳转到首页
+      console.log('页面栈只有1个，跳转首页')
+      wx.redirectTo({
+        url: '/development/index/index',
+      })
     }
   }
 });
