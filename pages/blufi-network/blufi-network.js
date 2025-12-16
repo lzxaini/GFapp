@@ -34,17 +34,17 @@ Page({
     password: "",
     subMqtt: false, // mqtt是否订阅
     steps: [{
-        text: '1.配网事项'
-      },
-      {
-        text: '2.连接设备'
-      },
-      {
-        text: '3.配置WIFI'
-      },
-      {
-        text: '4.配网成功'
-      }
+      text: '1.配网事项'
+    },
+    {
+      text: '2.连接设备'
+    },
+    {
+      text: '3.配置WIFI'
+    },
+    {
+      text: '4.配网成功'
+    }
     ],
     deviceId: '',
     deviceName: '',
@@ -216,7 +216,7 @@ Page({
             timeout = setTimeout(() => {
               wx.closeBLEConnection({
                 deviceId: this.data.deviceId,
-                success: function (res) {},
+                success: function (res) { },
               })
               this.blufiReset('ok')
             }, 1500)
@@ -259,7 +259,7 @@ Page({
   blufiReset: function (type) {
     wx.closeBLEConnection({
       deviceId: this.data.deviceId,
-      success: function (res) {},
+      success: function (res) { },
     })
     if (type !== 'ok') {
       this.setValue("stepActive", 0)
@@ -357,7 +357,7 @@ Page({
       mqttClient.unsubscribe(`/resp/${this.data.deviceInfo.localName}`); // 取消MQTT订阅
     }
   },
-  onShow: function (options) {},
+  onShow: function (options) { },
   filterChange(event) {
     // tdesign input/search 组件输入事件为 event.detail.value
     this.setValue("macFilter", event.detail.value)
@@ -414,8 +414,8 @@ Page({
       serviceId: "0000FFFF-0000-1000-8000-00805F9B34FB",
       characteristicId: "0000FF01-0000-1000-8000-00805F9B34FB",
       value: data,
-      success: function (res) {},
-      fail: function (res) {}
+      success: function (res) { },
+      fail: function (res) { }
     });
   },
   _startConfig: function () {
@@ -598,18 +598,12 @@ Page({
     console.log('自定义返回触发')
     // 获取当前页面栈实例
     let pages = getCurrentPages();
-    console.log('页面栈长度:', pages.length)
+    console.log('页面栈长度:', pages, pages.length)
     if (pages.length <= 1) {
       // 如果只有一个页面，跳转到首页
       console.log('页面栈只有1个，跳转首页')
       wx.reLaunch({
         url: '/pages/index/index',
-      })
-    } else {
-      // 否则直接返回设备列表页
-      console.log('返回设备列表页')
-      wx.redirectTo({
-        url: '/pages/device-list/device-list',
       })
     }
   }

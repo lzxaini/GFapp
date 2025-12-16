@@ -157,8 +157,16 @@ Page({
   
   // navBar的左侧返回
   handleBack() {
-    wx.redirectTo({
-      url: '/pages/index/index',
-    })
+    console.log('自定义返回触发')
+    // 获取当前页面栈实例
+    let pages = getCurrentPages();
+    console.log('页面栈长度:', pages, pages.length)
+    if (pages.length <= 1) {
+      // 如果只有一个页面，跳转到首页
+      console.log('页面栈只有1个，跳转首页')
+      wx.redirectTo({
+        url: '/pages/index/index',
+      })
+    }
   }
 })
