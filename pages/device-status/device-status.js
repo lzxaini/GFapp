@@ -40,7 +40,7 @@ Page({
     if (mqttClient?.isConnected()) {
       console.log('订阅', `/resp/${this.data.deviceId}`)
       mqttClient.subscribe(`/resp/${this.data.deviceId}`);
-      this.connectDevice()
+      // this.connectDevice()
     } else {
       console.warn('MQTT 未连接或还未初始化');
       showMessage('error', '小程序初始化失败，请稍后再试！', 3000, this);
