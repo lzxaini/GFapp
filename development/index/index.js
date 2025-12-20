@@ -2,9 +2,11 @@ import {
   onMqttReady
 } from '../../utils/mqttReady';
 const app = getApp();
+import Message from 'tdesign-miniprogram/message/index';
 import {
-  showMessage
-} from '../../utils/tools';
+  getDeviceListApi,
+  updateDeviceApi
+} from '../../api/api';
 Page({
 
   /**
@@ -149,12 +151,12 @@ Page({
       }
     });
   },
-  subscribe(deviceId){
+  subscribe(deviceId) {
     wx.navigateTo({
       url: '/development/subscribe/subscribe?deviceId=' + deviceId,
     })
   },
-  
+
   // navBar的左侧返回
   handleBack() {
     console.log('自定义返回触发')
@@ -168,5 +170,75 @@ Page({
         url: '/pages/index/index',
       })
     }
+  },
+  // 扫码解绑
+  handleBind() {
+    let _this = this
+    wx.scanCode({
+      onlyFromCamera: false,
+      success: async (res) => {
+        let params = {
+          pageNum: 1,
+          pageSize: 10,
+          serialNumber: res.result
+        }
+        let device = await getDeviceListApi(params)
+        let deviceInfo = device.data.rows
+        if (deviceInfo.length > 0 && deviceInfo[0].deptId != 0) {
+          wx.showModal({
+            title: '提示',
+            content: '是否确定解除绑定！',
+            complete: (info) => {
+              if (info.cancel) {
+                wx.showToast({
+                  title: '取消操作',
+                })
+              }
+              if (info.confirm) {
+                _this.updateDevice(deviceInfo[0])
+              }
+            }
+          })
+        } else {
+          Message.warning({
+            context: this,
+            offset: [90, 32],
+            duration: 2000,
+            content: `${deviceInfo.length > 0 ? '设备未绑定' : '未查询到设备'}，无需解除绑定！`,
+          });
+        }
+      },
+      fail: () => {
+        wx.showToast({
+          title: '未获取到二维码',
+          icon: 'none'
+        });
+      }
+    });
+  },
+  // 调用接口
+  updateDevice(data) {
+    updateDeviceApi({
+      ...data,
+      deptId: 0,
+      runningState: 0,
+      teamId: 0,
+    }).then(res => {
+      if (res.data) {
+        Message.success({
+          context: this,
+          offset: [90, 32],
+          duration: 2000,
+          content: '解除设备绑定成功！',
+        });
+      } else {
+        Message.error({
+          context: this,
+          offset: [90, 32],
+          duration: 2000,
+          content: '无法解除绑定，请后台解除！',
+        });
+      }
+    })
   }
 })

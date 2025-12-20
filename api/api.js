@@ -467,4 +467,11 @@ export function updateUserApi(data) {
   })
 
 }
-// /gf/serviceRecords/times服务的接口
+// 修改GF设备管理
+export function updateDeviceApi(data) {
+  return request({
+    url: '/gf/device',
+    method: 'put',
+    data
+  })
+}

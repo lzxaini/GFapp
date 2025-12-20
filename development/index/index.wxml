@@ -6,5 +6,7 @@
     <t-grid-item t-class-image="image" text="设备退网" description="扫描进行退网" layout="horizontal" image="/static/icon/gf_logo_w.png" bindtap="scanClick" data-item="end"/>
     <t-grid-item t-class-image="image" text="扫码开机" description="扫描二维码开机" layout="horizontal" image="/static/icon/gf_logo_w.png" bindtap="scanClick" data-item="active"/>
     <t-grid-item t-class-image="image" text="扫码结束" description="扫码结束服务" layout="horizontal" image="/static/icon/gf_logo_w.png" bindtap="scanClick" data-item="use"/>
+    <t-grid-item t-class-image="image" text="扫码解绑" description="扫码接触绑定" layout="horizontal" image="/static/icon/gf_logo_w.png" bindtap="handleBind" data-item="use"/>
   </t-grid>
 </view>
+<t-message id="t-message" />
