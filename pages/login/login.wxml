@@ -3,13 +3,8 @@
     <view class="logo_gf" style="top: {{statusBarHeight}}px">
       <t-image class="logo_gf_img" src="/static/icon/logo_gf.png" />
     </view>
-    <view class="bg_img_box">
+    <view class="bg_img_box" style="top: {{statusBarHeight}}px">
       <t-image class="login_bg_img" src="/static/icon/login.png" />
-    </view>
-    <view class="footer_box">
-      <view class="item">定格时光诠释年龄的秘密</view>
-      <view class="item mr25">FREEZE TIME</view>
-      <view class="item">INTERPRETING THE SECRETS OF AGE</view>
     </view>
   </view>
   <view class="go_page">
@@ -27,7 +22,7 @@
       </view>
     </view>
     <view class="go_index" bindtap="goIndex">
-      <t-icon name="home" size="22" color="#bfbef8"></t-icon>
+      <t-icon name="home" size="24" color="#FF8533a2"></t-icon>
       <view class="text">首页</view>
     </view>
   </view>
