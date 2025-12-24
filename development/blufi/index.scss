@@ -8,10 +8,10 @@
     // padding: 0rpx 40rpx;
     margin-top: 40rpx;
     --td-step-item-line-color: #0000003d;
-    --td-step-item-default-circle-bg: #e7e8ec;
+    --td-step-item-default-circle-bg: #EBE7E6;
     --td-step-item-process-circle-bg: #868afa;
     --td-step-item-finish-circle-bg: #868afa;
-    --td-step-item-finish-circle-color: #e7e8ec;
+    --td-step-item-finish-circle-color: #EBE7E6;
   }
 
   .steps0 {
@@ -57,7 +57,7 @@
     .blufi-note-content {
       margin-left: 80rpx;
       margin-top: 48rpx;
-      --td-loading-color: #888bf4;
+      --td-loading-color: #FF8533;
 
       .font {
         font-family: AlibabaPuHuiTi3;
@@ -191,17 +191,17 @@
         font-family: AlibabaPuHuiTi3;
         font-size: 32rpx;
         font-weight: normal;
-        color: #888bf4;
+        color: #FF8533;
         padding: 20rpx 0;
         border-bottom: 1rpx solid #d8d8d8;
-        --td-loading-color: #888bf4;
+        --td-loading-color: #FF8533;
 
         &.success {
           color: #c5c8cb;
         }
 
         &.pending {
-          color: #888bf4;
+          color: #FF8533;
         }
       }
     }
@@ -244,7 +244,7 @@
     line-height: 112rpx;
     font-weight: bold;
     color: #ffffff;
-    background: linear-gradient(279deg, #888bf4 -1%, #5151c6 100%);
+    background: linear-gradient(279deg, #FF8533 -1%, #F85700 100%);
   }
 
   .reset {
@@ -271,7 +271,7 @@
   line-height: 112rpx;
   font-weight: bold;
   color: #ffffff;
-  background: linear-gradient(279deg, #888bf4 -1%, #5151c6 100%);
+  background: linear-gradient(279deg, #FF8533 -1%, #F85700 100%);
 }
 
 .empty {

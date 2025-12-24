@@ -2,10 +2,10 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background-color: #f5f7fb;
+  background-color: #FAF8F8;
 
   .navBar {
-    --td-navbar-bg-color: #888bf4;
+    --td-navbar-bg-color: #FF8533;
     --td-navbar-color: #fff;
     --td-navbar-capsule-border-color: #e3e6ea !important;
   }
@@ -13,7 +13,7 @@
   .nav_bg {
     width: 100%;
     height: 122rpx;
-    background-color: #888bf4;
+    background-color: #FF8533;
   }
 
   .scroll-content {
@@ -25,7 +25,7 @@
     width: calc(100% - 30rpx);
     margin: 0 15rpx;
     height: 1rpx;
-    background-color: #e7e8fd;
+    background-color: #FFEADF;
     transform: scaleY(0.5);
   }
 
@@ -85,7 +85,7 @@
 
       .input_item {
         --td-input-bg-color: transparent;
-        --td-input-border-color: #888BF4;
+        --td-input-border-color: #FF8533;
         padding-top: 20rpx;
         margin-top: 30rpx;
         --td-input-border-left-space: 70rpx;
@@ -100,7 +100,7 @@
           color: #fff;
           font-family: AlibabaPuHuiTi3;
           font-size: 14rpx;
-          background: linear-gradient(110deg, #BEC0F9 -1%, #888BF4 51%, #5151C6 129%), #000000;
+          background: linear-gradient(110deg, #BEC0F9 -1%, #FF8533 51%, #F85700 129%), #000000;
         }
       }
     }
@@ -122,7 +122,7 @@
     }
 
     .cumulative {
-      color: #888bf4 !important;
+      color: #FF8533 !important;
     }
   }
 }
@@ -133,7 +133,7 @@
   overflow: hidden;
   border-radius: 16rpx;
   background-color: #ffffff;
-  border: 1rpx solid #d1d2f9;
+  border: 1rpx solid #FCD5C4;
 
   .table-header {
     font-weight: bold;
@@ -212,7 +212,7 @@
       font-family: AlibabaPuHuiTi3;
       font-size: 24rpx;
       font-weight: 500;
-      color: #888bf4;
+      color: #FF8533;
     }
 
     .date {

@@ -9,7 +9,7 @@
 		position: relative;
 		width: 100%;
 		height: 552rpx;
-		background: linear-gradient(180deg, #888bf4 29%, #f5f7fb 100%);
+		background: linear-gradient(180deg, #FF8533 29%, #FAF8F8 100%);
 		.bg_top {
 			position: absolute;
 			width: 503rpx;
@@ -31,7 +31,7 @@
 			justify-content: center;
 			margin-top: 32rpx;
 			.gf_logo {
-				width: 26rpx;
+				width: 38rpx;
 				height: 30rpx;
 			}
 			.slogan {
@@ -135,8 +135,8 @@
   }
 }
 .action-btn {
-	--td-button-primary-bg-color: #888bf4;
-	--td-button-primary-border-color: #888bf4;
+	--td-button-primary-bg-color: #FF8533;
+	--td-button-primary-border-color: #FF8533;
 	--td-button-primary-active-bg-color: #888cf4a2;
 	--td-button-primary-active-border-color: #888cf4a2;
 	margin-bottom: 30rpx;

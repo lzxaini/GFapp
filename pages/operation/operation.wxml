@@ -38,23 +38,23 @@
       <view class="data_title">数据查询</view>
       <view class="date_interval" bindtap="handleCalendar">
         <view class="interval_item">
-          <t-icon name="calendar" size="16" color="#888BF4" />
+          <t-icon name="calendar" size="16" color="#FF8533" />
           <view class="interval_info">{{calendarValue[0] || '开始日期'}}</view>
         </view>
         <view class="in">至</view>
         <view class="interval_item">
-          <t-icon name="calendar" size="16" color="#888BF4" />
+          <t-icon name="calendar" size="16" color="#FF8533" />
           <view class="interval_info">{{calendarValue[1] || '结束日期'}}</view>
         </view>
       </view>
       <view class="data_all">
         <view class="all_item all" bindtap="showCascader">
           <view class="all_text">全部</view>
-          <t-icon name="chevron-down-s" size="16" color="#888BF4" />
+          <t-icon name="chevron-down-s" size="16" color="#FF8533" />
         </view>
         <view class="all_item">
           <t-input value="{{searchValue}}" bindchange="searchInput" bindblur="statrtSearch" t-class="item-input" t-class-input="input_ftsize" placeholder="搜索门店名称/团队编号" borderless>
-            <t-icon slot="prefix-icon" name="search" size="18" color="#888BF4" />
+            <t-icon slot="prefix-icon" name="search" size="18" color="#FF8533" />
           </t-input>
         </view>
       </view>

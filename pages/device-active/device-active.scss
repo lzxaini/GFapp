@@ -69,7 +69,7 @@
 			font-family: AlibabaPuHuiTi3;
 			font-size: 32rpx;
 			font-weight: bold;
-			color: #888bf4;
+			color: #FF8533;
 			text-align: center;
 		}
   }
@@ -86,7 +86,7 @@
       border-radius: 24rpx;
       padding: 32rpx;
       margin-bottom: 24rpx;
-      box-shadow: 0 4rpx 20rpx rgba(136, 139, 244, 0.08);
+      box-shadow: 0 4rpx 20rpx rgba(255, 145, 89, 0.08);
       position: relative;
       overflow: hidden;
 
@@ -97,7 +97,7 @@
         top: 0;
         width: 8rpx;
         height: 100%;
-        background: linear-gradient(180deg, #888bf4 0%, #b8b9f7 100%);
+        background: linear-gradient(180deg, #FF8533 0%, #FCD5C4 100%);
       }
 
       text:first-child {
@@ -157,12 +157,12 @@
 }
 
 .skip-btn {
-  background-color: #888bf438 !important;
-  color: #888bf4 !important;
+  background-color: #FF853338 !important;
+  color: #FF8533 !important;
 }
 .action-btn {
-  --td-button-primary-bg-color: #888bf4;
-  --td-button-primary-border-color: #888bf4;
-  --td-button-primary-active-bg-color: #888bf4a3;
-  --td-button-primary-active-border-color: #888bf4a3;
+  --td-button-primary-bg-color: #FF8533;
+  --td-button-primary-border-color: #FF8533;
+  --td-button-primary-active-bg-color: #FF8533a3;
+  --td-button-primary-active-border-color: #FF8533a3;
 }

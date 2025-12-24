@@ -2,10 +2,10 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background-color: #f5f7fb;
+  background-color: #FAF8F8;
 
   .navBar {
-    --td-navbar-bg-color: #888bf4;
+    --td-navbar-bg-color: #FF8533;
     --td-navbar-color: #fff;
     --td-navbar-capsule-border-color: #e3e6ea !important;
   }
@@ -13,7 +13,7 @@
   .nav_bg {
     width: 100%;
     height: 122rpx;
-    background-color: #888bf4;
+    background-color: #FF8533;
   }
 
   .scroll-content {
@@ -55,7 +55,7 @@
         font-size: 50rpx;
         font-weight: 300;
         text-align: center;
-        background: linear-gradient(302deg, #888bf4 0%, #5151c6 100%);
+        background: linear-gradient(302deg, #FF8533 0%, #F85700 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -65,7 +65,7 @@
         font-family: AlibabaPuHuiTi3;
         font-size: 20rpx;
         text-align: center;
-        background: linear-gradient(283deg, #888bf4 -1%, #5151c6 100%);
+        background: linear-gradient(283deg, #FF8533 -1%, #F85700 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -85,7 +85,7 @@
       font-family: AlibabaPuHuiTi3;
       font-size: 32rpx;
       font-weight: 300;
-      color: #888bf4;
+      color: #FF8533;
       z-index: 0;
     }
 
@@ -101,7 +101,7 @@
         padding: 0 30rpx;
         height: 72rpx;
         border-radius: 12rpx;
-        background-color: #f5f7fb;
+        background-color: #FAF8F8;
 
         .interval_info {
           font-size: 23rpx;
@@ -144,7 +144,7 @@
       .all_item {
         height: 72rpx;
         border-radius: 12rpx;
-        background-color: #f5f7fb;
+        background-color: #FAF8F8;
 
         .item-input {
           height: 100%;
@@ -173,22 +173,22 @@
     .tabs_box {
       --td-tab-nav-bg-color: rgba(255, 255, 255, 0.3);
       --td-tab-item-tag-bg: transparent;
-      --td-tab-item-tag-active-bg: #888bf4;
+      --td-tab-item-tag-active-bg: #FF8533;
       --td-tab-item-active-color: #ffffff;
       --td-tab-item-height: 80rpx;
-      border: 1rpx solid #ecedfd;
+      border: 1rpx solid #FDF2ED;
       margin-bottom: 30rpx;
     }
 
     .item_style {
-      --td-tab-item-color: #888bf4;
+      --td-tab-item-color: #FF8533;
       font-family: AlibabaPuHuiTi3;
       font-size: 28rpx;
       font-weight: bold;
     }
 
     .active_style {
-      background-color: #888bf4;
+      background-color: #FF8533;
       font-family: AlibabaPuHuiTi3;
       font-size: 32rpx;
       font-weight: 300;
@@ -201,7 +201,7 @@
       .list_item_info {
         font-family: AlibabaPuHuiTi3;
         font-size: 24rpx;
-        background: linear-gradient(281deg, #888bf4 0%, #5151c6 100%);
+        background: linear-gradient(281deg, #FF8533 0%, #F85700 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -215,7 +215,7 @@
   overflow: hidden;
   border-radius: 16rpx;
   background-color: #ffffff;
-  border: 1rpx solid #d1d2f9;
+  border: 1rpx solid #FCD5C4;
 
   .table-header {
     font-weight: bold;
@@ -297,7 +297,7 @@
       font-family: AlibabaPuHuiTi3;
       font-size: 24rpx;
       font-weight: 500;
-      color: #888bf4;
+      color: #FF8533;
     }
 
     .date {
@@ -324,7 +324,7 @@
     padding: 30rpx;
     border-radius: 20rpx;
     box-sizing: border-box;
-    border: 1rpx solid #d1d2f9;
+    border: 1rpx solid #FCD5C4;
     background-color: #ffffff;
     margin-bottom: 32rpx;
 

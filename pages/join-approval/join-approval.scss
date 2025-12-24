@@ -16,7 +16,7 @@ page {
   padding: 0 32rpx;
   box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
   --td-tab-nav-bg-color: rgba(255, 255, 255, 0.3);
-  --td-tab-item-tag-active-bg: #888bf4;
+  --td-tab-item-tag-active-bg: #FF8533;
   --td-tab-item-color: #1c2023;
   --td-tab-item-active-color: #ffffff;
 }
@@ -52,8 +52,8 @@ page {
 .action-buttons {
   display: flex;
   gap: 16rpx;
-  --td-button-primary-bg-color: #888bf4;
-  --td-button-primary-border-color: #888bf4;
+  --td-button-primary-bg-color: #FF8533;
+  --td-button-primary-border-color: #FF8533;
 }
 
 /* 空状态 */

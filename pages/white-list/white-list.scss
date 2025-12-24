@@ -27,7 +27,7 @@
 				position: relative;
 				width: 196rpx;
 				height: 100%;
-				background-color: rgba(136, 139, 244, 0.55);
+				background-color: #FF9159;
 				display: flex;
 				align-content: center;
 				flex-wrap: wrap;
@@ -126,7 +126,7 @@
 		height: 112rpx;
 		margin: 0 32rpx;
 		border-radius: 80rpx;
-		background: linear-gradient(279deg, #888bf4 -1%, #5151c6 100%);
+		background: linear-gradient(279deg, #FF8533 -1%, #F85700 100%);
 		font-family: AlibabaPuHuiTi3;
 		font-size: 32rpx;
 		font-weight: bold;
@@ -155,7 +155,7 @@
 			font-family: AlibabaPuHuiTi3;
 			font-size: 24rpx;
 			font-weight: 400;
-			color: #888bf4;
+			color: #FF8533;
 		}
 	}
 	.qr_image_box {
@@ -178,7 +178,7 @@
 				width: 88rpx;
 				height: 88rpx;
 				background-color: #eff4fd;
-				border: 1rpx solid #888bf4;
+				border: 1rpx solid #FF8533;
 				border-radius: 20rpx;
 				font-size: 24rpx;
 				font-weight: normal;
@@ -189,7 +189,7 @@
 			}
 			.item_active {
 				color: #ffffff;
-				background-color: #d1d2f9;
+				background-color: #FCD5C4;
 			}
 		}
 		.freeTimes {
@@ -208,7 +208,7 @@
 			.freeTimes_input {
 				padding: 16rpx;
 				border-radius: 20rpx;
-				background-color: #ecedfd;
+				background-color: #FDF2ED;
 				--td-input-bg-color: transparent !important;
 			}
 			.unit {
@@ -258,5 +258,5 @@
 	line-height: 112rpx;
 	text-align: center;
 	color: #ffffff;
-	background: linear-gradient(279deg, #888bf4 -1%, #5151c6 100%);
+	background: linear-gradient(279deg, #FF8533 -1%, #F85700 100%);
 }

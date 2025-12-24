@@ -4,7 +4,7 @@
 	flex-direction: column;
 	width: 100vw;
 	height: 100vh;
-  background-color: #f5f7fb;
+  background-color: #FAF8F8;
   .scroll-view{
     flex: 1;
     min-height: 0;
@@ -25,8 +25,8 @@
 		.join_btn {
 			font-size: 20rpx;
 			color: #ffffff;
-			--td-button-primary-bg-color: #888bf4;
-			--td-button-primary-border-color: #888bf4;
+			--td-button-primary-bg-color: #FF8533;
+			--td-button-primary-border-color: #FF8533;
 			--td-button-primary-active-bg-color: #888cf4a2;
 			--td-button-primary-active-border-color: #888cf4a2;
 		}

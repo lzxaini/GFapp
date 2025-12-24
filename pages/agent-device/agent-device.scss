@@ -4,9 +4,9 @@
 	flex: 1;
 	display: flex;
 	flex-direction: column;
-	background-color: #f5f7fb;
+	background-color: #FAF8F8;
 	.navBar {
-		--td-navbar-bg-color: #888bf4;
+		--td-navbar-bg-color: #FF8533;
 		--td-navbar-color: #fff;
 		--td-navbar-capsule-border-color: #e3e6ea !important;
 	}
@@ -14,7 +14,7 @@
 		width: 100%;
 		height: 122rpx;
 		margin-top: -2rpx;
-		background-color: #888bf4;
+		background-color: #FF8533;
 	}
 	.device_nav {
 		margin-top: -90rpx;
@@ -24,14 +24,14 @@
 			width: 140rpx;
 			height: 50rpx;
 			border-radius: 25rpx 0 0 25rpx;
-			background-color: #e7e8fd;
+			background-color: #FFEADF;
 			font-family: AlibabaPuHuiTi3;
 			font-size: 24rpx;
 			font-weight: 300;
 			line-height: 50rpx;
 			text-align: center;
 			letter-spacing: 0px;
-			color: #888bf4;
+			color: #FF8533;
 		}
 	}
 
@@ -40,27 +40,27 @@
 		height: 80rpx;
 		margin: 32rpx 27rpx 20rpx 27rpx;
 		box-sizing: border-box;
-		border: 1px solid #ecedfd;
+		border: 1px solid #FDF2ED;
 		background-color: #ffffff;
 
 		.tabs_box {
 			--td-tab-nav-bg-color: rgba(255, 255, 255, 0.3);
 			--td-tab-item-tag-bg: transparent;
-			--td-tab-item-tag-active-bg: #888bf4;
+			--td-tab-item-tag-active-bg: #FF8533;
 			--td-tab-item-color: #1c2023;
 			--td-tab-item-active-color: #ffffff;
 			--td-tab-item-height: 80rpx;
-			// border: 1rpx solid #ecedfd;
+			// border: 1rpx solid #FDF2ED;
 			margin-bottom: 30rpx;
 		}
 		.item_style {
 			font-family: AlibabaPuHuiTi3;
 			font-size: 28rpx;
 			font-weight: bold;
-      --td-tab-item-color: #888bf4;
+      --td-tab-item-color: #FF8533;
 		}
 		.active_style {
-			background-color: #888bf4;
+			background-color: #FF8533;
 			font-family: AlibabaPuHuiTi3;
 			font-size: 32rpx;
 			font-weight: 300;
@@ -71,7 +71,7 @@
 		width: calc(100% - 30rpx);
 		margin: 0 15rpx;
 		height: 1rpx;
-		background-color: #e7e8fd;
+		background-color: #FFEADF;
 		transform: scaleY(0.5);
 	}
 	.scroll-view {
@@ -84,7 +84,7 @@
 				font-family: AlibabaPuHuiTi3;
 				font-size: 24rpx;
 				font-weight: normal;
-				background: linear-gradient(281deg, #888bf4 0%, #5151c6 100%);
+				background: linear-gradient(281deg, #FF8533 0%, #F85700 100%);
 				-webkit-background-clip: text;
 				-webkit-text-fill-color: transparent;
 				background-clip: text;

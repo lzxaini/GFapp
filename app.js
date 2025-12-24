@@ -217,7 +217,7 @@ App({
       confirmText: "确认",
       showCancel: false,
       cancelText: "取消",
-      confirmColor: "#888bf4",
+      confirmColor: "#FF8533",
       success: (res) => {
         if (res.confirm) {
           wx.openSetting({

@@ -1,9 +1,9 @@
 .work-team_container {
 	width: 100vw;
 	height: 100vh;
-	background-color: #f5f7fb;
+	background-color: #FAF8F8;
 	.navBar {
-		--td-navbar-bg-color: #888bf4;
+		--td-navbar-bg-color: #FF8533;
 		--td-navbar-color: #fff;
 		--td-navbar-capsule-border-color: #e3e6ea !important;
 	}
@@ -11,7 +11,7 @@
 		width: 100%;
 		height: 122rpx;
 		margin-top: -2rpx;
-		background-color: #888bf4;
+		background-color: #FF8533;
 	}
 	.team_nav {
 		margin-top: -90rpx;
@@ -21,14 +21,14 @@
 			width: 140rpx;
 			height: 50rpx;
 			border-radius: 25rpx 0 0 25rpx;
-			background-color: #e7e8fd;
+			background-color: #FFEADF;
 			font-family: AlibabaPuHuiTi3;
 			font-size: 24rpx;
 			font-weight: 300;
 			line-height: 50rpx;
 			text-align: center;
 			letter-spacing: 0px;
-			color: #888bf4;
+			color: #FF8533;
 		}
 	}
 	.team_menu {
@@ -80,7 +80,7 @@
 				font-size: 18rpx;
 				font-weight: normal;
 				color: #ffffff;
-				// background-color: #5151c6;
+				// background-color: #F85700;
 			}
 		}
 	}
@@ -96,7 +96,7 @@
 			font-family: AlibabaPuHuiTi3;
 			font-size: 24rpx;
 			font-weight: 400;
-			color: #888bf4;
+			color: #FF8533;
 		}
 	}
 	.qr_image_box {
@@ -130,6 +130,6 @@
 		line-height: 112rpx;
 		text-align: center;
 		color: #ffffff;
-		background: linear-gradient(279deg, #888bf4 -1%, #5151c6 100%);
+		background: linear-gradient(279deg, #FF8533 -1%, #F85700 100%);
 	}
 }
