@@ -11,7 +11,7 @@
       </view>
       <view class="right_box">
         <view class="user_info">
-          <image class="avatar" src="{{ ossUrl + qrCodeUserInfo.avatar }}" />
+          <image class="avatar" src="{{ ossUrl + item.avatar }}" />
           <text class="text">{{item.userName}}</text>
         </view>
         <view class="location">地点：{{item.deptName}}</view>
