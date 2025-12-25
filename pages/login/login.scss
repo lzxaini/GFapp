@@ -14,15 +14,15 @@
 			left: 50%;
 			transform: translate(-50%, 0%);
 			.logo_gf_img {
-				width: 232rpx;
-				height: 214rpx;
+				width: 162rpx;
+				height: 150rpx;
 			}
 		}
 		.bg_img_box {
       position: absolute;
       left: 50%;
-			width: 294px;
-      height: 511px;
+			width: 250px;
+      height: 434px;
       transform: translate(-50%, 0);
 			margin-top: 232rpx;
 			.login_bg_img {
@@ -36,6 +36,7 @@
 		position: fixed;
 		bottom: env(safe-area-inset-bottom);
     margin: 0 56rpx;
+    margin-bottom: 30rpx;
 		.login_btn {
 			width: 100%;
 			height: 112rpx;
@@ -52,7 +53,7 @@
     }
     .go_index{
       text-align: center;
-      margin-top: 10rpx;
+      margin-top: 30rpx;
       .text{
         font-family: AlibabaPuHuiTi3;
         margin-top: 4rpx;

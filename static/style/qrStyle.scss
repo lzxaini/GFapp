@@ -11,8 +11,10 @@
   position: relative;
 }
 .institution_box {
+  display: flex;
+  align-items: center;
   border-radius: 10rpx;
-  background: #f8f8fe;
+  background-color: #FDF2ED;
   padding: 7rpx 20rpx;
   margin-top: 26rpx;
   .institution {

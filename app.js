@@ -22,7 +22,7 @@ App({
     devFlag: false, // 开发环境标志
     devUrl: '',
     appName: {
-      name: '玑肤芮-JFR',
+      name: '玑肤芮',
       slogan: '年轻计划，轻松开肌',
       appVersion: '0.0.21_25121613',
     },
