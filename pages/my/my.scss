@@ -1,1 +1,261 @@
-/* pages/my/my.wxss */
+.my_body {
+  width: 100vw;
+  height: calc(100vh - (env(safe-area-inset-bottom) + 48px));
+  padding-bottom: 48px;
+  background-color: #f5f7fb;
+  background: linear-gradient(180deg, #888bf4 29%, #f5f7fb 40%, #f5f7fb 100%);
+
+  .navBar {
+    --td-navbar-bg-color: #888bf4;
+    --td-navbar-color: #fff;
+    --td-navbar-capsule-border-color: #e3e6ea !important;
+  }
+
+  .user_img {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+
+    .avatar {
+      width: 150rpx;
+      height: 150rpx;
+      border-radius: 50%;
+      border: 6rpx solid #FFFFFF;
+    }
+
+    .tag_box {
+      position: absolute;
+      bottom: -10rpx;
+      width: 140rpx;
+      height: 42rpx;
+      margin-top: 8rpx;
+
+      .tag_icon {
+        width: 100%;
+        height: 100%;
+      }
+
+      .tag_text {
+        position: absolute;
+        top: 50%;
+        left: 33%;
+        transform: translate(0%, -51%);
+        font-family: AlibabaPuHuiTi3;
+        font-size: 18rpx;
+        font-weight: normal;
+        color: #ffffff;
+      }
+    }
+
+    .user_name {
+      position: absolute;
+      bottom: -50rpx;
+      font-size: 33rpx;
+      font-weight: normal;
+    }
+  }
+
+  .nav_bg {
+    position: relative;
+    z-index: 0;
+    display: flex;
+    align-items: flex-end;
+    width: calc(100% - 40rpx);
+    height: 352rpx;
+    margin: 0 20rpx;
+    margin-top: -75rpx;
+
+    &::before {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      border-radius: 20px;
+      border: 1rpx solid #888bf4;
+      background: linear-gradient(180deg, rgba(136, 139, 244, 0.24) 0%, rgba(136, 139, 244, 0.12) 0%, rgba(136, 139, 244, 0.04) 0%, rgba(255, 255, 255, 0.24) 50%, rgba(255, 255, 255, 0.4) 79%);
+      box-sizing: border-box;
+      backdrop-filter: blur(10px);
+    }
+
+    .menu_grid {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      width: 100%;
+      padding: 0 40rpx;
+      margin-bottom: 40rpx;
+
+      .text {
+        font-family: AlibabaPuHuiTi3;
+        font-size: 24rpx;
+        color: #1c2023;
+      }
+
+      .item {
+        width: 100rpx;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+
+        .menu_grid_icon {
+          width: 80rpx;
+          height: 80rpx;
+        }
+      }
+    }
+  }
+
+  .nav_title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(100% - 60rpx);
+    margin: 30rpx 30rpx 20rpx 30rpx;
+
+    .title {
+      font-family: AlibabaPuHuiTi3;
+      font-size: 28rpx;
+      color: #888BF4;
+      font-weight: normal;
+    }
+
+    .number {
+      font-size: 24rpx;
+      color: #606972;
+    }
+  }
+
+  .dept_title {
+    white-space: nowrap;
+    font-size: 28rpx !important;
+  }
+
+  .dept_center {
+    flex: inherit !important
+  }
+
+  .dept_info {
+    --td-cell-note-font-size: 28rpx;
+    // --td-cell-vertical-padding: 20rpx;
+  }
+
+  .join_dept {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    height: 420rpx;
+    margin: 0 30rpx;
+    border-radius: 20rpx;
+    background-color: #FFFFFF;
+
+    .bg_img {
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, 0);
+      width: 492rpx;
+      height: 100%;
+    }
+    .tips{
+      width: 100%;
+      text-align: center;
+      font-family: AlibabaPuHuiTi3;
+      font-size: 28rpx;
+      font-weight: normal;
+      text-align: center;
+      color: #737B80;
+      margin-bottom: 20rpx;
+    }
+    .join_dept_btn {
+      width: 342rpx;
+      height: 64rpx;
+      box-sizing: border-box;
+      font-family: AlibabaPuHuiTi3;
+      font-size: 32rpx;
+      line-height: 64rpx;
+      font-weight: bold;
+      color: #FFFFFF;
+      background-color: transparent;
+      --td-button-border-radius: 80rpx;
+      --td-button-default-border-color: transparent;
+      background: linear-gradient(280deg, #888BF4 0%, #5151C6 100%);
+    }
+  }
+
+  .member_box {
+    display: flex;
+    width: calc(100% - 60rpx - 30rpx);
+    height: 180rpx;
+    margin: 0 30rpx;
+    padding-left: 30rpx;
+    border-radius: 20rpx;
+    background-color: #FFFFFF;
+
+    .tab_text {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 326rpx;
+      margin: 30rpx 0;
+      background-color: #F5F7FB;
+      border-radius: 20rpx;
+
+      &:not(:first-child) {
+        margin-left: 24rpx;
+      }
+
+      .member_user_img {
+        width: 80rpx;
+        height: 80rpx;
+        border-radius: 50%;
+      }
+
+      .member_right {
+        margin-left: 20rpx;
+      }
+
+      .member_name {
+        font-family: AlibabaPuHuiTi3;
+        font-size: 30rpx;
+        font-weight: 250;
+        color: #606972;
+      }
+
+      .member_phone {
+        font-family: AlibabaPuHuiTi3;
+        font-size: 24rpx;
+        color: #606972;
+      }
+    }
+  }
+}
+
+.action-btn {
+  --td-button-primary-bg-color: #888bf4;
+  --td-button-primary-border-color: #888bf4;
+  --td-button-primary-active-bg-color: #888cf4a2;
+  --td-button-primary-active-border-color: #888cf4a2;
+  margin-bottom: 30rpx;
+}
+
+.cancel-btn {
+  --td-button-primary-bg-color: #999999;
+  --td-button-primary-border-color: #999999;
+  --td-button-primary-active-bg-color: #f7f7f7;
+  --td-button-primary-active-border-color: #f7f7f7;
+  margin-bottom: 30rpx;
+}
+
+.textOverflow {
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  text-overflow: ellipsis !important;
+  // text-align: left;
+  display: block !important;
+  max-width: 100%;
+  flex: inherit !important
+}

@@ -1,2 +1,80 @@
-<!--pages/my/my.wxml-->
-<text>pages/my/my.wxml</text>
+<view class="my_body">
+  <t-navbar t-class="navBar" left-arrow="{{false}}" title="个人中心" />
+  <view class="user_img">
+    <image class="avatar" src="{{userInfo.avatar ? ossUrl + userInfo.avatar : '../../static/icon/gf_logo_w.png'}}" bindtap="goLoginFlag" />
+    <view class="tag_box" bindtap="goLoginFlag">
+      <image class="tag_icon" src="../../static/icon/admin.png" />
+      <text class="tag_text">{{userInfo.roles[0].roleName || '暂无角色'}}</text>
+    </view>
+    <view class="user_name">{{userInfo.userName || '未登录'}}</view>
+  </view>
+  <view class="nav_bg">
+    <!-- 功能菜单 -->
+    <view column="4" class="menu_grid">
+      <view class="item" bindtap="addDept" wx:if="{{userInfo.dept.deptType == 1}}">
+        <image class="menu_grid_icon" src="../../static/icon/my_menu_1.png" />
+        <view class="text">新建团队</view>
+      </view>
+      <view class="item" bindtap="goMyDept" wx:else>
+        <image class="menu_grid_icon" src="../../static/icon/my_menu_1.png" />
+        <view class="text">我的团队</view>
+      </view>
+      <view class="item" bindtap="goRechargeHistory">
+        <image class="menu_grid_icon" src="../../static/icon/my_menu_2.png" />
+        <view class="text">支付记录</view>
+      </view>
+      <view class="item" bindtap="goServiceHistory">
+        <image class="menu_grid_icon" src="../../static/icon/my_menu_3.png" />
+        <view class="text">服务记录</view>
+      </view>
+      <view class="item" bindtap="goSystem">
+        <image class="menu_grid_icon" src="../../static/icon/my_menu_4.png" />
+        <view class="text">设置</view>
+      </view>
+    </view>
+  </view>
+  <!-- 团队 -->
+  <view class="nav_title">
+    <view class="title">所属机构</view>
+    <t-icon name="qrcode" size="38rpx" color="#888BF4" />
+  </view>
+  <t-cell-group t-class="dept_info" theme="card" wx:if="{{userInfo.dept}}">
+    <t-cell t-class-center="dept_center" t-class-title="dept_title" t-class-note="textOverflow" title="机构名称" note="{{userInfo.dept.deptName}}" hover />
+    <t-cell t-class-center="dept_center" t-class-title="dept_title" t-class-note="textOverflow" title="机构地址" note="{{userInfo.dept ? userInfo.dept.address || '-' : '-'}}-{{userInfo.dept ? userInfo.dept.addressDetail || '' : ''}}" hover />
+    <t-cell t-class-center="dept_center" t-class-title="dept_title" t-class-note="textOverflow" title="开通时间" note="{{userInfo.dept.createTime || '--'}}" hover />
+    <t-cell wx:if="{{userInfo.dept.deptType == 1}}" t-class-center="dept_center" t-class-title="dept_title" t-class-note="textOverflow" title="团队管理" note="" hover />
+  </t-cell-group>
+
+  <view class="join_dept" wx:else>
+    <image class="bg_img" src="../../static/icon/my_device_bg.png" />
+    <view class="tips">{{userInfo ? '暂无归属团队' : '暂未登录'}}</view>
+    <t-button class="join_dept_btn" wx:if="{{userInfo}}">
+      加入团队
+    </t-button>
+    <t-button class="join_dept_btn" wx:else bindtap="goLoginFlag">
+      立即登录
+    </t-button>
+  </view>
+
+  <view class="nav_title">
+    <view class="title">团队成员</view>
+    <view class="number" wx:if="{{userInfo.dept}}">团队编号：{{userInfo.dept.deptCode}}</view>
+  </view>
+
+  <scroll-view class="member_box" style="top: calc({{statusBarHeight}}px + 148rpx)" enable-flex="{{true}}" scroll-x enhanced="{{true}}" show-scrollbar="{{false}}" refresher-enabled="{{false}}" refresher-default-style="none">
+    <view wx:for="{{20}}" class="tab_text global-text-ellipsis active_tab">
+      <image class="member_user_img" src="../../static/icon/gf_logo_w.png" />
+      <view class="member_right">
+        <view class="member_name">名字哈哈哈</view>
+        <view class="member_phone">13366668888</view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+<t-dialog visible="{{isLogin}}" title="温馨提示" content="您尚未登录，请先登录！">
+  <t-button slot="confirm-btn" class="action-btn" theme="primary" bindtap="goLogin">去登录</t-button>
+  <t-button slot="cancel-btn" class="cancel-btn" theme="primary" bindtap="closeIsLoginDialog">
+    取消
+  </t-button>
+</t-dialog>
+<t-message id="t-message" />
