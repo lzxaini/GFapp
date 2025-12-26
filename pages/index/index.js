@@ -23,43 +23,48 @@ Page({
     userInfo: app.globalData.userInfo,
     hasApprovalPermission: false, // 是否有审批权限
     cardList: [{
-      title: '团队管理',
-      icon: 'my_1.png',
-      url: '/pages/team-list/team-list'
-    }, {
-      title: '设备管理',
-      icon: 'my_2.png',
-      url: '/pages/device-list/device-list'
-    }, {
-      title: '运营管理',
-      icon: 'my_3.png',
-      url: '/pages/operation/operation'
-    }, {
-      title: '能量充值',
-      icon: 'my_6.png',
-      url: '/pages/recharge/recharge'
-    }, {
-      title: '使用指南',
-      icon: 'my_4.png',
-      url: '/pages/usage-guide/usage-guide'
-    },
-    // {
-    //   title: '加入审批',
-    //   icon: 'my_7.png',
-    //   url: '/pages/join-approval/join-approval'
-    // }, 
-    {
-      title: '设置',
-      icon: 'my_5.png',
-      url: '/pages/my-edit/my-edit'
-    }],
+        title: '团队管理',
+        icon: 'my_1.png',
+        url: '/pages/team-list/team-list'
+      }, {
+        title: '设备管理',
+        icon: 'my_2.png',
+        url: '/pages/device-list/device-list'
+      }, {
+        title: '运营管理',
+        icon: 'my_3.png',
+        url: '/pages/operation/operation'
+      }, {
+        title: '能量充值',
+        icon: 'my_6.png',
+        url: '/pages/recharge/recharge'
+      }, {
+        title: '使用指南',
+        icon: 'my_4.png',
+        url: '/pages/usage-guide/usage-guide'
+      },
+      // {
+      //   title: '加入审批',
+      //   icon: 'my_7.png',
+      //   url: '/pages/join-approval/join-approval'
+      // }, 
+      {
+        title: '设置',
+        icon: 'my_5.png',
+        url: '/pages/my-edit/my-edit'
+      }
+    ],
     // title + deptType 映射更高权限的页面
     adminRouteMap: {
       '团队管理': {
-        1: '/pages/admin-team/admin-team'
+        1: '/pages/admin-team/admin-team',
+        2: '/pages/agent-team-members/agent-team-members',
+        3: '/pages/agent-team-list/agent-team-list',
       },
       '设备管理': {
-        1: '/pages/agent-device-list/agent-device-list'
+        1: '/pages/agent-device-list/agent-device-list',
+        2: '/pages/agent-device/agent-device',
+        3: '/pages/store-device/store-device'
       }
     },
     isLogin: false
@@ -87,7 +92,7 @@ Page({
       })
     }
   },
-  
+
   // 检查是否有审批权限
   checkApprovalPermission(userInfo) {
     if (!userInfo || !userInfo.roles || userInfo.roles.length === 0) {
@@ -97,7 +102,7 @@ Page({
     const approvalRoles = ['develop', 'customerService', 'admin', 'admin01', 'founder'];
     return approvalRoles.includes(roleKey);
   },
-  
+
   /**
    * 用户点击右上角分享
    */
@@ -124,7 +129,7 @@ Page({
           });
         }
       },
-      fail: () => { }
+      fail: () => {}
     });
   },
   // 扫码先掉接口确定
@@ -287,9 +292,14 @@ Page({
 
     const deptType = dept?.deptType;
     const adminMap = this.data.adminRouteMap[title];
-    const finalUrl = adminMap?.[deptType] || url;
+    let finalUrl = adminMap?.[deptType] || url
+
+    if (deptType == 2 || deptType == 3) {
+      finalUrl = adminMap?.[deptType] ? `${adminMap?.[deptType]}?deptInfo=${JSON.stringify(dept)}` : url
+    }
 
     if (finalUrl) {
+      console.log('finalUrl', adminMap, finalUrl)
       wx.navigateTo({
         url: finalUrl
       });
