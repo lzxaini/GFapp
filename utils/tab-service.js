@@ -1,10 +1,9 @@
-// tabBar的data
 let tabData = {
   tabIndex: 0, //底部按钮高亮下标
   tabBar: {
     custom: true,
     color: "#5F5F5F",
-    selectedColor: "#07c160",
+    selectedColor: "#888BF4",
     backgroundColor: "#F7F7F7",
     list: []
   }
@@ -16,100 +15,100 @@ const updateRole = (that, type, dept) => {
   if (type === '1') {
     tabData.tabBar.list = [{
         "pagePath": "pages/agent-device-list/agent-device-list?deptInfo=" + dept,
-        "iconPath": "../static/icon/tabBar/my_menu_1.png",
-        "selectedIconPath": "../static/icon/tabBar/my_menu_1.png",
+        "iconPath": "../static/icon/tabBar/device.png",
+        "selectedIconPath": "../static/icon/tabBar/device_active.png",
         "text": "首页"
       }, {
         "pagePath": "pages/operation/operation",
-        "iconPath": "../static/icon/tabBar/my_menu_1.png",
-        "selectedIconPath": "../static/icon/tabBar/my_menu_1.png",
+        "iconPath": "../static/icon/tabBar/operation.png",
+        "selectedIconPath": "../static/icon/tabBar/operation_active.png",
         "text": "运营"
       },
       {
         "pagePath": "pages/message/message",
-        "iconPath": "../static/icon/tabBar/my_menu_1.png",
-        "selectedIconPath": "../static/icon/tabBar/my_menu_1.png",
+        "iconPath": "../static/icon/tabBar/message.png",
+        "selectedIconPath": "../static/icon/tabBar/message_active.png",
         "text": "消息"
       },
       {
         "pagePath": "pages/my/my",
-        "iconPath": "../static/icon/tabBar/my_menu_1.png",
-        "selectedIconPath": "../static/icon/tabBar/my_menu_1.png",
+        "iconPath": "../static/icon/tabBar/my.png",
+        "selectedIconPath": "../static/icon/tabBar/my_active.png",
         "text": "我的"
       }
     ]
   } else if (type === '2') {
     tabData.tabBar.list = [{
         "pagePath": "pages/agent-device/agent-device?deptInfo=" + dept,
-        "iconPath": "../static/icon/tabBar/my_menu_1.png",
-        "selectedIconPath": "../static/icon/tabBar/my_menu_1.png",
+        "iconPath": "../static/icon/tabBar/device.png",
+        "selectedIconPath": "../static/icon/tabBar/device_active.png",
         "text": "首页"
       }, {
         "pagePath": "pages/operation/operation",
-        "iconPath": "../static/icon/tabBar/my_menu_1.png",
-        "selectedIconPath": "../static/icon/tabBar/my_menu_1.png",
+        "iconPath": "../static/icon/tabBar/operation.png",
+        "selectedIconPath": "../static/icon/tabBar/operation_active.png",
         "text": "运营"
       },
       {
         "pagePath": "pages/message/message",
-        "iconPath": "../static/icon/tabBar/my_menu_1.png",
-        "selectedIconPath": "../static/icon/tabBar/my_menu_1.png",
+        "iconPath": "../static/icon/tabBar/message.png",
+        "selectedIconPath": "../static/icon/tabBar/message_active.png",
         "text": "消息"
       },
       {
         "pagePath": "pages/my/my",
-        "iconPath": "../static/icon/tabBar/my_menu_1.png",
-        "selectedIconPath": "../static/icon/tabBar/my_menu_1.png",
+        "iconPath": "../static/icon/tabBar/my.png",
+        "selectedIconPath": "../static/icon/tabBar/my_active.png",
         "text": "我的"
       }
     ]
   } else if (type === '3') {
     tabData.tabBar.list = [{
         "pagePath": "pages/store-device/store-device?deptInfo=" + dept,
-        "iconPath": "../static/icon/tabBar/my_menu_1.png",
-        "selectedIconPath": "../static/icon/tabBar/my_menu_1.png",
+        "iconPath": "../static/icon/tabBar/device.png",
+        "selectedIconPath": "../static/icon/tabBar/device_active.png",
         "text": "首页"
       }, {
         "pagePath": "pages/operation/operation",
-        "iconPath": "../static/icon/tabBar/my_menu_1.png",
-        "selectedIconPath": "../static/icon/tabBar/my_menu_1.png",
+        "iconPath": "../static/icon/tabBar/operation.png",
+        "selectedIconPath": "../static/icon/tabBar/operation_active.png",
         "text": "运营"
       },
       {
         "pagePath": "pages/message/message",
-        "iconPath": "../static/icon/tabBar/my_menu_1.png",
-        "selectedIconPath": "../static/icon/tabBar/my_menu_1.png",
+        "iconPath": "../static/icon/tabBar/message.png",
+        "selectedIconPath": "../static/icon/tabBar/message_active.png",
         "text": "消息"
       },
       {
         "pagePath": "pages/my/my",
-        "iconPath": "../static/icon/tabBar/my_menu_1.png",
-        "selectedIconPath": "../static/icon/tabBar/my_menu_1.png",
+        "iconPath": "../static/icon/tabBar/my.png",
+        "selectedIconPath": "../static/icon/tabBar/my_active.png",
         "text": "我的"
       }
     ]
   } else {
     tabData.tabBar.list = [{
         "pagePath": "pages/device-list-tab/device-list-tab",
-        "iconPath": "../static/icon/tabBar/my_menu_1.png",
-        "selectedIconPath": "../static/icon/tabBar/my_menu_1.png",
+        "iconPath": "../static/icon/tabBar/device.png",
+        "selectedIconPath": "../static/icon/tabBar/device_active.png",
         "text": "首页"
       }, {
         "pagePath": "pages/operation/operation",
-        "iconPath": "../static/icon/tabBar/my_menu_1.png",
-        "selectedIconPath": "../static/icon/tabBar/my_menu_1.png",
+        "iconPath": "../static/icon/tabBar/operation.png",
+        "selectedIconPath": "../static/icon/tabBar/operation_active.png",
         "text": "运营"
       },
       {
         "pagePath": "pages/message/message",
-        "iconPath": "../static/icon/tabBar/my_menu_1.png",
-        "selectedIconPath": "../static/icon/tabBar/my_menu_1.png",
+        "iconPath": "../static/icon/tabBar/message.png",
+        "selectedIconPath": "../static/icon/tabBar/message_active.png",
         "text": "消息"
       },
       {
         "pagePath": "pages/my/my",
-        "iconPath": "../static/icon/tabBar/my_menu_1.png",
-        "selectedIconPath": "../static/icon/tabBar/my_menu_1.png",
+        "iconPath": "../static/icon/tabBar/my.png",
+        "selectedIconPath": "../static/icon/tabBar/my_active.png",
         "text": "我的"
       }
     ]

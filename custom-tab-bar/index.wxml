@@ -2,6 +2,6 @@
 <view class="tabBar">
   <view class="tabBarItem" wx:for="{{tabBar.list}}" wx:key="index" data-path="{{'/' + item.pagePath}}" data-index="{{index}}" bindtap="switchTab">
     <image class="itemImage" src="{{tabIndex === index ? item.selectedIconPath : item.iconPath}}"></image>
-    <view class="itemTitle" style="color: {{tabIndex === index ? tabBar.selectedColor : tabBar.color}}">{{index}}{{item.text}}</view>
+    <view class="itemTitle" style="color: {{tabIndex === index ? tabBar.selectedColor : tabBar.color}}">{{item.text}}</view>
   </view>
 </view>
