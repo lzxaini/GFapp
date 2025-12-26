@@ -1,9 +1,14 @@
+import tabService from '../../utils/tab-service';
 import { getAdminDeviceListApi } from '../../api/api'
 const app = getApp()
 Page({
   data: {
-    userInfo: app.globalData.userInfo,
+    statusBarHeight: app.globalData.statusBarHeight,
+    capsuleHeight: app.globalData.capsuleHeight,
+    marginBottom: app.globalData.marginBottom,
+    appName: app.globalData.appName,
     ossUrl: app.globalData.ossUrl,
+    userInfo: getApp().globalData.userInfo,
     teamObj: {},
     teamList: [],
     teamTab: 2, // 默认团队tab,1是最顶级不用加载
@@ -21,6 +26,8 @@ Page({
       'pageObj.deptType': dept.deptType
     })
     this.getAdminDeviceList()
+    //更新底部高亮
+    tabService.updateIndex(this, 0)
   },
   /**
    * 设备分页查询
@@ -63,7 +70,7 @@ Page({
   },
   goDeviceList(e) {
     let { id, info } = e?.currentTarget?.dataset
-    console.log('id',id)
+    console.log('id',id, info)
     wx.navigateTo({
       url: `/pages/device-list/device-list?deptId=${id}&info=${JSON.stringify(info)}`,
     });
