@@ -1,10 +1,17 @@
 <view class="store-device_container">
-  <t-navbar t-class="navBar" left-arrow title="设备管理" />
-  <view class="nav_bg"></view>
+  <view class="bg_box">
+    <image class="bg_top" style="top: {{statusBarHeight}}px;" src="../../static/icon/device-left.png"></image>
+    <view class="logo_text" style="height: {{capsuleHeight}}px;">
+      {{appName.name}}
+    </view>
+    <view class="logo_slogan">
+      <image class="gf_logo" src="../../static/icon/logo.png"></image>
+      <text class="slogan">{{appName.slogan}}</text>
+    </view>
+  </view>
   <t-cell-group t-class="device_nav" theme="card">
     <t-cell title="{{deptInfo.deptName || '暂无信息'}}" description="团队编号：{{deptInfo.deptCode}}">
       <t-avatar slot="left-icon" size="large" image="{{ossUrl + deptInfo.deptAvatar}}"></t-avatar>
-      <!-- <view slot="right-icon" class="right_box" bindtap="addDevice">添加设备</view> -->
     </t-cell>
   </t-cell-group>
   <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="getAdminDeviceList">

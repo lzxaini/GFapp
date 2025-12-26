@@ -1,72 +1,96 @@
 .store-device_container {
-	width: 100vw;
-	height: 100vh;
-	flex: 1;
-	display: flex;
-	flex-direction: column;
-	background-color: #f5f7fb;
-	.navBar {
-		--td-navbar-bg-color: #888bf4;
-		--td-navbar-color: #fff;
-		--td-navbar-capsule-border-color: #e3e6ea !important;
-	}
-	.nav_bg {
-		width: 100%;
-		height: 122rpx;
-		margin-top: -2rpx;
-		background-color: #888bf4;
-	}
-	.device_nav {
-		margin-top: -90rpx;
-		.right_box {
-			position: absolute;
-			right: 0;
-			width: 140rpx;
-			height: 50rpx;
-			border-radius: 25rpx 0 0 25rpx;
-			background-color: #e7e8fd;
-			font-family: AlibabaPuHuiTi3;
-			font-size: 24rpx;
-			font-weight: 300;
-			line-height: 50rpx;
-			text-align: center;
-			letter-spacing: 0px;
-			color: #888bf4;
-		}
-	}
-	
-	.bd05 {
-		width: calc(100% - 30rpx);
-		margin: 0 15rpx;
-		height: 1rpx;
-		background-color: #e7e8fd;
-		transform: scaleY(0.5);
-	}
-	.scroll-view {
-		flex: 1;
-		min-height: 0;
-		padding-bottom: env(safe-area-inset-bottom);
-		.list_item {
-			margin-top: 30rpx;
-			.list_item_info {
-				font-family: AlibabaPuHuiTi3;
-				font-size: 24rpx;
-				font-weight: normal;
-				background: linear-gradient(281deg, #888bf4 0%, #5151c6 100%);
-				-webkit-background-clip: text;
-				-webkit-text-fill-color: transparent;
-				background-clip: text;
-			}
-		}
-	}
+  width: 100vw;
+  height: 100vh;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f7fb;
+
+  .bg_box {
+    position: relative;
+    width: 100%;
+    height: 552rpx;
+    background: linear-gradient(180deg, #888bf4 29%, #f5f7fb 100%);
+
+    .bg_top {
+      position: absolute;
+      width: 218rpx;
+      height: 384rpx;
+      top: -180rpx;
+      left: 0;
+    }
+
+    .logo_text {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      font-family: AlibabaPuHuiTi3;
+      font-size: 50rpx;
+      color: #ffffff;
+    }
+
+    .logo_slogan {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 32rpx;
+
+      .gf_logo {
+        width: 26rpx;
+        height: 30rpx;
+      }
+
+      .slogan {
+        font-family: AlibabaPuHuiTi3;
+        font-size: 28rpx;
+        color: #ffffff;
+        margin-left: 11rpx;
+      }
+    }
+  }
+
+  .device_nav {
+    margin-top: -260rpx;
+    --td-cell-bg-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(5px);
+  }
+
+  .bd05 {
+    width: calc(100% - 30rpx);
+    margin: 0 15rpx;
+    height: 1rpx;
+    background-color: #e7e8fd;
+    transform: scaleY(0.5);
+  }
+
+  .scroll-view {
+    flex: 1;
+    min-height: 0;
+    padding-bottom: env(safe-area-inset-bottom);
+
+    .list_item {
+      margin-top: 30rpx;
+
+      .list_item_info {
+        font-family: AlibabaPuHuiTi3;
+        font-size: 24rpx;
+        font-weight: normal;
+        background: linear-gradient(281deg, #888bf4 0%, #5151c6 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+    }
+  }
 }
 
 .empty {
-	--td-empty-description-margin-top: 0;
-	--td-empty-description-font-size: 24rpx;
-	padding-top: 40rpx;
+  --td-empty-description-margin-top: 0;
+  --td-empty-description-font-size: 24rpx;
+  padding-top: 40rpx;
 }
+
 .empty_image {
-	width: 40rpx;
-	height: 48rpx;
+  width: 40rpx;
+  height: 48rpx;
 }
