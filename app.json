@@ -15,6 +15,7 @@
     "pages/founder-device/founder-device",
     "pages/agent-device-list/agent-device-list",
     "pages/device-list/device-list",
+    "pages/device-list-tab/device-list-tab",
     "pages/use-history/use-history",
     "pages/service-history/service-history",
     "pages/recharge-history/recharge-history",
@@ -37,6 +38,8 @@
     "pages/blufi-network/blufi-network",
     "pages/join-approval/join-approval",
     "pages/privacy-agreement/privacy-agreement",
+    "pages/my/my",
+    "pages/message/message",
     "pages/add-dept/add-dept"
   ],
   "subpackages": [
@@ -93,9 +96,61 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#7D3CF1",
-    "navigationBarTitleText": "光塑GF",
+    "navigationBarTitleText": "光馥科美",
     "navigationStyle": "custom",
     "navigationBarTextStyle": "white"
+  },
+  
+  "tabBar": {
+    "custom": true,
+    "color": "#7A7E83",
+    "selectedColor": "#FF6601",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/device-list-tab/device-list-tab",
+        "iconPath": "./static/icon/tabBar/my_menu_1.png",
+        "selectedIconPath": "./static/icon/tabBar/my_menu_1.png",
+        "text": "设备"
+      },
+      {
+        "pagePath": "pages/agent-device-list/agent-device-list",
+        "iconPath": "./static/icon/tabBar/my_menu_1.png",
+        "selectedIconPath": "./static/icon/tabBar/my_menu_1.png",
+        "text": "设备"
+      },
+      {
+        "pagePath": "pages/agent-device/agent-device",
+        "iconPath": "./static/icon/tabBar/my_menu_1.png",
+        "selectedIconPath": "./static/icon/tabBar/my_menu_1.png",
+        "text": "设备"
+      },
+      {
+        "pagePath": "pages/store-device/store-device",
+        "iconPath": "./static/icon/tabBar/my_menu_1.png",
+        "selectedIconPath": "./static/icon/tabBar/my_menu_1.png",
+        "text": "设备"
+      },
+      {
+        "pagePath": "pages/operation/operation",
+        "iconPath": "./static/icon/tabBar/my_menu_1.png",
+        "selectedIconPath": "./static/icon/tabBar/my_menu_1.png",
+        "text": "运营"
+      },
+      {
+        "pagePath": "pages/message/message",
+        "iconPath": "./static/icon/tabBar/my_menu_1.png",
+        "selectedIconPath": "./static/icon/tabBar/my_menu_1.png",
+        "text": "消息"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "iconPath": "./static/icon/tabBar/my_menu_1.png",
+        "selectedIconPath": "./static/icon/tabBar/my_menu_1.png",
+        "text": "我的"
+      }
+    ]
   },
   "permission": {
     "scope.userLocation": {
