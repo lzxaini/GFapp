@@ -8,6 +8,14 @@
 
   <!-- 搜索模块 -->
   <view class="data_search">
+    <view class="menu_text" wx:if="{{tabsValue === 1}}" bindtap="goPage" data-type="member">
+      <image class="icon" src="../../static/icon/member-icon.png" />
+      <text>白名单管理</text>
+    </view>
+    <view class="menu_text" wx:if="{{userInfo.allowedRecharge && tabsValue === 2}}" bindtap="goPage" data-type="power">
+      <image class="icon" src="../../static/icon/power-icon.png" />
+      <text>能量点充值</text>
+    </view>
     <view class="data_title">数据查询</view>
     <view class="date_interval" bindtap="handleCalendar">
       <view class="interval_item">
@@ -26,7 +34,7 @@
         <t-icon name="chevron-down-s" size="16" color="#888BF4" />
       </view>
       <view class="all_item">
-        <t-input value="{{searchValue}}" bindchange="searchInput" bindblur="statrtSearch" t-class="item-input" t-class-input="input_ftsize" placeholder="搜索门店名称/团队编号" borderless>
+        <t-input value="{{searchValue}}" bindchange="searchInput" bindblur="statrtSearch" disabled="{{inputDisabled}}" t-class="item-input" t-class-input="input_ftsize" placeholder="搜索门店名称/团队编号" borderless>
           <t-icon slot="prefix-icon" name="search" size="18" color="#888BF4" />
         </t-input>
       </view>
@@ -43,9 +51,11 @@
       <view class="table" wx:if="{{tabsValue === 1}}">
         <scroll-view scroll-x="true">
           <!-- 表头 -->
-          <view class="table-row table-header {{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2 || userInfo.dept.deptType == 3 ? 'table-row-big' : ''}}">
+          <!-- <view class="table-row table-header {{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2 || userInfo.dept.deptType == 3 ? 'table-row-big' : ''}}"> -->
+          <view class="table-row table-header table-row-big">
             <!-- 只有联合创始和代理商有机构显示 -->
-            <view class="table-cell cell-header cell-big" wx:if="{{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2 || userInfo.dept.deptType == 3}}" style="flex: 2;">机构</view>
+            <!-- <view class="table-cell cell-header cell-big" wx:if="{{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2 || userInfo.dept.deptType == 3}}" style="flex: 2;">机构</view> -->
+            <view class="table-cell cell-header cell-big" style="flex: 2;">机构</view>
             <view class="table-cell cell-header" style="flex: 3;min-width: 200rpx;">充值点数</view>
             <view class="table-cell cell-header" style="flex: 2;">上期结余</view>
             <view class="table-cell cell-header" style="flex: 2;">当前结余</view>
@@ -55,8 +65,10 @@
           <view class="scroll-view">
             <block wx:for="{{rechargeList}}" wx:key="index">
               <!-- 只有联合创始和代理商有机构显示 -->
-              <view class="table-row {{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2 || userInfo.dept.deptType == 3 ? 'table-row-big' : ''}}">
-                <view class="table-cell textOverflow" wx:if="{{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2 || userInfo.dept.deptType == 3}}" style="flex: 2;">{{item.deptName}}</view>
+              <!-- <view class="table-row {{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2 || userInfo.dept.deptType == 3 ? 'table-row-big' : ''}}">
+                <view class="table-cell textOverflow" wx:if="{{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2 || userInfo.dept.deptType == 3}}" style="flex: 2;">{{item.deptName}}</view> -->
+                <view class="table-row table-row-big">
+                <view class="table-cell textOverflow" style="flex: 2;">{{item.deptName}}</view>
                 <view class="table-cell number-cell" style="flex: 3;min-width: 200rpx;">
                   <view class="text">+{{item.rechargeAmount}}</view>
                   <view class="date">{{item.createTime}}</view>
@@ -99,7 +111,8 @@
                 <text class="lable">服务时间</text>
                 <text class="info">{{item.startTime}}</text>
               </view>
-              <view class="list_item" wx:if="{{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2 || userInfo.dept.deptType == 3}}">
+              <!-- <view class="list_item" wx:if="{{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2 || userInfo.dept.deptType == 3}}"> -->
+              <view class="list_item">
                 <text class="lable">服务机构</text>
                 <text class="info">{{item.deptName}}</text>
               </view>

@@ -17,7 +17,7 @@ const app = getApp()
 Page({
   data: {
     capsuleHeight: app.globalData.capsuleHeight,
-    userInfo: app.globalData.userInfo,
+    userInfo: getApp().globalData.userInfo,
     ossUrl: app.globalData.ossUrl,
     calendarVisible: false,
     calendarValue: [],
@@ -51,11 +51,19 @@ Page({
     addressOptions: [], // 省市区列表
     addressValue: '', // 组件值
     addressValue: '', // 用于展示
+    inputDisabled: false, // 输入框禁用
   },
   onLoad() {
     this.getRegion()
   },
   onShow() {
+    let {dept} = this.data.userInfo
+    if (dept.deptType == 4) {
+      this.setData({
+        searchValue: dept.deptName,
+        inputDisabled: true
+      })
+    }
     this.getOperation()
     this.getRechargeRecords()
     //更新底部高亮
@@ -212,7 +220,9 @@ Page({
   searchAll() {
     let {
       tabsValue,
-      rechargeForm
+      rechargeForm,
+      inputDisabled,
+      searchValue
     } = this.data
     this.setData({
       calendarValue: [],
@@ -220,7 +230,7 @@ Page({
       'serviceForm.maxServiceTime': '',
       'rechargeForm.minRechargeTime': '',
       'rechargeForm.maxRechargeTime': '',
-      searchValue: '',
+      searchValue: inputDisabled ? searchValue : '',
       servicePageObj: { // 服务记录分页参数
         pageNum: 1,
         pageSize: 10
@@ -310,6 +320,10 @@ Page({
     this.statrtSearch()
   },
   showCascader() {
+    let {dept} = this.data.userInfo
+    if (dept.deptType == 4) {
+      return
+    }
     this.setData({
       addressVisible: true
     });
@@ -342,6 +356,16 @@ Page({
       this.setData({
         addressOptions
       });
+    })
+  },
+  // 去白名单或者能量充值
+  goPage(e) {
+    let {
+      type
+    } = e?.currentTarget?.dataset
+    let url = type === 'member' ? '/pages/white-list/white-list' : '/pages/recharge/recharge'
+    wx.navigateTo({
+      url,
     })
   },
   message(type, text, duration = 1500) {
