@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/my/my",
     "pages/index/index",
     "pages/change-department/change-department",
     "pages/recharge/recharge",
@@ -38,7 +39,6 @@
     "pages/blufi-network/blufi-network",
     "pages/join-approval/join-approval",
     "pages/privacy-agreement/privacy-agreement",
-    "pages/my/my",
     "pages/message/message",
     "pages/add-dept/add-dept"
   ],
