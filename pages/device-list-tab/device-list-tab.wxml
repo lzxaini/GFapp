@@ -1,0 +1,51 @@
+<view class="device-list_container">
+  <view class="bg_box">
+    <image class="bg_top" style="top: {{statusBarHeight}}px;" src="../../static/icon/device-left.png"></image>
+    <view class="logo_text" style="height: {{capsuleHeight}}px;">
+      {{appName.name}}
+    </view>
+    <view class="logo_slogan">
+      <image class="gf_logo" src="../../static/icon/logo.png"></image>
+      <text class="slogan">{{appName.slogan}}</text>
+    </view>
+  </view>
+  <t-cell-group t-class="device_nav" theme="card">
+    <t-cell title="{{deptInfo.deptName || '暂无信息'}}">
+      <t-avatar slot="left-icon" size="large" image="{{ossUrl + deptInfo.deptAvatar}}"></t-avatar>
+      <view slot="description" class="device_info">
+        已激活：{{historyList.activated}}/{{historyList.total}}
+      </view>
+      <view slot="right-icon" class="right_box" bindtap="addDevice">添加设备</view>
+    </t-cell>
+  </t-cell-group>
+  <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="pullDownToRefresh">
+    <view class="device_grid">
+      <block wx:for="{{deviceList}}">
+        <view class="device_item">
+          <image class="card_bg" src="../../static/icon/card_bg.png" />
+          <view class="go_info" bindtap="goHistoryInfo" data-serialNumber="{{item.serialNumber}}">
+            查看使用记录
+            <t-icon name="chevron-right-double" size="12" />
+          </view>
+          <t-cell t-class="device_card" bordered="{{false}}" bindtap="scanCodeActivation" data-runningState="{{item.runningState}}" data-serialNumber="{{item.serialNumber}}" t-class-center="card_center" t-class-left="card_left">
+            <view slot="left-icon" class="sacn_icon" wx:if="{{item.runningState == '2'}}">
+              <t-icon name="scan" size="15" color="#FFFFFF"></t-icon>
+            </view>
+            <view slot="left-icon" class="use_ing" wx:else>使用中</view>
+            <view slot="title" class="card_title">设备ID</view>
+            <view slot="description" class="card_title">{{item.serialNumber}}</view>
+          </t-cell>
+          <view class="bd05"></view>
+          <view class="footer">
+            <view class="date">注册时间：{{item.createTime}}</view>
+            <image class="icon_img" src="../../static/icon/{{item.icon}}" />
+          </view>
+        </view>
+      </block>
+    </view>
+    <view style="margin-top: 40rpx">
+      <t-empty t-class="empty" t-class-image="empty_image" image="/static/icon/footer.png" description="糟糕，到底了" />
+    </view>
+  </scroll-view>
+</view>
+<t-message id="t-message" />
