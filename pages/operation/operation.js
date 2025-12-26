@@ -1,3 +1,4 @@
+import tabService from '../../utils/tab-service';
 import {
   showMessage
 } from '../../utils/tools';
@@ -57,6 +58,8 @@ Page({
   onShow() {
     this.getOperation()
     this.getRechargeRecords()
+    //更新底部高亮
+    tabService.updateIndex(this, 1)
   },
   /**
    * 页面上拉触底事件的处理函数
@@ -131,6 +134,7 @@ Page({
     getRechargeRecordsApi(rechargePageObj).then(res => {
       if (type === 'bottom') {
         if (res.data.rows.length > 0) {
+          console.log('触底加载')
           let list = rechargeList
           list.push(...res.data.rows)
           this.setData({
@@ -138,6 +142,7 @@ Page({
           })
         }
       } else {
+        console.log('新加载')
         this.setData({
           rechargeList: res.data.rows,
           rechargeTotal: res.data.total
