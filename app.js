@@ -86,11 +86,11 @@ App({
       this.globalData.token = token;
       if (!this.globalData.devFlag) {
         wx.reLaunch({
-          url: '/pages/index/index'
+          url: '/pages/my/my'
         });
       } else {
         wx.reLaunch({
-          url: this.globalData.devUrl || '/pages/index/index'
+          url: this.globalData.devUrl || '/pages/my/my'
         });
       }
     }
