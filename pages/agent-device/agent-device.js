@@ -1,8 +1,12 @@
+import tabService from '../../utils/tab-service';
 import { getAdminDeviceListApi } from '../../api/api'
 const app = getApp()
 Page({
   data: {
-    userInfo: app.globalData.userInfo,
+    statusBarHeight: app.globalData.statusBarHeight,
+    capsuleHeight: app.globalData.capsuleHeight,
+    marginBottom: app.globalData.marginBottom,
+    appName: app.globalData.appName,
     ossUrl: app.globalData.ossUrl,
     teamObj: {},
     teamList: [],
@@ -25,6 +29,8 @@ Page({
       deptInfo: dept
     })
     this.getAdminDeviceList()
+    //更新底部高亮
+    tabService.updateIndex(this, 0)
   },
   /**
    * 设备分页查询

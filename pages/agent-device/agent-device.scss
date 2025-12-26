@@ -5,68 +5,94 @@
 	display: flex;
 	flex-direction: column;
 	background-color: #f5f7fb;
-	.navBar {
-		--td-navbar-bg-color: #888bf4;
-		--td-navbar-color: #fff;
-		--td-navbar-capsule-border-color: #e3e6ea !important;
-	}
-	.nav_bg {
-		width: 100%;
-		height: 122rpx;
-		margin-top: -2rpx;
-		background-color: #888bf4;
-	}
+  .bg_box {
+    position: relative;
+    width: 100%;
+    height: 552rpx;
+    background: linear-gradient(180deg, #888bf4 29%, #f5f7fb 100%);
+
+    .bg_top {
+      position: absolute;
+      width: 218rpx;
+      height: 384rpx;
+      top: -180rpx;
+      left: 0;
+    }
+
+    .logo_text {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      font-family: AlibabaPuHuiTi3;
+      font-size: 50rpx;
+      color: #ffffff;
+    }
+
+    .logo_slogan {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 32rpx;
+
+      .gf_logo {
+        width: 26rpx;
+        height: 30rpx;
+      }
+
+      .slogan {
+        font-family: AlibabaPuHuiTi3;
+        font-size: 28rpx;
+        color: #ffffff;
+        margin-left: 11rpx;
+      }
+    }
+  }
 	.device_nav {
-		margin-top: -90rpx;
-		.right_box {
-			position: absolute;
-			right: 0;
-			width: 140rpx;
-			height: 50rpx;
-			border-radius: 25rpx 0 0 25rpx;
-			background-color: #e7e8fd;
-			font-family: AlibabaPuHuiTi3;
-			font-size: 24rpx;
-			font-weight: 300;
-			line-height: 50rpx;
-			text-align: center;
-			letter-spacing: 0px;
-			color: #888bf4;
-		}
+    margin-top: -260rpx;
+    --td-cell-bg-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(5px);
 	}
 
-	.admin-team_tabs {
-		width: calc(100% - 54rpx);
-		height: 80rpx;
-		margin: 32rpx 27rpx 20rpx 27rpx;
-		box-sizing: border-box;
-		border: 1px solid #ecedfd;
-		background-color: #ffffff;
+  .admin-team_tabs {
+    width: calc(100% - 54rpx);
+    height: 80rpx;
+    margin: 32rpx 27rpx 20rpx 27rpx;
+    border-radius: 40rpx;
+    box-sizing: border-box;
+    border: 1px solid #ecedfd;
+    background-color: #ffffff;
 
-		.tabs_box {
-			--td-tab-nav-bg-color: rgba(255, 255, 255, 0.3);
-			--td-tab-item-tag-bg: transparent;
-			--td-tab-item-tag-active-bg: #888bf4;
-			--td-tab-item-color: #1c2023;
-			--td-tab-item-active-color: #ffffff;
-			--td-tab-item-height: 80rpx;
-			// border: 1rpx solid #ecedfd;
-			margin-bottom: 30rpx;
-		}
-		.item_style {
-			font-family: AlibabaPuHuiTi3;
-			font-size: 28rpx;
-			font-weight: bold;
+    .item_style {
+      font-family: AlibabaPuHuiTi3;
+      font-size: 28rpx;
+      font-weight: bold;
       --td-tab-item-color: #888bf4;
-		}
-		.active_style {
-			background-color: #888bf4;
-			font-family: AlibabaPuHuiTi3;
-			font-size: 32rpx;
-			font-weight: 300;
-			color: #ffffff;
-		}
-	}
+    }
+
+    .active_style {
+      background-color: #888bf4;
+      border-radius: 60rpx;
+      font-family: AlibabaPuHuiTi3;
+      font-size: 32rpx;
+      font-weight: 300;
+      color: #ffffff;
+    }
+
+    .tabs_box {
+      --td-tab-nav-bg-color: rgba(255, 255, 255, 0.3);
+      --td-tab-item-tag-bg: transparent;
+      --td-tab-border-color: transparent;
+      --td-tab-item-tag-active-bg: #888bf4;
+      --td-tab-item-color: #1c2023;
+      --td-tab-item-active-color: #ffffff;
+      --td-tab-item-height: 80rpx;
+      border-radius: 40px !important;
+
+      .t-tabs__wrapper {
+        border-radius: 40px !important;
+      }
+    }
+  }
 	.bd05 {
 		width: calc(100% - 30rpx);
 		margin: 0 15rpx;
