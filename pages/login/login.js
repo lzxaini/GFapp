@@ -48,7 +48,7 @@ Page({
         link: {
           content: '去首页',
           navigatorProps: {
-            url: '/pages/index/index',
+            url: '/pages/my/my',
           },
         },
         closeBtn: true,
@@ -92,8 +92,8 @@ Page({
                 app.initMqtt()
                 setTimeout(() => {
                   if (adminFlag) {
-                    wx.reLaunch({
-                      url: '/pages/index/index',
+                    wx.switchTab({
+                      url: '/pages/my/my',
                     })
                   } else {
                     wx.reLaunch({
@@ -145,8 +145,8 @@ Page({
     });
   },
   goIndex(){
-    wx.navigateTo({
-      url: '/pages/index/index',
+    wx.switchTab({
+      url: '/pages/my/my',
     })
   }
 });
