@@ -24,7 +24,7 @@ App({
     appName: {
       name: '玑肤芮',
       slogan: '年轻计划，轻松开肌',
-      appVersion: '1.0.0_25122510',
+      appVersion: '1.0.1_25122608',
     },
     phoneEnv: '', // 手机系统
     mqttClient: null,
