@@ -299,7 +299,6 @@ Page({
     }
 
     if (finalUrl) {
-      console.log('finalUrl', adminMap, finalUrl)
       wx.navigateTo({
         url: finalUrl
       });
