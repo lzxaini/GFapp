@@ -63,5 +63,9 @@ Page({
    */
   onShareAppMessage() {
 
+  },
+  // 删除消息
+  onDelete() {
+    console.log('删除消息')
   }
 })

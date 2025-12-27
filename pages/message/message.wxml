@@ -1,2 +1,40 @@
-<!--pages/message/message.wxml-->
-<text>pages/message/message.wxml</text>
+<view class="message_container">
+  <!-- 顶部导航栏固定 -->
+  <t-navbar t-class="navBar" left-arrow="{{false}}" title="消息通知" />
+  <view class="nav_bg">
+    <image class="bg_img" src="../../static/icon/recharge_nav_bg.png" />
+  </view>
+  <view class="message_body">
+    <view class="menu_text" bindtap="goPage" data-type="member">
+      <t-icon name="check-double" size="20" color="#FFFFFF" />
+      <text>白名单管理</text>
+    </view>
+    <view class="message_info">
+      <t-tabs t-class="tabs_box" t-class-active="active_style" t-class-item="item_style" defaultValue="{{tabsValue}}" theme="tag" bind:change="tabClick">
+        <t-tab-panel wx:key="index" label="全部" value="{{1}}" />
+        <t-tab-panel wx:key="index" label="待处理" value="{{2}}" />
+      </t-tabs>
+    </view>
+    <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="pullDownToRefresh">
+      <t-swipe-cell wx:for="{{20}}">
+        <view class="list_item">
+          <t-avatar class="avatar-example" image="/static/icon/gf_logo_w.png" />
+          <view class="item-right">
+            <view class="title">
+              <text class="textOverflow">测试水水水水测试水水水水测试水水水水</text>
+              <text class="textOverflow date">12-12 12:50</text>
+            </view>
+            <view class="bottom">
+              <text class="textOverflow">新用户[1355556688]已注册，请审核。</text>
+              <button>去处理</button>
+            </view>
+          </view>
+        </view>
+        <view slot="right" class="del_box">
+          <t-icon t-class="del_icon" name="delete" size="30rpx" color="#FFF" bindtap="onDelete"></t-icon>
+        </view>
+      </t-swipe-cell>
+    </scroll-view>
+  </view>
+</view>
+<t-message id="t-message" />
