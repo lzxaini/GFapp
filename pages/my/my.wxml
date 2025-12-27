@@ -11,11 +11,11 @@
   <view class="nav_bg">
     <!-- 功能菜单 -->
     <view column="4" class="menu_grid">
-      <view class="item" bindtap="addDept" wx:if="{{userInfo.dept.deptType == 1}}">
+      <!-- <view class="item" bindtap="addDept" wx:if="{{userInfo.dept.deptType == 1}}">
         <image class="menu_grid_icon" src="../../static/icon/my_menu_1.png" />
         <view class="text">新建团队</view>
-      </view>
-      <view class="item" bindtap="goMyDept" wx:else>
+      </view> -->
+      <view class="item" bindtap="goMyDept">
         <image class="menu_grid_icon" src="../../static/icon/my_menu_1.png" />
         <view class="text">我的团队</view>
       </view>
