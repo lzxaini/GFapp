@@ -91,6 +91,7 @@
     "t-search": "tdesign-miniprogram/search/search",
     "t-step-item": "tdesign-miniprogram/step-item/step-item",
     "t-guide": "tdesign-miniprogram/guide/guide",
+    "t-swipe-cell": "tdesign-miniprogram/swipe-cell/swipe-cell",
     "empty": "components/empty/empty"
   },
   "window": {
@@ -163,7 +164,6 @@
       "desc": "扫码功能需要授权使用您的摄像头功能"
     }
   },
-  "componentFramework": "glass-easel",
   "sitemapLocation": "sitemap.json",
   "lazyCodeLoading": "requiredComponents"
 }
