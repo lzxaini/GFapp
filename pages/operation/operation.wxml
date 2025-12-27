@@ -67,7 +67,7 @@
               <!-- 只有联合创始和代理商有机构显示 -->
               <!-- <view class="table-row {{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2 || userInfo.dept.deptType == 3 ? 'table-row-big' : ''}}">
                 <view class="table-cell textOverflow" wx:if="{{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2 || userInfo.dept.deptType == 3}}" style="flex: 2;">{{item.deptName}}</view> -->
-                <view class="table-row table-row-big">
+              <view class="table-row table-row-big">
                 <view class="table-cell textOverflow" style="flex: 2;">{{item.deptName}}</view>
                 <view class="table-cell number-cell" style="flex: 3;min-width: 200rpx;">
                   <view class="text">+{{item.rechargeAmount}}</view>
