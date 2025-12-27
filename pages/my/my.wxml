@@ -36,9 +36,9 @@
   <!-- 团队 -->
   <view class="nav_title">
     <view class="title">所属机构</view>
-    <t-icon name="qrcode" size="38rpx" color="#888BF4" />
+    <t-icon wx:if="{{userInfo.dept}}" name="qrcode" size="38rpx" color="#888BF4" bindtap="openQrCode" />
   </view>
-  <t-cell-group t-class="dept_info" theme="card" wx:if="{{userInfo.dept}}">
+  <t-cell-group wx:if="{{userInfo.dept}}" t-class="dept_info" theme="card">
     <t-cell t-class-center="dept_center" t-class-title="dept_title" t-class-note="textOverflow" title="机构名称" note="{{userInfo.dept.deptName}}" hover />
     <t-cell t-class-center="dept_center" t-class-title="dept_title" t-class-note="textOverflow" title="机构地址" note="{{userInfo.dept ? userInfo.dept.address || '-' : '-'}}-{{userInfo.dept ? userInfo.dept.addressDetail || '' : ''}}" hover />
     <t-cell t-class-center="dept_center" t-class-title="dept_title" t-class-note="textOverflow" title="开通时间" note="{{userInfo.dept.createTime || '--'}}" hover />
@@ -78,3 +78,29 @@
   </t-button>
 </t-dialog>
 <t-message id="t-message" />
+<t-dialog visible="{{qrCodeBox}}" bind:close="closeDialog" close-on-overlay-click="{{true}}">
+  <!-- 适配skyline，增加type="list" -->
+  <view slot="content" class="dialog_content">
+    <t-loading wx:if="{{!qrFlag}}" theme="circular" size="40rpx" text="正在加载中..." class="wrapper" />
+    <view style="display: {{qrFlag ? '' : 'none'}};">
+      <t-cell t-class="qr_userInfo" title="{{userInfo.userName}}" bordered="{{false}}">
+        <t-avatar slot="left-icon" size="medium" image="{{ossUrl + userInfo.avatar}}"></t-avatar>
+        <!-- <image slot="description" class="tag_icon" src="../../static/icon/admin.png" /> -->
+        <view class="tag_box" slot="description">
+          <image class="tag_icon" src="../../static/icon/admin.png" />
+          <text class="tag_text">{{userInfo.roles[0].roleName}}</text>
+        </view>
+      </t-cell>
+      <view class="institution_box">
+        <text class="institution">所属机构：{{userInfo.dept.deptName}}</text>
+      </view>
+      <view class="qr_image_box">
+        <canvas class="qr_image" canvas-id="myQrcode"></canvas>
+      </view>
+      <view class="qr_code_text">扫一扫，快速加入我们的团队</view>
+    </view>
+  </view>
+  <button style="display: {{qrFlag ? '' : 'none'}};" slot="confirm-btn" class="save_invite" bindtap="saveQrCode">
+    保存邀请码
+  </button>
+</t-dialog>

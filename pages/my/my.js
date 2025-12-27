@@ -8,6 +8,8 @@ import {
 import {
   getUserInfoApi,
 } from '../../api/api.js'
+import drawQrcode from '../../utils/weapp.qrcode.min'
+import tool from '../../utils/tools'
 const app = getApp()
 Page({
 
@@ -31,13 +33,14 @@ Page({
     if (userInfo) {
       tabService.updateRole(this, userInfo.dept.deptType)
       console.log('options', tabService, userInfo)
-    } else{
+    } else {
       tabService.updateRole(this, '4')
     }
     wx.switchTab({
       url: '/pages/my/my'
     })
 
+    this.openQrCode = withLogin(this, this._openQrCode);
     this.goRechargeHistory = withLogin(this, this._goRechargeHistory);
     this.goSystem = withLogin(this, this._goSystem);
     this.goServiceHistory = withLogin(this, this._goServiceHistory);
@@ -130,9 +133,8 @@ Page({
       url: '/pages/my-edit/my-edit'
     });
   },
-  _addDept(){
-  },
-  _goMyDept(){
+  _addDept() {},
+  _goMyDept() {
     if (this.data.userInfo.dept.deptType == 1) {
       this.navigateByTitle({
         title: '新建团队',
@@ -180,5 +182,67 @@ Page({
     this.setData({
       isLogin: false
     });
+  },
+  drawUserQrcode() {
+    let _this = this;
+    drawQrcode({
+      width: 240,
+      height: 240,
+      canvasId: 'myQrcode',
+      text: this.data.userInfo.deptId,
+      // v1.0.0+版本支持在二维码上绘制图片
+      image: {
+        imageResource: '../../static/icon/gf_logo_w.png', // 不支持网络图片，如果非得网络图片，需要使用wx.getImageInfo 去获取图片信息，我这边往中间加的一个白图然后采用覆盖的方式
+        dx: 100,
+        dy: 100,
+        dWidth: 50,
+        dHeight: 50
+      }
+    })
+    setTimeout(() => {
+      _this.setData({
+        qrFlag: true
+      })
+    }, 500);
+  },
+  // 邀请加入
+  _openQrCode() {
+    this.setData({
+      qrCodeBox: true
+    })
+    if (this.data.qrCodeBox) {
+      this.drawUserQrcode()
+    }
+  },
+  // 保存邀请码
+  saveQrCode: tool.debounce(function () {
+    let _this = this;
+    wx.canvasToTempFilePath({
+      canvasId: 'myQrcode',
+      success(res) {
+        wx.saveImageToPhotosAlbum({
+          filePath: res.tempFilePath,
+          success() {
+            wx.showToast({
+              title: '保存成功',
+              icon: 'success'
+            })
+            _this.closeDialog()
+          },
+          fail(err) {
+            console.error('保存失败', err)
+          }
+        })
+      },
+      fail(err) {
+        console.error('生成二维码失败', err)
+      }
+    })
+  }, 800),
+  closeDialog() {
+    this.setData({
+      qrCodeBox: false,
+      qrFlag: false
+    })
   },
 })
