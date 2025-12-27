@@ -2,7 +2,7 @@
   <!-- 顶部导航栏固定 -->
   <t-navbar t-class="navBar" left-arrow="{{false}}" title="消息通知" />
   <view class="nav_bg">
-    <image class="bg_img" src="../../static/icon/recharge_nav_bg.png" />
+    <image class="bg_img" src="../../static/icon/message_navbg.png" />
   </view>
   <view class="message_body">
     <view class="menu_text" bindtap="onDelete" data-type="all">
