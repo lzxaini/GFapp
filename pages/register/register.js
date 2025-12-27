@@ -92,8 +92,8 @@ Page({
     }
   },
   noSubmit() {
-    wx.reLaunch({
-      url: '/pages/index/index',
+    wx.switchTab({
+      url: '/pages/my/my',
     })
   },
   onSubmit() {
@@ -109,8 +109,8 @@ Page({
       if (res.code === 200) {
         _this.message('success', '注册成功！', 1500)
         setTimeout(() => {
-          wx.reLaunch({
-            url: '/pages/index/index'
+          wx.switchTab({
+            url: '/pages/my/my'
           });
           wx.hideLoading();
         }, 1000);
