@@ -1,60 +1,52 @@
 <view class="service-history_container">
-  <t-navbar t-class="navBar" left-arrow title="" />
-  <image src="../../static/icon/recharge_nav_bg.png" class="nav_bg" />
-  <view class="history_title" style="top: {{capsuleHeight + 20}}px">服务记录</view>
-  <view class="history_box">
-    <t-tabs t-class="history_tabs" t-class-active="active_style" t-class-item="item_style" defaultValue="{{pageObj.range}}" theme="tag" bind:click="tabClick">
-      <t-tab-panel wx:key="index" label="今日" value="1" />
-      <t-tab-panel wx:key="index" label="昨日" value="2" />
-      <t-tab-panel wx:key="index" label="本周" value="3" />
-      <t-tab-panel wx:key="index" label="本月" value="4" />
-    </t-tabs>
-    <!-- <view class="title_box">
-      <view class="title">服务记录</view>
-      <view class="cumulative">累计次数：{{total}}</view>
-    </view> -->
-    <!-- 滚动列表 -->
-    <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="pullDownToRefresh">
-      <block wx:for="{{tableData}}" wx:key="index">
-        <view class="card_item">
-          <view class="nav_top">
-            <view class="title_box">
-              <image class="icon" src="../../static/icon/{{item.serviceObj.icon}}" />
-              <text class="text">{{item.serviceObj.name}}</text>
-            </view>
-            <view class="number">编号：{{item.code}}</view>
+  <t-navbar t-class="navBar" left-arrow title="服务记录" />
+  <t-tabs t-class="history_tabs" t-class-active="active_style" t-class-item="item_style" defaultValue="{{pageObj.range}}" theme="tag" bind:click="tabClick">
+    <t-tab-panel wx:key="index" label="今日" value="1" />
+    <t-tab-panel wx:key="index" label="昨日" value="2" />
+    <t-tab-panel wx:key="index" label="本周" value="3" />
+    <t-tab-panel wx:key="index" label="本月" value="4" />
+  </t-tabs>
+  <!-- 滚动列表 -->
+  <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="pullDownToRefresh">
+    <block wx:for="{{tableData}}" wx:key="index">
+      <view class="card_item">
+        <view class="nav_top">
+          <view class="title_box">
+            <image class="icon" src="../../static/icon/{{item.serviceObj.icon}}" />
+            <text class="text">{{item.serviceObj.name}}</text>
           </view>
-          <view class="card_list">
-            <view class="list_item">
-              <text class="lable">设备ID</text>
-              <text class="info">{{item.serialNumber}}</text>
-            </view>
-            <view class="list_item">
-              <text class="lable">美容师</text>
-              <text class="info">{{item.userName}}</text>
-            </view>
-            <view class="list_item">
-              <text class="lable">使用时长</text>
-              <text class="info">{{item.status == 1 ? '计时中' : item.runningTime + '分钟'}}</text>
-            </view>
-            <view class="list_item">
-              <text class="lable">服务时间</text>
-              <text class="info">{{item.startTime}}</text>
-            </view>
-            <view class="list_item" wx:if="{{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2 || userInfo.dept.deptType == 3}}">
-              <text class="lable">服务机构</text>
-              <text class="info">{{item.deptName}}</text>
-            </view>
+          <view class="number">编号：{{item.code}}</view>
+        </view>
+        <view class="card_list">
+          <view class="list_item">
+            <text class="lable">设备ID</text>
+            <text class="info">{{item.serialNumber}}</text>
           </view>
-          <view class="card_icon">
-            <image class="icon" src="../../static/icon/{{item.statusIcon}}" />
+          <view class="list_item">
+            <text class="lable">美容师</text>
+            <text class="info">{{item.userName}}</text>
+          </view>
+          <view class="list_item">
+            <text class="lable">使用时长</text>
+            <text class="info">{{item.status == 1 ? '计时中' : item.runningTime + '分钟'}}</text>
+          </view>
+          <view class="list_item">
+            <text class="lable">服务时间</text>
+            <text class="info">{{item.startTime}}</text>
+          </view>
+          <view class="list_item" wx:if="{{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2 || userInfo.dept.deptType == 3}}">
+            <text class="lable">服务机构</text>
+            <text class="info">{{item.deptName}}</text>
           </view>
         </view>
-      </block>
-      <view class="empty" wx:if="{{tableData.length < 1}}">
-        <empty image="../../static/icon/empty1.png" styleInfo="background-color: transparent !important" description="暂未查询到任何服务记录"></empty>
+        <view class="card_icon">
+          <image class="icon" src="../../static/icon/{{item.statusIcon}}" />
+        </view>
       </view>
-    </scroll-view>
-  </view>
+    </block>
+    <view class="empty" wx:if="{{tableData.length < 1}}">
+      <empty image="../../static/icon/empty1.png" styleInfo="background-color: transparent !important" description="暂未查询到任何服务记录"></empty>
+    </view>
+  </scroll-view>
 </view>
 <t-message id="t-message" />
