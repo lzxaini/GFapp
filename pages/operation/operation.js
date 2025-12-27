@@ -58,16 +58,19 @@ Page({
   },
   onShow() {
     let userInfo = getApp().globalData.userInfo
+    console.log('测试', userInfo.allowedRecharge)
     let {
       dept
     } = userInfo
     if (dept.deptType == 4) {
       this.setData({
-        userInfo,
         searchValue: dept.deptName,
         inputDisabled: true
       })
     }
+    this.setData({
+      userInfo,
+    })
     this.getOperation()
     this.getRechargeRecords()
     //更新底部高亮

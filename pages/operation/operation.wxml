@@ -8,13 +8,13 @@
 
   <!-- 搜索模块 -->
   <view class="data_search">
-    <view class="menu_text" wx:if="{{tabsValue === 1}}" bindtap="goPage" data-type="member">
-      <image class="icon" src="../../static/icon/member-icon.png" />
-      <text>白名单管理</text>
-    </view>
-    <view class="menu_text" wx:if="{{userInfo.allowedRecharge && tabsValue === 2}}" bindtap="goPage" data-type="power">
+    <view class="menu_text" wx:if="{{userInfo.allowedRecharge && tabsValue === 1}}" bindtap="goPage" data-type="power">
       <image class="icon" src="../../static/icon/power-icon.png" />
       <text>能量点充值</text>
+    </view>
+    <view class="menu_text" wx:if="{{tabsValue === 2}}" bindtap="goPage" data-type="member">
+      <image class="icon" src="../../static/icon/member-icon.png" />
+      <text>白名单管理</text>
     </view>
     <view class="data_title">数据查询</view>
     <view class="date_interval" bindtap="handleCalendar">
