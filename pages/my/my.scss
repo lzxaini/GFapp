@@ -1,4 +1,5 @@
 @import '../../static/style/qrStyle.scss';
+
 .my_body {
   width: 100vw;
   height: calc(100vh - (env(safe-area-inset-bottom) + 48px));
@@ -138,6 +139,13 @@
     flex: inherit !important
   }
 
+  .dept_note {
+    font-family: AlibabaPuHuiTi3;
+    font-size: 26rpx;
+    font-weight: normal;
+    color: #888BF4;
+  }
+
   .dept_info {
     --td-cell-note-font-size: 28rpx;
     // --td-cell-vertical-padding: 20rpx;
@@ -161,7 +169,8 @@
       width: 492rpx;
       height: 100%;
     }
-    .tips{
+
+    .tips {
       width: 100%;
       text-align: center;
       font-family: AlibabaPuHuiTi3;
@@ -171,6 +180,7 @@
       color: #737B80;
       margin-bottom: 20rpx;
     }
+
     .join_dept_btn {
       width: 342rpx;
       height: 64rpx;

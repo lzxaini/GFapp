@@ -22,7 +22,19 @@ Page({
     marginBottom: app.globalData.marginBottom,
     appName: app.globalData.appName,
     ossUrl: app.globalData.ossUrl,
-    isLogin: false
+    isLogin: false,
+    adminRouteMap: {
+      '团队管理': {
+        1: '/pages/admin-team/admin-team',
+        2: '/pages/agent-team-members/agent-team-members',
+        3: '/pages/agent-team-list/agent-team-list',
+      },
+      '设备管理': {
+        1: '/pages/agent-device-list/agent-device-list',
+        2: '/pages/agent-device/agent-device',
+        3: '/pages/store-device/store-device'
+      }
+    },
   },
 
   /**
@@ -151,6 +163,30 @@ Page({
     wx.reLaunch({
       url: '/pages/login/login',
     });
+  },
+  // 管理员前往团队
+  goDeptInfo() {
+    if (this.verifyDept()) return;
+
+    const {
+      dept
+    } = this.data.userInfo || {};
+    const deptType = dept?.deptType;
+    const adminMap = this.data.adminRouteMap['团队管理'];
+    let finalUrl = adminMap?.[deptType]
+
+    if (deptType == 2 || deptType == 3) {
+      finalUrl = adminMap?.[deptType] ? `${adminMap?.[deptType]}?deptInfo=${JSON.stringify(dept)}` : url
+    }
+
+    if (finalUrl) {
+      console.log('finalUrl', adminMap, finalUrl)
+      wx.navigateTo({
+        url: finalUrl
+      });
+    } else {
+      this.message('info', '该功能暂未开放');
+    }
   },
   // 公共跳转方法
   navigateByTitle({
