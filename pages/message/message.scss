@@ -1,8 +1,9 @@
-%flex{
+%flex {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .message_container {
   flex: 1;
   display: flex;
@@ -98,6 +99,7 @@
       width: 0;
       height: 0;
     }
+
     .scroll-view {
       flex: 1;
       min-height: 0;
@@ -154,9 +156,11 @@
         justify-content: space-between;
         width: 100rpx;
         height: 100%;
-        .right_margin{
+
+        .right_margin {
           // width: 20rpx;
         }
+
         .del_icon {
           @extend %flex;
           width: 75rpx;
@@ -176,4 +180,24 @@
   text-align: center;
   display: block !important;
   max-width: 100%;
+}
+
+.action-btn {
+  --td-button-primary-bg-color: #888bf4;
+  --td-button-primary-border-color: #888bf4;
+  --td-button-primary-active-bg-color: #888cf4a2;
+  --td-button-primary-active-border-color: #888cf4a2;
+  margin-bottom: 30rpx;
+}
+
+.cancel-btn {
+  --td-button-primary-bg-color: #999999;
+  --td-button-primary-border-color: #999999;
+  --td-button-primary-active-bg-color: #f7f7f7;
+  --td-button-primary-active-border-color: #f7f7f7;
+  margin-bottom: 30rpx;
+}
+
+.radio-group {
+  --td-radio-icon-checked-color: #888bf4;
 }

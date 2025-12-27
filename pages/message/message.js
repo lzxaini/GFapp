@@ -5,7 +5,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    delType: 'line', // all全部删除，line删除条
+    showDelDialog: false,
+    reviewShow: false,
+    reviewStatus: '1',
   },
 
   /**
@@ -65,7 +68,40 @@ Page({
 
   },
   // 删除消息
-  onDelete() {
-    console.log('删除消息')
-  }
+  onDelete(e) {
+    let {
+      type
+    } = e?.currentTarget?.dataset
+    this.setData({
+      delType: type,
+      showDelDialog: true
+    })
+  },
+  // 提交删除
+  submitDelDialog() {
+    console.log('删除消息', this.data.delType)
+  },
+  // 关闭删除弹窗
+  closeDialog(e) {
+    const {
+      type
+    } = e.currentTarget.dataset;
+    this.setData({
+      [type]: false
+    });
+  },
+  // 审核
+  goReview() {
+    this.setData({
+      reviewShow: true
+    })
+  },
+  radioChange(e) {
+    const {
+      value
+    } = e?.detail;
+    this.setData({
+      reviewStatus: value
+    })
+  },
 })

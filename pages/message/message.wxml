@@ -5,9 +5,9 @@
     <image class="bg_img" src="../../static/icon/recharge_nav_bg.png" />
   </view>
   <view class="message_body">
-    <view class="menu_text" bindtap="goPage" data-type="member">
+    <view class="menu_text" bindtap="onDelete" data-type="all">
       <t-icon name="check-double" size="20" color="#FFFFFF" />
-      <text>白名单管理</text>
+      <text>全部删除</text>
     </view>
     <view class="message_info">
       <t-tabs t-class="tabs_box" t-class-active="active_style" t-class-item="item_style" defaultValue="{{tabsValue}}" theme="tag" bind:change="tabClick">
@@ -26,15 +26,31 @@
             </view>
             <view class="bottom">
               <text class="textOverflow">新用户[1355556688]已注册，请审核。</text>
-              <button>去处理</button>
+              <button bindtap="goReview">去处理</button>
             </view>
           </view>
         </view>
         <view slot="right" class="del_box">
-          <t-icon t-class="del_icon" name="delete" size="30rpx" color="#FFF" bindtap="onDelete"></t-icon>
+          <t-icon t-class="del_icon" name="delete" size="30rpx" color="#FFF" bindtap="onDelete" data-type="line"></t-icon>
         </view>
       </t-swipe-cell>
     </scroll-view>
   </view>
 </view>
 <t-message id="t-message" />
+<t-dialog visible="{{showDelDialog}}" t-class-action="btn_color" title="删除警告" content="是否确定删除消息，请确定！">
+  <t-button slot="confirm-btn" class="action-btn" theme="primary" bindtap="submitDelDialog">
+    删除
+  </t-button>
+  <t-button slot="cancel-btn" class="cancel-btn" data-type="showDelDialog" theme="primary" bindtap="closeDialog">取消</t-button>
+</t-dialog>
+<t-dialog visible="{{reviewShow}}" title="审核" content="请选择对应的审核结果" bind:confirm="confirmDialog" bind:cancel="closeDialog">
+  <t-radio-group style="display: flex;justify-content: space-evenly;padding: 20rpx 0;" slot="content" default-value="1" value="{{reviewStatus}}" borderless t-class="box" bindchange="radioChange">
+    <t-radio t-class-icon="radio-group" block="{{false}}" label="审核通过" value="1" default-checked="{{true}}" />
+    <t-radio t-class-icon="radio-group" block="{{false}}" label="审核拒绝" value="2" />
+  </t-radio-group>
+  <t-button slot="confirm-btn" class="action-btn" theme="primary" bindtap="submitDelDialog">
+    审核
+  </t-button>
+  <t-button slot="cancel-btn" class="cancel-btn" data-type="reviewShow" theme="primary" bindtap="closeDialog">取消</t-button>
+</t-dialog>
