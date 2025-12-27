@@ -57,9 +57,13 @@ Page({
     this.getRegion()
   },
   onShow() {
-    let {dept} = this.data.userInfo
+    let userInfo = getApp().globalData.userInfo
+    let {
+      dept
+    } = userInfo
     if (dept.deptType == 4) {
       this.setData({
+        userInfo,
         searchValue: dept.deptName,
         inputDisabled: true
       })
@@ -320,7 +324,9 @@ Page({
     this.statrtSearch()
   },
   showCascader() {
-    let {dept} = this.data.userInfo
+    let {
+      dept
+    } = this.data.userInfo
     if (dept.deptType == 4) {
       return
     }
