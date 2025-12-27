@@ -58,24 +58,18 @@
     }
   }
 
+  ::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
 
-  .table {
-    display: flex;
-    flex-direction: column;
-    min-height: 0; // 让父容器撑满
+  .scroll-view {
     flex: 1;
-    width: 100%;
+    min-height: 0;
     margin-top: 30rpx;
     border-radius: 16rpx;
     border: 1rpx solid #D1D2F9;
     background-color: #ffffff;
-
-    .scroll-view {
-      flex: 1;
-      min-height: 0;
-      // max-height: 100vh; // 或者你想要的高度
-      overflow: auto;
-    }
 
     .table-header {
       font-weight: bold;
@@ -102,14 +96,17 @@
       position: absolute;
       bottom: 0;
       content: '';
-      width: calc(100% - 40rpx);
-      left: 20rpx;
-      right: 20rpx;
+      width: 100%; // 跟随内容宽度
+      left: 0;
       height: 1px;
       background-color: rgba(227, 228, 229, 1);
       transform: scaleY(0.5);
       transform-origin: bottom;
       flex-shrink: 0;
+    }
+
+    .table-row-big::before {
+      width: 133% !important; // 跟随内容宽度
     }
 
     .cell-header {
@@ -132,6 +129,7 @@
       justify-content: center;
       flex: 1;
       padding: 20rpx;
+      min-width: 150rpx;
     }
 
     .number-cell {
@@ -157,6 +155,15 @@
     // 最后一个单元格不需要边框
     .table-row:last-child::before {
       display: none;
+    }
+
+    .textOverflow {
+      overflow: hidden !important;
+      white-space: nowrap !important;
+      text-overflow: ellipsis !important;
+      text-align: center;
+      display: block !important;
+      max-width: 100%;
     }
   }
 }
