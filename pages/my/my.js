@@ -5,6 +5,9 @@ import {
 import {
   withLogin
 } from '../../utils/auth';
+import {
+  getUserInfoApi,
+} from '../../api/api.js'
 const app = getApp()
 Page({
 
@@ -38,7 +41,7 @@ Page({
     this.goRechargeHistory = withLogin(this, this._goRechargeHistory);
     this.goSystem = withLogin(this, this._goSystem);
     this.goServiceHistory = withLogin(this, this._goServiceHistory);
-    this.addDept = withLogin(this, this._addDept);
+    // this.addDept = withLogin(this, this._addDept);
     this.goMyDept = withLogin(this, this._goMyDept);
     this.goLoginFlag = withLogin(this, this._goLoginFlag);
   },
@@ -54,6 +57,17 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
+    console.log('小程序版本', this.data.appName.appVersion)
+    if (app.globalData.token) {
+      app.getUserInfo(getUserInfoApi).then(res => {
+        if (res) {
+          this.setData({
+            userInfo: res,
+            // hasApprovalPermission: this.checkApprovalPermission(res)
+          });
+        }
+      })
+    }
     //更新底部高亮
     tabService.updateIndex(this, 3)
   },
@@ -117,16 +131,19 @@ Page({
     });
   },
   _addDept(){
-    this.navigateByTitle({
-      title: '新建团队',
-      url: '/pages/add-dept/add-dept'
-    });
   },
   _goMyDept(){
-    this.navigateByTitle({
-      title: '我的团队',
-      url: '/pages/team-list/team-list'
-    });
+    if (this.data.userInfo.dept.deptType == 1) {
+      this.navigateByTitle({
+        title: '新建团队',
+        url: '/pages/add-dept/add-dept'
+      });
+    } else {
+      this.navigateByTitle({
+        title: '我的团队',
+        url: '/pages/team-list/team-list'
+      });
+    }
   },
   goLogin() {
     wx.reLaunch({
