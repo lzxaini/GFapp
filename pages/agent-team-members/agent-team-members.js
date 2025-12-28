@@ -89,7 +89,7 @@ Page({
       deptData
     } = this.data
     wx.navigateTo({
-      url: '/pages/change-department/change-department?deptData=' + JSON.stringify(deptData),
+      url: '/other/change-department/change-department?deptData=' + JSON.stringify(deptData),
     })
   },
   drawUserQrcode() {

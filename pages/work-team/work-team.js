@@ -118,7 +118,7 @@ Page({
   // 加入申请
   joinApplication() {
     wx.navigateTo({
-      url: '/pages/team-search/team-search'
+      url: '/other/team-search/team-search'
     })
   }
 })

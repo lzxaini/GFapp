@@ -130,19 +130,19 @@ Page({
   _goRechargeHistory() {
     this.navigateByTitle({
       title: '支付记录',
-      url: '/pages/recharge-history/recharge-history'
+      url: '/other/recharge-history/recharge-history'
     });
   },
   _goServiceHistory() {
     this.navigateByTitle({
       title: '服务记录',
-      url: '/pages/service-history/service-history'
+      url: '/other/service-history/service-history'
     });
   },
   _goSystem() {
     this.navigateByTitle({
       title: '白名单',
-      url: '/pages/my-edit/my-edit'
+      url: '/other/my-edit/my-edit'
     });
   },
   _addDept() {},
@@ -150,12 +150,12 @@ Page({
     if (this.data.userInfo.dept.deptType == 1) {
       this.navigateByTitle({
         title: '新建团队',
-        url: '/pages/add-dept/add-dept'
+        url: '/other/add-dept/add-dept'
       });
     } else {
       this.navigateByTitle({
         title: '我的团队',
-        url: '/pages/team-list/team-list'
+        url: '/other/team-list/team-list'
       });
     }
   },

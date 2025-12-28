@@ -48,7 +48,7 @@ Page({
   },
   goChangePassword() {
     wx.navigateTo({
-      url: '/pages/change-password/change-password',
+      url: '/other/change-password/change-password',
     })
   },
   // 上传头像
@@ -153,7 +153,7 @@ Page({
   },
   goSearchTeam() {
     wx.navigateTo({
-      url: '/pages/search-page/search-page'
+      url: '/other/search-page/search-page'
     });
   }
 })

@@ -2,7 +2,6 @@
   "pages": [
     "pages/my/my",
     "pages/index/index",
-    "pages/change-department/change-department",
     "pages/recharge/recharge",
     "pages/usage-guide/usage-guide",
     "pages/admin-team/admin-team",
@@ -17,32 +16,39 @@
     "pages/agent-device-list/agent-device-list",
     "pages/device-list/device-list",
     "pages/device-list-tab/device-list-tab",
-    "pages/use-history/use-history",
-    "pages/service-history/service-history",
-    "pages/recharge-history/recharge-history",
-    "pages/team-list/team-list",
     "pages/register/register",
     "pages/white-list/white-list",
-    "pages/team-search/team-search",
-    "pages/search-page/search-page",
     "pages/team-join/team-join",
     "pages/device-use/device-use",
     "pages/device-active/device-active",
     "pages/device-status/device-status",
-    "pages/change-password/change-password",
     "pages/device-bind/device-bind",
     "pages/submit-success/submit-success",
     "pages/work-team/work-team",
-    "pages/my-edit/my-edit",
     "pages/team-info/team-info",
     "pages/team-members/team-members",
-    "pages/blufi-network/blufi-network",
-    "pages/join-approval/join-approval",
     "pages/privacy-agreement/privacy-agreement",
-    "pages/message/message",
-    "pages/add-dept/add-dept"
+    "pages/message/message"
   ],
   "subpackages": [
+    {
+      "root": "other",
+      "pages": [
+        "blufi-network/blufi-network",
+        "add-dept/add-dept",
+        "change-department/change-department",
+        "change-password/change-password",
+        "join-approval/join-approval",
+        "my-edit/my-edit",
+        "recharge-history/recharge-history",
+        "search-page/search-page",
+        "service-history/service-history",
+        "team-search/team-search",
+        "team-list/team-list",
+        "use-history/use-history"
+      ],
+      "independent ": false
+    },
     {
       "root": "development",
       "pages": [
@@ -165,5 +171,11 @@
     }
   },
   "sitemapLocation": "sitemap.json",
-  "lazyCodeLoading": "requiredComponents"
+  "lazyCodeLoading": "requiredComponents",
+  "plugins": {
+    "airkiss": {
+      "version": "1.1.2",
+      "provider": "wx610ea582556c983e"
+    }
+  }
 }

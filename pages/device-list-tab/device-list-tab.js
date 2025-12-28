@@ -177,7 +177,7 @@ Page({
       serialnumber
     } = e?.currentTarget?.dataset
     wx.navigateTo({
-      url: `/pages/use-history/use-history?serialNumber=${serialnumber}`,
+      url: `/other/use-history/use-history?serialNumber=${serialnumber}`,
     });
   },
   // 设备激活
@@ -196,7 +196,7 @@ Page({
   },
   addDevice() {
     wx.navigateTo({
-      url: `/pages/blufi-network/blufi-network?deptId=${this.data.pageObj.deptId}`,
+      url: `/development/blufi-network/blufi-network?deptId=${this.data.pageObj.deptId}`,
     });
   }
 })

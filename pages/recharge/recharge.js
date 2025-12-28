@@ -216,7 +216,7 @@ Page({
   // 去新增部门页面
   goAddDept(){
     wx.navigateTo({
-      url: '/pages/add-dept/add-dept',
+      url: '/other/add-dept/add-dept',
     })
   },
   message(type, text, duration = 1500) {

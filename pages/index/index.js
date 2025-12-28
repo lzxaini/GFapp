@@ -25,7 +25,7 @@ Page({
     cardList: [{
         title: '团队管理',
         icon: 'my_1.png',
-        url: '/pages/team-list/team-list'
+        url: '/other/team-list/team-list'
       }, {
         title: '设备管理',
         icon: 'my_2.png',
@@ -46,12 +46,12 @@ Page({
       // {
       //   title: '加入审批',
       //   icon: 'my_7.png',
-      //   url: '/pages/join-approval/join-approval'
+      //   url: '/other/join-approval/join-approval'
       // }, 
       {
         title: '设置',
         icon: 'my_5.png',
-        url: '/pages/my-edit/my-edit'
+        url: '/other/my-edit/my-edit'
       }
     ],
     // title + deptType 映射更高权限的页面
@@ -246,13 +246,13 @@ Page({
   _goRechargeHistory() {
     this.navigateByTitle({
       title: '充值记录',
-      url: '/pages/recharge-history/recharge-history'
+      url: '/other/recharge-history/recharge-history'
     });
   },
   _goServiceHistory() {
     this.navigateByTitle({
       title: '服务记录',
-      url: '/pages/service-history/service-history'
+      url: '/other/service-history/service-history'
     });
   },
   _goWhiteList() {
