@@ -150,7 +150,7 @@ Page({
       return;
     }
     wx.showLoading({
-      title: '配网中',
+      title: '正在配网...',
     })
     //这里最好加微信小程序判断账号密码是否为空，以及其长度和是否为5G频段
     airkiss.startAirkiss(this.data.ssid, this.data.password, function (res) {
@@ -165,6 +165,9 @@ Page({
           })
           break;
         case 1:
+          wx.showLoading({
+            title: '设备注册中...',
+          })
           _this.addWifiDevice()
           // wx.showModal({
           //   title: '配网成功',
@@ -180,7 +183,7 @@ Page({
           //   showCancel: false,
           //   confirmText: '收到',
           // })
-          this.message('error', '设备配网失败，请检查密码是否正确！', 3000)
+          _this.message('error', '设备配网失败，请检查密码是否正确！', 3000)
           break;
 
         default:
@@ -201,6 +204,7 @@ Page({
   addWifiDevice: tool.debounce(function () {
     // 先检查是否已经在添加中，防止重复调用
     if (this.data.addFlag) {
+      wx.hideLoading();
       console.log('设备已在添加中，跳过重复调用');
       return;
     }
@@ -212,13 +216,14 @@ Page({
       deptId,
       deviceId
     } = this.data
-    console.log('测试', deptId, deviceId)
-    return
     deviceBindApi(deptId, deviceId).then(res => {
+      wx.hideLoading();
       if (res.code === 200) {
         this.message('success', '设备绑定成功！', 2000)
         setTimeout(() => {
-          this.setValue("addSuccess", true)
+          wx.navigateBack({
+            delta: 2
+          })
         }, 1500);
       } else {
         console.log("绑定失败", res)
@@ -230,12 +235,13 @@ Page({
         }, 2000);
       }
     }).catch(err => {
+      wx.hideLoading();
       console.error("绑定接口异常", err)
       this.message('error', '设备绑定失败，请联系管理员绑定！', 3000)
       // 接口异常时重置标志，允许重试
       this.setValue("addFlag", false);
     })
-  }, 666),
+  }, 1666),
   message(type, text, duration = 1500) {
     showMessage(type, text, duration, this);
   },
