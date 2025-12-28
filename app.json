@@ -35,6 +35,7 @@
       "root": "other",
       "pages": [
         "blufi-network/blufi-network",
+        "airkiss-network/airkiss-network",
         "add-dept/add-dept",
         "change-department/change-department",
         "change-password/change-password",

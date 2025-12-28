@@ -32,19 +32,20 @@ Page({
     stepActive: 0,
     ssid: "",
     password: "",
+    networkText: "蓝牙",
     subMqtt: false, // mqtt是否订阅
     steps: [{
-      text: '1.配网事项'
-    },
-    {
-      text: '2.连接设备'
-    },
-    {
-      text: '3.配置WIFI'
-    },
-    {
-      text: '4.配网成功'
-    }
+        text: '1.配网事项'
+      },
+      {
+        text: '2.连接设备'
+      },
+      {
+        text: '3.配置WIFI'
+      },
+      {
+        text: '4.配网成功'
+      }
     ],
     deviceId: '',
     deviceName: '',
@@ -216,7 +217,7 @@ Page({
             timeout = setTimeout(() => {
               wx.closeBLEConnection({
                 deviceId: this.data.deviceId,
-                success: function (res) { },
+                success: function (res) {},
               })
               this.blufiReset('ok')
             }, 1500)
@@ -259,7 +260,7 @@ Page({
   blufiReset: function (type) {
     wx.closeBLEConnection({
       deviceId: this.data.deviceId,
-      success: function (res) { },
+      success: function (res) {},
     })
     if (type !== 'ok') {
       this.setValue("stepActive", 0)
@@ -345,9 +346,9 @@ Page({
       name: _this.data.deviceName,
     });
     xBlufi.notifyStartDiscoverBle({
-      'isStart': false  // 修改为false，停止扫描
+      'isStart': false // 修改为false，停止扫描
     })
-    xBlufi.listenDeviceMsgEvent(false, this.blufiEventHandler);  // 修改为false，取消监听
+    xBlufi.listenDeviceMsgEvent(false, this.blufiEventHandler); // 修改为false，取消监听
     this.blufiIntercalClear()
     this.blufiTimeoutClear()
     const mqttClient = app.globalData.mqttClient;
@@ -357,7 +358,7 @@ Page({
       mqttClient.unsubscribe(`/resp/${this.data.deviceInfo.localName}`); // 取消MQTT订阅
     }
   },
-  onShow: function (options) { },
+  onShow: function (options) {},
   filterChange(event) {
     // tdesign input/search 组件输入事件为 event.detail.value
     this.setValue("macFilter", event.detail.value)
@@ -414,8 +415,8 @@ Page({
       serviceId: "0000FFFF-0000-1000-8000-00805F9B34FB",
       characteristicId: "0000FF01-0000-1000-8000-00805F9B34FB",
       value: data,
-      success: function (res) { },
-      fail: function (res) { }
+      success: function (res) {},
+      fail: function (res) {}
     });
   },
   _startConfig: function () {
@@ -606,5 +607,29 @@ Page({
         url: '/pages/index/index',
       })
     }
+  },
+  // 切换配网模式
+  changeNet() {
+    this.setValue('networkText', this.data.networkText == '一键' ? '蓝牙' : '一键')
+  },
+  goAirkiss() {
+    let {
+      deptId
+    } = this.data
+    wx.scanCode({
+      onlyFromCamera: false,
+      success: (res) => {
+        const deviceId = res.result;
+        wx.navigateTo({
+          url: `/other/airkiss-network/airkiss-network?deviceId=${deviceId}&deptId=${deptId}`,
+        })
+      },
+      fail: () => {
+        wx.showToast({
+          title: '未获取到二维码',
+          icon: 'none'
+        });
+      }
+    });
   }
 });

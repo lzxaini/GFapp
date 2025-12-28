@@ -1,0 +1,22 @@
+<view class="airkiss_container">
+  <view class="airkiss-wifi-input-wrapper">
+    <t-navbar t-class="navBar" left-arrow title="添加设备" bind:go-back="handleBack" />
+    <view class="title">请选择设备工作的Wi-Fi</view>
+    <view class="info">此设备只支持使用2.4GHz Wi-FI连接使用WI-FI名称仅支持英文字符及数字</view>
+    <view style="width: 100%;margin-top: 32rpx;">
+      <t-input t-class="wifi_input" value="{{ssid}}" placeholder="请输入WiFi名称" borderless="{{true}}" prefix-icon="{{ { name: 'wifi', ariaLabel: '名称', color: '#9CA3AF' } }}" clearable bind:change="onInputSSID" />
+    </view>
+    <view style="width: 100%;margin-top: 20rpx;margin-bottom: 80rpx;">
+      <t-input t-class="wifi_input" value="{{password}}" placeholder="请输入WiFi密码" borderless="{{true}}" type="{{showPassword ? 'text' : 'password'}}" prefix-icon="{{ { name: 'lock-on', ariaLabel: '密码', color: '#9CA3AF' } }}" bind:change="onInputPassword">
+        <t-icon slot="suffix" name="{{showPassword ? 'browse' : 'browse-off'}}" bind:click="onClickeye" color="#9CA3AF" size="22" />
+      </t-input>
+    </view>
+    <view class="wifi24">请确保你手机当前连接的Wi-Fi是2.4Ghz</view>
+    <image class="airkiss-wifi-input-cover" src="../../static/icon/wifi.png"></image>
+    <view class="wifi_btn_box">
+      <button class="wifi_btn" style="margin-bottom: {{marginBottom}}" bindtap="onConfirm">
+        开始配网
+      </button>
+    </view>
+  </view>
+</view>

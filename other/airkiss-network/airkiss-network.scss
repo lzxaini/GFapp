@@ -1,0 +1,82 @@
+.airkiss_container {
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background-color: #f4f7fb;
+
+  .airkiss-wifi-input-wrapper {
+    padding: 0 80rpx;
+    flex: 1;
+    margin: 25rpx;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    // justify-content: space-around;
+    .title {
+      width: 100%;
+      font-family: AlibabaPuHuiTi3;
+      font-size: 40rpx;
+      font-weight: normal;
+    }
+
+    .info {
+      margin-top: 32rpx;
+      font-family: AlibabaPuHuiTi3;
+      font-size: 26rpx;
+      font-weight: normal;
+      line-height: 58rpx;
+      color: #979797;
+    }
+
+    .wifi_input {
+      // width: 100%;
+      border: 1rpx solid #d1d5db;
+      border-radius: 8rpx;
+      padding: 15rpx 20rpx;
+    }
+
+    .airkiss-wifi-input-cover {
+      width: 402rpx;
+      height: 342rpx;
+    }
+
+    .wifi24 {
+      font-family: AlibabaPuHuiTi3;
+      font-size: 28rpx;
+      font-weight: normal;
+      text-align: center;
+      color: #3d3d3d;
+      margin-bottom: 32rpx;
+    }
+  }
+}
+.wifi_btn_box {
+	position: fixed;
+	bottom: env(safe-area-inset-bottom);
+	width: calc(100% - 64rpx);
+	margin: 0 32rpx;
+	margin-bottom: 62rpx;
+
+	.wifi_btn {
+		height: 112rpx;
+		border-radius: 80rpx;
+		box-sizing: border-box;
+		font-family: AlibabaPuHuiTi3;
+		font-size: 32rpx;
+		line-height: 112rpx;
+		font-weight: bold;
+		color: #ffffff;
+		background: linear-gradient(279deg, #888bf4 -1%, #5151c6 100%);
+	}
+
+	.reset {
+		font-family: AlibabaPuHuiTi3;
+		text-align: center;
+		margin-top: 20rpx;
+		font-size: 28rpx;
+		font-weight: normal;
+		color: #666666;
+	}
+}

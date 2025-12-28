@@ -20,9 +20,18 @@
     <view class="info_1">2、打开手机<text class="red_text">蓝牙</text>、<text class="red_text">WIFI</text>和<text class="red_text">位置</text>权限</view>
     <view class="info_1">3：手机连接<text class="red_text">2.4G</text>（非5G）<text class="red_text">WIFI</text></view>
     <view class="info_1">4：请设置设备WiFi配置信息</view>
-    <button style="margin-bottom: {{marginBottom}}" class="save_btn" bindtap="nextBtnHandle">
+    <!-- <button style="margin-bottom: {{marginBottom}}" class="save_btn" bindtap="nextBtnHandle">
       确认完成上述操作
-    </button>
+    </button> -->
+    <view style="margin-bottom: {{marginBottom}}" class="save_box">
+      <view class="text" bindtap="changeNet">切换{{networkText}}配网</view>
+      <button wx:if="{{networkText == '蓝牙'}}" class="save_btn" bindtap="goAirkiss">
+        一键配网
+      </button>
+      <button wx:else class="save_btn" bindtap="nextBtnHandle">
+        确认完成上述操作
+      </button>
+    </view>
   </view>
   <!-- 搜索设备 -->
   <block wx:if="{{stepActive == 1}}">
@@ -53,9 +62,12 @@
           </view>
         </t-radio-group>
       </view>
-      <button style="margin-bottom: {{marginBottom}}" class="save_btn" bindtap="blufiConnect">
-        连接设备
-      </button>
+
+      <view style="margin-bottom: {{marginBottom}}" class="save_box">
+        <button class="save_btn" bindtap="blufiConnect">
+          连接设备
+        </button>
+      </view>
     </view>
   </block>
   <!-- WiFi配置 -->
@@ -106,9 +118,11 @@
         </view>
       </view>
     </view>
-    <button disabled="{{!sendSuccess || !networkSuccess || !addSuccess}}" style="margin-bottom: {{marginBottom}}" class="save_btn" bindtap="goBack">
-      开始使用
-    </button>
+    <view style="margin-bottom: {{marginBottom}}" class="save_box">
+      <button disabled="{{!sendSuccess || !networkSuccess || !addSuccess}}" class="save_btn" bindtap="goBack">
+        开始使用
+      </button>
+    </view>
   </view>
 </view>
 <t-message id="t-message" />
