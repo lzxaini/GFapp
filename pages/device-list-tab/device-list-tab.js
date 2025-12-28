@@ -196,7 +196,7 @@ Page({
   },
   addDevice() {
     wx.navigateTo({
-      url: `/development/blufi-network/blufi-network?deptId=${this.data.pageObj.deptId}`,
+      url: `/other/blufi-network/blufi-network?deptId=${this.data.pageObj.deptId}`,
     });
   }
 })

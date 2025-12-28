@@ -84,7 +84,7 @@ Page({
         showMessage('error', '设备未配网，请先将设备配网！', 3000, _this);
         setTimeout(() => {
           wx.redirectTo({
-            url: `/development/blufi-network/blufi-network?deptId=${userInfo.dept.deptId}`,
+            url: `/other/blufi-network/blufi-network?deptId=${userInfo.dept.deptId}`,
           })
         }, 2500);
         return;
