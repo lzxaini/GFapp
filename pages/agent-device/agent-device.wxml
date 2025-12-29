@@ -4,7 +4,7 @@
   <t-cell-group t-class="device_nav" theme="card">
     <t-cell title="{{deptInfo.deptName || '暂无信息'}}" description="团队编号：{{deptInfo.deptCode}}">
       <t-avatar slot="left-icon" size="large" image="{{ossUrl + deptInfo.deptAvatar}}"></t-avatar>
-      <!-- <view slot="right-icon" class="right_box" bindtap="addDevice">添加设备</view> -->
+      <view slot="right-icon" class="right_box" bindtap="goDeviceList" data-id="{{deptInfo.deptId}}" data-info="{{deptInfo}}">部门设备</view>
     </t-cell>
   </t-cell-group>
   <view class="admin-team_title">
