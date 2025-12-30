@@ -67,7 +67,7 @@
     <view wx:for="{{deptUserList}}" class="tab_text" wx:key="index">
       <image class="member_user_img" src="{{ossUrl + item.avatar || '../../static/icon/gf_logo_w.png'}}" />
       <view class="member_right">
-        <view class="member_name textOverflow">{{item.userName}}阿德飒飒的</view>
+        <view class="member_name textOverflow">{{item.userName}}</view>
         <view class="member_phone">{{item.phonenumber}}</view>
       </view>
     </view>
