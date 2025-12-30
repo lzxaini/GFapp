@@ -434,6 +434,17 @@ export function getJoinTeamApi(data) {
 }
 
 /**
+ * 删除审批消息
+ * 参数123,456
+ */
+export function delTeamJoinRequestsApi(ids) {
+  return request({
+    url: `/gf/teamJoinRequests/${ids}`,
+    method: 'delete'
+  })
+}
+
+/**
  * 审批加入团队
  * 参数
  */

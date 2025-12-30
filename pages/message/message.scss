@@ -114,29 +114,38 @@
 
         .item-right {
           @extend %flex;
+          justify-content: flex-start !important;
+          flex: 1;
           flex-direction: column;
 
           .title {
+            width: 100%;
             display: grid;
             grid-template-columns: 60% 40%;
             gap: 30rpx;
             font-size: 27rpx;
             color: #333333;
-
+            .deptText{
+              text-align: left !important;
+            }
             .date {
+              text-align: left !important;
               color: #999999;
             }
           }
 
           .bottom {
             margin-top: 12rpx;
+            width: 100%;
             display: grid;
             grid-template-columns: 60% 40%;
             justify-content: space-between;
             gap: 30rpx;
             font-size: 22rpx;
             color: #999999;
-
+            .footer_info{
+              text-align: left !important;
+            }
             button {
               @extend %flex;
               width: 110rpx;
