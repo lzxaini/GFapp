@@ -7,6 +7,7 @@ import {
 } from '../../utils/auth';
 import {
   getUserInfoApi,
+  getDeptUserApi
 } from '../../api/api.js'
 import drawQrcode from '../../utils/weapp.qrcode.min'
 import tool from '../../utils/tools'
@@ -23,6 +24,7 @@ Page({
     appName: app.globalData.appName,
     ossUrl: app.globalData.ossUrl,
     isLogin: false,
+    deptUserList: [], // 部门用户列表
     adminRouteMap: {
       '团队管理': {
         1: '/pages/admin-team/admin-team',
@@ -82,6 +84,7 @@ Page({
           });
         }
       })
+      this.getDeptUser()
     }
     //更新底部高亮
     tabService.updateIndex(this, 3)
@@ -249,6 +252,18 @@ Page({
     if (this.data.qrCodeBox) {
       this.drawUserQrcode()
     }
+  },
+  getDeptUser() {
+    let {
+      dept
+    } = this.data.userInfo
+    getDeptUserApi(dept.deptId).then(res => {
+      if (res.code === 200) {
+        this.setData({
+          deptUserList: res.data
+        })
+      }
+    })
   },
   // 保存邀请码
   saveQrCode: tool.debounce(function () {

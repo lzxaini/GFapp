@@ -475,3 +475,10 @@ export function updateDeviceApi(data) {
     data
   })
 }
+// 获取部门成员
+export function getDeptUserApi(deptId) {
+  return request({
+    url: `/system/user/dept/${deptId}`,
+    method: 'get',
+  })
+}
