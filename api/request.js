@@ -8,7 +8,9 @@
  */
 import Message from 'tdesign-miniprogram/message/index';
 //导入请求的域名
-import { baseURL } from './config.js'
+import {
+  baseURL
+} from './config.js'
 let ignoreUrl = ['getWechatUserInfo', 'sendMessageCode', 'messageCodeCheckLogin', '/mobileLogin', 'messageCodeModifyPassword'] // 需要忽略的url地址
 export default function request(options) {
   const srtUrl = options.url.replace(/\u200B/g, '')
@@ -31,11 +33,21 @@ export default function request(options) {
           // 此处可以根据状态码resolve
           resolve(res.data)
         } else if (res.data.code === 401) {
-          wx.showToast({
-            title: '登录失效！',
-            icon: 'error'
+          // wx.showToast({
+          //   title: '登录失效！',
+          //   icon: 'error'
+          // })
+          wx.showModal({
+            title: '登录失效',
+            content: '登录失效，请先登录！',
+            confirmText: '去登录',
+            cancelText: '取消',
+            complete: (res) => {
+              if (res.confirm) {
+                getApp().logout()
+              }
+            }
           })
-          getApp().logout()
         } else if (res.data.code === 24003) { // 设备已激活
           resolve(res.data)
         } else {
