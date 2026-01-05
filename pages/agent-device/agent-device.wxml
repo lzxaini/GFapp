@@ -18,8 +18,8 @@
   <view class="admin-team_title">
     <view class="admin-team_tabs">
       <t-tabs t-class="tabs_box" t-class-active="active_style" t-class-item="item_style" defaultValue="{{teamTab}}" theme="tag" bind:click="tabClick">
-        <t-tab-panel wx:key="index" label="代理商({{teamObj.data[3].length}})" value="{{3}}" />
-        <t-tab-panel wx:key="index" label="门店({{teamObj.data[4].length}})" value="{{4}}" />
+        <t-tab-panel wx:key="index" label="代理商({{teamObj.data[3].length || 0}})" value="{{3}}" />
+        <t-tab-panel wx:key="index" label="门店({{teamObj.data[4].length || 0}})" value="{{4}}" />
       </t-tabs>
     </view>
   </view>
