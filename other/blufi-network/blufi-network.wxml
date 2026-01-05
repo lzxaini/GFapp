@@ -24,7 +24,7 @@
       确认完成上述操作
     </button> -->
     <view style="margin-bottom: {{marginBottom}}" class="save_box">
-      <view class="text" bindtap="changeNet">切换{{networkText}}配网</view>
+      <view class="text" bindtap="changeNet" wx:if="{{false}}">切换{{networkText}}配网</view>
       <button wx:if="{{networkText == '蓝牙'}}" class="save_btn" bindtap="goAirkiss">
         一键配网
       </button>

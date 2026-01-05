@@ -32,7 +32,7 @@ Page({
     stepActive: 0,
     ssid: "",
     password: "",
-    networkText: "蓝牙",
+    networkText: "配网",
     subMqtt: false, // mqtt是否订阅
     steps: [{
         text: '1.配网事项'
