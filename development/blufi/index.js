@@ -197,7 +197,7 @@ Page({
         if (!options.result) {
           wx.showModal({
             title: '温馨提示',
-            content: '配网失败，请重试',
+            content: '配网失败，请检查WiFi信息！',
             showCancel: false, //是否显示取消按钮
           })
           this.blufiReset()
@@ -257,6 +257,7 @@ Page({
     }
   },
   blufiReset: function (type) {
+    this.blufiTimeoutClear(); // 清除配网超时定时器
     wx.closeBLEConnection({
       deviceId: this.data.deviceId,
       success: function (res) { },

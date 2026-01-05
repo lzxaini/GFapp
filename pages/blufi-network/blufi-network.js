@@ -197,7 +197,7 @@ Page({
         if (!options.result) {
           wx.showModal({
             title: '温馨提示',
-            content: '配网失败，请重试',
+            content: '配网失败，请检查WiFi信息！',
             showCancel: false, //是否显示取消按钮
           })
           this.blufiReset()
@@ -257,23 +257,24 @@ Page({
     }
   },
   blufiReset: function (type) {
-    wx.closeBLEConnection({
-      deviceId: this.data.deviceId,
-      success: function (res) { },
-    })
-    if (type !== 'ok') {
-      this.setValue("stepActive", 0)
-      // 重置配网状态
-      this.setValue("sendSuccess", false)
-      this.setValue("networkSuccess", false)
-      this.setValue("addSuccess", false)
-    }
-    this.setValue("blufiloadInfo", "扫描设备")
-    this.setValue("blufiLoadStatus", false)
-    this.setValue("devicesList", [])
-    this.setValue("deviceId", '')
-    this.setValue("macFilter", '')
-  },
+      this.blufiTimeoutClear(); // 清除配网超时定时器
+      wx.closeBLEConnection({
+        deviceId: this.data.deviceId,
+        success: function (res) { },
+      })
+      if (type !== 'ok') {
+        this.setValue("stepActive", 0)
+        // 重置配网状态
+        this.setValue("sendSuccess", false)
+        this.setValue("networkSuccess", false)
+        this.setValue("addSuccess", false)
+      }
+      this.setValue("blufiloadInfo", "扫描设备")
+      this.setValue("blufiLoadStatus", false)
+      this.setValue("devicesList", [])
+      this.setValue("deviceId", '')
+      this.setValue("macFilter", '')
+    },
   blufiUpdateList: function () {
     console.log('data.devicesListTemp', this.data.devicesListTemp)
     let list = this.data.devicesListTemp.filter(item => item.localName && item.localName.indexOf('GFKM-') === 0);
