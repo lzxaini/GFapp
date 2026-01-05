@@ -57,8 +57,11 @@ Page({
     this.getRegion()
   },
   onShow() {
+    //更新底部高亮
+    tabService.updateIndex(this, 1)
     let userInfo = getApp().globalData.userInfo
-    console.log('测试', userInfo.allowedRecharge)
+    if (!userInfo) return
+    console.log('测试', userInfo)
     let {
       dept
     } = userInfo
@@ -73,8 +76,6 @@ Page({
     })
     this.getOperation()
     this.getRechargeRecords()
-    //更新底部高亮
-    tabService.updateIndex(this, 1)
   },
   /**
    * 页面上拉触底事件的处理函数

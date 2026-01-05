@@ -20,6 +20,8 @@ Page({
     deptInfo: {}
   },
   onShow() {
+    //更新底部高亮
+    tabService.updateIndex(this, 0)
     let userInfo = getApp().globalData.userInfo
     let { dept } = userInfo
     this.setData({
@@ -29,8 +31,6 @@ Page({
       deptInfo: dept
     })
     this.getAdminDeviceList()
-    //更新底部高亮
-    tabService.updateIndex(this, 0)
   },
   /**
    * 设备分页查询

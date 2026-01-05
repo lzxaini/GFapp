@@ -20,14 +20,14 @@ Page({
     }
   },
   onShow() {
+    //更新底部高亮
+    tabService.updateIndex(this, 0)
     let { dept } = this.data.userInfo
     this.setData({
       'pageObj.deptId': dept.deptId,
       'pageObj.deptType': dept.deptType
     })
     this.getAdminDeviceList()
-    //更新底部高亮
-    tabService.updateIndex(this, 0)
   },
   /**
    * 设备分页查询

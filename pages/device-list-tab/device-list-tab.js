@@ -51,10 +51,10 @@ Page({
     }
   },
   onShow() {
-    this.getDeviceList()
-    this.getDeviceActivated()
     //更新底部高亮
     tabService.updateIndex(this, 0)
+    this.getDeviceList()
+    this.getDeviceActivated()
   },
   /**
    * 页面上拉触底事件的处理函数

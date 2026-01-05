@@ -74,6 +74,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
+    //更新底部高亮
+    tabService.updateIndex(this, 3)
     console.log('小程序版本', this.data.appName.appVersion)
     if (app.globalData.token) {
       app.getUserInfo(getUserInfoApi).then(res => {
@@ -86,8 +88,6 @@ Page({
       })
       this.getDeptUser()
     }
-    //更新底部高亮
-    tabService.updateIndex(this, 3)
   },
 
   /**
