@@ -296,4 +296,10 @@ Page({
       qrFlag: false
     })
   },
+  // 去开发模式
+  goDevPage(){
+    wx.navigateTo({
+      url: '/development/index/index',
+    })
+  }
 })

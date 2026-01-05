@@ -39,12 +39,19 @@
     <t-icon wx:if="{{userInfo.dept}}" name="qrcode" size="38rpx" color="#888BF4" bindtap="openQrCode" />
   </view>
   <t-cell-group wx:if="{{userInfo.dept}}" t-class="dept_info" theme="card">
-    <t-cell t-class-center="dept_center" t-class-title="dept_title" t-class-note="textOverflow" title="机构名称" note="{{userInfo.dept.deptName}}" hover />
+    <t-cell t-class-center="dept_center" t-class-title="dept_title" t-class-note="textOverflow" title="机构名称" note="{{userInfo.dept.deptName}}" hover>
+      <!-- <view class="{{userInfo.dept.deptName === '研发部门' ? 'dept_note' : ''}}" slot="note" bindtap="goDevPage">{{userInfo.dept.deptName}}</view> -->
+      <t-icon wx:if="{{userInfo.dept.deptName === '研发部门'}}" class="go_dev" slot="right-icon" name="bug" color="#E6A23C" bindtap="goDevPage"/>
+    </t-cell>
     <t-cell t-class-center="dept_center" t-class-title="dept_title" t-class-note="textOverflow" title="机构地址" note="{{userInfo.dept ? userInfo.dept.address || '-' : '-'}}-{{userInfo.dept ? userInfo.dept.addressDetail || '' : ''}}" hover />
     <t-cell t-class-center="dept_center" t-class-title="dept_title" t-class-note="textOverflow" title="开通时间" note="{{userInfo.dept.createTime || '--'}}" hover />
     <t-cell wx:if="{{userInfo.dept.deptType != 4}}" t-class-center="dept_center" t-class-title="dept_title" t-class-note="textOverflow" title="团队管理" hover>
       <view class="dept_note" slot="note" bindtap="goDeptInfo">点击查看详情</view>
     </t-cell>
+    <!-- 仅研发部门显示开发模式菜单 -->
+    <!-- <t-cell wx:if="{{userInfo.dept.deptName === '研发部门'}}" t-class-center="dept_center" t-class-title="dept_title" t-class-note="textOverflow" title="开发模式" hover>
+      <view class="dept_note" slot="note" bindtap="goDevPage">点击立即前往</view>
+    </t-cell> -->
   </t-cell-group>
 
   <view class="join_dept" wx:else>

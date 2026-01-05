@@ -148,7 +148,12 @@
 
   .dept_info {
     --td-cell-note-font-size: 28rpx;
+
     // --td-cell-vertical-padding: 20rpx;
+    .go_dev {
+      position: absolute;
+      right: 25rpx;
+    }
   }
 
   .join_dept {
