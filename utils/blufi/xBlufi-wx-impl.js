@@ -648,7 +648,11 @@ function init() {
                                   switch (subType) {
                                     case 15:
                                       if (result.length == 3) {
+                                        // 失败情况 - 解析错误码
+                                        let errorCode = parseInt(result[2], 16) || 0;
+                                        console.log('失败情况errorCode', errorCode)
                                         mDeviceEvent.notifyDeviceMsgEvent({
+                                          'code': errorCode,
                                           'type': mDeviceEvent.XBLUFI_TYPE.TYPE_CONNECT_ROUTER_RESULT,
                                           'result': false,
                                           'data': {
@@ -657,11 +661,15 @@ function init() {
                                           }
                                         });
                                       } else {
+                                        // 失败情况 - 解析错误码
+                                        let errorCode = parseInt(result[2], 16) || 0;
+                                        console.log('失败情况errorCode', errorCode)
                                         for (var i = 0; i <= result.length; i++) {
                                           var num = parseInt(result[i], 16) + "";
                                           if (i > 12) what.push(String.fromCharCode(parseInt(result[i], 16)));
                                         }
                                         mDeviceEvent.notifyDeviceMsgEvent({
+                                          'code': errorCode,
                                           'type': mDeviceEvent.XBLUFI_TYPE.TYPE_CONNECT_ROUTER_RESULT,
                                           'result': true,
                                           'data': {
