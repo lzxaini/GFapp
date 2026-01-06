@@ -37,17 +37,32 @@ export default function request(options) {
           //   title: '登录失效！',
           //   icon: 'error'
           // })
-          wx.showModal({
-            title: '登录失效',
-            content: '登录失效，请先登录！',
-            confirmText: '去登录',
-            cancelText: '取消',
-            complete: (res) => {
-              if (res.confirm) {
-                getApp().logout()
-              }
-            }
-          })
+          // wx.showModal({
+          //   title: '温馨提示',
+          //   content: '登录失效，请先登录！',
+          //   confirmText: '去登录',
+          //   cancelText: '取消',
+          //   confirmColor: '#888bf4',
+          //   complete: (res) => {
+          //     if (res.confirm) {
+          //       getApp().logout()
+          //     }
+          //   }
+          // })
+          Message.warning({
+            context: this,
+            offset: ['180rpx', 32],
+            content: '未登录或登录失效，请先登录！',
+            duration: -1,
+            link: {
+              content: '去登录',
+              navigatorProps: {
+                url: '/pages/login/login',
+              },
+            },
+            single: true,
+            closeBtn: true,
+          });
         } else if (res.data.code === 24003) { // 设备已激活
           resolve(res.data)
         } else {
