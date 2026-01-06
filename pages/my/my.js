@@ -44,7 +44,8 @@ Page({
    */
   onLoad(options) {
     let userInfo = getApp().globalData.userInfo;
-    if (userInfo) {
+    console.log('options', userInfo)
+    if (userInfo && userInfo.dept && userInfo.dept.deptType) {
       tabService.updateRole(this, userInfo.dept.deptType)
       console.log('options', tabService, userInfo)
     } else {
@@ -144,12 +145,13 @@ Page({
   },
   _goSystem() {
     this.navigateByTitle({
-      title: '白名单',
+      title: '设置',
       url: '/other/my-edit/my-edit'
     });
   },
   _addDept() {},
   _goMyDept() {
+    if (this.verifyDept()) return;
     if (this.data.userInfo.dept.deptType == 1) {
       this.navigateByTitle({
         title: '新建团队',
@@ -254,6 +256,7 @@ Page({
     }
   },
   getDeptUser() {
+    if (this.verifyDept()) return;
     let {
       dept
     } = this.data.userInfo
@@ -301,5 +304,10 @@ Page({
     wx.navigateTo({
       url: '/development/index/index',
     })
-  }
+  },
+  goSearchTeam() {
+    wx.navigateTo({
+      url: '/other/search-page/search-page'
+    });
+  },
 })

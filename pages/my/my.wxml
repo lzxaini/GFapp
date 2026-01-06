@@ -57,7 +57,7 @@
   <view class="join_dept" wx:else>
     <image class="bg_img" src="../../static/icon/my_device_bg.png" />
     <view class="tips">{{userInfo ? '暂无归属团队' : '暂未登录'}}</view>
-    <t-button class="join_dept_btn" wx:if="{{userInfo}}">
+    <t-button class="join_dept_btn" wx:if="{{userInfo}}" bindtap="goSearchTeam">
       加入团队
     </t-button>
     <t-button class="join_dept_btn" wx:else bindtap="goLoginFlag">
