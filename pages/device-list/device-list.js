@@ -2,7 +2,8 @@ import Message from 'tdesign-miniprogram/message/index';
 import {
   getDeviceListApi,
   getDeviceActivatedApi,
-  sanStartDeviceApi
+  sanStartDeviceApi,
+  activetionDeviceApi
 } from '../../api/api'
 const app = getApp()
 Page({
@@ -124,7 +125,7 @@ Page({
         if (result) {
           if (serialnumber === result) {
             // 扫码成功
-            _this.sanStartDevice(result)
+            _this.sanStartDevice(result, 'scan')
           } else {
             Message.error({
               context: this,
@@ -146,13 +147,18 @@ Page({
     });
   },
   // 扫码先掉接口确定
-  sanStartDevice(serialNumber) {
+  sanStartDevice(serialNumber, type = 'scan') {
+    let _this = this
     sanStartDeviceApi(serialNumber).then(res => {
       if (res.code === 200) {
         if (res.data) {
-          wx.navigateTo({
-            url: `/pages/device-active/device-active?deviceId=${serialNumber}`,
-          });
+          if (type === 'add') {
+            _this.activetionDevice(serialNumber)
+          } else {
+            wx.navigateTo({
+              url: `/pages/device-active/device-active?deviceId=${serialNumber}`,
+            });
+          }
         } else {
           Message.warning({
             context: this,
@@ -184,6 +190,53 @@ Page({
         this.setData({
           historyList: res.data
         })
+      }
+    })
+  },
+  // 扫码激活
+  scanDevice() {
+    wx.scanCode({
+      onlyFromCamera: true,
+      success: (res) => {
+        const {
+          result
+        } = res;
+        if (result) {
+          // 扫码成功
+          this.sanStartDevice(result, 'add')
+        } else {
+          wx.showToast({
+            title: '扫描失败！',
+            icon: 'error'
+          });
+        }
+      },
+      fail: () => {}
+    });
+  },
+  // 激活设备
+  activetionDevice(serialNumber) {
+    activetionDeviceApi(serialNumber).then(res => {
+      if (res.code === 24003) { // 已绑定，到激活设备页面
+        return wx.navigateTo({
+          url: `/pages/device-active/device-active?deviceId=${serialNumber}`,
+        });
+      }
+      if (res.data.length < 1) { // 到激活设备页面
+        return wx.navigateTo({
+          url: `/pages/device-active/device-active?deviceId=${serialNumber}`,
+        });
+      }
+      if (res.data.length > 0) { // 到配网页面
+        if (serialNumber.indexOf("GFKM-") != -1) { // WiFi模块
+          return wx.navigateTo({
+            url: `/other/blufi-network/blufi-network`,
+          })
+        } else { // 4G模块
+          return wx.navigateTo({
+            url: `/pages/device-bind/device-bind?deviceId=${serialNumber}`,
+          });
+        }
       }
     })
   },

@@ -7,7 +7,10 @@
       <view slot="description" class="device_info">
         已激活：{{historyList.activated}}/{{historyList.total}}
       </view>
-      <view slot="right-icon" class="right_box" bindtap="addDevice">添加设备</view>
+      <view slot="right-icon" class="right_box" bindtap="scanDevice">
+        <t-icon class="sacn" name="scan" color="#888bf4" size="24rpx"></t-icon>
+        <view>扫码激活</view>
+      </view>
     </t-cell>
   </t-cell-group>
   <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="pullDownToRefresh">
