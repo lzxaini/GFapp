@@ -24,7 +24,7 @@ App({
     appName: {
       name: '光馥科美',
       slogan: '光塑年轻力，馥养无龄美',
-      appVersion: '0.0.21_25121613',
+      appVersion: '0.0.1_26010616',
     },
     phoneEnv: '', // 手机系统
     mqttClient: null,
@@ -179,7 +179,7 @@ App({
       success: console.log('字体加载完成')
     })
   },
-  logout() {
+  logout(type = 'login') {
     // logout.js
     wx.removeStorageSync('userInfo');
     wx.removeStorageSync('token');
@@ -187,11 +187,13 @@ App({
     this.globalData.token = null;
     this.globalData.mqttClient?.disconnect?.();
     this.globalData.mqttClient = null
-    setTimeout(() => {
-      wx.reLaunch({
-        url: '/pages/login/login',
-      });
-    }, 800);
+    if (type === 'login') {
+      setTimeout(() => {
+        wx.reLaunch({
+          url: '/pages/login/login',
+        });
+      }, 800);
+    }
   },
   // 授权检测
   authCheck() {
