@@ -45,7 +45,7 @@ Page({
   onLoad(options) {
     let userInfo = getApp().globalData.userInfo;
     console.log('options', userInfo)
-    if (userInfo && userInfo.dept && userInfo.dept.deptType) {
+    if (userInfo && userInfo.dept && userInfo.dept.deptType && userInfo.dept.deptName !== '游客部门') {
       tabService.updateRole(this, userInfo.dept.deptType)
       console.log('options', tabService, userInfo)
     } else {
@@ -85,9 +85,9 @@ Page({
             userInfo: res,
             // hasApprovalPermission: this.checkApprovalPermission(res)
           });
+          this.getDeptUser(res.dept)
         }
       })
-      this.getDeptUser()
     }
   },
 
@@ -255,11 +255,8 @@ Page({
       this.drawUserQrcode()
     }
   },
-  getDeptUser() {
+  getDeptUser(dept) {
     if (this.verifyDept()) return;
-    let {
-      dept
-    } = this.data.userInfo
     getDeptUserApi(dept.deptId).then(res => {
       if (res.code === 200) {
         this.setData({
