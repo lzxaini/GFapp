@@ -15,8 +15,26 @@
       </t-tabs>
     </view>
     <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom" refresher-enabled="{{true}}" refresher-triggered="{{refreshing}}" bindrefresherrefresh="onPullDownRefresh">
-      <t-swipe-cell wx:for="{{approvalList}}" wx:key="id">
-        <view class="list_item">
+      <block wx:for="{{approvalList}}" wx:key="id">
+        <t-swipe-cell wx:if="{{item.status != 0}}">
+          <view class="list_item">
+            <t-avatar class="avatar-example" image="{{ ossUrl + item.avatar || '/static/icon/gf_logo_w.png'}}" />
+            <view class="item-right">
+              <view class="title">
+                <text class="deptText textOverflow">{{item.deptName}}</text>
+                <text class="textOverflow date">{{item.requestTime}}</text>
+              </view>
+              <view class="bottom" style="grid-template-columns: 100%">
+                <text class="footer_info textOverflow">用户：{{item.userName}} 发起申请，请审核。</text>
+                <!-- <button bindtap="goReview" data-item="{{item}}">去处理</button> -->
+              </view>
+            </view>
+          </view>
+          <view slot="right" class="del_box">
+            <t-icon t-class="del_icon" name="delete" size="30rpx" color="#FFF" bindtap="onDelete" data-type="line" data-item="{{item}}"></t-icon>
+          </view>
+        </t-swipe-cell>
+        <view class="list_item" wx:else>
           <t-avatar class="avatar-example" image="{{ ossUrl + item.avatar || '/static/icon/gf_logo_w.png'}}" />
           <view class="item-right">
             <view class="title">
@@ -25,14 +43,12 @@
             </view>
             <view class="bottom">
               <text class="footer_info textOverflow">用户：{{item.userName}} 发起申请，请审核。</text>
-              <button bindtap="goReview" data-item="{{item}}" wx:if="{{item.status == 0}}">去处理</button>
+              <button bindtap="goReview" data-item="{{item}}">去处理</button>
             </view>
           </view>
         </view>
-        <view slot="right" class="del_box">
-          <t-icon t-class="del_icon" name="delete" size="30rpx" color="#FFF" bindtap="onDelete" data-type="line" data-item="{{item}}"></t-icon>
-        </view>
-      </t-swipe-cell>
+      </block>
+
       <view class="empty" wx:if="{{approvalList.length < 1}}">
         <empty image="../../static/icon/empty3.png" styleInfo="background-color: transparent !important" description="暂无申请记录"></empty>
       </view>
@@ -40,8 +56,11 @@
   </view>
 </view>
 <t-message id="t-message" />
-<t-dialog visible="{{showDelDialog}}" t-class-action="btn_color" title="删除警告" content="是否确定删除消息，请确定！">
-  <t-button slot="confirm-btn" class="action-btn" theme="primary" bindtap="submitDelDialog">
+<t-dialog visible="{{showDelDialog}}" t-class-action="btn_color" title="删除警告" content="是否确定删除{{delType === 'all' ? '全部' : ''}}消息，请确定！">
+  <t-button wx:if="{{delType === 'all'}}" slot="confirm-btn" class="action-btn" theme="primary" bindtap="onDeleteAll">
+    删除
+  </t-button>
+  <t-button wx:else slot="confirm-btn" class="action-btn" theme="primary" bindtap="submitDelDialog">
     删除
   </t-button>
   <t-button slot="cancel-btn" class="cancel-btn" data-type="showDelDialog" theme="primary" bindtap="closeDialog">取消</t-button>

@@ -7,7 +7,7 @@ import {
   agreeJoinTeamApi,
   getJoinTeamApi,
   delTeamJoinRequestsApi,
-  updateUserApi
+  delDeptMessageApi
 } from '../../api/api'
 const app = getApp()
 Page({
@@ -40,8 +40,7 @@ Page({
     ]
   },
 
-  onLoad(options) {
-  },
+  onLoad(options) {},
 
   onShow() {
     // 页面显示时可以刷新数据
@@ -69,7 +68,7 @@ Page({
       pageSize: this.data.pageObj.pageSize,
     };
     if (this.data.tabValue !== 'all') {
-      params.status =  this.data.tabValue
+      params.status = this.data.tabValue
     }
 
     // 调用真实接口
@@ -262,6 +261,18 @@ Page({
     } = e?.detail;
     this.setData({
       reviewStatus: value
+    })
+  },
+  onDeleteAll() {
+    delDeptMessageApi().then(res => {
+      console.log('测试', res)
+      if (res.code == 200) {
+        this.message('success', '全部删除成功！');
+        this.setData({
+          showDelDialog: false
+        })
+        this.getApprovalList()
+      }
     })
   },
   message(type, text, duration = 1500) {

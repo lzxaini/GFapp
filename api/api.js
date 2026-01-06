@@ -493,3 +493,10 @@ export function getDeptUserApi(deptId) {
     method: 'get',
   })
 }
+// 删除本部门及一下审核过的消息
+export function delDeptMessageApi() {
+  return request({
+    url: `/gf/teamJoinRequests/all`,
+    method: 'DELETE',
+  })
+}
