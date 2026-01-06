@@ -24,7 +24,7 @@ App({
     appName: {
       name: '光馥科美',
       slogan: '光塑年轻力，馥养无龄美',
-      appVersion: '0.0.1_26010616',
+      appVersion: '0.0.1_260106164',
     },
     phoneEnv: '', // 手机系统
     mqttClient: null,
