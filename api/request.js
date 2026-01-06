@@ -58,11 +58,13 @@ export default function request(options) {
               content: '去登录',
               navigatorProps: {
                 url: '/pages/login/login',
+                openType: 'reLaunch',
               },
             },
             single: true,
             closeBtn: true,
           });
+          getApp().logout('clear')
         } else if (res.data.code === 24003) { // 设备已激活
           resolve(res.data)
         } else {
