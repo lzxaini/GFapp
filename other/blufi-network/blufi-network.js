@@ -194,6 +194,7 @@ Page({
       case xBlufi.XBLUFI_TYPE.TYPE_STATUS_CONNECTED:
         break;
       case xBlufi.XBLUFI_TYPE.TYPE_CONNECT_ROUTER_RESULT:
+        console.log('配网信息:', options)
         wx.hideLoading();
         if (!options.result) {
           wx.showModal({
@@ -249,7 +250,7 @@ Page({
             showCancel: false, //是否显示取消按钮
             success: function (res) {
               wx.redirectTo({
-                url: '/pages/index/index'
+                url: '/pages/my/my'
               })
             }
           })
@@ -605,7 +606,7 @@ Page({
       // 如果只有一个页面，跳转到首页
       console.log('页面栈只有1个，跳转首页')
       wx.reLaunch({
-        url: '/pages/index/index',
+        url: '/pages/my/my',
       })
     }
   },

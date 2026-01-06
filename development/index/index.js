@@ -167,7 +167,7 @@ Page({
       // 如果只有一个页面，跳转到首页
       console.log('页面栈只有1个，跳转首页')
       wx.redirectTo({
-        url: '/pages/index/index',
+        url: '/pages/my/my',
       })
     }
   },

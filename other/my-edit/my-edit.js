@@ -131,7 +131,7 @@ Page({
         _this.message('success', '修改成功！', 1500)
         setTimeout(() => {
           wx.reLaunch({
-            url: '/pages/index/index'
+            url: '/pages/my/my'
           });
           wx.hideLoading();
         }, 1000);

@@ -5,7 +5,7 @@ Page({
   },
   goIndex() {
     wx.reLaunch({
-      url: '/pages/index/index',
+      url: '/pages/my/my',
     })
   }
 })

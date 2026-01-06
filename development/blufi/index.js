@@ -194,6 +194,7 @@ Page({
         break;
       case xBlufi.XBLUFI_TYPE.TYPE_CONNECT_ROUTER_RESULT:
         wx.hideLoading();
+        console.log('配网失败:', options)
         if (!options.result) {
           wx.showModal({
             title: '温馨提示',
@@ -248,7 +249,7 @@ Page({
             showCancel: false, //是否显示取消按钮
             success: function (res) {
               wx.redirectTo({
-                url: '/pages/index/index'
+                url: '/pages/my/my'
               })
             }
           })

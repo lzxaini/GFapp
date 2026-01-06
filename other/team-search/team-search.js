@@ -52,7 +52,7 @@ Page({
         // 扫码成功
         setTimeout(() => {
           wx.reLaunch({
-            url: '/pages/index/index'
+            url: '/pages/my/my'
           });
         }, 1500)
       }

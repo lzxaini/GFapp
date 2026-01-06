@@ -105,7 +105,7 @@ Page({
       // 如果只有一个页面，跳转到首页
       console.log('页面栈只有1个，跳转首页')
       wx.reLaunch({
-        url: '/pages/index/index',
+        url: '/pages/my/my',
       })
     } else {
       // 否则直接返回设备列表页

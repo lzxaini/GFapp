@@ -44,7 +44,7 @@ Page({
   },
   noBind() {
     wx.reLaunch({
-      url: '/pages/index/index'
+      url: '/pages/my/my'
     });
   },
   onSubmit() {
