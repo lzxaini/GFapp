@@ -12,7 +12,7 @@
             </view>
             <view class="msg-time" wx:else>
               <text>{{item.time}} 发</text>
-              <t-icon class="hexBtn" name="arrow-left-right-circle" bindtap="hexToString" data-item="{{item}}" size="18" color="#67C23A"/>
+              <t-icon class="hexBtn" name="arrow-left-right-circle" bindtap="hexToString" data-item="{{item}}" size="18" color="#67C23A" />
             </view>
           </view>
         </view>
@@ -20,12 +20,62 @@
     </view>
   </scroll-view>
   <view class="send_msg" style="padding-bottom: {{marginBottom}}">
-    <view class="menu">
-      <!-- <t-button size="small" theme="danger">重置配网</t-button> -->
-      <t-button size="small" theme="light" bindtap="send" data-type="scan">发送扫码</t-button>
-      <t-button size="small" bindtap="send" data-type="end">发送结束</t-button>
-      <t-button size="small" theme="primary" bindtap="toggleSendType" wx:if="{{sendType === 'HEX'}}" data-type="String">{{btnText}}</t-button>
-      <t-button size="small" theme="primary" bindtap="toggleSendType" wx:else data-type="HEX">{{btnText}}</t-button>
+    <!-- 展开/收起按钮 -->
+    <view class="menu-toggle" bindtap="toggleMenu">
+      <text>快捷指令</text>
+      <view style="display: flex;">
+        <t-button t-class="switch_btn" size="extra-small" theme="primary" bindtap="toggleSendType" wx:if="{{sendType === 'HEX'}}" data-type="String">
+          {{btnText}}
+        </t-button>
+        <t-button size="extra-small" theme="primary" bindtap="toggleSendType" wx:else data-type="HEX">
+          {{btnText}}
+        </t-button>
+        <t-icon style="margin-left: 30rpx;" name="{{menuExpanded ? 'chevron-up' : 'chevron-down'}}" size="20" />
+      </view>
+    </view>
+    <!-- 快捷指令菜单 -->
+    <view class="menu {{menuExpanded ? 'menu-expanded' : 'menu-collapsed'}}">
+      <!-- 设备通用指令 -->
+      <view class="menu-section">
+        <view class="section-title">📱 设备指令</view>
+        <view class="section-buttons">
+          <t-button size="extra-small" theme="light" bindtap="send" data-type="scan">发送扫码</t-button>
+          <t-button size="extra-small" bindtap="send" data-type="end">发送结束</t-button>
+          <t-button size="extra-small" theme="success" bindtap="sendCommand" data-cmd="config-get">
+            获取配置
+          </t-button>
+          <t-button size="extra-small" theme="danger" bindtap="sendCommand" data-cmd="network-reset">
+            重置配网
+          </t-button>
+        </view>
+      </view>
+      <!-- 4G模块AT指令 -->
+      <view class="menu-section">
+        <view class="section-title">📡 4G模块指令</view>
+        <view class="section-buttons">
+          <t-button size="extra-small" theme="info" bindtap="sendCommand" data-cmd="AT+IMEI">
+            📱 IMEI
+          </t-button>
+          <t-button size="extra-small" theme="primary" bindtap="sendCommand" data-cmd="AT+CSQ">
+            📶 信号
+          </t-button>
+          <t-button size="extra-small" theme="success" bindtap="sendCommand" data-cmd="AT+UTC">
+            ⏰ 时间
+          </t-button>
+          <t-button size="extra-small" theme="warning" bindtap="sendCommand" data-cmd="AT+LBS">
+            📍 定位
+          </t-button>
+          <t-button size="extra-small" theme="info" bindtap="sendCommand" data-cmd="AT+ISLINK">
+            🌐 网络
+          </t-button>
+          <t-button size="extra-small" theme="info" bindtap="sendCommand" data-cmd="AT+CEREG">
+            📡 注册
+          </t-button>
+          <t-button size="extra-small" theme="danger" bindtap="sendCommand" data-cmd="AT+RESET">
+            🔄 重启
+          </t-button>
+        </view>
+      </view>
     </view>
     <view class="input-area">
       <input class="msg-input" placeholder="输入消息..." value="{{inputText}}" bindinput="onInputChange" confirm-type="send" bindconfirm="sendMessage" />
