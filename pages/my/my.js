@@ -214,7 +214,7 @@ Page({
       dept
     } = this.data.userInfo || {};
     if (!dept || dept.deptName === '游客部门') {
-      this.message('warning', '游客账号暂时无法使用，请联系管理员！');
+      this.message('warning', '游客账号，请先加入团队，等待审批！');
       return true;
     }
     return false;
