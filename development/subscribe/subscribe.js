@@ -14,7 +14,14 @@ Page({
     scrollToView: '', // 滚动到的消息id
     inputText: '', // 输入框内容
     sendType: 'HEX', // string 或 hex
-    btnText: 'HEX' // 按钮文本
+    btnText: 'HEX', // 按钮文本
+    menuExpanded: false // 菜单是否展开
+  },
+  // 切换菜单展开状态
+  toggleMenu() {
+    this.setData({
+      menuExpanded: !this.data.menuExpanded
+    });
   },
   // 切换发送类型
   toggleSendType(e) {
@@ -27,6 +34,36 @@ Page({
       sendType,
       btnText
     });
+  },
+  // 发送快捷指令
+  sendCommand(e) {
+    const { cmd } = e?.currentTarget?.dataset;
+    if (!cmd) return;
+    
+    // 根据不同指令设置不同的发送类型
+    const commandMap = {
+      'config-get': { type: 'String', text: 'config-get' },
+      'network-reset': { type: 'String', text: 'network-reset' }
+    };
+    
+    const command = commandMap[cmd];
+    if (command) {
+      this.setData({
+        sendType: command.type,
+        btnText: command.type,
+        inputText: command.text
+      });
+      this.sendMessage();
+    } else {
+      // AT指令直接发送（String类型），cmd已包含\r\n
+      this.setData({
+        sendType: 'String',
+        btnText: 'String',
+        inputText: `${cmd}\\r\\n`
+      });
+      console.log('发送', cmd)
+      this.sendMessage();
+    }
   },
   onLoad(option) {
     let {
