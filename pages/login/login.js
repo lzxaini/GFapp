@@ -49,6 +49,7 @@ Page({
           content: '去首页',
           navigatorProps: {
             url: '/pages/my/my',
+            openType: 'switchTab',
           },
         },
         closeBtn: true,
