@@ -213,7 +213,7 @@ Page({
     const {
       dept
     } = this.data.userInfo || {};
-    if (!dept) {
+    if (!dept || dept.deptName === '游客部门') {
       this.message('warning', '游客账号暂时无法使用，请联系管理员！');
       return true;
     }
