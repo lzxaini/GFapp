@@ -21,7 +21,7 @@
       </view>
       <view class="item" bindtap="goRechargeHistory">
         <image class="menu_grid_icon" src="../../static/icon/my_menu_2.png" />
-        <view class="text">支付记录</view>
+        <view class="text">充值记录</view>
       </view>
       <view class="item" bindtap="goServiceHistory">
         <image class="menu_grid_icon" src="../../static/icon/my_menu_3.png" />

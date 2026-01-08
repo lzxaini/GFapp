@@ -1,14 +1,14 @@
 <view class="message_container">
   <!-- 顶部导航栏固定 -->
   <t-navbar t-class="navBar" left-arrow="{{false}}" title="消息通知" />
-  <view class="nav_bg">
+  <view class="nav_bg" style="top: {{capsuleHeight - 15}}px">
     <image class="bg_img" src="../../static/icon/message_navbg.png" />
   </view>
+  <view class="menu_text" bindtap="onDelete" data-type="all">
+    <t-icon name="check-double" size="20" color="#FFFFFF" />
+    <text>全部删除</text>
+  </view>
   <view class="message_body">
-    <view class="menu_text" bindtap="onDelete" data-type="all">
-      <t-icon name="check-double" size="20" color="#FFFFFF" />
-      <text>全部删除</text>
-    </view>
     <view class="message_info">
       <t-tabs t-class="tabs_box" t-class-active="active_style" t-class-item="item_style" value="{{tabValue}}" theme="tag" bind:change="onTabChange">
         <t-tab-panel wx:for="{{tabList}}" wx:key="value" label="{{item.label}}" value="{{item.value}}" />

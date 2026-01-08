@@ -5,13 +5,14 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  background-color: #f5f7fb;
+  // background-color: #f5f7fb;
+  background: linear-gradient(180deg, #888bf4 20%, #f5f7fb 40%, #f5f7fb 100%);
 
   .bg_box {
     position: relative;
     width: 100%;
     height: 552rpx;
-    background: linear-gradient(180deg, #888bf4 29%, #f5f7fb 100%);
+    // background: linear-gradient(180deg, #888bf4 29%, #f5f7fb 100%);
 
     .bg_top {
       position: absolute;
@@ -60,7 +61,7 @@
 			width: 140rpx;
 			height: 50rpx;
 			border-radius: 25rpx 0 0 25rpx;
-			background-color: #888bf4;
+      background-color: #888bf4;
 			font-family: AlibabaPuHuiTi3;
 			font-size: 24rpx;
 			font-weight: 300;

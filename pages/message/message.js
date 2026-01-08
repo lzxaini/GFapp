@@ -12,6 +12,7 @@ import {
 const app = getApp()
 Page({
   data: {
+    capsuleHeight: app.globalData.capsuleHeight,
     ossUrl: app.globalData.ossUrl,
     approvalList: [], // 审批列表
     total: 0, // 总数

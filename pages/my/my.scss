@@ -5,7 +5,7 @@
   height: calc(100vh - (env(safe-area-inset-bottom) + 48px));
   padding-bottom: 48px;
   background-color: #f5f7fb;
-  background: linear-gradient(180deg, #888bf4 29%, #f5f7fb 40%, #f5f7fb 100%);
+  background: linear-gradient(180deg, #888bf4 20%, #f5f7fb 40%, #f5f7fb 100%);
 
   .navBar {
     --td-navbar-bg-color: #888bf4;
@@ -105,6 +105,9 @@
         .menu_grid_icon {
           width: 80rpx;
           height: 80rpx;
+        }
+        .text{
+          margin-top: 10rpx;
         }
       }
     }
@@ -215,11 +218,11 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      min-width: 326rpx;
+      min-width: 266rpx;
       margin: 30rpx 0;
       background-color: #F5F7FB;
       border-radius: 20rpx;
-
+      padding: 0 30rpx;
       &:not(:first-child) {
         margin-left: 24rpx;
       }
@@ -238,12 +241,13 @@
       .member_name {
         font-family: AlibabaPuHuiTi3;
         font-size: 30rpx;
-        font-weight: 250;
+        font-weight: 300;
         color: #606972;
       }
 
       .member_phone {
         font-family: AlibabaPuHuiTi3;
+        font-weight: 300;
         font-size: 24rpx;
         color: #606972;
       }

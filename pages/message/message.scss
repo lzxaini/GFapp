@@ -5,21 +5,23 @@
 }
 
 .message_container {
+  position: relative;
   flex: 1;
   display: flex;
   flex-direction: column;
   width: 100vw;
   height: calc(100vh - (env(safe-area-inset-bottom) + 48px));
   padding-bottom: 48px;
-  background: linear-gradient(180deg, #888BF4 29%, #F5F7FB 100%);
+  background: linear-gradient(180deg, #888bf4 20%, #f5f7fb 40%, #f5f7fb 100%);
 
   .navBar {
-    --td-navbar-bg-color: #888bf4;
+    --td-navbar-bg-color: transparent;
     --td-navbar-color: #fff;
     --td-navbar-capsule-border-color: #e3e6ea !important;
   }
 
   .nav_bg {
+    position: absolute;
     width: 100%;
     height: 418rpx;
 
@@ -29,32 +31,37 @@
     }
   }
 
+  .menu_text {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 50rpx;
+    margin: 34rpx 30rpx 20rpx 0;
+    font-size: 28rpx;
+    font-weight: normal;
+    text-align: center;
+    color: #FFFFFF;
+
+    text {
+      margin-left: 10rpx;
+      font-size: 28rpx;
+      font-weight: normal;
+      text-align: center;
+      text-decoration: underline;
+      color: #FFFFFF;
+    }
+  }
+
   .message_body {
     position: relative;
     flex: 1;
     display: flex;
     flex-direction: column;
     min-height: 0;
-    margin: -250rpx 24rpx 0 24rpx;
+    margin: 0 24rpx;
     border-radius: 20px 20px 0px 0px;
     background: rgba(255, 255, 255, 0.6);
 
-    .menu_text {
-      @extend %flex;
-      position: absolute;
-      top: -70rpx;
-      right: 20rpx;
-      z-index: 2;
-
-      text {
-        margin-left: 10rpx;
-        font-size: 28rpx;
-        font-weight: normal;
-        text-align: center;
-        text-decoration: underline;
-        color: #FFFFFF;
-      }
-    }
 
     .message_info {
       width: calc(100% - 60rpx);
@@ -68,7 +75,7 @@
         --td-tab-item-tag-active-bg: #888bf4;
         --td-tab-item-active-color: #ffffff;
         --td-tab-item-height: 80rpx;
-        border: 1rpx solid #ecedfd;
+        // border: 1rpx solid #ecedfd;
         border-radius: 20rpx !important;
         --td-tab-item-height: 77rpx;
         // margin-bottom: 30rpx;
@@ -125,11 +132,13 @@
             gap: 30rpx;
             font-size: 27rpx;
             color: #333333;
-            .deptText{
+
+            .deptText {
               text-align: left !important;
             }
+
             .date {
-              text-align: left !important;
+              // text-align: left !important;
               color: #999999;
             }
           }
@@ -143,9 +152,11 @@
             gap: 30rpx;
             font-size: 22rpx;
             color: #999999;
-            .footer_info{
+
+            .footer_info {
               text-align: left !important;
             }
+
             button {
               @extend %flex;
               width: 110rpx;

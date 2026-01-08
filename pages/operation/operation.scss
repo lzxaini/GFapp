@@ -1,17 +1,20 @@
 .operation_container {
+  position: relative;
   display: flex;
   flex-direction: column;
   height: calc(100vh - (env(safe-area-inset-bottom) + 48px));
   padding-bottom: 48px;
-  background: linear-gradient(180deg, #888bf4 29%, #f5f7fb 40%, #f5f7fb 100%);
+  background: linear-gradient(180deg, #888bf4 20%, #f5f7fb 40%, #f5f7fb 100%);
 
   .navBar {
-    --td-navbar-bg-color: #888bf4;
+    --td-navbar-bg-color: transparent;
     --td-navbar-color: #fff;
     --td-navbar-capsule-border-color: #e3e6ea !important;
+    // color: transparent;
   }
 
   .nav_bg {
+    position: absolute;
     width: 100%;
     height: 418rpx;
 
@@ -21,43 +24,36 @@
     }
   }
 
+  .menu_text {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 50rpx;
+    margin: 34rpx 30rpx 20rpx 0;
+    font-size: 28rpx;
+    font-weight: normal;
+    text-align: center;
+    text-decoration: underline;
+    color: #FFFFFF;
+
+    .icon {
+      width: 30rpx;
+      height: 30rpx;
+      margin-right: 10rpx;
+    }
+  }
 
   .data_search {
     position: relative;
     width: calc(100% - 48rpx -40rpx);
     height: calc(280rpx - 40rpx);
-    margin: 24rpx;
+    margin: 0 24rpx;
+    margin-bottom: 24rpx;
     padding: 20rpx;
     border-radius: 20rpx;
     background: rgba(255, 255, 255, 0.45);
     backdrop-filter: blur(40px);
     -webkit-backdrop-filter: blur(40px);
-    margin-top: -209rpx;
-    // box-shadow:
-    //   0 8px 32px rgba(0, 0, 0, 0.1),
-    //   inset 0 1px 0 rgba(255, 255, 255, 0.5),
-    //   inset 0 -1px 0 rgba(255, 255, 255, 0.1),
-    //   inset 0 0 0px 0px rgba(255, 255, 255, 0);
-
-    .menu_text {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 50rpx;
-      position: absolute;
-      top: -70rpx;
-      right: 20rpx;
-      font-size: 28rpx;
-      font-weight: normal;
-      text-align: center;
-      text-decoration: underline;
-      color: #FFFFFF;
-      .icon{
-        width: 30rpx;
-        height: 30rpx;
-        margin-right: 10rpx;
-      }
-    }
 
     .data_title {
       font-family: AlibabaPuHuiTi3;
