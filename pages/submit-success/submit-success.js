@@ -4,7 +4,7 @@ Page({
     marginBottom: app.globalData.marginBottom
   },
   goIndex() {
-    wx.reLaunch({
+    wx.switchTab({
       url: '/pages/my/my',
     })
   }

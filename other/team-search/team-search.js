@@ -51,7 +51,7 @@ Page({
         });
         // 扫码成功
         setTimeout(() => {
-          wx.reLaunch({
+          wx.switchTab({
             url: '/pages/my/my'
           });
         }, 1500)

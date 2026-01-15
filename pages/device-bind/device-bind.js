@@ -43,9 +43,10 @@ Page({
     this.setData({ bindId: value })
   },
   noBind() {
-    wx.reLaunch({
-      url: '/pages/my/my'
-    });
+    // wx.switchTab({
+    //   url: '/pages/my/my'
+    // });
+    wx.navigateBack(1)
   },
   onSubmit() {
     if (!this.data.bindId) {

@@ -130,7 +130,7 @@ Page({
       if (res.code === 200) {
         _this.message('success', '修改成功！', 1500)
         setTimeout(() => {
-          wx.reLaunch({
+          wx.switchTab({
             url: '/pages/my/my'
           });
           wx.hideLoading();

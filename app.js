@@ -81,11 +81,11 @@ App({
       this.globalData.userInfo = userInfoParse
       this.globalData.token = token;
       if (!this.globalData.devFlag) {
-        wx.reLaunch({
+        wx.switchTab({
           url: '/pages/my/my'
         });
       } else {
-        wx.reLaunch({
+        wx.switchTab({
           url: this.globalData.devUrl || '/pages/my/my'
         });
       }

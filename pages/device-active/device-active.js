@@ -165,7 +165,7 @@ Page({
         this.clearReconnect();
         showMessage('error', '连接超时，设备激活失败，请稍后再试！', 3000, _this);
         setTimeout(() => {
-          wx.reLaunch({
+          wx.switchTab({
             url: '/pages/my/my',
           })
         }, 2500);
@@ -232,7 +232,7 @@ Page({
     let pages = getCurrentPages();
     console.log('页面栈', pages)
     if (pages.length === 1) {
-      wx.reLaunch({
+      wx.switchTab({
         url: '/pages/my/my',
       })
     }
