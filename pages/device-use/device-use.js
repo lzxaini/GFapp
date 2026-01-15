@@ -1,7 +1,9 @@
 import {
   onMqttReady
 } from '../../utils/mqttReady';
-import { showMessage } from '../../utils/tools';
+import {
+  showMessage
+} from '../../utils/tools';
 const app = getApp()
 Page({
   data: {
@@ -14,8 +16,12 @@ Page({
     reconnectTimer: null, // 定时器引用
   },
   onLoad(option) {
-    let { deviceId } = option
-    this.setData({ deviceId })
+    let {
+      deviceId
+    } = option
+    this.setData({
+      deviceId
+    })
     wx.eventCenter.on('mqtt-message', this.handleMsg);
     onMqttReady(() => {
       this.subscribeTopic();
@@ -39,10 +45,16 @@ Page({
     }
   },
   // 收到消息
-  handleMsg({ topic, message }) {
+  handleMsg({
+    topic,
+    message
+  }) {
     let _this = this
     console.log('设备列表收到消息：', topic, message);
-    let { msg, result } = message
+    let {
+      msg,
+      result
+    } = message
     if (topic === `/resp/${this.data.deviceId}` && (result.funcCode === 5 && result.state === 2 || msg === '100000FF')) {
       this.clearReconnect(); // 停止重连
       wx.hideLoading();
@@ -104,12 +116,12 @@ Page({
     if (pages.length <= 1) {
       // 如果只有一个页面，跳转到首页
       console.log('页面栈只有1个，跳转首页')
-      wx.reLaunch({
+      wx.switchTab({
         url: '/pages/my/my',
       })
     } else {
       // 否则直接返回设备列表页
-      console.log('返回设备列表页')
+      console.log('返回设备列表页', pages)
       wx.redirectTo({
         url: '/pages/device-list/device-list',
       })
