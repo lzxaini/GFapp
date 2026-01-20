@@ -41,7 +41,7 @@
   <t-cell-group wx:if="{{userInfo.dept && userInfo.dept.deptName !== '游客部门'}}" t-class="dept_info" theme="card">
     <t-cell t-class-center="dept_center" t-class-title="dept_title" t-class-note="textOverflow" title="机构名称" note="{{userInfo.dept.deptName}}" hover>
       <!-- <view class="{{userInfo.dept.deptName === '研发部门' ? 'dept_note' : ''}}" slot="note" bindtap="goDevPage">{{userInfo.dept.deptName}}</view> -->
-      <t-icon wx:if="{{userInfo.dept.deptName === '研发部门'}}" class="go_dev" slot="right-icon" name="bug" color="#E6A23C" size="25px" bindtap="goDevPage"/>
+      <t-icon wx:if="{{userInfo.dept.deptName === '研发部门'}}" class="go_dev" slot="right-icon" name="bug" color="#E6A23C" size="25px" bindtap="goDevPage" />
     </t-cell>
     <t-cell t-class-center="dept_center" t-class-title="dept_title" t-class-note="textOverflow" title="机构地址" note="{{userInfo.dept ? userInfo.dept.address || '-' : '-'}}-{{userInfo.dept ? userInfo.dept.addressDetail || '' : ''}}" hover />
     <t-cell t-class-center="dept_center" t-class-title="dept_title" t-class-note="textOverflow" title="开通时间" note="{{userInfo.dept.createTime || '--'}}" hover />
@@ -71,13 +71,15 @@
   </view>
 
   <scroll-view class="member_box" style="top: calc({{statusBarHeight}}px + 148rpx)" enable-flex="{{true}}" scroll-x enhanced="{{true}}" show-scrollbar="{{false}}" refresher-enabled="{{false}}" refresher-default-style="none">
-    <view wx:for="{{deptUserList}}" class="tab_text" wx:key="index">
-      <image class="member_user_img" src="{{ossUrl + item.avatar || '../../static/icon/gf_logo_w.png'}}" />
-      <view class="member_right">
-        <view class="member_name textOverflow">{{item.userName}}</view>
-        <view class="member_phone">{{item.phonenumber}}</view>
+    <block wx:for="{{deptUserList}}" wx:key="index">
+      <view class="tab_text" wx:if="{{item.phonenumber !== '15888888888' && item.phonenumber !== '16666666666'}}">
+        <image class="member_user_img" src="{{ossUrl + item.avatar || '../../static/icon/gf_logo_w.png'}}" />
+        <view class="member_right">
+          <view class="member_name textOverflow">{{item.userName}}</view>
+          <view class="member_phone">{{item.phonenumber}}</view>
+        </view>
       </view>
-    </view>
+    </block>
   </scroll-view>
 </view>
 <t-dialog visible="{{isLogin}}" title="温馨提示" content="您尚未登录，请先登录！">
