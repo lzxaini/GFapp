@@ -1,3 +1,9 @@
+%flex {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
 .operation_container {
   position: relative;
   display: flex;
@@ -26,10 +32,8 @@
   }
 
   .menu_text {
+    @extend %flex;
     position: relative;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
     height: 50rpx;
     margin: 34rpx 30rpx 20rpx 0;
     font-size: 28rpx;
@@ -38,6 +42,10 @@
     text-decoration: underline;
     color: #FFFFFF;
     z-index: 1;
+
+    .box {
+      @extend %flex;
+    }
 
     .icon {
       width: 30rpx;

@@ -5,9 +5,11 @@
   <view class="nav_bg" style="top: {{capsuleHeight - 15}}px">
     <image class="bg_img" src="../../static/icon/recharge_nav_bg.png" />
   </view>
-  <view class="menu_text" wx:if="{{userInfo.allowedRecharge && tabsValue === 1}}" bindtap="goPage" data-type="power">
-    <image class="icon" src="../../static/icon/power-icon.png" />
-    <text>能量点充值</text>
+  <view class="menu_text" wx:if="{{tabsValue === 1}}">
+    <view class="box" wx:if="{{userInfo.allowedRecharge && tabsValue === 1}}" bindtap="goPage" data-type="power">
+      <image class="icon" src="../../static/icon/power-icon.png" />
+      <text>能量点充值</text>
+    </view>
   </view>
   <view class="menu_text" wx:if="{{tabsValue === 2}}" bindtap="goPage" data-type="member">
     <image class="icon" src="../../static/icon/member-icon.png" />
