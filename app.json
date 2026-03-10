@@ -21,7 +21,6 @@
     "pages/device-active/device-active",
     "pages/device-status/device-status",
     "pages/device-bind/device-bind",
-    "pages/submit-success/submit-success",
     "pages/team-info/team-info",
     "pages/team-members/team-members",
     "pages/join-approval/join-approval"
@@ -96,6 +95,8 @@
     "t-search": "tdesign-miniprogram/search/search",
     "t-step-item": "tdesign-miniprogram/step-item/step-item",
     "t-guide": "tdesign-miniprogram/guide/guide",
+    "t-swipe-cell": "tdesign-miniprogram/swipe-cell/swipe-cell",
+    "t-badge": "tdesign-miniprogram/badge/badge",
     "empty": "components/empty/empty"
   },
   "window": {
