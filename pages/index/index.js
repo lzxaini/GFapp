@@ -41,17 +41,17 @@ Page({
       }, {
         title: '使用指南',
         icon: 'my_4.png',
-        url: '/pages/usage-guide/usage-guide'
+        url: '/other/usage-guide/usage-guide'
       },
-      // {
-      //   title: '加入审批',
-      //   icon: 'my_7.png',
-      //   url: '/pages/join-approval/join-approval'
-      // }, 
+      {
+        title: '加入审批',
+        icon: 'my_7.png',
+        url: '/pages/join-approval/join-approval'
+      }, 
       {
         title: '设置',
         icon: 'my_5.png',
-        url: '/pages/my-edit/my-edit'
+        url: '/other/my-edit/my-edit'
       }
     ],
     // title + deptType 映射更高权限的页面
@@ -252,13 +252,13 @@ Page({
   _goServiceHistory() {
     this.navigateByTitle({
       title: '服务记录',
-      url: '/pages/service-history/service-history'
+      url: '/other/service-history/service-history'
     });
   },
   _goWhiteList() {
     this.navigateByTitle({
       title: '白名单',
-      url: '/pages/white-list/white-list'
+      url: '/other/white-list/white-list'
     });
   },
   goLogin() {

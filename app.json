@@ -1,9 +1,7 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/change-department/change-department",
     "pages/recharge/recharge",
-    "pages/usage-guide/usage-guide",
     "pages/admin-team/admin-team",
     "pages/store-team-members/store-team-members",
     "pages/agent-team-members/agent-team-members",
@@ -15,29 +13,18 @@
     "pages/founder-device/founder-device",
     "pages/agent-device-list/agent-device-list",
     "pages/device-list/device-list",
-    "pages/use-history/use-history",
-    "pages/service-history/service-history",
     "pages/recharge-history/recharge-history",
     "pages/team-list/team-list",
     "pages/register/register",
-    "pages/white-list/white-list",
     "pages/team-search/team-search",
-    "pages/search-page/search-page",
     "pages/team-join/team-join",
-    "pages/device-use/device-use",
     "pages/device-active/device-active",
     "pages/device-status/device-status",
-    "pages/change-password/change-password",
     "pages/device-bind/device-bind",
     "pages/submit-success/submit-success",
-    "pages/work-team/work-team",
-    "pages/my-edit/my-edit",
     "pages/team-info/team-info",
     "pages/team-members/team-members",
-    "pages/blufi-network/blufi-network",
-    "pages/join-approval/join-approval",
-    "pages/privacy-agreement/privacy-agreement",
-    "pages/add-dept/add-dept"
+    "pages/join-approval/join-approval"
   ],
   "subpackages": [
     {
@@ -48,6 +35,27 @@
         "device-use/device-use",
         "index/index",
         "subscribe/subscribe"
+      ],
+      "independent ": false
+    },
+    {
+      "root": "other",
+      "pages": [
+        "add-dept/add-dept",
+        "blufi-network/blufi-network",
+        "change-department/change-department",
+        "change-password/change-password",
+        "device-use/device-use",
+        "message/message",
+        "my-edit/my-edit",
+        "privacy-agreement/privacy-agreement",
+        "search-page/search-page",
+        "service-history/service-history",
+        "submit-success/submit-success",
+        "usage-guide/usage-guide",
+        "use-history/use-history",
+        "white-list/white-list",
+        "work-team/work-team"
       ],
       "independent ": false
     }

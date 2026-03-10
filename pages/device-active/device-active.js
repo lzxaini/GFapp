@@ -78,7 +78,7 @@ Page({
       result?.state === 1
     ) {
       wx.redirectTo({
-        url: `/pages/device-use/device-use?deviceId=${this.data.deviceId}`,
+        url: `/other/device-use/device-use?deviceId=${this.data.deviceId}`,
       });
     }
     if (topic === `/resp/${this.data.deviceId}` && result?.string === this.data.deviceId && this.data.resetNetwork) {

@@ -8,7 +8,7 @@ Page({
   },
   searchTeam() {
     wx.navigateTo({
-      url: '/pages/search-page/search-page'
+      url: '/other/search-page/search-page'
     })
   },
   scanTeam() {

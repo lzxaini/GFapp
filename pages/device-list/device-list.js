@@ -111,7 +111,7 @@ Page({
     // "runningState": "1",（0未激活 1运行中 2已停止）
     if (runningstate === '1') {
       wx.navigateTo({
-        url: `/pages/device-use/device-use?deviceId=${serialnumber}`,
+        url: `/other/device-use/device-use?deviceId=${serialnumber}`,
       });
       return
     }
@@ -170,7 +170,7 @@ Page({
       serialnumber
     } = e?.currentTarget?.dataset
     wx.navigateTo({
-      url: `/pages/use-history/use-history?serialNumber=${serialnumber}`,
+      url: `/other/use-history/use-history?serialNumber=${serialnumber}`,
     });
   },
   // 设备激活
@@ -189,7 +189,7 @@ Page({
   },
   addDevice() {
     wx.navigateTo({
-      url: `/pages/blufi-network/blufi-network?deptId=${this.data.pageObj.deptId}`,
+      url: `/other/blufi-network/blufi-network?deptId=${this.data.pageObj.deptId}`,
     });
   }
 })

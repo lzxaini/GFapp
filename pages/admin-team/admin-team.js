@@ -39,7 +39,7 @@ Page({
       id
     } = e?.currentTarget?.dataset
     wx.navigateTo({
-      url: `/pages/work-team/work-team?editFlag=${flag}&id=${id}`,
+      url: `/other/work-team/work-team?editFlag=${flag}&id=${id}`,
     });
   },
   getAdminTeamList() {

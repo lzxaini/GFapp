@@ -128,7 +128,7 @@ Page({
   // 去往协议
   goPrivacyAgreement() {
     wx.navigateTo({
-      url: '/pages/privacy-agreement/privacy-agreement',
+      url: '/other/privacy-agreement/privacy-agreement',
     });
   },
   agreementChange(e) {

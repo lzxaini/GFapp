@@ -1,10 +1,10 @@
 /*
  * @Author: lzx
  * @Date: 2024-01-01 13:42:13
- * @LastEditors: lzxaini 1245634367@qq.com
- * @LastEditTime: 2025-12-14 21:56:35
+ * @LastEditors: 17630921248 1245634367@qq.com
+ * @LastEditTime: 2026-03-10 08:32:45
  * @Description: Fuck Bug
- * @FilePath: \GFapp\api\api.js
+ * @FilePath: \gfApp\api\api.js
  */
 import request from "./request.js"
 
@@ -441,6 +441,25 @@ export function agreeJoinTeamApi(data) {
   return request({
     url: `/gf/teamJoinRequests/${data.id}/${data.status}`,
     method: 'put'
+  })
+}
+
+// 删除本部门及一下审核过的消息
+export function delDeptMessageApi() {
+  return request({
+    url: `/gf/teamJoinRequests/all`,
+    method: 'DELETE',
+  })
+}
+
+/**
+ * 删除审批消息
+ * 参数123,456
+ */
+export function delTeamJoinRequestsApi(ids) {
+  return request({
+    url: `/gf/teamJoinRequests/${ids}`,
+    method: 'delete'
   })
 }
 
