@@ -44,7 +44,7 @@ Page({
         });
         // 扫码成功
         wx.reLaunch({
-          url: '/pages/submit-success/submit-success'
+          url: '/other/submit-success/submit-success'
         });
       }
     })
