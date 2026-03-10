@@ -44,7 +44,7 @@
   </view>
   <t-cell-group class="card-box" theme="card">
     <block wx:for="{{cardList}}" wx:key="index">
-      <t-cell wx:if="{{(item.title !== '能量充值' && item.title !== '加入审批') || userInfo.allowedRecharge}}" t-class="from-item" t-class-left="left_center" title="{{item.title}}" bindtap="goListItem" data-url="{{item.url}}" data-title="{{item.title}}" arrow hover>
+      <t-cell wx:if="{{item.title !== '能量充值' || userInfo.allowedRecharge}}" t-class="from-item" t-class-left="left_center" title="{{item.title}}" bindtap="goListItem" data-url="{{item.url}}" data-title="{{item.title}}" arrow hover>
         <image slot="left-icon" class="left_icon" src="../../static/icon/{{item.icon}}" />
       </t-cell>
     </block>

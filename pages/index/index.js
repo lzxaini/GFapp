@@ -44,9 +44,9 @@ Page({
         url: '/other/usage-guide/usage-guide'
       },
       {
-        title: '加入审批',
+        title: '消息通知',
         icon: 'my_7.png',
-        url: '/pages/join-approval/join-approval'
+        url: '/other/message/message'
       }, 
       {
         title: '设置',
