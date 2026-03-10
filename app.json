@@ -117,7 +117,6 @@
       "desc": "扫码功能需要授权使用您的摄像头功能"
     }
   },
-  "componentFramework": "glass-easel",
   "sitemapLocation": "sitemap.json",
   "lazyCodeLoading": "requiredComponents"
 }
