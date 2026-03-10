@@ -5,6 +5,9 @@
 	// height: 100vh;
 	height: calc(100vh - (env(safe-area-inset-bottom)));
 	background-color: #eee;
+  // display: flex;
+  // flex-direction: column;
+  // flex: 1;
 	.bg_box {
 		position: relative;
 		width: 100%;
@@ -105,6 +108,8 @@
 
 	.card-box {
 		// margin-top: 24px;
+    // max-height: 800rpx;
+    // overflow: auto;
 		.left_icon {
 			display: flex;
 			align-items: center;
@@ -133,6 +138,12 @@
     color: #808080;
     left: 50%;
     transform: translate(-50%, 0);
+    margin-bottom: 30rpx;
+    // position: relative;
+    // z-index: 1;
+    // font-size: 18rpx;
+    // color: #808080;
+    // text-align: center;
     // margin-top: 50rpx;
   }
 }
