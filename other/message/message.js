@@ -1,5 +1,4 @@
 const dayjs = require('dayjs')
-import tabService from '../../utils/tab-service';
 import {
   showMessage
 } from '../../utils/tools';
@@ -44,9 +43,6 @@ Page({
   onLoad(options) {},
 
   onShow() {
-    // 页面显示时可以刷新数据
-    //更新底部高亮
-    tabService.updateIndex(this, 2)
     this.getApprovalList();
   },
 

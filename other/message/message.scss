@@ -10,9 +10,8 @@
   display: flex;
   flex-direction: column;
   width: 100vw;
-  height: calc(100vh - (env(safe-area-inset-bottom) + 48px));
-  padding-bottom: 48px;
-  background: linear-gradient(180deg, #888bf4 20%, #f5f7fb 40%, #f5f7fb 100%);
+  height: calc(100vh - (env(safe-area-inset-bottom)));
+  background: linear-gradient(180deg, #FF8533 20%, #f5f7fb 40%, #f5f7fb 100%);
 
   .navBar {
     --td-navbar-bg-color: transparent;
@@ -32,27 +31,42 @@
     }
   }
 
-  .menu_text {
-    @extend %flex;
-    justify-content: flex-end !important;
-    position: relative;
-    height: 50rpx;
-    margin: 34rpx 30rpx 20rpx 0;
-    font-size: 28rpx;
-    font-weight: normal;
-    text-align: center;
-    color: #FFFFFF;
-    z-index: 1;
-
-    text {
-      margin-left: 10rpx;
+  .menu_box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 34rpx 30rpx 20rpx 30rpx;
+    .menu_info{
+      font-size: 28rpx;
+      color: #FFFFFF;
+      .text{
+        // --td-badge-bg-color: #FFFFFF;
+        // --td-badge-text-color: #FF0000;
+        --td-badge-content-text-color: #FFFFFF;
+      }
+    }
+    .menu_text {
+      @extend %flex;
+      justify-content: flex-end !important;
+      position: relative;
+      height: 50rpx;
       font-size: 28rpx;
       font-weight: normal;
       text-align: center;
-      text-decoration: underline;
       color: #FFFFFF;
+      z-index: 1;
+
+      text {
+        margin-left: 10rpx;
+        font-size: 28rpx;
+        font-weight: normal;
+        text-align: center;
+        text-decoration: underline;
+        color: #FFFFFF;
+      }
     }
   }
+
 
   .message_body {
     position: relative;
@@ -74,7 +88,7 @@
       .tabs_box {
         --td-tab-nav-bg-color: rgba(255, 255, 255, 1);
         --td-tab-item-tag-bg: transparent;
-        --td-tab-item-tag-active-bg: #888bf4;
+        --td-tab-item-tag-active-bg: #FF8533;
         --td-tab-item-active-color: #ffffff;
         --td-tab-item-height: 80rpx;
         // border: 1rpx solid #ecedfd;
@@ -88,14 +102,14 @@
       }
 
       .item_style {
-        --td-tab-item-color: #888bf4;
+        --td-tab-item-color: #FF8533;
         font-family: AlibabaPuHuiTi3;
         font-size: 28rpx;
         font-weight: bold;
       }
 
       .active_style {
-        background-color: #888bf4;
+        background-color: #FF8533;
         font-family: AlibabaPuHuiTi3;
         font-size: 32rpx;
         font-weight: 300;
@@ -164,7 +178,7 @@
               width: 110rpx;
               height: 45rpx;
               border-radius: 40rpx;
-              background-color: #888BF4;
+              background-color: #FF8533;
               font-size: 18rpx;
               font-weight: normal;
               color: #F5F7FB;
@@ -188,7 +202,7 @@
           width: 75rpx;
           height: 75rpx;
           border-radius: 50%;
-          background: #888BF4;
+          background: #FF8533;
         }
       }
     }
@@ -205,10 +219,10 @@
 }
 
 .action-btn {
-  --td-button-primary-bg-color: #888bf4;
-  --td-button-primary-border-color: #888bf4;
-  --td-button-primary-active-bg-color: #888cf4a2;
-  --td-button-primary-active-border-color: #888cf4a2;
+  --td-button-primary-bg-color: #FF8533;
+  --td-button-primary-border-color: #FF8533;
+  --td-button-primary-active-bg-color: #f4b088a2;
+  --td-button-primary-active-border-color: #f4b088a2;
   margin-bottom: 30rpx;
 }
 
@@ -221,5 +235,5 @@
 }
 
 .radio-group {
-  --td-radio-icon-checked-color: #888bf4;
+  --td-radio-icon-checked-color: #FF8533;
 }
