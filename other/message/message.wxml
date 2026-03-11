@@ -6,7 +6,7 @@
   </view> -->
   <view class="menu_box">
     <view class="menu_info" data-type="all">
-      <t-badge t-class="text" count="{{total}}" content="消息" offset="{{ [4] }}" class="wrapper" />
+      <!-- <t-badge t-class="text" count="{{total}}" content="消息" offset="{{ [4] }}" class="wrapper" /> -->
     </view>
     <view class="menu_text" bindtap="onDelete" data-type="all">
       <t-icon name="check-double" size="20" color="#FFFFFF" />
