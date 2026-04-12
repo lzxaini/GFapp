@@ -1,0 +1,242 @@
+%flex {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.statistics_container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - (env(safe-area-inset-bottom) + 48px));
+  padding-bottom: 48px;
+  background: linear-gradient(180deg, #888bf4 20%, #f5f7fb 40%, #f5f7fb 100%);
+
+  .navBar {
+    --td-navbar-bg-color: transparent;
+    --td-navbar-color: #fff;
+    --td-navbar-capsule-border-color: #e3e6ea !important;
+    // color: transparent;
+  }
+
+  .nav_bg {
+    position: absolute;
+    width: 100%;
+    height: 418rpx;
+    z-index: 0;
+
+    .bg_img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .page_title {
+    font-size: 28rpx;
+    font-weight: 500;
+    color: #121212;
+  }
+
+  .scroll-content {
+    position: relative;
+    z-index: 999;
+    width: calc(100% - 48rpx - 60rpx);
+    flex: 1;
+    overflow: scroll;
+    margin: 114rpx 24rpx 24rpx 24rpx;
+    padding: 40rpx;
+    border-radius: 20rpx;
+    background: rgba(255, 255, 255, 0.6);
+
+
+    .grid_box {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      row-gap: 20rpx;
+      gap: 32rpx;
+      margin-top: 20rpx;
+
+      .blue {
+        background-color: #888BF4 !important;
+
+        .title,
+        .content {
+          color: #FFF !important;
+        }
+
+        .tips {
+          color: #eee !important;
+        }
+      }
+
+      .item_box {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        // width: calc(100%);
+        // height: calc(192rpx - 84rpx);
+        padding: 30rpx;
+        border-radius: 28rpx;
+        background: #FFFFFF;
+
+        .icon {
+          position: absolute;
+          top: 28rpx;
+          right: 28rpx;
+          z-index: 999;
+          width: 48rpx;
+          height: 48rpx;
+        }
+
+        .title {
+          width: 100%;
+          font-size: 26rpx;
+          color: #71717A;
+        }
+
+        .content {
+          width: 100%;
+          font-size: 30rpx;
+          font-weight: 500;
+          color: #18181B;
+          margin: 26rpx 0 14rpx 0;
+        }
+
+        .tips {
+          width: 100%;
+          font-size: 24rpx;
+          color: #eee;
+        }
+      }
+    }
+
+    .dep_info {
+      .header_box {
+        display: flex;
+        justify-content: space-between;
+        margin: 40rpx 0 28rpx 0;
+
+        .btn {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 10rpx 15rpx;
+          font-size: 24rpx;
+          color: #FFFFFF;
+          border-radius: 14rpx;
+          background: #888BF4;
+
+          .icon {
+            margin-right: 10rpx;
+          }
+        }
+      }
+
+      .search {
+        width: 100%;
+        --td-search-bg-color: #F5F7FB;
+        margin: 40rpx 0 28rpx 0;
+      }
+
+      .table-header {
+        font-family: AlibabaPuHuiTi3;
+        font-size: 26rpx;
+        font-weight: normal;
+        background: #F5F5FF;
+
+        .table-cell {
+          padding: 0;
+          font-weight: bold;
+          color: #888BF4;
+        }
+      }
+
+      .table-row {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        padding: 20rpx 0;
+        font-family: AlibabaPuHuiTi3;
+        font-size: 24rpx;
+        font-weight: 500;
+        color: #1c2023;
+      }
+
+      // 使用缩放来实现0.5px的边框效果
+      .table-row::before {
+        position: absolute;
+        bottom: 0;
+        content: '';
+        width: 100%; // 跟随内容宽度
+        left: 0;
+        height: 1px;
+        background-color: rgba(227, 228, 229, 1);
+        transform: scaleY(0.5);
+        transform-origin: bottom;
+        flex-shrink: 0;
+      }
+
+      .table-row-big::before {
+        width: 133% !important; // 跟随内容宽度
+      }
+
+      .cell-header {
+        font-family: AlibabaPuHuiTi3;
+        font-size: 26rpx;
+        font-weight: normal;
+        color: #606972;
+      }
+
+      .cell-content {
+        font-family: AlibabaPuHuiTi3;
+        font-size: 24rpx;
+        font-weight: 500;
+        color: #1c2023;
+      }
+
+      .table-cell {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        padding: 20rpx;
+        min-width: 150rpx;
+      }
+
+      .number-cell {
+        display: block !important;
+        text-align: center;
+
+        .text {
+          font-family: AlibabaPuHuiTi3;
+          font-size: 24rpx;
+          font-weight: 500;
+          color: #888bf4;
+        }
+
+        .date {
+          font-family: AlibabaPuHuiTi3;
+          font-size: 18rpx;
+          font-weight: normal;
+          color: #1c2023;
+          margin-top: 10rpx;
+        }
+      }
+
+      // 最后一个单元格不需要边框
+      .table-row:last-child::before {
+        display: none;
+      }
+
+      .textOverflow {
+        overflow: hidden !important;
+        white-space: nowrap !important;
+        text-overflow: ellipsis !important;
+        text-align: center;
+        display: block !important;
+        max-width: 100%;
+      }
+    }
+  }
+}

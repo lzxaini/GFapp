@@ -3,6 +3,7 @@
     "pages/my/my",
     "pages/index/index",
     "pages/recharge/recharge",
+    "pages/statistics/statistics",
     "pages/usage-guide/usage-guide",
     "pages/admin-team/admin-team",
     "pages/store-team-members/store-team-members",
@@ -139,6 +140,12 @@
         "iconPath": "./static/icon/tabBar/device.png",
         "selectedIconPath": "./static/icon/tabBar/device_active.png",
         "text": "设备"
+      },
+      {
+        "pagePath": "pages/statistics/statistics",
+        "iconPath": "./static/icon/tabBar/statistics.png",
+        "selectedIconPath": "./static/icon/tabBar/statistics_active.png",
+        "text": "统计"
       },
       {
         "pagePath": "pages/operation/operation",
