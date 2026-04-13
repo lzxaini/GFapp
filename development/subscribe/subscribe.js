@@ -37,14 +37,25 @@ Page({
   },
   // 发送快捷指令
   sendCommand(e) {
-    const { cmd } = e?.currentTarget?.dataset;
+    const {
+      cmd
+    } = e?.currentTarget?.dataset;
     if (!cmd) return;
 
     // 根据不同指令设置不同的发送类型
     const commandMap = {
-      'config-get': { type: 'String', text: 'config-get' },
-      'network-reset': { type: 'String', text: 'network-reset' },
-      'GVI': { type: 'String', text: 'GVI' }
+      'config-get': {
+        type: 'String',
+        text: 'config-get'
+      },
+      'network-reset': {
+        type: 'String',
+        text: 'network-reset'
+      },
+      'GVI': {
+        type: 'String',
+        text: 'GVI'
+      }
     };
 
     const command = commandMap[cmd];
@@ -114,7 +125,7 @@ Page({
       const time = Date.now();
       const newMsg = {
         id: `msg-${time}`,
-        text: typeof msg !== 'undefined' ? msg : JSON.stringify(message),
+        text: typeof msg !== 'undefined' ? result.type ? result.string : msg : JSON.stringify(message),
         time: dayjs(time).format('YYYY-DD-MM HH:mm:ss'),
         type: 'receive' // 接收的消息
       };
