@@ -2,13 +2,15 @@
   <!-- 顶部导航栏固定 -->
   <t-navbar t-class="navBar" left-arrow="{{false}}" title="统计数据" />
   <view class="nav_bg" style="top: {{capsuleHeight - 15}}px">
-    <image class="bg_img" src="../../static/icon/recharge_nav_bg.png" />
+    <image class="bg_img" src="../../static/icon/statistics_nav_bg.png" />
   </view>
   <!-- 滚动内容区域 -->
-  <scroll-view class="scroll-content" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="pullDownToRefresh">
+  <scroll-view class="scroll-content" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom"
+    refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="pullDownToRefresh">
     <view class="page_title">关键指标</view>
     <view class="grid_box">
       <view class="item_box blue">
+        <!-- 剩余点数≤10标红 -->
         <image class="icon" src="../../static/icon/s_1.png" />
         <view class="title">总点数余额</view>
         <view class="content">2847360</view>
@@ -16,23 +18,29 @@
       </view>
       <view class="item_box">
         <image class="icon" src="../../static/icon/s_2.png" />
-        <view class="title">总点数余额</view>
+        <view class="title">设备活跃数</view>
         <view class="content">2847360</view>
-        <view class="tips">pts·未消耗余额</view>
+        <view class="tips">台·近30天活跃</view>
       </view>
       <view class="item_box">
         <image class="icon" src="../../static/icon/s_3.png" />
-        <view class="title">总点数余额</view>
+        <view class="title">今日消耗点数</view>
         <view class="content">2847360</view>
-        <view class="tips">pts·未消耗余额</view>
+        <view class="tips tips_c_1">
+          <image class="tips_icon" src="../../static/icon/line_g.png" />
+          +13% vs 昨日
+        </view>
       </view>
       <view class="item_box">
         <image class="icon" src="../../static/icon/s_4.png" />
-        <view class="title">总点数余额</view>
+        <view class="title">今日充值点数</view>
         <view class="content">2847360</view>
-        <view class="tips">pts·未消耗余额</view>
+        <view class="tips tips_c_2">
+          <image class="tips_icon" src="../../static/icon/line_p.png" />
+          +13% vs 昨日
+        </view>
       </view>
-      <view class="item_box">
+      <!-- <view class="item_box">
         <image class="icon" src="../../static/icon/s_5.png" />
         <view class="title">总点数余额</view>
         <view class="content">2847360</view>
@@ -43,31 +51,46 @@
         <view class="title">总点数余额</view>
         <view class="content">2847360</view>
         <view class="tips">pts·未消耗余额</view>
+      </view> -->
+    </view>
+    <view class="obj_info">
+      <view class="header_box">
+        <view class="page_title">实时点数</view>
+        <view class="btn">实时</view>
       </view>
+      <view class="obj_box">
+        <view class="item">
+          <view class="label">
+            <text class="text">脸部护理</text>
+          </view>
+          <view class="value">48%</view>
+        </view>
+      </view>
+      <view class="footer_tips">总消耗：147710 pts</view>
     </view>
     <view class="dep_info">
       <view class="header_box" wx:if="{{!searchFlag}}">
         <view class="page_title">实时点数</view>
+        <!-- 只有一个门店不显示查询按钮 -->
         <view class="btn" bindtap="searchClick">
           <t-icon class="icon" name="search"></t-icon>
           查询门店
         </view>
       </view>
-      <t-search wx:else class="search" value="{{value}}" center placeholder="搜索机构" bind:change="changeHandle" focus="{{true}}" bind:blur="blurClick"/>
+      <t-search wx:else class="search" value="{{value}}" center placeholder="搜索机构" bind:change="changeHandle"
+        focus="{{true}}" bind:blur="blurClick" />
       <view class="table-row table-header">
-        <view class="table-cell cell-header cell-big" style="flex: 2;">机构</view>
+        <view class="table-cell cell-header cell-big" style="flex: 2;">机构名称</view>
         <view class="table-cell cell-header" style="flex: 3;min-width: 200rpx;">剩余点数</view>
         <view class="table-cell cell-header" style="flex: 2;">累计充值</view>
       </view>
       <block wx:for="{{12}}" wx:key="index">
         <view class="table-row table-row-big">
-          <view class="table-cell textOverflow" style="flex: 2;">{{item.deptName}}</view>
+          <view class="table-cell textOverflow" style="flex: 2;">测试水水水水水水水水水水{{item.deptName}}</view>
           <view class="table-cell number-cell" style="flex: 3;min-width: 200rpx;">
-            <view class="text">+{{item.rechargeAmount}}</view>
-            <view class="date">{{item.createTime}}</view>
+            <view class="text">9999{{item.rechargeAmount}}</view>
           </view>
-          <view class="table-cell" style="flex: 2;">{{item.previousBalance}}</view>
-          <view class="table-cell" style="flex: 2;">{{item.currentBalance}}</view>
+          <view class="table-cell" style="flex: 2;">123132123{{item.previousBalance}}</view>
         </view>
       </block>
     </view>
