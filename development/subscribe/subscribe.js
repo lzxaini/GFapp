@@ -114,7 +114,7 @@ Page({
       const time = Date.now();
       const newMsg = {
         id: `msg-${time}`,
-        text: typeof msg !== 'undefined' ? msg : JSON.stringify(message),
+        text: typeof msg !== 'undefined' ? result.type ? result.string : msg : JSON.stringify(message),
         time: dayjs(time).format('YYYY-DD-MM HH:mm:ss'),
         type: 'receive' // 接收的消息
       };
