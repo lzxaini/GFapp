@@ -44,7 +44,7 @@ Page({
     const commandMap = {
       'config-get': { type: 'String', text: 'config-get' },
       'network-reset': { type: 'String', text: 'network-reset' },
-      'GVIT': { type: 'String', text: 'GVIT' }
+      'GVI': { type: 'String', text: 'GVI' }
     };
 
     const command = commandMap[cmd];
