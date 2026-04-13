@@ -59,13 +59,13 @@
           <t-button size="extra-small" theme="info" bindtap="sendCommand" data-cmd="AT+IMEI">
             📱 IMEI
           </t-button>
-          <t-button size="extra-small" theme="primary" bindtap="sendCommand" data-cmd="AT+CSQ">
+          <t-button size="extra-small" theme="info" bindtap="sendCommand" data-cmd="AT+CSQ">
             📶 信号
           </t-button>
-          <t-button size="extra-small" theme="success" bindtap="sendCommand" data-cmd="AT+UTC">
+          <t-button size="extra-small" theme="info" bindtap="sendCommand" data-cmd="AT+UTC">
             ⏰ 时间
           </t-button>
-          <t-button size="extra-small" theme="warning" bindtap="sendCommand" data-cmd="AT+LBS">
+          <t-button size="extra-small" theme="info" bindtap="sendCommand" data-cmd="AT+LBS">
             📍 定位
           </t-button>
           <t-button size="extra-small" theme="info" bindtap="sendCommand" data-cmd="AT+ISLINK">
