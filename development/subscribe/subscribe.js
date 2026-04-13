@@ -43,7 +43,8 @@ Page({
     // 根据不同指令设置不同的发送类型
     const commandMap = {
       'config-get': { type: 'String', text: 'config-get' },
-      'network-reset': { type: 'String', text: 'network-reset' }
+      'network-reset': { type: 'String', text: 'network-reset' },
+      'GVIT': { type: 'String', text: 'GVIT' }
     };
 
     const command = commandMap[cmd];
