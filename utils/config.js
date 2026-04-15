@@ -10,6 +10,7 @@
 // 获取服务
 const getServiceNameByCode = (code) => {
   const map = [
+    { code: '0', name: '其他服务', icon: 'heart.png' },
     { code: '1', name: '脸部护理', icon: 'face_icon.png' },
     { code: '2', name: '身体护理', icon: 'body_icon.png' },
     { code: '3', name: '眼部方案', icon: 'eye_icon.png' },
