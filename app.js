@@ -24,7 +24,7 @@ App({
     appName: {
       name: '光馥科美',
       slogan: '光塑年轻力，馥养无龄美',
-      appVersion: '0.0.6_260128174',
+      appVersion: '0.0.7_26004153',
     },
     phoneEnv: '', // 手机系统
     mqttClient: null,
@@ -32,10 +32,10 @@ App({
     statusBarHeight: 0,
     capsuleHeight: 0,
     marginBottom: '60rpx',
-    // baseUrl: 'https://api.gfkm.cc',
-    // ossUrl: 'https://api.gfkm.cc',
-    baseUrl: 'http://192.168.18.200:8080',
-    ossUrl: 'http://192.168.18.200:8080',
+    baseUrl: 'https://api.gfkm.cc',
+    ossUrl: 'https://api.gfkm.cc',
+    // baseUrl: 'http://192.168.18.200:8080',
+    // ossUrl: 'http://192.168.18.200:8080',
     mqttUrl: 'wxs://mqtt.gfkm.cc/mqtt',
     // mqttUrl: 'wxs://gfmq.fxnws.com/mqtt',
     userInfo: null,
