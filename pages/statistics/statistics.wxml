@@ -49,12 +49,12 @@
         <view class="btn">实时</view>
       </view>
       <block wx:for="{{dashboard.todayServiceRatios}}">
-        <view class="obj_box">
+        <view class="obj_box" wx:if="{{item.serviceObj.code != 0}}">
           <view class="item">
-            <view class="label">
+            <view class="label before-{{item.serviceObj.code}}">
               <text class="text">{{item.serviceObj.name}}</text>
             </view>
-            <view class="value">{{item.ratio}}%</view>
+            <view class="value color-{{item.serviceObj.code}}">{{item.ratio}}%</view>
           </view>
         </view>
       </block>

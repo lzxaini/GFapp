@@ -187,9 +187,27 @@
               background-color: #888BF4;
             }
           }
-
+          .before-1{
+            &::before {
+              background-color: #888BF4;
+            }
+          }
+          .before-2,.before-3{
+            &::before {
+              background-color: #B8B9F8;
+            }
+          }
+          .before-4,.before-5,.before-6{
+            &::before {
+              background-color: #DDDEFF;
+            }
+          }
           .value {
             font-size: 25rpx;
+            color: #888BF4;
+          }
+
+          .color-1 {
             color: #888BF4;
           }
 
@@ -200,6 +218,11 @@
           .color-3,
           .color-4,
           .color-5 {
+            color: #B8B9F8;
+          }
+
+          .color-5,
+          .color-6 {
             color: #DDDEFF;
           }
         }
