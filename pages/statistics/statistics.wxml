@@ -13,31 +13,31 @@
         <!-- 剩余点数≤10标红 -->
         <image class="icon" src="../../static/icon/s_1.png" />
         <view class="title">总点数余额</view>
-        <view class="content">2847360</view>
+        <view class="content" style="{{dashboard.remainingPoints < 10 ? 'color: #d54941;' : ''}}">{{dashboard.remainingPoints}}</view>
         <view class="tips">pts·未消耗余额</view>
       </view>
       <view class="item_box">
         <image class="icon" src="../../static/icon/s_2.png" />
         <view class="title">设备活跃数</view>
-        <view class="content">2847360</view>
+        <view class="content">{{dashboard.activeDeviceCount}}</view>
         <view class="tips">台·近30天活跃</view>
       </view>
       <view class="item_box">
         <image class="icon" src="../../static/icon/s_3.png" />
         <view class="title">今日消耗点数</view>
-        <view class="content">2847360</view>
+        <view class="content">{{dashboard.todayConsumedPoints}}</view>
         <view class="tips tips_c_1">
           <image class="tips_icon" src="../../static/icon/line_g.png" />
-          +13% vs 昨日
+          +{{dashboard.todayConsumedPointsGrowthRate}}% vs 昨日
         </view>
       </view>
       <view class="item_box">
         <image class="icon" src="../../static/icon/s_4.png" />
         <view class="title">今日充值点数</view>
-        <view class="content">2847360</view>
+        <view class="content">{{dashboard.todayRechargeAmount}}</view>
         <view class="tips tips_c_2">
           <image class="tips_icon" src="../../static/icon/line_p.png" />
-          +13% vs 昨日
+          +{{dashboard.todayRechargeAmountGrowthRate}}% vs 昨日
         </view>
       </view>
       <!-- <view class="item_box">
@@ -77,20 +77,20 @@
           查询门店
         </view>
       </view>
-      <t-search wx:else class="search" value="{{value}}" center placeholder="搜索机构" bind:change="changeHandle"
-        focus="{{true}}" bind:blur="blurClick" />
+      <t-search wx:if="{{searchFlag && tableData.length > 1}}" class="search" value="{{searchName}}" placeholder="搜索机构"
+        bind:change="changeHandle" focus="{{true}}" bind:blur="blurClick" />
       <view class="table-row table-header">
         <view class="table-cell cell-header cell-big" style="flex: 2;">机构名称</view>
         <view class="table-cell cell-header" style="flex: 3;min-width: 200rpx;">剩余点数</view>
         <view class="table-cell cell-header" style="flex: 2;">累计充值</view>
       </view>
-      <block wx:for="{{12}}" wx:key="index">
+      <block wx:for="{{tableData}}" wx:key="index">
         <view class="table-row table-row-big">
-          <view class="table-cell textOverflow" style="flex: 2;">测试水水水水水水水水水水{{item.deptName}}</view>
+          <view class="table-cell textOverflow" style="flex: 2;">{{item.deptName}}</view>
           <view class="table-cell number-cell" style="flex: 3;min-width: 200rpx;">
-            <view class="text">9999{{item.rechargeAmount}}</view>
+            <view class="text">{{item.accountBalance}}</view>
           </view>
-          <view class="table-cell" style="flex: 2;">123132123{{item.previousBalance}}</view>
+          <view class="table-cell" style="flex: 2;">{{item.total}}</view>
         </view>
       </block>
     </view>

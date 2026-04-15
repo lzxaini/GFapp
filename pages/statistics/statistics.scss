@@ -67,19 +67,6 @@
       gap: 32rpx;
       margin-top: 20rpx;
 
-      .blue {
-        background-color: #888BF4 !important;
-
-        .title,
-        .content {
-          color: #FFF !important;
-        }
-
-        .tips {
-          color: #eee !important;
-        }
-      }
-
       .item_box {
         position: relative;
         display: flex;
@@ -120,17 +107,33 @@
           width: 100%;
           font-size: 24rpx;
           color: #71717A;
-          .tips_icon{
+
+          .tips_icon {
             width: 20rpx;
             height: 20rpx;
             margin-right: 10rpx
           }
         }
-        .tips_c_1{
+
+        .tips_c_1 {
           color: #14B8A6;
         }
-        .tips_c_2{
+
+        .tips_c_2 {
           color: #888BF4;
+        }
+      }
+
+      .blue {
+        background-color: #888BF4;
+
+        .title,
+        .content {
+          color: #FFF;
+        }
+
+        .tips {
+          color: #eee;
         }
       }
     }

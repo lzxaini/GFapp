@@ -500,3 +500,18 @@ export function delDeptMessageApi() {
     method: 'DELETE',
   })
 }
+// 获取统计数据
+export function getDashboardApi() {
+  return request({
+    url: `/gf/common/dashboard`,
+    method: 'get',
+  })
+}
+// 获取统计门店数据
+export function getUserExtendListApi(data) {
+  return request({
+    url: `/gf/userExtend/list`,
+    method: 'get',
+    data
+  })
+}
