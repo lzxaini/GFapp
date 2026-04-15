@@ -76,7 +76,7 @@ Page({
    */
   onShow() {
     //更新底部高亮
-    tabService.updateIndex(this, 3)
+    tabService.updateIndex(this, 4)
     console.log('小程序版本', this.data.appName.appVersion)
     if (app.globalData.token) {
       app.getUserInfo(getUserInfoApi).then(res => {

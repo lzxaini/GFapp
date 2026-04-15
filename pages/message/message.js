@@ -46,7 +46,7 @@ Page({
   onShow() {
     // 页面显示时可以刷新数据
     //更新底部高亮
-    tabService.updateIndex(this, 2)
+    tabService.updateIndex(this, 3)
     this.getApprovalList();
   },
 
