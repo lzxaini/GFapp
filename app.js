@@ -179,7 +179,7 @@ App({
     wx.loadFontFace({
       global: true,
       family: 'AlibabaPuHuiTi3',
-      source: 'url("https://cdn.fxnws.com/fonts/AlibabaPuHuiTi-3-45-Light.ttf")',
+      source: 'url("https://cdn.guangfkm.cn/fonts/AlibabaPuHuiTi-3-45-Light.ttf")',
       scopes: ["webview", "native"],
       success: console.log('字体加载完成')
     })
