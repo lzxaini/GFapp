@@ -6,6 +6,7 @@ import {
 import {
   showMessage
 } from '../../utils/tools';
+import { getServiceNameByCode } from '../../utils/config'
 const dayjs = require('dayjs')
 const app = getApp()
 Page({
@@ -19,7 +20,8 @@ Page({
       todayConsumedPoints: 0,
       todayRechargeAmount: 0,
       todayConsumedPointsGrowthRate: 0,
-      todayRechargeAmountGrowthRate: 0
+      todayRechargeAmountGrowthRate: 0,
+      todayServiceRatios: []
     },
     tableData: [],
     total: 0,
@@ -48,10 +50,6 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom(e) {
-    // let direction = e?.detail?.direction
-    // if (direction === 'right') {
-    //   return;
-    // }
     let {
       tableData,
       total
@@ -59,7 +57,8 @@ Page({
     if (tableData.length < total) {
       let pageNum = ++this.data.pageObj.pageNum
       this.setData({
-        'pageObj.pageNum': pageNum
+        'pageObj.pageNum': pageNum,
+        'pageObj.deptName': ''
       })
       this.getUserExtendList('bottom')
     }
@@ -80,8 +79,15 @@ Page({
   getDashboard() {
     getDashboardApi().then(res => {
       if (res.code === 200) {
+        const rows = res.data.todayServiceRatios.map(item => ({
+          ...item,
+          serviceObj: getServiceNameByCode(item.serviceType)
+        }))
+        let count = rows.reduce((sum, e) => sum + Number(e.count || 0), 0);
         this.setData({
-          dashboard: res.data
+          dashboard: res.data,
+          'dashboard.todayServiceRatios': rows,
+          'dashboard.count': count
         })
       }
     })
@@ -92,7 +98,16 @@ Page({
       value
     } = e?.detail
     this.setData({
+      searchName: value,
       'pageObj.deptName': value
+    })
+    this.getUserExtendList()
+  },
+  clearSearch() {
+    console.log('qcccc')
+    this.setData({
+      searchName: '',
+      'pageObj.deptName': ''
     })
     this.getUserExtendList()
   },
@@ -126,6 +141,7 @@ Page({
     this.setData({
       searchFlag: false
     })
+    this.clearSearch()
   },
   message(type, text, duration = 1500) {
     showMessage(type, text, duration, this);

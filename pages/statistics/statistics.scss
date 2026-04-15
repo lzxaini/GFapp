@@ -213,6 +213,8 @@
     }
 
     .dep_info {
+      --td-search-action-color: #888BF4;
+
       .header_box {
         @extend %flex-sb;
         margin: 40rpx 0 28rpx 0;
