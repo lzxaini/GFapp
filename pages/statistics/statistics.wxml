@@ -42,18 +42,6 @@
           +{{dashboard.todayRechargeAmountGrowthRate}}% vs 昨日
         </view>
       </view>
-      <!-- <view class="item_box">
-        <image class="icon" src="../../static/icon/s_5.png" />
-        <view class="title">总点数余额</view>
-        <view class="content">2847360</view>
-        <view class="tips">pts·未消耗余额</view>
-      </view>
-      <view class="item_box">
-        <image class="icon" src="../../static/icon/s_6.png" />
-        <view class="title">总点数余额</view>
-        <view class="content">2847360</view>
-        <view class="tips">pts·未消耗余额</view>
-      </view> -->
     </view>
     <view class="obj_info">
       <view class="header_box">
