@@ -25,7 +25,7 @@
                 <text class="textOverflow date">{{item.requestTime}}</text>
               </view>
               <view class="bottom" style="grid-template-columns: 100%">
-                <text class="footer_info textOverflow">用户：{{item.userName}} 发起申请，请审核。</text>
+                <text class="footer_info textOverflow">用户：{{item.userName}} 发起申请！<text class="{{item.status == 1 ? 'text_sucess' : item.status == 2 ? 'text_warning' : ''}}">{{item.status == 1 ? '已通过' : item.status == 2 ? '已拒绝' : '请处理'}}</text>！</text>
                 <!-- <button bindtap="goReview" data-item="{{item}}">去处理</button> -->
               </view>
             </view>

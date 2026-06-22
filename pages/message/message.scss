@@ -146,6 +146,7 @@
           }
 
           .bottom {
+            position: relative;
             margin-top: 12rpx;
             width: 100%;
             display: grid;
@@ -157,6 +158,12 @@
 
             .footer_info {
               text-align: left !important;
+              .text_sucess{
+                color: #00a870;
+              }
+              .text_warning{
+                color: #ed7b2f;
+              }
             }
 
             button {

@@ -180,7 +180,7 @@ Page({
     agreeJoinTeamApi(params).then(res => {
       wx.hideLoading();
       if (res.code === 200) {
-        this.message('success', '审批成功！');
+        this.message(`${params.status == 1 ? 'success' : 'warning' }`, `${params.status == 1 ? '审核已经通过！' : '审核已拒绝！'}`);
         // 刷新列表
         this.setData({
           'pageObj.pageNum': 1,
@@ -189,7 +189,7 @@ Page({
         });
         this.getApprovalList('init');
       } else {
-        this.message('error', '操作失败');
+        this.message('error', '审核失败');
       }
     }).catch(err => {
       wx.hideLoading();
