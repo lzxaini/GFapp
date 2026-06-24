@@ -3,9 +3,10 @@ import {
 } from '../../utils/tools';
 import {
   getOperationApi,
-  getServiceRecordsApi,
+  getServiceSessionListApi,
   getRechargeRecordsApi,
-  getRegionApi
+  getRegionApi,
+  getSessionDetailApi
 } from '../../api/api'
 import {
   getServiceNameByCode,
@@ -158,7 +159,7 @@ Page({
       servicePageObj,
       serviceList
     } = this.data
-    getServiceRecordsApi(servicePageObj).then(res => {
+    getServiceSessionListApi(servicePageObj).then(res => {
       // 拿到原始 rows
       const rows = res.data.rows.map(item => ({
         ...item,
@@ -337,6 +338,36 @@ Page({
       this.setData({
         addressOptions
       });
+    })
+  },
+  /**
+   * 展开/折叠会话详情
+   */
+  toggleSessionDetail(e) {
+    const sessionId = e.currentTarget.dataset.sessionid
+    const index = e.currentTarget.dataset.index
+    const item = this.data.serviceList[index]
+    
+    // 如果已经展开，则折叠
+    if (item.expanded) {
+      this.setData({
+        [`serviceList[${index}].expanded`]: false,
+        [`serviceList[${index}].details`]: []
+      })
+      return
+    }
+    
+    // 加载详情数据
+    getSessionDetailApi(sessionId).then(res => {
+      const details = res.data.map(detail => ({
+        ...detail,
+        serviceObj: getServiceNameByCode(detail.service),
+        statusIcon: getDeviceStatusIconByCode(detail.status)
+      }))
+      this.setData({
+        [`serviceList[${index}].expanded`]: true,
+        [`serviceList[${index}].details`]: details
+      })
     })
   },
   message(type, text, duration = 1500) {

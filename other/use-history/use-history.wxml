@@ -3,84 +3,100 @@
   <!-- 滚动列表 -->
   <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="pullDownToRefresh">
     <block wx:for="{{historyList}}" wx:key="index">
-      <!-- 会话汇总卡片 -->
-      <view class="card_item">
-        <view class="nav_top">
-          <view class="title_box">
-            <image class="icon" src="../../static/icon/{{item.serviceObj.icon}}" />
-            <text class="text">{{item.serviceObj.name}}</text>
-          </view>
-          <view class="session_badge">
-            <text class="badge_text">50分钟周期</text>
-          </view>
-        </view>
-        <view class="card_list">
-          <view class="list_item">
-            <text class="lable">设备ID</text>
-            <text class="info">{{item.serialNumber}}</text>
-          </view>
-          <view class="list_item">
-            <text class="lable">美容师</text>
-            <text class="info">{{item.userName}}</text>
-          </view>
-          <view class="list_item highlight">
-            <text class="lable">总运行时长</text>
-            <text class="info primary">{{item.status == '1' ? '计时中' : item.totalRunningTime + '分钟'}}</text>
-          </view>
-          <view class="list_item" wx:if="{{item.pauseCount > 0}}">
-            <text class="lable">暂停次数</text>
-            <text class="info">{{item.pauseCount}}次</text>
-          </view>
-          <view class="list_item">
-            <text class="lable">开始时间</text>
-            <text class="info">{{item.sessionStart}}</text>
-          </view>
-          <view class="list_item">
-            <text class="lable">结束时间</text>
-            <text class="info">{{item.sessionEnd || '进行中'}}</text>
-          </view>
-          <view class="list_item" wx:if="{{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2 || userInfo.dept.deptType == 3}}">
-            <text class="lable">服务机构</text>
-            <text class="info">{{item.deptName}}</text>
-          </view>
-        </view>
-        <view class="card_icon">
-          <image class="icon" src="../../static/icon/{{item.statusIcon}}" />
-        </view>
-
-        <!-- 展开按钮（仅当有暂停记录时显示） -->
-        <view class="expand_btn" wx:if="{{item.detailCount > 1}}" bindtap="toggleSessionDetail" data-sessionid="{{item.sessionId}}" data-index="{{index}}">
-          <text class="expand_text">{{item.expanded ? '收起' : '查看'}}详细记录（{{item.detailCount}}条）</text>
-          <text class="expand_icon">{{item.expanded ? '▲' : '▼'}}</text>
-        </view>
-
-        <!-- 详细记录列表 -->
-        <view class="detail_list" wx:if="{{item.expanded}}">
-          <view class="detail_title">暂停/恢复明细</view>
-          <block wx:for="{{item.details}}" wx:for-item="detail" wx:for-index="detailIndex" wx:key="detailIndex">
-            <view class="detail_item">
-              <view class="detail_header">
-                <text class="detail_number">记录 {{detailIndex + 1}}</text>
-                <text class="detail_status">{{detail.statusIcon}}</text>
-              </view>
-              <view class="detail_info">
-                <view class="detail_row">
-                  <text class="detail_label">开始时间</text>
-                  <text class="detail_value">{{detail.startTime}}</text>
-                </view>
-                <view class="detail_row">
-                  <text class="detail_label">结束时间</text>
-                  <text class="detail_value">{{detail.endTime || '进行中'}}</text>
-                </view>
-                <view class="detail_row">
-                  <text class="detail_label">运行时长</text>
-                  <text class="detail_value">{{detail.runningTime}}分钟</text>
-                </view>
-              </view>
+        <!-- 会话汇总卡片 -->
+        <view class="card_item">
+          <view class="nav_top">
+            <view class="title_box">
+              <image class="icon" src="../../static/icon/{{item.serviceObj.icon}}" />
+              <text class="text">{{item.code}}</text>
             </view>
-          </block>
+            <!-- <view class="session_badge">
+              <text class="badge_text">{{item.status == '1' ? '计时中' : item.totalRunningTime + '分钟'}}</text>
+            </view> -->
+          </view>
+          <view class="card_list">
+            <view class="list_item">
+              <text class="lable">设备ID</text>
+              <text class="info">{{item.serialNumber}}</text>
+            </view>
+            <!-- <view class="list_item">
+              <text class="lable">美容师</text>
+              <text class="info">{{item.userName}}</text>
+            </view> -->
+            <!-- <view class="list_item highlight">
+              <text class="lable">总运行时长</text>
+              <text class="info primary">
+                {{item.status == '1' ? '计时中' : item.totalRunningTime + '分钟'}}
+              </text>
+            </view> -->
+            <!-- <view class="list_item" wx:if="{{item.pauseCount > 0}}">
+              <text class="lable">暂停次数</text>
+              <text class="info">{{item.pauseCount}}次</text>
+            </view> -->
+            <view class="list_item">
+              <text class="lable">开始时间</text>
+              <text class="info">{{item.sessionStart}}</text>
+            </view>
+            <view class="list_item">
+              <text class="lable">结束时间</text>
+              <text class="info">{{item.status == 1 ? '进行中' : item.sessionEnd}}</text>
+            </view>
+            <view class="list_item" wx:if="{{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2 || userInfo.dept.deptType == 3}}">
+              <text class="lable">服务机构</text>
+              <text class="info">{{item.deptName}}</text>
+            </view>
+          </view>
+          <view class="card_icon">
+            <image class="icon" src="../../static/icon/{{item.statusIcon}}" />
+          </view>
+          <!-- 展开按钮（仅当有暂停记录时显示） -->
+          <view class="expand_btn" wx:if="{{item.detailCount > 1}}" bindtap="toggleSessionDetail" data-sessionid="{{item.sessionId}}" data-index="{{index}}">
+            <view class="expand_text">
+              {{item.expanded ? '收起' : '查看'}}
+              <!-- 详细记录（{{item.detailCount}}条） -->
+            </view>
+            <!-- <view class="expand_icon">{{item.expanded ? '▲' : '▼'}}</view> -->
+            <t-icon t-class="expand_icon" name="{{item.expanded ? 'chevron-up-double' : 'chevron-down-double'}}" size="15"></t-icon>
+          </view>
+          <!-- 详细记录列表 -->
+          <view class="detail_list" wx:if="{{item.expanded}}">
+            <!-- <view class="detail_title">暂停/恢复明细</view> -->
+            <block wx:for="{{item.details}}" wx:for-item="detail" wx:for-index="detailIndex" wx:key="detailIndex">
+              <view class="detail_item">
+                <!-- <view class="detail_header">
+                  <image class="detail_status" src="../../static/icon/{{detail.serviceObj.icon}}" />
+                  <text class="detail_number">{{detail.serviceObj.name}}</text>
+                </view> -->
+                <view class="nav_top">
+                  <view class="title_box">
+                    <image class="icon" src="../../static/icon/{{detail.serviceObj.icon}}" />
+                    <text class="text">{{detail.serviceObj.name}}</text>
+                  </view>
+                  <view class="number">编号：{{detail.code}}</view>
+                </view>
+                <view class="detail_info">
+                  <view class="detail_row">
+                    <text class="detail_label">开始时间</text>
+                    <text class="detail_value">{{detail.startTime}}</text>
+                  </view>
+                  <view class="detail_row">
+                    <text class="detail_label">结束时间</text>
+                    <text class="detail_value" style="{{detail.endTime || 'color: #4caf50;'}}">{{detail.endTime || '进行中'}}</text>
+                  </view>
+                  <view class="detail_row">
+                    <text class="detail_label">运行时长</text>
+                    <text class="detail_value" wx:if="{{detail.endTime}}">{{detail.runningTime}}分钟</text>
+                    <text class="detail_value" wx:else>计时中</text>
+                  </view>
+                  <view class="detail_row">
+                    <text class="detail_label">美容师</text>
+                    <text class="detail_value">{{detail.userName}}</text>
+                  </view>
+                </view>
+              </view>
+            </block>
+          </view>
         </view>
-      </view>
     </block>
     <view class="empty" wx:if="{{historyList.length < 1}}">
       <empty image="../../static/icon/empty2.png" description="暂无相关内容" styleInfo="height: 100%"></empty>

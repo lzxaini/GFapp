@@ -112,6 +112,7 @@
           .title_box {
             display: flex;
             align-items: center;
+
             .icon {
               width: 40rpx;
               height: 40rpx;
@@ -184,8 +185,8 @@
 
         .card_icon {
           position: absolute;
-          right: 48rpx;
-          bottom: 49rpx;
+          right: 20rpx;
+          top: 20rpx;
 
           .icon {
             width: 112rpx;
@@ -199,7 +200,7 @@
           justify-content: center;
           align-items: center;
           margin-top: 30rpx;
-          padding: 20rpx;
+          padding: 10rpx;
           background-color: #FFF8F0;
           border-radius: 12rpx;
           border: 1rpx dashed #FF8533;
@@ -223,72 +224,64 @@
           padding-top: 24rpx;
           border-top: 1rpx solid #F0F0F0;
 
-          .title_box {
-            display: flex;
-            align-items: center;
-            .icon {
-              width: 40rpx;
-              height: 40rpx;
-            }
-
-            .text {
-              font-family: AlibabaPuHuiTi3;
-              font-size: 30rpx;
-              font-weight: normal;
-              color: #1c2023;
-              margin-left: 10rpx;
-            }
-          }
-          .detail_title {
+          .text {
             font-family: AlibabaPuHuiTi3;
-            font-size: 26rpx;
-            font-weight: bold;
+            font-size: 30rpx;
+            font-weight: normal;
             color: #1c2023;
-            margin-bottom: 16rpx;
+            margin-left: 10rpx;
+          }
+        }
+
+        .detail_title {
+          font-family: AlibabaPuHuiTi3;
+          font-size: 26rpx;
+          font-weight: bold;
+          color: #1c2023;
+          margin-bottom: 16rpx;
+        }
+
+        .detail_item {
+          background-color: #FAFAFA;
+          border-radius: 12rpx;
+          padding: 20rpx;
+          margin-bottom: 16rpx;
+
+          .detail_header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12rpx;
+
+            .detail_number {
+              font-family: AlibabaPuHuiTi3;
+              font-size: 24rpx;
+              font-weight: bold;
+              color: #666;
+            }
+
+            .detail_status {
+              font-size: 20rpx;
+              color: #999;
+            }
           }
 
-          .detail_item {
-            background-color: #FAFAFA;
-            border-radius: 12rpx;
-            padding: 20rpx;
-            margin-bottom: 16rpx;
-
-            .detail_header {
+          .detail_info {
+            .detail_row {
               display: flex;
               justify-content: space-between;
-              align-items: center;
-              margin-bottom: 12rpx;
+              margin-top: 8rpx;
 
-              .detail_number {
+              .detail_label {
                 font-family: AlibabaPuHuiTi3;
-                font-size: 24rpx;
-                font-weight: bold;
-                color: #666;
-              }
-
-              .detail_status {
-                font-size: 20rpx;
+                font-size: 22rpx;
                 color: #999;
               }
-            }
 
-            .detail_info {
-              .detail_row {
-                display: flex;
-                justify-content: space-between;
-                margin-top: 8rpx;
-
-                .detail_label {
-                  font-family: AlibabaPuHuiTi3;
-                  font-size: 22rpx;
-                  color: #999;
-                }
-
-                .detail_value {
-                  font-family: AlibabaPuHuiTi3;
-                  font-size: 22rpx;
-                  color: #333;
-                }
+              .detail_value {
+                font-family: AlibabaPuHuiTi3;
+                font-size: 22rpx;
+                color: #333;
               }
             }
           }
