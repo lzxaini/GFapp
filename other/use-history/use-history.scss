@@ -47,6 +47,18 @@
 					font-weight: 300;
 					color: #c5c8cb;
 				}
+				.session_badge {
+					padding: 4rpx 16rpx;
+					background: linear-gradient(135deg, #FFB366 0%, #FF8533 100%);
+					border-radius: 20rpx;
+
+					.badge_text {
+						font-family: AlibabaPuHuiTi3;
+						font-size: 20rpx;
+						font-weight: 300;
+						color: #ffffff;
+					}
+				}
 			}
 			.card_list {
 				font-family: AlibabaPuHuiTi3;
@@ -62,6 +74,19 @@
 					.info {
 						display: block;
 					}
+
+					&.highlight {
+						background-color: #FFF8F0;
+						padding: 8rpx 16rpx;
+						border-radius: 8rpx;
+						margin-top: 16rpx;
+
+						.info.primary {
+							color: #FF8533;
+							font-weight: bold;
+							font-size: 28rpx;
+						}
+					}
 				}
 			}
 			.card_icon {
@@ -71,6 +96,91 @@
 				.icon {
 					width: 112rpx;
 					height: 112rpx;
+				}
+			}
+
+			/* 展开按钮样式 */
+			.expand_btn {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				margin-top: 30rpx;
+				padding: 20rpx;
+				background-color: #FFF8F0;
+				border-radius: 12rpx;
+				border: 1rpx dashed #FF8533;
+
+				.expand_text {
+					font-family: AlibabaPuHuiTi3;
+					font-size: 24rpx;
+					color: #FF8533;
+					margin-right: 8rpx;
+				}
+
+				.expand_icon {
+					font-size: 20rpx;
+					color: #FF8533;
+				}
+			}
+
+			/* 详细记录列表样式 */
+			.detail_list {
+				margin-top: 24rpx;
+				padding-top: 24rpx;
+				border-top: 1rpx solid #F0F0F0;
+
+				.detail_title {
+					font-family: AlibabaPuHuiTi3;
+					font-size: 26rpx;
+					font-weight: bold;
+					color: #1c2023;
+					margin-bottom: 16rpx;
+				}
+
+				.detail_item {
+					background-color: #FAFAFA;
+					border-radius: 12rpx;
+					padding: 20rpx;
+					margin-bottom: 16rpx;
+
+					.detail_header {
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+						margin-bottom: 12rpx;
+
+						.detail_number {
+							font-family: AlibabaPuHuiTi3;
+							font-size: 24rpx;
+							font-weight: bold;
+							color: #666;
+						}
+
+						.detail_status {
+							font-size: 20rpx;
+							color: #999;
+						}
+					}
+
+					.detail_info {
+						.detail_row {
+							display: flex;
+							justify-content: space-between;
+							margin-top: 8rpx;
+
+							.detail_label {
+								font-family: AlibabaPuHuiTi3;
+								font-size: 22rpx;
+								color: #999;
+							}
+
+							.detail_value {
+								font-family: AlibabaPuHuiTi3;
+								font-size: 22rpx;
+								color: #333;
+							}
+						}
+					}
 				}
 			}
 		}
