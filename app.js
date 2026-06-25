@@ -24,7 +24,7 @@ App({
     appName: {
       name: '玑肤芮',
       slogan: '年轻计划，轻松开肌',
-      appVersion: '1.0.3_260413163',
+      appVersion: '1.0.4_260625101',
       beian: '粤ICP备2026009218号-1X',
     },
     phoneEnv: '', // 手机系统
