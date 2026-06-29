@@ -1,4 +1,4 @@
-import { getServiceRecordsApi } from '../../api/api'
+import { getServiceSessionListApi, getSessionDetailApi } from '../../api/api'
 import { getServiceNameByCode, getDeviceStatusIconByCode } from '../../utils/config'
 const app = getApp()
 Page({
@@ -52,19 +52,49 @@ Page({
     this.getServiceRecords()
   },
   /**
+   * 展开/折叠会话详情
+   */
+  toggleSessionDetail(e) {
+    const sessionId = e.currentTarget.dataset.sessionid
+    const index = e.currentTarget.dataset.index
+    const item = this.data.tableData[index]
+    
+    // 如果已经展开，则折叠
+    if (item.expanded) {
+      this.setData({
+        [`tableData[${index}].expanded`]: false,
+        [`tableData[${index}].details`]: []
+      })
+      return
+    }
+    
+    // 加载详情数据
+    getSessionDetailApi(sessionId).then(res => {
+      const details = res.data.map(detail => ({
+        ...detail,
+        serviceObj: getServiceNameByCode(detail.service),
+        statusIcon: getDeviceStatusIconByCode(detail.status)
+      }))
+      this.setData({
+        [`tableData[${index}].expanded`]: true,
+        [`tableData[${index}].details`]: details
+      })
+    })
+  },
+  /**
     * 分页查询根据不同时间节点：range:1今天 2昨天 3本周 4本月
-    * 增加在分页条件里面
-    * 服务根据协议，1：脸部护理，2：身体护理
-    * 服务状态：0：未开始，1：进行中，2：已完成
+    * 使用新的会话聚合接口，同一50分钟周期的记录会合并为一条
    * @param {*} type 
    */
   getServiceRecords(type = 'init') {
-    getServiceRecordsApi(this.data.pageObj).then(res => {
-      // 拿到原始 rows
+    getServiceSessionListApi(this.data.pageObj).then(res => {
+      // 拿到聚合后的会话数据
       const rows = res.data.rows.map(item => ({
         ...item,
         serviceObj: getServiceNameByCode(item.service),
-        statusIcon: getDeviceStatusIconByCode(item.status)
+        statusIcon: getDeviceStatusIconByCode(item.status),
+        expanded: false,  // 是否展开详情
+        details: []       // 详细记录列表
       }))
       if (type === 'bottom') {
         if (rows.length > 0) {

@@ -1,21 +1,25 @@
 <view class="service-history_container">
   <t-navbar t-class="navBar" left-arrow title="服务记录" />
-  <t-tabs t-class="history_tabs" t-class-active="active_style" t-class-item="item_style" defaultValue="{{pageObj.range}}" theme="tag" bind:click="tabClick">
+  <t-tabs t-class="history_tabs" t-class-active="active_style" t-class-item="item_style"
+    defaultValue="{{pageObj.range}}" theme="tag" bind:click="tabClick">
     <t-tab-panel wx:key="index" label="今日" value="1" />
     <t-tab-panel wx:key="index" label="昨日" value="2" />
     <t-tab-panel wx:key="index" label="本周" value="3" />
     <t-tab-panel wx:key="index" label="本月" value="4" />
   </t-tabs>
   <!-- 滚动列表 -->
-  <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="pullDownToRefresh">
+
+  <!-- 滚动列表 -->
+  <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom"
+    refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="pullDownToRefresh">
     <block wx:for="{{tableData}}" wx:key="index">
+      <!-- 会话汇总卡片 -->
       <view class="card_item">
         <view class="nav_top">
           <view class="title_box">
-            <image class="icon" src="../../static/icon/{{item.serviceObj.icon}}" />
-            <text class="text">{{item.serviceObj.name}}</text>
+            <image class="icon_4" src="../../static/icon/my_4.png" />
+            <text class="text">{{item.code}}</text>
           </view>
-          <view class="number">编号：{{item.code}}</view>
         </view>
         <view class="card_list">
           <view class="list_item">
@@ -23,18 +27,15 @@
             <text class="info">{{item.serialNumber}}</text>
           </view>
           <view class="list_item">
-            <text class="lable">美容师</text>
-            <text class="info">{{item.userName}}</text>
+            <text class="lable">开始时间</text>
+            <text class="info">{{item.sessionStart}}</text>
           </view>
           <view class="list_item">
-            <text class="lable">使用时长</text>
-            <text class="info">{{item.status == 1 ? '计时中' : item.runningTime + '分钟'}}</text>
+            <text class="lable">结束时间</text>
+            <text class="info">{{item.status == 1 ? '进行中' : item.sessionEnd}}</text>
           </view>
-          <view class="list_item">
-            <text class="lable">服务时间</text>
-            <text class="info">{{item.startTime}}</text>
-          </view>
-          <view class="list_item" wx:if="{{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2 || userInfo.dept.deptType == 3}}">
+          <view class="list_item"
+            wx:if="{{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2 || userInfo.dept.deptType == 3}}">
             <text class="lable">服务机构</text>
             <text class="info">{{item.deptName}}</text>
           </view>
@@ -42,10 +43,54 @@
         <view class="card_icon">
           <image class="icon" src="../../static/icon/{{item.statusIcon}}" />
         </view>
+        <!-- 展开按钮（仅当有暂停记录时显示） -->
+        <view class="expand_btn" wx:if="{{item.detailCount > 1}}" bindtap="toggleSessionDetail"
+          data-sessionid="{{item.sessionId}}" data-index="{{index}}">
+          <view class="expand_text">
+            {{item.expanded ? '收起' : '查看'}}
+          </view>
+          <t-icon t-class="expand_icon" name="{{item.expanded ? 'chevron-up-double' : 'chevron-down-double'}}"
+            size="15"></t-icon>
+        </view>
+        <!-- 详细记录列表 -->
+        <view class="detail_list" wx:if="{{item.expanded}}">
+          <block wx:for="{{item.details}}" wx:for-item="detail" wx:for-index="detailIndex" wx:key="detailIndex">
+            <view class="detail_item">
+              <view class="nav_top">
+                <view class="title_box">
+                  <image class="icon" src="../../static/icon/{{detail.serviceObj.icon}}" />
+                  <text class="text">{{detail.serviceObj.name}}</text>
+                </view>
+                <view class="number">编号：{{detail.code}}</view>
+              </view>
+              <view class="detail_info">
+                <view class="detail_row">
+                  <text class="detail_label">开始时间</text>
+                  <text class="detail_value">{{detail.startTime}}</text>
+                </view>
+                <view class="detail_row">
+                  <text class="detail_label">结束时间</text>
+                  <text class="detail_value"
+                    style="{{detail.endTime || 'color: #4caf50;'}}">{{detail.endTime || '进行中'}}</text>
+                </view>
+                <view class="detail_row">
+                  <text class="detail_label">运行时长</text>
+                  <text class="detail_value" wx:if="{{detail.endTime}}">{{detail.runningTime}}分钟</text>
+                  <text class="detail_value" wx:else>计时中</text>
+                </view>
+                <view class="detail_row">
+                  <text class="detail_label">美容师</text>
+                  <text class="detail_value">{{detail.userName}}</text>
+                </view>
+              </view>
+            </view>
+          </block>
+        </view>
       </view>
     </block>
     <view class="empty" wx:if="{{tableData.length < 1}}">
-      <empty image="../../static/icon/empty1.png" styleInfo="background-color: transparent !important" description="暂未查询到任何服务记录"></empty>
+      <empty image="../../static/icon/empty1.png" styleInfo="background-color: transparent !important"
+        description="暂未查询到任何服务记录"></empty>
     </view>
   </scroll-view>
 </view>

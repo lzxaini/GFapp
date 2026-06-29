@@ -515,3 +515,22 @@ export function getUserExtendListApi(data) {
     data
   })
 }
+/**
+ * 查询服务会话列表（聚合视图，同一50分钟周期合并为一条）
+ */
+export function getServiceSessionListApi(data) {
+  return request({
+    url: `/gf/serviceRecords/sessionList`,
+    method: 'get',
+    data
+  })
+}
+/**
+ * 查询某会话的详细记录（展开查看暂停/恢复明细）
+ */
+export function getSessionDetailApi(sessionId) {
+  return request({
+    url: `/gf/serviceRecords/sessionDetail/${sessionId}`,
+    method: 'get'
+  })
+}
