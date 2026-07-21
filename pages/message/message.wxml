@@ -1,6 +1,6 @@
 <view class="message_container">
   <!-- 顶部导航栏固定 -->
-  <t-navbar t-class="navBar" left-arrow="{{false}}" title="消息通知" />
+  <t-navbar t-class="navBar" left-arrow="{{false}}" fixed="{{false}}" title="消息通知" />
   <view class="nav_bg" style="top: {{capsuleHeight - 15}}px">
     <image class="bg_img" src="../../static/icon/message_navbg.png" />
   </view>

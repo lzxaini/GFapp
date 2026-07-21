@@ -1,7 +1,7 @@
 <wxs src="./calendar.wxs" module="_this" />
 <view class="operation_container">
   <!-- 顶部导航栏固定 -->
-  <t-navbar t-class="navBar" left-arrow="{{false}}" title="运营管理" />
+  <t-navbar t-class="navBar" left-arrow="{{false}}" fixed="{{false}}" title="运营管理" />
   <view class="nav_bg" style="top: {{capsuleHeight - 15}}px">
     <image class="bg_img" src="../../static/icon/recharge_nav_bg.png" />
   </view>

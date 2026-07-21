@@ -1,5 +1,5 @@
 <view class="my_body">
-  <t-navbar t-class="navBar" left-arrow="{{false}}" title="个人中心" />
+  <t-navbar t-class="navBar" left-arrow="{{false}}" fixed="{{false}}" title="个人中心" />
   <view class="user_img">
     <image class="avatar" src="{{userInfo.avatar ? ossUrl + userInfo.avatar : '../../static/icon/gf_logo_w.png'}}" bindtap="goLoginFlag" />
     <view class="tag_box" bindtap="goLoginFlag">

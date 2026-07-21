@@ -1,6 +1,6 @@
 <view class="statistics_container">
   <!-- 顶部导航栏固定 -->
-  <t-navbar t-class="navBar" left-arrow="{{false}}" title="统计数据" />
+  <t-navbar t-class="navBar" left-arrow="{{false}}" fixed="{{false}}" title="统计数据" />
   <view class="nav_bg" style="top: {{capsuleHeight - 15}}px">
     <image class="bg_img" src="../../static/icon/statistics_nav_bg.png" />
   </view>
