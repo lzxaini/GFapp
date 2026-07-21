@@ -10,59 +10,83 @@ Page({
     userInfo: app.globalData.userInfo,
     ossUrl: app.globalData.ossUrl,
     refresher: false,
-    teamTab: 3, // 默认团队tab
+    teamTab: 3,
     teamObj: {},
-    teamList: [],
+    displayList: [],
+    loadingMore: false,
+    pageSize: 20,
+    pageObj: {
+      3: { pageNum: 1, hasMore: true },
+      4: { pageNum: 1, hasMore: true },
+    },
     deptData: {},
-    tabsValue: 1, // 1: 团队成员, 2: 团队设备
+    tabsValue: 1,
   },
   onLoad(options) {
-    let {
-      deptInfo
-    } = options
+    let { deptInfo } = options
     let deptData = JSON.parse(deptInfo)
-    this.setData({
-      deptData
-    })
+    this.setData({ deptData })
     this.getAdminTeamListDrillDown()
   },
   onShow() {
     this.getAdminTeamListDrillDown()
   },
   getAdminTeamListDrillDown() {
-    let {
-      deptData,
-      teamTab
-    } = this.data
+    let { deptData } = this.data
     getAdminTeamListDrillDownApi(deptData.deptId).then(res => {
       if (res.code === 200) {
+        const raw = res.data || {}
+        const dataMap = raw.data || {}
         this.setData({
           refresher: false,
-          teamObj: res.data,
-          teamList: res.data[teamTab]
+          teamObj: raw,
+          pageObj: {
+            3: { pageNum: 1, hasMore: this.hasMore(dataMap[3]) },
+            4: { pageNum: 1, hasMore: this.hasMore(dataMap[4]) },
+          }
         })
+        const firstAvail = [3, 4].find(k => dataMap[k]?.length > 0) || 3
+        const targetTab = dataMap[this.data.teamTab] ? this.data.teamTab : firstAvail
+        this.setData({ teamTab: targetTab })
+        this.computeDisplayList(targetTab, true)
       } else {
-        this.setData({
-          refresher: false,
-        })
-        wx.showToast({
-          title: '获取团队列表失败',
-          icon: 'error'
-        })
+        this.setData({ refresher: false })
+        wx.showToast({ title: '获取团队列表失败', icon: 'error' })
       }
     })
   },
-  tabClick(e) {
-    let {
-      value
-    } = e?.detail
-    let {
-      teamObj
-    } = this.data
+  computeDisplayList(tab, reset) {
+    const { teamObj, pageObj } = this.data
+    const fullList = (teamObj.data || {})[tab] || []
+    const curPage = (reset || !pageObj[tab]) ? 1 : pageObj[tab].pageNum
+    const { pageSize } = this.data
+    const end = curPage * pageSize
+    const slice = fullList.slice(0, end)
+
+    const pagePath = `pageObj[${tab}]`
     this.setData({
-      teamTab: value,
-      teamList: teamObj[value] || []
+      displayList: slice,
+      loadingMore: false,
+      [`${pagePath}.pageNum`]: curPage,
+      [`${pagePath}.hasMore`]: end < fullList.length,
     })
+  },
+  hasMore(list) {
+    const { pageSize } = this.data
+    return list ? list.length > pageSize : false
+  },
+  onScrollToLower() {
+    const { teamTab, pageObj, loadingMore } = this.data
+    const cur = pageObj[teamTab]
+    if (!cur || loadingMore || !cur.hasMore) return
+    this.setData({ loadingMore: true })
+    this.setData({ [`pageObj[${teamTab}].pageNum`]: cur.pageNum + 1 })
+    this.computeDisplayList(teamTab)
+  },
+  tabClick(e) {
+    let { value } = e?.detail
+    this.setData({ teamTab: value })
+    this.computeDisplayList(value, true)
   },
   goNext(e) {
     let {
