@@ -7,7 +7,6 @@ import {
   getRechargeRecordsApi,
   rechargeApi
 } from '../../api/api'
-const dayjs = require('dayjs')
 const app = getApp()
 Page({
   data: {
@@ -16,6 +15,13 @@ Page({
     ossUrl: app.globalData.ossUrl,
     searchDeptName: '',
     teamVisible: false,
+    teamList: [],
+    teamTotal: 0,
+    teamLoading: false,
+    teamPageObj: {
+      pageNum: 1,
+      pageSize: 20,
+    },
     form: {
       deptId: '',
       deptName: '',
@@ -31,23 +37,16 @@ Page({
     points: {}, // 点数相关
   },
   onShow() {
-    this.getDeptListInfo()
     this.getRechargeRecords()
   },
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom() {
-    let {
-      tabsValue,
-      tableData,
-    } = this.data
-    console.log('触底', tabsValue) // 确定是哪个触底的就加载哪个列表
+    const { tableData, total } = this.data
     if (tableData.length < total) {
-      let pageNum = ++this.data.pageObj.pageNum
-      this.setData({
-        'pageObj.pageNum': pageNum
-      })
+      const pageNum = this.data.pageObj.pageNum + 1
+      this.setData({ 'pageObj.pageNum': pageNum })
       this.getRechargeRecords('bottom')
     }
   },
@@ -64,36 +63,34 @@ Page({
    * @param {*} type 
    */
   getRechargeRecords(type = 'init') {
-    let {
-      pageObj,
-      tableData
-    } = this.data
+    const { pageObj, tableData } = this.data
     getRechargeRecordsApi(pageObj).then(res => {
+      const { rows, total } = res.data || {}
       if (type === 'bottom') {
-        if (res.data.rows.length > 0) {
-          let list = tableData
-          list.push(...res.data.rows)
+        if (rows && rows.length > 0) {
           this.setData({
-            tableData: list
+            tableData: [...tableData, ...rows]
           })
         }
       } else {
         this.setData({
-          tableData: res.data.rows,
-          total: res.data.total
+          tableData: rows || [],
+          total: total || 0
         })
       }
       this.getDeptPoints()
-      this.setData({
-        refresher: false
-      })
+      this.setData({ refresher: false })
     })
   },
-  // 点击空白关闭 team_list
-  onTeamListMask() {
-    this.setData({
-      teamVisible: false
-    });
+  // 关闭团队列表弹窗
+  closeTeamList() {
+    this.setData({ teamVisible: false });
+  },
+  // popup 显隐变化
+  onTeamVisibleChange(e) {
+    if (!e.detail.visible) {
+      this.setData({ teamVisible: false });
+    }
   },
   // 清空部门输入框
   clearInput() {
@@ -103,24 +100,71 @@ Page({
     });
     this.getRechargeRecords()
   },
-  // 获取部门
-  getDeptListInfo() {
+  // 获取团队列表（分页模式）
+  getDeptListInfo(type = 'init') {
+    const { teamPageObj, teamList, searchDeptName } = this.data
+    this.setData({ teamLoading: true })
     getDeptListInfoApi({
-      deptName: this.data.searchDeptName
+      pageNum: teamPageObj.pageNum,
+      pageSize: teamPageObj.pageSize,
+      deptName: searchDeptName
     }).then(res => {
-      console.log('测试', res.data)
       if (res.code === 200) {
-        this.setData({
-          teamList: res.data
-        })
+        const { rows, total } = res.data || {}
+        if (type === 'bottom') {
+          this.setData({
+            teamList: [...teamList, ...(rows || [])],
+            teamTotal: total || 0
+          })
+        } else {
+          this.setData({
+            teamList: rows || [],
+            teamTotal: total || 0
+          })
+        }
       }
+    }).finally(() => {
+      this.setData({ teamLoading: false })
     })
   },
-  showTeamList() {
-    let flag = !this.data.teamVisible
+  // 团队列表滚动触底加载更多
+  onTeamListScrollToLower() {
+    const { teamPageObj, teamList, teamTotal, teamLoading } = this.data
+    if (teamLoading || teamList.length >= teamTotal) return
+    this.setData({
+      'teamPageObj.pageNum': teamPageObj.pageNum + 1
+    })
+    this.getDeptListInfo('bottom')
+  },
+  // 搜索团队
+  onTeamSearch(e) {
+    this.setData({
+      searchDeptName: e.detail.value,
+      'teamPageObj.pageNum': 1
+    })
+    this.getDeptListInfo()
+  },
+  // 清空搜索
+  onTeamSearchClear() {
     this.setData({
       searchDeptName: '',
-      teamVisible: flag
+      'teamPageObj.pageNum': 1
+    })
+    this.getDeptListInfo()
+  },
+  onTeamSearchConfirm(e) {
+    this.setData({
+      searchDeptName: e.detail.value,
+      'teamPageObj.pageNum': 1
+    })
+    this.getDeptListInfo()
+  },
+  // 打开团队列表弹窗
+  showTeamList() {
+    this.setData({
+      searchDeptName: '',
+      teamVisible: true,
+      'teamPageObj.pageNum': 1
     })
     this.getDeptListInfo()
   },
@@ -138,11 +182,6 @@ Page({
     });
     this.getRechargeRecords()
   },
-  // blur() {
-  //   this.setData({
-  //     teamVisible: false
-  //   })
-  // },
   // 输入充值数量
   onInput(e) {
     let {
@@ -152,18 +191,11 @@ Page({
       'form.rechargeAmount': value
     })
   },
-  // 输入部门
-  onInputDeptName(e) {
-    let {
-      value
-    } = e?.detail
-    this.setData({
-      'pageObj.deptId': '',
-      'searchDeptName': value,
-      teamVisible: true
-    })
-    this.getDeptListInfo()
-    this.getRechargeRecords()
+  // 点击输入框弹出团队列表
+  onInputDeptName() {
+    if (!this.data.teamVisible) {
+      this.showTeamList()
+    }
   },
   // 充值
   submit() {
@@ -214,7 +246,7 @@ Page({
     })
   },
   // 去新增部门页面
-  goAddDept(){
+  goAddDept() {
     wx.navigateTo({
       url: '/other/add-dept/add-dept',
     })

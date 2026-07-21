@@ -65,7 +65,15 @@ Page({
       email: '',
       address: '',
       addressDetail: ''
-    }
+    },
+    allDeptRows: [],     // 所有已加载的扁平部门数据（分页累加）
+    deptTotal: 0,        // 总数
+    deptLoadingMore: false,
+    refreshing: false,
+    pagObj: {
+      pageNum: 1,
+      pageSize: 20,
+    },
   },
 
   onLoad(options) {
@@ -73,26 +81,91 @@ Page({
     this.getRegion();
   },
 
-  // 获取部门列表
-  getDeptList() {
-    this.setData({
-      loading: true
-    });
-    getDeptListInfoApi().then(res => {
+  // 获取部门列表（分页触底加载）
+  getDeptList(type = 'init') {
+    const { pagObj, allDeptRows, deptList } = this.data
+
+    if (type === 'init') {
+      this.setData({ loading: true, refreshing: false })
+    } else {
+      this.setData({ deptLoadingMore: true })
+    }
+
+    getDeptListInfoApi(pagObj).then(res => {
       if (res.code === 200) {
-        // 将平级数据转换为树形结构
-        const treeData = this.buildTree(res.data);
+        const { rows, total } = res.data || {}
+        const newRows = rows || []
+        // 累加扁平数据
+        const accumulated = type === 'init' ? [...newRows] : [...allDeptRows, ...newRows]
+        // 重新构建树
+        const treeData = this.buildTree(accumulated)
+        // 保留展开状态
+        const mergedTree = this.mergeExpandState(treeData, deptList)
         this.setData({
-          deptList: treeData,
-          loading: false
-        });
+          allDeptRows: accumulated,
+          deptTotal: total || 0,
+          deptList: mergedTree,
+          loading: false,
+          deptLoadingMore: false,
+          refreshing: false
+        })
       }
     }).catch(() => {
       this.setData({
-        loading: false
-      });
-      this.message('error', '获取部门列表失败', 2000);
-    });
+        loading: false,
+        deptLoadingMore: false,
+        refreshing: false
+      })
+      this.message('error', '获取部门列表失败', 2000)
+    })
+  },
+
+  // 触底加载更多
+  onDeptScrollToLower() {
+    const { pagObj, allDeptRows, deptTotal, deptLoadingMore, loading } = this.data
+    if (deptLoadingMore || loading || allDeptRows.length >= deptTotal) return
+    this.setData({
+      'pagObj.pageNum': pagObj.pageNum + 1
+    })
+    this.getDeptList('bottom')
+  },
+
+  // 下拉刷新
+  onRefresh() {
+    this.setData({
+      'pagObj.pageNum': 1,
+      refreshing: true
+    })
+    this.getDeptList('init')
+  },
+
+  // 合并展开状态（保持已展开节点的状态）
+  mergeExpandState(newTree, oldTree) {
+    const flatOld = this.flattenTree(oldTree)
+    const expandMap = {}
+    flatOld.forEach(n => { if (n.expanded) expandMap[n.deptId] = true })
+
+    const traverse = (nodes) => {
+      nodes.forEach(n => {
+        if (expandMap[n.deptId]) n.expanded = true
+        if (n.children && n.children.length > 0) traverse(n.children)
+      })
+    }
+    traverse(newTree)
+    return newTree
+  },
+
+  // 将树拍平为一维数组
+  flattenTree(nodes) {
+    const result = []
+    const walk = (list) => {
+      list.forEach(n => {
+        result.push(n)
+        if (n.children && n.children.length > 0) walk(n.children)
+      })
+    }
+    walk(nodes)
+    return result
   },
 
   // 构建树形结构
@@ -461,7 +534,12 @@ Page({
       if (res.code === 200) {
         this.message('success', isEdit ? '修改成功' : '新增成功', 1500);
         this.closeDialog();
-        this.getDeptList();
+        // 重置分页，重新加载
+        this.setData({
+          'pagObj.pageNum': 1,
+          allDeptRows: []
+        })
+        this.getDeptList('init');
       } else {
         this.message('error', res.msg || '操作失败', 2000);
       }

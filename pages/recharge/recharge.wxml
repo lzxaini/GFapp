@@ -19,20 +19,30 @@
         </t-input>
       </view>
     </view>
-    <!-- 团队列表 -->
-    <view class="team_list" wx:if="{{teamVisible}}" catchtap="onTeamListMask">
-      <view class="team_list_mask" style="position:fixed;left:0;top:0;width:100vw;height:100vh;z-index:1;" catchtap="onTeamListMask"></view>
-      <view class="team_list_content" style="position:relative;z-index:2;">
-        <block wx:for="{{teamList}}" wx:key="deptId">
-          <t-cell t-class="team_item" hover arrow bindtap="onSelectTeam" data-id="{{item.deptId}}" data-name="{{item.deptName}}" bordered>
-            <t-avatar slot="left-icon" image="{{ossUrl + item.deptAvatar}}" size="small" />
-            <view slot="title" class="title">{{item.deptName}}</view>
-            <view slot="description" class="description">地址：{{item.address}}</view>
-          </t-cell>
-        </block>
-        <t-empty wx:if="{{teamList.length < 1}}" t-class="empty" t-class-image="empty_image" image="/static/icon/footer.png" description="糟糕，到底了" />
+    <!-- 团队列表（分页弹窗） -->
+    <t-popup visible="{{teamVisible}}" placement="bottom" bind:visiblechange="onTeamVisibleChange">
+      <view class="team_popup">
+        <view class="team_popup_header">
+          <text class="team_popup_title">选择团队</text>
+          <t-icon name="close" color="#999" size="22" bindtap="closeTeamList" />
+        </view>
+        <t-search value="{{searchDeptName}}" placeholder="搜索团队名称" bindchange="onTeamSearch" bindclear="onTeamSearchClear" bindconfirm="onTeamSearchConfirm" />
+        <scroll-view class="team_popup_scroll" scroll-y upper-threshold="1" bindscrolltolower="onTeamListScrollToLower">
+          <block wx:for="{{teamList}}" wx:key="deptId">
+            <t-cell t-class="team_item" hover arrow bindtap="onSelectTeam" data-id="{{item.deptId}}" data-name="{{item.deptName}}" bordered>
+              <t-avatar slot="left-icon" image="{{ossUrl + item.deptAvatar}}" size="small" />
+              <view slot="title" class="title">{{item.deptName}}</view>
+              <view slot="description" class="description">地址：{{item.address}}</view>
+            </t-cell>
+          </block>
+          <view wx:if="{{teamLoading}}" class="team_popup_loading">
+            <t-loading loading size="20rpx" text="加载中..." />
+          </view>
+          <view wx:elif="{{teamList.length >= teamTotal && teamTotal > 0}}" class="team_popup_nomore">没有更多了</view>
+          <t-empty wx:if="{{teamList.length < 1 && !teamLoading}}" t-class="empty" t-class-image="empty_image" image="/static/icon/footer.png" description="糟糕，到底了" />
+        </scroll-view>
       </view>
-    </view>
+    </t-popup>
     <view class="title_box">
       <view class="title">充值记录</view>
       <view class="cumulative">{{form.deptId ? '累计点数：' : '累计条数：'}}{{ form.deptId ? points.total : total }}</view>
