@@ -1,6 +1,6 @@
 <view class="airkiss_container">
   <view class="airkiss-wifi-input-wrapper">
-    <t-navbar t-class="navBar" left-arrow title="添加设备" bind:go-back="handleBack" />
+    <t-navbar t-class="navBar" left-arrow title="添加设备" fixed="{{false}}" bind:go-back="handleBack" />
     <view class="title">请选择设备工作的Wi-Fi</view>
     <view class="info">此设备只支持使用2.4GHz Wi-FI连接使用WI-FI名称仅支持英文字符及数字</view>
     <view style="width: 100%;margin-top: 32rpx;">

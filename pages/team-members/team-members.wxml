@@ -1,5 +1,5 @@
 <view class="team-members_container">
-  <t-navbar t-class="navBar" left-arrow title="团队成员" />
+  <t-navbar t-class="navBar" left-arrow fixed="{{false}}" title="团队成员" />
   <!-- 滚动列表 -->
   <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="getTeamsMemberList">
     <t-cell t-class="list_item" wx:for="{{memberList}}" description="{{item.phonenumber}}">

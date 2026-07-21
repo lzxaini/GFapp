@@ -1,5 +1,5 @@
 <view class="white-list_container">
-  <t-navbar left-arrow title="白名单" />
+  <t-navbar left-arrow title="白名单" fixed="{{false}}" />
   <!-- 滚动列表 -->
   <scroll-view wx:if="{{!whiteBox}}" class="scroll-view" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="pullDownToRefresh">
     <view class="list_item" wx:for="{{whiteList}}" wx:key="index">

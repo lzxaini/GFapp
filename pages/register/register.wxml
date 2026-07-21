@@ -1,5 +1,5 @@
 <view class="register_container">
-  <t-navbar t-class="navBar" left-arrow title="完善注册信息" />
+  <t-navbar t-class="navBar" left-arrow fixed="{{false}}" title="完善注册信息" />
   <view class="item df" bindtap="updateAvatar">
     <view class="lable">个人头像</view>
     <image class="avatar" src="{{ ossUrl + form.avatar  || '../../static/icon/gf_logo.png'}}" />

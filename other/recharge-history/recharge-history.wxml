@@ -1,5 +1,5 @@
 <view class="recharge-history_container">
-  <t-navbar t-class="navBar" left-arrow title="充值记录" />
+  <t-navbar t-class="navBar" left-arrow fixed="{{false}}" title="充值记录" />
   <t-tabs t-class="history_tabs" t-class-active="active_style" t-class-item="item_style" defaultValue="{{pageObj.range}}" theme="tag" bind:click="tabClick">
     <t-tab-panel wx:key="index" label="今日" value="{{1}}" />
     <t-tab-panel wx:key="index" label="昨日" value="{{2}}" />

@@ -1,5 +1,5 @@
 <view class="my-edit_container">
-  <t-navbar t-class="navBar" left-arrow title="设置个人资料" />
+  <t-navbar t-class="navBar" left-arrow fixed="{{false}}" title="设置个人资料" />
   <view class="info_from">
     <view class="from_item">
       <view class="item_label">成员头像</view>

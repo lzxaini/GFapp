@@ -1,5 +1,5 @@
 <view class="team-info_container">
-  <t-navbar t-class="navBar" left-arrow title="设置团队信息" />
+  <t-navbar t-class="navBar" left-arrow fixed="{{false}}" title="设置团队信息" />
   <view class="info_form">
     <view class="form_item">
       <view class="item_label">团队封面</view>

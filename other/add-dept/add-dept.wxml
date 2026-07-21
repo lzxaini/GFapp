@@ -1,5 +1,5 @@
 <view class="dept-manage-container">
-  <t-navbar t-class="navBar" left-arrow title="我的团队" />
+  <t-navbar t-class="navBar" left-arrow title="我的团队" fixed="{{false}}" />
 
   <!-- 部门列表（分页触底加载） -->
   <scroll-view class="dept-list" scroll-y upper-threshold="1" bindscrolltolower="onDeptScrollToLower" refresher-enabled="{{true}}" refresher-triggered="{{refreshing}}" bindrefresherrefresh="onRefresh">

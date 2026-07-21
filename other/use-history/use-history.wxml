@@ -1,5 +1,5 @@
 <view class="service-history_container">
-  <t-navbar t-class="navBar" left-arrow title="使用记录" />
+  <t-navbar t-class="navBar" left-arrow fixed="{{false}}" title="使用记录" />
   <!-- 滚动列表 -->
   <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="pullDownToRefresh">
     <!-- $TODO 设备使用记录页面对接historyList -->

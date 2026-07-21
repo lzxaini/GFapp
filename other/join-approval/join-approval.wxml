@@ -1,6 +1,6 @@
 <view class="container">
   <!-- 顶部导航栏 -->
-  <t-navbar title="加入审批" left-arrow bind:go-back="onBack" />
+  <t-navbar title="加入审批" left-arrow fixed="{{false}}" bind:go-back="onBack" />
 
   <!-- 消息提示 -->
   <t-message id="t-message" />
