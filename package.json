@@ -3,6 +3,6 @@
     "buffer": "^6.0.3",
     "dayjs": "^1.11.13",
     "emoji-regex": "^10.6.0",
-    "tdesign-miniprogram": "^1.9.2"
+    "tdesign-miniprogram": "^1.15.3"
   }
 }
