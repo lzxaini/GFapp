@@ -10,11 +10,12 @@
   flex-direction: column;
   height: calc(100vh - (env(safe-area-inset-bottom) + 48px));
   padding-bottom: 48px;
-  background: linear-gradient(180deg, #888bf4 20%, #f5f7fb 40%, #f5f7fb 100%);
+  // background: linear-gradient(180deg, #BEA6D4 20%, #F5F0FA 40%, #F5F0FA 100%);
+  background-color: #F5F0FA;
 
   .navBar {
     --td-navbar-bg-color: transparent;
-    --td-navbar-color: #fff;
+    --td-navbar-color: #5A5470;
     --td-navbar-capsule-border-color: #e3e6ea !important;
     // color: transparent;
   }
@@ -45,6 +46,10 @@
 
     .box {
       @extend %flex;
+
+      .text {
+        color: #5A5470;
+      }
     }
 
     .icon {
@@ -70,7 +75,7 @@
       font-family: AlibabaPuHuiTi3;
       font-size: 32rpx;
       font-weight: 300;
-      color: #888bf4;
+      color: #BEA6D4;
       z-index: 0;
     }
 
@@ -86,7 +91,7 @@
         padding: 0 30rpx;
         height: 72rpx;
         border-radius: 12rpx;
-        background-color: #f5f7fb;
+        background-color: #F5F0FA;
 
         .interval_info {
           font-size: 23rpx;
@@ -129,7 +134,7 @@
       .all_item {
         height: 72rpx;
         border-radius: 12rpx;
-        background-color: #f5f7fb;
+        background-color: #F5F0FA;
 
         .item-input {
           height: 100%;
@@ -163,7 +168,7 @@
     .tabs_box {
       --td-tab-nav-bg-color: rgba(255, 255, 255, 0.3);
       --td-tab-item-tag-bg: transparent;
-      --td-tab-item-tag-active-bg: #888bf4;
+      --td-tab-item-tag-active-bg: #BEA6D4;
       --td-tab-item-active-color: #ffffff;
       --td-tab-item-height: 80rpx;
       border: 1rpx solid #ecedfd;
@@ -171,14 +176,14 @@
     }
 
     .item_style {
-      --td-tab-item-color: #888bf4;
+      --td-tab-item-color: #BEA6D4;
       font-family: AlibabaPuHuiTi3;
       font-size: 28rpx;
       font-weight: bold;
     }
 
     .active_style {
-      background-color: #888bf4;
+      background-color: #BEA6D4;
       font-family: AlibabaPuHuiTi3;
       font-size: 32rpx;
       font-weight: 300;
@@ -191,7 +196,7 @@
       .list_item_info {
         font-family: AlibabaPuHuiTi3;
         font-size: 24rpx;
-        background: linear-gradient(281deg, #888bf4 0%, #5151c6 100%);
+        background: linear-gradient(281deg, #BEA6D4 0%, #5151c6 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -205,7 +210,7 @@
   overflow: hidden;
   border-radius: 16rpx;
   background-color: #ffffff;
-  border: 1rpx solid #d1d2f9;
+  border: 1rpx solid #E6DDF0;
 
   .table-header {
     font-weight: bold;
@@ -235,7 +240,7 @@
     width: 100%; // 跟随内容宽度
     left: 0;
     height: 1px;
-    background-color: rgba(227, 228, 229, 1);
+    background-color: #e3e4e5;
     transform: scaleY(0.5);
     transform-origin: bottom;
     flex-shrink: 0;
@@ -289,7 +294,7 @@
       font-family: AlibabaPuHuiTi3;
       font-size: 24rpx;
       font-weight: 500;
-      color: #888bf4;
+      color: #BEA6D4;
     }
 
     .date {
@@ -316,7 +321,7 @@
     padding: 30rpx;
     border-radius: 20rpx;
     box-sizing: border-box;
-    border: 1rpx solid #d1d2f9;
+    border: 1rpx solid #E6DDF0;
     background-color: #ffffff;
     margin-bottom: 32rpx;
 
@@ -360,7 +365,7 @@
         align-items: center;
         justify-content: center;
         padding: 4rpx 16rpx;
-        background: linear-gradient(135deg, #d1d2f9 0%, #888bf4 100%);
+        background: linear-gradient(135deg, #E6DDF0 0%, #BEA6D4 100%);
         border-radius: 20rpx;
 
         .badge_text {
@@ -396,7 +401,7 @@
           margin-top: 16rpx;
 
           .info.primary {
-            color: #888bf4;
+            color: #BEA6D4;
             font-weight: bold;
             font-size: 28rpx;
           }
@@ -424,18 +429,18 @@
       padding: 10rpx;
       background-color: #ebebfc;
       border-radius: 12rpx;
-      border: 1rpx dashed #888bf4;
+      border: 1rpx dashed #BEA6D4;
 
       .expand_text {
         font-family: AlibabaPuHuiTi3;
         font-size: 24rpx;
-        color: #888bf4;
+        color: #BEA6D4;
         margin-right: 8rpx;
       }
 
       .expand_icon {
         font-size: 20rpx;
-        color: #888bf4;
+        color: #BEA6D4;
       }
     }
 

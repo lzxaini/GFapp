@@ -8,7 +8,7 @@
         已激活：{{historyList.activated}}/{{historyList.total}}
       </view>
       <view slot="right-icon" class="right_box" bindtap="scanDevice">
-        <t-icon class="sacn" name="scan" color="#888bf4" size="24rpx"></t-icon>
+        <t-icon class="sacn" name="scan" color="#BEA6D4" size="24rpx"></t-icon>
         <view>扫码激活</view>
       </view>
     </t-cell>

@@ -20,11 +20,12 @@
   height: calc(100vh - (env(safe-area-inset-bottom) + 48px));
   padding-bottom: 48px;
   font-family: AlibabaPuHuiTi3;
-  background: linear-gradient(180deg, #888bf4 20%, #f5f7fb 40%, #f5f7fb 100%);
+  // background: linear-gradient(180deg, #BEA6D4 20%, #F5F0FA 40%, #F5F0FA 100%);
+  background-color: #F5F0FA;
 
   .navBar {
     --td-navbar-bg-color: transparent;
-    --td-navbar-color: #fff;
+    --td-navbar-color: #5A5470;
     --td-navbar-capsule-border-color: #e3e6ea !important;
     // color: transparent;
   }
@@ -120,12 +121,12 @@
         }
 
         .tips_c_2 {
-          color: #888BF4;
+          color: #BEA6D4;
         }
       }
 
       .blue {
-        background-color: #888BF4;
+        background-color: #BEA6D4;
 
         .title,
         .content {
@@ -154,7 +155,7 @@
         .btn {
           border-radius: 11rpx;
           background-color: #F0EFFF;
-          color: #888BF4;
+          color: #BEA6D4;
           padding: 5rpx 15rpx;
           font-size: 20rpx;
         }
@@ -184,12 +185,12 @@
               width: 18rpx;
               height: 18rpx;
               border-radius: 6rpx;
-              background-color: #888BF4;
+              background-color: #BEA6D4;
             }
           }
           .before-1{
             &::before {
-              background-color: #888BF4;
+              background-color: #BEA6D4;
             }
           }
           .before-2,.before-3{
@@ -204,11 +205,11 @@
           }
           .value {
             font-size: 25rpx;
-            color: #888BF4;
+            color: #BEA6D4;
           }
 
           .color-1 {
-            color: #888BF4;
+            color: #BEA6D4;
           }
 
           .color-2 {
@@ -236,7 +237,7 @@
     }
 
     .dep_info {
-      --td-search-action-color: #888BF4;
+      --td-search-action-color: #BEA6D4;
 
       .header_box {
         @extend %flex-sb;
@@ -248,7 +249,7 @@
           font-size: 24rpx;
           color: #FFFFFF;
           border-radius: 14rpx;
-          background: #888BF4;
+          background: #BEA6D4;
 
           .icon {
             margin-right: 10rpx;
@@ -258,7 +259,7 @@
 
       .search {
         width: 100%;
-        --td-search-bg-color: #F5F7FB;
+        --td-search-bg-color: #F5F0FA;
         margin: 40rpx 0 28rpx 0;
       }
 
@@ -271,7 +272,7 @@
         .table-cell {
           padding: 0;
           font-weight: bold;
-          color: #888BF4;
+          color: #BEA6D4;
         }
       }
 
@@ -335,7 +336,7 @@
           font-family: AlibabaPuHuiTi3;
           font-size: 24rpx;
           font-weight: 500;
-          color: #888bf4;
+          color: #BEA6D4;
         }
       }
 

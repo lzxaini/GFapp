@@ -1,86 +1,89 @@
 <view class="my_body">
+  <!-- Apple-style 极简导航 -->
   <t-navbar t-class="navBar" left-arrow="{{false}}" fixed="{{false}}" title="个人中心" />
-  <view class="user_img">
-    <image class="avatar" src="{{userInfo.avatar ? ossUrl + userInfo.avatar : '../../static/icon/gf_logo_w.png'}}" bindtap="goLoginFlag" />
-    <view class="tag_box" bindtap="goLoginFlag">
-      <image class="tag_icon" src="../../static/icon/admin.png" />
-      <text class="tag_text">{{userInfo.roles[0].roleName || '暂无角色'}}</text>
+
+  <!-- Profile 头部 -->
+  <view class="profile_section">
+    <view class="profile_avatar_wrap">
+      <image class="profile_avatar" src="{{userInfo.avatar ? ossUrl + userInfo.avatar : '../../static/icon/gf_logo_w.png'}}" bindtap="goLoginFlag" />
+      <view class="profile_badge">{{userInfo.roles[0].roleName || '暂无角色'}}</view>
     </view>
-    <view class="user_name">{{userInfo.userName || '未登录'}}</view>
-  </view>
-  <view class="nav_bg">
-    <!-- 功能菜单 -->
-    <view column="4" class="menu_grid">
-      <!-- <view class="item" bindtap="addDept" wx:if="{{userInfo.dept.deptType == 1}}">
-        <image class="menu_grid_icon" src="../../static/icon/my_menu_1.png" />
-        <view class="text">新建团队</view>
-      </view> -->
-      <view class="item" bindtap="goMyDept">
-        <image class="menu_grid_icon" src="../../static/icon/my_menu_1.png" />
-        <view class="text">我的团队</view>
-      </view>
-      <view class="item" bindtap="goRechargeHistory">
-        <image class="menu_grid_icon" src="../../static/icon/my_menu_2.png" />
-        <view class="text">充值记录</view>
-      </view>
-      <view class="item" bindtap="goServiceHistory">
-        <image class="menu_grid_icon" src="../../static/icon/my_menu_3.png" />
-        <view class="text">服务记录</view>
-      </view>
-      <view class="item" bindtap="goSystem">
-        <image class="menu_grid_icon" src="../../static/icon/my_menu_4.png" />
-        <view class="text">设置</view>
-      </view>
-    </view>
-  </view>
-  <!-- 团队 -->
-  <view class="nav_title">
-    <view class="title">所属机构</view>
-    <t-icon wx:if="{{userInfo.dept}}" name="qrcode" size="38rpx" color="#888BF4" bindtap="openQrCode" />
-  </view>
-  <t-cell-group wx:if="{{userInfo.dept && userInfo.dept.deptName !== '游客部门'}}" t-class="dept_info" theme="card">
-    <t-cell t-class-center="dept_center" t-class-title="dept_title" t-class-note="textOverflow" title="机构名称" note="{{userInfo.dept.deptName}}" hover>
-      <!-- <view class="{{userInfo.dept.deptName === '研发部门' ? 'dept_note' : ''}}" slot="note" bindtap="goDevPage">{{userInfo.dept.deptName}}</view> -->
-      <t-icon wx:if="{{userInfo.dept.deptName === '研发部门'}}" class="go_dev" slot="right-icon" name="bug" color="#E6A23C" size="25px" bindtap="goDevPage" />
-    </t-cell>
-    <t-cell t-class-center="dept_center" t-class-title="dept_title" t-class-note="textOverflow" title="机构地址" note="{{userInfo.dept ? userInfo.dept.address || '-' : '-'}}-{{userInfo.dept ? userInfo.dept.addressDetail || '' : ''}}" hover />
-    <t-cell t-class-center="dept_center" t-class-title="dept_title" t-class-note="textOverflow" title="开通时间" note="{{userInfo.dept.createTime || '--'}}" hover />
-    <t-cell wx:if="{{userInfo.dept.deptType != 4}}" t-class-center="dept_center" t-class-title="dept_title" t-class-note="textOverflow" title="团队管理" hover>
-      <view class="dept_note" slot="note" bindtap="goDeptInfo">点击查看详情</view>
-    </t-cell>
-    <!-- 仅研发部门显示开发模式菜单 -->
-    <!-- <t-cell wx:if="{{userInfo.dept.deptName === '研发部门'}}" t-class-center="dept_center" t-class-title="dept_title" t-class-note="textOverflow" title="开发模式" hover>
-      <view class="dept_note" slot="note" bindtap="goDevPage">点击立即前往</view>
-    </t-cell> -->
-  </t-cell-group>
-
-  <view class="join_dept" wx:else>
-    <image class="bg_img" src="../../static/icon/my_device_bg.png" />
-    <view class="tips">{{userInfo ? '暂无归属团队' : '暂未登录'}}</view>
-    <t-button class="join_dept_btn" wx:if="{{userInfo}}" bindtap="goSearchTeam">
-      加入团队
-    </t-button>
-    <t-button class="join_dept_btn" wx:else bindtap="goLoginFlag">
-      立即登录
-    </t-button>
+    <view class="profile_name">{{userInfo.userName || '未登录'}}</view>
   </view>
 
-  <view class="nav_title">
-    <view class="title">团队成员</view>
-    <view class="number" wx:if="{{userInfo.dept}}">团队编号：{{userInfo.dept.deptCode}}</view>
-  </view>
-
-  <scroll-view class="member_box" style="top: calc({{statusBarHeight}}px + 148rpx)" enable-flex="{{true}}" scroll-x enhanced="{{true}}" show-scrollbar="{{false}}" refresher-enabled="{{false}}" refresher-default-style="none">
-    <block wx:for="{{deptUserList}}" wx:key="index">
-      <view class="tab_text" wx:if="{{item.phonenumber !== '15888888888' && item.phonenumber !== '16666666666'}}">
-        <image class="member_user_img" src="{{ossUrl + item.avatar || '../../static/icon/gf_logo_w.png'}}" />
-        <view class="member_right">
-          <view class="member_name textOverflow">{{item.userName}}</view>
-          <view class="member_phone">{{item.phonenumber}}</view>
+  <!-- 功能菜单 -->
+  <view class="menu_section">
+    <view class="menu_grid">
+      <view class="menu_item" bindtap="goMyDept">
+        <view class="menu_icon_wrap">
+          <image class="menu_icon" src="../../static/icon/my_menu_1.png" />
         </view>
+        <text class="menu_label">我的团队</text>
       </view>
-    </block>
-  </scroll-view>
+      <view class="menu_item" bindtap="goRechargeHistory">
+        <view class="menu_icon_wrap">
+          <image class="menu_icon" src="../../static/icon/my_menu_2.png" />
+        </view>
+        <text class="menu_label">充值记录</text>
+      </view>
+      <view class="menu_item" bindtap="goServiceHistory">
+        <view class="menu_icon_wrap">
+          <image class="menu_icon" src="../../static/icon/my_menu_3.png" />
+        </view>
+        <text class="menu_label">服务记录</text>
+      </view>
+      <view class="menu_item" bindtap="goSystem">
+        <view class="menu_icon_wrap">
+          <image class="menu_icon" src="../../static/icon/my_menu_4.png" />
+        </view>
+        <text class="menu_label">设置</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 所属机构卡片 -->
+  <view class="section_title">
+    <text class="section_title_text">所属机构</text>
+    <t-icon wx:if="{{userInfo.dept}}" name="qrcode" size="36rpx" color="#0066cc" bindtap="openQrCode" />
+  </view>
+
+  <view wx:if="{{userInfo.dept && userInfo.dept.deptName !== '游客部门'}}" class="dept_card">
+    <view class="dept_card_row">
+      <text class="dept_card_label">机构名称</text>
+      <view class="dept_card_value_wrap">
+        <text class="dept_card_value">{{userInfo.dept.deptName}}</text>
+        <t-icon wx:if="{{userInfo.dept.deptName === '研发部门'}}" name="bug" color="#E6A23C" size="36rpx" bindtap="goDevPage" />
+      </view>
+    </view>
+    <view class="dept_card_divider"></view>
+    <view class="dept_card_row">
+      <text class="dept_card_label">机构地址</text>
+      <text class="dept_card_value dept_card_value--muted">{{userInfo.dept ? userInfo.dept.address || '-' : '-'}}-{{userInfo.dept ? userInfo.dept.addressDetail || '' : ''}}</text>
+    </view>
+    <view class="dept_card_divider"></view>
+    <view class="dept_card_row">
+      <text class="dept_card_label">开通时间</text>
+      <text class="dept_card_value dept_card_value--muted">{{userInfo.dept.createTime || '--'}}</text>
+    </view>
+    <view wx:if="{{userInfo.dept.deptType != 4}}" class="dept_card_divider"></view>
+    <view wx:if="{{userInfo.dept.deptType != 4}}" class="dept_card_row dept_card_row--action" bindtap="goDeptInfo">
+      <text class="dept_card_label">团队管理</text>
+      <view class="dept_card_action">
+        <text class="dept_card_action_text">查看详情</text>
+        <t-icon name="chevron-right" size="28rpx" color="#0066cc" />
+      </view>
+    </view>
+  </view>
+
+  <!-- 未加入团队状态 -->
+  <view wx:else class="empty_section">
+    <view class="empty_icon_wrap">
+      <image class="empty_icon" src="../../static/icon/my_device_bg.png" mode="aspectFit" />
+    </view>
+    <text class="empty_text">{{userInfo ? '暂无归属团队' : '暂未登录'}}</text>
+    <view class="empty_btn" wx:if="{{userInfo}}" bindtap="goSearchTeam">加入团队</view>
+    <view class="empty_btn" wx:else bindtap="goLoginFlag">立即登录</view>
+  </view>
 </view>
 <t-dialog visible="{{isLogin}}" title="温馨提示" content="您尚未登录，请先登录！">
   <t-button slot="confirm-btn" class="action-btn" theme="primary" bindtap="goLogin">去登录</t-button>

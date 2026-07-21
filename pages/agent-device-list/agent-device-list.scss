@@ -5,13 +5,13 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(180deg, #888bf4 20%, #f5f7fb 40%, #f5f7fb 100%);
+  background-color: #F5F0FA;
 
   .bg_box {
     position: relative;
     width: 100%;
     height: 552rpx;
-    // background: linear-gradient(180deg, #888bf4 29%, #f5f7fb 100%);
+    // background: linear-gradient(180deg, #BEA6D4 29%, #F5F0FA 100%);
 
     .bg_top {
       position: absolute;
@@ -27,7 +27,7 @@
       justify-content: center;
       font-family: AlibabaPuHuiTi3;
       font-size: 50rpx;
-      color: #ffffff;
+      color: #5A5470;
     }
 
     .logo_slogan {
@@ -44,7 +44,7 @@
       .slogan {
         font-family: AlibabaPuHuiTi3;
         font-size: 28rpx;
-        color: #ffffff;
+        color: #9E81B3;
         margin-left: 11rpx;
       }
     }
@@ -75,7 +75,7 @@
         font-size: 50rpx;
         font-weight: 300;
         text-align: center;
-        background: linear-gradient(302deg, #888bf4 0%, #5151c6 100%);
+        background: linear-gradient(302deg, #BEA6D4 0%, #5151c6 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -86,7 +86,7 @@
         font-size: 20rpx;
         font-weight: normal;
         text-align: center;
-        background: linear-gradient(283deg, #888bf4 -1%, #5151c6 100%);
+        background: linear-gradient(283deg, #BEA6D4 -1%, #5151c6 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -115,11 +115,11 @@
       font-family: AlibabaPuHuiTi3;
       font-size: 28rpx;
       font-weight: bold;
-      --td-tab-item-color: #888bf4;
+      --td-tab-item-color: #BEA6D4;
     }
 
     .active_style {
-      background-color: #888bf4;
+      background-color: #BEA6D4;
       border-radius: 60rpx;
       font-family: AlibabaPuHuiTi3;
       font-size: 32rpx;
@@ -131,7 +131,7 @@
       --td-tab-nav-bg-color: rgba(255, 255, 255, 0.3);
       --td-tab-item-tag-bg: transparent;
       --td-tab-border-color: transparent;
-      --td-tab-item-tag-active-bg: #888bf4;
+      --td-tab-item-tag-active-bg: #BEA6D4;
       --td-tab-item-color: #1c2023;
       --td-tab-item-active-color: #ffffff;
       --td-tab-item-height: 80rpx;
@@ -154,7 +154,7 @@
         font-family: AlibabaPuHuiTi3;
         font-size: 24rpx;
         font-weight: normal;
-        background: linear-gradient(281deg, #888bf4 0%, #5151c6 100%);
+        background: linear-gradient(281deg, #BEA6D4 0%, #5151c6 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;

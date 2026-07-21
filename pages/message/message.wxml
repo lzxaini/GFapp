@@ -5,7 +5,7 @@
     <image class="bg_img" src="../../static/icon/message_navbg.png" />
   </view>
   <view class="menu_text" bindtap="onDelete" data-type="all">
-    <t-icon name="check-double" size="20" color="#FFFFFF" />
+    <t-icon name="check-double" size="20" color="#5A5470" />
     <text>全部删除</text>
   </view>
   <view class="message_body">

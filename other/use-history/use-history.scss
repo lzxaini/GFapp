@@ -4,10 +4,10 @@
   flex-direction: column;
   width: 100vw;
   height: 100vh;
-  background-color: #f5f7fb;
+  background-color: #F5F0FA;
 
   // .navBar {
-  // 	--td-navbar-bg-color: #888bf4;
+  // 	--td-navbar-bg-color: #BEA6D4;
   // 	--td-navbar-color: #fff;
   // 	--td-navbar-capsule-border-color: #e3e6ea !important;
   // }
@@ -21,7 +21,7 @@
       padding: 30rpx;
       border-radius: 20rpx;
       box-sizing: border-box;
-      border: 1rpx solid #d1d2f9;
+      border: 1rpx solid #E6DDF0;
       background-color: #ffffff;
       margin: 30rpx 24rpx;
 
@@ -65,7 +65,7 @@
           align-items: center;
           justify-content: center;
           padding: 4rpx 16rpx;
-          background: linear-gradient(135deg, #d1d2f9 0%, #888bf4 100%);
+          background: linear-gradient(135deg, #E6DDF0 0%, #BEA6D4 100%);
           border-radius: 20rpx;
 
           .badge_text {
@@ -101,7 +101,7 @@
             margin-top: 16rpx;
 
             .info.primary {
-              color: #888bf4;
+              color: #BEA6D4;
               font-weight: bold;
               font-size: 28rpx;
             }
@@ -129,18 +129,18 @@
         padding: 10rpx;
         background-color: #ebebfc;
         border-radius: 12rpx;
-        border: 1rpx dashed #888bf4;
+        border: 1rpx dashed #BEA6D4;
 
         .expand_text {
           font-family: AlibabaPuHuiTi3;
           font-size: 24rpx;
-          color: #888bf4;
+          color: #BEA6D4;
           margin-right: 8rpx;
         }
 
         .expand_icon {
           font-size: 20rpx;
-          color: #888bf4;
+          color: #BEA6D4;
         }
       }
 

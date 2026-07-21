@@ -2,7 +2,7 @@
 .admin-team_container {
 	width: 100vw;
 	height: 100vh;
-	background-color: #f5f7fb;
+	background-color: #F5F0FA;
 	flex: 1;
 	display: flex;
 	flex-direction: column;
@@ -21,10 +21,10 @@
 			font-family: AlibabaPuHuiTi3;
 			font-size: 28rpx;
 			font-weight: bold;
-      --td-tab-item-color: #888bf4;
+      --td-tab-item-color: #BEA6D4;
 		}
 		.active_style {
-			background-color: #888bf4;
+			background-color: #BEA6D4;
 			border-radius: 60rpx;
 			font-family: AlibabaPuHuiTi3;
 			font-size: 32rpx;
@@ -35,7 +35,7 @@
 			--td-tab-nav-bg-color: rgba(255, 255, 255, 0.3);
 			--td-tab-item-tag-bg: transparent;
       --td-tab-border-color: transparent;
-			--td-tab-item-tag-active-bg: #888bf4;
+			--td-tab-item-tag-active-bg: #BEA6D4;
 			--td-tab-item-color: #1c2023;
 			--td-tab-item-active-color: #ffffff;
       --td-tab-item-height: 80rpx;

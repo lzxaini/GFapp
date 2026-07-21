@@ -64,7 +64,7 @@
 			background-color: transparent;
 			--td-button-border-radius: 80rpx;
       --td-button-default-border-color: transparent;
-      background: linear-gradient(280deg, #888BF4 0%, #5151C6 100%);
+      background: linear-gradient(280deg, #BEA6D4 0%, #5151C6 100%);
     }
     .go_index{
       text-align: center;
@@ -103,14 +103,14 @@
 
 			.info {
 				display: block;
-				color: #888bf4;
+				color: #BEA6D4;
 			}
 		}
 	}
 }
 .action-btn {
-	--td-button-primary-bg-color: #888bf4;
-	--td-button-primary-border-color: #888bf4;
+	--td-button-primary-bg-color: #BEA6D4;
+	--td-button-primary-border-color: #BEA6D4;
 	--td-button-primary-active-bg-color: #888cf4a2;
 	--td-button-primary-active-border-color: #888cf4a2;
 	margin-bottom: 30rpx;

@@ -8,35 +8,35 @@
   <view class="menu_text" wx:if="{{tabsValue === 1}}">
     <view class="box" wx:if="{{userInfo.allowedRecharge && tabsValue === 1}}" bindtap="goPage" data-type="power">
       <image class="icon" src="../../static/icon/power-icon.png" />
-      <text>能量点充值</text>
+      <text class="text">能量点充值</text>
     </view>
   </view>
   <view class="menu_text" wx:if="{{tabsValue === 2}}" bindtap="goPage" data-type="member">
     <image class="icon" src="../../static/icon/member-icon.png" />
-    <text>白名单管理</text>
+    <text class="text">白名单管理</text>
   </view>
   <!-- 搜索模块 -->
   <view class="data_search">
     <view class="data_title">数据查询</view>
     <view class="date_interval" bindtap="handleCalendar">
       <view class="interval_item">
-        <t-icon name="calendar" size="16" color="#888BF4" />
+        <t-icon name="calendar" size="16" color="#9E81B3" />
         <view class="interval_info">{{calendarValue[0] || '开始日期'}}</view>
       </view>
       <view class="in">至</view>
       <view class="interval_item">
-        <t-icon name="calendar" size="16" color="#888BF4" />
+        <t-icon name="calendar" size="16" color="#9E81B3" />
         <view class="interval_info">{{calendarValue[1] || '结束日期'}}</view>
       </view>
     </view>
     <view class="data_all">
       <view class="all_item all" bindtap="showCascader">
         <view class="all_text">全部</view>
-        <t-icon name="chevron-down-s" size="16" color="#888BF4" />
+        <t-icon name="chevron-down-s" size="16" color="#9E81B3" />
       </view>
       <view class="all_item">
         <t-input value="{{searchValue}}" bindchange="searchInput" bindblur="statrtSearch" disabled="{{inputDisabled}}" t-class="item-input" t-class-input="input_ftsize" placeholder="搜索门店名称/团队编号" borderless>
-          <t-icon slot="prefix-icon" name="search" size="18" color="#888BF4" />
+          <t-icon slot="prefix-icon" name="search" size="18" color="#9E81B3" />
         </t-input>
       </view>
     </view>

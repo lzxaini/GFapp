@@ -57,7 +57,7 @@
     .blufi-note-content {
       margin-left: 80rpx;
       margin-top: 48rpx;
-      --td-loading-color: #888bf4;
+      --td-loading-color: #BEA6D4;
 
       .font {
         font-family: AlibabaPuHuiTi3;
@@ -191,17 +191,17 @@
         font-family: AlibabaPuHuiTi3;
         font-size: 32rpx;
         font-weight: normal;
-        color: #888bf4;
+        color: #BEA6D4;
         padding: 20rpx 0;
         border-bottom: 1rpx solid #d8d8d8;
-        --td-loading-color: #888bf4;
+        --td-loading-color: #BEA6D4;
 
         &.success {
           color: #c5c8cb;
         }
 
         &.pending {
-          color: #888bf4;
+          color: #BEA6D4;
         }
       }
     }
@@ -244,7 +244,7 @@
     line-height: 112rpx;
     font-weight: bold;
     color: #ffffff;
-    background: linear-gradient(279deg, #888bf4 -1%, #5151c6 100%);
+    background: linear-gradient(279deg, #BEA6D4 -1%, #5151c6 100%);
   }
 
   .reset {
@@ -271,7 +271,7 @@
   line-height: 112rpx;
   font-weight: bold;
   color: #ffffff;
-  background: linear-gradient(279deg, #888bf4 -1%, #5151c6 100%);
+  background: linear-gradient(279deg, #BEA6D4 -1%, #5151c6 100%);
 }
 
 .empty {

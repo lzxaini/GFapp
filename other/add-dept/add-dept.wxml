@@ -19,10 +19,10 @@
             </view>
             <view class="node-actions">
               <view class="action-btn" bindtap="handleEdit" data-deptid="{{item.deptId}}">
-                <t-icon name="edit" size="32rpx" color="#888bf4" />
+                <t-icon name="edit" size="32rpx" color="#BEA6D4" />
               </view>
               <view class="action-btn" wx:if="{{item.deptType != '4'}}" bindtap="handleAdd" data-deptid="{{item.deptId}}">
-                <t-icon name="add-circle" size="32rpx" color="#888bf4" />
+                <t-icon name="add-circle" size="32rpx" color="#BEA6D4" />
               </view>
             </view>
           </view>
@@ -42,10 +42,10 @@
                 </view>
                 <view class="node-actions">
                   <view class="action-btn" bindtap="handleEdit" data-deptid="{{child.deptId}}">
-                    <t-icon name="edit" size="32rpx" color="#888bf4" />
+                    <t-icon name="edit" size="32rpx" color="#BEA6D4" />
                   </view>
                   <view class="action-btn" wx:if="{{child.deptType != '4'}}" bindtap="handleAdd" data-deptid="{{child.deptId}}">
-                    <t-icon name="add-circle" size="32rpx" color="#888bf4" />
+                    <t-icon name="add-circle" size="32rpx" color="#BEA6D4" />
                   </view>
                 </view>
               </view>
@@ -65,10 +65,10 @@
                     </view>
                     <view class="node-actions">
                       <view class="action-btn" bindtap="handleEdit" data-deptid="{{grandson.deptId}}">
-                        <t-icon name="edit" size="32rpx" color="#888bf4" />
+                        <t-icon name="edit" size="32rpx" color="#BEA6D4" />
                       </view>
                       <view class="action-btn" wx:if="{{grandson.deptType != '4'}}" bindtap="handleAdd" data-deptid="{{grandson.deptId}}">
-                        <t-icon name="add-circle" size="32rpx" color="#888bf4" />
+                        <t-icon name="add-circle" size="32rpx" color="#BEA6D4" />
                       </view>
                     </view>
                   </view>
@@ -84,7 +84,7 @@
                         </view>
                         <view class="node-actions">
                           <view class="action-btn" bindtap="handleEdit" data-deptid="{{ggrandson.deptId}}">
-                            <t-icon name="edit" size="32rpx" color="#888bf4" />
+                            <t-icon name="edit" size="32rpx" color="#BEA6D4" />
                           </view>
                         </view>
                       </view>

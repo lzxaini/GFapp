@@ -3,7 +3,7 @@ let tabData = {
   tabBar: {
     custom: true,
     color: "#5F5F5F",
-    selectedColor: "#888BF4",
+    selectedColor: "#BEA6D4",
     backgroundColor: "#F7F7F7",
     list: []
   }
