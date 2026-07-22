@@ -87,7 +87,7 @@
       </view>
     </view>
     <view class="go_index" bindtap="goIndex">
-      <t-icon name="home" size="22" color="#BEA6D4"></t-icon>
+      <t-icon name="home" size="22" color="#9E81B3"></t-icon>
       <view class="text">首页</view>
     </view>
   </view>
