@@ -35,8 +35,7 @@ Page({
     let { deptData } = this.data
     getAdminTeamListDrillDownApi(deptData.deptId).then(res => {
       if (res.code === 200) {
-        const raw = res.data || {}
-        const dataMap = raw.data || {}
+        const dataMap = res.data || {}
         this.setData({
           refresher: false,
           teamObj: raw,
