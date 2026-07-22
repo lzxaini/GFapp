@@ -11,8 +11,30 @@
   .errMsg{
     color: red !important;
   }
+  .team_cover{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 32rpx;
+    justify-content: center;
+    .cover_box{
+      width: 240rpx;
+      height: 240rpx;
+      .avatar{
+        --td-avatar-large-width: 240rpx;
+      }
+    }
+    .cover_text{
+      width: 100%;
+      text-align: center;
+      font-size: 24rpx;
+      margin-top: 16rpx;
+      color: #9A95AA;
+    }
+  }
 	.info_form {
-		padding: 20px;
+		padding: 0 20px;
+    margin: 32rpx;
+    border-radius: 32rpx;
 		background-color: #ffffff;
 		.form_item {
 			display: grid;
@@ -67,6 +89,7 @@
     font-family: AlibabaPuHuiTi3;
     font-size: 28rpx;
     font-weight: 300;
+    padding-bottom: 30rpx;
     color: #1c2023;
     .external-class {
       margin-top: 20rpx;
@@ -88,6 +111,7 @@
 		font-size: 32rpx;
 		line-height: 112rpx;
 		font-weight: bold;
-		color: #BEA6D4;
+		background-color: #BEA6D4;
+    color: #FFFFFF;
 	}
 }
