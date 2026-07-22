@@ -123,171 +123,183 @@
 // 	margin-bottom: 30rpx;
 // }
 
-
 .login_container {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
+	position: relative;
+	width: 100vw;
+	height: 100vh;
 
-  background-color: rgb(117, 117, 117);
-
-  .login_btn {
-    width: 100%;
-    height: 112rpx;
-    border-radius: 80rpx;
-    margin-top: 29rpx;
-    box-sizing: border-box;
-    font-family: AlibabaPuHuiTi3;
-    font-size: 32rpx;
-    line-height: 112rpx;
-    font-weight: bold;
-    color: #ffffff;
-    background-color: #BEA6D4;
-    --td-button-border-radius: 80rpx;
-    --td-button-default-border-color: transparent;
+	background-color: rgb(117, 117, 117);
+	.logo_bg {
+    position: absolute;
+    z-index: 1;
+		width: 100%;
+		height: 100%;
+		.image_bg {
+			width: 100%;
+			height: 100%;
+		}
+	}
+  .login_body{
+    position: absolute;
+    z-index: 2;
+		width: 100%;
+		height: 100%;
   }
+	.login_btn {
+		width: 100%;
+		height: 112rpx;
+		border-radius: 80rpx;
+		margin-top: 29rpx;
+		box-sizing: border-box;
+		font-family: AlibabaPuHuiTi3;
+		font-size: 32rpx;
+		line-height: 112rpx;
+		font-weight: bold;
+		color: #ffffff;
+		background-color: #bea6d4;
+		--td-button-border-radius: 80rpx;
+		--td-button-default-border-color: transparent;
+	}
 
-  .logo_gf {
-    // position: absolute;
-    // left: 50%;
-    // transform: translate(-50%, 0%);
-    width: 400rpx;
-    height: 408rpx;
-    margin: 0 auto;
+	.logo_gf {
+		// position: absolute;
+		// left: 50%;
+		// transform: translate(-50%, 0%);
+		width: 400rpx;
+		height: 408rpx;
+		margin: 0 auto;
 
-    .logo_gf_img {
-      width: 100%;
-      height: 100%;
-    }
-  }
+		.logo_gf_img {
+			width: 100%;
+			height: 100%;
+		}
+	}
 
-  .welcome {
-    // margin-top: 64rpx;
-    margin-top: 32rpx;
-    font-family: AlibabaPuHuiTi3;
+	.welcome {
+		// margin-top: 64rpx;
+		margin-top: 32rpx;
+		font-family: AlibabaPuHuiTi3;
 
-    .title {
-      font-size: 52rpx;
-      text-align: center;
-      color: #1E1A2E;
-    }
+		.title {
+			font-size: 52rpx;
+			text-align: center;
+			color: #1e1a2e;
+		}
 
-    .subtitle {
-      margin-top: 24rpx;
-      font-size: 32rpx;
-      text-align: center;
-      color: #5A5470;
-    }
-  }
+		.subtitle {
+			margin-top: 24rpx;
+			font-size: 32rpx;
+			text-align: center;
+			color: #5a5470;
+		}
+	}
 
-  .login_from {
-    margin: 0 48rpx;
-    margin-top: 32rpx;
+	.login_from {
+		margin: 0 48rpx;
+		margin-top: 32rpx;
 
-    .errMsg {
-      color: red;
-    }
+		.errMsg {
+			color: red;
+		}
 
-    .item {
-      margin-top: 30rpx;
-    }
+		.item {
+			margin-top: 30rpx;
+		}
 
-    .item-input {
-      height: 112rpx;
-      // padding: 25rpx 20rpx;
-      font-family: AlibabaPuHuiTi3;
-      font-size: 26rpx;
-      font-weight: normal;
-      color: #1c2023;
-      --td-input-placeholder-text-font-size: 26rpx;
-      box-sizing: border-box;
-      // border: 1rpx solid #BEA6D4;
-      border-radius: 20rpx;
-      margin-top: 29rpx;
-    }
+		.item-input {
+			height: 112rpx;
+			// padding: 25rpx 20rpx;
+			font-family: AlibabaPuHuiTi3;
+			font-size: 26rpx;
+			font-weight: normal;
+			color: #1c2023;
+			--td-input-placeholder-text-font-size: 26rpx;
+			box-sizing: border-box;
+			// border: 1rpx solid #BEA6D4;
+			border-radius: 20rpx;
+			margin-top: 29rpx;
+		}
+	}
 
+	.other_login {
+		margin: 32rpx 48rpx;
 
-  }
+		// .grid {
+		//   // color: transparent;
+		//   --td-grid-bg-color: transparent;
+		//   --td-grid-item-bg-color: transparent;
+		//   --td-grid-item-padding: 0;
+		//   --td-grid-item-image-width: 32rpx;
+		//   --td-grid-item-text-font: 10rpx;
+		//   .text{
+		//     font-size: 18rpx;
+		//   }
+		// }
+		.login_btn {
+			margin: 0 !important;
+			background-color: #f9f7fc !important;
+			color: #bea6d4;
+		}
+	}
 
-  .other_login {
-    margin: 32rpx 48rpx;
+	.agreement {
+		width: 100%;
+		height: 45rpx;
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		margin-top: 30rpx;
+		margin-left: 100rpx;
 
-    // .grid {
-    //   // color: transparent;
-    //   --td-grid-bg-color: transparent;
-    //   --td-grid-item-bg-color: transparent;
-    //   --td-grid-item-padding: 0;
-    //   --td-grid-item-image-width: 32rpx;
-    //   --td-grid-item-text-font: 10rpx;
-    //   .text{
-    //     font-size: 18rpx;
-    //   }
-    // }
-    .login_btn {
-      margin: 0 !important;
-      background-color: #F9F7FC !important;
-      color: #BEA6D4;
-    }
-  }
+		.check {
+			padding: 0 !important;
+			--td-checkbox-icon-size: 30rpx;
+			--td-checkbox-bg-color: transparent;
+			--td-checkbox-icon-checked-color: #9e81b3;
+		}
 
-  .agreement {
-    width: 100%;
-    height: 45rpx;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    margin-top: 30rpx;
-    margin-left: 100rpx;
+		.t-checkbox__icon {
+			margin-top: 0 !important;
+		}
 
-    .check {
-      padding: 0 !important;
-      --td-checkbox-icon-size: 30rpx;
-      --td-checkbox-bg-color: transparent;
-      --td-checkbox-icon-checked-color: #9E81B3;
-    }
+		.agreement_info {
+			display: flex;
+			font-family: AlibabaPuHuiTi3;
+			font-size: 26rpx;
+			font-weight: normal;
+			color: #ffffff;
 
-    .t-checkbox__icon {
-      margin-top: 0 !important;
-    }
+			.info {
+				display: block;
+				color: #bea6d4;
+			}
+		}
+	}
 
-    .agreement_info {
-      display: flex;
-      font-family: AlibabaPuHuiTi3;
-      font-size: 26rpx;
-      font-weight: normal;
-      color: #ffffff;
+	.go_index {
+		text-align: center;
+		margin-top: 40rpx;
 
-      .info {
-        display: block;
-        color: #BEA6D4;
-      }
-    }
-  }
-
-  .go_index {
-    text-align: center;
-    margin-top: 40rpx;
-
-    .text {
-      font-family: AlibabaPuHuiTi3;
-      margin-top: 4rpx;
-      font-size: 20rpx;
-      color: #1E1A2E;
-    }
-  }
+		.text {
+			font-family: AlibabaPuHuiTi3;
+			margin-top: 4rpx;
+			font-size: 20rpx;
+			color: #1e1a2e;
+		}
+	}
 }
 
 .action-btn {
-	--td-button-primary-bg-color: #BEA6D4;
-	--td-button-primary-border-color: #BEA6D4;
-	--td-button-primary-active-bg-color: #9E81B3;
-	--td-button-primary-active-border-color: #9E81B3;
+	--td-button-primary-bg-color: #bea6d4;
+	--td-button-primary-border-color: #bea6d4;
+	--td-button-primary-active-bg-color: #9e81b3;
+	--td-button-primary-active-border-color: #9e81b3;
 	margin-bottom: 30rpx;
 }
 .cancel-btn {
 	--td-button-primary-bg-color: #999999;
 	--td-button-primary-border-color: #999999;
-	--td-button-primary-active-bg-color: #9A95AA;
-	--td-button-primary-active-border-color: #9A95AA;
+	--td-button-primary-active-bg-color: #9a95aa;
+	--td-button-primary-active-border-color: #9a95aa;
 	margin-bottom: 30rpx;
 }
