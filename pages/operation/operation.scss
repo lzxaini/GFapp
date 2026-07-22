@@ -20,44 +20,59 @@
     // color: transparent;
   }
 
-  .nav_bg {
+  .power_box {
     position: absolute;
-    width: 100%;
-    height: 418rpx;
-    z-index: 0;
-
-    .bg_img {
-      width: 100%;
-      height: 100%;
-    }
-  }
-
-  .menu_text {
-    @extend %flex;
-    position: relative;
-    height: 50rpx;
-    margin: 34rpx 30rpx 20rpx 0;
-    font-size: 28rpx;
-    font-weight: normal;
-    text-align: center;
-    text-decoration: underline;
+    bottom: 20%;
+    right: 70rpx;
+    width: 102rpx;
+    height: 102rpx;
+    background-color: #BEA6D4;
     color: #FFFFFF;
-    z-index: 1;
-
-    .box {
-      @extend %flex;
-
-      .text {
-        color: #5A5470;
-      }
-    }
-
-    .icon {
-      width: 30rpx;
-      height: 30rpx;
-      margin-right: 10rpx;
-    }
+    border-radius: 50%;
+    text-align: center;
+    line-height: 102rpx;
+    font-size: 26rpx;
+    box-shadow: 2px 4px 8px 0 #0000004b;
   }
+
+  // .nav_bg {
+  //   position: absolute;
+  //   width: 100%;
+  //   height: 418rpx;
+  //   z-index: 0;
+
+  //   .bg_img {
+  //     width: 100%;
+  //     height: 100%;
+  //   }
+  // }
+
+  // .menu_text {
+  //   @extend %flex;
+  //   position: relative;
+  //   height: 50rpx;
+  //   margin: 34rpx 30rpx 20rpx 0;
+  //   font-size: 28rpx;
+  //   font-weight: normal;
+  //   text-align: center;
+  //   text-decoration: underline;
+  //   color: #FFFFFF;
+  //   z-index: 1;
+
+  //   .box {
+  //     @extend %flex;
+
+  //     .text {
+  //       color: #5A5470;
+  //     }
+  //   }
+
+  //   .icon {
+  //     width: 30rpx;
+  //     height: 30rpx;
+  //     margin-right: 10rpx;
+  //   }
+  // }
 
   .data_search {
     position: relative;
@@ -75,7 +90,7 @@
       font-family: AlibabaPuHuiTi3;
       font-size: 32rpx;
       font-weight: 300;
-      color: #BEA6D4;
+      color: #5A5470;
       z-index: 0;
     }
 
@@ -96,7 +111,7 @@
         .interval_info {
           font-size: 23rpx;
           font-weight: normal;
-          color: #757575;
+          color: #5A5470;
           margin-left: 20rpx;
         }
       }
@@ -107,7 +122,7 @@
         font-size: 24rpx;
         font-weight: normal;
         line-height: 72rpx;
-        color: #3d3d3d;
+        color: #5A5470;
       }
     }
 
@@ -127,7 +142,7 @@
           font-family: AlibabaPuHuiTi3;
           font-size: 23rpx;
           font-weight: normal;
-          color: #757575;
+          color: #5A5470;
         }
       }
 
