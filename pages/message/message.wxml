@@ -1,9 +1,9 @@
 <view class="message_container">
   <!-- 顶部导航栏固定 -->
   <t-navbar t-class="navBar" left-arrow="{{false}}" fixed="{{false}}" title="消息通知" />
-  <view class="nav_bg" style="top: {{capsuleHeight - 15}}px">
+  <!-- <view class="nav_bg" style="top: {{capsuleHeight - 15}}px">
     <image class="bg_img" src="../../static/icon/message_navbg.png" />
-  </view>
+  </view> -->
   <view class="menu_text" bindtap="onDelete" data-type="all">
     <t-icon name="check-double" size="20" color="#5A5470" />
     <text>全部删除</text>
