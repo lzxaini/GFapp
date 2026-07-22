@@ -19,15 +19,15 @@ const updateRole = (that, type, dept) => {
       "selectedIconPath": "../static/icon/tabBar/device_active.png",
       "text": "首页"
     }, {
-      "pagePath": "pages/statistics/statistics",
-      "iconPath": "../static/icon/tabBar/statistics.png",
-      "selectedIconPath": "../static/icon/tabBar/statistics_active.png",
-      "text": "统计"
-    }, {
       "pagePath": "pages/operation/operation",
       "iconPath": "../static/icon/tabBar/operation.png",
       "selectedIconPath": "../static/icon/tabBar/operation_active.png",
       "text": "运营"
+    }, {
+      "pagePath": "pages/statistics/statistics",
+      "iconPath": "../static/icon/tabBar/statistics.png",
+      "selectedIconPath": "../static/icon/tabBar/statistics_active.png",
+      "text": "统计"
     },
     {
       "pagePath": "pages/message/message",
@@ -49,15 +49,15 @@ const updateRole = (that, type, dept) => {
       "selectedIconPath": "../static/icon/tabBar/device_active.png",
       "text": "首页"
     }, {
-      "pagePath": "pages/statistics/statistics",
-      "iconPath": "../static/icon/tabBar/statistics.png",
-      "selectedIconPath": "../static/icon/tabBar/statistics_active.png",
-      "text": "统计"
-    }, {
       "pagePath": "pages/operation/operation",
       "iconPath": "../static/icon/tabBar/operation.png",
       "selectedIconPath": "../static/icon/tabBar/operation_active.png",
       "text": "运营"
+    }, {
+      "pagePath": "pages/statistics/statistics",
+      "iconPath": "../static/icon/tabBar/statistics.png",
+      "selectedIconPath": "../static/icon/tabBar/statistics_active.png",
+      "text": "统计"
     },
     {
       "pagePath": "pages/message/message",
@@ -79,15 +79,15 @@ const updateRole = (that, type, dept) => {
       "selectedIconPath": "../static/icon/tabBar/device_active.png",
       "text": "首页"
     }, {
-      "pagePath": "pages/statistics/statistics",
-      "iconPath": "../static/icon/tabBar/statistics.png",
-      "selectedIconPath": "../static/icon/tabBar/statistics_active.png",
-      "text": "统计"
-    }, {
       "pagePath": "pages/operation/operation",
       "iconPath": "../static/icon/tabBar/operation.png",
       "selectedIconPath": "../static/icon/tabBar/operation_active.png",
       "text": "运营"
+    }, {
+      "pagePath": "pages/statistics/statistics",
+      "iconPath": "../static/icon/tabBar/statistics.png",
+      "selectedIconPath": "../static/icon/tabBar/statistics_active.png",
+      "text": "统计"
     },
     {
       "pagePath": "pages/message/message",
@@ -109,15 +109,15 @@ const updateRole = (that, type, dept) => {
       "selectedIconPath": "../static/icon/tabBar/device_active.png",
       "text": "首页"
     }, {
-      "pagePath": "pages/statistics/statistics",
-      "iconPath": "../static/icon/tabBar/statistics.png",
-      "selectedIconPath": "../static/icon/tabBar/statistics_active.png",
-      "text": "统计"
-    }, {
       "pagePath": "pages/operation/operation",
       "iconPath": "../static/icon/tabBar/operation.png",
       "selectedIconPath": "../static/icon/tabBar/operation_active.png",
       "text": "运营"
+    }, {
+      "pagePath": "pages/statistics/statistics",
+      "iconPath": "../static/icon/tabBar/statistics.png",
+      "selectedIconPath": "../static/icon/tabBar/statistics_active.png",
+      "text": "统计"
     },
     {
       "pagePath": "pages/message/message",

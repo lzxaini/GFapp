@@ -37,7 +37,7 @@ Page({
   onLoad() {},
   onShow() {
     //更新底部高亮
-    tabService.updateIndex(this, 1)
+    tabService.updateIndex(this, 2)
     let userInfo = getApp().globalData.userInfo
     if (!userInfo) return
     this.setData({

@@ -59,7 +59,7 @@ Page({
   },
   onShow() {
     //更新底部高亮
-    tabService.updateIndex(this, 2)
+    tabService.updateIndex(this, 1)
     let userInfo = getApp().globalData.userInfo
     if (!userInfo) return
     console.log('测试', userInfo)

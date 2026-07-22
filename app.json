@@ -143,16 +143,16 @@
         "text": "设备"
       },
       {
-        "pagePath": "pages/statistics/statistics",
-        "iconPath": "./static/icon/tabBar/statistics.png",
-        "selectedIconPath": "./static/icon/tabBar/statistics_active.png",
-        "text": "统计"
-      },
-      {
         "pagePath": "pages/operation/operation",
         "iconPath": "./static/icon/tabBar/operation.png",
         "selectedIconPath": "./static/icon/tabBar/operation_active.png",
         "text": "运营"
+      },
+      {
+        "pagePath": "pages/statistics/statistics",
+        "iconPath": "./static/icon/tabBar/statistics.png",
+        "selectedIconPath": "./static/icon/tabBar/statistics_active.png",
+        "text": "统计"
       },
       {
         "pagePath": "pages/message/message",
