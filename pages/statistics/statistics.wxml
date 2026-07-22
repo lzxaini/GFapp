@@ -1,9 +1,9 @@
 <view class="statistics_container">
   <!-- 顶部导航栏固定 -->
   <t-navbar t-class="navBar" left-arrow="{{false}}" fixed="{{false}}" title="统计数据" />
-  <view class="nav_bg" style="top: {{capsuleHeight - 15}}px">
+  <!-- <view class="nav_bg" style="top: {{capsuleHeight - 15}}px">
     <image class="bg_img" src="../../static/icon/statistics_nav_bg.png" />
-  </view>
+  </view> -->
   <!-- 滚动内容区域 -->
   <scroll-view class="scroll-content" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom"
     refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="pullDownToRefresh">
@@ -69,9 +69,10 @@
           查询门店
         </view>
       </view>
-      <t-search wx:if="{{searchFlag}}" class="search" value="{{searchName}}" placeholder="搜索机构" clearable
-        bind:change="changeHandle" focus="{{true}}" bind:action-click="blurClick" bind:clear="clearSearch"
-        action="取消" />
+      <t-search wx:if="{{searchFlag}}" t-class="search" value="{{searchName}}" placeholder="搜索机构" clearable
+        bind:change="changeHandle" focus="{{true}}" bind:clear="clearSearch">
+        <view class="action" slot="action" bindtap="blurClick">取消</view>
+      </t-search>
       <view class="table-row table-header">
         <view class="table-cell cell-header cell-big" style="flex: 2;">机构名称</view>
         <view class="table-cell cell-header" style="flex: 3;min-width: 200rpx;">剩余点数</view>
