@@ -2,19 +2,33 @@
   <t-navbar t-class="navBar" left-arrow fixed="{{false}}" bind:go-back="goPage">
     <view slot="title" class="navBar_title">
       <view class="green"></view>
-      <view>设备已连接</view>
+      <view>设备已激活</view>
     </view>
   </t-navbar>
-  <view class="device_info">
+  <!-- <view class="device_info">
     <image class="device_heart" src="../../static/icon/heart.png" />
     <view class="text">设备使用中…</view>
-  </view>
+  </view> -->
   <view class="device_image">
     <image class="device_use" src="../../static/icon/device_use.png" />
   </view>
+  <view class="device_info">
+    <view class="title">激活成功！</view>
+    <view class="text">激活搞定啦！请移步仪器终端进行操作</view>
+  </view>
+  <view class="device_card">
+    <view class="item">
+      <t-icon name="book-open" size="20" color="#9E81B3" />
+      <view class="text">操作指南</view>
+    </view>
+    <view class="item" bindtap="goHistoryInfo">
+      <t-icon name="assignment-checked" size="20" color="#9E81B3" />
+      <view class="text">使用记录</view>
+    </view>
+  </view>
   <view class="footer" style="margin-bottom: {{marginBottom}}">
-    <view class="device_id">设备ID：{{deviceId}}</view>
-    <button class="save_btn" bindtap="exitDevice">结束本次服务</button>
+    <!-- <view class="device_id">设备ID：{{deviceId}}</view> -->
+    <button class="save_btn" bindtap="goPage">返回我的仪器</button>
   </view>
 </view>
 <t-message id="t-message" />

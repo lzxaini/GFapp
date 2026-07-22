@@ -7,24 +7,27 @@
       <view slot="right-icon" class="right_box" bindtap="goEditDept">编辑团队</view>
     </t-cell>
   </t-cell-group>
+  <view class="title">成员管理</view>
   <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="getStoresTeamList">
-    <block wx:for="{{membersList}}">
-      <t-cell t-class="list_item">
-        <t-avatar slot="left-icon" shape="round" size="large" image="{{ossUrl + item.avatar}}"></t-avatar>
-        <view slot="title" class="title_box">
-          <text class="title_text">{{item.userName}}</text>
-        </view>
-        <view slot="description">
-          <view class="description_text">
-            <t-icon t-class="phoneIcon" name="/static/icon/phone.png" size="18" />
-            {{item.phonenumber}}
+    <t-cell-group theme="card" t-class="cell_card">
+      <block wx:for="{{membersList}}">
+        <t-cell t-class="list_item">
+          <t-avatar slot="left-icon" size="large" image="{{ossUrl + item.avatar}}"></t-avatar>
+          <view slot="title" class="title_box">
+            <text class="title_text">{{item.userName}}aa</text>
           </view>
-        </view>
-      <view slot="note">
-        <t-switch disabled="true" t-class="switch" value="{{item.allowedShare}}" label="{{['开', '关']}}" />
-      </view>
-      </t-cell>
-    </block>
+          <view slot="description">
+            <view class="description_text">
+              <t-icon t-class="phoneIcon" name="/static/icon/phone.png" size="18" />
+              {{item.phonenumber}}
+            </view>
+          </view>
+          <view slot="note">
+            <t-switch disabled="true" t-class="switch" value="{{item.allowedShare}}" label="{{['开', '关']}}" />
+          </view>
+        </t-cell>
+      </block>
+    </t-cell-group>
     <view style="margin-top: 40rpx">
       <t-empty t-class="empty" t-class-image="empty_image" image="/static/icon/footer.png" description="糟糕，到底了" />
     </view>

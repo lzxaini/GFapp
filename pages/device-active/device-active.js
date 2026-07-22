@@ -67,34 +67,37 @@ Page({
       result
     } = message;
     if (topic === `/resp/${this.data.deviceId}` && msg === '06000001') {
-      this.setData({
-        deviceFlag: true
-      });
+      // this.setData({
+      //   deviceFlag: true
+      // });
       this.clearReconnect(); // 停止重连
-    }
-    if (
-      topic === `/resp/${this.data.deviceId}` &&
-      result?.funcCode === 5 &&
-      result?.state === 1
-    ) {
       wx.redirectTo({
         url: `/pages/device-use/device-use?deviceId=${this.data.deviceId}`,
       });
     }
-    if (topic === `/resp/${this.data.deviceId}` && result?.string === this.data.deviceId && this.data.resetNetwork) {
-      wx.showLoading({
-        title: '重置中...',
-      })
-      const mqttQrotocol = app.globalData.mqttQrotocol;
-      mqttQrotocol.sendString('network-reset', `/req/${this.data.deviceId}`);
-      setTimeout(() => {
-        mqttQrotocol.sendString('network-reset', `/req/${this.data.deviceId}`);
-        setTimeout(() => {
-          wx.hideLoading()
-          wx.navigateBack(1);
-        }, 1000);
-      }, 7 * 1000)
-    }
+    // if (
+    //   topic === `/resp/${this.data.deviceId}` &&
+    //   result?.funcCode === 5 &&
+    //   result?.state === 1
+    // ) {
+    //   wx.redirectTo({
+    //     url: `/pages/device-use/device-use?deviceId=${this.data.deviceId}`,
+    //   });
+    // }
+    // if (topic === `/resp/${this.data.deviceId}` && result?.string === this.data.deviceId && this.data.resetNetwork) {
+    //   wx.showLoading({
+    //     title: '重置中...',
+    //   })
+    //   const mqttQrotocol = app.globalData.mqttQrotocol;
+    //   mqttQrotocol.sendString('network-reset', `/req/${this.data.deviceId}`);
+    //   setTimeout(() => {
+    //     mqttQrotocol.sendString('network-reset', `/req/${this.data.deviceId}`);
+    //     setTimeout(() => {
+    //       wx.hideLoading()
+    //       wx.navigateBack(1);
+    //     }, 1000);
+    //   }, 7 * 1000)
+    // }
   },
 
   // 引导

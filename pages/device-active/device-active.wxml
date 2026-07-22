@@ -17,10 +17,10 @@
         </t-loading>
       </view>
     </view>
-    <view class="device_image">
+    <!-- <view class="device_image">
       <t-button class="device_move" size="extra-small" variant="outline" wx:if="{{deviceFlag}}" bindtap="showDeviceMoveGuide">设备移机</t-button>
       <image class="device_use" src="../../static/icon/device_use.png" />
-    </view>
+    </view> -->
     <view class="footer" style="margin-bottom: {{marginBottom}}">
       <view class="device_id">设备ID：{{deviceId}}</view>
       <!-- <button class="save_btn" bindtap="exitDevice">重试</button> -->

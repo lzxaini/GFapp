@@ -1,7 +1,7 @@
 .device-use_container {
 	width: 100vw;
 	height: 100vh;
-	background-color: #ffffff;
+	background-color: #F9F7FC;
 	.navBar {
 		.navBar_title {
 			display: flex;
@@ -19,26 +19,49 @@
 		}
 	}
 	.device_info {
+    font-family: AlibabaPuHuiTi3;
+    margin-top: 38rpx;
 		text-align: center;
-		.device_heart {
-			width: 64rpx;
-			height: 56rpx;
-			margin: 0 auto;
-			margin-top: 50rpx;
-		}
-		.text {
-			font-family: AlibabaPuHuiTi3;
-			font-size: 48rpx;
+		.title{
+			font-size: 44rpx;
+    }
+    .text {
+			font-size: 32rpx;
 			font-weight: normal;
 			text-align: center;
 			color: #000000;
-			margin-top: 38rpx;
 		}
 	}
+  .device_card{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24rpx;
+    width: calc(100% - 96rpx);
+    margin: 0 48rpx;
+    margin-top: 50rpx;
+    .item{
+      display: flex;
+      flex-wrap: wrap;
+      align-content: center;
+      justify-content: center;
+      height: 154rpx;
+      border-radius: 32rpx;
+      box-shadow: 0rpx 6rpx 30rpx 0rpx rgba(158, 129, 179, 0.13);
+      background-color: #FFFFFF;
+      .text{
+        width: 100%;
+        text-align: center;
+        font-size: 26rpx;
+        color: #5A5470;
+        margin-top: 12rpx;
+      }
+    }
+  }
 	.device_image {
-		width: 100%;
-		height: 796rpx;
-		margin-top: 100rpx;
+		width: 534rpx;
+		height: 700rpx;
+		// margin-top: 100rpx;
+    margin: 20rpx auto;
 		.device_use {
 			width: 100%;
 			height: 100%;
