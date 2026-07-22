@@ -2,14 +2,23 @@ import Message from 'tdesign-miniprogram/message/index';
 import {
   getWechatUserInfoApi,
   getUserInfoApi,
+  userLoginApi
 } from '../../api/api.js'
 const app = getApp()
 Page({
   data: {
     statusBarHeight: app.globalData.statusBarHeight,
+    capsuleHeight: app.globalData.capsuleHeight,
     checkFlag: false,
     showConfirm: false,
     bgFlag: false, // 背景图
+    from: {
+      phoneNumber: '',
+      password: ''
+    },
+    phoneNumberError: '',
+    passwordError: '',
+    passwordFlag: false,
   },
   onLoad() {},
   /**
@@ -72,41 +81,7 @@ Page({
               title: '正在加载...',
               mask: true,
             });
-            if (res.code === 200) {
-              let {
-                adminFlag,
-                token,
-                mobile,
-                openId,
-                nickname
-              } = res.data
-              app.globalData.token = `Bearer ${token}`
-              wx.setStorageSync('token', `Bearer ${token}`)
-              wx.setStorageSync('wechat', JSON.stringify({
-                mobile,
-                openId,
-                nickname
-              }))
-              _this.messageBox('success', '登录成功，正在加载...', 1500)
-              let infoFlag = await app.getUserInfo(getUserInfoApi);
-              if (infoFlag) {
-                app.initMqtt()
-                setTimeout(() => {
-                  if (adminFlag) {
-                    wx.switchTab({
-                      url: '/pages/my/my',
-                    })
-                  } else {
-                    wx.reLaunch({
-                      url: '/pages/register/register',
-                    })
-                  }
-                  wx.hideLoading();
-                }, 1000);
-              }
-            } else {
-              _this.messageBox('error', res.msg, 3000)
-            }
+            _this.userLoginInfo(res)
           }).catch(err => {
             _this.messageBox('error', '登录失败！', 3000)
             console.log('登录失败！' + res.errMsg)
@@ -125,6 +100,43 @@ Page({
       content: content,
       closeBtn: true,
     });
+  },
+  async userLoginInfo(res) {
+    if (res.code === 200) {
+      let {
+        adminFlag,
+        token,
+        mobile,
+        openId,
+        nickname
+      } = res.data
+      app.globalData.token = `Bearer ${token}`
+      wx.setStorageSync('token', `Bearer ${token}`)
+      wx.setStorageSync('wechat', JSON.stringify({
+        mobile,
+        openId,
+        nickname
+      }))
+      this.messageBox('success', '登录成功，正在加载...', 1500)
+      let infoFlag = await app.getUserInfo(getUserInfoApi);
+      if (infoFlag) {
+        app.initMqtt()
+        setTimeout(() => {
+          if (adminFlag) {
+            wx.switchTab({
+              url: '/pages/my/my',
+            })
+          } else {
+            wx.reLaunch({
+              url: '/pages/register/register',
+            })
+          }
+          wx.hideLoading();
+        }, 1000);
+      }
+    } else {
+      this.messageBox('error', res.msg, 3000)
+    }
   },
   // 去往协议
   goPrivacyAgreement() {
@@ -145,9 +157,72 @@ Page({
       showConfirm: false
     });
   },
-  goIndex(){
+  goIndex() {
     wx.switchTab({
       url: '/pages/my/my',
     })
-  }
+  },
+  // 校验方法
+  verify() {
+    const {
+      from
+    } = this.data;
+    let phoneNumberError = '';
+    let passwordError = '';
+    // 手机号校验
+    if (!/^(?:(?:\+|00)86)?1[3-9]\d{9}$/.test(from.phoneNumber)) {
+      phoneNumberError = '请输入正确的手机号';
+    }
+    if (!from.password || from.password == '') {
+      passwordError = '请输入您的账号密码';
+    }
+    this.setData({
+      phoneNumberError,
+      passwordError
+    });
+    // 返回校验是否通过
+    return !phoneNumberError && !passwordError;
+  },
+  onInput(e) {
+    let {
+      type
+    } = e?.currentTarget?.dataset
+    let {
+      value
+    } = e?.detail
+    switch (type) {
+      case 'phoneNumber':
+        this.setData({
+          'from.phoneNumber': value
+        })
+        break
+      case 'password':
+        this.setData({
+          'from.password': value
+        })
+        break
+      default:
+        break
+    }
+  },
+  passwordFlag(e) {
+    this.setData({
+      'passwordFlag': !this.data.passwordFlag
+    })
+  },
+  async onSubmit() {
+    if (!this.verify()) return;
+    if (!this.data.checkFlag) {
+      return this.messageBox('warning', '请先阅读同意用户协议和隐私政策！', 3000)
+    }
+    let {
+      from
+    } = this.data
+    console.log('测试', from)
+    let res = await userLoginApi({
+      username: from.phoneNumber,
+      password: from.password
+    })
+    this.userLoginInfo(res)
+  },
 });

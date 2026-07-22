@@ -1,124 +1,293 @@
+// .login_container {
+// 	position: relative;
+// 	width: 100vw;
+// 	height: 100vh;
+// 	.login_bg {
+// 		position: absolute;
+// 		top: 0;
+// 		left: 0;
+// 		width: 100%;
+// 		height: 100%;
+//     // background-color: #000000;
+//     background: linear-gradient(180deg, #000000 54%, #030303 54%, #FAFCFB 100%);
+// 		.logo_gf {
+// 			position: absolute;
+// 			left: 50%;
+// 			transform: translate(-50%, 0%);
+// 			.logo_gf_img {
+// 				width: 278rpx;
+// 				height: 256rpx;
+// 			}
+// 		}
+// 		.bg_img_box {
+// 			width: 100%;
+// 			height: calc(100% - 360rpx);
+// 			margin-top: 360rpx;
+// 			margin-bottom: env(safe-area-inset-bottom);
+// 			.login_bg_img {
+// 				width: 100%;
+// 				height: 100%;
+// 			}
+// 		}
+// 		.footer_box {
+// 			width: 100%;
+// 			position: fixed;
+// 			bottom: env(safe-area-inset-bottom);
+// 			margin-bottom: 50rpx;
+// 			.item {
+// 				color: #000000;
+// 				font-size: 22rpx;
+// 				font-weight: 300;
+// 				text-align: center;
+// 			}
+// 			.mr25 {
+// 				margin-top: 25rpx;
+// 			}
+// 		}
+// 	}
+// 	.go_page {
+// 		width: calc(100% - 112rpx);
+// 		position: fixed;
+// 		bottom: env(safe-area-inset-bottom);
+// 		margin: 0 56rpx;
+// 		margin-bottom: 190rpx;
+// 		.login_btn {
+// 			width: 100%;
+// 			height: 112rpx;
+//       // border: 2rpx solid #bfbef8;
+// 			box-sizing: border-box;
+// 			font-family: AlibabaPuHuiTi3;
+// 			font-size: 32rpx;
+// 			line-height: 112rpx;
+// 			font-weight: bold;
+// 			color: #FFFFFF;
+// 			background-color: transparent;
+// 			--td-button-border-radius: 80rpx;
+//       --td-button-default-border-color: transparent;
+//       background: linear-gradient(280deg, #BEA6D4 0%, #5151C6 100%);
+//     }
+//     .go_index{
+//       text-align: center;
+//       margin-top: 50rpx;
+//       .text{
+//         font-family: AlibabaPuHuiTi3;
+//         margin-top: 4rpx;
+//         font-size: 20rpx;
+//         color: #000000;
+//       }
+//     }
+// 	}
+
+// 	.agreement {
+// 		width: 100%;
+// 		height: 45rpx;
+// 		display: flex;
+// 		align-items: center;
+// 		justify-content: flex-start;
+// 		margin-top: 30rpx;
+// 		margin-left: 10rpx;
+// 		.check {
+// 			padding: 0 !important;
+// 			--td-checkbox-icon-size: 30rpx;
+// 			--td-checkbox-bg-color: transparent;
+// 		}
+// 		.t-checkbox__icon {
+// 			margin-top: 0 !important;
+// 		}
+// 		.agreement_info {
+// 			display: flex;
+// 			font-family: AlibabaPuHuiTi3;
+// 			font-size: 26rpx;
+// 			font-weight: normal;
+// 			color: #ffffff;
+
+// 			.info {
+// 				display: block;
+// 				color: #BEA6D4;
+// 			}
+// 		}
+// 	}
+// }
+// .action-btn {
+// 	--td-button-primary-bg-color: #BEA6D4;
+// 	--td-button-primary-border-color: #BEA6D4;
+// 	--td-button-primary-active-bg-color: #888cf4a2;
+// 	--td-button-primary-active-border-color: #888cf4a2;
+// 	margin-bottom: 30rpx;
+// }
+// .cancel-btn {
+// 	--td-button-primary-bg-color: #999999;
+// 	--td-button-primary-border-color: #999999;
+// 	--td-button-primary-active-bg-color: #f7f7f7;
+// 	--td-button-primary-active-border-color: #f7f7f7;
+// 	margin-bottom: 30rpx;
+// }
+
+
 .login_container {
-	position: relative;
-	width: 100vw;
-	height: 100vh;
-	.login_bg {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-    // background-color: #000000;
-    background: linear-gradient(180deg, #000000 54%, #030303 54%, #FAFCFB 100%);
-		.logo_gf {
-			position: absolute;
-			left: 50%;
-			transform: translate(-50%, 0%);
-			.logo_gf_img {
-				width: 278rpx;
-				height: 256rpx;
-			}
-		}
-		.bg_img_box {
-			width: 100%;
-			height: calc(100% - 360rpx);
-			margin-top: 360rpx;
-			margin-bottom: env(safe-area-inset-bottom);
-			.login_bg_img {
-				width: 100%;
-				height: 100%;
-			}
-		}
-		.footer_box {
-			width: 100%;
-			position: fixed;
-			bottom: env(safe-area-inset-bottom);
-			margin-bottom: 50rpx;
-			.item {
-				color: #000000;
-				font-size: 22rpx;
-				font-weight: 300;
-				text-align: center;
-			}
-			.mr25 {
-				margin-top: 25rpx;
-			}
-		}
-	}
-	.go_page {
-		width: calc(100% - 112rpx);
-		position: fixed;
-		bottom: env(safe-area-inset-bottom);
-		margin: 0 56rpx;
-		margin-bottom: 190rpx;
-		.login_btn {
-			width: 100%;
-			height: 112rpx;
-      // border: 2rpx solid #bfbef8;
-			box-sizing: border-box;
-			font-family: AlibabaPuHuiTi3;
-			font-size: 32rpx;
-			line-height: 112rpx;
-			font-weight: bold;
-			color: #FFFFFF;
-			background-color: transparent;
-			--td-button-border-radius: 80rpx;
-      --td-button-default-border-color: transparent;
-      background: linear-gradient(280deg, #BEA6D4 0%, #5151C6 100%);
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+
+  background-color: rgb(117, 117, 117);
+
+  .login_btn {
+    width: 100%;
+    height: 112rpx;
+    border-radius: 80rpx;
+    margin-top: 29rpx;
+    box-sizing: border-box;
+    font-family: AlibabaPuHuiTi3;
+    font-size: 32rpx;
+    line-height: 112rpx;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #BEA6D4;
+    --td-button-border-radius: 80rpx;
+    --td-button-default-border-color: transparent;
+  }
+
+  .logo_gf {
+    // position: absolute;
+    // left: 50%;
+    // transform: translate(-50%, 0%);
+    width: 400rpx;
+    height: 408rpx;
+    margin: 0 auto;
+
+    .logo_gf_img {
+      width: 100%;
+      height: 100%;
     }
-    .go_index{
+  }
+
+  .welcome {
+    // margin-top: 64rpx;
+    margin-top: 32rpx;
+    font-family: AlibabaPuHuiTi3;
+
+    .title {
+      font-size: 52rpx;
       text-align: center;
-      margin-top: 50rpx;
-      .text{
-        font-family: AlibabaPuHuiTi3;
-        margin-top: 4rpx;
-        font-size: 20rpx;
-        color: #000000;
+      color: #1E1A2E;
+    }
+
+    .subtitle {
+      margin-top: 24rpx;
+      font-size: 32rpx;
+      text-align: center;
+      color: #5A5470;
+    }
+  }
+
+  .login_from {
+    margin: 0 48rpx;
+    margin-top: 32rpx;
+
+    .errMsg {
+      color: red;
+    }
+
+    .item {
+      margin-top: 30rpx;
+    }
+
+    .item-input {
+      height: 112rpx;
+      // padding: 25rpx 20rpx;
+      font-family: AlibabaPuHuiTi3;
+      font-size: 26rpx;
+      font-weight: normal;
+      color: #1c2023;
+      --td-input-placeholder-text-font-size: 26rpx;
+      box-sizing: border-box;
+      // border: 1rpx solid #BEA6D4;
+      border-radius: 20rpx;
+      margin-top: 29rpx;
+    }
+
+
+  }
+
+  .other_login {
+    margin: 32rpx 48rpx;
+
+    // .grid {
+    //   // color: transparent;
+    //   --td-grid-bg-color: transparent;
+    //   --td-grid-item-bg-color: transparent;
+    //   --td-grid-item-padding: 0;
+    //   --td-grid-item-image-width: 32rpx;
+    //   --td-grid-item-text-font: 10rpx;
+    //   .text{
+    //     font-size: 18rpx;
+    //   }
+    // }
+    .login_btn {
+      margin: 0 !important;
+      background-color: #F9F7FC !important;
+      color: #BEA6D4;
+    }
+  }
+
+  .agreement {
+    width: 100%;
+    height: 45rpx;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 30rpx;
+    margin-left: 100rpx;
+
+    .check {
+      padding: 0 !important;
+      --td-checkbox-icon-size: 30rpx;
+      --td-checkbox-bg-color: transparent;
+      --td-checkbox-icon-checked-color: #9E81B3;
+    }
+
+    .t-checkbox__icon {
+      margin-top: 0 !important;
+    }
+
+    .agreement_info {
+      display: flex;
+      font-family: AlibabaPuHuiTi3;
+      font-size: 26rpx;
+      font-weight: normal;
+      color: #ffffff;
+
+      .info {
+        display: block;
+        color: #BEA6D4;
       }
     }
-	}
+  }
 
-	.agreement {
-		width: 100%;
-		height: 45rpx;
-		display: flex;
-		align-items: center;
-		justify-content: flex-start;
-		margin-top: 30rpx;
-		margin-left: 10rpx;
-		.check {
-			padding: 0 !important;
-			--td-checkbox-icon-size: 30rpx;
-			--td-checkbox-bg-color: transparent;
-		}
-		.t-checkbox__icon {
-			margin-top: 0 !important;
-		}
-		.agreement_info {
-			display: flex;
-			font-family: AlibabaPuHuiTi3;
-			font-size: 26rpx;
-			font-weight: normal;
-			color: #ffffff;
+  .go_index {
+    text-align: center;
+    margin-top: 40rpx;
 
-			.info {
-				display: block;
-				color: #BEA6D4;
-			}
-		}
-	}
+    .text {
+      font-family: AlibabaPuHuiTi3;
+      margin-top: 4rpx;
+      font-size: 20rpx;
+      color: #1E1A2E;
+    }
+  }
 }
+
 .action-btn {
 	--td-button-primary-bg-color: #BEA6D4;
 	--td-button-primary-border-color: #BEA6D4;
-	--td-button-primary-active-bg-color: #888cf4a2;
-	--td-button-primary-active-border-color: #888cf4a2;
+	--td-button-primary-active-bg-color: #9E81B3;
+	--td-button-primary-active-border-color: #9E81B3;
 	margin-bottom: 30rpx;
 }
 .cancel-btn {
 	--td-button-primary-bg-color: #999999;
 	--td-button-primary-border-color: #999999;
-	--td-button-primary-active-bg-color: #f7f7f7;
-	--td-button-primary-active-border-color: #f7f7f7;
+	--td-button-primary-active-bg-color: #9A95AA;
+	--td-button-primary-active-border-color: #9A95AA;
 	margin-bottom: 30rpx;
 }

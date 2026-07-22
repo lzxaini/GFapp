@@ -53,12 +53,12 @@ export function resetPasswordFun(params) {
   })
 }
 /**
- * 用户账号密码登录
+ * 用户账号密码登录（APP端/小程序，无需验证码）
  * @param {*} params 
  */
 export function userLoginApi(params) {
   return request({
-    url: "/login",
+    url: "/appLogin",
     method: 'post',
     data: params,
   })

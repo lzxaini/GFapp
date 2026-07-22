@@ -100,6 +100,7 @@
     "t-step-item": "tdesign-miniprogram/step-item/step-item",
     "t-guide": "tdesign-miniprogram/guide/guide",
     "t-swipe-cell": "tdesign-miniprogram/swipe-cell/swipe-cell",
+    "t-divider": "tdesign-miniprogram/divider/divider",
     "empty": "components/empty/empty"
   },
   "window": {
