@@ -2,7 +2,7 @@ Component({
   properties: {
     image: {
       type: String,
-      value: '../../static/icon/empty2.png'
+      value: '../../static/icon/empty1.webp'
     },
     description: {
       type: String,

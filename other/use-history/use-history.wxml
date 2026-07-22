@@ -100,7 +100,7 @@
         </view>
     </block>
     <view class="empty" wx:if="{{historyList.length < 1}}">
-      <empty image="../../static/icon/empty2.png" description="暂无相关内容" styleInfo="height: 100%"></empty>
+      <empty image="../../static/icon/empty2.webp" description="暂无相关内容" styleInfo="height: 100%"></empty>
     </view>
   </scroll-view>
 </view>

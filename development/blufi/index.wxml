@@ -49,7 +49,7 @@
             </t-cell>
           </block>
           <view class="empty" wx:if="{{empty && devicesList.length === 0}}">
-            <empty image="../../static/icon/empty2.png" description="暂未找到设备！" bgColor="transparent"></empty>
+            <empty image="../../static/icon/empty2.webp" description="暂未找到设备！" bgColor="transparent"></empty>
           </view>
         </t-radio-group>
       </view>

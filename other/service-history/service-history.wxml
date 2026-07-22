@@ -89,7 +89,7 @@
       </view>
     </block>
     <view class="empty" wx:if="{{tableData.length < 1}}">
-      <empty image="../../static/icon/empty1.png" styleInfo="background-color: transparent !important"
+      <empty image="../../static/icon/empty1.webp" styleInfo="background-color: transparent !important"
         description="暂未查询到任何服务记录"></empty>
     </view>
   </scroll-view>

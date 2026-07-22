@@ -82,7 +82,7 @@
               </view>
             </block>
             <view class="empty" wx:if="{{rechargeList.length < 1}}">
-              <empty image="../../static/icon/empty1.png" description="暂时没有收入，快去接单吧"></empty>
+              <empty image="../../static/icon/empty1.webp" description="暂无充值记录"></empty>
             </view>
           </view>
         </scroll-view>
@@ -169,7 +169,7 @@
           </view>
         </block>
         <view class="empty" wx:if="{{serviceList.length < 1}}">
-          <empty image="../../static/icon/empty1.png" description="暂未查询到任何服务记录"></empty>
+          <empty image="../../static/icon/empty1.webp" description="暂未查询到任何服务记录"></empty>
         </view>
       </view>
     </view>

@@ -3,7 +3,7 @@
   <view class="nav_left"></view>
   <view class="nav_right"></view>
   <view class="content">
-    <image class="img" src="../../static/icon/success.png" />
+    <image class="img" src="../../static/icon/success.webp" />
     <view class="text-1">提交成功，等待管理员同意</view>
     <view class="text-2">加入申请已提交，管理员同意后可完成加入</view>
   </view>
