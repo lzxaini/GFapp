@@ -24,8 +24,8 @@ App({
     appName: {
       name: '超素美',
       slogan: '爱上素颜美，就选超素美',
-      appVersion: '0.0.1_2607230151',
-      beian: '备: 12345645',
+      appVersion: '0.0.1_2607230163',
+      beian: '',
       copyright: 'Copyright © 2020-2026 CSM.All Rights Reserved.',
     },
     phoneEnv: '', // 手机系统
@@ -36,6 +36,7 @@ App({
     marginBottom: '60rpx',
     baseUrl: 'https://api.chaosm.cn',
     ossUrl: 'https://api.chaosm.cn',
+    cdnUrl: 'https://cdn.chaosm.cn',
     // baseUrl: 'http://127.0.0.1:8080',
     // ossUrl: 'http://127.0.0.1:8080',
     mqttUrl: 'wxs://mqtt.chaosm.cn/mqtt',
