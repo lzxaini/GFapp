@@ -5,7 +5,7 @@
   </view> -->
   <view class="user_info">
     <view class="bg_box">
-      <image class="my_bg" src="../../static/icon/my_bg.png"></image>
+      <image class="my_bg" src="{{cdnUrl}}/static/icon/my_bg.png"></image>
     </view>
     <image class="avatar" src="{{userInfo.avatar ? ossUrl + userInfo.avatar : '../../static/icon/profile_picture.png'}}"
       bindtap="goLoginFlag" />

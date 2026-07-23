@@ -6,6 +6,7 @@ const app = getApp()
 Page({
   data: {
     marginBottom: app.globalData.marginBottom,
+    cdnUrl: app.globalData.cdnUrl,
     deviceFlag: false,
     deviceId: '',
     reconnectInterval: 2000, // 重试间隔（单位：ms）

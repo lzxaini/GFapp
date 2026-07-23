@@ -10,7 +10,7 @@
     <view class="text">设备使用中…</view>
   </view>
   <view class="device_image">
-    <image class="device_use" src="../../static/icon/device_use.png" />
+    <image class="device_use" src="{{cdnUrl}}/static/icon/device_use.png" />
   </view>
   <view class="footer" style="margin-bottom: {{marginBottom}}">
     <view class="device_id">设备ID：{{deviceId}}</view>

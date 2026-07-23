@@ -7,7 +7,7 @@
     </view>
   </t-navbar>
   <view class="device_image">
-    <image class="device_use" src="../../static/icon/device_use.png" />
+    <image class="device_use" src="{{cdnUrl}}/static/icon/device_use.png" />
   </view>
   <view class="device_info" wx:if="{{deviceFlag}}">
     <view class="title">激活成功！</view>

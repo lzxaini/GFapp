@@ -4,6 +4,7 @@ const app = getApp()
 Page({
   data: {
     userInfo: app.globalData.userInfo,
+    cdnUrl: app.globalData.cdnUrl,
     serialNumber: '',
     historyList: [],
     total: 0,

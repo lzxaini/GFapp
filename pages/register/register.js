@@ -6,6 +6,7 @@ Page({
     marginBottom: app.globalData.marginBottom,
     userInfo: app.globalData.userInfo,
     ossUrl: app.globalData.ossUrl,
+    cdnUrl: app.globalData.cdnUrl,
     form: {
       avatar: '',
       userName: '',

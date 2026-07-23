@@ -6,6 +6,7 @@ Page({
     statusBarHeight: app.globalData.statusBarHeight,
     capsuleHeight: app.globalData.capsuleHeight,
     userInfo: app.globalData.userInfo,
+    cdnUrl: app.globalData.cdnUrl,
     tableData: [],
     total: 0,
     refresher: false,

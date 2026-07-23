@@ -1,7 +1,8 @@
 const app = getApp()
 Page({
   data: {
-    marginBottom: app.globalData.marginBottom
+    marginBottom: app.globalData.marginBottom,
+    cdnUrl: app.globalData.cdnUrl,
   },
   goIndex() {
     wx.switchTab({

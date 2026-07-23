@@ -18,6 +18,7 @@ Page({
     marginBottom: app.globalData.marginBottom,
     appName: app.globalData.appName,
     ossUrl: app.globalData.ossUrl,
+    cdnUrl: app.globalData.cdnUrl,
     qrCodeBox: false,
     qrFlag: false,
     userInfo: app.globalData.userInfo,

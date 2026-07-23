@@ -5,6 +5,7 @@ const app = getApp()
 Page({
   data: {
     ossUrl: app.globalData.ossUrl,
+    cdnUrl: app.globalData.cdnUrl,
     admin: [],
     user: [],
     refresher: false,

@@ -1,7 +1,7 @@
 <view class="register_container">
   <t-navbar t-class="navBar" left-arrow fixed="{{false}}" title="完善注册信息" />
   <view class="bg_box">
-    <image class="img" src="../../static/icon/register.png" mode="" />
+    <image class="img" src="{{cdnUrl}}/static/icon/register.png" mode="" />
   </view>
   <view class="register_body">
     <view class="item df" bindtap="updateAvatar">

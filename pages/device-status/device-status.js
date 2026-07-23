@@ -8,6 +8,7 @@ import {
 Page({
   data: {
     marginBottom: app.globalData.marginBottom,
+    cdnUrl: app.globalData.cdnUrl,
     deviceFlag: false,
     deviceId: '',
     reconnectInterval: 1500, // 重试间隔（单位：ms）

@@ -82,7 +82,7 @@
               </view>
             </block>
             <view class="empty" wx:if="{{rechargeList.length < 1}}">
-              <empty image="../../static/icon/empty1.webp" description="暂无充值记录"></empty>
+              <empty image="../../static/icon/empty1.png" description="暂无充值记录"></empty>
             </view>
           </view>
         </scroll-view>
@@ -118,7 +118,7 @@
               </view>
             </view>
             <view class="card_icon">
-              <image class="icon" src="../../static/icon/{{item.statusIcon}}" />
+              <image class="icon" src="{{cdnUrl}}/static/icon/{{item.statusIcon}}" />
             </view>
             <!-- 展开按钮（仅当有暂停记录时显示） -->
             <view class="expand_btn" wx:if="{{item.detailCount > 1}}" bindtap="toggleSessionDetail"
@@ -169,7 +169,7 @@
           </view>
         </block>
         <view class="empty" wx:if="{{serviceList.length < 1}}">
-          <empty image="../../static/icon/empty1.webp" description="暂未查询到任何服务记录"></empty>
+          <empty image="../../static/icon/empty1.png" description="暂未查询到任何服务记录"></empty>
         </view>
       </view>
     </view>

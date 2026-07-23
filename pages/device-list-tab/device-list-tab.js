@@ -14,6 +14,7 @@ Page({
     marginBottom: app.globalData.marginBottom,
     appName: app.globalData.appName,
     ossUrl: app.globalData.ossUrl,
+    cdnUrl: app.globalData.cdnUrl,
     userInfo: getApp().globalData.userInfo,
     deviceList: [],
     historyList: {

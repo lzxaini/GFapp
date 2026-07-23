@@ -20,6 +20,7 @@ Page({
     capsuleHeight: app.globalData.capsuleHeight,
     userInfo: getApp().globalData.userInfo,
     ossUrl: app.globalData.ossUrl,
+    cdnUrl: app.globalData.cdnUrl,
     calendarVisible: false,
     calendarValue: [],
     minDate: dayjs().subtract(1, 'month').valueOf(),

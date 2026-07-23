@@ -8,6 +8,7 @@ Page({
     marginBottom: app.globalData.marginBottom,
     appName: app.globalData.appName,
     ossUrl: app.globalData.ossUrl,
+    cdnUrl: app.globalData.cdnUrl,
     teamObj: {},
     teamList: [],
     teamTab: 4, // 默认团队tab,1是最顶级不用加载

@@ -14,6 +14,7 @@ Page({
   data: {
     capsuleHeight: app.globalData.capsuleHeight,
     ossUrl: app.globalData.ossUrl,
+    cdnUrl: app.globalData.cdnUrl,
     approvalList: [], // 审批列表
     total: 0, // 总数
     refreshing: false, // 下拉刷新状态

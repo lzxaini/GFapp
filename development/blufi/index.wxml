@@ -38,7 +38,7 @@
         <t-radio-group borderless t-class="box" bind:change="bindChange">
           <block wx:for="{{devicesList}}" wx:key="deviceId">
             <t-cell t-class="list_item" bordered="{{false}}">
-              <t-image t-class="left-icon" slot="left-icon" src="/static/icon/device-left.png" shape="circle" mode="aspectFit"></t-image>
+              <t-image t-class="left-icon" slot="left-icon" src="{{cdnUrl}}/static/icon/device-left.png" shape="circle" mode="aspectFit"></t-image>
               <view slot="title" class="title_box">
                 <view class="title_text">设备ID</view>
                 <view class="title_text">{{item.localName}}</view>
@@ -49,7 +49,7 @@
             </t-cell>
           </block>
           <view class="empty" wx:if="{{empty && devicesList.length === 0}}">
-            <empty image="../../static/icon/empty2.webp" description="暂未找到设备！" bgColor="transparent"></empty>
+            <empty image="../../static/icon/empty2.png" description="暂未找到设备！" bgColor="transparent"></empty>
           </view>
         </t-radio-group>
       </view>

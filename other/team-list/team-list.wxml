@@ -25,7 +25,7 @@
           </view>
         </t-cell>
       </block>
-      <empty wx:if="{{emptyFlag}}" image="../../static/icon/empty2.webp" description="暂无相关内容" styleInfo="height: 100%">
+      <empty wx:if="{{emptyFlag}}" image="{{cdnUrl}}/static/icon/empty2.png" description="暂无相关内容" styleInfo="height: 100%">
       </empty>
       <!-- <view style="margin-top: 40rpx">
         <t-empty t-class="empty-bottom" t-class-image="empty_image" image="/static/icon/footer.png"

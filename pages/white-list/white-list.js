@@ -14,6 +14,7 @@ Page({
     marginBottom: app.globalData.marginBottom,
     ossUrl: app.globalData.ossUrl,
     userInfo: app.globalData.userInfo,
+    cdnUrl: app.globalData.cdnUrl,
     whiteList: [],
     qrCodeUserInfo: {},
     whiteBox: false,

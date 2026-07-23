@@ -24,6 +24,7 @@ const DONE_STEP = 3;
 Page({
   data: {
     phoneEnv: app.globalData.phoneEnv, // 手机系统
+    cdnUrl: app.globalData.cdnUrl,
     blufiloadInfo: "扫描设备",
     blufiLoadStatus: false,
     blufiScanStatus: false,

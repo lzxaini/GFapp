@@ -23,6 +23,7 @@ Page({
     marginBottom: app.globalData.marginBottom,
     appName: app.globalData.appName,
     ossUrl: app.globalData.ossUrl,
+    cdnUrl: app.globalData.cdnUrl,
     isLogin: false,
     deptUserList: [], // 部门用户列表
     adminRouteMap: {
