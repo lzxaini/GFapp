@@ -20,5 +20,17 @@
     "ignoreDevUnusedFiles": true
   },
   "libVersion": "3.8.7",
-  "condition": {}
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "pages/register/register",
+          "pathName": "pages/register/register",
+          "query": "",
+          "scene": null,
+          "launchMode": "default"
+        }
+      ]
+    }
+  }
 }

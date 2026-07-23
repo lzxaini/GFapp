@@ -101,6 +101,7 @@
     "t-guide": "tdesign-miniprogram/guide/guide",
     "t-swipe-cell": "tdesign-miniprogram/swipe-cell/swipe-cell",
     "t-divider": "tdesign-miniprogram/divider/divider",
+    "t-footer": "tdesign-miniprogram/footer/footer",
     "empty": "components/empty/empty"
   },
   "window": {

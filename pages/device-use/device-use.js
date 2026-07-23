@@ -22,7 +22,7 @@ Page({
     this.setData({
       deviceId
     })
-    wx.eventCenter.on('mqtt-message', this.handleMsg);
+    // wx.eventCenter.on('mqtt-message', this.handleMsg);
     onMqttReady(() => {
       this.subscribeTopic();
     });
@@ -30,7 +30,7 @@ Page({
   onUnload() {
     const mqttClient = app.globalData.mqttClient;
     wx.eventCenter.off('mqtt-ready', this.subscribeTopic);
-    wx.eventCenter.off('mqtt-message', this.handleMsg);
+    // wx.eventCenter.off('mqtt-message', this.handleMsg);
     this.clearReconnect(); // 清除重连定时器
     mqttClient.unsubscribe(`/resp/${this.data.deviceId}`);
   },

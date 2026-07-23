@@ -297,7 +297,7 @@ Page({
     })
   },
   // 去开发模式
-  goDevPage(){
+  goDevPage() {
     wx.navigateTo({
       url: '/development/index/index',
     })

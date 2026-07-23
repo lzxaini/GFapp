@@ -1,7 +1,7 @@
 .my-edit_container {
 	width: 100vw;
 	height: 100vh;
-	background-color: #f5f6f7;
+	background-color: #F9F7FC;
 	.bd05 {
 		width: 100%;
 		height: 1rpx;
@@ -9,7 +9,9 @@
 		transform: scaleY(0.5);
 	}
 	.info_from {
-		padding: 20px 20rpx 0 20rpx;
+		padding: 10rpx 20rpx;
+    margin: 24rpx;
+    border-radius: 16rpx;
 		background-color: #ffffff;
 		.from_item {
 			display: grid;
@@ -76,8 +78,8 @@
 .action-btn {
 	--td-button-primary-bg-color: #BEA6D4;
 	--td-button-primary-border-color: #BEA6D4;
-	--td-button-primary-active-bg-color: #888cf4a2;
-	--td-button-primary-active-border-color: #888cf4a2;
+	--td-button-primary-active-bg-color: #E6DDF0;
+	--td-button-primary-active-border-color: #E6DDF0;
 	margin-bottom: 30rpx;
 }
 .cancel-btn {
