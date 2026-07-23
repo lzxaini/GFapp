@@ -9,27 +9,38 @@
   // background: linear-gradient(180deg, #888bf4 20%, #f5f7fb 40%, #f5f7fb 100%);
 
   .navBar {
-    --td-navbar-bg-color: transparent;
+    --td-navbar-bg-color: #FFFFFF;
     --td-navbar-color: #5A5470;
     --td-navbar-capsule-border-color: #e3e6ea !important;
   }
 
-  .bg_box {
-    width: 100%;
-    // height: 500rpx;
-    background-color: red;
-  }
 
   .user_info {
-    // position: absolute;
+    position: relative;
     // z-index: 1;
     width: 100%;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     margin-top: 40rpx;
+    background-color: transparent;
+
+    .bg_box {
+      position: absolute;
+      z-index: 0;
+      top: -80rpx;
+      width: 100%;
+      height: 242rpx;
+
+      .my_bg {
+        width: 100%;
+        height: 100%;
+      }
+    }
 
     .avatar {
+      position: relative;
+      z-index: 2;
       width: 200rpx;
       height: 200rpx;
       border-radius: 50%;
@@ -114,9 +125,11 @@
       color: #606972;
     }
   }
-  .cell_box{
+
+  .cell_box {
     align-items: center;
   }
+
   .dept_title {
     white-space: nowrap;
     font-size: 28rpx !important;
@@ -144,6 +157,7 @@
 
 
   }
+
   .join_dept {
     display: flex;
     justify-content: center;
@@ -181,7 +195,8 @@
       background-color: #BEA6D4;
     }
   }
-  .footer-example{
+
+  .footer-example {
     margin-top: 50rpx;
   }
 }
