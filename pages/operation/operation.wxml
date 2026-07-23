@@ -138,7 +138,7 @@
                 <view class="detail_item">
                   <view class="nav_top">
                     <view class="title_box">
-                      <image class="icon" src="../../static/icon/{{detail.serviceObj.icon}}" />
+                      <image class="icon" src="{{cdnUrl}}/static/icon/{{detail.serviceObj.icon}}" />
                       <text class="text">{{detail.serviceObj.name}}</text>
                     </view>
                     <view class="number">编号：{{detail.code}}</view>

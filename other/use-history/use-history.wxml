@@ -66,12 +66,12 @@
             <block wx:for="{{item.details}}" wx:for-item="detail" wx:for-index="detailIndex" wx:key="detailIndex">
               <view class="detail_item">
                 <!-- <view class="detail_header">
-                  <image class="detail_status" src="../../static/icon/{{detail.serviceObj.icon}}" />
+                  <image class="detail_status" src="{{cdnUrl}}/static/icon/{{detail.serviceObj.icon}}" />
                   <text class="detail_number">{{detail.serviceObj.name}}</text>
                 </view> -->
                 <view class="nav_top">
                   <view class="title_box">
-                    <image class="icon" src="../../static/icon/{{detail.serviceObj.icon}}" />
+                    <image class="icon" src="{{cdnUrl}}/static/icon/{{detail.serviceObj.icon}}" />
                     <text class="text">{{detail.serviceObj.name}}</text>
                   </view>
                   <view class="number">编号：{{detail.code}}</view>
