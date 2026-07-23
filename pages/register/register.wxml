@@ -6,7 +6,7 @@
   <view class="register_body">
     <view class="item df" bindtap="updateAvatar">
       <view class="lable">个人头像</view>
-      <image class="avatar" src="{{ ossUrl + form.avatar  || '../../static/icon/gf_logo.png'}}" />
+      <image class="avatar" src="{{ ossUrl + form.avatar  || '../../static/icon/logo_csm.png'}}" />
     </view>
     <t-input t-class="item" placeholder="请输入您的用户姓名" t-class-tips="errMsg" value="{{form.userName}}" type="text"
       tips="{{userNameError}}" bindchange="onInput" bindblur="verify" confirm-type="next" borderless></t-input>

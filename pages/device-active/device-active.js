@@ -67,13 +67,13 @@ Page({
       result
     } = message;
     if (topic === `/resp/${this.data.deviceId}` && msg === '06000001') {
-      // this.setData({
-      //   deviceFlag: true
-      // });
-      this.clearReconnect(); // 停止重连
-      wx.redirectTo({
-        url: `/pages/device-use/device-use?deviceId=${this.data.deviceId}`,
+      this.setData({
+        deviceFlag: true
       });
+      this.clearReconnect(); // 停止重连
+      // wx.redirectTo({
+      //   url: `/pages/device-use/device-use?deviceId=${this.data.deviceId}`,
+      // });
     }
     // if (
     //   topic === `/resp/${this.data.deviceId}` &&
@@ -237,6 +237,10 @@ Page({
     if (pages.length === 1) {
       wx.switchTab({
         url: '/pages/my/my',
+      })
+    } else {
+      wx.navigateBack({
+        delta: 1,
       })
     }
   }

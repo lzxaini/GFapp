@@ -16,7 +16,7 @@
     </view>
   </view>
   <view class="gf_logo">
-    <image class="gf_logo_bg" src="../../static/icon/gf_logo.png" />
+    <image class="gf_logo_bg" src="../../static/icon/logo_csm.png" />
   </view>
 </view>
 <t-message id="t-message" />

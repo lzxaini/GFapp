@@ -5,20 +5,22 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  background-color: #F5F0FA;
+	background-color: #F5F0FA;
+  // background: linear-gradient(180deg, #BEA6D4 20%, #F5F0FA 40%, #F5F0FA 100%);
 
   .bg_box {
     position: relative;
     width: 100%;
     height: 552rpx;
-    background: linear-gradient(180deg, #BEA6D4 29%, #F5F0FA 100%);
+    background-color: #F5F0FA;
+    // background: linear-gradient(180deg, #BEA6D4 29%, #F5F0FA 100%);
 
     .bg_top {
       position: absolute;
       width: 218rpx;
       height: 384rpx;
-      top: -180rpx;
-      left: 0;
+      // top: -180rpx;
+      right: 0;
     }
 
     .logo_text {
@@ -27,7 +29,7 @@
       justify-content: center;
       font-family: AlibabaPuHuiTi3;
       font-size: 50rpx;
-      color: #ffffff;
+      color: #5A5470;
     }
 
     .logo_slogan {
@@ -44,7 +46,7 @@
       .slogan {
         font-family: AlibabaPuHuiTi3;
         font-size: 28rpx;
-        color: #ffffff;
+        color: #9E81B3;
         margin-left: 11rpx;
       }
     }

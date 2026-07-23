@@ -4,7 +4,7 @@
     <!-- <image src="/static/icon/wave.svg"></image> -->
   </view>
   <view class="user_info">
-    <image class="avatar" src="{{userInfo.avatar ? ossUrl + userInfo.avatar : '../../static/icon/gf_logo_w.png'}}"
+    <image class="avatar" src="{{userInfo.avatar ? ossUrl + userInfo.avatar : '../../static/icon/profile_picture.png'}}"
       bindtap="goLoginFlag" />
     <view class="info_box" bindtap="goLoginFlag">
       <view class="user_name">{{userInfo.userName || '未登录'}}</view>

@@ -15,7 +15,7 @@
       <block wx:for="{{approvalList}}" wx:key="id">
         <t-swipe-cell wx:if="{{item.status != 0}}">
           <view class="list_item">
-            <t-avatar class="avatar-example" image="{{ ossUrl + item.avatar || '/static/icon/gf_logo_w.png'}}" />
+            <t-avatar class="avatar-example" image="{{ ossUrl + item.avatar || '/static/icon/profile_picture.png'}}" />
             <view class="item-right">
               <view class="title">
                 <text class="deptText textOverflow">{{item.deptName}}</text>
@@ -32,7 +32,7 @@
           </view>
         </t-swipe-cell>
         <view class="list_item" wx:else>
-          <t-avatar class="avatar-example" image="{{ ossUrl + item.avatar || '/static/icon/gf_logo_w.png'}}" />
+          <t-avatar class="avatar-example" image="{{ ossUrl + item.avatar || '/static/icon/profile_picture.png'}}" />
           <view class="item-right">
             <view class="title">
               <text class="deptText textOverflow">{{item.deptName}}</text>

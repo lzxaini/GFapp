@@ -17,7 +17,7 @@
     <view class="device_grid">
       <block wx:for="{{deviceList}}">
         <view class="device_item">
-          <image class="card_bg" src="../../static/icon/card_bg.png" />
+          <!-- <image class="card_bg" src="../../static/icon/card_bg.png" /> -->
           <view class="go_info" bindtap="goHistoryInfo" data-serialNumber="{{item.serialNumber}}">
             查看使用记录
             <t-icon name="chevron-right-double" size="12" />

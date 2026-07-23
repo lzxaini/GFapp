@@ -5,8 +5,8 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  // background-color: #F5F0FA;
-  background: linear-gradient(180deg, #BEA6D4 20%, #F5F0FA 40%, #F5F0FA 100%);
+	background-color: #F5F0FA;
+  // background: linear-gradient(180deg, #BEA6D4 20%, #F5F0FA 40%, #F5F0FA 100%);
 
   .bg_box {
     position: relative;
@@ -28,7 +28,7 @@
       justify-content: center;
       font-family: AlibabaPuHuiTi3;
       font-size: 50rpx;
-      color: #ffffff;
+      color: #5A5470;
     }
 
     .logo_slogan {
@@ -45,7 +45,7 @@
       .slogan {
         font-family: AlibabaPuHuiTi3;
         font-size: 28rpx;
-        color: #ffffff;
+        color: #9E81B3;
         margin-left: 11rpx;
       }
     }

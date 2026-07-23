@@ -1,48 +1,58 @@
 .work-team_container {
-	width: 100vw;
-	height: 100vh;
-	background-color: #F5F0FA;
-	.navBar {
-		--td-navbar-bg-color: #BEA6D4;
-		--td-navbar-color: #fff;
-		--td-navbar-capsule-border-color: #e3e6ea !important;
-	}
-	.group_box {
-		margin-top: 32rpx;
-		.item_icon {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			width: 88rpx;
-			height: 88rpx;
-			border-radius: 30rpx;
-			background-color: #49b9ad;
-		}
-		.title {
-			font-family: AlibabaPuHuiTi3;
-			font-size: 30rpx;
-			font-weight: 300;
-			color: #1c2023;
-		}
-		.description {
-			font-family: AlibabaPuHuiTi3;
-			font-size: 24rpx;
-			font-weight: normal;
-			color: #c5c8cb;
-		}
-		.bg {
-			background-color: #5595ff !important;
-		}
-	}
-	.gf_logo {
-		display: flex;
-		justify-content: center;
-		margin-top: 128rpx;
-		mix-blend-mode: color-burn;
-		opacity: 1;
-		.gf_logo_bg {
-			width: 560rpx;
-			height: 560rpx;
-		}
-	}
+  width: 100vw;
+  height: 100vh;
+  background-color: #F5F0FA;
+
+  .navBar {
+    --td-navbar-bg-color: #BEA6D4;
+    --td-navbar-color: #fff;
+    --td-navbar-capsule-border-color: #e3e6ea !important;
+  }
+
+  .group_box {
+    margin-top: 32rpx;
+
+    .item_icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 88rpx;
+      height: 88rpx;
+      border-radius: 30rpx;
+      background-color: #49b9ad;
+      background: linear-gradient(225deg, rgba(74, 222, 128, 1) 15%, rgba(34, 197, 94, 1) 85%);
+    }
+
+    .title {
+      font-family: AlibabaPuHuiTi3;
+      font-size: 30rpx;
+      font-weight: 300;
+      color: #1c2023;
+    }
+
+    .description {
+      font-family: AlibabaPuHuiTi3;
+      font-size: 24rpx;
+      font-weight: normal;
+      color: #c5c8cb;
+    }
+
+    .bg {
+      // background-color: #5595ff !important;
+      background: linear-gradient(225deg, rgba(167, 139, 250, 1) 15%, rgba(124, 58, 237, 1) 85%) !important;
+    }
+  }
+
+  .gf_logo {
+    display: flex;
+    justify-content: center;
+    margin-top: 128rpx;
+    mix-blend-mode: color-burn;
+    opacity: 1;
+
+    .gf_logo_bg {
+      width: 560rpx;
+      height: 560rpx;
+    }
+  }
 }
