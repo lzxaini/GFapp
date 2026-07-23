@@ -243,5 +243,11 @@ Page({
         delta: 1,
       })
     }
+  },
+  // 去往使用记录
+  goHistoryInfo() {
+    wx.navigateTo({
+      url: `/other/use-history/use-history?serialNumber=${this.data.deviceId}`,
+    });
   }
 });

@@ -120,11 +120,12 @@ Page({
         url: '/pages/my/my',
       })
     } else {
-      // 否则直接返回设备列表页
-      console.log('返回设备列表页', pages)
-      wx.redirectTo({
-        url: '/pages/device-list/device-list',
-      })
+      // // 否则直接返回设备列表页
+      // console.log('返回设备列表页', pages)
+      // wx.redirectTo({
+      //   url: '/pages/device-list/device-list',
+      // })
+      wx.navigateBack(1)
     }
   },
     // 去往使用记录
