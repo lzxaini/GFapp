@@ -22,9 +22,11 @@ App({
     devFlag: false, // 开发环境标志
     devUrl: '',
     appName: {
-      name: '光馥科美',
-      slogan: '光塑年轻力，馥养无龄美',
-      appVersion: '1.0.0_260629091',
+      name: '超素美',
+      slogan: '爱上素颜美，就选超素美',
+      appVersion: '0.0.1_2607230151',
+      beian: '备: 12345645',
+      copyright: 'Copyright © 2020-2026 CSM.All Rights Reserved.',
     },
     phoneEnv: '', // 手机系统
     mqttClient: null,
@@ -32,12 +34,12 @@ App({
     statusBarHeight: 0,
     capsuleHeight: 0,
     marginBottom: '60rpx',
-    baseUrl: 'https://api.gfkm.cc',
-    ossUrl: 'https://api.gfkm.cc',
-    // baseUrl: 'http://192.168.18.200:8080',
-    // ossUrl: 'http://192.168.18.200:8080',
-    mqttUrl: 'wxs://mqtt.gfkm.cc/mqtt',
-    // mqttUrl: 'wxs://gfmq.fxnws.com/mqtt',
+    baseUrl: 'https://api.chaosm.cn',
+    ossUrl: 'https://api.chaosm.cn',
+    // baseUrl: 'http://127.0.0.1:8080',
+    // ossUrl: 'http://127.0.0.1:8080',
+    mqttUrl: 'wxs://mqtt.chaosm.cn/mqtt',
+    // mqttUrl: 'wxs://mqtt.fxnws.com/mqtt',
     userInfo: null,
     token: null
   },
@@ -215,7 +217,7 @@ App({
       confirmText: "确认",
       showCancel: false,
       cancelText: "取消",
-      confirmColor: "#888bf4",
+      confirmColor: "#BEA6D4",
       success: (res) => {
         if (res.confirm) {
           wx.openSetting({
