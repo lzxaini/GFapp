@@ -72,7 +72,7 @@
       </t-input>
     </view>
     <view class="wifi24">请确保你手机当前连接的Wi-Fi是2.4Ghz</view>
-    <image class="blufi-wifi-input-cover" src="../../static/icon/wifi.png"></image>
+    <image class="blufi-wifi-input-cover" src="{{ossUrl}}/static/icon/wifi.png"></image>
     <view class="wifi_btn_box">
       <button class="wifi_btn" style="margin-bottom: {{marginBottom}}" bindtap="startWifiInfo">
         开始配网

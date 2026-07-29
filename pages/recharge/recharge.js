@@ -13,6 +13,7 @@ Page({
     capsuleHeight: app.globalData.capsuleHeight,
     userInfo: app.globalData.userInfo,
     ossUrl: app.globalData.ossUrl,
+    cdnUrl: app.globalData.cdnUrl,
     searchDeptName: '',
     teamVisible: false,
     teamList: [],

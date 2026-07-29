@@ -6,12 +6,14 @@ import {
   showMessage
 } from '../../utils/tools';
 import tool from '../../utils/tools'
+const app = getApp()
 /*********** hal_version 版本迭代 ***********/
 //  211209 ：纠正输入的SSID判断长度问题
 /*************************************/
 
 Page({
   data: {
+    ossUrl: app.globalData.ossUrl,
     ssid: '',
     password: '',
     is5G: true,

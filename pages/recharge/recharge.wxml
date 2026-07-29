@@ -14,7 +14,7 @@
           <t-icon slot="suffix-icon" name="chevron-down" color="#BEA6D4" size="22" bindtap="showTeamList"></t-icon>
         </t-input>
         <t-input t-class="input_item" placeholder="请输入要充值的能量点数" value="{{form.rechargeAmount}}" bindchange="onInput">
-          <t-icon slot="prefix-icon" name="/static/icon/my_6.png" size="20" />
+          <t-icon slot="prefix-icon" name="{{cdnUrl}}/static/icon/power_icon.png" size="20" />
           <t-button slot="suffix-icon" t-class="btn-iocn" bindtap="submit">充值</t-button>
         </t-input>
       </view>
