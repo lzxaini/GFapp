@@ -5,7 +5,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-	background-color: #F5F0FA;
+  background-color: #F5F0FA;
   // background: linear-gradient(180deg, #BEA6D4 20%, #F5F0FA 40%, #F5F0FA 100%);
 
   .bg_box {
@@ -217,4 +217,53 @@
 .empty_image {
   width: 40rpx;
   height: 48rpx;
+}
+
+.index_body {
+  width: calc(100vw - 64rpx);
+  margin: 0 32rpx;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-family: AlibabaPuHuiTi3;
+
+  .index_slogan {
+    width: 670rpx;
+    height: 236rpx;
+  }
+
+  .index_info {
+    width: 590rpx;
+    height: 480rpx;
+    margin-top: 48rpx;
+  }
+
+  .title {
+    font-size: 40rpx;
+    color: #1E1A2E;
+    margin-top: 48rpx;
+  }
+
+  .info {
+    font-size: 28rpx;
+    color: #5A5470;
+    margin-top: 32rpx;
+  }
+
+
+  .btn {
+    width: 100%;
+    height: 112rpx;
+    --td-button-border-width: 0;
+    --td-button-small-icon-size: 30rpx;
+    border-radius: 80rpx;
+    box-sizing: border-box;
+    font-family: AlibabaPuHuiTi3;
+    font-size: 32rpx;
+    line-height: 112rpx;
+    font-weight: bold;
+    background-color: #BEA6D4;
+    color: #FFFFFF;
+    margin-top: 88rpx;
+  }
 }
