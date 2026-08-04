@@ -24,7 +24,7 @@ App({
     appName: {
       name: '超素美',
       slogan: '爱上素颜美，就选超素美',
-      appVersion: '0.0.1_260729082',
+      appVersion: '0.0.2_260804190',
       beian: '粤ICP备2026100471号-2X',
       copyright: 'Copyright © 2020-2026 CSM.All Rights Reserved.',
     },
