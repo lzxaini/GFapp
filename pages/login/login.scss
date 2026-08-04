@@ -217,13 +217,15 @@
 			box-sizing: border-box;
 			// border: 1rpx solid #BEA6D4;
 			border-radius: 20rpx;
-			margin-top: 29rpx;
+			margin-top: 32rpx;
 		}
 	}
 
 	.other_login {
 		margin: 32rpx 48rpx;
-
+    // color: #5A5470;
+    --td-divider-color: #5A5470;
+    --td-divider-content-color:#5A5470;
 		// .grid {
 		//   // color: transparent;
 		//   --td-grid-bg-color: transparent;
@@ -252,9 +254,11 @@
 		margin-left: 100rpx;
 
 		.check {
+      margin-top: 5rpx;
 			padding: 0 !important;
 			--td-checkbox-icon-size: 30rpx;
 			--td-checkbox-bg-color: transparent;
+			--td-checkbox-icon-color: #9e81b3;
 			--td-checkbox-icon-checked-color: #9e81b3;
 		}
 
@@ -267,7 +271,7 @@
 			font-family: AlibabaPuHuiTi3;
 			font-size: 26rpx;
 			font-weight: normal;
-			color: #ffffff;
+			color: #1E1A2E;
 
 			.info {
 				display: block;

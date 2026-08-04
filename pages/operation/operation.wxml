@@ -95,7 +95,7 @@
             <view class="nav_top">
               <view class="title_box">
                 <image class="icon_4" src="../../static/icon/my_4.png" />
-                <text class="text">{{item.code}}</text>
+                <text class="text">No. {{item.code}}</text>
               </view>
             </view>
             <view class="card_list">

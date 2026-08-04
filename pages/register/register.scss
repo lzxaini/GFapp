@@ -5,6 +5,12 @@
   // background-color: #F5F0FA;
   padding-bottom: env(safe-area-inset-bottom);
 
+  .navBar {
+    --td-navbar-bg-color: transparent;
+    --td-navbar-color: #1e1a2e;
+    --td-navbar-capsule-border-color: #e3e6ea !important;
+  }
+
   .bg_box {
     position: absolute;
     top: 0;
@@ -44,7 +50,7 @@
         font-family: AlibabaPuHuiTi3;
         font-size: 32rpx;
         font-weight: 350;
-        color: #000000;
+        color: #1E1A2E;
       }
 
       .avatar {
@@ -63,7 +69,7 @@
 
       .no_submit {
         font-family: AlibabaPuHuiTi3;
-        font-size: 28rpx;
+        font-size: 32rpx;
         font-weight: normal;
         color: #FFFFFF;
         text-align: center;

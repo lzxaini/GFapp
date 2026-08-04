@@ -11,12 +11,12 @@
   height: calc(100vh - (env(safe-area-inset-bottom) + 48px));
   padding-bottom: 48px;
   // background: linear-gradient(180deg, #BEA6D4 20%, #F5F0FA 40%, #F5F0FA 100%);
-  background-color: #F5F0FA;
+  background-color: #F9F7FC;
 
   .navBar {
     --td-navbar-bg-color: transparent;
     --td-navbar-color: #5A5470;
-    --td-navbar-capsule-border-color: #e3e6ea !important;
+    --td-navbar-capsule-border-color: #F9F7FC !important;
     // color: transparent;
   }
 
@@ -82,9 +82,11 @@
     margin-bottom: 24rpx;
     padding: 20rpx;
     border-radius: 20rpx;
-    background: rgba(255, 255, 255, 0.45);
-    backdrop-filter: blur(40px);
-    -webkit-backdrop-filter: blur(40px);
+    border: 1px solid #f5f0fa;
+    // background: rgba(255, 255, 255, 0.45);
+    // backdrop-filter: blur(40px);
+    // -webkit-backdrop-filter: blur(40px);
+    background-color: #FFFFFF;
 
     .data_title {
       font-family: AlibabaPuHuiTi3;
@@ -106,10 +108,11 @@
         padding: 0 30rpx;
         height: 72rpx;
         border-radius: 12rpx;
-        background-color: #F5F0FA;
+        // background-color: #F5F0FA;
+        border: 1px solid #f5f0fa;
 
         .interval_info {
-          font-size: 23rpx;
+          font-size: 28rpx;
           font-weight: normal;
           color: #5A5470;
           margin-left: 20rpx;
@@ -140,7 +143,7 @@
 
         .all_text {
           font-family: AlibabaPuHuiTi3;
-          font-size: 23rpx;
+          font-size: 28rpx;
           font-weight: normal;
           color: #5A5470;
         }
@@ -149,7 +152,8 @@
       .all_item {
         height: 72rpx;
         border-radius: 12rpx;
-        background-color: #F5F0FA;
+        // background-color: #F5F0FA;
+        border: 1px solid #f5f0fa;
 
         .item-input {
           height: 100%;
@@ -162,7 +166,7 @@
 
         .input_ftsize {
           font-family: AlibabaPuHuiTi3;
-          font-size: 24rpx;
+          font-size: 28rpx;
         }
       }
     }
@@ -178,7 +182,8 @@
     margin: 0 24rpx 24rpx 24rpx;
     padding: 30rpx;
     border-radius: 20rpx;
-    background-color: #ffffff;
+    // border: 1px solid #f5f0fa;
+    // background-color: #FFFFFF;
 
     .tabs_box {
       --td-tab-nav-bg-color: rgba(255, 255, 255, 0.3);
@@ -336,7 +341,7 @@
     padding: 30rpx;
     border-radius: 20rpx;
     box-sizing: border-box;
-    border: 1rpx solid #E6DDF0;
+    border: 1rpx solid #f5f0fa;
     background-color: #ffffff;
     margin-bottom: 32rpx;
 
@@ -344,14 +349,16 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding-bottom: 18rpx;
+      border-bottom: 1rpx solid #F5F0FA;
 
       .title_box {
         display: flex;
         align-items: center;
 
         .icon_4 {
-          width: 22rpx;
-          height: 26rpx;
+          width: 40rpx;
+          height: 40rpx;
         }
 
         .icon {
@@ -363,7 +370,7 @@
           font-family: AlibabaPuHuiTi3;
           font-size: 30rpx;
           font-weight: normal;
-          color: #1c2023;
+          color: #9E81B3;
           margin-left: 10rpx;
         }
       }
@@ -560,5 +567,6 @@
   height: 336rpx !important;
 }
 .empty{
-  padding-bottom: 50rpx;
+  background-color: #FFFFFF;
+  padding-bottom: 100rpx;
 }

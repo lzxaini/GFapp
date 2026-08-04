@@ -1,10 +1,10 @@
 <view class="device-list_container" wx:if="{{deviceList.length > 0}}">
   <view class="bg_box">
-    <image class="bg_top" style="top: {{statusBarHeight}}px;" src="{{cdnUrl}}/static/icon/device-left.png"></image>
+    <image class="bg_top" style="top: {{capsuleHeight}}px;" src="{{cdnUrl}}/static/icon/device-left.png"></image>
     <view class="logo_text" style="height: {{capsuleHeight}}px;">
       {{appName.name}}
     </view>
-    <view class="logo_slogan">
+    <view class="logo_slogan" style="margin-top: {{statusBarHeight - 16}}px;">
       <image class="gf_logo" src="../../static/icon/logo.png"></image>
       <text class="slogan">{{appName.slogan}}</text>
     </view>
@@ -59,7 +59,7 @@
   <image class="index_slogan" src="{{cdnUrl}}/static/icon/index_slogan.png" mode="" />
   <image class="index_info" src="{{cdnUrl}}/static/icon/index_info.png" mode="" />
   <view class="title">激活您的专属黑武士</view>
-  <view class="info">扫描设备二维码，即刻开启您的x x x x之旅</view>
+  <view class="info">扫描设备二维码，即刻开启肌肤维养之旅</view>
   <t-button class="btn" icon="qrcode" bindtap="scanDevice" size="small">立即绑定设备</t-button>
 </view>
 <t-message id="t-message" />

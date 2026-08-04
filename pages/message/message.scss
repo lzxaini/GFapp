@@ -52,7 +52,7 @@
       font-weight: normal;
       text-align: center;
       text-decoration: underline;
-      color: #5A5470;
+      color: #9E81B3;
     }
   }
 
@@ -231,4 +231,10 @@
 
 .radio-group {
   --td-radio-icon-checked-color: #BEA6D4;
+}
+.empty{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }

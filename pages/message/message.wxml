@@ -2,7 +2,7 @@
   <!-- 顶部导航栏固定 -->
   <t-navbar t-class="navBar" left-arrow="{{false}}" fixed="{{false}}" title="消息通知" />
   <view class="menu_text" bindtap="onDelete" data-type="all">
-    <t-icon name="check-double" size="20" color="#5A5470" />
+    <t-icon name="delete" size="16" color="#9E81B3" />
     <text>全部删除</text>
   </view>
   <view class="message_body">
