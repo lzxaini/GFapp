@@ -3,7 +3,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 48px;
+  height: 80px;
   background: white;
   display: flex;
   padding-bottom: env(safe-area-inset-bottom);
@@ -27,12 +27,12 @@
     flex-direction: column;
   
     .itemImage {
-      width: 35rpx;
-      height: 35rpx;
+      width: 48rpx;
+      height: 48rpx;
     }
     
     .itemTitle {
-      margin-top: 2rpx;
+      margin-top: 16rpx;
       font-size: 12px;
     }
   }

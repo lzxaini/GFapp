@@ -10,8 +10,8 @@
   display: flex;
   flex-direction: column;
   width: 100vw;
-  height: calc(100vh - (env(safe-area-inset-bottom) + 48px));
-  padding-bottom: 48px;
+  height: calc(100vh - (env(safe-area-inset-bottom) + 80px));
+  padding-bottom: 80px;
   // background: linear-gradient(180deg, #BEA6D4 20%, #F5F0FA 40%, #F5F0FA 100%);
   background-color: #F5F0FA;
 

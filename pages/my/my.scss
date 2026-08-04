@@ -3,8 +3,8 @@
 .my_body {
   position: relative;
   width: 100vw;
-  height: calc(100vh - (env(safe-area-inset-bottom) + 48px));
-  padding-bottom: 48px;
+  height: calc(100vh - (env(safe-area-inset-bottom) + 80px));
+  padding-bottom: 80px;
   background-color: #FBFBFD;
   // background: linear-gradient(180deg, #888bf4 20%, #f5f7fb 40%, #f5f7fb 100%);
 
