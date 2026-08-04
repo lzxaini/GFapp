@@ -133,6 +133,7 @@
   .dept_title {
     white-space: nowrap;
     font-size: 28rpx !important;
+    color: #9A95AA;
   }
 
   .dept_center {
@@ -224,5 +225,6 @@
   // text-align: left;
   display: block !important;
   max-width: 100%;
-  flex: inherit !important
+  flex: inherit !important;
+  color: #5A5470 !important;
 }
