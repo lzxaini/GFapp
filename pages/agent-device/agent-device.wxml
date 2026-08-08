@@ -10,13 +10,13 @@
   <view class="admin-team_title">
     <view class="admin-team_tabs">
       <t-tabs t-class="tabs_box" t-class-active="active_style" t-class-item="item_style" defaultValue="{{teamTab}}" theme="tag" bind:click="tabClick">
-        <t-tab-panel wx:key="index" label="代理商({{teamObj.data[3].length}})" value="{{3}}" />
-        <t-tab-panel wx:key="index" label="门店({{teamObj.data[4].length}})" value="{{4}}" />
+        <t-tab-panel wx:key="index" label="代理商({{teamObj[3].length}})" value="{{3}}" />
+        <t-tab-panel wx:key="index" label="门店({{teamObj[4].length}})" value="{{4}}" />
       </t-tabs>
     </view>
   </view>
-  <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="getAdminDeviceList">
-    <block wx:for="{{teamList}}">
+  <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="getAdminDeviceList" bindscrolltolower="onScrollToLower">
+    <block wx:for="{{displayList}}" wx:key="{{item.deptId}}">
       <t-cell-group t-class="list_item" theme="card" bindtap="goDeviceList" data-id="{{item.deptId}}" data-info="{{item}}">
         <t-cell title="{{item.deptName}}" arrow>
           <t-avatar slot="left-icon" size="large" image="{{ossUrl + item.deptAvatar}}"></t-avatar>
@@ -24,7 +24,10 @@
         </t-cell>
       </t-cell-group>
     </block>
-    <view style="margin-top: 40rpx">
+    <!-- 底部加载状态 -->
+    <view wx:if="{{loadingMore}}" style="text-align:center;padding:30rpx 0;color:#999;font-size:24rpx;">加载中...</view>
+    <view wx:elif="{{pageObj[teamTab] && !pageObj[teamTab].hasMore && displayList.length > 0}}" style="text-align:center;padding:30rpx 0;color:#999;font-size:24rpx;">没有更多了</view>
+    <view wx:elif="{{displayList.length < 1}}" style="margin-top: 40rpx">
       <t-empty t-class="empty" t-class-image="empty_image" image="/static/icon/footer.png" description="糟糕，到底了" />
     </view>
   </scroll-view>
