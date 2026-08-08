@@ -7,10 +7,17 @@ Page({
     marginBottom: app.globalData.marginBottom,
     userInfo: app.globalData.userInfo,
     ossUrl: app.globalData.ossUrl,
-    teamTab: 2, // 默认团队tab,1是最顶级不用加载
+    pageSize: 20,
+    teamTab: 2,
     teamObj: {},
-    teamList: [],
+    displayList: [],
+    loadingMore: false,
     refresher: false,
+    pageObj: {
+      2: { pageNum: 1, hasMore: true },
+      3: { pageNum: 1, hasMore: true },
+      4: { pageNum: 1, hasMore: true },
+    },
     empty: {
       name: 'data-error',
       size: 40
@@ -22,16 +29,9 @@ Page({
     this.getAdminTeamList()
   },
   tabClick(e) {
-    let {
-      value
-    } = e?.detail
-    let {
-      teamObj
-    } = this.data
-    this.setData({
-      teamTab: value,
-      teamList: teamObj[value] || []
-    })
+    let { value } = e?.detail
+    this.setData({ teamTab: value })
+    this.computeDisplayList(value, true)
   },
   goTeamInfo(e) {
     let {
@@ -39,30 +39,68 @@ Page({
       id
     } = e?.currentTarget?.dataset
     wx.navigateTo({
-      url: `/other/work-team/work-team?editFlag=${flag}&id=${id}`,
+      url: `/pages/work-team/work-team?editFlag=${flag}&id=${id}`,
     });
   },
   getAdminTeamList() {
-    let {
-      teamTab
-    } = this.data
     getAdminTeamListApi().then(res => {
       if (res.code === 200) {
+        // res.data = {code:200, msg:"操作成功", data: {1:[], 2:[], 3:[]}}
+        const teamObj = res.data || {}
         this.setData({
           refresher: false,
-          teamObj: res.data,
-          teamList: res.data[teamTab]
+          teamObj,
+          pageObj: {
+            2: { pageNum: 1, hasMore: this.hasMore(teamObj[2]) },
+            3: { pageNum: 1, hasMore: this.hasMore(teamObj[3]) },
+            4: { pageNum: 1, hasMore: this.hasMore(teamObj[4]) },
+          }
         })
+        // 如果当前 tab 没有数据，切到有数据的第一个 tab
+        const currentList = teamObj[this.data.teamTab]
+        const firstAvailable = [2, 3, 4].find(k => teamObj[k]?.length > 0) || 2
+        this.setData({
+          teamTab: currentList ? this.data.teamTab : firstAvailable
+        })
+        this.computeDisplayList(this.data.teamTab, true)
       } else {
-        this.setData({
-          refresher: false,
-        })
-        wx.showToast({
-          title: '获取团队列表失败',
-          icon: 'error'
-        })
+        this.setData({ refresher: false })
+        wx.showToast({ title: '获取团队列表失败', icon: 'error' })
       }
     })
+  },
+
+  // 计算当前 tab 的展示列表（前端分页切片）
+  computeDisplayList(tab, reset) {
+    const { teamObj, pageObj } = this.data
+    const fullList = teamObj[tab] || []
+    const curPage = (reset || !pageObj[tab]) ? 1 : pageObj[tab].pageNum
+    const { pageSize } = this.data
+    const end = curPage * pageSize
+    const slice = fullList.slice(0, end)
+
+    const pagePath = `pageObj[${tab}]`
+    this.setData({
+      displayList: slice,
+      loadingMore: false,
+      [`${pagePath}.pageNum`]: curPage,
+      [`${pagePath}.hasMore`]: end < fullList.length,
+    })
+  },
+
+  hasMore(list) {
+    const { pageSize } = this.data
+    return list ? list.length > pageSize : false
+  },
+
+  // 触底加载更多
+  onScrollToLower() {
+    const { teamTab, pageObj, loadingMore } = this.data
+    const cur = pageObj[teamTab]
+    if (!cur || loadingMore || !cur.hasMore) return
+    this.setData({ loadingMore: true })
+    this.setData({ [`pageObj[${teamTab}].pageNum`]: cur.pageNum + 1 })
+    this.computeDisplayList(teamTab)
   },
   goNext(e) {
     let {

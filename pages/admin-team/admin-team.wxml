@@ -1,5 +1,5 @@
 <view class="admin-team_container">
-  <t-navbar t-class="navBar" fixed="{{false}}" left-arrow title="团队管理" />
+  <t-navbar t-class="navBar" left-arrow fixed="{{false}}" title="团队管理" />
   <view class="admin-team_title">
     <view class="admin-team_tabs">
       <t-tabs t-class="tabs_box" t-class-active="active_style" t-class-item="item_style" defaultValue="{{teamTab}}" theme="tag" bind:click="tabClick">
@@ -10,20 +10,21 @@
     </view>
   </view>
   <!-- $TODO 创始人团队列表页面对接 -->
-  <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="getAdminTeamList">
-    <block wx:for="{{teamList}}">
-      <!-- <t-cell hover arrow bindtap="goTeamInfo" data-flag="admin" data-id="{{item.parentId}}"> -->
+  <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="getAdminTeamList" bindscrolltolower="onScrollToLower">
+    <block wx:for="{{displayList}}" wx:key="{{item.deptId}}">
       <t-cell hover arrow bindtap="goNext" data-item="{{item}}">
         <image slot="left-icon" class="item_img" src="{{ossUrl + item.deptAvatar}}" />
         <view slot="title" class="cell_title">{{item.deptName}}</view>
         <view slot="description" class="description">
           <view class="local">所属机构：{{item.parentName}}</view>
           <view class="number">团队编号：{{item.deptCode}}</view>
-          <!-- <view class="number">所在地址：{{item.address}}</view> -->
         </view>
       </t-cell>
     </block>
-    <view style="margin-top: 40rpx">
+    <!-- 底部加载状态 -->
+    <view wx:if="{{loadingMore}}" style="text-align:center;padding:30rpx 0;color:#999;font-size:24rpx;">加载中...</view>
+    <view wx:elif="{{pageObj[teamTab] && !pageObj[teamTab].hasMore && displayList.length > 0}}" style="text-align:center;padding:30rpx 0;color:#999;font-size:24rpx;">没有更多了</view>
+    <view wx:elif="{{displayList.length < 1}}" style="margin-top: 40rpx">
       <t-empty t-class="empty" t-class-image="empty_image" image="/static/icon/footer.png" description="糟糕，到底了" />
     </view>
   </scroll-view>
