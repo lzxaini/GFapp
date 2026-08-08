@@ -9,8 +9,13 @@ Page({
     marginBottom: app.globalData.marginBottom,
     userInfo: app.globalData.userInfo,
     ossUrl: app.globalData.ossUrl,
+    pageSize: 20,
     refresher: false,
-    teamList: [],
+    teamList: [],      // 全量数据（门店）
+    displayList: [],   // 前端分页展示列表
+    pageNum: 1,
+    hasMore: true,
+    loadingMore: false,
     deptData: {},
     tabsValue: 1, // 1: 团队成员, 2: 团队设备
   },
@@ -33,20 +38,39 @@ Page({
     } = this.data
     getAdminTeamListDrillDownApi(deptData.deptId).then(res => {
       if (res.code === 200) {
+        // res.data = {4:[], ...} 一次性返回全部子部门，前端做分页切片
+        const teamList = res.data[4] || []
         this.setData({
           refresher: false,
-          teamList: res.data[4]
+          teamList,
+          pageNum: 1,
+          hasMore: teamList.length > this.data.pageSize,
         })
+        this.computeDisplayList()
       } else {
-        this.setData({
-          refresher: false,
-        })
-        wx.showToast({
-          title: '获取团队列表失败',
-          icon: 'error'
-        })
+        this.setData({ refresher: false })
+        wx.showToast({ title: '获取团队列表失败', icon: 'error' })
       }
     })
+  },
+
+  // 计算展示列表（前端分页切片）
+  computeDisplayList() {
+    const { teamList, pageNum, pageSize } = this.data
+    const end = pageNum * pageSize
+    this.setData({
+      displayList: teamList.slice(0, end),
+      loadingMore: false,
+      hasMore: end < teamList.length,
+    })
+  },
+
+  // 触底加载更多
+  onScrollToLower() {
+    const { loadingMore, hasMore, pageNum } = this.data
+    if (loadingMore || !hasMore) return
+    this.setData({ loadingMore: true, pageNum: pageNum + 1 })
+    this.computeDisplayList()
   },
   goNext(e) {
     let {
