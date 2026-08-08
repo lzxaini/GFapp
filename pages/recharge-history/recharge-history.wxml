@@ -1,5 +1,5 @@
 <view class="recharge-history_container">
-  <t-navbar t-class="navBar" left-arrow title="" />
+  <t-navbar t-class="navBar" fixed="{{false}}" left-arrow title="" />
   <image src="../../static/icon/recharge_nav_bg.png" class="nav_bg" />
   <view class="history_title" style="top: {{capsuleHeight + 20}}px">充值记录</view>
   <view class="history_box">

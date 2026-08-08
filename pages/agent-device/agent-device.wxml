@@ -1,5 +1,5 @@
 <view class="founder-device_container">
-  <t-navbar t-class="navBar" left-arrow title="我的设备" />
+  <t-navbar t-class="navBar" fixed="{{false}}" left-arrow title="我的设备" />
   <view class="nav_bg"></view>
   <t-cell-group t-class="device_nav" theme="card">
     <t-cell title="{{deptInfo.deptName || '暂无信息'}}" description="团队编号：{{deptInfo.deptCode}}">

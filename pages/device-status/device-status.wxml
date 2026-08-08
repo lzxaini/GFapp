@@ -1,5 +1,5 @@
 <view class="device-use_container">
-  <t-navbar t-class="navBar" left-arrow bind:go-back="handleBack">
+  <t-navbar t-class="navBar" fixed="{{false}}" left-arrow bind:go-back="handleBack">
     <view slot="title" class="navBar_title">
       <view class="{{deviceFlag ? 'green': 'green red'}}"></view>
       <t-loading wx:if="{{deviceFlag}}" theme="circular" size="40rpx" text="正在跳转..." class="wrapper" />

@@ -1,5 +1,5 @@
 <view class="device-list_container">
-  <t-navbar t-class="navBar" left-arrow title="我的设备" />
+  <t-navbar t-class="navBar" fixed="{{false}}" left-arrow title="我的设备" />
   <view class="nav_bg"></view>
   <view class="device_nav">
     <view class="nav_item">

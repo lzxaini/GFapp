@@ -1,5 +1,5 @@
 <view class="work-team_container">
-  <t-navbar t-class="navBar" left-arrow title="搜索团队" />
+  <t-navbar t-class="navBar" fixed="{{false}}" left-arrow title="搜索团队" />
   <view class="search_box">
     <t-input t-class="item-input" value="{{searchName}}" prefixIcon="search" placeholder="搜索团队名称/编号" borderless confirm-type="search" bind:enter="searchTeam" bind:change="searchInput"></t-input>
     <view class="extra" bindtap="searchTeam">搜索</view>

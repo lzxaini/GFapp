@@ -1,7 +1,7 @@
 <wxs src="./calendar.wxs" module="_this" />
 <view class="operation_container">
   <!-- 顶部导航栏固定 -->
-  <t-navbar t-class="navBar" left-arrow title="运营管理" />
+  <t-navbar t-class="navBar" fixed="{{false}}" left-arrow title="运营管理" />
   <!-- 滚动内容区域 -->
   <scroll-view class="scroll-content" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="pullDownToRefresh">
     <view class="nav_bg"></view>
