@@ -29,24 +29,49 @@
     transform: scaleY(0.5);
   }
 
-  .team_list {
-    position: absolute;
-    top: 140rpx;
-    left: 50rpx;
-    right: 50rpx;
-    padding: 20rpx;
-    z-index: 999;
-    border-radius: 10rpx;
-    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-    background-color: #FFF;
+  // 团队列表弹窗（t-popup 内）
+  .team_popup {
+    padding: 20rpx 30rpx 40rpx;
+    background-color: #fff;
+    border-radius: 20rpx 20rpx 0 0;
+    max-height: 70vh;
+    display: flex;
+    flex-direction: column;
 
-    .team_list_content {
-      max-height: 600rpx;
+    .team_popup_header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20rpx;
+
+      .team_popup_title {
+        font-size: 32rpx;
+        font-weight: 600;
+        color: #1c2023;
+        font-family: AlibabaPuHuiTi3;
+      }
+    }
+
+    .team_popup_scroll {
+      max-height: 60vh;
       overflow-y: auto;
     }
 
+    .team_popup_loading {
+      display: flex;
+      justify-content: center;
+      padding: 20rpx 0;
+    }
+
+    .team_popup_nomore {
+      text-align: center;
+      padding: 20rpx 0;
+      font-size: 24rpx;
+      color: #999;
+      font-family: AlibabaPuHuiTi3;
+    }
+
     .team_item {
-      margin-top: 10rpx;
       padding: 10rpx 20rpx;
       font-family: AlibabaPuHuiTi3;
       .title {
