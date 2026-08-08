@@ -24,7 +24,7 @@ App({
     appName: {
       name: '玑肤芮',
       slogan: '年轻计划，轻松开肌',
-      appVersion: '1.0.4_260625101',
+      appVersion: '1.0.5_260808215',
       beian: '粤ICP备2026009218号-1X',
     },
     phoneEnv: '', // 手机系统
@@ -33,16 +33,13 @@ App({
     statusBarHeight: 0,
     capsuleHeight: 0,
     marginBottom: '60rpx',
-    // baseUrl: 'https://oa.beasun.com:2443/prod-api',
-    // baseUrl: 'https://api.guangfkm.cn',
-    // ossUrl: 'https://api.guangfkm.cn',
-    // mqttUrl: 'wxs://mqtt.guangfkm.cn/mqtt',
-    baseUrl: 'http://127.0.0.1:8080',
-    ossUrl: 'http://127.0.0.1:8080',
-    mqttUrl: 'wxs://mqtt.fxnws.com/mqtt',
-    // mqttUrl: 'wxs://8.138.32.44/mqtt',
-    // mqttUrl: 'wx://8.153.92.17:8083/mqtt',
-    // mqttUrl: 'wxs://mqtt.beasun.com/mqtt',
+    baseUrl: 'https://api.guangfkm.cn',
+    ossUrl: 'https://api.guangfkm.cn',
+    mqttUrl: 'wxs://mqtt.guangfkm.cn/mqtt',
+    /** 测试地址 */
+    // baseUrl: 'http://127.0.0.1:8080',
+    // ossUrl: 'http://127.0.0.1:8080',
+    // mqttUrl: 'wxs://mqtt.fxnws.com/mqtt',
     userInfo: null,
     token: null
   },
