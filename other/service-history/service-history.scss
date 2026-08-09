@@ -16,6 +16,7 @@
     --td-tab-item-active-color: #ffffff;
     --td-tab-item-height: 77rpx;
     padding: 0 30rpx;
+    margin: 30rpx;
     border-radius: 40px !important;
 
     .t-tabs__wrapper {
@@ -42,7 +43,7 @@
 
   .scroll-view {
     flex: 1;
-    margin-top: 40rpx;
+    margin-top: 10rpx;
     width: calc(100% - 60rpx);
     padding: 0 30rpx;
     min-height: 0;
@@ -69,7 +70,7 @@
     .card_item {
       position: relative;
       padding: 30rpx;
-      border-radius: 20rpx;
+      border-radius: 30rpx;
       box-sizing: border-box;
       border: 1rpx solid #E6DDF0;
       background-color: #ffffff;
@@ -85,8 +86,8 @@
           align-items: center;
 
           .icon_4 {
-            width: 22rpx;
-            height: 26rpx;
+            width: 40rpx;
+            height: 40rpx;
           }
 
           .icon {
@@ -98,7 +99,7 @@
             font-family: AlibabaPuHuiTi3;
             font-size: 30rpx;
             font-weight: normal;
-            color: #1c2023;
+            color: #9E81B3;
             margin-left: 10rpx;
           }
         }
