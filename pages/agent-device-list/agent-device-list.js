@@ -26,6 +26,10 @@ Page({
   },
   onShow() {
     tabService.updateIndex(this, 0)
+    this.getList()
+  },
+  // 下拉刷新
+  getList(){
     let { dept } = this.data.userInfo
     this.setData({
       'pageObj.deptId': dept.deptId,
@@ -34,6 +38,7 @@ Page({
     this.getAdminDeviceList()
   },
   getAdminDeviceList() {
+    console.log('this.data.pageObj', this.data.pageObj)
     getAdminDeviceListApi(this.data.pageObj).then(res => {
       if (res.code === 200) {
         const raw = res.data || {}
