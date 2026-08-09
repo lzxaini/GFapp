@@ -1,18 +1,20 @@
 <view class="dept-manage-container">
   <t-navbar t-class="navBar" left-arrow title="我的团队" fixed="{{false}}" />
-
+  <view class="all_item">
+    <t-input value="{{searchValue}}" bindchange="searchInput" bindblur="statrtSearch" disabled="{{inputDisabled}}" t-class="item-input" t-class-input="input_ftsize" placeholder="搜索门店名称" borderless>
+      <t-icon slot="prefix-icon" name="search" size="18" color="#9E81B3" />
+    </t-input>
+  </view>
   <!-- 部门列表（分页触底加载） -->
   <scroll-view class="dept-list" scroll-y upper-threshold="1" bindscrolltolower="onDeptScrollToLower" refresher-enabled="{{true}}" refresher-triggered="{{refreshing}}" bindrefresherrefresh="onRefresh">
     <view wx:if="{{loading && deptList.length === 0}}" class="loading">加载中...</view>
     <view wx:else>
+
       <block wx:for="{{deptList}}" wx:key="deptId">
         <view class="dept-tree-node">
           <view class="node-content level-0">
             <view class="node-left" bindtap="toggleExpand" data-deptid="{{item.deptId}}">
-              <t-icon wx:if="{{item.children && item.children.length > 0}}" 
-                name="{{item.expanded ? 'chevron-down' : 'chevron-right'}}" 
-                size="40rpx" 
-                color="#999" />
+              <t-icon wx:if="{{item.children && item.children.length > 0}}" name="{{item.expanded ? 'chevron-down' : 'chevron-right'}}" size="40rpx" color="#999" />
               <view wx:else class="placeholder-icon"></view>
               <text class="dept-name">{{item.deptName}}</text>
               <text class="dept-type">{{item.deptType == '1' ? '联合创始人' : item.deptType == '2' ? '分公司' : item.deptType == '3' ? '代理商' : '门店'}}</text>
@@ -26,16 +28,13 @@
               </view>
             </view>
           </view>
-          
+
           <!-- 子节点 (2层嵌套) -->
           <view wx:if="{{item.expanded && item.children && item.children.length > 0}}">
             <block wx:for="{{item.children}}" wx:for-item="child" wx:key="deptId">
               <view class="node-content level-1">
                 <view class="node-left" bindtap="toggleExpand" data-deptid="{{child.deptId}}">
-                  <t-icon wx:if="{{child.children && child.children.length > 0}}" 
-                    name="{{child.expanded ? 'chevron-down' : 'chevron-right'}}" 
-                    size="40rpx" 
-                    color="#999" />
+                  <t-icon wx:if="{{child.children && child.children.length > 0}}" name="{{child.expanded ? 'chevron-down' : 'chevron-right'}}" size="40rpx" color="#999" />
                   <view wx:else class="placeholder-icon"></view>
                   <text class="dept-name">{{child.deptName}}</text>
                   <text class="dept-type">{{child.deptType == '1' ? '联合创始人' : child.deptType == '2' ? '分公司' : child.deptType == '3' ? '代理商' : '门店'}}</text>
@@ -49,16 +48,13 @@
                   </view>
                 </view>
               </view>
-              
+
               <!-- 第三层 -->
               <view wx:if="{{child.expanded && child.children && child.children.length > 0}}">
                 <block wx:for="{{child.children}}" wx:for-item="grandson" wx:key="deptId">
                   <view class="node-content level-2">
                     <view class="node-left" bindtap="toggleExpand" data-deptid="{{grandson.deptId}}">
-                      <t-icon wx:if="{{grandson.children && grandson.children.length > 0}}" 
-                        name="{{grandson.expanded ? 'chevron-down' : 'chevron-right'}}" 
-                        size="40rpx" 
-                        color="#999" />
+                      <t-icon wx:if="{{grandson.children && grandson.children.length > 0}}" name="{{grandson.expanded ? 'chevron-down' : 'chevron-right'}}" size="40rpx" color="#999" />
                       <view wx:else class="placeholder-icon"></view>
                       <text class="dept-name">{{grandson.deptName}}</text>
                       <text class="dept-type">{{grandson.deptType == '1' ? '联合创始人' : grandson.deptType == '2' ? '分公司' : grandson.deptType == '3' ? '代理商' : '门店'}}</text>
@@ -72,7 +68,7 @@
                       </view>
                     </view>
                   </view>
-                  
+
                   <!-- 第四层 -->
                   <view wx:if="{{grandson.expanded && grandson.children && grandson.children.length > 0}}">
                     <block wx:for="{{grandson.children}}" wx:for-item="ggrandson" wx:key="deptId">
@@ -110,7 +106,7 @@
       <text class="dialog-title">{{dialogTitle}}</text>
       <t-icon name="close" size="44rpx" color="#999" bindtap="closeDialog" />
     </view>
-    
+
     <view class="dialog-content">
       <view class="info_form">
         <!-- 上级部门 -->
@@ -126,17 +122,7 @@
         <view class="form_item">
           <view class="item_label required">部门名称</view>
           <view class="item_value">
-            <t-input 
-              t-class="item-input" 
-              t-class-tips="errMsg"
-              placeholder="请输入部门名称" 
-              value="{{form.deptName}}" 
-              maxlength="30"
-              tips="{{errors.deptName}}"
-              bindchange="onDeptNameInput" 
-              t-class-input="input-style"
-              borderless 
-            />
+            <t-input t-class="item-input" t-class-tips="errMsg" placeholder="请输入部门名称" value="{{form.deptName}}" maxlength="30" tips="{{errors.deptName}}" bindchange="onDeptNameInput" t-class-input="input-style" borderless />
           </view>
         </view>
         <view class="bd05" />
@@ -205,19 +191,11 @@
         <!-- 详细地址 -->
         <view class="addressDetail">
           <text class="item_label">详细地址</text>
-          <t-textarea 
-            t-class="external-class"
-            t-class-textarea="input-style"
-            placeholder="请输入详细地址" 
-            bordered 
-            disableDefaultPadding="{{true}}" 
-            value="{{form.addressDetail}}" 
-            bindchange="onAddressDetailInput" 
-          />
+          <t-textarea t-class="external-class" t-class-textarea="input-style" placeholder="请输入详细地址" bordered disableDefaultPadding="{{true}}" value="{{form.addressDetail}}" bindchange="onAddressDetailInput" />
         </view>
       </view>
     </view>
-    
+
     <view class="dialog-footer">
       <button class="btn" bindtap="onSubmit">保存</button>
     </view>
@@ -225,24 +203,11 @@
 </t-popup>
 
 <!-- Picker -->
-<t-picker 
-  visible="{{deptTypeVisible}}" 
-  value="{{form.deptType}}" 
-  title="请选择部门分类" 
-  cancelBtn="取消" 
-  confirmBtn="确认" 
-  bindchange="onDeptTypeChange" 
-  bindcancel="onPickerCancel">
+<t-picker visible="{{deptTypeVisible}}" value="{{form.deptType}}" title="请选择部门分类" cancelBtn="取消" confirmBtn="确认" bindchange="onDeptTypeChange" bindcancel="onPickerCancel">
   <t-picker-item options="{{deptTypeOptions}}" />
 </t-picker>
 
 <!-- 省市区级联选择器 -->
-<t-cascader 
-  visible="{{cascaderVisible}}" 
-  value="{{cascaderValue}}" 
-  options="{{options}}" 
-  title="请选择地址" 
-  bind:change="onCascaderChange" 
-/>
+<t-cascader visible="{{cascaderVisible}}" value="{{cascaderValue}}" options="{{options}}" title="请选择地址" bind:change="onCascaderChange" />
 
 <t-message id="t-message" />

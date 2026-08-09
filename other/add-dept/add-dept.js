@@ -73,6 +73,7 @@ Page({
     pagObj: {
       pageNum: 1,
       pageSize: 20,
+      deptName: ''
     },
   },
 
@@ -548,7 +549,15 @@ Page({
       this.message('error', '操作失败，请重试', 2000);
     });
   },
-
+  searchInput(e) {
+    let {
+      value
+    } = e?.detail
+    this.setData({
+      'pagObj.deptName': value
+    })
+    this.getDeptList()
+  },
   // 消息提示
   message(type, text, duration = 1500) {
     showMessage(type, text, duration, this);
