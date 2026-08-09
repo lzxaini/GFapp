@@ -15,7 +15,7 @@
     <view slot="right-icon" class="right_box" bindtap="goDeviceList" data-id="{{deptInfo.deptId}}" data-info="{{deptInfo}}">部门设备</view>
     </t-cell>
   </t-cell-group>
-  <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="getAdminDeviceList">
+  <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="getList">
     <block wx:for="{{teamList}}">
       <t-cell-group t-class="list_item" theme="card" bindtap="goDeviceList" data-id="{{item.deptId}}" data-info="{{item}}">
         <t-cell title="{{item.deptName}}" arrow>

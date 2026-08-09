@@ -25,6 +25,10 @@ Page({
   },
   onShow() {
     tabService.updateIndex(this, 0)
+    this.getList()
+  },
+  // 下拉刷新
+  getList(){
     let userInfo = getApp().globalData.userInfo
     let { dept } = userInfo
     this.setData({
