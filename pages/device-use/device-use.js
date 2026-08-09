@@ -59,10 +59,10 @@ Page({
     if (topic === `/resp/${this.data.deviceId}` && (result.funcCode === 5 && result.state === 2 || msg === '100000FF')) {
       this.clearReconnect(); // 停止重连
       wx.hideLoading();
-      showMessage('success', '您已结束本次服务，感谢您的使用！', 3000, this);
-      setTimeout(() => {
-        _this.goPage()
-      }, 1500);
+      // showMessage('success', '您已结束本次服务，感谢您的使用！', 3000, this);
+      // setTimeout(() => {
+      //   _this.goPage()
+      // }, 1500);
     }
   },
   exitDevice() {
