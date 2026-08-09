@@ -126,7 +126,9 @@ Page({
       // wx.redirectTo({
       //   url: '/pages/device-list/device-list',
       // })
-      wx.navigateBack(1)
+      wx.navigateBack({
+        delta: pages.length,
+      })
     }
   },
   // 去往使用指南

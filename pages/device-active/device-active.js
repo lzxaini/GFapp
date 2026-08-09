@@ -241,7 +241,7 @@ Page({
       })
     } else {
       wx.navigateBack({
-        delta: 1,
+        delta: pages.length,
       })
     }
   },
