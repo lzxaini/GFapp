@@ -79,7 +79,27 @@ Page({
       })
     })
   },
-
+  /**
+   * 查询项目详情，返回项目名称字符串（如 "项目1/项目2/项目3"）
+   * @param {*} sessionId 会话ID
+   * @returns {Promise<string>} 项目名称拼接的字符串
+   */
+  getProjectDetail(e) {
+    const sessionId = e.currentTarget.dataset.sessionid
+    const index = e.currentTarget.dataset.index
+    // 加载项目，项目1/项目2/项目3
+    getSessionDetailApi(sessionId).then(res => {
+      // 遍历所有子详情，提取项目名称
+      const projectNames = res.data.map(detail => {
+        const serviceObj = getServiceNameByCode(detail.service)
+        return serviceObj ? serviceObj.name : ''
+      }).filter(name => name) // 过滤掉未匹配到的空名称
+      // return projectNames.join('/')
+      this.setData({
+        [`historyList[${index}].projectNames`]: projectNames.join('/')
+      })
+    })
+  },
   /**
    * 查询设备使用记录（使用会话聚合接口，同一50分钟周期合并为一条）
    * @param {*} type 
