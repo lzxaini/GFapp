@@ -11,6 +11,24 @@
   // 	--td-navbar-color: #fff;
   // 	--td-navbar-capsule-border-color: #e3e6ea !important;
   // }
+  .title{
+    display: flex;
+    align-items: center;
+    margin: 32rpx;
+    padding-bottom: 28rpx;
+    border-bottom: 1rpx solid #9E81B3;
+    .icon{
+      width: 70rpx;;
+      height: 70rpx;;
+      margin-left: 32rpx;
+    }
+    .text{
+      font-family: AlibabaPuHuiTi3;
+      font-size: 32rpx;
+      margin-left: 24rpx;
+      color: #1E1A2E;
+    }
+  }
   .scroll-view {
     flex: 1;
     min-height: 0;
@@ -23,7 +41,7 @@
       box-sizing: border-box;
       border: 1rpx solid #E6DDF0;
       background-color: #ffffff;
-      margin: 30rpx 24rpx;
+      margin: 10rpx 24rpx 30rpx 24rpx;
 
       .nav_top {
         display: flex;
@@ -35,8 +53,8 @@
           align-items: center;
 
           .icon_4 {
-            width: 22rpx;
-            height: 26rpx;
+            width: 40rpx;
+            height: 40rpx;
           }
 
           .icon {
@@ -48,7 +66,7 @@
             font-family: AlibabaPuHuiTi3;
             font-size: 30rpx;
             font-weight: normal;
-            color: #1c2023;
+            color: #9E81B3;
             margin-left: 10rpx;
           }
         }

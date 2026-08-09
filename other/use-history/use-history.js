@@ -14,6 +14,7 @@ Page({
       pageSize: 10,
       serialNumber: ''
     },
+    titleSerialNumber: '',
     empty: {
       name: 'gesture-press',
       size: 40
@@ -21,8 +22,10 @@ Page({
   },
   onLoad(options) {
     let { serialNumber } = options
+    let titleSerialNumber = serialNumber.slice(-8);
     this.setData({
-      'pageObj.serialNumber': serialNumber
+      'pageObj.serialNumber': serialNumber,
+      titleSerialNumber
     })
     this.getDeviceUseList()
   },
