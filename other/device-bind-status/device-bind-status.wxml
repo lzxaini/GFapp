@@ -1,0 +1,43 @@
+<wxs module="sliceText">
+  var sliceText = function (text) {
+    var newText = text.slice(0, 12);
+    return text == '暂无地址' ? newText : newText + '...';
+  }
+  module.exports.sliceText = sliceText;
+</wxs>
+<view class="device-bind-status">
+  <view class="nav_bg">
+    <t-image class="image" src="{{cdnUrl}}/static/images/bind-nav-bg.png" mode=""/>
+    <view class="info" style="top: {{capsuleHeight}}px">
+    <!-- <view class="info"> -->
+      <t-image class="icon" src="{{cdnUrl}}/static/icon/icon_2.png" mode=""/>
+      <view class="title">绑定成功！</view>
+      <view class="text">您的养生仪已成功绑定到账户</view>
+    </view>
+  </view>
+  <t-cell-group t-class="cell_group" theme="card">
+    <t-cell t-class="cell_nav" t-class-left="cell_left" bordered="{{false}}">
+      <!-- <view class="" slot="leftIcon">单行标题1</view> -->
+      <t-icon class="icon" slot="left-icon" name="{{cdnUrl}}/static/icon/device-icon.png" size="40"></t-icon>
+      <view class="title" slot="title">黑武士CSM88-918</view>
+      <view class="description" slot="description">建议零售价：29.8w RMB</view>
+      <t-icon class="icon" slot="note" name="{{cdnUrl}}/static/icon/genuine.png" size="60"></t-icon>
+    </t-cell>
+    <t-cell title="序列号" bordered="{{false}}">
+      <view class="note" slot="note">CSM-FQ-{{titleSerialNumber}}</view>
+    </t-cell>
+    <t-cell title="激活日期" bordered="{{false}}">
+      <view class="note" slot="note">{{deviceDate.updateTime}}</view>
+    </t-cell>
+    <t-cell title="归属门店" bordered="{{false}}">
+      <view class="note" slot="note">{{deviceDate.deptName}}</view>
+    </t-cell>
+    <t-cell title="门店地址" bordered="{{false}}">
+      <view class="note" slot="note">{{sliceText.sliceText(userInfo.dept.address || '暂无地址')}}</view>
+    </t-cell>
+  </t-cell-group>
+  <view class="footer-box">
+    <t-button class="btn" icon="qrcode" bindtap="goScan">扫码激活</t-button>
+    <t-button class="btn back" bindtap="goBack">返回我的仪器</t-button>
+  </view>
+</view>

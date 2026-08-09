@@ -47,7 +47,8 @@
         "service-history/service-history",
         "team-search/team-search",
         "team-list/team-list",
-        "use-history/use-history"
+        "use-history/use-history",
+        "device-bind-status/device-bind-status"
       ],
       "independent ": false
     },
@@ -111,7 +112,6 @@
     "navigationStyle": "custom",
     "navigationBarTextStyle": "white"
   },
-  
   "tabBar": {
     "custom": true,
     "color": "#7A7E83",

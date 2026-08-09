@@ -67,8 +67,13 @@ Page({
         content: '设备绑定成功！',
       });
        setTimeout(() => {
-        this.noBind()
-       }, 1500);
+        this.bindSuccess()
+       }, 100);
+    })
+  },
+  bindSuccess(){
+    wx.navigateTo({
+      url: '/other/device-bind-status/device-bind-status?serialNumber=' + this.data.serialNumber
     })
   }
 })
