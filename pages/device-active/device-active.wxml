@@ -18,7 +18,7 @@
     <view class="text">正在激活设备，请耐心等待！</view>
   </view>
   <view class="device_card" wx:if="{{deviceFlag}}" wx:if="{{deviceFlag}}">
-    <view class="item">
+    <view class="item" bindtap="goUseDeviceInfo">
       <t-icon name="book-open" size="20" color="#9E81B3" />
       <view class="text">操作指南</view>
     </view>

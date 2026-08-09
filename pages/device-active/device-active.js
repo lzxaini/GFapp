@@ -245,6 +245,12 @@ Page({
       })
     }
   },
+  // 去往使用指南
+  goUseDeviceInfo() {
+    wx.navigateTo({
+      url: '/pages/usage-guide/usage-guide',
+    });
+  },
   // 去往使用记录
   goHistoryInfo() {
     wx.navigateTo({

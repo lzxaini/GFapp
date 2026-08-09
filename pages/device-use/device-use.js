@@ -129,10 +129,17 @@ Page({
       wx.navigateBack(1)
     }
   },
-    // 去往使用记录
-    goHistoryInfo() {
-      wx.navigateTo({
-        url: `/other/use-history/use-history?serialNumber=${this.data.deviceId}`,
-      });
-    },
+  // 去往使用指南
+  goUseDeviceInfo() {
+    console.log('测试')
+    wx.navigateTo({
+      url: '/pages/usage-guide/usage-guide',
+    });
+  },
+  // 去往使用记录
+  goHistoryInfo() {
+    wx.navigateTo({
+      url: `/other/use-history/use-history?serialNumber=${this.data.deviceId}`,
+    });
+  },
 })

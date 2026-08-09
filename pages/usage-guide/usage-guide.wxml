@@ -4,7 +4,7 @@
   <!-- 滚动内容区域 -->
   <scroll-view class="scroll-content" scroll-y="true" scroll-with-animation="true">
     <view class="image-wrapper">
-      <t-image t-class="usage-guide" src="{{imageUrl}}" mode="widthFix" bindload="loadImage" binderror="errorImage"></t-image>
+      <t-image t-class="usage-guide" src="{{cdnUrl + imageUrl}}" mode="widthFix" bindload="loadImage" binderror="errorImage"></t-image>
     </view>
   </scroll-view>
 </view>
