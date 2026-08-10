@@ -14,37 +14,46 @@ import {
 } from '../../utils/config'
 const dayjs = require('dayjs')
 const app = getApp()
+// 默认日期区间：最近30天
+const DEFAULT_START = dayjs().subtract(30, 'day').format('YYYY-MM-DD')
+const DEFAULT_END = dayjs().format('YYYY-MM-DD')
 Page({
   data: {
     capsuleHeight: app.globalData.capsuleHeight,
     userInfo: app.globalData.userInfo,
     ossUrl: app.globalData.ossUrl,
     calendarVisible: false,
-    calendarValue: [],
-    minDate: dayjs().subtract(1, 'month').valueOf(),
-    defaultValue: dayjs().format('YYYY-MM-DD'),
+    // 默认显示最近30天；日期可任意选择历史日期，区间跨度由 handleConfirm 限制为不超过30天
+    calendarValue: [DEFAULT_START, DEFAULT_END],
+    minDate: dayjs('2020-01-01').valueOf(), // 允许选择任意历史日期
+    maxDate: dayjs().valueOf(),             // 最晚今天
+    defaultValue: [DEFAULT_START, DEFAULT_END],
     tabsValue: 1,
     serviceList: [], // 服务记录
     rechargeList: [], // 充值记录
     serviceTotal: 0, // 服务条数
     rechargeTotal: 0, // 充值条数
     refresher: false,
-    servicePageObj: { // 服务记录分页参数
+    servicePageObj: { // 服务记录分页参数（默认最近30天）
       pageNum: 1,
-      pageSize: 10
+      pageSize: 10,
+      minServiceTime: DEFAULT_START,
+      maxServiceTime: DEFAULT_END
     },
-    rechargePageObj: { // 充值记录分页参数
+    rechargePageObj: { // 充值记录分页参数（默认最近30天）
       pageNum: 1,
-      pageSize: 10
+      pageSize: 10,
+      minRechargeTime: DEFAULT_START,
+      maxRechargeTime: DEFAULT_END
     },
     searchValue: '', // 搜索
-    serviceForm: { // 服务日期区间
-      minServiceTime: '',
-      maxServiceTime: ''
+    serviceForm: { // 服务日期区间（默认最近30天）
+      minServiceTime: DEFAULT_START,
+      maxServiceTime: DEFAULT_END
     },
-    rechargeForm: { // 充值日期区间
-      minRechargeTime: '',
-      maxRechargeTime: ''
+    rechargeForm: { // 充值日期区间（默认最近30天）
+      minRechargeTime: DEFAULT_START,
+      maxRechargeTime: DEFAULT_END
     },
     operationInfo: {},
     addressVisible: false, // 省市区组件
@@ -108,15 +117,23 @@ Page({
     let {
       value
     } = e?.detail
-    this.setData({
-      tabsValue: value
-    })
-    this.searchAll()
-    if (value === 1) {
-      this.getRechargeRecords()
-    } else {
-      this.getServiceRecords()
+    const { calendarValue } = this.data
+    // 切 tab 保留当前日期区间；若为空则兜底为最近30天，保证日期显示不消失、默认传值不丢失
+    const start = (calendarValue && calendarValue[0]) || DEFAULT_START
+    const end = (calendarValue && calendarValue[1]) || DEFAULT_END
+    const update = {
+      tabsValue: value,
+      calendarValue: [start, end], // 强制保证日期区间有值，wxml 显示不消失
     }
+    if (value === 1) {
+      update['rechargeForm.minRechargeTime'] = start
+      update['rechargeForm.maxRechargeTime'] = end
+    } else {
+      update['serviceForm.minServiceTime'] = start
+      update['serviceForm.maxServiceTime'] = end
+    }
+    this.setData(update)
+    this.statrtSearch()
   },
 
   /**
@@ -182,6 +199,28 @@ Page({
       }
       this.setData({
         refresher: false
+      })
+    })
+  },
+  
+  /**
+   * 查询项目详情，返回项目名称字符串（如 "项目1/项目2/项目3"）
+   * @param {*} sessionId 会话ID
+   * @returns {Promise<string>} 项目名称拼接的字符串
+   */
+  getProjectDetail(e) {
+    const sessionId = e.currentTarget.dataset.sessionid
+    const index = e.currentTarget.dataset.index
+    // 加载项目，项目1/项目2/项目3
+    getSessionDetailApi(sessionId).then(res => {
+      // 遍历所有子详情，提取项目名称
+      const projectNames = res.data.map(detail => {
+        const serviceObj = getServiceNameByCode(detail.service)
+        return serviceObj ? serviceObj.name : ''
+      }).filter(name => name) // 过滤掉未匹配到的空名称
+      // return projectNames.join('/')
+      this.setData({
+        [`serviceList[${index}].projectNames`]: projectNames.join('/')
       })
     })
   },
@@ -289,6 +328,12 @@ Page({
     } = this.data
     let date1 = dayjs(value[0]).format('YYYY-MM-DD');
     let date2 = dayjs(value[1]).format('YYYY-MM-DD');
+    // 兜底校验：区间跨度不得超过30天
+    const diffDays = dayjs(date2).diff(dayjs(date1), 'day');
+    if (diffDays < 0 || diffDays > 30) {
+      wx.showToast({ title: '选择区间不能超过30天', icon: 'none' });
+      return;
+    }
     this.setData({
       calendarValue: [date1, date2],
     });

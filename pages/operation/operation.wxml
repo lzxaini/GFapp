@@ -3,7 +3,8 @@
   <!-- 顶部导航栏固定 -->
   <t-navbar t-class="navBar" fixed="{{false}}" left-arrow title="运营管理" />
   <!-- 滚动内容区域 -->
-  <scroll-view class="scroll-content" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="pullDownToRefresh">
+  <scroll-view class="scroll-content" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom"
+    refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="pullDownToRefresh">
     <view class="nav_bg"></view>
     <!-- 六宫格统计 -->
     <view class="operation_nav {{ userInfo.dept.deptType == 1 ? 'admin_operation_nav' : '' }}">
@@ -53,7 +54,8 @@
           <t-icon name="chevron-down-s" size="16" color="#FF8533" />
         </view>
         <view class="all_item">
-          <t-input value="{{searchValue}}" bindchange="searchInput" bindblur="statrtSearch" t-class="item-input" t-class-input="input_ftsize" placeholder="搜索门店名称/团队编号" borderless>
+          <t-input value="{{searchValue}}" bindchange="searchInput" bindblur="statrtSearch" t-class="item-input"
+            t-class-input="input_ftsize" placeholder="搜索门店名称/团队编号" borderless>
             <t-icon slot="prefix-icon" name="search" size="18" color="#FF8533" />
           </t-input>
         </view>
@@ -61,16 +63,20 @@
     </view>
     <!-- 列表模块 -->
     <view class="operation_info">
-      <t-tabs t-class="tabs_box" t-class-active="active_style" t-class-item="item_style" defaultValue="{{tabsValue}}" theme="tag" bind:change="tabClick">
+      <t-tabs t-class="tabs_box" t-class-active="active_style" t-class-item="item_style" defaultValue="{{tabsValue}}"
+        theme="tag" bind:change="tabClick">
         <t-tab-panel wx:key="index" label="充值记录" value="{{1}}" />
         <t-tab-panel wx:key="index" label="服务记录" value="{{2}}" />
       </t-tabs>
       <view class="table" wx:if="{{tabsValue === 1}}">
         <scroll-view scroll-x="true">
           <!-- 表头 -->
-          <view class="table-row table-header {{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2 || userInfo.dept.deptType == 3 ? 'table-row-big' : ''}}">
+          <view
+            class="table-row table-header {{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2 || userInfo.dept.deptType == 3 ? 'table-row-big' : ''}}">
             <!-- 只有联合创始和代理商有机构显示 -->
-            <view class="table-cell cell-header cell-big" wx:if="{{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2 || userInfo.dept.deptType == 3}}" style="flex: 2;">机构</view>
+            <view class="table-cell cell-header cell-big"
+              wx:if="{{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2 || userInfo.dept.deptType == 3}}"
+              style="flex: 2;">机构</view>
             <view class="table-cell cell-header" style="flex: 3;min-width: 200rpx;">充值点数</view>
             <view class="table-cell cell-header" style="flex: 2;">上期结余</view>
             <view class="table-cell cell-header" style="flex: 2;">当前结余</view>
@@ -80,8 +86,11 @@
           <view class="scroll-view">
             <block wx:for="{{rechargeList}}" wx:key="index">
               <!-- 只有联合创始和代理商有机构显示 -->
-              <view class="table-row {{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2 || userInfo.dept.deptType == 3 ? 'table-row-big' : ''}}">
-                <view class="table-cell textOverflow" wx:if="{{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2 || userInfo.dept.deptType == 3}}" style="flex: 2;">{{item.deptName}}</view>
+              <view
+                class="table-row {{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2 || userInfo.dept.deptType == 3 ? 'table-row-big' : ''}}">
+                <view class="table-cell textOverflow"
+                  wx:if="{{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2 || userInfo.dept.deptType == 3}}"
+                  style="flex: 2;">{{item.deptName}}</view>
                 <view class="table-cell number-cell" style="flex: 3;min-width: 200rpx;">
                   <view class="text">+{{item.rechargeAmount}}</view>
                   <view class="date">{{item.createTime}}</view>
@@ -147,6 +156,12 @@
                 <text class="info">{{item.serialNumber}}</text>
               </view>
               <view class="list_item">
+                <text class="lable">服务项目</text>
+                <text class="info" wx:if="{{item.detailCount > 1 && !item.projectNames}}" bindtap="getProjectDetail"
+                  data-sessionid="{{item.sessionId}}" data-index="{{index}}">查看</text>
+                <text class="info" wx:else>{{item.projectNames || item.serviceObj.name}}</text>
+              </view>
+              <view class="list_item">
                 <text class="lable">开始时间</text>
                 <text class="info">{{item.sessionStart}}</text>
               </view>
@@ -154,7 +169,8 @@
                 <text class="lable">结束时间</text>
                 <text class="info">{{item.status == 1 ? '进行中' : item.sessionEnd}}</text>
               </view>
-              <view class="list_item" wx:if="{{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2 || userInfo.dept.deptType == 3}}">
+              <view class="list_item"
+                wx:if="{{userInfo.dept.deptType == 1 || userInfo.dept.deptType == 2 || userInfo.dept.deptType == 3}}">
                 <text class="lable">服务机构</text>
                 <text class="info">{{item.deptName}}</text>
               </view>
@@ -163,16 +179,20 @@
               <image class="icon" src="../../static/icon/{{item.statusIcon}}" />
             </view>
             <!-- 展开按钮（仅当有暂停记录时显示） -->
-            <view class="expand_btn" wx:if="{{item.detailCount > 1}}" bindtap="toggleSessionDetail" data-sessionid="{{item.sessionId}}" data-index="{{index}}">
+            <view class="expand_btn" wx:if="{{false}}" bindtap="toggleSessionDetail" data-sessionid="{{item.sessionId}}"
+              data-index="{{index}}">
+              <!-- <view class="expand_btn" wx:if="{{item.detailCount > 1}}" bindtap="toggleSessionDetail" data-sessionid="{{item.sessionId}}" data-index="{{index}}"> -->
               <view class="expand_text">
                 {{item.expanded ? '收起' : '查看'}}
                 <!-- 详细记录（{{item.detailCount}}条） -->
               </view>
               <!-- <view class="expand_icon">{{item.expanded ? '▲' : '▼'}}</view> -->
-              <t-icon t-class="expand_icon" name="{{item.expanded ? 'chevron-up-double' : 'chevron-down-double'}}" size="15"></t-icon>
+              <t-icon t-class="expand_icon" name="{{item.expanded ? 'chevron-up-double' : 'chevron-down-double'}}"
+                size="15"></t-icon>
             </view>
             <!-- 详细记录列表 -->
-            <view class="detail_list" wx:if="{{item.expanded}}">
+            <view class="detail_list" wx:if="{{false}}">
+              <!-- <view class="detail_list" wx:if="{{item.expanded}}"> -->
               <!-- <view class="detail_title">暂停/恢复明细</view> -->
               <block wx:for="{{item.details}}" wx:for-item="detail" wx:for-index="detailIndex" wx:key="detailIndex">
                 <view class="detail_item">
@@ -190,7 +210,8 @@
                     </view>
                     <view class="detail_row">
                       <text class="detail_label">结束时间</text>
-                      <text class="detail_value" style="{{detail.endTime || 'color: #4caf50;'}}">{{detail.endTime || '进行中'}}</text>
+                      <text class="detail_value"
+                        style="{{detail.endTime || 'color: #4caf50;'}}">{{detail.endTime || '进行中'}}</text>
                     </view>
                     <view class="detail_row">
                       <text class="detail_label">运行时长</text>
@@ -216,7 +237,9 @@
 </view>
 <t-message id="t-message" />
 <!-- 日期选择区间 -->
-<t-calendar visible="{{calendarVisible}}" value="{{calendarValue}}" type="range" minDate="{{minDate}}" defaultValue="{{defaultValue}}" bind:confirm="handleConfirm" />
-<t-cascader visible="{{addressVisible}}" value="{{addressValue}}" options="{{addressOptions}}" title="请选择地址" bind:change="onChange" check-strictly close-btn="{{false}}">
+<t-calendar visible="{{calendarVisible}}" value="{{calendarValue}}" type="range" minDate="{{minDate}}"
+  maxDate="{{maxDate}}" defaultValue="{{defaultValue}}" bind:confirm="handleConfirm" />
+<t-cascader visible="{{addressVisible}}" value="{{addressValue}}" options="{{addressOptions}}" title="请选择地址"
+  bind:change="onChange" check-strictly close-btn="{{false}}">
   <text class="confirm-btn" slot="close-btn">确定</text>
 </t-cascader>
