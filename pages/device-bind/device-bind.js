@@ -7,8 +7,14 @@ const app = getApp()
 Page({
   data: {
     ossUrl: app.globalData.ossUrl,
-    bindList: [],
-    originalBindList: [], // 缓存原始数据
+    bindList: [],           // 原始全量数据（兼容旧逻辑）
+    originalBindList: [],   // 缓存原始全量数据
+    displayList: [],        // 当前页展示列表（前端分页切片）
+    searchValue: '',        // 搜索关键字
+    pageSize: 20,
+    pageNum: 1,
+    hasMore: true,
+    loadingMore: false,
     bindId: '',
     serialNumber: ''
   },
@@ -19,24 +25,43 @@ Page({
   },
   searchChange(e) {
     let { value } = e?.detail
-    let { originalBindList, bindList } = this.data
-    // 输入为空还原原始数据
-    if (!value) {
-      this.setData({ bindList: originalBindList })
-      return;
-    }
-    // 支持模糊搜索
-    let search = (originalBindList.length ? originalBindList : bindList).filter(item => item.deptName && item.deptName.indexOf(value) > -1)
-    this.setData({ bindList: search })
+    this.setData({ searchValue: value || '' })
+    this.computeDisplayList(true)
   },
   // 激活设备
   activetionDevice(serialNumber) {
     activetionDeviceApi(serialNumber).then(res => {
       this.setData({
         bindList: res.data,
-        originalBindList: res.data // 缓存原始数据
+        originalBindList: res.data || [] // 缓存原始全量数据
       })
+      this.computeDisplayList(true)
     })
+  },
+  // 计算当前展示列表（前端分页切片，兼容搜索过滤）
+  computeDisplayList(reset) {
+    const { originalBindList, searchValue, pageSize, pageNum } = this.data
+    // 基于搜索关键字过滤全量数据
+    const keyword = (searchValue || '').trim()
+    const fullList = keyword
+      ? (originalBindList || []).filter(item => item.deptName && item.deptName.indexOf(keyword) > -1)
+      : (originalBindList || [])
+    const curPage = reset ? 1 : pageNum
+    const end = curPage * pageSize
+    const slice = fullList.slice(0, end)
+    this.setData({
+      displayList: slice,
+      pageNum: curPage,
+      hasMore: end < fullList.length,
+      loadingMore: false,
+    })
+  },
+  // 触底加载更多
+  onScrollToLower() {
+    const { loadingMore, hasMore, pageNum } = this.data
+    if (loadingMore || !hasMore) return
+    this.setData({ loadingMore: true, pageNum: pageNum + 1 })
+    this.computeDisplayList(false)
   },
   bindChange(e) {
     let { value } = e?.detail

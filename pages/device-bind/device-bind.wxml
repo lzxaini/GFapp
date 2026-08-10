@@ -12,9 +12,9 @@
       <view class="extra">取消</view>
     </view>
     <view class="scroll_title">我的团队</view>
-    <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true">
+    <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onScrollToLower">
       <t-radio-group borderless t-class="box" bind:change="bindChange">
-        <t-cell wx:for="{{bindList}}" t-class="list_item" bordered="{{false}}">
+        <t-cell wx:for="{{displayList}}" wx:key="{{item.deptId}}" t-class="list_item" bordered="{{false}}">
           <t-avatar slot="left-icon" size="large" image="{{ossUrl + item.deptAvatar}}"></t-avatar>
           <view slot="title" class="title_box">
             <text class="title_text">{{item.deptName}}</text>
@@ -28,7 +28,12 @@
           </view>
         </t-cell>
       </t-radio-group>
-      <!-- <t-empty t-class="empty" t-class-image="empty_image" image="/static/icon/footer.png" description="糟糕，到底了" /> -->
+      <!-- 底部加载状态 -->
+      <view wx:if="{{loadingMore}}" style="text-align:center;padding:30rpx 0;color:#999;font-size:24rpx;">加载中...</view>
+      <view wx:elif="{{!hasMore && displayList.length > 0}}" style="text-align:center;padding:30rpx 0;color:#999;font-size:24rpx;">没有更多了</view>
+      <view wx:elif="{{displayList.length < 1}}" style="margin-top: 40rpx">
+        <t-empty t-class="empty" t-class-image="empty_image" image="/static/icon/footer.png" description="糟糕，到底了" />
+      </view>
     </scroll-view>
   </view>
   <view class="footer">
