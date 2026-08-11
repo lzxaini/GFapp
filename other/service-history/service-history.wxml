@@ -27,6 +27,12 @@
             <text class="info">{{item.serialNumber}}</text>
           </view>
           <view class="list_item">
+            <text class="lable">服务项目</text>
+            <text class="info" wx:if="{{item.detailCount > 1 && !item.projectNames}}" bindtap="getProjectDetail"
+              data-sessionid="{{item.sessionId}}" data-index="{{index}}">查看</text>
+            <text class="info" wx:else>{{item.projectNames || item.serviceObj.name}}</text>
+          </view>
+          <view class="list_item">
             <text class="lable">开始时间</text>
             <text class="info">{{item.sessionStart}}</text>
           </view>
@@ -44,7 +50,9 @@
           <image class="icon" src="{{cdnUrl}}/static/icon/{{item.statusIcon}}" />
         </view>
         <!-- 展开按钮（仅当有暂停记录时显示） -->
-        <view class="expand_btn" wx:if="{{item.detailCount > 1}}" bindtap="toggleSessionDetail"
+        <!-- <view class="expand_btn" wx:if="{{item.detailCount > 1}}" bindtap="toggleSessionDetail"
+          data-sessionid="{{item.sessionId}}" data-index="{{index}}"> -->
+        <view class="expand_btn" wx:if="{{false}}" bindtap="toggleSessionDetail"
           data-sessionid="{{item.sessionId}}" data-index="{{index}}">
           <view class="expand_text">
             {{item.expanded ? '收起' : '查看'}}
@@ -53,7 +61,8 @@
             size="15"></t-icon>
         </view>
         <!-- 详细记录列表 -->
-        <view class="detail_list" wx:if="{{item.expanded}}">
+        <!-- <view class="detail_list" wx:if="{{item.expanded}}"> -->
+        <view class="detail_list" wx:if="{{false}}">
           <block wx:for="{{item.details}}" wx:for-item="detail" wx:for-index="detailIndex" wx:key="detailIndex">
             <view class="detail_item">
               <view class="nav_top">
