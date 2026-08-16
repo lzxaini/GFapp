@@ -20,7 +20,7 @@
   height: calc(100vh - (env(safe-area-inset-bottom) + 80px));
   padding-bottom: 80px;
   font-family: AlibabaPuHuiTi3;
-  // background: linear-gradient(180deg, #BEA6D4 20%, #F5F0FA 40%, #F5F0FA 100%);
+  // background: linear-gradient(180deg, var(--main-color) 20%, #F5F0FA 40%, #F5F0FA 100%);
   background-color: #F5F0FA;
 
   .navBar {
@@ -120,12 +120,12 @@
         }
 
         .tips_c_2 {
-          color: #BEA6D4;
+          color: var(--main-color);
         }
       }
 
       .blue {
-        background-color: #BEA6D4;
+        background-color: var(--main-color);
 
         .title,
         .content {
@@ -154,7 +154,7 @@
         .btn {
           border-radius: 11rpx;
           background-color: #F0EFFF;
-          color: #BEA6D4;
+          color: var(--main-color);
           padding: 5rpx 15rpx;
           font-size: 20rpx;
         }
@@ -184,12 +184,12 @@
               width: 18rpx;
               height: 18rpx;
               border-radius: 6rpx;
-              background-color: #BEA6D4;
+              background-color: var(--main-color);
             }
           }
           .before-1{
             &::before {
-              background-color: #BEA6D4;
+              background-color: var(--main-color);
             }
           }
           .before-2,.before-3{
@@ -204,11 +204,11 @@
           }
           .value {
             font-size: 25rpx;
-            color: #BEA6D4;
+            color: var(--main-color);
           }
 
           .color-1 {
-            color: #BEA6D4;
+            color: var(--main-color);
           }
 
           .color-2 {
@@ -236,7 +236,7 @@
     }
 
     .dep_info {
-      --td-search-action-color: #BEA6D4;
+      --td-search-action-color: var(--main-color);
 
       .header_box {
         @extend %flex-sb;
@@ -248,7 +248,7 @@
           font-size: 24rpx;
           color: #FFFFFF;
           border-radius: 14rpx;
-          background: #BEA6D4;
+          background: var(--main-color);
 
           .icon {
             margin-right: 10rpx;
@@ -264,7 +264,7 @@
         border-radius: 16rpx;
         background-color: #FFFFFF;
         .action{
-          color: #BEA6D4;
+          color: var(--main-color);
           margin-right: 20rpx;
         }
       }
@@ -278,7 +278,7 @@
         .table-cell {
           padding: 0;
           font-weight: bold;
-          color: #BEA6D4;
+          color: var(--main-color);
         }
       }
 
@@ -343,7 +343,7 @@
           font-family: AlibabaPuHuiTi3;
           font-size: 24rpx;
           font-weight: 500;
-          color: #BEA6D4;
+          color: var(--main-color);
         }
       }
 

@@ -34,12 +34,12 @@ App({
     statusBarHeight: 0,
     capsuleHeight: 0,
     marginBottom: '60rpx',
-    baseUrl: 'https://api.chaosm.cn',
-    ossUrl: 'https://api.chaosm.cn',
-    cdnUrl: 'https://cdn.chaosm.cn',
+    baseUrl: 'https://api.hyj001.top',
+    ossUrl: 'https://api.hyj001.top',
+    cdnUrl: 'https://cdn.hyj001.top',
     // baseUrl: 'http://127.0.0.1:8080',
     // ossUrl: 'http://127.0.0.1:8080',
-    mqttUrl: 'wxs://mqtt.chaosm.cn/mqtt',
+    mqttUrl: 'wxs://mqtt.hyj001.top/mqtt',
     // mqttUrl: 'wxs://mqtt.fxnws.com/mqtt',
     userInfo: null,
     token: null
@@ -218,7 +218,7 @@ App({
       confirmText: "确认",
       showCancel: false,
       cancelText: "取消",
-      confirmColor: "#BEA6D4",
+      confirmColor: "#18E6E6",
       success: (res) => {
         if (res.confirm) {
           wx.openSetting({

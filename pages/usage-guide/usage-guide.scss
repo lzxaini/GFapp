@@ -5,7 +5,7 @@
   background-color: #FBFBFD;
 
   .navBar {
-    --td-navbar-bg-color: #9E81B3;
+    --td-navbar-bg-color: var(--main-dark-color);
     --td-navbar-color: #fff;
     --td-navbar-capsule-border-color: #e3e6ea !important;
   }

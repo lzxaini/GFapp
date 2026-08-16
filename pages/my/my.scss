@@ -10,7 +10,7 @@
 
   .navBar {
     --td-navbar-bg-color: #FFFFFF;
-    --td-navbar-color: #5A5470;
+    --td-navbar-color: transparent;
     --td-navbar-capsule-border-color: #e3e6ea !important;
   }
 
@@ -30,7 +30,7 @@
       z-index: 0;
       top: -80rpx;
       width: 100%;
-      height: 242rpx;
+      height: 402rpx;
 
       .my_bg {
         width: 100%;
@@ -144,7 +144,7 @@
     font-family: AlibabaPuHuiTi3;
     font-size: 26rpx;
     font-weight: normal;
-    color: #BEA6D4;
+    color: var(--main-color);
   }
 
   .dept_info {
@@ -193,7 +193,7 @@
       background-color: transparent;
       --td-button-border-radius: 80rpx;
       --td-button-default-border-color: transparent;
-      background-color: #BEA6D4;
+      background-color: var(--main-color);
     }
   }
 
@@ -203,8 +203,8 @@
 }
 
 .action-btn {
-  --td-button-primary-bg-color: #BEA6D4;
-  --td-button-primary-border-color: #BEA6D4;
+  --td-button-primary-bg-color: var(--main-color);
+  --td-button-primary-border-color: var(--main-color);
   --td-button-primary-active-bg-color: #E6DDF0;
   --td-button-primary-active-border-color: #E6DDF0;
   margin-bottom: 30rpx;

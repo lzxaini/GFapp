@@ -18,11 +18,11 @@
   </view>
   <view class="device_card">
     <view class="item" bindtap="goUseDeviceInfo">
-      <t-icon name="book-open" size="20" color="#9E81B3" />
+      <t-icon name="book-open" size="20" t-class="icon-color-dark" />
       <view class="text">操作指南</view>
     </view>
     <view class="item" bindtap="goHistoryInfo">
-      <t-icon name="assignment-checked" size="20" color="#9E81B3" />
+      <t-icon name="assignment-checked" size="20" t-class="icon-color-dark" />
       <view class="text">使用记录</view>
     </view>
   </view>

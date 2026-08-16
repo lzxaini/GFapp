@@ -62,6 +62,6 @@
 }
 
 .switch {
-  --td-switch-checked-color: #BEA6D4;
+  --td-switch-checked-color: var(--main-color);
   --td-switch-checked-disabled-color: #aaadee;
 }

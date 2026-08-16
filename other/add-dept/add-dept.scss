@@ -92,7 +92,7 @@
 
 .dept-type {
   font-size: 24rpx;
-  color: #BEA6D4;
+  color: var(--main-color);
   background-color: rgba(136, 139, 244, 0.1);
   padding: 4rpx 12rpx;
   border-radius: 8rpx;
@@ -259,14 +259,14 @@
 
   .btn {
     height: 88rpx;
-    border: 2rpx solid #BEA6D4;
+    border: 2rpx solid var(--main-color);
     border-radius: 80rpx;
     box-sizing: border-box;
     font-family: AlibabaPuHuiTi3;
     font-size: 32rpx;
     line-height: 88rpx;
     font-weight: bold;
-    color: #BEA6D4;
+    color: var(--main-color);
     background-color: #fff;
   }
 }

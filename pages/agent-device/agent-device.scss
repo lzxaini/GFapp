@@ -6,12 +6,12 @@
 	display: flex;
 	flex-direction: column;
 	background-color: #F5F0FA;
-  // background: linear-gradient(180deg, #BEA6D4 20%, #F5F0FA 40%, #F5F0FA 100%);
+  // background: linear-gradient(180deg, var(--main-color) 20%, #F5F0FA 40%, #F5F0FA 100%);
   .bg_box {
     position: relative;
     width: 100%;
     height: 552rpx;
-    // background: linear-gradient(180deg, #BEA6D4 29%, #F5F0FA 100%);
+    // background: linear-gradient(180deg, var(--main-color) 29%, #F5F0FA 100%);
 
     .bg_top {
       position: absolute;
@@ -44,7 +44,7 @@
       .slogan {
         font-family: AlibabaPuHuiTi3;
         font-size: 28rpx;
-        color: #9E81B3;
+        color: var(--main-dark-color);
         margin-left: 11rpx;
       }
     }
@@ -59,7 +59,7 @@
 			width: 140rpx;
 			height: 50rpx;
 			border-radius: 25rpx 0 0 25rpx;
-			background-color: #BEA6D4;
+			background-color: var(--main-color);
 			font-family: AlibabaPuHuiTi3;
 			font-size: 24rpx;
 			font-weight: 300;
@@ -83,11 +83,11 @@
       font-family: AlibabaPuHuiTi3;
       font-size: 28rpx;
       font-weight: bold;
-      --td-tab-item-color: #BEA6D4;
+      --td-tab-item-color: var(--main-color);
     }
 
     .active_style {
-      background-color: #BEA6D4;
+      background-color: var(--main-color);
       border-radius: 60rpx;
       font-family: AlibabaPuHuiTi3;
       font-size: 32rpx;
@@ -99,7 +99,7 @@
       --td-tab-nav-bg-color: rgba(255, 255, 255, 0.3);
       --td-tab-item-tag-bg: transparent;
       --td-tab-border-color: transparent;
-      --td-tab-item-tag-active-bg: #BEA6D4;
+      --td-tab-item-tag-active-bg: var(--main-color);
       --td-tab-item-color: #1c2023;
       --td-tab-item-active-color: #ffffff;
       --td-tab-item-height: 80rpx;
@@ -127,7 +127,7 @@
 				font-family: AlibabaPuHuiTi3;
 				font-size: 24rpx;
 				font-weight: normal;
-				background: linear-gradient(281deg, #BEA6D4 0%, #5151c6 100%);
+				background: linear-gradient(281deg, var(--main-color) 0%, #5151c6 100%);
 				-webkit-background-clip: text;
 				-webkit-text-fill-color: transparent;
 				background-clip: text;

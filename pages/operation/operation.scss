@@ -10,7 +10,7 @@
   flex-direction: column;
   height: calc(100vh - (env(safe-area-inset-bottom) + 80px));
   padding-bottom: 80px;
-  // background: linear-gradient(180deg, #BEA6D4 20%, #F5F0FA 40%, #F5F0FA 100%);
+  // background: linear-gradient(180deg, var(--main-color) 20%, #F5F0FA 40%, #F5F0FA 100%);
   background-color: #F9F7FC;
 
   .navBar {
@@ -26,7 +26,7 @@
     right: 70rpx;
     width: 102rpx;
     height: 102rpx;
-    background-color: #BEA6D4;
+    background-color: var(--main-color);
     color: #FFFFFF;
     border-radius: 50%;
     text-align: center;
@@ -188,7 +188,7 @@
     .tabs_box {
       --td-tab-nav-bg-color: rgba(255, 255, 255, 0.3);
       --td-tab-item-tag-bg: transparent;
-      --td-tab-item-tag-active-bg: #BEA6D4;
+      --td-tab-item-tag-active-bg: var(--main-color);
       --td-tab-item-active-color: #ffffff;
       --td-tab-item-height: 80rpx;
       border: 1rpx solid #ecedfd;
@@ -196,14 +196,14 @@
     }
 
     .item_style {
-      --td-tab-item-color: #BEA6D4;
+      --td-tab-item-color: var(--main-color);
       font-family: AlibabaPuHuiTi3;
       font-size: 28rpx;
       font-weight: bold;
     }
 
     .active_style {
-      background-color: #BEA6D4;
+      background-color: var(--main-color);
       font-family: AlibabaPuHuiTi3;
       font-size: 32rpx;
       font-weight: 300;
@@ -216,7 +216,7 @@
       .list_item_info {
         font-family: AlibabaPuHuiTi3;
         font-size: 24rpx;
-        background: linear-gradient(281deg, #BEA6D4 0%, #5151c6 100%);
+        background: linear-gradient(281deg, var(--main-color) 0%, #5151c6 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -314,7 +314,7 @@
       font-family: AlibabaPuHuiTi3;
       font-size: 24rpx;
       font-weight: 500;
-      color: #BEA6D4;
+      color: var(--main-color);
     }
 
     .date {
@@ -370,7 +370,7 @@
           font-family: AlibabaPuHuiTi3;
           font-size: 30rpx;
           font-weight: normal;
-          color: #9E81B3;
+          color: var(--main-dark-color);
           margin-left: 10rpx;
         }
       }
@@ -387,7 +387,7 @@
         align-items: center;
         justify-content: center;
         padding: 4rpx 16rpx;
-        background: linear-gradient(135deg, #E6DDF0 0%, #BEA6D4 100%);
+        background: linear-gradient(135deg, #E6DDF0 0%, var(--main-color) 100%);
         border-radius: 20rpx;
 
         .badge_text {
@@ -423,7 +423,7 @@
           margin-top: 16rpx;
 
           .info.primary {
-            color: #BEA6D4;
+            color: var(--main-color);
             font-weight: bold;
             font-size: 28rpx;
           }
@@ -451,18 +451,18 @@
       padding: 10rpx;
       background-color: #ebebfc;
       border-radius: 12rpx;
-      border: 1rpx dashed #BEA6D4;
+      border: 1rpx dashed var(--main-color);
 
       .expand_text {
         font-family: AlibabaPuHuiTi3;
         font-size: 24rpx;
-        color: #BEA6D4;
+        color: var(--main-color);
         margin-right: 8rpx;
       }
 
       .expand_icon {
         font-size: 20rpx;
-        color: #BEA6D4;
+        color: var(--main-color);
       }
     }
 

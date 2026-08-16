@@ -104,14 +104,14 @@
 		margin: 0 32rpx;
 		margin-bottom: 142rpx;
 		height: 112rpx;
-		border: 2rpx solid #BEA6D4;
+		border: 2rpx solid var(--main-color);
 		border-radius: 80rpx;
 		box-sizing: border-box;
 		font-family: AlibabaPuHuiTi3;
 		font-size: 32rpx;
 		line-height: 112rpx;
 		font-weight: bold;
-		background-color: #BEA6D4;
+		background-color: var(--main-color);
     color: #FFFFFF;
 	}
 }

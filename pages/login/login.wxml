@@ -39,12 +39,12 @@
   <t-button slot="cancel-btn" class="cancel-btn" theme="primary" bindtap="closeDialog">取消</t-button>
 </t-dialog> -->
 <view class="login_container">
-  <view class="logo_bg">
+  <!-- <view class="logo_bg">
     <t-image class="image_bg" src="/static/icon/login.png" />
-  </view>
+  </view> -->
   <view class="login_body">
     <view class="logo_gf" style="padding-top: {{statusBarHeight}}px">
-      <t-image class="logo_gf_img" src="/static/icon/logo_csm.png" />
+      <t-image class="logo_gf_img" src="/static/icon/logo.png" />
     </view>
     <view class="welcome">
       <view class="title">欢迎登录</view>
@@ -87,7 +87,7 @@
       </view>
     </view>
     <view class="go_index" bindtap="goIndex">
-      <t-icon name="home" size="22" color="#9E81B3"></t-icon>
+      <t-icon name="home" size="22" t-class="icon-color"></t-icon>
       <view class="text">首页</view>
     </view>
   </view>

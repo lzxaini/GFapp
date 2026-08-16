@@ -66,7 +66,7 @@
 				border-radius: 24rpx;
 				// background-color: #000000;
 
-				border: 2rpx solid #BEA6D4;
+				border: 2rpx solid var(--main-color);
 				.title_box {
 					display: flex;
 					align-items: center;
@@ -127,7 +127,7 @@
 			line-height: 112rpx;
 			font-weight: bold;
 			color: #ffffff;
-			background-color: #BEA6D4;
+			background-color: var(--main-color);
 		}
 	}
 }

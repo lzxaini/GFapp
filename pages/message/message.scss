@@ -12,9 +12,8 @@
   width: 100vw;
   height: calc(100vh - (env(safe-area-inset-bottom) + 80px));
   padding-bottom: 80px;
-  // background: linear-gradient(180deg, #BEA6D4 20%, #F5F0FA 40%, #F5F0FA 100%);
-  background-color: #F5F0FA;
-
+  // background: linear-gradient(180deg, var(--main-color) 20%, #F5F0FA 40%, #F5F0FA 100%);
+  background-color: #f7f8fa;
 
   .navBar {
     --td-navbar-bg-color: transparent;
@@ -52,7 +51,7 @@
       font-weight: normal;
       text-align: center;
       text-decoration: underline;
-      color: #9E81B3;
+      color: var(--main-dark-color);
     }
   }
 
@@ -76,7 +75,7 @@
       .tabs_box {
         --td-tab-nav-bg-color: rgba(255, 255, 255, 1);
         --td-tab-item-tag-bg: transparent;
-        --td-tab-item-tag-active-bg: #BEA6D4;
+        --td-tab-item-tag-active-bg: var(--main-color);
         --td-tab-item-active-color: #ffffff;
         --td-tab-item-height: 80rpx;
         // border: 1rpx solid #ecedfd;
@@ -90,14 +89,14 @@
       }
 
       .item_style {
-        --td-tab-item-color: #BEA6D4;
+        --td-tab-item-color: var(--main-color);
         font-family: AlibabaPuHuiTi3;
         font-size: 28rpx;
         font-weight: bold;
       }
 
       .active_style {
-        background-color: #BEA6D4;
+        background-color: var(--main-color);
         font-family: AlibabaPuHuiTi3;
         font-size: 32rpx;
         font-weight: 300;
@@ -173,7 +172,7 @@
               width: 110rpx;
               height: 45rpx;
               border-radius: 40rpx;
-              background-color: #BEA6D4;
+              background-color: var(--main-color);
               font-size: 18rpx;
               font-weight: normal;
               color: #F5F0FA;
@@ -197,7 +196,7 @@
           width: 75rpx;
           height: 75rpx;
           border-radius: 50%;
-          background: #BEA6D4;
+          background: var(--main-color);
         }
       }
     }
@@ -214,8 +213,8 @@
 }
 
 .action-btn {
-  --td-button-primary-bg-color: #BEA6D4;
-  --td-button-primary-border-color: #BEA6D4;
+  --td-button-primary-bg-color: var(--main-color);
+  --td-button-primary-border-color: var(--main-color);
   --td-button-primary-active-bg-color: #888cf4a2;
   --td-button-primary-active-border-color: #888cf4a2;
   margin-bottom: 30rpx;
@@ -230,7 +229,7 @@
 }
 
 .radio-group {
-  --td-radio-icon-checked-color: #BEA6D4;
+  --td-radio-icon-checked-color: var(--main-color);
 }
 .empty{
   display: flex;

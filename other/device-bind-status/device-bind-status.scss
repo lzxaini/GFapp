@@ -98,7 +98,7 @@
       width: 100%;
       border-radius: 96px;
       box-shadow: 0px 8rpx 40rpx 0px #1a3a2a14;
-      background-color: #bea6d4;
+      background-color: var(--main-color);
       height: 102rpx;
       border: none;
       --td-button-border-width: 0;
@@ -108,8 +108,8 @@
     .back {
       margin-top: 32rpx;
       background-color: transparent;
-      color: #BEA6D4;
-      border: 1rpx solid #BEA6D4;
+      color: var(--main-color);
+      border: 1rpx solid var(--main-color);
     }
   }
 }

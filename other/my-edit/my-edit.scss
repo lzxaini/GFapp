@@ -69,14 +69,14 @@
 
     .btn {
       height: 112rpx;
-      border: 2rpx solid #BEA6D4;
+      border: 2rpx solid var(--main-color);
       border-radius: 80rpx;
       box-sizing: border-box;
       font-family: AlibabaPuHuiTi3;
       font-size: 32rpx;
       line-height: 112rpx;
       font-weight: bold;
-      color: #BEA6D4;
+      color: var(--main-color);
     }
 
     .logout {
@@ -89,8 +89,8 @@
 }
 
 .action-btn {
-  --td-button-primary-bg-color: #BEA6D4;
-  --td-button-primary-border-color: #BEA6D4;
+  --td-button-primary-bg-color: var(--main-color);
+  --td-button-primary-border-color: var(--main-color);
   --td-button-primary-active-bg-color: #E6DDF0;
   --td-button-primary-active-border-color: #E6DDF0;
   margin-bottom: 30rpx;

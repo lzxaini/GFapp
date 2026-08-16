@@ -1,5 +1,5 @@
 <view class="my_body">
-  <t-navbar t-class="navBar" left-arrow="{{false}}" fixed="{{false}}" title="个人中心" />
+  <!-- <t-navbar t-class="navBar" left-arrow="{{false}}" fixed="{{false}}" title="个人中心" /> -->
   <!-- <view class="bg_box" style="top: {{capsuleHeight}}px">
     <image class="my_bg" src="../../static/icon/my_bg.png"></image>
   </view> -->
@@ -7,7 +7,7 @@
     <view class="bg_box">
       <image class="my_bg" src="{{cdnUrl}}/static/icon/my_bg.png"></image>
     </view>
-    <image class="avatar" src="{{userInfo.avatar ? ossUrl + userInfo.avatar : '../../static/icon/profile_picture.png'}}"
+    <image style="margin-top: {{capsuleHeight}}px;" class="avatar" src="{{userInfo.avatar ? ossUrl + userInfo.avatar : '../../static/icon/profile_picture.png'}}"
       bindtap="goLoginFlag" />
     <view class="info_box" bindtap="goLoginFlag">
       <view class="user_name">{{userInfo.userName || '未登录'}}</view>
@@ -36,7 +36,7 @@
   <!-- 团队 -->
   <view class="nav_title">
     <view class="title">所属机构</view>
-    <t-icon wx:if="{{userInfo.dept}}" name="barcode-1" size="38rpx" color="#BEA6D4" bindtap="openQrCode" />
+    <t-icon wx:if="{{userInfo.dept}}" name="barcode-1" size="38rpx" color="#18E6E6" bindtap="openQrCode" />
   </view>
   <t-cell-group wx:if="{{userInfo.dept && userInfo.dept.deptName !== '游客部门'}}" t-class="dept_info" theme="card">
     <t-cell t-class="cell_box" t-class-center="dept_center" t-class-title="dept_title" t-class-note="textOverflow"

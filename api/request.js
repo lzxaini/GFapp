@@ -42,7 +42,7 @@ export default function request(options) {
           //   content: '登录失效，请先登录！',
           //   confirmText: '去登录',
           //   cancelText: '取消',
-          //   confirmColor: '#BEA6D4',
+          //   confirmColor: '#18E6E6',
           //   complete: (res) => {
           //     if (res.confirm) {
           //       getApp().logout()
