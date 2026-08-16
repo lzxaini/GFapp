@@ -36,20 +36,22 @@
 				font-size: 50rpx;
 				font-weight: 300;
 				text-align: center;
-				background: linear-gradient(302deg, var(--main-color) 0%, #5151c6 100%);
-				-webkit-background-clip: text;
-				-webkit-text-fill-color: transparent;
-				background-clip: text;
+        color: var(--main-dark-color);
+				// background: linear-gradient(302deg, var(--main-color) 0%, #5151c6 100%);
+				// -webkit-background-clip: text;
+				// -webkit-text-fill-color: transparent;
+				// background-clip: text;
 			}
 			.label {
 				font-family: AlibabaPuHuiTi3;
 				font-size: 20rpx;
 				font-weight: normal;
 				text-align: center;
-				background: linear-gradient(283deg, var(--main-color) -1%, #5151c6 100%);
-				-webkit-background-clip: text;
-				-webkit-text-fill-color: transparent;
-				background-clip: text;
+        color: var(--main-dark-color);
+				// background: linear-gradient(283deg, var(--main-color) -1%, #5151c6 100%);
+				// -webkit-background-clip: text;
+				// -webkit-text-fill-color: transparent;
+				// background-clip: text;
 			}
 		}
 	}
@@ -107,10 +109,11 @@
 				font-family: AlibabaPuHuiTi3;
 				font-size: 24rpx;
 				font-weight: normal;
-				background: linear-gradient(281deg, var(--main-color) 0%, #5151c6 100%);
-				-webkit-background-clip: text;
-				-webkit-text-fill-color: transparent;
-				background-clip: text;
+        color: var(--main-dark-color);
+				// background: linear-gradient(281deg, var(--main-color) 0%, #5151c6 100%);
+				// -webkit-background-clip: text;
+				// -webkit-text-fill-color: transparent;
+				// background-clip: text;
 			}
 		}
 	}

@@ -216,10 +216,11 @@
       .list_item_info {
         font-family: AlibabaPuHuiTi3;
         font-size: 24rpx;
-        background: linear-gradient(281deg, var(--main-color) 0%, #5151c6 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+        color: var(--main-dark-color);
+        // background: linear-gradient(281deg, var(--main-color) 0%, #5151c6 100%);
+        // -webkit-background-clip: text;
+        // -webkit-text-fill-color: transparent;
+        // background-clip: text;
       }
     }
   }
