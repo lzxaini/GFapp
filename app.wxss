@@ -4,7 +4,37 @@ page {
   --main-dark-color: #0DBDBD;
   --text-main-color: #1A1A2E;
   --text-secondary-color: #4A5568;
+  --text-light-color: #A0AEC0;
 }
-.icon-color-dark{
+
+.page_nav_bg {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.page_nav_bg_left {
+  position: absolute;
+  top: 0;
+  left: -10px;
+  width: 320rpx;
+  height: 280rpx;
+  border-radius: 50%;
+  filter: blur(160rpx);
+  background-color: #00d5ff;
+}
+
+.page_nav_bg_right {
+  position: absolute;
+  right: 0;
+  width: 224rpx;
+  height: 208rpx;
+  filter: blur(160rpx);
+  background-color: #3b8cf3;
+}
+
+.icon-color-dark {
   color: #0DBDBD;
 }
