@@ -1,13 +1,15 @@
 <view class="admin-team_container">
   <t-navbar t-class="navBar" left-arrow fixed="{{false}}" title="团队管理" />
-  <view class="admin-team_title">
-    <view class="admin-team_tabs">
-      <t-tabs t-class="tabs_box" t-class-active="active_style" t-class-item="item_style" defaultValue="{{teamTab}}" theme="tag" bind:click="tabClick">
-        <t-tab-panel wx:key="index" label="分公司({{teamObj[2].length}})" value="{{2}}" />
-        <t-tab-panel wx:key="index" label="代理商({{teamObj[3].length}})" value="{{3}}" />
-        <t-tab-panel wx:key="index" label="门店({{teamObj[4].length}})" value="{{4}}" />
-      </t-tabs>
-    </view>
+  <view class="page_nav_bg">
+    <view class="page_nav_bg_left"></view>
+    <view class="page_nav_bg_right"></view>
+  </view>
+  <view class="admin-team_tabs">
+    <t-tabs t-class="tabs_box" t-class-active="active_style" t-class-item="item_style" defaultValue="{{teamTab}}" theme="tag" bind:click="tabClick">
+      <t-tab-panel wx:key="index" label="分公司({{teamObj[2].length}})" value="{{2}}" />
+      <t-tab-panel wx:key="index" label="代理商({{teamObj[3].length}})" value="{{3}}" />
+      <t-tab-panel wx:key="index" label="门店({{teamObj[4].length}})" value="{{4}}" />
+    </t-tabs>
   </view>
   <!-- $TODO 创始人团队列表页面对接 -->
   <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="getAdminTeamList" bindscrolltolower="onScrollToLower">

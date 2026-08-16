@@ -5,8 +5,13 @@
   display: flex;
   flex-direction: column;
   background-color: #F4F7FB;
-  margin-top: 16px;
+  // margin-top: 16px;
   padding-bottom: env(safe-area-inset-bottom);
+
+  .navBar {
+    --td-navbar-bg-color: transparent;
+    --td-navbar-color: var(--text-secondary-color);
+  }
 
   .history_tabs {
     --td-tab-nav-bg-color: rgba(255, 255, 255, 0.3);
@@ -15,8 +20,8 @@
     --td-tab-item-color: #1c2023;
     --td-tab-item-active-color: #ffffff;
     --td-tab-item-height: 77rpx;
-    padding: 0 30rpx;
-    margin: 30rpx 0;
+    // padding: 0 30rpx;
+    margin: 30rpx 54rpx;
     border-radius: 40px !important;
 
     .t-tabs__wrapper {

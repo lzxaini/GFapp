@@ -6,6 +6,11 @@
   flex-direction: column;
   padding-bottom: env(safe-area-inset-bottom);
 
+  .navBar {
+    --td-navbar-bg-color: transparent;
+    --td-navbar-color: var(--text-secondary-color);
+  }
+
   .scroll-view {
     flex: 1;
     min-height: 0;
@@ -15,7 +20,7 @@
       border-radius: 32rpx;
       overflow: hidden;
     }
-  
+
     .title {
       font-family: AlibabaPuHuiTi3;
       font-size: 32rpx;
@@ -24,6 +29,7 @@
       background-color: #ffffff;
       padding: 20rpx 24rpx;
     }
+
     .item_img {
       width: 180rpx;
       height: 180rpx;

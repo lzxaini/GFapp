@@ -7,13 +7,11 @@
       <view slot="right-icon" class="right_box" bindtap="goEditDept">编辑团队</view>
     </t-cell>
   </t-cell-group>
-  <view class="team_tabs_box">
-    <view class="admin-team_tabs">
-      <t-tabs t-class="tabs_box" t-class-active="active_style" t-class-item="item_style" defaultValue="{{teamTab}}" theme="tag" bind:change="tabClick" show-bottom-line="{{false}}">
-        <t-tab-panel wx:key="index" label="代理商（{{teamObj[3].length || 0}}）" value="{{3}}" />
-        <t-tab-panel wx:key="index" label="门店（{{teamObj[4].length || 0}}）" value="{{4}}" />
-      </t-tabs>
-    </view>
+  <view class="admin-team_tabs">
+    <t-tabs t-class="tabs_box" t-class-active="active_style" t-class-item="item_style" defaultValue="{{teamTab}}" theme="tag" bind:change="tabClick" show-bottom-line="{{false}}">
+      <t-tab-panel wx:key="index" label="代理商（{{teamObj[3].length || 0}}）" value="{{3}}" />
+      <t-tab-panel wx:key="index" label="门店（{{teamObj[4].length || 0}}）" value="{{4}}" />
+    </t-tabs>
   </view>
   <!-- <scroll-view wx:if="{{teamTab === 3}}" class="scroll-view" scroll-y="true" scroll-with-animation="true" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="getAdminTeamListDrillDown">
     <block wx:for="{{20}}">
