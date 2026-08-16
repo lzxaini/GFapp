@@ -1,5 +1,6 @@
 <view class="container">
-  <view class="bg_box">
+  <t-navbar t-class="navBar" left-arrow="{{false}}" fixed="{{false}}" title="禾壹净" />
+  <!-- <view class="bg_box">
     <image class="bg_top" src="../../static/icon/bg-top.png"></image>
     <view class="logo_text" style="height: {{capsuleHeight}}px;">
       {{appName.name}}
@@ -8,7 +9,7 @@
       <image class="gf_logo" src="../../static/icon/logo.png"></image>
       <text class="slogan">{{appName.slogan}}</text>
     </view>
-  </view>
+  </view> -->
   <view class="user_container">
     <!-- 顶部区域 -->
     <t-cell t-class="user_info" bordered="{{false}}">
