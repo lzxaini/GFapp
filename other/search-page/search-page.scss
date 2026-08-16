@@ -1,7 +1,7 @@
 .work-team_container {
 	width: 100vw;
 	height: 100vh;
-	background-color: #F5F0FA;
+	background-color: #f7f8fa;
 	.navBar {
 		--td-navbar-bg-color: var(--main-color);
 		--td-navbar-color: #fff;
@@ -15,7 +15,7 @@
 		.item-input {
 			padding: 20rpx 30rpx;
 			border-radius: 19rpx;
-			background: #F5F0FA;
+			background: #f7f8fa;
 			margin-right: 28rpx;
 			--td-input-placeholder-text-font-size: 26rpx;
 		}
@@ -64,14 +64,14 @@
 	}
 	.gf_logo {
 		position: fixed;
-		bottom: calc(248rpx + env(safe-area-inset-bottom));
-		left: 50%;
-		transform: translate(-50%, 0%);
-		mix-blend-mode: color-burn;
-		opacity: 1;
+		bottom: env(safe-area-inset-bottom);
+		// left: 50%;
+		// transform: translate(-50%, 0%);
+		// mix-blend-mode: color-burn;
+		// opacity: 1;
 		.gf_logo_bg {
-			width: 560rpx;
-			height: 560rpx;
+			width: 100vw;
+			height: 182rpx;
 		}
 	}
 }

@@ -1,5 +1,7 @@
+const app = getApp();
 Page({
   data: {
+    cdnUrl: app.globalData.cdnUrl,
     searchName: '',
     historyTag: [],
     joinBox: true,
