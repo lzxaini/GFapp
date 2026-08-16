@@ -16,23 +16,35 @@ Page({
     loadingMore: false,
     pageSize: 20,
     pageObj: {
-      3: { pageNum: 1, hasMore: true },
-      4: { pageNum: 1, hasMore: true },
+      3: {
+        pageNum: 1,
+        hasMore: true
+      },
+      4: {
+        pageNum: 1,
+        hasMore: true
+      },
     },
     deptData: {},
     tabsValue: 1,
   },
   onLoad(options) {
-    let { deptInfo } = options
+    let {
+      deptInfo
+    } = options
     let deptData = JSON.parse(deptInfo)
-    this.setData({ deptData })
+    this.setData({
+      deptData
+    })
     this.getAdminTeamListDrillDown()
   },
   onShow() {
     this.getAdminTeamListDrillDown()
   },
   getAdminTeamListDrillDown() {
-    let { deptData } = this.data
+    let {
+      deptData
+    } = this.data
     getAdminTeamListDrillDownApi(deptData.deptId).then(res => {
       if (res.code === 200) {
         const dataMap = res.data || {}
@@ -40,25 +52,43 @@ Page({
           refresher: false,
           teamObj: res,
           pageObj: {
-            3: { pageNum: 1, hasMore: this.hasMore(dataMap[3]) },
-            4: { pageNum: 1, hasMore: this.hasMore(dataMap[4]) },
+            3: {
+              pageNum: 1,
+              hasMore: this.hasMore(dataMap[3])
+            },
+            4: {
+              pageNum: 1,
+              hasMore: this.hasMore(dataMap[4])
+            },
           }
         })
         const firstAvail = [3, 4].find(k => dataMap[k]?.length > 0) || 3
         const targetTab = dataMap[this.data.teamTab] ? this.data.teamTab : firstAvail
-        this.setData({ teamTab: targetTab })
+        this.setData({
+          teamTab: targetTab
+        })
         this.computeDisplayList(targetTab, true)
       } else {
-        this.setData({ refresher: false })
-        wx.showToast({ title: '获取团队列表失败', icon: 'error' })
+        this.setData({
+          refresher: false
+        })
+        wx.showToast({
+          title: '获取团队列表失败',
+          icon: 'error'
+        })
       }
     })
   },
   computeDisplayList(tab, reset) {
-    const { teamObj, pageObj } = this.data
+    const {
+      teamObj,
+      pageObj
+    } = this.data
     const fullList = (teamObj.data || {})[tab] || []
     const curPage = (reset || !pageObj[tab]) ? 1 : pageObj[tab].pageNum
-    const { pageSize } = this.data
+    const {
+      pageSize
+    } = this.data
     const end = curPage * pageSize
     const slice = fullList.slice(0, end)
 
@@ -71,20 +101,34 @@ Page({
     })
   },
   hasMore(list) {
-    const { pageSize } = this.data
+    const {
+      pageSize
+    } = this.data
     return list ? list.length > pageSize : false
   },
   onScrollToLower() {
-    const { teamTab, pageObj, loadingMore } = this.data
+    const {
+      teamTab,
+      pageObj,
+      loadingMore
+    } = this.data
     const cur = pageObj[teamTab]
     if (!cur || loadingMore || !cur.hasMore) return
-    this.setData({ loadingMore: true })
-    this.setData({ [`pageObj[${teamTab}].pageNum`]: cur.pageNum + 1 })
+    this.setData({
+      loadingMore: true
+    })
+    this.setData({
+      [`pageObj[${teamTab}].pageNum`]: cur.pageNum + 1
+    })
     this.computeDisplayList(teamTab)
   },
   tabClick(e) {
-    let { value } = e?.detail
-    this.setData({ teamTab: value })
+    let {
+      value
+    } = e?.detail
+    this.setData({
+      teamTab: value
+    })
     this.computeDisplayList(value, true)
   },
   goNext(e) {
@@ -111,8 +155,11 @@ Page({
     let {
       deptData
     } = this.data
+    // wx.navigateTo({
+    //   url: '/other/change-department/change-department?deptData=' + JSON.stringify(deptData),
+    // })
     wx.navigateTo({
-      url: '/other/change-department/change-department?deptData=' + JSON.stringify(deptData),
+      url: '/pages/team-info/team-info?deptId=' + deptData.deptId,
     })
   },
   drawUserQrcode() {

@@ -41,8 +41,11 @@ Page({
     let {
       deptData
     } = this.data
+    // wx.navigateTo({
+    //   url: '/other/change-department/change-department?deptData=' + JSON.stringify(deptData),
+    // })
     wx.navigateTo({
-      url: '/other/change-department/change-department?deptData=' + JSON.stringify(deptData),
+      url: '/pages/team-info/team-info?deptId=' + deptData.deptId,
     })
   },
   drawUserQrcode() {
