@@ -25,7 +25,7 @@
       "list": [
         {
           "name": "pages/register/register",
-          "pathName": "pages/register/register",
+          "pathName": "other/device-bind-status/device-bind-status",
           "query": "",
           "scene": null,
           "launchMode": "default"

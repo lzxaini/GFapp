@@ -22,8 +22,8 @@ App({
     devFlag: false, // 开发环境标志
     devUrl: '',
     appName: {
-      name: '超素美',
-      slogan: '爱上素颜美，就选超素美',
+      name: '禾壹净',
+      slogan: '爱上素颜美，就选禾壹净',
       appVersion: '0.0.3_260811160',
       beian: '粤ICP备2026100471号-2X',
       copyright: 'Copyright © 2020-2026 CSM.All Rights Reserved.',
@@ -177,7 +177,7 @@ App({
     wx.loadFontFace({
       global: true,
       family: 'AlibabaPuHuiTi3',
-      source: 'url("https://cdn.gfkm.cc/fonts/AlibabaPuHuiTi-3-45-Light.ttf")',
+      source: 'url("https://cdn.hyj001.top/fonts/AlibabaPuHuiTi-3-45-Light.ttf")',
       scopes: ["webview", "native"],
       success: console.log('字体加载完成')
     })

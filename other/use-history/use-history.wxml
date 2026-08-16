@@ -2,7 +2,7 @@
   <t-navbar t-class="navBar" left-arrow fixed="{{false}}" title="使用记录" />
   <view class="title">
     <t-image class="icon" src="{{cdnUrl}}/static/icon/icon1.png" />
-    <text class="text">CSM-FQ-{{titleSerialNumber}}</text>
+    <text class="text">HYJ-FQ-{{titleSerialNumber}}</text>
   </view>
   <!-- 滚动列表 -->
   <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="pullDownToRefresh">

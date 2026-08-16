@@ -19,12 +19,12 @@
     <t-cell t-class="cell_nav" t-class-left="cell_left" bordered="{{false}}">
       <!-- <view class="" slot="leftIcon">单行标题1</view> -->
       <t-icon class="icon" slot="left-icon" name="{{cdnUrl}}/static/icon/device-icon.png" size="40"></t-icon>
-      <view class="title" slot="title">黑武士CSM88-918</view>
-      <view class="description" slot="description">建议零售价：29.8w RMB</view>
-      <t-icon class="icon" slot="note" name="{{cdnUrl}}/static/icon/genuine.png" size="60"></t-icon>
+      <view class="title" slot="title">逆龄舱美容仪HE001</view>
+      <!-- <view class="description" slot="description">建议零售价：29.8w RMB</view> -->
+      <!-- <t-icon class="icon" slot="note" name="{{cdnUrl}}/static/icon/genuine.png" size="60"></t-icon> -->
     </t-cell>
     <t-cell title="序列号" bordered="{{false}}">
-      <view class="note" slot="note">CSM-FQ-{{titleSerialNumber}}</view>
+      <view class="note" slot="note">HYJ-FQ-{{titleSerialNumber}}</view>
     </t-cell>
     <t-cell title="激活日期" bordered="{{false}}">
       <view class="note" slot="note">{{deviceDate.updateTime}}</view>

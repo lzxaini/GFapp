@@ -3,6 +3,7 @@ page {
   --main-color: #18E6E6;
   --main-dark-color: #0DBDBD;
   --text-main-color: #1A1A2E;
+  --text-secondary-color: #4A5568;
 }
 .icon-color-dark{
   color: #0DBDBD;
