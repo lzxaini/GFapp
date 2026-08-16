@@ -36,7 +36,7 @@
   <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="getList" bindscrolltolower="onScrollToLower">
     <block wx:for="{{displayList}}" wx:key="deptId">
       <t-cell-group t-class="list_item" theme="card" bindtap="goDeviceList" data-id="{{item.deptId}}" data-info="{{item}}">
-        <t-cell title="{{item.deptName}}" arrow>
+        <t-cell title="{{item.deptName}}" t-class-center="cell-center" t-class-title="cell-title" arrow>
           <t-avatar slot="left-icon" size="large" image="{{ossUrl + item.deptAvatar}}"></t-avatar>
           <view slot="description" class="list_item_info">已绑定设备数：{{item.bindCount}}</view>
         </t-cell>
