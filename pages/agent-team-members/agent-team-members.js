@@ -38,7 +38,7 @@ Page({
         const dataMap = res.data || {}
         this.setData({
           refresher: false,
-          teamObj: raw,
+          teamObj: res,
           pageObj: {
             3: { pageNum: 1, hasMore: this.hasMore(dataMap[3]) },
             4: { pageNum: 1, hasMore: this.hasMore(dataMap[4]) },
