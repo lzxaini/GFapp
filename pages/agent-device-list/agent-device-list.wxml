@@ -10,6 +10,10 @@
       <text class="slogan">{{appName.slogan}}</text>
     </view>
   </view> -->
+  <view class="page_nav_bg">
+    <view class="page_nav_bg_left"></view>
+    <view class="page_nav_bg_right"></view>
+  </view>
   <view class="device_nav">
     <view class="nav_item">
       <view class="number">{{teamObj.bindCount}}</view>

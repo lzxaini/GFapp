@@ -6,8 +6,12 @@
   module.exports.sliceText = sliceText;
 </wxs>
 <view class="device-bind-status">
+  <view class="page_nav_bg">
+    <view class="page_nav_bg_left"></view>
+    <view class="page_nav_bg_right"></view>
+  </view>
   <view class="nav_bg">
-    <t-image class="image" src="{{cdnUrl}}/static/images/bind-nav-bg.png" mode=""/>
+    <!-- <t-image class="image" src="{{cdnUrl}}/static/images/bind-nav-bg.png" mode=""/> -->
     <view class="info" style="top: {{capsuleHeight}}px">
     <!-- <view class="info"> -->
       <t-image class="icon" src="{{cdnUrl}}/static/icon/icon_2.png" mode=""/>

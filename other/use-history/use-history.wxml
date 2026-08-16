@@ -40,7 +40,7 @@
             </view> -->
           <view class="list_item">
             <text class="lable">服务项目</text>
-            <text class="info" wx:if="{{item.detailCount > 1 && !item.projectNames}}" bindtap="getProjectDetail" data-sessionid="{{item.sessionId}}" data-index="{{index}}">查看</text>
+            <text class="info preview" wx:if="{{item.detailCount > 1 && !item.projectNames}}" bindtap="getProjectDetail" data-sessionid="{{item.sessionId}}" data-index="{{index}}">查看</text>
             <text class="info" wx:else>{{item.projectNames || item.serviceObj.name}}</text>
           </view>
           <view class="list_item">

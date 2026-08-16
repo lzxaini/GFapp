@@ -5,8 +5,11 @@
     <image class="bg_img" src="../../static/icon/statistics_nav_bg.png" />
   </view> -->
   <!-- 滚动内容区域 -->
-  <scroll-view class="scroll-content" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom"
-    refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="pullDownToRefresh">
+  <view class="page_nav_bg">
+    <view class="page_nav_bg_left"></view>
+    <view class="page_nav_bg_right"></view>
+  </view>
+  <scroll-view class="scroll-content" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="pullDownToRefresh">
     <view class="page_title">关键指标</view>
     <view class="grid_box">
       <view class="item_box blue">
@@ -69,8 +72,7 @@
           查询门店
         </view>
       </view>
-      <t-search wx:if="{{searchFlag}}" t-class="search" value="{{searchName}}" placeholder="搜索机构" clearable
-        bind:change="changeHandle" focus="{{true}}" bind:clear="clearSearch">
+      <t-search wx:if="{{searchFlag}}" t-class="search" value="{{searchName}}" placeholder="搜索机构" clearable bind:change="changeHandle" focus="{{true}}" bind:clear="clearSearch">
         <view class="action" slot="action" bindtap="blurClick">取消</view>
       </t-search>
       <view class="table-row table-header">

@@ -145,6 +145,11 @@
             display: block;
           }
 
+          .preview {
+            color: var(--main-color);
+            text-decoration: underline;
+          }
+
           &.highlight {
             background-color: #ebebfc;
             padding: 8rpx 16rpx;

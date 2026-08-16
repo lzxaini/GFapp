@@ -1,6 +1,10 @@
 <view class="message_container">
   <!-- 顶部导航栏固定 -->
   <t-navbar t-class="navBar" left-arrow="{{false}}" fixed="{{false}}" title="消息通知" />
+  <view class="page_nav_bg">
+    <view class="page_nav_bg_left"></view>
+    <view class="page_nav_bg_right"></view>
+  </view>
   <view class="menu_text" bindtap="onDelete" data-type="all">
     <t-icon name="delete" size="16" t-class="icon-color-dark" />
     <text>全部删除</text>

@@ -23,8 +23,8 @@
       width: 100%;
 
       .icon {
-        width: 270rpx;
-        height: 210rpx;
+        width: 220rpx;
+        height: 220rpx;
       }
 
       .title {
@@ -52,12 +52,11 @@
   .cell_group {
     --td-cell-horizontal-padding: 40rpx;
     --td-cell-vertical-padding: 24rpx;
-    border: 1rpx solid #f5f0fa;
-    background-color: #F9F7FC;
+    box-shadow: 0px 2px 12px 0px #1a1a2e0d;
     --td-cell-bg-color: transparent;
+    background-color: #EAF7F766;
     margin-top: 20rpx;
   }
-
   .cell_nav {
     align-items: center;
     width: calc(100% - 96rpx);

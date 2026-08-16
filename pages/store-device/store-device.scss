@@ -51,9 +51,13 @@
   //   }
   // }
 
+  .navBar {
+    --td-navbar-bg-color: transparent;
+    --td-navbar-color: var(--text-secondary-color);
+  }
   .device_nav {
     margin-top: 40rpx;
-    --td-cell-bg-color: rgba(255, 255, 255, 0.5);
+    --td-cell-bg-color: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(5px);
 
     .right_box {

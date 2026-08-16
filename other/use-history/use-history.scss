@@ -11,24 +11,29 @@
   // 	--td-navbar-color: #fff;
   // 	--td-navbar-capsule-border-color: #e3e6ea !important;
   // }
-  .title{
+  .title {
     display: flex;
     align-items: center;
     margin: 32rpx;
     padding-bottom: 28rpx;
     border-bottom: 1rpx solid var(--main-dark-color);
-    .icon{
-      width: 70rpx;;
-      height: 70rpx;;
+
+    .icon {
+      width: 70rpx;
+      ;
+      height: 70rpx;
+      ;
       margin-left: 32rpx;
     }
-    .text{
+
+    .text {
       font-family: AlibabaPuHuiTi3;
       font-size: 32rpx;
       margin-left: 24rpx;
       color: #1E1A2E;
     }
   }
+
   .scroll-view {
     flex: 1;
     min-height: 0;
@@ -110,6 +115,11 @@
           .lable,
           .info {
             display: block;
+          }
+
+          .preview {
+            color: var(--main-color);
+            text-decoration: underline;
           }
 
           &.highlight {

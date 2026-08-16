@@ -10,6 +10,10 @@
       <text class="slogan">{{appName.slogan}}</text>
     </view>
   </view> -->
+  <view class="page_nav_bg">
+    <view class="page_nav_bg_left"></view>
+    <view class="page_nav_bg_right"></view>
+  </view>
   <t-cell-group t-class="device_nav" theme="card">
     <t-cell title="{{deptInfo.deptName || '暂无信息'}}" description="团队编号：{{deptInfo.deptCode}}">
       <t-avatar slot="left-icon" size="large" image="{{ossUrl + deptInfo.deptAvatar}}"></t-avatar>

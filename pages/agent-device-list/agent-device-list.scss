@@ -1,4 +1,5 @@
 .device-list_container {
+  position: relative;
   width: 100vw;
   height: calc(100vh - (env(safe-area-inset-bottom) + 80px));
   padding-bottom: 80px;
@@ -65,7 +66,7 @@
     margin: 0 24rpx;
     margin-top: 40rpx;
     border-radius: 20rpx;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(5px);
 
     .nav_item {

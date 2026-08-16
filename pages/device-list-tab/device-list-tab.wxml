@@ -10,21 +10,23 @@
       <text class="slogan">{{appName.slogan}}</text>
     </view>
   </view> -->
+  <view class="page_nav_bg">
+    <view class="page_nav_bg_left"></view>
+    <view class="page_nav_bg_right"></view>
+  </view>
   <t-cell-group t-class="device_nav" theme="card">
     <t-cell title="{{deptInfo.deptName || '暂无信息'}}">
       <t-avatar slot="left-icon" size="large" image="{{ossUrl + deptInfo.deptAvatar}}"></t-avatar>
       <view slot="description" class="device_info">
         已激活：{{historyList.activated}}/{{historyList.total}}
       </view>
-      <view wx:if="{{userInfo && userInfo.dept.deptName !== '游客部门'}}" slot="right-icon" class="right_box"
-        bindtap="scanDevice">
+      <view wx:if="{{userInfo && userInfo.dept.deptName !== '游客部门'}}" slot="right-icon" class="right_box" bindtap="scanDevice">
         <t-icon class="sacn" name="scan" color="#FFFFFF" size="24rpx"></t-icon>
         <view>扫码激活</view>
       </view>
     </t-cell>
   </t-cell-group>
-  <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom"
-    refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="pullDownToRefresh">
+  <scroll-view class="scroll-view" scroll-y="true" scroll-with-animation="true" bindscrolltolower="onReachBottom" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="pullDownToRefresh">
     <view class="device_grid">
       <block wx:for="{{deviceList}}">
         <view class="device_item">
@@ -33,9 +35,7 @@
             查看使用记录
             <t-icon name="chevron-right-double" size="12" />
           </view>
-          <t-cell t-class="device_card" bordered="{{false}}" bindtap="scanCodeActivation"
-            data-runningState="{{item.runningState}}" data-serialNumber="{{item.serialNumber}}"
-            t-class-center="card_center" t-class-left="card_left">
+          <t-cell t-class="device_card" bordered="{{false}}" bindtap="scanCodeActivation" data-runningState="{{item.runningState}}" data-serialNumber="{{item.serialNumber}}" t-class-center="card_center" t-class-left="card_left">
             <view slot="left-icon" class="sacn_icon" wx:if="{{item.runningState == '2'}}">
               <t-icon name="scan" size="15" color="#FFFFFF"></t-icon>
             </view>
