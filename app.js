@@ -23,10 +23,10 @@ App({
     devUrl: '',
     appName: {
       name: '禾壹净',
-      slogan: '爱上素颜美，就选禾壹净',
-      appVersion: '0.0.3_260811160',
-      beian: '粤ICP备2026100471号-2X',
-      copyright: 'Copyright © 2020-2026 CSM.All Rights Reserved.',
+      slogan: '爱上美好，就选禾壹净',
+      appVersion: '0.0.1_260811160',
+      beian: '',
+      copyright: 'Copyright © 2020-2026 HYJ.All Rights Reserved.',
     },
     phoneEnv: '', // 手机系统
     mqttClient: null,
