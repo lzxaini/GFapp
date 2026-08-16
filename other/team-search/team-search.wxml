@@ -18,8 +18,8 @@
       <view slot="description" class="description">扫描团队二维码快速申请加入</view>
     </t-cell>
   </t-cell-group>
-  <view class="gf_logo">
+  <!-- <view class="gf_logo">
     <image class="gf_logo_bg" src="../../static/icon/logo.png" />
-  </view>
+  </view> -->
 </view>
 <t-message id="t-message" />

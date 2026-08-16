@@ -24,9 +24,9 @@
       </t-grid-item>
     </t-grid>
   </t-cell-group>
-  <view class="gf_logo">
+  <!-- <view class="gf_logo">
     <image class="gf_logo_bg" src="../../static/icon/logo.png" />
-  </view>
+  </view> -->
   <t-dialog visible="{{qrCodeBox}}" bind:close="closeDialog" close-on-overlay-click="{{true}}">
     <!-- 适配skyline，增加type="list" -->
     <view slot="content" class="dialog_content">
