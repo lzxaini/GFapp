@@ -17,7 +17,7 @@ const updateRole = (that, type, dept) => {
       "pagePath": "pages/agent-device-list/agent-device-list?deptInfo=" + dept,
       "iconPath": "../static/icon/tabBar/device.png",
       "selectedIconPath": "../static/icon/tabBar/device_active.png",
-      "text": "首页"
+      "text": "仪器"
     }, {
       "pagePath": "pages/operation/operation",
       "iconPath": "../static/icon/tabBar/operation.png",
@@ -47,7 +47,7 @@ const updateRole = (that, type, dept) => {
       "pagePath": "pages/agent-device/agent-device?deptInfo=" + dept,
       "iconPath": "../static/icon/tabBar/device.png",
       "selectedIconPath": "../static/icon/tabBar/device_active.png",
-      "text": "首页"
+      "text": "仪器"
     }, {
       "pagePath": "pages/operation/operation",
       "iconPath": "../static/icon/tabBar/operation.png",
@@ -77,7 +77,7 @@ const updateRole = (that, type, dept) => {
       "pagePath": "pages/store-device/store-device?deptInfo=" + dept,
       "iconPath": "../static/icon/tabBar/device.png",
       "selectedIconPath": "../static/icon/tabBar/device_active.png",
-      "text": "首页"
+      "text": "仪器"
     }, {
       "pagePath": "pages/operation/operation",
       "iconPath": "../static/icon/tabBar/operation.png",
@@ -107,7 +107,7 @@ const updateRole = (that, type, dept) => {
       "pagePath": "pages/device-list-tab/device-list-tab",
       "iconPath": "../static/icon/tabBar/device.png",
       "selectedIconPath": "../static/icon/tabBar/device_active.png",
-      "text": "首页"
+      "text": "仪器"
     }, {
       "pagePath": "pages/operation/operation",
       "iconPath": "../static/icon/tabBar/operation.png",
