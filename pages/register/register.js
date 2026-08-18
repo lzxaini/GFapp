@@ -27,9 +27,19 @@ Page({
       'phonenumber': phonenumber
     })
   },
+  checkUserInfo() {
+    let {
+      userInfo
+    } = this.data
+    if (userInfo.dept.deptName === '游客部门') {
+      this.message('warning', '需要等待管理员审批！')
+      return false
+    }
+  },
   // 上传头像
   updateAvatar() {
     let _this = this
+    if (!this.checkUserInfo()) return;
     wx.chooseMedia({
       count: 1,
       mediaType: ['image'],
