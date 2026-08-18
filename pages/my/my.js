@@ -199,11 +199,11 @@ Page({
     title,
     url
   }) {
-    if (title === '设置') {
-      return wx.navigateTo({
-        url
-      });
-    }
+    // if (title === '设置') {
+    //   return wx.navigateTo({
+    //     url
+    //   });
+    // }
 
     if (this.verifyDept()) return;
     wx.navigateTo({
