@@ -24,8 +24,8 @@ App({
     appName: {
       name: '禾壹净',
       slogan: '爱上美好，就选禾壹净',
-      appVersion: '0.0.1_260811160',
-      beian: '',
+      appVersion: '0.0.1_260818093',
+      beian: '皖ICP备2026021999号-2X',
       copyright: 'Copyright © 2020-2026 HYJ.All Rights Reserved.',
     },
     phoneEnv: '', // 手机系统
