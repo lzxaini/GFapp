@@ -52,7 +52,7 @@
     </view>
     <view class="login_from">
       <view class="item">
-        <t-input t-class="item-input" t-class-tips="errMsg" slot="note" placeholder="请输入手机号码" value="{{from.phoneNumber}}" type="text" tips="{{phoneNumberError}}" bindchange="onInput" bindblur="verify" confirm-type="next" borderless data-type="phoneNumber">
+        <t-input t-class="item-input" t-class-tips="errMsg" slot="note" placeholder="请输入手机号码" value="{{from.phoneNumber}}" type="number" tips="{{phoneNumberError}}" bindchange="onInput" bindblur="verify" confirm-type="next" borderless data-type="phoneNumber">
           <t-icon slot="prefix-icon" name="mobile" size="40rpx" color="#9A95AA" />
         </t-input>
       </view>
