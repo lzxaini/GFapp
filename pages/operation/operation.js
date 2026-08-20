@@ -75,7 +75,7 @@ Page({
     this.setData({
       userInfo,
     })
-    this.getOperation()
+    // this.getOperation()
     this.getRechargeRecords()
   },
   /**
