@@ -74,6 +74,7 @@
     .team_item {
       padding: 10rpx 20rpx;
       font-family: AlibabaPuHuiTi3;
+
       .title {
         font-size: 26rpx;
       }
@@ -87,7 +88,7 @@
   .recharge_nav {
     position: relative;
     width: calc(100% - 48rpx);
-    height: 256rpx;
+    height: 296rpx;
     margin: 0 24rpx;
     margin-top: -90rpx;
     border-radius: 20rpx;
@@ -106,13 +107,14 @@
     .input_box {
       // padding: 0 50rpx;
       // border-bottom: 1px solid red;
-      padding: 10rpx 50rpx;
+      padding: 32rpx;
 
       .input_item {
         --td-input-bg-color: transparent;
         --td-input-border-color: #BEA6D4;
-        padding-top: 20rpx;
-        margin-top: 30rpx;
+        // padding-top: 20rpx;
+        // margin-top: 30rpx;
+        padding-bottom: 16rpx;
         --td-input-border-left-space: 70rpx;
         --td-input-border-right-space: 0;
         --td-input-vertical-padding: 0;
@@ -126,6 +128,56 @@
           font-family: AlibabaPuHuiTi3;
           font-size: 14rpx;
           background: linear-gradient(110deg, #BEC0F9 -1%, #BEA6D4 51%, #9E81B3 129%), #000000;
+        }
+      }
+
+      .recharge_input_box {
+        .input_box_title {
+          display: flex;
+          align-items: center;
+          margin-top: 20rpx;
+          font-size: 32rpx;
+          color: #bea6d4;
+
+          .icon {
+            display: flex;
+            align-items: center;
+            margin-right: 16rpx;
+          }
+        }
+
+        .input_body {
+          display: flex;
+          align-items: center;
+          margin-top: 20rpx;
+
+          .input_center {
+            --td-input-align-items: center !important;
+            text-align: center !important;
+          }
+
+          .input_body_info {
+            --td-input-border-color: transparent;
+            height: 80rpx;
+            padding: 0 40rpx;
+            border: 1rpx solid #f5f0fa;
+            border-radius: 24rpx;
+            background-color: #f9f7fc;
+
+            .text-info {
+              font-size: 28rpx;
+              color: #9A95AA;
+            }
+          }
+
+          .submit-info {
+            margin-left: 16rpx;
+            font-size: 32rpx;
+            border-radius: 24rpx;
+            background-color: #bea6d4;
+            color: #ffffff;
+            --td-button-default-border-color: transparent;
+          }
         }
       }
     }
@@ -233,6 +285,7 @@
     display: block !important;
     text-align: center;
     min-width: 100rpx !important;
+
     .text {
       font-family: AlibabaPuHuiTi3;
       font-size: 24rpx;
@@ -259,6 +312,7 @@
   --td-empty-description-margin-top: 0;
   --td-empty-description-font-size: 24rpx;
   padding-top: 40rpx;
+  height: 600rpx;
 }
 
 .empty_image {
