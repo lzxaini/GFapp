@@ -40,5 +40,6 @@
     "tabSize": 2
   },
   "appid": "wx6516fde242a25082",
-  "simulatorPluginLibVersion": {}
+  "simulatorPluginLibVersion": {},
+  "isGameTourist": false
 }
