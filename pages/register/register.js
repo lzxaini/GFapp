@@ -1,5 +1,9 @@
-import { showMessage } from '../../utils/tools';
-import { registerUserInfoApi } from '../../api/api'
+import {
+  showMessage
+} from '../../utils/tools';
+import {
+  registerUserInfoApi
+} from '../../api/api'
 const app = getApp()
 Page({
   data: {
@@ -21,15 +25,28 @@ Page({
     passwordFlag: false,
   },
   onLoad() {
-    let { userName, phonenumber } = app.globalData.userInfo
+    let {
+      userName,
+      phonenumber
+    } = app.globalData.userInfo
     this.setData({
       'form.userName': userName,
       'phonenumber': phonenumber
     })
   },
+  checkUserInfo() {
+    let {
+      userInfo
+    } = this.data
+    if (userInfo.dept.deptName === '游客部门') {
+      this.message('warning', '需要等待管理员审批！')
+      return false
+    }
+  },
   // 上传头像
   updateAvatar() {
     let _this = this
+    if (!this.checkUserInfo()) return;
     wx.chooseMedia({
       count: 1,
       mediaType: ['image'],
@@ -59,8 +76,7 @@ Page({
               }
             }
           },
-          fail: (err) => {
-          }
+          fail: (err) => {}
         });
       },
       fail: () => {
@@ -69,14 +85,20 @@ Page({
     });
   },
   onInput(e) {
-    let { value } = e?.detail
+    let {
+      value
+    } = e?.detail
     this.setData({
       'form.userName': value
     })
   },
   onPasswordInput(e) {
-    let { type } = e?.currentTarget?.dataset
-    let { value } = e?.detail
+    let {
+      type
+    } = e?.currentTarget?.dataset
+    let {
+      value
+    } = e?.detail
     switch (type) {
       case 'new1':
         this.setData({
@@ -101,7 +123,9 @@ Page({
     // $BUG 这里貌似有问题，提交修改个人信息的上海，如果不带上手机号，手机号等会被更新为null
     let _this = this
     if (!this.verify()) return;
-    let { form } = this.data
+    let {
+      form
+    } = this.data
     registerUserInfoApi(form).then(res => {
       wx.showLoading({
         title: '正在加载...',
@@ -122,7 +146,10 @@ Page({
   },
   // 校验方法
   verify() {
-    const { form, new1 } = this.data;
+    const {
+      form,
+      new1
+    } = this.data;
     let userNameError = '';
     let new1Error = '';
     let passwordError = '';
@@ -150,8 +177,13 @@ Page({
     return !userNameError && !new1Error && !passwordError;
   },
   passwordFlag(e) {
-    let { type, flag } = e?.currentTarget?.dataset
-    let { value } = e?.detail
+    let {
+      type,
+      flag
+    } = e?.currentTarget?.dataset
+    let {
+      value
+    } = e?.detail
     switch (type) {
       case 'new1':
         this.setData({
