@@ -2,7 +2,7 @@
   position: relative;
   width: 100vw;
   height: calc(100vh - (env(safe-area-inset-bottom)));
-  // background-color: #F5F0FA;
+  background: linear-gradient(180deg, var(--main-color) -80%, #FFFFFF 60%);
   padding-bottom: env(safe-area-inset-bottom);
 
   .navBar {
@@ -11,18 +11,18 @@
     --td-navbar-capsule-border-color: #e3e6ea !important;
   }
 
-  .bg_box {
-    position: absolute;
-    top: 0;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
+  // .bg_box {
+  //   position: absolute;
+  //   top: 0;
+  //   z-index: 1;
+  //   width: 100%;
+  //   height: 100%;
 
-    .img {
-      width: 100%;
-      height: 100%;
-    }
-  }
+  //   .img {
+  //     width: 100%;
+  //     height: 100%;
+  //   }
+  // }
 
   .register_body {
     position: absolute;
@@ -71,7 +71,7 @@
         font-family: AlibabaPuHuiTi3;
         font-size: 32rpx;
         font-weight: normal;
-        color: #FFFFFF;
+        color: var(--text-light-color);
         text-align: center;
         margin-bottom: 38rpx;
       }
@@ -79,14 +79,15 @@
       .save_btn {
         width: 100%;
         height: 112rpx;
-        border-radius: 80rpx;
+        border-radius: 24rpx;
         box-sizing: border-box;
         font-family: AlibabaPuHuiTi3;
         font-size: 32rpx;
         line-height: 112rpx;
         font-weight: bold;
-        color: var(--main-color);
-        background-color: #ffffff;
+        color: #FFFFFF;
+        border: none;
+        background-color: var(--main-color);
       }
     }
   }

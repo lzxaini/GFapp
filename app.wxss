@@ -1,6 +1,6 @@
 page {
   /* 背景色*/
-  --main-color: #18E6E6;
+  --main-color: #81D8D0;
   --main-dark-color: #0DBDBD;
   --main-light-color: #E8FAFA;
   --text-main-color: #1A1A2E;
@@ -35,7 +35,7 @@ page {
   filter: blur(160rpx);
   background-color: #3b8cf3;
 }
-
+ 
 .icon-color-dark {
-  color: #0DBDBD;
+  color: #81D8D0;
 }
