@@ -4,7 +4,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  background-color: #F4F7FB;
+  background: linear-gradient(180deg, var(--main-color) -30%, #f5faf7 50%);
   // margin-top: 16px;
   padding-bottom: env(safe-area-inset-bottom);
 

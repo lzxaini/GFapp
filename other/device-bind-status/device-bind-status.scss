@@ -1,7 +1,7 @@
 .device-bind-status {
   width: 100vw;
   height: 100vh;
-  background-color: #FFFFFF;
+  background: linear-gradient(180deg, var(--main-color) -30%, #f5faf7 50%);
 
   .nav_bg {
     position: relative;
@@ -54,7 +54,7 @@
     --td-cell-vertical-padding: 24rpx;
     box-shadow: 0px 2px 12px 0px #1a1a2e0d;
     --td-cell-bg-color: transparent;
-    background-color: #EAF7F766;
+    background-color: #ffffff;
     margin-top: 20rpx;
   }
   .cell_nav {
@@ -95,7 +95,7 @@
 
     .btn {
       width: 100%;
-      border-radius: 96px;
+      border-radius: 26rpx;
       box-shadow: 0px 8rpx 40rpx 0px #1a3a2a14;
       background-color: var(--main-color);
       height: 102rpx;

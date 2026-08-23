@@ -11,7 +11,7 @@
   height: calc(100vh - (env(safe-area-inset-bottom) + 80px));
   padding-bottom: 80px;
   // background: linear-gradient(180deg, var(--main-color) 20%, #F5F0FA 40%, #F5F0FA 100%);
-  background-color: #F9F7FC;
+  background: linear-gradient(180deg, var(--main-color) -30%, #f5faf7 50%);
 
   .navBar {
     --td-navbar-bg-color: transparent;
@@ -85,7 +85,7 @@
     // background: rgba(255, 255, 255, 0.45);
     // backdrop-filter: blur(40px);
     // -webkit-backdrop-filter: blur(40px);
-    background-color: #FFFFFF;
+    background-color: #ffffff9d;
 
     .data_title {
       font-family: AlibabaPuHuiTi3;
@@ -106,8 +106,8 @@
         align-items: center;
         padding: 0 30rpx;
         height: 72rpx;
-        border-radius: 12rpx;
-        // background-color: #F5F0FA;
+        border-radius: 26rpx;
+        background-color: #ffffff;
         border: 1px solid #f5f0fa;
 
         .interval_info {
@@ -150,8 +150,8 @@
 
       .all_item {
         height: 72rpx;
-        border-radius: 12rpx;
-        // background-color: #F5F0FA;
+        border-radius: 26rpx;
+        background-color: #ffffff;
         border: 1px solid #f5f0fa;
 
         .item-input {
@@ -190,7 +190,8 @@
       --td-tab-item-tag-active-bg: var(--main-color);
       --td-tab-item-active-color: #ffffff;
       --td-tab-item-height: 80rpx;
-      border: 1rpx solid #ecedfd;
+      border-radius: 26rpx;
+      border: 1rpx solid #ffffff;
       margin-bottom: 30rpx;
     }
 
@@ -199,6 +200,7 @@
       font-family: AlibabaPuHuiTi3;
       font-size: 28rpx;
       font-weight: bold;
+      border-radius: 26rpx;
     }
 
     .active_style {
