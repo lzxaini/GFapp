@@ -12,7 +12,7 @@
   width: 100vw;
   height: calc(100vh - (env(safe-area-inset-bottom) + 80px));
   padding-bottom: 80px;
-  // background: linear-gradient(180deg, var(--main-color) 20%, #F5F0FA 40%, #F5F0FA 100%);
+  // background: linear-gradient(180deg, var(--main-color) 20%, #F5F7FA 40%, #F5F7FA 100%);
   background: linear-gradient(180deg, var(--main-color) -30%, #f5faf7 50%);
 
   .navBar {
@@ -175,7 +175,7 @@
               background-color: var(--main-color);
               font-size: 18rpx;
               font-weight: normal;
-              color: #F5F0FA;
+              color: #F5F7FA;
             }
           }
         }
