@@ -3,6 +3,7 @@ import { joinDeptApi } from '../../api/api'
 const app = getApp()
 Page({
   data: {
+    cdnUrl: app.globalData.cdnUrl,
     confirmBtn: { content: '确定', variant: 'base' },
     showConfirm: false
   },

@@ -13,7 +13,7 @@
   height: calc(100vh - (env(safe-area-inset-bottom) + 80px));
   padding-bottom: 80px;
   // background: linear-gradient(180deg, var(--main-color) 20%, #F5F7FA 40%, #F5F7FA 100%);
-  background: linear-gradient(180deg, var(--main-color) -30%, #f5faf7 50%);
+  background: linear-gradient(180deg, var(--main-bg-gradient-color-1) 0%, var(--main-bg-gradient-color-2) 60%);
 
   .navBar {
     --td-navbar-bg-color: transparent;

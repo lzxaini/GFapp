@@ -1,12 +1,12 @@
 .work-team_container {
   width: 100vw;
   height: 100vh;
-  background-color: #F5F7FA;
+  // background-color: #F5F7FA;
+  background: linear-gradient(180deg, var(--main-bg-gradient-color-1) 0%, var(--main-bg-gradient-color-2) 60%);
 
   .navBar {
-    --td-navbar-bg-color: var(--main-color);
-    --td-navbar-color: #fff;
-    --td-navbar-capsule-border-color: #e3e6ea !important;
+    --td-navbar-bg-color: transparent;
+    --td-navbar-color: var(--text-secondary-color);
   }
 
   .group_box {
@@ -20,7 +20,7 @@
       height: 88rpx;
       border-radius: 30rpx;
       background-color: #49b9ad;
-      background: linear-gradient(225deg, rgba(74, 222, 128, 1) 15%, rgba(34, 197, 94, 1) 85%);
+      background: linear-gradient(225deg, #E8F8F0 15%, #27AE60 85%);
     }
 
     .title {
@@ -39,20 +39,22 @@
 
     .bg {
       // background-color: #5595ff !important;
-      background: linear-gradient(225deg, rgba(167, 139, 250, 1) 15%, rgba(124, 58, 237, 1) 85%) !important;
+      background: linear-gradient(225deg, #0DBDBD 15%, #0DBDBD 85%) !important;
     }
   }
 
-  .gf_logo {
-    display: flex;
-    justify-content: center;
-    margin-top: 128rpx;
-    mix-blend-mode: color-burn;
-    opacity: 1;
-
-    .gf_logo_bg {
-      width: 560rpx;
-      height: 560rpx;
-    }
-  }
+	.gf_logo {
+		position: fixed;
+		bottom: env(safe-area-inset-bottom);
+    z-index: 1;
+		// left: 50%;
+		// transform: translate(-50%, 0%);
+		// mix-blend-mode: color-burn;
+		// opacity: 1;
+		.gf_logo_bg {
+			width: calc(100vw - 64rpx);
+      margin: 0 32rpx;
+			height: 244rpx;
+		}
+	}
 }

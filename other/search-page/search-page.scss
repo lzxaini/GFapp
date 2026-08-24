@@ -1,20 +1,20 @@
 .work-team_container {
 	width: 100vw;
 	height: 100vh;
-	background-color: #f7f8fa;
+  // background-color: #F5F7FA;
+  background: linear-gradient(180deg, var(--main-bg-gradient-color-1) 0%, var(--main-bg-gradient-color-2) 60%);
 	.navBar {
-		--td-navbar-bg-color: var(--main-color);
-		--td-navbar-color: #fff;
-		--td-navbar-capsule-border-color: #e3e6ea !important;
+    --td-navbar-bg-color: transparent;
+    --td-navbar-color: var(--text-secondary-color);
 	}
 	.search_box {
 		display: flex;
 		align-items: center;
 		padding: 32rpx 24rpx;
-		background-color: #ffffff;
+		// background-color: #ffffff;
 		.item-input {
 			padding: 20rpx 30rpx;
-			border-radius: 19rpx;
+			border-radius: 84rpx;
 			background: #f7f8fa;
 			margin-right: 28rpx;
 			--td-input-placeholder-text-font-size: 26rpx;
@@ -70,8 +70,9 @@
 		// mix-blend-mode: color-burn;
 		// opacity: 1;
 		.gf_logo_bg {
-			width: 100vw;
-			height: 182rpx;
+			width: calc(100vw - 64rpx);
+      margin: 0 32rpx;
+			height: 244rpx;
 		}
 	}
 }

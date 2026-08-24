@@ -6,6 +6,8 @@ page {
   --text-main-color: #1A1A2E;
   --text-secondary-color: #4A5568;
   --text-light-color: #A0AEC0;
+  --main-bg-gradient-color-1: #C9EBEA;
+  --main-bg-gradient-color-2: #f4f7fa;
 }
 
 .page_nav_bg {
