@@ -17,7 +17,7 @@
               <t-icon wx:if="{{item.children && item.children.length > 0}}" name="{{item.expanded ? 'chevron-down' : 'chevron-right'}}" size="40rpx" color="#999" />
               <view wx:else class="placeholder-icon"></view>
               <text class="dept-name">{{item.deptName}}</text>
-              <text class="dept-type">{{item.deptType == '1' ? '联合创始人' : item.deptType == '2' ? '分公司' : item.deptType == '3' ? '代理商' : '门店'}}</text>
+              <text class="dept-type">{{item.deptType == '1' ? '总部' : item.deptType == '2' ? '分公司' : item.deptType == '3' ? '代理商' : '门店'}}</text>
             </view>
             <view class="node-actions">
               <view class="action-btn" bindtap="handleEdit" data-deptid="{{item.deptId}}">
@@ -37,7 +37,7 @@
                   <t-icon wx:if="{{child.children && child.children.length > 0}}" name="{{child.expanded ? 'chevron-down' : 'chevron-right'}}" size="40rpx" color="#999" />
                   <view wx:else class="placeholder-icon"></view>
                   <text class="dept-name">{{child.deptName}}</text>
-                  <text class="dept-type">{{child.deptType == '1' ? '联合创始人' : child.deptType == '2' ? '分公司' : child.deptType == '3' ? '代理商' : '门店'}}</text>
+                  <text class="dept-type">{{child.deptType == '1' ? '总部' : child.deptType == '2' ? '分公司' : child.deptType == '3' ? '代理商' : '门店'}}</text>
                 </view>
                 <view class="node-actions">
                   <view class="action-btn" bindtap="handleEdit" data-deptid="{{child.deptId}}">
@@ -57,7 +57,7 @@
                       <t-icon wx:if="{{grandson.children && grandson.children.length > 0}}" name="{{grandson.expanded ? 'chevron-down' : 'chevron-right'}}" size="40rpx" color="#999" />
                       <view wx:else class="placeholder-icon"></view>
                       <text class="dept-name">{{grandson.deptName}}</text>
-                      <text class="dept-type">{{grandson.deptType == '1' ? '联合创始人' : grandson.deptType == '2' ? '分公司' : grandson.deptType == '3' ? '代理商' : '门店'}}</text>
+                      <text class="dept-type">{{grandson.deptType == '1' ? '总部' : grandson.deptType == '2' ? '分公司' : grandson.deptType == '3' ? '代理商' : '门店'}}</text>
                     </view>
                     <view class="node-actions">
                       <view class="action-btn" bindtap="handleEdit" data-deptid="{{grandson.deptId}}">

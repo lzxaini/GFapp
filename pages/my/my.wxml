@@ -7,7 +7,7 @@
     <view class="bg_box">
       <image class="my_bg" src="{{cdnUrl}}/static/icon/my_bg.png"></image>
     </view>
-    <image style="margin-top: {{capsuleHeight}}px;" class="avatar" src="{{userInfo.avatar ? ossUrl + userInfo.avatar : '../../static/icon/profile_picture.png'}}"
+    <image style="margin-top: {{capsuleHeight + 30}}px;" class="avatar" src="{{userInfo.avatar ? ossUrl + userInfo.avatar : '../../static/icon/profile_picture.png'}}"
       bindtap="goLoginFlag" />
     <view class="info_box" bindtap="goLoginFlag">
       <view class="user_name">{{userInfo.userName || '未登录'}}</view>

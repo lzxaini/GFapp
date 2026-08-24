@@ -3,6 +3,9 @@
     <!-- <view class="logo_gf" style="padding-top: {{statusBarHeight}}px">
       <t-image class="logo_gf_img" src="/static/icon/logo.png" />
     </view> -->
+    <view class="bg_box">
+      <image class="my_bg" src="{{cdnUrl}}/static/icon/login_bg.png"></image>
+    </view>
     <view class="welcome">
       <view class="icon_box">
         <view class="item item_1"></view>

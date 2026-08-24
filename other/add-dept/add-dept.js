@@ -22,7 +22,7 @@ Page({
     deptTypeVisible: false,
     deptTypeText: '', // 部门分类显示文本
     allDeptTypeOptions: [{
-        label: '联合创始人',
+        label: '总部',
         value: '1'
       },
       {

@@ -1,206 +1,232 @@
 .login_container {
-	position: relative;
-	width: 100vw;
-	height: 100vh;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: #eff5f7;
 
-	background-color: #F5F7FA;
-	.logo_bg {
+  .logo_bg {
     position: absolute;
     z-index: 1;
-		width: 100%;
-		height: 100%;
-		.image_bg {
-			width: 100%;
-			height: 100%;
-		}
-	}
-  .login_body{
+    width: 100%;
+    height: 100%;
+
+    .image_bg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .login_body {
     position: absolute;
     z-index: 2;
-		width: 100%;
-		height: 100%;
+    width: 100%;
+    height: 100%;
   }
-	.login_btn {
-		width: 100%;
-		height: 112rpx;
-		border-radius: 24rpx;
-		margin-top: 29rpx;
-		box-sizing: border-box;
-		font-family: AlibabaPuHuiTi3;
-		font-size: 32rpx;
-		line-height: 112rpx;
-		font-weight: bold;
-		color: #ffffff;
-		background-color: var(--main-color);
-		--td-button-border-radius: 80rpx;
-		--td-button-default-border-color: transparent;
-	}
 
-	.logo_gf {
-		// position: absolute;
-		// left: 50%;
-		// transform: translate(-50%, 0%);
-		width: 400rpx;
-		height: 400rpx;
-		margin: 0 auto;
+  .login_btn {
+    width: 100%;
+    height: 112rpx;
+    border-radius: 24rpx;
+    margin-top: 29rpx;
+    box-sizing: border-box;
+    font-family: AlibabaPuHuiTi3;
+    font-size: 32rpx;
+    line-height: 112rpx;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: var(--main-color);
+    --td-button-border-radius: 80rpx;
+    --td-button-default-border-color: transparent;
+  }
 
-		.logo_gf_img {
-			width: 100%;
-			height: 100%;
-		}
-	}
+  .bg_box {
+    position: absolute;
+    z-index: 0;
+    top: -80rpx;
+    width: 100%;
+    height: 700rpx;
 
-	.welcome {
-		// margin-top: 64rpx;
-		margin-top: 150px;
+    .my_bg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  // .logo_gf {
+  // 	// position: absolute;
+  // 	// left: 50%;
+  // 	// transform: translate(-50%, 0%);
+  // 	width: 400rpx;
+  // 	height: 400rpx;
+  // 	margin: 0 auto;
+
+  // 	.logo_gf_img {
+  // 		width: 100%;
+  // 		height: 100%;
+  // 	}
+  // }
+
+  .welcome {
+    position: relative;
+    z-index: 2;
+    // margin-top: 64rpx;
+    margin-top: 150px;
     padding: 0 64rpx;
-		font-family: AlibabaPuHuiTi3;
-    .icon_box{
+    font-family: AlibabaPuHuiTi3;
+
+    .icon_box {
       display: flex;
       align-items: center;
-      .item{
+
+      .item {
         width: 128rpx;
         height: 128rpx;
         border-radius: 50%;
         background-color: #81D8D0;
       }
-      .item_1{
+
+      .item_1 {
         background-color: #81d8cf62 !important;
       }
-      .item_2{
+
+      .item_2 {
         margin-left: -30rpx;
       }
     }
-		.title {
+
+    .title {
       margin-top: 24rpx;
-			font-size: 52rpx;
-			text-align: left;
-			color: #1e1a2e;
-		}
+      font-size: 52rpx;
+      text-align: left;
+      color: #1e1a2e;
+    }
 
-		.subtitle {
-			margin-top: 24rpx;
-			font-size: 32rpx;
-			text-align: left;
-			color: var(--text-main-color);
-		}
-	}
+    .subtitle {
+      margin-top: 24rpx;
+      font-size: 32rpx;
+      text-align: left;
+      color: var(--text-main-color);
+    }
+  }
 
-	.login_from {
-		margin: 0 48rpx;
-		margin-top: 128rpx;
+  .login_from {
+    margin: 0 48rpx;
+    margin-top: 128rpx;
 
-		.errMsg {
-			color: red;
-		}
+    .errMsg {
+      color: red;
+    }
 
-		.item {
-			margin-top: 30rpx;
-		}
+    .item {
+      margin-top: 30rpx;
+    }
 
-		.item-input {
-			height: 112rpx;
-			// padding: 25rpx 20rpx;
-			font-family: AlibabaPuHuiTi3;
-			font-size: 26rpx;
-			font-weight: normal;
-			color: #1c2023;
-			--td-input-placeholder-text-font-size: 26rpx;
-			box-sizing: border-box;
-			// border: 1rpx solid var(--main-color);
-			border-radius: 20rpx;
-			margin-top: 32rpx;
-		}
-	}
+    .item-input {
+      height: 112rpx;
+      // padding: 25rpx 20rpx;
+      font-family: AlibabaPuHuiTi3;
+      font-size: 26rpx;
+      font-weight: normal;
+      color: #1c2023;
+      --td-input-placeholder-text-font-size: 26rpx;
+      box-sizing: border-box;
+      // border: 1rpx solid var(--main-color);
+      border-radius: 20rpx;
+      margin-top: 32rpx;
+    }
+  }
 
-	.other_login {
-		margin: 32rpx 48rpx;
+  .other_login {
+    margin: 32rpx 48rpx;
     // color: var(--text-main-color);
     --td-divider-color: var(--text-main-color);
-    --td-divider-content-color:var(--text-main-color);
-		// .grid {
-		//   // color: transparent;
-		//   --td-grid-bg-color: transparent;
-		//   --td-grid-item-bg-color: transparent;
-		//   --td-grid-item-padding: 0;
-		//   --td-grid-item-image-width: 32rpx;
-		//   --td-grid-item-text-font: 10rpx;
-		//   .text{
-		//     font-size: 18rpx;
-		//   }
-		// }
-		.login_btn {
-			margin: 0 !important;
-			background-color: transparent !important;
+    --td-divider-content-color: var(--text-main-color);
+
+    // .grid {
+    //   // color: transparent;
+    //   --td-grid-bg-color: transparent;
+    //   --td-grid-item-bg-color: transparent;
+    //   --td-grid-item-padding: 0;
+    //   --td-grid-item-image-width: 32rpx;
+    //   --td-grid-item-text-font: 10rpx;
+    //   .text{
+    //     font-size: 18rpx;
+    //   }
+    // }
+    .login_btn {
+      margin: 0 !important;
+      background-color: transparent !important;
       border: 1rpx solid var(--main-color);
-			color: var(--main-color);
-		}
-	}
+      color: var(--main-color);
+    }
+  }
 
-	.agreement {
-		width: 100%;
-		height: 45rpx;
-		display: flex;
-		align-items: center;
-		justify-content: flex-start;
-		margin-top: 30rpx;
-		margin-left: 100rpx;
+  .agreement {
+    width: 100%;
+    height: 45rpx;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 30rpx;
+    margin-left: 100rpx;
 
-		.check {
+    .check {
       margin-top: 5rpx;
-			padding: 0 !important;
-			--td-checkbox-icon-size: 30rpx;
-			--td-checkbox-bg-color: transparent;
-			--td-checkbox-icon-color: var(--main-color);
-			--td-checkbox-icon-checked-color: var(--main-color);
-		}
+      padding: 0 !important;
+      --td-checkbox-icon-size: 30rpx;
+      --td-checkbox-bg-color: transparent;
+      --td-checkbox-icon-color: var(--main-color);
+      --td-checkbox-icon-checked-color: var(--main-color);
+    }
 
-		.t-checkbox__icon {
-			margin-top: 0 !important;
-		}
+    .t-checkbox__icon {
+      margin-top: 0 !important;
+    }
 
-		.agreement_info {
-			display: flex;
-			font-family: AlibabaPuHuiTi3;
-			font-size: 26rpx;
-			font-weight: normal;
-			color: #1E1A2E;
+    .agreement_info {
+      display: flex;
+      font-family: AlibabaPuHuiTi3;
+      font-size: 26rpx;
+      font-weight: normal;
+      color: #1E1A2E;
 
-			.info {
-				display: block;
-				color: var(--main-color);
+      .info {
+        display: block;
+        color: var(--main-color);
         font-weight: 600;
-			}
-		}
-	}
+      }
+    }
+  }
 
-	.go_index {
-		text-align: center;
-		margin-top: 40rpx;
+  .go_index {
+    text-align: center;
+    margin-top: 40rpx;
 
-		.text {
-			font-family: AlibabaPuHuiTi3;
-			margin-top: 4rpx;
-			font-size: 20rpx;
-			color: var(--main-color);
-		}
-	}
+    .text {
+      font-family: AlibabaPuHuiTi3;
+      margin-top: 4rpx;
+      font-size: 20rpx;
+      color: var(--main-color);
+    }
+  }
 }
 
 .action-btn {
-	--td-button-primary-bg-color: var(--main-color);
-	--td-button-primary-border-color: var(--main-color);
-	--td-button-primary-active-bg-color: var(--main-color);
-	--td-button-primary-active-border-color: var(--main-color);
-	margin-bottom: 30rpx;
+  --td-button-primary-bg-color: var(--main-color);
+  --td-button-primary-border-color: var(--main-color);
+  --td-button-primary-active-bg-color: var(--main-color);
+  --td-button-primary-active-border-color: var(--main-color);
+  margin-bottom: 30rpx;
 }
+
 .cancel-btn {
-	--td-button-primary-bg-color: #999999;
-	--td-button-primary-border-color: #999999;
-	--td-button-primary-active-bg-color: #9a95aa;
-	--td-button-primary-active-border-color: #9a95aa;
-	margin-bottom: 30rpx;
+  --td-button-primary-bg-color: #999999;
+  --td-button-primary-border-color: #999999;
+  --td-button-primary-active-bg-color: #9a95aa;
+  --td-button-primary-active-border-color: #9a95aa;
+  margin-bottom: 30rpx;
 }
-.icon-color{
+
+.icon-color {
   color: var(--main-color) !important;
 }
