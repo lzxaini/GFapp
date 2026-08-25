@@ -22,7 +22,7 @@
       font-size: 24rpx;
       font-weight: normal;
       line-height: 34px;
-      color: #5A5470;
+      color: var(--text-secondary-color);
     }
 
 
@@ -210,7 +210,7 @@
 
   .info {
     font-size: 28rpx;
-    color: #5A5470;
+    color: var(--text-secondary-color);
     margin-top: 32rpx;
   }
 

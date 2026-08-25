@@ -12,23 +12,23 @@
 	.list_item {
 		.cell_title {
 			font-family: AlibabaPuHuiTi3;
-			font-size: 24rpx;
-			font-weight: 300;
+			font-size: 28rpx;
+			font-weight: 500;
 			color: #1c2023;
 		}
 		.description {
 			font-family: AlibabaPuHuiTi3;
-			font-size: 20rpx;
+			font-size: 24rpx;
 			font-weight: normal;
 			color: #606972;
 		}
 		.join_btn {
-			font-size: 20rpx;
+			font-size: 24rpx;
 			color: #ffffff;
 			--td-button-primary-bg-color: var(--main-color);
 			--td-button-primary-border-color: var(--main-color);
-			--td-button-primary-active-bg-color: #888cf4a2;
-			--td-button-primary-active-border-color: #888cf4a2;
+			--td-button-primary-active-bg-color: var(--main-dark-color);
+			--td-button-primary-active-border-color: var(--main-dark-color);
 		}
 	}
 	.empty {

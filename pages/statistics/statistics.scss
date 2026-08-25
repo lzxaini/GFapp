@@ -25,7 +25,7 @@
 
   .navBar {
     --td-navbar-bg-color: transparent;
-    --td-navbar-color: #5A5470;
+    --td-navbar-color: var(--text-secondary-color);
     --td-navbar-capsule-border-color: #e3e6ea !important;
     // color: transparent;
   }

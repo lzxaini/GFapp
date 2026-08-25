@@ -29,7 +29,7 @@
 
       .title {
         width: 100%;
-        color: #5a5470;
+        color: var(--text-secondary-color);
         font-family: AlibabaPuHuiTi3;
         font-style: Bold;
         font-size: 50rpx;
@@ -39,7 +39,7 @@
 
       .text {
         width: 100%;
-        color: #5a5470;
+        color: var(--text-secondary-color);
         font-family: AlibabaPuHuiTi3;
         font-size: 26rpx;
         font-weight: 400;
