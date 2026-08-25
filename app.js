@@ -22,6 +22,7 @@ App({
     devFlag: false, // 开发环境标志
     devUrl: '',
     appName: {
+      weChatAppName: '玑肤芮高定美学',
       name: '玑肤芮',
       slogan: '年轻计划，轻松开肌',
       appVersion: '1.0.7_260811170',
