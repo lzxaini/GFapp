@@ -34,12 +34,14 @@ App({
     statusBarHeight: 0,
     capsuleHeight: 0,
     marginBottom: '60rpx',
+    /** 测试服务器 */
     baseUrl: 'https://api.hyj001.top',
     ossUrl: 'https://api.hyj001.top',
     cdnUrl: 'https://cdn.hyj001.top',
+    mqttUrl: 'wxs://mqtt.hyj001.top/mqtt',
+    /** 开发服务器 */
     // baseUrl: 'http://127.0.0.1:8080',
     // ossUrl: 'http://127.0.0.1:8080',
-    mqttUrl: 'wxs://mqtt.hyj001.top/mqtt',
     // mqttUrl: 'wxs://mqtt.fxnws.com/mqtt',
     userInfo: null,
     token: null
