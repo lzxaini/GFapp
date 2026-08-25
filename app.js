@@ -22,6 +22,7 @@ App({
     devFlag: false, // 开发环境标志
     devUrl: '',
     appName: {
+      weChatAppName: '鼎郦超素美',
       name: '超素美',
       slogan: '爱上素颜美，就选超素美',
       appVersion: '0.0.5_260821113',
