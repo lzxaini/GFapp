@@ -22,6 +22,7 @@ App({
     devFlag: false, // 开发环境标志
     devUrl: '',
     appName: {
+      weChatAppName: 'HEYITTE逆龄中心',
       name: '禾壹净',
       slogan: '爱上美好，就选禾壹净',
       appVersion: '0.0.3_260825104',
