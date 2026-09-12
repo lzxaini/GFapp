@@ -25,7 +25,7 @@ App({
       weChatAppName: 'HEYITTE逆龄中心',
       name: '禾壹净',
       slogan: '爱上美好，就选禾壹净',
-      appVersion: '0.0.4_260825181',
+      appVersion: '0.0.5_260912213',
       beian: '皖ICP备2026021999号-2X',
       copyright: 'Copyright © 2020-2026 HYJ.All Rights Reserved.',
     },
