@@ -25,7 +25,7 @@ App({
       weChatAppName: '鼎郦超素美',
       name: '超素美',
       slogan: '爱上素颜美，就选超素美',
-      appVersion: '0.0.6_260825182',
+      appVersion: '0.0.7_260914131',
       beian: '粤ICP备2026100471号-2X',
       copyright: 'Copyright © 2020-2026 CSM.All Rights Reserved.',
     },
