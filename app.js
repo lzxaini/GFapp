@@ -32,12 +32,14 @@ App({
     statusBarHeight: 0,
     capsuleHeight: 0,
     marginBottom: '60rpx',
-    baseUrl: 'https://api.gfkm.cc',
-    ossUrl: 'https://api.gfkm.cc',
-    // baseUrl: 'http://192.168.18.200:8080',
-    // ossUrl: 'http://192.168.18.200:8080',
-    mqttUrl: 'wxs://mqtt.gfkm.cc/mqtt',
-    // mqttUrl: 'wxs://gfmq.fxnws.com/mqtt',
+    /** 生成服务 */
+    // baseUrl: 'https://api.gfkm.cc',
+    // ossUrl: 'https://api.gfkm.cc',
+    // mqttUrl: 'wxs://mqtt.gfkm.cc/mqtt',
+    /** 测试服务 */
+    baseUrl: 'http://127.0.0.1:8080',
+    ossUrl: 'http://127.0.0.1:8080',
+    mqttUrl: 'wxs://mqtt.fxnws.com/mqtt',
     userInfo: null,
     token: null
   },
