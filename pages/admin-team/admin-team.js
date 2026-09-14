@@ -46,8 +46,7 @@ Page({
     getAdminTeamListApi().then(res => {
       if (res.code === 200) {
         // res.data = {code:200, msg:"操作成功", data: {1:[], 2:[], 3:[]}}
-        const raw = res.data || {}
-        const teamObj = raw.data || {}
+        const teamObj = res.data || {}
         this.setData({
           refresher: false,
           teamObj,

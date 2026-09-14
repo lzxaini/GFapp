@@ -35,11 +35,11 @@ Page({
     let { deptData } = this.data
     getAdminTeamListDrillDownApi(deptData.deptId).then(res => {
       if (res.code === 200) {
-        const raw = res.data || {}
-        const dataMap = raw.data || {}
+        console.log('ces ', res)
+        const dataMap = res.data || {}
         this.setData({
           refresher: false,
-          teamObj: raw,
+          teamObj: res,
           pageObj: {
             3: { pageNum: 1, hasMore: this.hasMore(dataMap[3]) },
             4: { pageNum: 1, hasMore: this.hasMore(dataMap[4]) },
@@ -125,7 +125,7 @@ Page({
       text: `dept-${this.data.deptData.deptId}`,
       // v1.0.0+版本支持在二维码上绘制图片
       image: {
-        imageResource: '../../static/icon/gf_logo_w.png', // 不支持网络图片，如果非得网络图片，需要使用wx.getImageInfo 去获取图片信息，我这边往中间加的一个白图然后采用覆盖的方式
+        imageResource: '../../static/icon/profile_picture.png', // 不支持网络图片，如果非得网络图片，需要使用wx.getImageInfo 去获取图片信息，我这边往中间加的一个白图然后采用覆盖的方式
         dx: 100,
         dy: 100,
         dWidth: 50,
