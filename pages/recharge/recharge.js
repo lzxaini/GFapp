@@ -96,7 +96,8 @@ Page({
   clearInput() {
     this.setData({
       'pageObj.deptId': '',
-      'form.deptId': ''
+      'form.deptId': '',
+      'form.deptName': ''
     });
     this.getRechargeRecords()
   },
