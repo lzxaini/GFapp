@@ -8,9 +8,9 @@
     </t-cell>
   </t-cell-group>
   <view class="admin-team_tabs">
-    <t-tabs t-class="tabs_box" t-class-active="active_style" t-class-item="item_style" defaultValue="{{teamTab}}" theme="tag" bind:change="tabClick" show-bottom-line="{{false}}">
-      <t-tab-panel wx:key="index" label="代理商（{{teamObj[3].length || 0}}）" value="{{3}}" />
-      <t-tab-panel wx:key="index" label="门店（{{teamObj[4].length || 0}}）" value="{{4}}" />
+    <t-tabs t-class="tabs_box" t-class-active="active_style" t-class-item="item_style" value="{{teamTab}}" theme="tag" bind:change="tabClick" show-bottom-line="{{false}}">
+      <t-tab-panel wx:key="index" label="代理商（{{teamObj.data[3].length || 0}}）" value="{{3}}" />
+      <t-tab-panel wx:key="index" label="门店（{{teamObj.data[4].length || 0}}）" value="{{4}}" />
     </t-tabs>
   </view>
   <!-- <scroll-view wx:if="{{teamTab === 3}}" class="scroll-view" scroll-y="true" scroll-with-animation="true" refresher-enabled="{{true}}" refresher-triggered="{{refresher}}" bindrefresherrefresh="getAdminTeamListDrillDown">
