@@ -13,6 +13,8 @@ const app = getApp();
 Page({
   data: {
     loading: false,
+    searchDeptName: '',
+    activeSearchDeptName: '',
     deptList: [], // 部门列表
     expandedKeys: [], // 展开的节点
     dialogVisible: false, // 对话框显示
@@ -83,7 +85,8 @@ Page({
 
   // 获取部门列表（分页触底加载）
   getDeptList(type = 'init') {
-    const { pagObj, allDeptRows, deptList } = this.data
+    const { pagObj, allDeptRows, deptList, activeSearchDeptName } = this.data
+    const requestId = this.deptRequestId = (this.deptRequestId || 0) + 1
 
     if (type === 'init') {
       this.setData({ loading: true, refreshing: false })
@@ -91,7 +94,8 @@ Page({
       this.setData({ deptLoadingMore: true })
     }
 
-    getDeptListInfoApi(pagObj).then(res => {
+    getDeptListInfoApi({ ...pagObj, deptName: activeSearchDeptName }).then(res => {
+      if (requestId !== this.deptRequestId) return
       if (res.code === 200) {
         const { rows, total } = res.data || {}
         const newRows = rows || []
@@ -111,6 +115,7 @@ Page({
         })
       }
     }).catch(() => {
+      if (requestId !== this.deptRequestId) return
       this.setData({
         loading: false,
         deptLoadingMore: false,
@@ -122,12 +127,44 @@ Page({
 
   // 触底加载更多
   onDeptScrollToLower() {
-    const { pagObj, allDeptRows, deptTotal, deptLoadingMore, loading } = this.data
-    if (deptLoadingMore || loading || allDeptRows.length >= deptTotal) return
+    const { pagObj, allDeptRows, deptTotal, deptLoadingMore, loading, searchDeptName, activeSearchDeptName } = this.data
+    if (deptLoadingMore || loading || searchDeptName.trim() !== activeSearchDeptName || allDeptRows.length >= deptTotal) return
     this.setData({
       'pagObj.pageNum': pagObj.pageNum + 1
     })
     this.getDeptList('bottom')
+  },
+
+  onDeptSearch(e) {
+    const value = e.detail.value || ''
+    this.setData({ searchDeptName: value })
+    clearTimeout(this.deptSearchTimer)
+    this.deptSearchTimer = setTimeout(() => this.applyDeptSearch(), 300)
+  },
+
+  onDeptSearchClear() {
+    clearTimeout(this.deptSearchTimer)
+    this.setData({ searchDeptName: '' })
+    this.applyDeptSearch()
+  },
+
+  onDeptSearchConfirm(e) {
+    clearTimeout(this.deptSearchTimer)
+    this.setData({ searchDeptName: e.detail.value || '' })
+    this.applyDeptSearch()
+  },
+
+  applyDeptSearch() {
+    const keyword = this.data.searchDeptName.trim()
+    if (keyword === this.data.activeSearchDeptName) return
+    this.setData({
+      activeSearchDeptName: keyword,
+      'pagObj.pageNum': 1,
+      allDeptRows: [],
+      deptList: [],
+      deptTotal: 0
+    })
+    this.getDeptList('init')
   },
 
   // 下拉刷新
@@ -557,7 +594,10 @@ Page({
   onReady() {},
   onShow() {},
   onHide() {},
-  onUnload() {},
+  onUnload() {
+    clearTimeout(this.deptSearchTimer)
+    this.deptRequestId = (this.deptRequestId || 0) + 1
+  },
   onPullDownRefresh() {},
   onReachBottom() {},
   onShareAppMessage() {}
